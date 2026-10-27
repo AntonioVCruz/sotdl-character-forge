@@ -89,9 +89,11 @@ npm run build
 
 `npm test` executa `vitest run`. `npm run build` executa `tsc --noEmit && vite build`; o script `prebuild` gera o runtime offline antes do Vite.
 
+Os quatro compêndios em `rules/` estão no `.gitignore` e não entram no checkout do GitHub. Sem esses arquivos, o Vitest omite os testes que os abrem (`tests/curation-ancestries.test.ts`, `curation-paths`, `curation-spells`, `curation-mechanics`, `curation-reconciliation` e os demais listados em `vite.config.ts`). Com os quatro presentes, o mesmo `npm test` inclui essa suíte. Um corpus parcial (só alguns dos quatro arquivos) falha o teste `tests/rules-corpus.test.ts`.
+
 Depois que o workflow estiver na `main`, marque o check **CI / test and build** como obrigatório nas regras de proteção da branch `main` (Settings → Rules → Rulesets, ou Branch protection rules). O workflow não altera essa configuração.
 
-`npm run test:e2e` (Playwright) fica fora deste gate. A suíte precisa do Chromium (`npx playwright install chromium`), de Python com `pypdf` (`tools/verify-print-pdf.py`) e exercita PDF, downloads e HTML via `file://`. Esses extras não entram na CI mínima; o acompanhamento é incluí-los quando a suíte for estável no `ubuntu-latest`. Até lá, rode o E2E localmente com os comandos da seção anterior.
+`npm run test:e2e` (Playwright) fica fora deste gate. A suíte precisa do Chromium (`npx playwright install chromium`), de Python com `pypdf` (`tools/verify-print-pdf.py`) e exercita PDF, downloads e HTML via `file://`. Esses extras não entram na CI mínima; o acompanhamento é incluí-los quando a suíte for estável no `ubuntu-latest`. Até lá, rode o E2E localmente com os comandos da seção anterior. O mesmo vale para a suíte de curadoria que depende de `rules/`: permanece local até haver uma forma de fornecer os compêndios ao runner sem versioná-los.
 
 Planos e decisões: `specs/001-catalogo-e-proveniencia/implementation.md`, `docs/plano-nivel-zero.md`, `docs/plano-nivel-um.md`, `docs/plano-magias-demo.md`, `docs/plano-sessao-demo.md`, `docs/plano-impressao-a4.md`, `docs/plano-html-autonomo.md` e `docs/plano-equipamento-demo.md`. Evidências e limites: `docs/entrega-catalogo.md`, `docs/entrega-nivel-zero.md`, `docs/entrega-nivel-um.md`, `docs/entrega-magias-demo.md`, `docs/entrega-sessao-demo.md`, `docs/entrega-impressao-a4.md`, `docs/entrega-html-autonomo.md` e `docs/entrega-equipamento-demo.md`.
 
