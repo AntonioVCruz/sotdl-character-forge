@@ -1,0 +1,13 @@
+{
+  "packId": "demo-magic", "version": "0.0.1", "system": "sotdl", "fictionalData": true,
+  "legalNotice": "TRADIÇÕES E MAGIAS FICTÍCIAS: exclusivamente para demonstrar aprendizado sequencial.",
+  "source": { "id": "demo-magic-source", "title": "Laboratório fictício de tradições", "sourcePage": null, "status": "fictional" },
+  "entities": [
+    { "id": "demo:tradition:ember", "kind": "rule", "name": "Brasa Serena (fictícia)", "sourceRef": "demo-magic-source", "status": "curated", "demoSlot": "tradition", "demoLevel": 1, "requiresPath": "demo:path:spark", "description": "Estudo fictício de luz e calor suave.", "mechanicalEvents": [] },
+    { "id": "demo:tradition:echo", "kind": "rule", "name": "Eco de Vidro (fictícia)", "sourceRef": "demo-magic-source", "status": "curated", "demoSlot": "tradition", "demoLevel": 1, "requiresPath": "demo:path:spark", "description": "Estudo fictício de reflexos e sons delicados.", "mechanicalEvents": [] },
+    { "id": "demo:spell:lantern", "kind": "spell", "name": "Lanterna de Brasa (fictícia)", "sourceRef": "demo-magic-source", "status": "curated", "demoSlot": "spell", "demoLevel": 1, "requiresPath": "demo:path:spark", "traditionId": "demo:tradition:ember", "rank": 0, "description": "Cria uma pequena luz imaginária que acompanha a mão. Alcance, duração e usos são resolvidos manualmente nesta demonstração.", "mechanicalEvents": [] },
+    { "id": "demo:spell:warmth", "kind": "spell", "name": "Fio de Calor (fictícia)", "sourceRef": "demo-magic-source", "status": "curated", "demoSlot": "spell", "demoLevel": 1, "requiresPath": "demo:path:spark", "traditionId": "demo:tradition:ember", "rank": 0, "description": "Produz uma sensação narrativa de calor suave. Não concede bônus nem causa dano automatizado.", "mechanicalEvents": [] },
+    { "id": "demo:spell:chime", "kind": "spell", "name": "Sino Distante (fictícia)", "sourceRef": "demo-magic-source", "status": "curated", "demoSlot": "spell", "demoLevel": 1, "requiresPath": "demo:path:spark", "traditionId": "demo:tradition:echo", "rank": 0, "description": "Produz um toque de sino imaginário. Alcance, duração e usos são resolvidos manualmente nesta demonstração.", "mechanicalEvents": [] },
+    { "id": "demo:spell:reflection", "kind": "spell", "name": "Reflexo Breve (fictícia)", "sourceRef": "demo-magic-source", "status": "curated", "demoSlot": "spell", "demoLevel": 1, "requiresPath": "demo:path:spark", "traditionId": "demo:tradition:echo", "rank": 0, "description": "Desenha um reflexo narrativo em uma superfície. Não altera Defense nem aplica condições automaticamente.", "mechanicalEvents": [] }
+  ]
+}

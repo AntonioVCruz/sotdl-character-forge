@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "baselineSourceId": "sotdl:shadow-of-the-demon-lord-core",
+  "optionalDefault": false,
+  "regionalDefault": false,
+  "relations": [
+    {
+      "id": "errata:19nov17-for-core",
+      "type": "errata-for",
+      "fromSourceId": "sotdl:demon-lord-errata-19nov17",
+      "toSourceId": "sotdl:shadow-of-the-demon-lord-core",
+      "scope": "corrections-only",
+      "evidenceIds": [
+        "md:source-policy:145",
+        "md:source-policy:64991"
+      ],
+      "status": "declared-in-md",
+      "enabledByDefault": false,
+      "responsible": "Codex / local analysis",
+      "reason": "MD declara precedencia; faltam comparacao por correcao e verificacao dos PDFs. Relacao nao aplicada."
+    },
+    {
+      "id": "errata:10oct17-for-core",
+      "type": "errata-for",
+      "fromSourceId": "sotdl:demon-lord-errata-10oct17",
+      "toSourceId": "sotdl:shadow-of-the-demon-lord-core",
+      "scope": "corrections-only",
+      "evidenceIds": [
+        "md:source-policy:146",
+        "md:source-policy:64991"
+      ],
+      "status": "declared-in-md",
+      "enabledByDefault": false,
+      "responsible": "Codex / local analysis",
+      "reason": "MD declara precedencia; faltam comparacao por correcao e verificacao dos PDFs. Relacao nao aplicada."
+    },
+    {
+      "id": "errata:19nov17-supersedes-10oct17",
+      "type": "supersedes",
+      "fromSourceId": "sotdl:demon-lord-errata-19nov17",
+      "toSourceId": "sotdl:demon-lord-errata-10oct17",
+      "scope": "repeated-corrections-only",
+      "evidenceIds": [
+        "md:source-policy:7",
+        "md:source-policy:146",
+        "md:source-policy:64991"
+      ],
+      "status": "declared-in-md",
+      "enabledByDefault": false,
+      "responsible": "Codex / local analysis",
+      "reason": "MD declara precedencia; faltam comparacao por correcao e verificacao dos PDFs. Relacao nao aplicada."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "md:source-policy:7",
+      "medium": "md",
+      "path": "rules/SotDL_Compendio_Regras_Equipamentos_Monstros_v4_All_Project_Sources.md",
+      "inputSha256": "af5b377d003c96910c5c7d4c4909a66d381513cbda93de22b5d83a6ca5474ece",
+      "startLine": 7,
+      "endLine": 7,
+      "physicalPdfPage": null,
+      "printedPageDeclared": null,
+      "pdfPageDeclared": null,
+      "heading": "Manifesto e protocolo editorial",
+      "excerpt": "**Alteração da versão 4.0:** foram auditadas as 23 fontes PDF anexadas nesta rodada do projeto. *Wild Beasts* já constava integralmente na versão 3.0 e foi revalidada sem duplicação; as outras 22 fontes foram acrescentadas ao manifesto. Foram incorporados os blocos autônomos dentro do escopo — regras e procedimentos do GM, subsistemas opcionais, equipamentos, relíquias, hazards e criaturas — mantendo de fora ancestries, paths e blocos/listas de spells conforme as instruções da seção 0. As duas versões de errata foram registradas separadamente, com precedência mecânica para *Demon Lord Errata (19nov17)* quando houver duplicação. O manifesto passa a cobrir 95 fontes.",
+      "excerptSha256": "a3c86ce6d637caa19e89af6f0baafb5c0561a4ddd53c8320c9b39f3a68fabb2c",
+      "claim": "Declaracao editorial do MD; nao certifica PDF ou equivalencia de correcoes."
+    },
+    {
+      "id": "md:source-policy:19",
+      "medium": "md",
+      "path": "rules/SotDL_Compendio_Regras_Equipamentos_Monstros_v4_All_Project_Sources.md",
+      "inputSha256": "af5b377d003c96910c5c7d4c4909a66d381513cbda93de22b5d83a6ca5474ece",
+      "startLine": 19,
+      "endLine": 19,
+      "physicalPdfPage": null,
+      "printedPageDeclared": null,
+      "pdfPageDeclared": null,
+      "heading": "Manifesto e protocolo editorial",
+      "excerpt": "3. **Precedência.** A regra do *Shadow of the Demon Lord Core* é a base. Suplementos que explicitamente substituem uma regra devem ser marcados como **VARIANTE/OPCIONAL**, nunca mesclados silenciosamente com a regra-base. Regras locais de cenário permanecem com seu escopo local.",
+      "excerptSha256": "80351844edfebf7e6aba5c45e9ae79dbd92fc33b7aee65f410702e041ac02e70",
+      "claim": "Declaracao editorial do MD; nao certifica PDF ou equivalencia de correcoes."
+    },
+    {
+      "id": "md:source-policy:20",
+      "medium": "md",
+      "path": "rules/SotDL_Compendio_Regras_Equipamentos_Monstros_v4_All_Project_Sources.md",
+      "inputSha256": "af5b377d003c96910c5c7d4c4909a66d381513cbda93de22b5d83a6ca5474ece",
+      "startLine": 20,
+      "endLine": 20,
+      "physicalPdfPage": null,
+      "printedPageDeclared": null,
+      "pdfPageDeclared": null,
+      "heading": "Manifesto e protocolo editorial",
+      "excerpt": "4. **Conflitos e duplicatas.** Se duas fontes tiverem o mesmo nome com números/efeitos diferentes, mantenha ambas com fonte e página; adicione `[CONFLITO/VARIANTE]` em vez de escolher uma sem evidência explícita. Se for mera reimpressão idêntica, mantenha a versão-base e registre a reimpressão no manifesto.",
+      "excerptSha256": "3e4da0e85b07b2da51f5877ae352fe8ce90b94bb8852402f3435e1788f31bd94",
+      "claim": "Declaracao editorial do MD; nao certifica PDF ou equivalencia de correcoes."
+    },
+    {
+      "id": "md:source-policy:145",
+      "medium": "md",
+      "path": "rules/SotDL_Compendio_Regras_Equipamentos_Monstros_v4_All_Project_Sources.md",
+      "inputSha256": "af5b377d003c96910c5c7d4c4909a66d381513cbda93de22b5d83a6ca5474ece",
+      "startLine": 145,
+      "endLine": 145,
+      "physicalPdfPage": null,
+      "printedPageDeclared": null,
+      "pdfPageDeclared": null,
+      "heading": "Manifesto e protocolo editorial",
+      "excerpt": "| Demon Lord Errata (19nov17) | correções em escopo para movimento, crawl, armas, criaturas, Godless, Atomizer e combate naval; fonte de maior precedência entre as duas erratas anexadas | correções de ancestry/path/spell fora do escopo |",
+      "excerptSha256": "e9d74f8dcaf8e72316a6f7a8fa1fe44e3c3aefab3cb90341a24ee74018939c05",
+      "claim": "Declaracao editorial do MD; nao certifica PDF ou equivalencia de correcoes."
+    },
+    {
+      "id": "md:source-policy:146",
+      "medium": "md",
+      "path": "rules/SotDL_Compendio_Regras_Equipamentos_Monstros_v4_All_Project_Sources.md",
+      "inputSha256": "af5b377d003c96910c5c7d4c4909a66d381513cbda93de22b5d83a6ca5474ece",
+      "startLine": 146,
+      "endLine": 146,
+      "physicalPdfPage": null,
+      "printedPageDeclared": null,
+      "pdfPageDeclared": null,
+      "heading": "Manifesto e protocolo editorial",
+      "excerpt": "| Demon Lord Errata (10oct17) | fonte histórica de errata mantida para auditoria; correções em comum são supersedidas pela versão de 19nov17 | duplicatas supersedidas e correções de ancestry/path/spell fora do escopo |",
+      "excerptSha256": "8d5048be281a615fb42bde69ecaa3163efc420c93b173d4a57e0edea29c2be6f",
+      "claim": "Declaracao editorial do MD; nao certifica PDF ou equivalencia de correcoes."
+    },
+    {
+      "id": "md:source-policy:64988",
+      "medium": "md",
+      "path": "rules/SotDL_Compendio_Regras_Equipamentos_Monstros_v4_All_Project_Sources.md",
+      "inputSha256": "af5b377d003c96910c5c7d4c4909a66d381513cbda93de22b5d83a6ca5474ece",
+      "startLine": 64988,
+      "endLine": 64988,
+      "physicalPdfPage": null,
+      "printedPageDeclared": null,
+      "pdfPageDeclared": null,
+      "heading": "## 87. Demon Lord Errata — correções com precedência",
+      "excerpt": "**Fontes:** *Demon Lord Errata (19nov17).pdf* e *Demon Lord Errata (10oct17).pdf*.  ",
+      "excerptSha256": "5aba1f6b59f369bfdbee43c53d31e11cc56bb37628906cdf3f94aa8e3eb645be",
+      "claim": "Declaracao editorial do MD; nao certifica PDF ou equivalencia de correcoes."
+    },
+    {
+      "id": "md:source-policy:64991",
+      "medium": "md",
+      "path": "rules/SotDL_Compendio_Regras_Equipamentos_Monstros_v4_All_Project_Sources.md",
+      "inputSha256": "af5b377d003c96910c5c7d4c4909a66d381513cbda93de22b5d83a6ca5474ece",
+      "startLine": 64991,
+      "endLine": 64991,
+      "physicalPdfPage": null,
+      "printedPageDeclared": null,
+      "pdfPageDeclared": null,
+      "heading": "## 87. Demon Lord Errata — correções com precedência",
+      "excerpt": "**Precedência:** onde as duas erratas repetem a mesma correção, use a versão de 19nov17. Correções de talents de path, ancestries e spells foram deliberadamente omitidas. A versão de 19nov17 acrescenta também correções posteriores, mas as de spell continuam fora do escopo.",
+      "excerptSha256": "8d8dbed1de7163d07578b26598a142a691a6998ab61e256ca404ec95041c3ffa",
+      "claim": "Declaracao editorial do MD; nao certifica PDF ou equivalencia de correcoes."
+    }
+  ]
+}

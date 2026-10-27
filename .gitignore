@@ -1,0 +1,11 @@
+node_modules/
+dist/
+test-results/
+playwright-report/
+*.tsbuildinfo
+tmp/
+output/pdf/
+output/html/
+apps/web/generated/
+# Insumos locais de regras, incluindo todos os arquivos Markdown.
+/rules/

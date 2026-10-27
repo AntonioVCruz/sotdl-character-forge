@@ -1,0 +1,3143 @@
+{
+  "schemaVersion": 1,
+  "responsible": "Codex / local curation",
+  "reason": "Initial immutable publication/category keys. Future label changes require explicit selector updates, never regeneration.",
+  "entries": [
+    {
+      "occurrenceKey": "adept-novice-forbidden-rules",
+      "category": "Novice",
+      "heading": "### Adept",
+      "rawSource": "Forbidden Rules",
+      "entryKey": "adept",
+      "variantKey": "novice"
+    },
+    {
+      "occurrenceKey": "adept-novice-path-of-the-adept",
+      "category": "Novice",
+      "heading": "### Adept",
+      "rawSource": "Path of the Adept",
+      "entryKey": "adept",
+      "variantKey": "novice"
+    },
+    {
+      "occurrenceKey": "cultist-of-the-dark-lady-novice-kingdom-of-skulls",
+      "category": "Novice",
+      "heading": "### Cultist of the Dark Lady",
+      "rawSource": "Kingdom of Skulls",
+      "entryKey": "cultist-of-the-dark-lady",
+      "variantKey": "novice"
+    },
+    {
+      "occurrenceKey": "magician-novice-shadow-of-the-demon-lord-core",
+      "category": "Novice",
+      "heading": "### Magician",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "magician",
+      "variantKey": "novice"
+    },
+    {
+      "occurrenceKey": "priest-novice-called-to-serve",
+      "category": "Novice",
+      "heading": "### Priest",
+      "rawSource": "Called to Serve",
+      "entryKey": "priest",
+      "variantKey": "novice"
+    },
+    {
+      "occurrenceKey": "priest-novice-shadow-of-the-demon-lord-core",
+      "category": "Novice",
+      "heading": "### Priest",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "priest",
+      "variantKey": "novice"
+    },
+    {
+      "occurrenceKey": "priest-of-the-beloved-novice-beloved-of-euphobia",
+      "category": "Novice",
+      "heading": "### Priest of the Beloved",
+      "rawSource": "Beloved of Euphobia",
+      "entryKey": "priest-of-the-beloved",
+      "variantKey": "novice"
+    },
+    {
+      "occurrenceKey": "priest-of-the-cog-god-novice-cult-of-the-cog-god",
+      "category": "Novice",
+      "heading": "### Priest of the Cog God",
+      "rawSource": "Cult of the Cog God",
+      "entryKey": "priest-of-the-cog-god",
+      "variantKey": "novice"
+    },
+    {
+      "occurrenceKey": "priest-of-the-demon-lord-novice-hunger-in-the-void",
+      "category": "Novice",
+      "heading": "### Priest of the Demon Lord",
+      "rawSource": "Hunger in the Void",
+      "entryKey": "priest-of-the-demon-lord",
+      "variantKey": "novice"
+    },
+    {
+      "occurrenceKey": "priest-of-the-destroyer-novice-heirs-of-eremea",
+      "category": "Novice",
+      "heading": "### Priest of the Destroyer",
+      "rawSource": "Heirs of Eremea",
+      "entryKey": "priest-of-the-destroyer",
+      "variantKey": "novice"
+    },
+    {
+      "occurrenceKey": "priest-of-the-devil-novice-scions-of-the-betrayer",
+      "category": "Novice",
+      "heading": "### Priest of the Devil",
+      "rawSource": "Scions of the Betrayer",
+      "entryKey": "priest-of-the-devil",
+      "variantKey": "novice"
+    },
+    {
+      "occurrenceKey": "priest-of-the-radiant-one-novice-city-of-decay",
+      "category": "Novice",
+      "heading": "### Priest of the Radiant One",
+      "rawSource": "City of Decay",
+      "entryKey": "priest-of-the-radiant-one",
+      "variantKey": "novice"
+    },
+    {
+      "occurrenceKey": "priest-of-the-sleeping-god-novice-seekers-of-the-sleeping-god",
+      "category": "Novice",
+      "heading": "### Priest of the Sleeping God",
+      "rawSource": "Seekers of the Sleeping God",
+      "entryKey": "priest-of-the-sleeping-god",
+      "variantKey": "novice"
+    },
+    {
+      "occurrenceKey": "priest-of-the-spider-queen-novice-curse-of-the-spider-wood",
+      "category": "Novice",
+      "heading": "### Priest of the Spider Queen",
+      "rawSource": "Curse of the Spider Wood",
+      "entryKey": "priest-of-the-spider-queen",
+      "variantKey": "novice"
+    },
+    {
+      "occurrenceKey": "rogue-novice-natural-born-scoundrels",
+      "category": "Novice",
+      "heading": "### Rogue",
+      "rawSource": "Natural Born Scoundrels",
+      "entryKey": "rogue",
+      "variantKey": "novice"
+    },
+    {
+      "occurrenceKey": "rogue-novice-shadow-of-the-demon-lord-core",
+      "category": "Novice",
+      "heading": "### Rogue",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "rogue",
+      "variantKey": "novice"
+    },
+    {
+      "occurrenceKey": "scientist-novice-the-scientific-method",
+      "category": "Novice",
+      "heading": "### Scientist",
+      "rawSource": "The Scientific Method",
+      "entryKey": "scientist",
+      "variantKey": "novice"
+    },
+    {
+      "occurrenceKey": "warrior-novice-shadow-of-the-demon-lord-core",
+      "category": "Novice",
+      "heading": "### Warrior",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "warrior",
+      "variantKey": "novice"
+    },
+    {
+      "occurrenceKey": "wild-beast-devotee-novice-wild-beasts",
+      "category": "Novice",
+      "heading": "### Wild Beast Devotee",
+      "rawSource": "Wild Beasts",
+      "entryKey": "wild-beast-devotee",
+      "variantKey": "novice"
+    },
+    {
+      "occurrenceKey": "armiger-novice-variant-bred-for-battle",
+      "category": "Novice Variant",
+      "heading": "### Armiger",
+      "rawSource": "Bred for Battle",
+      "entryKey": "armiger",
+      "variantKey": "novice-variant"
+    },
+    {
+      "occurrenceKey": "barbarian-novice-variant-bred-for-battle",
+      "category": "Novice Variant",
+      "heading": "### Barbarian",
+      "rawSource": "Bred for Battle",
+      "entryKey": "barbarian",
+      "variantKey": "novice-variant"
+    },
+    {
+      "occurrenceKey": "brawler-novice-variant-bred-for-battle",
+      "category": "Novice Variant",
+      "heading": "### Brawler",
+      "rawSource": "Bred for Battle",
+      "entryKey": "brawler",
+      "variantKey": "novice-variant"
+    },
+    {
+      "occurrenceKey": "enforcer-novice-variant-bred-for-battle",
+      "category": "Novice Variant",
+      "heading": "### Enforcer",
+      "rawSource": "Bred for Battle",
+      "entryKey": "enforcer",
+      "variantKey": "novice-variant"
+    },
+    {
+      "occurrenceKey": "gallant-novice-variant-bred-for-battle",
+      "category": "Novice Variant",
+      "heading": "### Gallant",
+      "rawSource": "Bred for Battle",
+      "entryKey": "gallant",
+      "variantKey": "novice-variant"
+    },
+    {
+      "occurrenceKey": "hunter-novice-variant-bred-for-battle",
+      "category": "Novice Variant",
+      "heading": "### Hunter",
+      "rawSource": "Bred for Battle",
+      "entryKey": "hunter",
+      "variantKey": "novice-variant"
+    },
+    {
+      "occurrenceKey": "monk-novice-variant-bred-for-battle",
+      "category": "Novice Variant",
+      "heading": "### Monk",
+      "rawSource": "Bred for Battle",
+      "entryKey": "monk",
+      "variantKey": "novice-variant"
+    },
+    {
+      "occurrenceKey": "priest-of-father-death-novice-variant-uncertain-faith",
+      "category": "Novice Variant",
+      "heading": "### Priest of Father Death",
+      "rawSource": "Uncertain Faith",
+      "entryKey": "priest-of-father-death",
+      "variantKey": "novice-variant"
+    },
+    {
+      "occurrenceKey": "priest-of-old-man-winter-novice-variant-uncertain-faith",
+      "category": "Novice Variant",
+      "heading": "### Priest of Old Man Winter",
+      "rawSource": "Uncertain Faith",
+      "entryKey": "priest-of-old-man-winter",
+      "variantKey": "novice-variant"
+    },
+    {
+      "occurrenceKey": "priest-of-revel-novice-variant-uncertain-faith",
+      "category": "Novice Variant",
+      "heading": "### Priest of Revel",
+      "rawSource": "Uncertain Faith",
+      "entryKey": "priest-of-revel",
+      "variantKey": "novice-variant"
+    },
+    {
+      "occurrenceKey": "priest-of-summer-novice-variant-uncertain-faith",
+      "category": "Novice Variant",
+      "heading": "### Priest of Summer",
+      "rawSource": "Uncertain Faith",
+      "entryKey": "priest-of-summer",
+      "variantKey": "novice-variant"
+    },
+    {
+      "occurrenceKey": "priest-of-the-dark-gods-novice-variant-uncertain-faith",
+      "category": "Novice Variant",
+      "heading": "### Priest of the Dark Gods",
+      "rawSource": "Uncertain Faith",
+      "entryKey": "priest-of-the-dark-gods",
+      "variantKey": "novice-variant"
+    },
+    {
+      "occurrenceKey": "priest-of-the-honored-dead-novice-variant-uncertain-faith",
+      "category": "Novice Variant",
+      "heading": "### Priest of the Honored Dead",
+      "rawSource": "Uncertain Faith",
+      "entryKey": "priest-of-the-honored-dead",
+      "variantKey": "novice-variant"
+    },
+    {
+      "occurrenceKey": "priest-of-the-horned-king-novice-variant-uncertain-faith",
+      "category": "Novice Variant",
+      "heading": "### Priest of the Horned King",
+      "rawSource": "Uncertain Faith",
+      "entryKey": "priest-of-the-horned-king",
+      "variantKey": "novice-variant"
+    },
+    {
+      "occurrenceKey": "priest-of-the-maiden-novice-variant-uncertain-faith",
+      "category": "Novice Variant",
+      "heading": "### Priest of the Maiden",
+      "rawSource": "Uncertain Faith",
+      "entryKey": "priest-of-the-maiden",
+      "variantKey": "novice-variant"
+    },
+    {
+      "occurrenceKey": "priest-of-the-new-god-novice-variant-uncertain-faith",
+      "category": "Novice Variant",
+      "heading": "### Priest of the New God",
+      "rawSource": "Uncertain Faith",
+      "entryKey": "priest-of-the-new-god",
+      "variantKey": "novice-variant"
+    },
+    {
+      "occurrenceKey": "priest-of-the-old-faith-novice-variant-uncertain-faith",
+      "category": "Novice Variant",
+      "heading": "### Priest of the Old Faith",
+      "rawSource": "Uncertain Faith",
+      "entryKey": "priest-of-the-old-faith",
+      "variantKey": "novice-variant"
+    },
+    {
+      "occurrenceKey": "priest-of-the-seer-novice-variant-uncertain-faith",
+      "category": "Novice Variant",
+      "heading": "### Priest of the Seer",
+      "rawSource": "Uncertain Faith",
+      "entryKey": "priest-of-the-seer",
+      "variantKey": "novice-variant"
+    },
+    {
+      "occurrenceKey": "priest-of-the-world-mother-novice-variant-uncertain-faith",
+      "category": "Novice Variant",
+      "heading": "### Priest of the World Mother",
+      "rawSource": "Uncertain Faith",
+      "entryKey": "priest-of-the-world-mother",
+      "variantKey": "novice-variant"
+    },
+    {
+      "occurrenceKey": "priest-of-witchcraft-novice-variant-uncertain-faith",
+      "category": "Novice Variant",
+      "heading": "### Priest of Witchcraft",
+      "rawSource": "Uncertain Faith",
+      "entryKey": "priest-of-witchcraft",
+      "variantKey": "novice-variant"
+    },
+    {
+      "occurrenceKey": "soldier-novice-variant-bred-for-battle",
+      "category": "Novice Variant",
+      "heading": "### Soldier",
+      "rawSource": "Bred for Battle",
+      "entryKey": "soldier",
+      "variantKey": "novice-variant"
+    },
+    {
+      "occurrenceKey": "spellguard-novice-variant-bred-for-battle",
+      "category": "Novice Variant",
+      "heading": "### Spellguard",
+      "rawSource": "Bred for Battle",
+      "entryKey": "spellguard",
+      "variantKey": "novice-variant"
+    },
+    {
+      "occurrenceKey": "veteran-novice-variant-bred-for-battle",
+      "category": "Novice Variant",
+      "heading": "### Veteran",
+      "rawSource": "Bred for Battle",
+      "entryKey": "veteran",
+      "variantKey": "novice-variant"
+    },
+    {
+      "occurrenceKey": "agent-expert-kingdom-of-god",
+      "category": "Expert",
+      "heading": "### Agent",
+      "rawSource": "Kingdom of God",
+      "entryKey": "agent",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "apostate-expert-exquisite-agony",
+      "category": "Expert",
+      "heading": "### Apostate",
+      "rawSource": "Exquisite Agony",
+      "entryKey": "apostate",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "artificer-expert-shadow-of-the-demon-lord-core",
+      "category": "Expert",
+      "heading": "### Artificer",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "artificer",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "ascendant-expert-occult-philosophy",
+      "category": "Expert",
+      "heading": "### Ascendant",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "ascendant",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "assassin-expert-shadow-of-the-demon-lord-core",
+      "category": "Expert",
+      "heading": "### Assassin",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "assassin",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "atrocity-expert-men-of-gog",
+      "category": "Expert",
+      "heading": "### Atrocity",
+      "rawSource": "Men of Gog",
+      "entryKey": "atrocity",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "auspex-expert-demon-lord-s-companion-2",
+      "category": "Expert",
+      "heading": "### Auspex",
+      "rawSource": "Demon Lord's Companion 2",
+      "entryKey": "auspex",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "avowed-expert-terrible-beauty",
+      "category": "Expert",
+      "heading": "### Avowed",
+      "rawSource": "Terrible Beauty",
+      "entryKey": "avowed",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "berserker-expert-paths-of-battle",
+      "category": "Expert",
+      "heading": "### Berserker",
+      "rawSource": "Paths of Battle",
+      "entryKey": "berserker",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "berserker-expert-shadow-of-the-demon-lord-core",
+      "category": "Expert",
+      "heading": "### Berserker",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "berserker",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "biologist-expert-paths-of-science",
+      "category": "Expert",
+      "heading": "### Biologist",
+      "rawSource": "Paths of Science",
+      "entryKey": "biologist",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "blizzard-mage-expert-occult-philosophy",
+      "category": "Expert",
+      "heading": "### Blizzard Mage",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "blizzard-mage",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "bloodletter-expert-soldiers-of-fortune",
+      "category": "Expert",
+      "heading": "### Bloodletter",
+      "rawSource": "Soldiers of Fortune",
+      "entryKey": "bloodletter",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "bounty-hunter-expert-city-of-chains",
+      "category": "Expert",
+      "heading": "### Bounty Hunter",
+      "rawSource": "City of Chains",
+      "entryKey": "bounty-hunter",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "brewmaster-expert-occult-philosophy",
+      "category": "Expert",
+      "heading": "### Brewmaster",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "brewmaster",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "bulwark-expert-paths-of-iron",
+      "category": "Expert",
+      "heading": "### Bulwark",
+      "rawSource": "Paths of Iron",
+      "entryKey": "bulwark",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "celebrant-expert-freeport-companion",
+      "category": "Expert",
+      "heading": "### Celebrant",
+      "rawSource": "Freeport Companion",
+      "entryKey": "celebrant",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "chosen-of-the-spider-queen-expert-curse-of-the-spider-wood",
+      "category": "Expert",
+      "heading": "### Chosen of the Spider Queen",
+      "rawSource": "Curse of the Spider Wood",
+      "entryKey": "chosen-of-the-spider-queen",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "chronicler-expert-called-to-serve",
+      "category": "Expert",
+      "heading": "### Chronicler",
+      "rawSource": "Called to Serve",
+      "entryKey": "chronicler",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "cleric-expert-shadow-of-the-demon-lord-core",
+      "category": "Expert",
+      "heading": "### Cleric",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "cleric",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "collector-expert-flesh-of-the-fallen",
+      "category": "Expert",
+      "heading": "### Collector",
+      "rawSource": "Flesh of the Fallen",
+      "entryKey": "collector",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "combater-expert-paths-of-conflict",
+      "category": "Expert",
+      "heading": "### Combater",
+      "rawSource": "Paths of Conflict",
+      "entryKey": "combater",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "commander-expert-soldiers-of-fortune",
+      "category": "Expert",
+      "heading": "### Commander",
+      "rawSource": "Soldiers of Fortune",
+      "entryKey": "commander",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "commando-expert-natural-born-scoundrels",
+      "category": "Expert",
+      "heading": "### Commando",
+      "rawSource": "Natural Born Scoundrels",
+      "entryKey": "commando",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "consumer-expert-flesh-of-the-fallen",
+      "category": "Expert",
+      "heading": "### Consumer",
+      "rawSource": "Flesh of the Fallen",
+      "entryKey": "consumer",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "corpse-caller-expert-kingdom-of-skulls",
+      "category": "Expert",
+      "heading": "### Corpse Caller",
+      "rawSource": "Kingdom of Skulls",
+      "entryKey": "corpse-caller",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "courtier-expert-freeport-companion",
+      "category": "Expert",
+      "heading": "### Courtier",
+      "rawSource": "Freeport Companion",
+      "entryKey": "courtier",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "crusader-expert-called-to-serve",
+      "category": "Expert",
+      "heading": "### Crusader",
+      "rawSource": "Called to Serve",
+      "entryKey": "crusader",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "cutter-expert-paths-of-purpose",
+      "category": "Expert",
+      "heading": "### Cutter",
+      "rawSource": "Paths of Purpose",
+      "entryKey": "cutter",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "daughter-of-the-moon-expert-called-to-serve",
+      "category": "Expert",
+      "heading": "### Daughter of the Moon",
+      "rawSource": "Called to Serve",
+      "entryKey": "daughter-of-the-moon",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "deadwalker-expert-men-of-gog",
+      "category": "Expert",
+      "heading": "### Deadwalker",
+      "rawSource": "Men of Gog",
+      "entryKey": "deadwalker",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "demon-beast-expert-curse-of-the-spider-wood",
+      "category": "Expert",
+      "heading": "### Demon Beast",
+      "rawSource": "Curse of the Spider Wood",
+      "entryKey": "demon-beast",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "demon-in-flesh-expert-men-of-gog",
+      "category": "Expert",
+      "heading": "### Demon-in-Flesh",
+      "rawSource": "Men of Gog",
+      "entryKey": "demon-in-flesh",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "demonbinder-expert-occult-philosophy",
+      "category": "Expert",
+      "heading": "### Demonbinder",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "demonbinder",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "devotee-of-the-goblin-king-expert-snot-and-stitches",
+      "category": "Expert",
+      "heading": "### Devotee of the Goblin King",
+      "rawSource": "Snot and Stitches",
+      "entryKey": "devotee-of-the-goblin-king",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "disciple-of-the-demon-lord-expert-the-disciple-of-the-demon-lord",
+      "category": "Expert",
+      "heading": "### Disciple of the Demon Lord",
+      "rawSource": "The Disciple of the Demon Lord",
+      "entryKey": "disciple-of-the-demon-lord",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "doomseeker-expert-paths-of-purpose",
+      "category": "Expert",
+      "heading": "### Doomseeker",
+      "rawSource": "Paths of Purpose",
+      "entryKey": "doomseeker",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "drowned-one-expert-freeport-companion",
+      "category": "Expert",
+      "heading": "### Drowned One",
+      "rawSource": "Freeport Companion",
+      "entryKey": "drowned-one",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "druid-expert-shadow-of-the-demon-lord-core",
+      "category": "Expert",
+      "heading": "### Druid",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "druid",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "edgewalker-expert-occult-philosophy",
+      "category": "Expert",
+      "heading": "### Edgewalker",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "edgewalker",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "elementalist-expert-demon-lord-s-companion",
+      "category": "Expert",
+      "heading": "### Elementalist",
+      "rawSource": "Demon Lord's Companion",
+      "entryKey": "elementalist",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "emissary-expert-natural-born-scoundrels",
+      "category": "Expert",
+      "heading": "### Emissary",
+      "rawSource": "Natural Born Scoundrels",
+      "entryKey": "emissary",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "enlightened-blade-expert-paths-of-conflict",
+      "category": "Expert",
+      "heading": "### Enlightened Blade",
+      "rawSource": "Paths of Conflict",
+      "entryKey": "enlightened-blade",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "envenomer-expert-curse-of-the-spider-wood",
+      "category": "Expert",
+      "heading": "### Envenomer",
+      "rawSource": "Curse of the Spider Wood",
+      "entryKey": "envenomer",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "eudaemonian-expert-paragons-of-virtue",
+      "category": "Expert",
+      "heading": "### Eudaemonian",
+      "rawSource": "Paragons of Virtue",
+      "entryKey": "eudaemonian",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "exalted-expert-paths-of-purpose",
+      "category": "Expert",
+      "heading": "### Exalted",
+      "rawSource": "Paths of Purpose",
+      "entryKey": "exalted",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "exemplar-expert-occult-philosophy",
+      "category": "Expert",
+      "heading": "### Exemplar",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "exemplar",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "farseer-expert-occult-philosophy",
+      "category": "Expert",
+      "heading": "### Farseer",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "farseer",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "fighter-expert-paths-of-battle",
+      "category": "Expert",
+      "heading": "### Fighter",
+      "rawSource": "Paths of Battle",
+      "entryKey": "fighter",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "fighter-expert-shadow-of-the-demon-lord-core",
+      "category": "Expert",
+      "heading": "### Fighter",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "fighter",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "flagellant-expert-kingdom-of-god",
+      "category": "Expert",
+      "heading": "### Flagellant",
+      "rawSource": "Kingdom of God",
+      "entryKey": "flagellant",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "forktongue-expert-scions-of-the-betrayer",
+      "category": "Expert",
+      "heading": "### Forktongue",
+      "rawSource": "Scions of the Betrayer",
+      "entryKey": "forktongue",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "fractured-expert-paths-of-purpose",
+      "category": "Expert",
+      "heading": "### Fractured",
+      "rawSource": "Paths of Purpose",
+      "entryKey": "fractured",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "gearsman-expert-of-gears-and-ghosts",
+      "category": "Expert",
+      "heading": "### Gearsman",
+      "rawSource": "Of Gears and Ghosts",
+      "entryKey": "gearsman",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "god-hunter-expert-men-of-gog",
+      "category": "Expert",
+      "heading": "### God-Hunter",
+      "rawSource": "Men of Gog",
+      "entryKey": "god-hunter",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "gothi-expert-uncertain-faith",
+      "category": "Expert",
+      "heading": "### Gothi",
+      "rawSource": "Uncertain Faith",
+      "entryKey": "gothi",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "grudge-bearer-expert-for-gold-and-glory",
+      "category": "Expert",
+      "heading": "### Grudge Bearer",
+      "rawSource": "For Gold and Glory",
+      "entryKey": "grudge-bearer",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "guardian-expert-called-to-serve",
+      "category": "Expert",
+      "heading": "### Guardian",
+      "rawSource": "Called to Serve",
+      "entryKey": "guardian",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "gunsmith-expert-paths-of-science",
+      "category": "Expert",
+      "heading": "### Gunsmith",
+      "rawSource": "Paths of Science",
+      "entryKey": "gunsmith",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "harrower-expert-kingdom-of-skulls",
+      "category": "Expert",
+      "heading": "### Harrower",
+      "rawSource": "Kingdom of Skulls",
+      "entryKey": "harrower",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "hellion-expert-between-two-worlds",
+      "category": "Expert",
+      "heading": "### Hellion",
+      "rawSource": "Between Two Worlds",
+      "entryKey": "hellion",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "herald-of-endings-expert-men-of-gog",
+      "category": "Expert",
+      "heading": "### Herald of Endings",
+      "rawSource": "Men of Gog",
+      "entryKey": "herald-of-endings",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "highlander-expert-paths-of-purpose",
+      "category": "Expert",
+      "heading": "### Highlander",
+      "rawSource": "Paths of Purpose",
+      "entryKey": "highlander",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "holy-matron-expert-called-to-serve",
+      "category": "Expert",
+      "heading": "### Holy Matron",
+      "rawSource": "Called to Serve",
+      "entryKey": "holy-matron",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "horned-one-expert-called-to-serve",
+      "category": "Expert",
+      "heading": "### Horned One",
+      "rawSource": "Called to Serve",
+      "entryKey": "horned-one",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "ice-apostle-expert-called-to-serve",
+      "category": "Expert",
+      "heading": "### Ice Apostle",
+      "rawSource": "Called to Serve",
+      "entryKey": "ice-apostle",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "jester-expert-uncommon-courage",
+      "category": "Expert",
+      "heading": "### Jester",
+      "rawSource": "Uncommon Courage",
+      "entryKey": "jester",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "juggernaut-expert-a-glorious-death",
+      "category": "Expert",
+      "heading": "### Juggernaut",
+      "rawSource": "A Glorious Death",
+      "entryKey": "juggernaut",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "justiciar-expert-called-to-serve",
+      "category": "Expert",
+      "heading": "### Justiciar",
+      "rawSource": "Called to Serve",
+      "entryKey": "justiciar",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "knight-expert-paths-of-battle",
+      "category": "Expert",
+      "heading": "### Knight",
+      "rawSource": "Paths of Battle",
+      "entryKey": "knight",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "lawbreaker-expert-natural-born-scoundrels",
+      "category": "Expert",
+      "heading": "### Lawbreaker",
+      "rawSource": "Natural Born Scoundrels",
+      "entryKey": "lawbreaker",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "lorekeeper-expert-occult-philosophy",
+      "category": "Expert",
+      "heading": "### Lorekeeper",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "lorekeeper",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "magister-expert-occult-philosophy",
+      "category": "Expert",
+      "heading": "### Magister",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "magister",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "magnate-expert-paths-of-purpose",
+      "category": "Expert",
+      "heading": "### Magnate",
+      "rawSource": "Paths of Purpose",
+      "entryKey": "magnate",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "maker-of-monsters-expert-paths-of-science",
+      "category": "Expert",
+      "heading": "### Maker of Monsters",
+      "rawSource": "Paths of Science",
+      "entryKey": "maker-of-monsters",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "maleficant-expert-called-to-serve",
+      "category": "Expert",
+      "heading": "### Maleficant",
+      "rawSource": "Called to Serve",
+      "entryKey": "maleficant",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "man-at-arms-expert-paths-of-conflict",
+      "category": "Expert",
+      "heading": "### Man-at-Arms",
+      "rawSource": "Paths of Conflict",
+      "entryKey": "man-at-arms",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "manipulator-expert-occult-philosophy",
+      "category": "Expert",
+      "heading": "### Manipulator",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "manipulator",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "marine-expert-paths-of-conflict",
+      "category": "Expert",
+      "heading": "### Marine",
+      "rawSource": "Paths of Conflict",
+      "entryKey": "marine",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "mariner-expert-freeport-companion",
+      "category": "Expert",
+      "heading": "### Mariner",
+      "rawSource": "Freeport Companion",
+      "entryKey": "mariner",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "mask-expert-natural-born-scoundrels",
+      "category": "Expert",
+      "heading": "### Mask",
+      "rawSource": "Natural Born Scoundrels",
+      "entryKey": "mask",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "mastermind-expert-natural-born-scoundrels",
+      "category": "Expert",
+      "heading": "### Mastermind",
+      "rawSource": "Natural Born Scoundrels",
+      "entryKey": "mastermind",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "mountebank-expert-demon-lord-s-companion",
+      "category": "Expert",
+      "heading": "### Mountebank",
+      "rawSource": "Demon Lord's Companion",
+      "entryKey": "mountebank",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "mystic-expert-demon-lord-s-companion",
+      "category": "Expert",
+      "heading": "### Mystic",
+      "rawSource": "Demon Lord's Companion",
+      "entryKey": "mystic",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "naturalist-expert-occult-philosophy",
+      "category": "Expert",
+      "heading": "### Naturalist",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "naturalist",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "nightmare-expert-occult-philosophy",
+      "category": "Expert",
+      "heading": "### Nightmare",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "nightmare",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "nomad-expert-paths-of-purpose",
+      "category": "Expert",
+      "heading": "### Nomad",
+      "rawSource": "Paths of Purpose",
+      "entryKey": "nomad",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "occultist-expert-paths-of-power",
+      "category": "Expert",
+      "heading": "### Occultist",
+      "rawSource": "Paths of Power",
+      "entryKey": "occultist",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "oracle-expert-shadow-of-the-demon-lord-core",
+      "category": "Expert",
+      "heading": "### Oracle",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "oracle",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "outlander-expert-paths-of-purpose",
+      "category": "Expert",
+      "heading": "### Outlander",
+      "rawSource": "Paths of Purpose",
+      "entryKey": "outlander",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "paladin-expert-paths-of-battle",
+      "category": "Expert",
+      "heading": "### Paladin",
+      "rawSource": "Paths of Battle",
+      "entryKey": "paladin",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "paladin-expert-shadow-of-the-demon-lord-core",
+      "category": "Expert",
+      "heading": "### Paladin",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "paladin",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "philosopher-expert-paths-of-purpose",
+      "category": "Expert",
+      "heading": "### Philosopher",
+      "rawSource": "Paths of Purpose",
+      "entryKey": "philosopher",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "pistoleer-expert-paths-of-conflict",
+      "category": "Expert",
+      "heading": "### Pistoleer",
+      "rawSource": "Paths of Conflict",
+      "entryKey": "pistoleer",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "plague-doctor-expert-paths-of-science",
+      "category": "Expert",
+      "heading": "### Plague Doctor",
+      "rawSource": "Paths of Science",
+      "entryKey": "plague-doctor",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "preserver-expert-occult-philosophy",
+      "category": "Expert",
+      "heading": "### Preserver",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "preserver",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "prince-of-darkness-expert-tombs-of-the-desolation",
+      "category": "Expert",
+      "heading": "### Prince of Darkness",
+      "rawSource": "Tombs of the Desolation",
+      "entryKey": "prince-of-darkness",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "psalmist-expert-occult-philosophy",
+      "category": "Expert",
+      "heading": "### Psalmist",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "psalmist",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "psychic-expert-demon-lord-s-companion",
+      "category": "Expert",
+      "heading": "### Psychic",
+      "rawSource": "Demon Lord's Companion",
+      "entryKey": "psychic",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "pyroclast-expert-occult-philosophy",
+      "category": "Expert",
+      "heading": "### Pyroclast",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "pyroclast",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "ranger-expert-paths-of-battle",
+      "category": "Expert",
+      "heading": "### Ranger",
+      "rawSource": "Paths of Battle",
+      "entryKey": "ranger",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "ranger-expert-shadow-of-the-demon-lord-core",
+      "category": "Expert",
+      "heading": "### Ranger",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "ranger",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "ravager-expert-born-to-kill",
+      "category": "Expert",
+      "heading": "### Ravager",
+      "rawSource": "Born to Kill",
+      "entryKey": "ravager",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "red-cloak-expert-kingdom-of-god",
+      "category": "Expert",
+      "heading": "### Red Cloak",
+      "rawSource": "Kingdom of God",
+      "entryKey": "red-cloak",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "reen-scavenger-expert-paths-of-iron",
+      "category": "Expert",
+      "heading": "### Reen Scavenger",
+      "rawSource": "Paths of Iron",
+      "entryKey": "reen-scavenger",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "reveler-expert-called-to-serve",
+      "category": "Expert",
+      "heading": "### Reveler",
+      "rawSource": "Called to Serve",
+      "entryKey": "reveler",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "ruiner-expert-called-to-serve",
+      "category": "Expert",
+      "heading": "### Ruiner",
+      "rawSource": "Called to Serve",
+      "entryKey": "ruiner",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "runewright-expert-occult-philosophy",
+      "category": "Expert",
+      "heading": "### Runewright",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "runewright",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "saboteur-expert-caecras",
+      "category": "Expert",
+      "heading": "### Saboteur",
+      "rawSource": "Caecras",
+      "entryKey": "saboteur",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "sage-expert-demon-lord-s-companion",
+      "category": "Expert",
+      "heading": "### Sage",
+      "rawSource": "Demon Lord's Companion",
+      "entryKey": "sage",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "satyr-expert-between-two-worlds",
+      "category": "Expert",
+      "heading": "### Satyr",
+      "rawSource": "Between Two Worlds",
+      "entryKey": "satyr",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "scout-expert-shadow-of-the-demon-lord-core",
+      "category": "Expert",
+      "heading": "### Scout",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "scout",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "shadowmancer-expert-occult-philosophy",
+      "category": "Expert",
+      "heading": "### Shadowmancer",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "shadowmancer",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "shaman-expert-demon-lord-s-companion",
+      "category": "Expert",
+      "heading": "### Shaman",
+      "rawSource": "Demon Lord's Companion",
+      "entryKey": "shaman",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "silencer-expert-kingdom-of-skulls",
+      "category": "Expert",
+      "heading": "### Silencer",
+      "rawSource": "Kingdom of Skulls",
+      "entryKey": "silencer",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "silhouette-expert-demon-lord-s-companion-2",
+      "category": "Expert",
+      "heading": "### Silhouette",
+      "rawSource": "Demon Lord's Companion 2",
+      "entryKey": "silhouette",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "skindancer-expert-occult-philosophy",
+      "category": "Expert",
+      "heading": "### Skindancer",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "skindancer",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "slayer-expert-paths-of-conflict",
+      "category": "Expert",
+      "heading": "### Slayer",
+      "rawSource": "Paths of Conflict",
+      "entryKey": "slayer",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "solemn-one-expert-called-to-serve",
+      "category": "Expert",
+      "heading": "### Solemn One",
+      "rawSource": "Called to Serve",
+      "entryKey": "solemn-one",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "sorcerer-expert-paths-of-power",
+      "category": "Expert",
+      "heading": "### Sorcerer",
+      "rawSource": "Paths of Power",
+      "entryKey": "sorcerer",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "sorcerer-expert-shadow-of-the-demon-lord-core",
+      "category": "Expert",
+      "heading": "### Sorcerer",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "sorcerer",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "soulcatcher-expert-occult-philosophy",
+      "category": "Expert",
+      "heading": "### Soulcatcher",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "soulcatcher",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "soulthief-expert-men-of-gog",
+      "category": "Expert",
+      "heading": "### Soulthief",
+      "rawSource": "Men of Gog",
+      "entryKey": "soulthief",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "spellbinder-expert-paths-of-power",
+      "category": "Expert",
+      "heading": "### Spellbinder",
+      "rawSource": "Paths of Power",
+      "entryKey": "spellbinder",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "spellbinder-expert-shadow-of-the-demon-lord-core",
+      "category": "Expert",
+      "heading": "### Spellbinder",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "spellbinder",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "spellslinger-expert-occult-philosophy",
+      "category": "Expert",
+      "heading": "### Spellslinger",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "spellslinger",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "spider-savant-expert-curse-of-the-spider-wood",
+      "category": "Expert",
+      "heading": "### Spider Savant",
+      "rawSource": "Curse of the Spider Wood",
+      "entryKey": "spider-savant",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "spiritcaller-expert-occult-philosophy",
+      "category": "Expert",
+      "heading": "### Spiritcaller",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "spiritcaller",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "spiritsinger-expert-song-of-the-woad",
+      "category": "Expert",
+      "heading": "### Spiritsinger",
+      "rawSource": "Song of the Woad",
+      "entryKey": "spiritsinger",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "summer-child-expert-called-to-serve",
+      "category": "Expert",
+      "heading": "### Summer Child",
+      "rawSource": "Called to Serve",
+      "entryKey": "summer-child",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "swashbuckler-expert-demon-lord-s-companion",
+      "category": "Expert",
+      "heading": "### Swashbuckler",
+      "rawSource": "Demon Lord's Companion",
+      "entryKey": "swashbuckler",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "targeter-expert-soldiers-of-fortune",
+      "category": "Expert",
+      "heading": "### Targeter",
+      "rawSource": "Soldiers of Fortune",
+      "entryKey": "targeter",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "tempest-expert-occult-philosophy",
+      "category": "Expert",
+      "heading": "### Tempest",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "tempest",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "thief-expert-shadow-of-the-demon-lord-core",
+      "category": "Expert",
+      "heading": "### Thief",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "thief",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "thrallbinder-expert-occult-philosophy",
+      "category": "Expert",
+      "heading": "### Thrallbinder",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "thrallbinder",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "tinker-expert-natural-born-scoundrels",
+      "category": "Expert",
+      "heading": "### Tinker",
+      "rawSource": "Natural Born Scoundrels",
+      "entryKey": "tinker",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "trooper-expert-caecras",
+      "category": "Expert",
+      "heading": "### Trooper",
+      "rawSource": "Caecras",
+      "entryKey": "trooper",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "urthbound-expert-men-of-gog",
+      "category": "Expert",
+      "heading": "### Urthbound",
+      "rawSource": "Men of Gog",
+      "entryKey": "urthbound",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "vanguard-expert-occult-philosophy",
+      "category": "Expert",
+      "heading": "### Vanguard",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "vanguard",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "wangateur-expert-demon-lord-s-companion-2",
+      "category": "Expert",
+      "heading": "### Wangateur",
+      "rawSource": "Demon Lord's Companion 2",
+      "entryKey": "wangateur",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "warden-expert-demon-lord-s-companion",
+      "category": "Expert",
+      "heading": "### Warden",
+      "rawSource": "Demon Lord's Companion",
+      "entryKey": "warden",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "wardscribe-expert-demon-lord-s-companion-2",
+      "category": "Expert",
+      "heading": "### Wardscribe",
+      "rawSource": "Demon Lord's Companion 2",
+      "entryKey": "wardscribe",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "warlock-expert-paths-of-power",
+      "category": "Expert",
+      "heading": "### Warlock",
+      "rawSource": "Paths of Power",
+      "entryKey": "warlock",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "warlock-expert-shadow-of-the-demon-lord-core",
+      "category": "Expert",
+      "heading": "### Warlock",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "warlock",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "warmaster-expert-paths-of-conflict",
+      "category": "Expert",
+      "heading": "### Warmaster",
+      "rawSource": "Paths of Conflict",
+      "entryKey": "warmaster",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "warrior-sage-expert-paths-of-conflict",
+      "category": "Expert",
+      "heading": "### Warrior Sage",
+      "rawSource": "Paths of Conflict",
+      "entryKey": "warrior-sage",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "wisdom-expert-called-to-serve",
+      "category": "Expert",
+      "heading": "### Wisdom",
+      "rawSource": "Called to Serve",
+      "entryKey": "wisdom",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "witch-expert-shadow-of-the-demon-lord-core",
+      "category": "Expert",
+      "heading": "### Witch",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "witch",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "wizard-expert-paths-of-power",
+      "category": "Expert",
+      "heading": "### Wizard",
+      "rawSource": "Paths of Power",
+      "entryKey": "wizard",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "wizard-expert-shadow-of-the-demon-lord-core",
+      "category": "Expert",
+      "heading": "### Wizard",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "wizard",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "world-breaker-expert-occult-philosophy",
+      "category": "Expert",
+      "heading": "### World-Breaker",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "world-breaker",
+      "variantKey": "expert"
+    },
+    {
+      "occurrenceKey": "abjurer-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Abjurer",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "abjurer",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "acrobat-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Acrobat",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "acrobat",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "aeromancer-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Aeromancer",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "aeromancer",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "agonist-master-paths-of-darkness",
+      "category": "Master",
+      "heading": "### Agonist",
+      "rawSource": "Paths of Darkness",
+      "entryKey": "agonist",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "alchemist-master-demon-lord-s-companion",
+      "category": "Master",
+      "heading": "### Alchemist",
+      "rawSource": "Demon Lord's Companion",
+      "entryKey": "alchemist",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "alienist-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Alienist",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "alienist",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "anchorite-master-kingdom-of-god",
+      "category": "Master",
+      "heading": "### Anchorite",
+      "rawSource": "Kingdom of God",
+      "entryKey": "anchorite",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "annihilator-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Annihilator",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "annihilator",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "anointed-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Anointed",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "anointed",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "apocalyptist-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Apocalyptist",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "apocalyptist",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "arcanist-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Arcanist",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "arcanist",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "ardent-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Ardent",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "ardent",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "astromancer-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Astromancer",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "astromancer",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "avenger-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Avenger",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "avenger",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "bard-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Bard",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "bard",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "beast-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Beast",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "beast",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "beastmaster-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Beastmaster",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "beastmaster",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "beguiler-master-terrible-beauty",
+      "category": "Master",
+      "heading": "### Beguiler",
+      "rawSource": "Terrible Beauty",
+      "entryKey": "beguiler",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "blackguard-master-demon-lord-s-companion",
+      "category": "Master",
+      "heading": "### Blackguard",
+      "rawSource": "Demon Lord's Companion",
+      "entryKey": "blackguard",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "blade-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Blade",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "blade",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "blighter-master-tombs-of-the-desolation",
+      "category": "Master",
+      "heading": "### Blighter",
+      "rawSource": "Tombs of the Desolation",
+      "entryKey": "blighter",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "blood-magus-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Blood Magus",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "blood-magus",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "bone-collector-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Bone Collector",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "bone-collector",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "brain-in-a-jar-master-paths-of-horror",
+      "category": "Master",
+      "heading": "### Brain in a Jar",
+      "rawSource": "Paths of Horror",
+      "entryKey": "brain-in-a-jar",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "brute-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Brute",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "brute",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "builder-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Builder",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "builder",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "cat-sith-master-terrible-beauty",
+      "category": "Master",
+      "heading": "### Cat Sith",
+      "rawSource": "Terrible Beauty",
+      "entryKey": "cat-sith",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "catastrophist-master-paths-of-horror",
+      "category": "Master",
+      "heading": "### Catastrophist",
+      "rawSource": "Paths of Horror",
+      "entryKey": "catastrophist",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "cavalier-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Cavalier",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "cavalier",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "cenobite-master-demon-lord-s-companion-2",
+      "category": "Master",
+      "heading": "### Cenobite",
+      "rawSource": "Demon Lord's Companion 2",
+      "entryKey": "cenobite",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "champion-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Champion",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "champion",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "chaplain-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Chaplain",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "chaplain",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "chronomancer-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Chronomancer",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "chronomancer",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "chrononaut-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Chrononaut",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "chrononaut",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "conjurer-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Conjurer",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "conjurer",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "conqueror-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Conqueror",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "conqueror",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "corsair-master-demon-lord-s-companion",
+      "category": "Master",
+      "heading": "### Corsair",
+      "rawSource": "Demon Lord's Companion",
+      "entryKey": "corsair",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "cryomancer-master-a-glorious-death",
+      "category": "Master",
+      "heading": "### Cryomancer",
+      "rawSource": "A Glorious Death",
+      "entryKey": "cryomancer",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "daemonhost-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Daemonhost",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "daemonhost",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "dawnstrider-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Dawnstrider",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "dawnstrider",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "death-dealer-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Death Dealer",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "death-dealer",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "defender-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Defender",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "defender",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "degenerate-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Degenerate",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "degenerate",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "demagogue-master-paths-of-horror",
+      "category": "Master",
+      "heading": "### Demagogue",
+      "rawSource": "Paths of Horror",
+      "entryKey": "demagogue",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "demonologist-master-demon-lord-s-companion",
+      "category": "Master",
+      "heading": "### Demonologist",
+      "rawSource": "Demon Lord's Companion",
+      "entryKey": "demonologist",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "dervish-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Dervish",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "dervish",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "destroyer-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Destroyer",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "destroyer",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "devastator-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Devastator",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "devastator",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "diabolist-master-exquisite-agony",
+      "category": "Master",
+      "heading": "### Diabolist",
+      "rawSource": "Exquisite Agony",
+      "entryKey": "diabolist",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "diplomat-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Diplomat",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "diplomat",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "diviner-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Diviner",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "diviner",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "doppelganger-master-stolen-lives",
+      "category": "Master",
+      "heading": "### Doppelganger",
+      "rawSource": "Stolen Lives",
+      "entryKey": "doppelganger",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "dragonslayer-master-of-fire-and-venom",
+      "category": "Master",
+      "heading": "### Dragonslayer",
+      "rawSource": "Of Fire and Venom",
+      "entryKey": "dragonslayer",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "dread-forester-master-scions-of-nature",
+      "category": "Master",
+      "heading": "### Dread Forester",
+      "rawSource": "Scions of Nature",
+      "entryKey": "dread-forester",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "dreadnaught-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Dreadnaught",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "dreadnaught",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "dualist-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Dualist",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "dualist",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "duelist-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Duelist",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "duelist",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "dust-walker-master-tombs-of-the-desolation",
+      "category": "Master",
+      "heading": "### Dust Walker",
+      "rawSource": "Tombs of the Desolation",
+      "entryKey": "dust-walker",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "enchanter-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Enchanter",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "enchanter",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "engineer-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Engineer",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "engineer",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "engorged-brute-master-the-great-mother-s-brood",
+      "category": "Master",
+      "heading": "### Engorged Brute",
+      "rawSource": "The Great Mother’s Brood",
+      "entryKey": "engorged-brute",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "entropist-master-demon-lord-s-companion",
+      "category": "Master",
+      "heading": "### Entropist",
+      "rawSource": "Demon Lord's Companion",
+      "entryKey": "entropist",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "envoy-of-the-great-mother-master-the-great-mother-s-brood",
+      "category": "Master",
+      "heading": "### Envoy of the Great Mother",
+      "rawSource": "The Great Mother’s Brood",
+      "entryKey": "envoy-of-the-great-mother",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "eternal-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Eternal",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "eternal",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "eternal-guardian-master-terrible-beauty",
+      "category": "Master",
+      "heading": "### Eternal Guardian",
+      "rawSource": "Terrible Beauty",
+      "entryKey": "eternal-guardian",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "exalted-gardener-master-scions-of-nature",
+      "category": "Master",
+      "heading": "### Exalted Gardener",
+      "rawSource": "Scions of Nature",
+      "entryKey": "exalted-gardener",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "executioner-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Executioner",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "executioner",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "exorcist-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Exorcist",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "exorcist",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "explorer-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Explorer",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "explorer",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "fae-scourge-master-paths-of-iron",
+      "category": "Master",
+      "heading": "### Fae Scourge",
+      "rawSource": "Paths of Iron",
+      "entryKey": "fae-scourge",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "fencer-master-demon-lord-s-companion-2",
+      "category": "Master",
+      "heading": "### Fencer",
+      "rawSource": "Demon Lord's Companion 2",
+      "entryKey": "fencer",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "filth-mage-master-paths-of-horror",
+      "category": "Master",
+      "heading": "### Filth Mage",
+      "rawSource": "Paths of Horror",
+      "entryKey": "filth-mage",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "firebrand-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Firebrand",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "firebrand",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "forgeborn-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Forgeborn",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "forgeborn",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "forgehammer-master-paths-of-iron",
+      "category": "Master",
+      "heading": "### Forgehammer",
+      "rawSource": "Paths of Iron",
+      "entryKey": "forgehammer",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "geomancer-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Geomancer",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "geomancer",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "ghoststrider-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Ghoststrider",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "ghoststrider",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "gladiator-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Gladiator",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "gladiator",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "gorger-master-paths-of-horror",
+      "category": "Master",
+      "heading": "### Gorger",
+      "rawSource": "Paths of Horror",
+      "entryKey": "gorger",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "graven-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Graven",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "graven",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "greater-skinchanger-master-tooth-claw",
+      "category": "Master",
+      "heading": "### Greater Skinchanger",
+      "rawSource": "Tooth & Claw",
+      "entryKey": "greater-skinchanger",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "gunslinger-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Gunslinger",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "gunslinger",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "halberdier-master-demon-lord-s-companion-2",
+      "category": "Master",
+      "heading": "### Halberdier",
+      "rawSource": "Demon Lord's Companion 2",
+      "entryKey": "halberdier",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "harbinger-master-terrible-beauty",
+      "category": "Master",
+      "heading": "### Harbinger",
+      "rawSource": "Terrible Beauty",
+      "entryKey": "harbinger",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "healer-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Healer",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "healer",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "hexer-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Hexer",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "hexer",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "horse-archer-master-riders-of-the-wind",
+      "category": "Master",
+      "heading": "### Horse Archer",
+      "rawSource": "Riders of the Wind",
+      "entryKey": "horse-archer",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "hydromancer-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Hydromancer",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "hydromancer",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "illusionist-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Illusionist",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "illusionist",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "indistinct-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Indistinct",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "indistinct",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "inevitable-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Inevitable",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "inevitable",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "infiltrator-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Infiltrator",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "infiltrator",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "inquisitor-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Inquisitor",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "inquisitor",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "invoker-master-demon-lord-s-companion-2",
+      "category": "Master",
+      "heading": "### Invoker",
+      "rawSource": "Demon Lord's Companion 2",
+      "entryKey": "invoker",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "jack-of-all-trades-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Jack-of-All-Trades",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "jack-of-all-trades",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "keeper-of-the-flame-master-terrible-beauty",
+      "category": "Master",
+      "heading": "### Keeper of the Flame",
+      "rawSource": "Terrible Beauty",
+      "entryKey": "keeper-of-the-flame",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "legalist-master-demon-lord-s-companion-2",
+      "category": "Master",
+      "heading": "### Legalist",
+      "rawSource": "Demon Lord's Companion 2",
+      "entryKey": "legalist",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "librarian-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Librarian",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "librarian",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "machinist-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Machinist",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "machinist",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "mage-knight-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Mage Knight",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "mage-knight",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "mage-of-the-tower-master-caecras",
+      "category": "Master",
+      "heading": "### Mage of the Tower",
+      "rawSource": "Caecras",
+      "entryKey": "mage-of-the-tower",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "mageblade-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Mageblade",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "mageblade",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "magnet-master-paths-of-iron",
+      "category": "Master",
+      "heading": "### Magnet",
+      "rawSource": "Paths of Iron",
+      "entryKey": "magnet",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "magus-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Magus",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "magus",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "marauder-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Marauder",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "marauder",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "martial-artist-master-demon-lord-s-companion",
+      "category": "Master",
+      "heading": "### Martial Artist",
+      "rawSource": "Demon Lord's Companion",
+      "entryKey": "martial-artist",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "medium-master-demon-lord-s-companion",
+      "category": "Master",
+      "heading": "### Medium",
+      "rawSource": "Demon Lord's Companion",
+      "entryKey": "medium",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "metallurgist-master-demon-lord-s-companion-2",
+      "category": "Master",
+      "heading": "### Metallurgist",
+      "rawSource": "Demon Lord's Companion 2",
+      "entryKey": "metallurgist",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "mind-bender-master-demon-lord-s-companion",
+      "category": "Master",
+      "heading": "### Mind Bender",
+      "rawSource": "Demon Lord's Companion",
+      "entryKey": "mind-bender",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "mindwitch-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Mindwitch",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "mindwitch",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "miracle-worker-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Miracle Worker",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "miracle-worker",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "monster-hunter-master-freeport-companion",
+      "category": "Master",
+      "heading": "### Monster Hunter",
+      "rawSource": "Freeport Companion",
+      "entryKey": "monster-hunter",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "morph-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Morph",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "morph",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "morrigan-master-terrible-beauty",
+      "category": "Master",
+      "heading": "### Morrigan",
+      "rawSource": "Terrible Beauty",
+      "entryKey": "morrigan",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "mother-of-monsters-master-paths-of-horror",
+      "category": "Master",
+      "heading": "### Mother of Monsters",
+      "rawSource": "Paths of Horror",
+      "entryKey": "mother-of-monsters",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "multiplist-master-paths-of-horror",
+      "category": "Master",
+      "heading": "### Multiplist",
+      "rawSource": "Paths of Horror",
+      "entryKey": "multiplist",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "muse-master-terrible-beauty",
+      "category": "Master",
+      "heading": "### Muse",
+      "rawSource": "Terrible Beauty",
+      "entryKey": "muse",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "musketeer-master-freeport-companion",
+      "category": "Master",
+      "heading": "### Musketeer",
+      "rawSource": "Freeport Companion",
+      "entryKey": "musketeer",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "myrmidon-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Myrmidon",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "myrmidon",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "mystic-navigator-master-freeport-companion",
+      "category": "Master",
+      "heading": "### Mystic Navigator",
+      "rawSource": "Freeport Companion",
+      "entryKey": "mystic-navigator",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "namer-master-power-in-a-name",
+      "category": "Master",
+      "heading": "### Namer",
+      "rawSource": "Power in a Name",
+      "entryKey": "namer",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "necromancer-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Necromancer",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "necromancer",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "nightstalker-master-terrible-beauty",
+      "category": "Master",
+      "heading": "### Nightstalker",
+      "rawSource": "Terrible Beauty",
+      "entryKey": "nightstalker",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "old-man-cat-disciple-master-in-plain-sight",
+      "category": "Master",
+      "heading": "### Old Man Cat Disciple",
+      "rawSource": "In Plain Sight",
+      "entryKey": "old-man-cat-disciple",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "orb-master-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Orb Master",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "orb-master",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "phantasmist-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Phantasmist",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "phantasmist",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "phaseshifter-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Phaseshifter",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "phaseshifter",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "pit-fighter-master-freeport-companion",
+      "category": "Master",
+      "heading": "### Pit Fighter",
+      "rawSource": "Freeport Companion",
+      "entryKey": "pit-fighter",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "plaguist-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Plaguist",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "plaguist",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "poisoner-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Poisoner",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "poisoner",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "psychokinetic-master-demon-lord-s-companion",
+      "category": "Master",
+      "heading": "### Psychokinetic",
+      "rawSource": "Demon Lord's Companion",
+      "entryKey": "psychokinetic",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "puppetmaster-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Puppetmaster",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "puppetmaster",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "puzzle-master-paths-of-darkness",
+      "category": "Master",
+      "heading": "### Puzzle",
+      "rawSource": "Paths of Darkness",
+      "entryKey": "puzzle",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "pyromancer-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Pyromancer",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "pyromancer",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "raven-rider-master-heaven-s-sent",
+      "category": "Master",
+      "heading": "### Raven Rider",
+      "rawSource": "Heaven’s Sent",
+      "entryKey": "raven-rider",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "razor-claw-master-in-plain-sight",
+      "category": "Master",
+      "heading": "### Razor Claw",
+      "rawSource": "In Plain Sight",
+      "entryKey": "razor-claw",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "reanimator-master-paths-of-science",
+      "category": "Master",
+      "heading": "### Reanimator",
+      "rawSource": "Paths of Science",
+      "entryKey": "reanimator",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "reaver-master-demon-lord-s-companion",
+      "category": "Master",
+      "heading": "### Reaver",
+      "rawSource": "Demon Lord's Companion",
+      "entryKey": "reaver",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "reviver-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Reviver",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "reviver",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "runesmith-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Runesmith",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "runesmith",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "sapper-master-demon-lord-s-companion",
+      "category": "Master",
+      "heading": "### Sapper",
+      "rawSource": "Demon Lord's Companion",
+      "entryKey": "sapper",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "savant-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Savant",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "savant",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "sea-captain-master-freeport-companion",
+      "category": "Master",
+      "heading": "### Sea Captain",
+      "rawSource": "Freeport Companion",
+      "entryKey": "sea-captain",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "seeker-master-demon-lord-s-companion",
+      "category": "Master",
+      "heading": "### Seeker",
+      "rawSource": "Demon Lord's Companion",
+      "entryKey": "seeker",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "seer-master-a-glorious-death",
+      "category": "Master",
+      "heading": "### Seer",
+      "rawSource": "A Glorious Death",
+      "entryKey": "seer",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "sentinel-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Sentinel",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "sentinel",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "servant-of-shavra-master-guardians-of-the-cosmic-egg",
+      "category": "Master",
+      "heading": "### Servant of Shavra",
+      "rawSource": "Guardians of the Cosmic Egg",
+      "entryKey": "servant-of-shavra",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "shade-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Shade",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "shade",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "shadow-thief-master-paths-of-horror",
+      "category": "Master",
+      "heading": "### Shadow Thief",
+      "rawSource": "Paths of Horror",
+      "entryKey": "shadow-thief",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "shambler-master-scions-of-nature",
+      "category": "Master",
+      "heading": "### Shambler",
+      "rawSource": "Scions of Nature",
+      "entryKey": "shambler",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "shapeshifter-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Shapeshifter",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "shapeshifter",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "sharpshooter-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Sharpshooter",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "sharpshooter",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "shroud-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Shroud",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "shroud",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "sin-eater-master-kingdom-of-god",
+      "category": "Master",
+      "heading": "### Sin-Eater",
+      "rawSource": "Kingdom of God",
+      "entryKey": "sin-eater",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "skald-master-a-glorious-death",
+      "category": "Master",
+      "heading": "### Skald",
+      "rawSource": "A Glorious Death",
+      "entryKey": "skald",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "skydancer-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Skydancer",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "skydancer",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "slayer-of-the-dead-master-tombs-of-the-desolation",
+      "category": "Master",
+      "heading": "### Slayer of the Dead",
+      "rawSource": "Tombs of the Desolation",
+      "entryKey": "slayer-of-the-dead",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "sleuth-master-demon-lord-s-companion-2",
+      "category": "Master",
+      "heading": "### Sleuth",
+      "rawSource": "Demon Lord's Companion 2",
+      "entryKey": "sleuth",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "soul-eater-master-paths-of-darkness",
+      "category": "Master",
+      "heading": "### Soul Eater",
+      "rawSource": "Paths of Darkness",
+      "entryKey": "soul-eater",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "soulbound-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Soulbound",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "soulbound",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "spellmaster-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Spellmaster",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "spellmaster",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "spellsinger-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Spellsinger",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "spellsinger",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "spellsniper-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Spellsniper",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "spellsniper",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "spellweaver-master-terrible-beauty",
+      "category": "Master",
+      "heading": "### Spellweaver",
+      "rawSource": "Terrible Beauty",
+      "entryKey": "spellweaver",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "stoneheart-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Stoneheart",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "stoneheart",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "stormbringer-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Stormbringer",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "stormbringer",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "survivor-master-freeport-companion",
+      "category": "Master",
+      "heading": "### Survivor",
+      "rawSource": "Freeport Companion",
+      "entryKey": "survivor",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "sybarite-master-paths-of-darkness",
+      "category": "Master",
+      "heading": "### Sybarite",
+      "rawSource": "Paths of Darkness",
+      "entryKey": "sybarite",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "taskmaster-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Taskmaster",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "taskmaster",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "technomancer-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Technomancer",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "technomancer",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "templar-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Templar",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "templar",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "tenebrist-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Tenebrist",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "tenebrist",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "thaumaturge-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Thaumaturge",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "thaumaturge",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "theurge-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Theurge",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "theurge",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "thresher-master-paths-of-iron",
+      "category": "Master",
+      "heading": "### Thresher",
+      "rawSource": "Paths of Iron",
+      "entryKey": "thresher",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "tormentor-master-demon-lord-s-companion-2",
+      "category": "Master",
+      "heading": "### Tormentor",
+      "rawSource": "Demon Lord's Companion 2",
+      "entryKey": "tormentor",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "transmuter-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Transmuter",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "transmuter",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "traveler-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Traveler",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "traveler",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "tree-shepherd-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Tree Shepherd",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "tree-shepherd",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "trickster-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Trickster",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "trickster",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "troll-hunter-master-terrible-beauty",
+      "category": "Master",
+      "heading": "### Troll Hunter",
+      "rawSource": "Terrible Beauty",
+      "entryKey": "troll-hunter",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "unbodied-master-paths-of-darkness",
+      "category": "Master",
+      "heading": "### Unbodied",
+      "rawSource": "Paths of Darkness",
+      "entryKey": "unbodied",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "unchained-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Unchained",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "unchained",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "verminist-master-paths-of-horror",
+      "category": "Master",
+      "heading": "### Verminist",
+      "rawSource": "Paths of Horror",
+      "entryKey": "verminist",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "void-thrall-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Void Thrall",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "void-thrall",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "warder-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Warder",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "warder",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "warmage-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Warmage",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "warmage",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "warrior-spirit-master-a-glorious-death",
+      "category": "Master",
+      "heading": "### Warrior Spirit",
+      "rawSource": "A Glorious Death",
+      "entryKey": "warrior-spirit",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "watcher-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Watcher",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "watcher",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "wavebender-master-occult-philosophy",
+      "category": "Master",
+      "heading": "### Wavebender",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "wavebender",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "weapon-master-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Weapon Master",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "weapon-master",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "witch-hunter-master-exquisite-agony",
+      "category": "Master",
+      "heading": "### Witch Hunter",
+      "rawSource": "Exquisite Agony",
+      "entryKey": "witch-hunter",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "woodwose-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Woodwose",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "woodwose",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "worm-host-master-paths-of-darkness",
+      "category": "Master",
+      "heading": "### Worm Host",
+      "rawSource": "Paths of Darkness",
+      "entryKey": "worm-host",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "worm-rider-master-the-great-mother-s-brood",
+      "category": "Master",
+      "heading": "### Worm Rider",
+      "rawSource": "The Great Mother’s Brood",
+      "entryKey": "worm-rider",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "zealot-master-shadow-of-the-demon-lord-core",
+      "category": "Master",
+      "heading": "### Zealot",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "zealot",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "zephyr-master-heaven-s-sent",
+      "category": "Master",
+      "heading": "### Zephyr",
+      "rawSource": "Heaven’s Sent",
+      "entryKey": "zephyr",
+      "variantKey": "master"
+    },
+    {
+      "occurrenceKey": "paragon-legendary-forbidden-rules",
+      "category": "Legendary",
+      "heading": "### Paragon",
+      "rawSource": "Forbidden Rules",
+      "entryKey": "paragon",
+      "variantKey": "legendary"
+    },
+    {
+      "occurrenceKey": "paragon-legendary-occult-philosophy",
+      "category": "Legendary",
+      "heading": "### Paragon",
+      "rawSource": "Occult Philosophy",
+      "entryKey": "paragon",
+      "variantKey": "legendary"
+    }
+  ]
+}

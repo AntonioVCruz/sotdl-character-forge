@@ -1,0 +1,48 @@
+.print-root { display: none; }
+.print-root.print-preview { display: block; position: fixed; inset: 0; z-index: 100; overflow: auto; background: #d9dcdf; color-scheme: light; }
+.print-toolbar { position: sticky; top: 0; background: #1c2329; color: #fff; padding: 12px 20px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; z-index: 1; }
+.print-document { width: 210mm; max-width: calc(100% - 24px); padding: 14mm 12mm 16mm; margin: 24px auto; background: white; color: #20252b; border: 0; border-radius: 0; font: 10pt/1.4 Arial, sans-serif; overflow-wrap: anywhere; box-shadow: 0 2px 12px #0003; color-scheme: light; }
+.print-document * { color: inherit; }
+.print-document h1 { font: bold 23pt/1.15 Georgia, serif; margin: 8pt 0; overflow-wrap: anywhere; }
+.print-document h2 { font-size: 13pt; margin: 14pt 0 6pt; padding-bottom: 3pt; border-bottom: 1px solid #a9afb5; break-after: avoid; }
+.print-document h3 { font-size: 10.5pt; margin: 0 0 4pt; break-after: avoid; }
+.print-document p { margin: 4pt 0; }
+.print-document ul { margin: 5pt 0; padding-left: 16pt; }
+.print-heading { margin: 0 0 8pt; padding: 0 0 8pt; border-bottom: 2pt solid #2b343d; }
+.print-document .print-brand { font-size: 8pt; letter-spacing: .08em; }
+.print-disclaimer { padding: 6pt; border: 1px solid #6c737a; font-size: 9pt; }
+.print-status { font-weight: bold; }
+.print-document .print-stats { display: grid; grid-template-columns: repeat(7,minmax(0,1fr)); gap: 5pt; margin: 8pt 0; }
+.print-stats > div { border: 1px solid #9da5ab; text-align: center; padding: 5pt 2pt; break-inside: avoid; }
+.print-stats dt { font-size: 8pt; } .print-stats dd { font-size: 18pt; font-weight: bold; }
+.print-document dd { margin: 0; }
+.print-source, .print-meta { font-size: 8pt; line-height: 1.35; }
+.print-source { color: #49525a; }
+.print-choice { margin: 0 0 7pt; break-inside: avoid; }
+.print-card { border: 1px solid #a9afb5; padding: 7pt; margin: 6pt 0; break-inside: avoid; }
+.print-keep { break-inside: avoid; }
+.print-warning { border-left: 3pt solid #666; padding-left: 8pt; }
+.print-resources { display: block; margin: 5pt 0; }
+.print-resources > div { display: flex; gap: 12pt; margin-bottom: 3pt; }
+.print-breakdown { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: 8.5pt; }
+.print-breakdown th, .print-breakdown td { text-align: left; padding: 4pt; border-bottom: 1px solid #c2c7cc; vertical-align: top; overflow-wrap: anywhere; }
+.print-breakdown th:first-child { width: 22%; } .print-breakdown th:nth-child(2) { width: 12%; }
+.print-breakdown thead { display: table-header-group; }
+.print-breakdown tr { break-inside: avoid; }
+.print-roll { margin: 6pt 0; }
+.print-document .print-note { white-space: pre-wrap; orphans: 3; widows: 3; break-inside: avoid; margin: 6pt 0; }
+.print-end { margin-top: 14pt; padding-top: 6pt; border-top: 1px solid #9da5ab; font-size: 8pt; break-inside: avoid; }
+@page {
+  size: A4;
+  margin: 14mm 12mm 16mm;
+  @bottom-left { content: 'Character Forge - demonstração fictícia'; font-family: Arial, sans-serif; font-size: 8pt; color: #555; }
+  @bottom-right { content: 'Página ' counter(page) ' / ' counter(pages); font-family: Arial, sans-serif; font-size: 8pt; color: #555; }
+}
+@media print {
+  html:root, html body { color-scheme: light !important; background: white !important; color: #20252b !important; }
+  body { margin: 0; }
+  body > :not(.print-root) { display: none !important; }
+  body > .print-root, body > .print-root.print-preview { display: block !important; position: static; overflow: visible; background: white; }
+  .print-toolbar { display: none !important; }
+  .print-document { width: auto; max-width: none; margin: 0; padding: 0; border: 0; box-shadow: none; background: white; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+}

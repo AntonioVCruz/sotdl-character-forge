@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "category": "rule",
+  "entries": [
+    {
+      "name": "Format fixture (fictional)",
+      "searchAliases": [],
+      "ref": {
+        "packId": "fixture-curation",
+        "version": "1.0.0",
+        "entityId": "fixture:curation:rule:format:default"
+      },
+      "kind": "rule",
+      "sourceId": "fixture:curation",
+      "variantKey": "default",
+      "equivalenceGroupId": null
+    }
+  ]
+}

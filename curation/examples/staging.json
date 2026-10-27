@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "id": "fixture:curation:rule:format:default",
+  "identity": {
+    "sourceId": "fixture:curation",
+    "kind": "rule",
+    "entryKey": "format",
+    "variantKey": "default"
+  },
+  "name": "Format fixture (fictional)",
+  "kind": "rule",
+  "source": {
+    "status": "resolved",
+    "sourceId": "fixture:curation",
+    "rawLabel": "Fictional fixture",
+    "reason": "Local synthetic test."
+  },
+  "representation": "full-text",
+  "originalText": "Regra fictícia para validar o formato; não representa SotDL.",
+  "normalizedText": null,
+  "normalizationDiffRef": null,
+  "printedPage": null,
+  "pdfPageDeclared": null,
+  "stage": "captured",
+  "scopeTags": [],
+  "region": null,
+  "searchAliases": [],
+  "equivalenceGroupIds": [],
+  "lineage": [],
+  "review": {
+    "schemaVersion": 1,
+    "subjectId": "fixture:curation:rule:format:default",
+    "sourcePermission": {
+      "status": "needs-review",
+      "responsible": "Codex / fixture",
+      "reason": "Format test only; no mechanical approval.",
+      "evidenceIds": []
+    },
+    "transcription": {
+      "status": "md-checked",
+      "responsible": "Codex / fixture",
+      "reason": "Format test only; no mechanical approval.",
+      "evidenceIds": [
+        "fixture:curation:evidence"
+      ]
+    },
+    "structure": {
+      "status": "unreviewed",
+      "responsible": "Codex / fixture",
+      "reason": "Format test only; no mechanical approval.",
+      "evidenceIds": []
+    },
+    "mechanics": {
+      "status": "unreviewed",
+      "responsible": "Codex / fixture",
+      "reason": "Format test only; no mechanical approval.",
+      "evidenceIds": []
+    },
+    "automation": {
+      "status": "unsupported",
+      "responsible": "Codex / fixture",
+      "reason": "Format test only; no mechanical approval.",
+      "evidenceIds": [],
+      "handlerRef": null,
+      "testRefs": []
+    },
+    "evidence": [
+      {
+        "id": "fixture:curation:evidence",
+        "medium": "md",
+        "path": "curation/examples/input.md",
+        "inputSha256": "3a566cfff8878c865c85460213446a60dfb27c82da7692650747dd8f8d35b452",
+        "startLine": 3,
+        "endLine": 3,
+        "physicalPdfPage": null,
+        "printedPageDeclared": null,
+        "pdfPageDeclared": null,
+        "heading": "# Fixture",
+        "excerpt": "Regra fictícia para validar o formato; não representa SotDL.",
+        "excerptSha256": "b1cbc598b9669da87f2916114e5067c9ae2c6d20358c144935f16cfa8043ae6c",
+        "claim": "Fictional format fixture."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "rulesetId": "fixture-curation",
+  "packs": [
+    {
+      "packId": "fixture-curation",
+      "version": "1.0.0"
+    }
+  ],
+  "selections": [
+    {
+      "subjectKey": "fixture-format",
+      "ref": {
+        "packId": "fixture-curation",
+        "version": "1.0.0",
+        "entityId": "fixture:curation:rule:format:default"
+      },
+      "variantKey": "default",
+      "scope": "base",
+      "region": null,
+      "optionKey": null
+    }
+  ],
+  "overrides": []
+}

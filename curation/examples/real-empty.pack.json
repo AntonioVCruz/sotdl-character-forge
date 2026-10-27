@@ -1,0 +1,14 @@
+{
+  "packId": "sotdl-core-format-example",
+  "version": "0.0.1",
+  "system": "sotdl",
+  "fictionalData": false,
+  "source": {
+    "id": "sotdl:shadow-of-the-demon-lord-core",
+    "title": "Shadow of the Demon Lord Core",
+    "sourcePage": null,
+    "status": "needs-review"
+  },
+  "dependencies": [],
+  "entities": []
+}

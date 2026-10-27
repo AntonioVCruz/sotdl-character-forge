@@ -1,0 +1,155 @@
+{
+    "schemaVersion":  1,
+    "decisions":  [
+                      {
+                          "unitKey":  "u002901",
+                          "name":  "GIANT RAVEN",
+                          "sourceId":  "sotdl:heaven-s-sent",
+                          "originalTextSha256":  "633f179d6de956a2da5771fa6927990c113a23b166ba6ad8219eefb8cd1453b4",
+                          "resolution":  "standalone-creature",
+                          "date":  "2026-10-27",
+                          "authority":  "explicit-user-instruction",
+                          "reason":  "Giant Raven pode ser usado como monstro caso não esteja associado a Raven Rider. Esta decisão resolve a dependência somente para uso independente; não implementa a associação ou os benefícios do caminho Raven Rider."
+                      },
+                      {
+                          "unitKey":  "u003390",
+                          "name":  "Shadow of the Demon Lord — Movement by Pace table (core p. 37)",
+                          "sourceId":  "sotdl:demon-lord-errata-19nov17",
+                          "originalTextSha256":  "017c1a032c08677d948871f7d1629a0c1b216916b3857274ae9d4bcb02b57242",
+                          "resolution":  "latest-source",
+                          "date":  "2026-10-27",
+                          "authority":  "explicit-user-instruction",
+                          "reason":  "Em atribuições conjuntas prevalece a publicação mais recente: Demon Lord Errata (19nov17), de 2017-11-19, sobre Demon Lord Errata (10oct17), de 2017-10-10. As duas referências originais são preservadas como evidência; não há certificação de PDF ou aplicação automática da correção ao livro de destino."
+                      },
+                      {
+                          "unitKey":  "u003391",
+                          "name":  "Shadow of the Demon Lord — Crawl (core p. 47)",
+                          "sourceId":  "sotdl:demon-lord-errata-19nov17",
+                          "originalTextSha256":  "05fb81e1cc94bc2a65d00ac2942a102111bac724bef3614ca77987bde3d586e1",
+                          "resolution":  "latest-source",
+                          "date":  "2026-10-27",
+                          "authority":  "explicit-user-instruction",
+                          "reason":  "Em atribuições conjuntas prevalece a publicação mais recente: Demon Lord Errata (19nov17), de 2017-11-19, sobre Demon Lord Errata (10oct17), de 2017-10-10. As duas referências originais são preservadas como evidência; não há certificação de PDF ou aplicação automática da correção ao livro de destino."
+                      },
+                      {
+                          "unitKey":  "u003392",
+                          "name":  "Shadow of the Demon Lord — Weapons table (core p. 103)",
+                          "sourceId":  "sotdl:demon-lord-errata-19nov17",
+                          "originalTextSha256":  "a6e52992c0569f8a9bfbeabf33db0b6951fded07a347b0e381039c2f32e1dbe3",
+                          "resolution":  "latest-source",
+                          "date":  "2026-10-27",
+                          "authority":  "explicit-user-instruction",
+                          "reason":  "Em atribuições conjuntas prevalece a publicação mais recente: Demon Lord Errata (19nov17), de 2017-11-19, sobre Demon Lord Errata (10oct17), de 2017-10-10. As duas referências originais são preservadas como evidência; não há certificação de PDF ou aplicação automática da correção ao livro de destino."
+                      },
+                      {
+                          "unitKey":  "u003393",
+                          "name":  "Shadow of the Demon Lord — Large animal (core p. 217)",
+                          "sourceId":  "sotdl:demon-lord-errata-19nov17",
+                          "originalTextSha256":  "f19f4845d0a5db5c06cd15efb0909ce2a8e8da23c2b7d3a7251d7e074e1534c1",
+                          "resolution":  "latest-source",
+                          "date":  "2026-10-27",
+                          "authority":  "explicit-user-instruction",
+                          "reason":  "Em atribuições conjuntas prevalece a publicação mais recente: Demon Lord Errata (19nov17), de 2017-11-19, sobre Demon Lord Errata (10oct17), de 2017-10-10. As duas referências originais são preservadas como evidência; não há certificação de PDF ou aplicação automática da correção ao livro de destino."
+                      },
+                      {
+                          "unitKey":  "u003394",
+                          "name":  "Shadow of the Demon Lord — Flame Genie (core p. 234)",
+                          "sourceId":  "sotdl:demon-lord-errata-19nov17",
+                          "originalTextSha256":  "edcb76f6a53d17bef7cd06008a16bca039a3518c6ff2e59ef1c141791aed1104",
+                          "resolution":  "latest-source",
+                          "date":  "2026-10-27",
+                          "authority":  "explicit-user-instruction",
+                          "reason":  "Em atribuições conjuntas prevalece a publicação mais recente: Demon Lord Errata (19nov17), de 2017-11-19, sobre Demon Lord Errata (10oct17), de 2017-10-10. As duas referências originais são preservadas como evidência; não há certificação de PDF ou aplicação automática da correção ao livro de destino."
+                      },
+                      {
+                          "unitKey":  "u003395",
+                          "name":  "Shadow of the Demon Lord — Giantfall trait (core p. 236)",
+                          "sourceId":  "sotdl:demon-lord-errata-19nov17",
+                          "originalTextSha256":  "3f7f4da53ea46028e02ede2d2d1901a5a6b04d7f908a704680929c30a508c737",
+                          "resolution":  "latest-source",
+                          "date":  "2026-10-27",
+                          "authority":  "explicit-user-instruction",
+                          "reason":  "Em atribuições conjuntas prevalece a publicação mais recente: Demon Lord Errata (19nov17), de 2017-11-19, sobre Demon Lord Errata (10oct17), de 2017-10-10. As duas referências originais são preservadas como evidência; não há certificação de PDF ou aplicação automática da correção ao livro de destino."
+                      },
+                      {
+                          "unitKey":  "u003396",
+                          "name":  "Shadow of the Demon Lord — Drain trait (core p. 253)",
+                          "sourceId":  "sotdl:demon-lord-errata-19nov17",
+                          "originalTextSha256":  "ba9953277aedd1918605a6d0e21ebc64ee68251c8d84d79d8679dd412aa1ed39",
+                          "resolution":  "latest-source",
+                          "date":  "2026-10-27",
+                          "authority":  "explicit-user-instruction",
+                          "reason":  "Em atribuições conjuntas prevalece a publicação mais recente: Demon Lord Errata (19nov17), de 2017-11-19, sobre Demon Lord Errata (10oct17), de 2017-10-10. As duas referências originais são preservadas como evidência; não há certificação de PDF ou aplicação automática da correção ao livro de destino."
+                      },
+                      {
+                          "unitKey":  "u003397",
+                          "name":  "Shadow of the Demon Lord — Lasting Harm trait (core p. 258)",
+                          "sourceId":  "sotdl:demon-lord-errata-19nov17",
+                          "originalTextSha256":  "e24b3172f0f56858e283ff4e52e2d72a0c30049a115711eded7bdb191d409bcb",
+                          "resolution":  "latest-source",
+                          "date":  "2026-10-27",
+                          "authority":  "explicit-user-instruction",
+                          "reason":  "Em atribuições conjuntas prevalece a publicação mais recente: Demon Lord Errata (19nov17), de 2017-11-19, sobre Demon Lord Errata (10oct17), de 2017-10-10. As duas referências originais são preservadas como evidência; não há certificação de PDF ou aplicação automática da correção ao livro de destino."
+                      },
+                      {
+                          "unitKey":  "u003398",
+                          "name":  "Godless — Armored Truck (p. 37)",
+                          "sourceId":  "sotdl:demon-lord-errata-19nov17",
+                          "originalTextSha256":  "5fe35cb0e74698bfa1addaab69f969f044d2130bf2d33484bfb24b4dbeb06536",
+                          "resolution":  "latest-source",
+                          "date":  "2026-10-27",
+                          "authority":  "explicit-user-instruction",
+                          "reason":  "Em atribuições conjuntas prevalece a publicação mais recente: Demon Lord Errata (19nov17), de 2017-11-19, sobre Demon Lord Errata (10oct17), de 2017-10-10. As duas referências originais são preservadas como evidência; não há certificação de PDF ou aplicação automática da correção ao livro de destino."
+                      },
+                      {
+                          "unitKey":  "u003399",
+                          "name":  "Godless — ATV (p. 37)",
+                          "sourceId":  "sotdl:demon-lord-errata-19nov17",
+                          "originalTextSha256":  "201451832a35217d0308824ecc0ae071d2716b872b06511f4c1b36d6cc9eecf8",
+                          "resolution":  "latest-source",
+                          "date":  "2026-10-27",
+                          "authority":  "explicit-user-instruction",
+                          "reason":  "Em atribuições conjuntas prevalece a publicação mais recente: Demon Lord Errata (19nov17), de 2017-11-19, sobre Demon Lord Errata (10oct17), de 2017-10-10. As duas referências originais são preservadas como evidência; não há certificação de PDF ou aplicação automática da correção ao livro de destino."
+                      },
+                      {
+                          "unitKey":  "u003400",
+                          "name":  "Godless — Tank (p. 37)",
+                          "sourceId":  "sotdl:demon-lord-errata-19nov17",
+                          "originalTextSha256":  "cfd68fe9a6ae062ca92461a19285c7ca550fa9ce143967b69dda182672d4e9ba",
+                          "resolution":  "latest-source",
+                          "date":  "2026-10-27",
+                          "authority":  "explicit-user-instruction",
+                          "reason":  "Em atribuições conjuntas prevalece a publicação mais recente: Demon Lord Errata (19nov17), de 2017-11-19, sobre Demon Lord Errata (10oct17), de 2017-10-10. As duas referências originais são preservadas como evidência; não há certificação de PDF ou aplicação automática da correção ao livro de destino."
+                      },
+                      {
+                          "unitKey":  "u003401",
+                          "name":  "Godless — Radiation (pp. 52–53), replacement Recovery",
+                          "sourceId":  "sotdl:demon-lord-errata-19nov17",
+                          "originalTextSha256":  "f7067746471979ef3846ddca3fe0eba15cd9a214bc40ae30ba8dc11f93d6626e",
+                          "resolution":  "latest-source",
+                          "date":  "2026-10-27",
+                          "authority":  "explicit-user-instruction",
+                          "reason":  "Em atribuições conjuntas prevalece a publicação mais recente: Demon Lord Errata (19nov17), de 2017-11-19, sobre Demon Lord Errata (10oct17), de 2017-10-10. As duas referências originais são preservadas como evidência; não há certificação de PDF ou aplicação automática da correção ao livro de destino."
+                      },
+                      {
+                          "unitKey":  "u003402",
+                          "name":  "Freeport Companion — Atomizer (p. 32), replacement text",
+                          "sourceId":  "sotdl:demon-lord-errata-19nov17",
+                          "originalTextSha256":  "2af059bb65784f81ad69dce1a26c7dee5d562c20b9c2d031aa85f3543816abc2",
+                          "resolution":  "latest-source",
+                          "date":  "2026-10-27",
+                          "authority":  "explicit-user-instruction",
+                          "reason":  "Em atribuições conjuntas prevalece a publicação mais recente: Demon Lord Errata (19nov17), de 2017-11-19, sobre Demon Lord Errata (10oct17), de 2017-10-10. As duas referências originais são preservadas como evidência; não há certificação de PDF ou aplicação automática da correção ao livro de destino."
+                      },
+                      {
+                          "unitKey":  "u003403",
+                          "name":  "Freeport Companion — Passengers and Occupants (p. 44), replacement paragraph",
+                          "sourceId":  "sotdl:demon-lord-errata-19nov17",
+                          "originalTextSha256":  "9012c515a2f1908765914d38d762628e7ad3d6941dcbff12dd81dc369f90d817",
+                          "resolution":  "latest-source",
+                          "date":  "2026-10-27",
+                          "authority":  "explicit-user-instruction",
+                          "reason":  "Em atribuições conjuntas prevalece a publicação mais recente: Demon Lord Errata (19nov17), de 2017-11-19, sobre Demon Lord Errata (10oct17), de 2017-10-10. As duas referências originais são preservadas como evidência; não há certificação de PDF ou aplicação automática da correção ao livro de destino."
+                      }
+                  ]
+}

@@ -1,0 +1,11 @@
+{
+  "packId": "demo-spell-session", "version": "0.0.1", "system": "sotdl", "fictionalData": true,
+  "legalNotice": "REGRAS DE SESSÃO FICTÍCIAS: 2 usos por descanso e bônus de laboratório; não são regras oficiais.",
+  "source": { "id": "demo-session-source", "title": "Laboratório fictício de conjuração e efeitos", "sourcePage": null, "status": "fictional" },
+  "entities": [
+    { "id": "demo:casting:lantern", "kind": "rule", "name": "Manto da lanterna (efeito fictício)", "sourceRef": "demo-session-source", "status": "curated", "sessionDefinition": { "spellId": "demo:spell:lantern", "usesPerRest": 2, "effect": { "name": "Manto da lanterna", "duration": "until-ended", "scope": "self", "modifiers": [{ "target": "defense", "value": 1 }] } } },
+    { "id": "demo:casting:warmth", "kind": "rule", "name": "Passo aquecido (efeito fictício)", "sourceRef": "demo-session-source", "status": "curated", "sessionDefinition": { "spellId": "demo:spell:warmth", "usesPerRest": 2, "effect": { "name": "Passo aquecido", "duration": "until-ended", "scope": "self", "modifiers": [{ "target": "speed", "value": 1 }] } } },
+    { "id": "demo:casting:chime", "kind": "rule", "name": "Ressonância serena (efeito fictício)", "sourceRef": "demo-session-source", "status": "curated", "sessionDefinition": { "spellId": "demo:spell:chime", "usesPerRest": 2, "effect": { "name": "Ressonância serena", "duration": "until-ended", "scope": "self", "modifiers": [{ "target": "will", "value": 1 }] } } },
+    { "id": "demo:casting:reflection", "kind": "rule", "name": "Véu de reflexo (efeito fictício)", "sourceRef": "demo-session-source", "status": "curated", "sessionDefinition": { "spellId": "demo:spell:reflection", "usesPerRest": 2, "effect": { "name": "Véu de reflexo", "duration": "until-ended", "scope": "self", "modifiers": [{ "target": "defense", "value": 1 }] } } }
+  ]
+}

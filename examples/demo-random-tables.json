@@ -1,0 +1,186 @@
+{
+  "packId": "demo-random-tables",
+  "version": "0.0.1",
+  "system": "sotdl",
+  "fictionalData": true,
+  "legalNotice": "EXEMPLO FICTÍCIO; não são tabelas nem mecânicas oficiais de Shadow of the Demon Lord",
+  "source": {
+    "id": "test-demo-random",
+    "title": "Fixture demonstrativa de tabelas aleatórias",
+    "sourcePage": null,
+    "status": "fictional"
+  },
+  "entities": [
+    {
+      "id": "demo-random:table:background-3d6:v1",
+      "kind": "randomTable",
+      "name": "Demo Background (3d6)",
+      "sourceRef": "test-demo-random",
+      "sourcePage": null,
+      "status": "curated",
+      "appliesTo": {
+        "slotKind": "background",
+        "ancestryId": "demo:ancestry:test"
+      },
+      "diceExpr": {
+        "count": 3,
+        "sides": 6,
+        "modifier": 0
+      },
+      "ranges": [
+        {
+          "min": 3,
+          "max": 8,
+          "outcomeId": "bg-a"
+        },
+        {
+          "min": 9,
+          "max": 12,
+          "outcomeId": "bg-b"
+        },
+        {
+          "min": 13,
+          "max": 18,
+          "outcomeId": "bg-c"
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "bg-a",
+          "text": "Demo: origem das montanhas; sem efeito mecânico",
+          "mechanicalEvents": []
+        },
+        {
+          "id": "bg-b",
+          "text": "Demo: origem urbana; sem efeito mecânico",
+          "mechanicalEvents": []
+        },
+        {
+          "id": "bg-c",
+          "text": "Demo: origem costeira; sem efeito mecânico",
+          "mechanicalEvents": []
+        }
+      ]
+    },
+    {
+      "id": "demo-random:table:thing-selector:v1",
+      "kind": "randomTable",
+      "name": "Demo Table Selector (d6)",
+      "sourceRef": "test-demo-random",
+      "sourcePage": null,
+      "status": "curated",
+      "appliesTo": {
+        "slotKind": "interestingThing"
+      },
+      "diceExpr": {
+        "count": 1,
+        "sides": 6,
+        "modifier": 0
+      },
+      "ranges": [
+        {
+          "min": 1,
+          "max": 3,
+          "outcomeId": "table-a"
+        },
+        {
+          "min": 4,
+          "max": 6,
+          "outcomeId": "table-b"
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "table-a",
+          "nextTableRef": "demo-random:table:things-a:v1"
+        },
+        {
+          "id": "table-b",
+          "nextTableRef": "demo-random:table:things-b:v1"
+        }
+      ]
+    },
+    {
+      "id": "demo-random:table:things-a:v1",
+      "kind": "randomTable",
+      "name": "Demo Thing A (d20)",
+      "sourceRef": "test-demo-random",
+      "sourcePage": null,
+      "status": "curated",
+      "diceExpr": {
+        "count": 1,
+        "sides": 20,
+        "modifier": 0
+      },
+      "ranges": [
+        {
+          "min": 1,
+          "max": 10,
+          "outcomeId": "thing-a1"
+        },
+        {
+          "min": 11,
+          "max": 20,
+          "outcomeId": "thing-a2"
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "thing-a1",
+          "text": "Demo: moeda de estanho (item fictício)"
+        },
+        {
+          "id": "thing-a2",
+          "text": "Demo: pedrinha azul (item fictício)"
+        }
+      ]
+    },
+    {
+      "id": "demo-random:table:things-b:v1",
+      "kind": "randomTable",
+      "name": "Demo Thing B (d20)",
+      "sourceRef": "test-demo-random",
+      "sourcePage": null,
+      "status": "curated",
+      "diceExpr": {
+        "count": 1,
+        "sides": 20,
+        "modifier": 0
+      },
+      "ranges": [
+        {
+          "min": 1,
+          "max": 15,
+          "outcomeId": "thing-b1"
+        },
+        {
+          "min": 16,
+          "max": 20,
+          "outcomeId": "thing-b2"
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "thing-b1",
+          "text": "Demo: cordão dourado (item fictício)"
+        },
+        {
+          "id": "thing-b2",
+          "text": "Demo: bolsa de fichas (item fictício)",
+          "sideRolls": [
+            {
+              "id": "test-quantity",
+              "diceExpr": {
+                "count": 1,
+                "sides": 6,
+                "modifier": 0
+              },
+              "application": "quantity",
+              "resourceKey": "demo-token"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

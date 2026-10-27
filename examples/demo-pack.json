@@ -1,0 +1,54 @@
+{
+  "packId": "demo-test-only",
+  "version": "0.0.1",
+  "system": "sotdl",
+  "fictionalData": true,
+  "legalNotice": "DEMO FICTÍCIA: NÃO SÃO REGRAS OFICIAIS",
+  "source": {
+    "id": "test-demo",
+    "title": "Fixture fictício para testes",
+    "sourcePage": null,
+    "status": "fictional"
+  },
+  "entities": [
+    {
+      "id": "demo-test-only:item:bronze-token:v1",
+      "kind": "item",
+      "name": "Ficha de bronze (fictícia)",
+      "sourceRef": "test-demo",
+      "modifiers": [
+        {
+          "id": "demo-mod-1",
+          "target": "defense",
+          "operation": "add",
+          "value": 2,
+          "phase": "equipment",
+          "condition": {
+            "type": "itemEquipped"
+          },
+          "stackGroup": "demo-armor",
+          "stackRule": "highest",
+          "sourceRef": "test-demo"
+        }
+      ]
+    },
+    {
+      "id": "demo-test-only:spell:brief-glow:v1",
+      "kind": "spell",
+      "name": "Brief Glow (fictícia)",
+      "rank": 0,
+      "tradition": "Demo",
+      "sourceRef": "test-demo",
+      "effects": [
+        {
+          "id": "demo-eff-1",
+          "target": "perception",
+          "operation": "add",
+          "value": 1,
+          "phase": "temporary",
+          "sourceRef": "test-demo"
+        }
+      ]
+    }
+  ]
+}

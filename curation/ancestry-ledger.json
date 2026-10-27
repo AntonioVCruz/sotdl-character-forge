@@ -1,0 +1,420 @@
+{
+  "schemaVersion": 1,
+  "responsible": "Codex / local curation",
+  "reason": "Initial immutable keys; future label changes require explicit selector updates, never key regeneration.",
+  "entries": [
+    {
+      "occurrenceKey": "arachne-curse-of-the-spider-wood",
+      "heading": "### Arachne",
+      "rawSource": "Curse of the Spider Wood",
+      "entryKey": "arachne",
+      "variantKey": "default"
+    },
+    {
+      "occurrenceKey": "bugbear-hunger-in-the-void",
+      "heading": "### Bugbear",
+      "rawSource": "Hunger in the Void",
+      "entryKey": "bugbear",
+      "variantKey": "beastman"
+    },
+    {
+      "occurrenceKey": "cambion-exquisite-agony",
+      "heading": "### Cambion",
+      "rawSource": "Exquisite Agony",
+      "entryKey": "cambion",
+      "variantKey": "default"
+    },
+    {
+      "occurrenceKey": "centaur-riders-of-the-wind",
+      "heading": "### Centaur",
+      "rawSource": "Riders of the Wind",
+      "entryKey": "centaur",
+      "variantKey": "powerful"
+    },
+    {
+      "occurrenceKey": "changeling-stolen-lives",
+      "heading": "### Changeling — Stolen Lives",
+      "rawSource": "Stolen Lives",
+      "entryKey": "changeling",
+      "variantKey": "variant"
+    },
+    {
+      "occurrenceKey": "changeling-shadow-of-the-demon-lord-core",
+      "heading": "### Changeling — Shadow of the Demon Lord Core",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "changeling",
+      "variantKey": "default"
+    },
+    {
+      "occurrenceKey": "clockwork-ghosts-in-machines",
+      "heading": "### Clockwork — Ghosts in Machines",
+      "rawSource": "Ghosts in Machines",
+      "entryKey": "clockwork",
+      "variantKey": "variant"
+    },
+    {
+      "occurrenceKey": "clockwork-shadow-of-the-demon-lord-core",
+      "heading": "### Clockwork — Shadow of the Demon Lord Core",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "clockwork",
+      "variantKey": "default"
+    },
+    {
+      "occurrenceKey": "darkling-scions-of-the-betrayer",
+      "heading": "### Darkling",
+      "rawSource": "Scions of the Betrayer",
+      "entryKey": "darkling",
+      "variantKey": "default"
+    },
+    {
+      "occurrenceKey": "dhampir-blood-scions",
+      "heading": "### Dhampir",
+      "rawSource": "Blood Scions",
+      "entryKey": "dhampir",
+      "variantKey": "default"
+    },
+    {
+      "occurrenceKey": "dwarf-for-gold-and-glory",
+      "heading": "### Dwarf — For Gold and Glory",
+      "rawSource": "For Gold and Glory",
+      "entryKey": "dwarf",
+      "variantKey": "expanded"
+    },
+    {
+      "occurrenceKey": "dwarf-shadow-of-the-demon-lord-core",
+      "heading": "### Dwarf — Shadow of the Demon Lord Core",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "dwarf",
+      "variantKey": "default"
+    },
+    {
+      "occurrenceKey": "elf-terrible-beauty",
+      "heading": "### Elf",
+      "rawSource": "Terrible Beauty",
+      "entryKey": "elf",
+      "variantKey": "default"
+    },
+    {
+      "occurrenceKey": "faun-between-two-worlds",
+      "heading": "### Faun — Between Two Worlds",
+      "rawSource": "Between Two Worlds",
+      "entryKey": "faun",
+      "variantKey": "expanded"
+    },
+    {
+      "occurrenceKey": "faun-demon-lord-s-companion",
+      "heading": "### Faun — Demon Lord's Companion",
+      "rawSource": "Demon Lord's Companion",
+      "entryKey": "faun",
+      "variantKey": "default"
+    },
+    {
+      "occurrenceKey": "ferren-in-plain-sight",
+      "heading": "### Ferren — In Plain Sight",
+      "rawSource": "In Plain Sight",
+      "entryKey": "ferren",
+      "variantKey": "expanded"
+    },
+    {
+      "occurrenceKey": "ferren-demon-lord-s-companion-2",
+      "heading": "### Ferren — Demon Lord's Companion 2",
+      "rawSource": "Demon Lord's Companion 2",
+      "entryKey": "ferren",
+      "variantKey": "default"
+    },
+    {
+      "occurrenceKey": "fomor-hunger-in-the-void",
+      "heading": "### Fomor",
+      "rawSource": "Hunger in the Void",
+      "entryKey": "fomor",
+      "variantKey": "beastman"
+    },
+    {
+      "occurrenceKey": "ghost-between-life-and-death",
+      "heading": "### Ghost",
+      "rawSource": "Between Life and Death",
+      "entryKey": "ghost",
+      "variantKey": "derived"
+    },
+    {
+      "occurrenceKey": "ghoul-flesh-of-the-fallen",
+      "heading": "### Ghoul",
+      "rawSource": "Flesh of the Fallen",
+      "entryKey": "ghoul",
+      "variantKey": "derived"
+    },
+    {
+      "occurrenceKey": "gnome-children-of-the-restless-earth",
+      "heading": "### Gnome",
+      "rawSource": "Children of the Restless Earth",
+      "entryKey": "gnome",
+      "variantKey": "default"
+    },
+    {
+      "occurrenceKey": "goblin-snot-and-stitches",
+      "heading": "### Goblin — Snot and Stitches",
+      "rawSource": "Snot and Stitches",
+      "entryKey": "goblin",
+      "variantKey": "expanded"
+    },
+    {
+      "occurrenceKey": "goblin-shadow-of-the-demon-lord-core",
+      "heading": "### Goblin — Shadow of the Demon Lord Core",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "goblin",
+      "variantKey": "default"
+    },
+    {
+      "occurrenceKey": "grave-thrall-kingdom-of-skulls",
+      "heading": "### Grave Thrall",
+      "rawSource": "Kingdom of Skulls",
+      "entryKey": "grave-thrall",
+      "variantKey": "derived"
+    },
+    {
+      "occurrenceKey": "halfling-uncommon-courage",
+      "heading": "### Halfling — Uncommon Courage",
+      "rawSource": "Uncommon Courage",
+      "entryKey": "halfling",
+      "variantKey": "expanded"
+    },
+    {
+      "occurrenceKey": "halfling-demon-lord-s-companion",
+      "heading": "### Halfling — Demon Lord's Companion",
+      "rawSource": "Demon Lord's Companion",
+      "entryKey": "halfling",
+      "variantKey": "default"
+    },
+    {
+      "occurrenceKey": "hamadryad-scions-of-nature",
+      "heading": "### Hamadryad — Scions of Nature",
+      "rawSource": "Scions of Nature",
+      "entryKey": "hamadryad",
+      "variantKey": "expanded"
+    },
+    {
+      "occurrenceKey": "hamadryad-demon-lord-s-companion-2",
+      "heading": "### Hamadryad — Demon Lord's Companion 2",
+      "rawSource": "Demon Lord's Companion 2",
+      "entryKey": "hamadryad",
+      "variantKey": "default"
+    },
+    {
+      "occurrenceKey": "hobgoblin-terrible-beauty",
+      "heading": "### Hobgoblin",
+      "rawSource": "Terrible Beauty",
+      "entryKey": "hobgoblin",
+      "variantKey": "default"
+    },
+    {
+      "occurrenceKey": "human-only-human",
+      "heading": "### Human — Only Human",
+      "rawSource": "Only Human",
+      "entryKey": "human",
+      "variantKey": "variant"
+    },
+    {
+      "occurrenceKey": "human-shadow-of-the-demon-lord-core",
+      "heading": "### Human — Shadow of the Demon Lord Core",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "human",
+      "variantKey": "default"
+    },
+    {
+      "occurrenceKey": "incarnation-hunger-in-the-void",
+      "heading": "### Incarnation",
+      "rawSource": "Hunger in the Void",
+      "entryKey": "incarnation",
+      "variantKey": "powerful"
+    },
+    {
+      "occurrenceKey": "jotun-a-glorious-death",
+      "heading": "### Jotun",
+      "rawSource": "A Glorious Death",
+      "entryKey": "jotun",
+      "variantKey": "powerful"
+    },
+    {
+      "occurrenceKey": "lizardman-foulest-reptiles",
+      "heading": "### Lizardman",
+      "rawSource": "Foulest Reptiles",
+      "entryKey": "lizardman",
+      "variantKey": "default"
+    },
+    {
+      "occurrenceKey": "lutin-faerie-friends",
+      "heading": "### Lutin",
+      "rawSource": "Faerie Friends",
+      "entryKey": "lutin",
+      "variantKey": "default"
+    },
+    {
+      "occurrenceKey": "man-of-gog-men-of-gog",
+      "heading": "### Man of Gog",
+      "rawSource": "Men of Gog",
+      "entryKey": "man-of-gog",
+      "variantKey": "variant"
+    },
+    {
+      "occurrenceKey": "molekin-the-great-mother-s-brood",
+      "heading": "### Molekin — The Great Mother’s Brood",
+      "rawSource": "The Great Mother’s Brood",
+      "entryKey": "molekin",
+      "variantKey": "expanded"
+    },
+    {
+      "occurrenceKey": "molekin-demon-lord-s-companion-2",
+      "heading": "### Molekin — Demon Lord's Companion 2",
+      "rawSource": "Demon Lord's Companion 2",
+      "entryKey": "molekin",
+      "variantKey": "default"
+    },
+    {
+      "occurrenceKey": "naga-guardians-of-the-cosmic-egg",
+      "heading": "### Naga — Guardians of the Cosmic Egg",
+      "rawSource": "Guardians of the Cosmic Egg",
+      "entryKey": "naga",
+      "variantKey": "expanded"
+    },
+    {
+      "occurrenceKey": "naga-demon-lord-s-companion-2",
+      "heading": "### Naga — Demon Lord's Companion 2",
+      "rawSource": "Demon Lord's Companion 2",
+      "entryKey": "naga",
+      "variantKey": "default"
+    },
+    {
+      "occurrenceKey": "ogre-ghastly-gourmands",
+      "heading": "### Ogre",
+      "rawSource": "Ghastly Gourmands",
+      "entryKey": "ogre",
+      "variantKey": "default"
+    },
+    {
+      "occurrenceKey": "orc-born-to-kill",
+      "heading": "### Orc — Born to Kill",
+      "rawSource": "Born to Kill",
+      "entryKey": "orc",
+      "variantKey": "expanded"
+    },
+    {
+      "occurrenceKey": "orc-shadow-of-the-demon-lord-core",
+      "heading": "### Orc — Shadow of the Demon Lord Core",
+      "rawSource": "Shadow of the Demon Lord Core",
+      "entryKey": "orc",
+      "variantKey": "default"
+    },
+    {
+      "occurrenceKey": "pixie-terrible-beauty",
+      "heading": "### Pixie",
+      "rawSource": "Terrible Beauty",
+      "entryKey": "pixie",
+      "variantKey": "default"
+    },
+    {
+      "occurrenceKey": "remade-cult-of-the-cog-god",
+      "heading": "### Remade",
+      "rawSource": "Cult of the Cog God",
+      "entryKey": "remade",
+      "variantKey": "derived"
+    },
+    {
+      "occurrenceKey": "revenant-tombs-of-the-desolation",
+      "heading": "### Revenant",
+      "rawSource": "Tombs of the Desolation",
+      "entryKey": "revenant",
+      "variantKey": "derived"
+    },
+    {
+      "occurrenceKey": "salamander-tombs-of-the-desolation",
+      "heading": "### Salamander",
+      "rawSource": "Tombs of the Desolation",
+      "entryKey": "salamander",
+      "variantKey": "default"
+    },
+    {
+      "occurrenceKey": "saprophican-brood-of-the-mother-spore",
+      "heading": "### Saprophican",
+      "rawSource": "Brood of the Mother Spore",
+      "entryKey": "saprophican",
+      "variantKey": "default"
+    },
+    {
+      "occurrenceKey": "serpent-person-freeport-companion",
+      "heading": "### Serpent Person",
+      "rawSource": "Freeport Companion",
+      "entryKey": "serpent-person",
+      "variantKey": "default"
+    },
+    {
+      "occurrenceKey": "skinchanger-tooth-claw",
+      "heading": "### Skinchanger",
+      "rawSource": "Tooth & Claw",
+      "entryKey": "skinchanger",
+      "variantKey": "template"
+    },
+    {
+      "occurrenceKey": "sylph-heaven-s-sent",
+      "heading": "### Sylph — Heaven’s Sent",
+      "rawSource": "Heaven’s Sent",
+      "entryKey": "sylph",
+      "variantKey": "expanded"
+    },
+    {
+      "occurrenceKey": "sylph-demon-lord-s-companion-2",
+      "heading": "### Sylph — Demon Lord's Companion 2",
+      "rawSource": "Demon Lord's Companion 2",
+      "entryKey": "sylph",
+      "variantKey": "default"
+    },
+    {
+      "occurrenceKey": "troglodyte-wretched-and-unclean",
+      "heading": "### Troglodyte",
+      "rawSource": "Wretched and Unclean",
+      "entryKey": "troglodyte",
+      "variantKey": "default"
+    },
+    {
+      "occurrenceKey": "undine-freeport-companion",
+      "heading": "### Undine",
+      "rawSource": "Freeport Companion",
+      "entryKey": "undine",
+      "variantKey": "default"
+    },
+    {
+      "occurrenceKey": "vampire-tombs-of-the-desolation",
+      "heading": "### Vampire",
+      "rawSource": "Tombs of the Desolation",
+      "entryKey": "vampire",
+      "variantKey": "derived"
+    },
+    {
+      "occurrenceKey": "warg-hunger-in-the-void",
+      "heading": "### Warg",
+      "rawSource": "Hunger in the Void",
+      "entryKey": "warg",
+      "variantKey": "beastman"
+    },
+    {
+      "occurrenceKey": "woad-song-of-the-woad",
+      "heading": "### Woad",
+      "rawSource": "Song of the Woad",
+      "entryKey": "woad",
+      "variantKey": "default"
+    },
+    {
+      "occurrenceKey": "yerath-children-of-the-hive",
+      "heading": "### Yerath — Children of the Hive",
+      "rawSource": "Children of the Hive",
+      "entryKey": "yerath",
+      "variantKey": "expanded"
+    },
+    {
+      "occurrenceKey": "yerath-demon-lord-s-companion-2",
+      "heading": "### Yerath — Demon Lord's Companion 2",
+      "rawSource": "Demon Lord's Companion 2",
+      "entryKey": "yerath",
+      "variantKey": "default"
+    }
+  ]
+}
