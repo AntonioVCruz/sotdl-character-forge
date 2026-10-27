@@ -75,6 +75,24 @@ Os testes de PDF requerem Python com `pypdf`; a aplicação usa apenas o navegad
 
 O runtime offline é gerado automaticamente antes de `npm run dev` e `npm run build`. Se alterar o motor/componentes durante o desenvolvimento, reinicie o servidor ou execute `npm run build:standalone` para atualizar a exportação. Os HTMLs demonstrativos dos testes ficam em `output/html/` (não versionados).
 
+## Gate de CI (testes e build)
+
+O workflow [`.github/workflows/ci.yml`](.github/workflows/ci.yml) roda em todo pull request e em todo push para `main`. Usa Node.js 22 (LTS; este repositório pede 22.15+ e `@types/node` 22) e o `package-lock.json` via `npm ci`. Não há segredos. O job falha se os testes ou o build falharem.
+
+O mesmo gate localmente:
+
+```sh
+npm ci
+npm test
+npm run build
+```
+
+`npm test` executa `vitest run`. `npm run build` executa `tsc --noEmit && vite build`; o script `prebuild` gera o runtime offline antes do Vite.
+
+Depois que o workflow estiver na `main`, marque o check **CI / test and build** como obrigatório nas regras de proteção da branch `main` (Settings → Rules → Rulesets, ou Branch protection rules). O workflow não altera essa configuração.
+
+`npm run test:e2e` (Playwright) fica fora deste gate. A suíte precisa do Chromium (`npx playwright install chromium`), de Python com `pypdf` (`tools/verify-print-pdf.py`) e exercita PDF, downloads e HTML via `file://`. Esses extras não entram na CI mínima; o acompanhamento é incluí-los quando a suíte for estável no `ubuntu-latest`. Até lá, rode o E2E localmente com os comandos da seção anterior.
+
 Planos e decisões: `specs/001-catalogo-e-proveniencia/implementation.md`, `docs/plano-nivel-zero.md`, `docs/plano-nivel-um.md`, `docs/plano-magias-demo.md`, `docs/plano-sessao-demo.md`, `docs/plano-impressao-a4.md`, `docs/plano-html-autonomo.md` e `docs/plano-equipamento-demo.md`. Evidências e limites: `docs/entrega-catalogo.md`, `docs/entrega-nivel-zero.md`, `docs/entrega-nivel-um.md`, `docs/entrega-magias-demo.md`, `docs/entrega-sessao-demo.md`, `docs/entrega-impressao-a4.md`, `docs/entrega-html-autonomo.md` e `docs/entrega-equipamento-demo.md`.
 
 ## Objetivo

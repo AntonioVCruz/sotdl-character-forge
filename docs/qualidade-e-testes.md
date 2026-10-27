@@ -19,6 +19,12 @@
 ## Fixture Liliana
 O HTML de referência expõe 16 parâmetros-base e 31 efeitos. Capturar um conjunto **autorizado** de snapshots antes/depois para casos simples: `arcane_armor`, `rune_speed`, `alter_size_grow`, `alter_size_shrink`, interações de efeitos sobrepostos. Esses resultados são *comportamento do HTML*, não aprovação automática como regra oficial. Após implementação, comparar com textos/fontes.
 
+## CI mínima
+
+O gate automático está em `.github/workflows/ci.yml`: `npm ci`, `npm test` (`vitest run`) e `npm run build` (`tsc --noEmit && vite build`) com Node.js 22, em pull requests e em pushes para `main`. A mesma sequência é o gate local; ver o README, seção «Gate de CI (testes e build)».
+
+Playwright (`npm run test:e2e`) não faz parte desse gate. Os testes de ponta a ponta instalam o Chromium, chamam Python com `pypdf` e cobrem PDF, download e HTML `file://`. Entram num workflow posterior, quando rodarem de forma estável no runner. Até lá, execute-os localmente antes de mudanças de interface.
+
 ## Definition of Done por task
 Implementação, tipagem, teste unitário relevante, aceitação verificável, atualização de docs, referência de fontes (quando mecânica), tratamento de estado de erro e ausência de regressões.
 
