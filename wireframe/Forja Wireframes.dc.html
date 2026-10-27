@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><meta name="design_doc_mode" content="canvas"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&amp;family=Patrick+Hand&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"><style>
+body{margin:0;background:#efede8;font-family:system-ui,sans-serif}a{color:#2a55b8}a:hover{color:#16357a}
+.dv-turn{padding:40px 44px 32px;border-bottom:1px solid rgba(0,0,0,.08);scroll-margin-top:16px}.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 20px}.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#1a1a1a;color:#fff;border-radius:4px;text-decoration:none}.dv-tname{font:600 13px/1.2 system-ui,sans-serif;color:#1a1a1a}.dv-opts{display:flex;flex-wrap:wrap;gap:36px;align-items:flex-start;flex-direction:column}.dv-opt{flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px}.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(0,0,0,.08);color:#1a1a1a;border-radius:5px;text-decoration:none}.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 12px/1.3 system-ui,sans-serif;color:rgba(0,0,0,.6)}.dv-card{max-width:none;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.06);overflow:hidden}.dv-opt:target .dv-oid{background:#2a78d6;color:#fff}.dv-next{margin:22px 0 0;font:12px/1.5 system-ui,sans-serif;color:rgba(0,0,0,.5)}
+.wf{font-family:'Patrick Hand',cursive;color:#1f1f1f;font-size:16px;line-height:1.3}
+.clean .wf{font-family:Helvetica,Arial,sans-serif;font-size:14px}.clean .anno,.clean .an{font-family:Helvetica,Arial,sans-serif;font-size:13px}
+.scr{display:flex;align-items:stretch}.frm{background:#fff;flex:none;display:flex;flex-direction:column}
+.bar{display:flex;gap:10px;align-items:center;padding:6px 12px;background:#e6e5e1;border-bottom:1.5px solid #222;font:11px 'JetBrains Mono',monospace;color:#555}
+.app{display:flex;align-items:center;justify-content:space-between;padding:10px 24px;border-bottom:2px solid #222}.nav{display:flex;gap:20px}.nav .on{border-bottom:2.5px solid #222;font-weight:700}
+.anno{width:340px;flex:none;box-sizing:border-box;background:#fbf7e6;border-left:2px dashed #cfc6a3;padding:22px 22px 28px;font:15px/1.35 Kalam,cursive;color:#29467f;display:flex;flex-direction:column;gap:12px}
+.anno h4{margin:0;font-size:19px;color:#1f3566}.anno ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}.anno li{display:flex;gap:8px;align-items:flex-start}.anno .a11y{border-top:1.5px dashed #cfc6a3;padding-top:10px}
+.an{font:14px/1.3 Kalam,cursive;color:#29467f;background:#fbf7e6;border-top:1.5px dashed #cfc6a3;padding:8px 12px}
+.pin{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:#2b5bd7;color:#fff;font:700 11px 'JetBrains Mono',monospace;flex:none}
+.noanno .anno,.noanno .an,.noanno .pin{display:none}
+.b{border:1.5px solid #2a2a2a;border-radius:5px;padding:12px;background:#fff;box-sizing:border-box}.bd{border:1.5px dashed #8a8a8a;border-radius:5px;padding:10px;box-sizing:border-box}.g{background:#f3f2ef}
+.c{display:flex;flex-direction:column;gap:8px}.r{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.sb{justify-content:space-between}
+.btn{display:inline-flex;align-items:center;gap:5px;border:1.5px solid #222;border-radius:6px;padding:3px 11px;background:#fff;white-space:nowrap;font-size:15px}.btn.p{background:#222;color:#fff}.btn.x{border-style:dashed;border-color:#b5b5b5;color:#9a9a9a}.btn.s{font-size:13px;padding:1px 8px}.btn.q{border-color:transparent;text-decoration:underline;padding-left:2px;padding-right:2px}
+.bdg{display:inline-flex;align-items:center;gap:4px;font:11px/1.5 'JetBrains Mono',monospace;border:1px solid #333;border-radius:20px;padding:0 8px;white-space:nowrap;background:#fff;color:#222}.bdg.f{background:#222;color:#fff}.bdg.w{border-color:#b8441f;color:#b8441f;background:#fff4ef}.bdg.d{border-style:dashed;color:#555}
+.m{font-family:'JetBrains Mono',monospace;font-size:12px}.mu{color:#767676}.h1{font-size:30px;font-weight:700;line-height:1.1}.h2{font-size:21px;font-weight:700;line-height:1.15}.h3{font-size:17px;font-weight:700}.lbl{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#666}
+.ph{display:flex;align-items:center;justify-content:center;text-align:center;background:repeating-linear-gradient(135deg,#ececea 0 7px,#f7f7f5 7px 14px);border:1.5px solid #9a9a9a;border-radius:4px;font:11px 'JetBrains Mono',monospace;color:#777}
+.sus{opacity:.55;border-style:dashed}.dis{color:#9a9a9a}.st{text-decoration:line-through;color:#888}
+.t{width:100%;border-collapse:collapse}.t th{text-align:left;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:#555;border-bottom:2px solid #222;padding:6px 8px;font-weight:400}.t td{border-bottom:1px solid #d2d2d2;padding:7px 8px;vertical-align:middle}
+.tg{display:inline-block;width:32px;height:17px;border:1.5px solid #222;border-radius:12px;position:relative;flex:none;background:#fff;box-sizing:border-box}.tg::after{content:'';position:absolute;top:2px;left:2px;width:10px;height:10px;border-radius:50%;background:#222}.tg.on{background:#222}.tg.on::after{left:17px;background:#fff}
+.ck{display:inline-flex;align-items:center;justify-content:center;width:15px;height:15px;border:1.5px solid #222;border-radius:3px;font-size:11px;flex:none;background:#fff;box-sizing:border-box}
+.rd{width:14px;height:14px;border:1.5px solid #222;border-radius:50%;flex:none;display:inline-block;box-sizing:border-box}.rd.on{background:radial-gradient(#222 0 3px,#fff 3.5px)}
+.in{display:inline-flex;align-items:center;border:1.5px solid #333;border-radius:5px;padding:3px 9px;background:#fff;color:#888;box-sizing:border-box}
+.hl{background:linear-gradient(transparent 55%,#ffe27a 55%)}.fx{outline:3px solid #2b5bd7;outline-offset:2px}
+.dim{background:repeating-linear-gradient(135deg,#bdbdbb 0 8px,#c8c8c6 8px 16px)}
+details>summary{cursor:pointer;list-style:none}details>summary::-webkit-details-marker{display:none}
+.trace{font:12px/1.6 'JetBrains Mono',monospace;background:#f6f6f4;border:1px solid #ccc;border-radius:4px;padding:8px 10px;margin-top:6px}
+.die{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border:1.5px solid #222;border-radius:4px;font:600 11px 'JetBrains Mono',monospace;background:#fff;box-sizing:border-box}
+.node{text-decoration:none;color:inherit}.node:hover{background:#f3f2ef}.arr{font-size:30px;text-align:center;color:#444;align-self:center}
+.phone{border:3px solid #222;border-radius:38px;overflow:hidden;background:#fff;width:390px;height:844px;display:flex;flex-direction:column;flex:none;box-sizing:border-box}
+.a4{width:794px;height:1123px;background:#fff;border:1px solid #999;box-shadow:0 2px 6px rgba(0,0,0,.15);padding:40px 44px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;font-size:13px;overflow:hidden;flex:none}
+.a4 .t td,.a4 .t th{padding:3px 5px}
+</style></helmet>
+<section class="dv-turn {{ rootCls }}" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">Forja de Personagens — wireframes lo-fi v1 · desktop 1440 + mobile 390</span></div>
+<div class="dv-opts">
+
+<!-- 1a FLOW -->
+<div class="dv-opt" id="1a"><div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>Mapa do fluxo + legenda + acessibilidade</div>
+<div class="dv-card"><div class="scr">
+<div class="frm wf" style="width:1440px;padding:32px 40px;gap:28px;box-sizing:border-box">
+<div class="r sb"><span class="h1">Mapa de telas</span><span class="mu">clique num bloco para ir até a tela</span></div>
+<div style="display:grid;grid-template-columns:repeat(6,190px);column-gap:44px;row-gap:10px;justify-content:start">
+<a class="b c node" href="#1c" style="gap:2px"><span class="m mu">1 · 1c</span><b class="h3">Início / Personagens</b><span class="mu">lista, importar JSON</span></a>
+<a class="b c node" href="#1d" style="gap:2px"><span class="m mu">2 · 1d</span><b class="h3">Fontes &amp; Ruleset</b><span class="mu">packs, house rules</span></a>
+<a class="b c node" href="#1e" style="gap:2px;border-width:3px"><span class="m mu">3 · 1e / 1f</span><b class="h3">Criador (wizard)</b><span class="mu">passos a–k, ChoiceSlots</span></a>
+<a class="b c node" href="#1g" style="gap:2px"><span class="m mu">4 · 1g</span><b class="h3">Gerar tudo aleatoriamente</b><span class="mu">config → prévia</span></a>
+<a class="b c node" href="#1i" style="gap:2px;border-width:3px"><span class="m mu">6 · 1i</span><b class="h3">Ficha do personagem</b><span class="mu">ver / editar</span></a>
+<a class="b c node" href="#1l" style="gap:2px"><span class="m mu">9 · 1l</span><b class="h3">Exportar</b><span class="mu">JSON, HTML, A4/PDF</span></a>
+<span class="m mu" style="text-align:center">↓ "Novo personagem" → Criador</span><span class="m mu" style="text-align:center">↓ "Continuar" → Criador</span><span class="m mu" style="text-align:center">↕ mudar Ancestry / Path / nível</span><span class="m mu" style="text-align:center">Confirmar → Ficha · Cancelar → Criador</span><span class="m mu" style="text-align:center">↓ clicar num número</span><span class="m mu" style="text-align:center">↓ Visualizar A4</span>
+<a class="bd c node" href="#1c" style="gap:2px"><b>Abrir</b><span class="mu">completo → Ficha<br>rascunho → Criador</span></a>
+<div></div>
+<a class="bd c node" href="#1h" style="gap:2px"><span class="m mu">5 · 1h</span><b>Prévia de impacto</b><span class="mu">preservado / revisão / suspenso</span></a>
+<a class="bd c node" href="#1k" style="gap:2px"><span class="m mu">8 · 1k</span><b>Histórico / Auditoria</b><span class="mu">de Criador e Ficha</span></a>
+<a class="bd c node" href="#1j" style="gap:2px"><span class="m mu">7 · 1j</span><b>Drawer "Origem dos valores"</b></a>
+<a class="bd c node" href="#1m" style="gap:2px"><span class="m mu">10 · 1m</span><b>Ficha A4</b><span class="mu">imprimir / PDF</span></a>
+</div>
+<div class="r" style="gap:14px;margin-top:-14px"><span class="m mu">setas principais:</span><b>Início → Fontes → Criador → Gerar tudo → Ficha → Exportar</b><span class="mu">· Mobile: <a href="#1n">1n</a> (criação, ficha, prévia)</span></div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px">
+<div class="b c"><b class="h3">Estratégia (sempre em texto)</b><div class="r"><span class="bdg">manual</span></div><div class="r"><span class="bdg">tabela publicada</span></div><div class="r"><span class="bdg">aleatório entre opções válidas (não oficial)</span></div><div class="r"><span class="bdg w">pendente</span></div><span class="mu">Badge = texto + borda; cor nunca é o único sinal.</span></div>
+<div class="b c"><b class="h3">Estado do slot</b><div style="display:grid;grid-template-columns:1fr 1fr;gap:6px"><span class="bdg d">○ vazio</span><span class="bdg d">◐ prévia — não confirmada</span><span class="bdg f">● confirmado</span><span class="bdg f">▣ travado</span><span class="bdg w">△ requer revisão</span><span class="bdg w">◇ pendente</span><span class="bdg d" style="opacity:.6">⊘ suspenso (fonte desativada)</span><span class="bdg d">⊘ opção indisponível + motivo</span></div></div>
+<div class="b c"><b class="h3">Status do personagem</b><div class="r"><span class="bdg f">● Completo</span><span class="mu">só quando 0 pendências obrigatórias</span></div><div class="r"><span class="bdg w">◇ Rascunho com pendências (n)</span></div><span class="mu">Regra: a UI nunca mostra "Completo" com escolha obrigatória não resolvida. Cancelar nunca altera o personagem salvo.</span></div>
+</div>
+</div>
+<div class="anno"><h4>Como ler estes wireframes</h4><ol><li><span class="pin">i</span><span>Cada tela = frame cinza + coluna amarela de notas. Números azuis no frame ↔ notas.</span></li><li><span class="pin">i</span><span>O componente ChoiceSlot (<a href="#1b">1b</a>) é desenhado uma vez e reutilizado em todos os passos.</span></li><li><span class="pin">i</span><span>Conteúdo 100% fictício. Termos oficiais do jogo em inglês; UI em pt-BR.</span></li></ol>
+<div class="a11y c"><h4>Acessibilidade (vale para tudo)</h4><ol><li>• Navegação completa por teclado; ordem de Tab = ordem visual.</li><li>• Foco visível (contorno azul 3px) em todo controle.</li><li>• Todo controle tem rótulo; ícones sempre com texto.</li><li>• Esc fecha modais/drawers e devolve o foco a quem abriu.</li><li>• Badges de estratégia/estado são texto, não só cor.</li><li>• Rolagens anunciadas via região aria-live ("3d6: 4, 5, 3 = 12"); Histórico é uma lista legível por leitor de tela.</li></ol></div></div>
+</div></div></div>
+
+<!-- 1b CHOICESLOT -->
+<div class="dv-opt" id="1b"><div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>Componente ChoiceSlot — anatomia, escolha manual e estados</div>
+<div class="dv-card"><div class="scr">
+<div class="frm wf" style="width:1440px;padding:32px 40px;gap:24px;box-sizing:border-box">
+<span class="h1">ChoiceSlot</span>
+<div style="display:grid;grid-template-columns:1.15fr 1fr;gap:28px;align-items:start">
+<div class="b c" style="gap:12px;border-width:2px">
+<div class="r sb" style="align-items:flex-start"><div class="c" style="gap:2px"><div class="r"><span class="pin">1</span><span class="h2">Background · Human</span></div><span class="m mu">fonte: Core Rules (placeholder) · p. 00 · tabela 3d6</span></div><div class="c" style="gap:4px;align-items:flex-end"><div class="r"><span class="pin">2</span><span class="bdg">tabela publicada</span></div><span class="bdg d">◐ prévia — não confirmada</span></div></div>
+<div class="r"><span class="pin">3</span><span class="btn s">Escolher manualmente</span><span class="btn s">Sortear</span><span class="btn s">Rolar novamente</span><span class="btn s">Travar</span><span class="btn s">Ver dados e fonte</span><span class="btn s">Histórico</span></div>
+<div class="b g c" style="gap:6px"><div class="r sb"><span class="lbl">Resultado proposto</span><span class="r"><span class="pin">4</span><span class="btn s p">Confirmar</span><span class="btn s">Descartar prévia</span></span></div><div class="h3">12 — "Cresceu atrás do balcão de uma estalagem de estrada"</div><span class="mu">texto fictício · ainda não aplicado à ficha</span></div>
+<div class="c" style="gap:4px"><div class="r sb"><div class="r"><span class="pin">5</span><span class="lbl">Consequências</span></div><span class="bdg w">△ Requerem revisão</span></div><span>• +1 idioma a escolher em <u>Profissões e Idiomas</u></span><span>• Nenhuma mudança de atributo</span><span>• Substitui "Filho de pescador" (mantido no Histórico)</span></div>
+<details open=""><summary class="r"><span class="pin">6</span><b>▾ Rastro da rolagem</b><span class="m mu">3d6 = 12</span></summary><div class="trace"><div class="r"><span>expressão 3d6 · faces</span><span class="die">4</span><span class="die">5</span><span class="die">3</span><span>→ total 12</span></div>faixa 11–12 → linha 5 · tabela "Background (Human)"<br>fonte Core Rules (placeholder) p. 00<br>seed 7F3A-21C9 · PRNG v1 · rerolagem #1</div></details>
+</div>
+<div class="c" style="gap:16px">
+<div class="b c"><div class="r sb"><div class="r"><span class="pin">7</span><span class="h3">Escolher manualmente · Background</span></div><span class="btn s">Fechar (Esc)</span></div><span class="in" style="width:100%">Filtrar opções…</span>
+<div class="c" style="gap:0">
+<div class="r" style="padding:7px 4px;border-bottom:1px solid #ddd"><span class="rd on"></span><span>11–12 · Cresceu atrás do balcão…</span><span class="m mu" style="margin-left:auto">Core p.00</span></div>
+<div class="r" style="padding:7px 4px;border-bottom:1px solid #ddd"><span class="rd"></span><span>13–14 · Aprendiz de cartógrafo</span><span class="m mu" style="margin-left:auto">Core p.00</span></div>
+<div class="r dis" style="padding:7px 4px;border-bottom:1px solid #ddd"><span class="rd" style="border-color:#bbb"></span><span>15 · Ex-soldado da guarda</span><span class="bdg d" style="margin-left:auto">⊘ requer Strength 11 (atual 10)</span></div>
+<div class="r dis" style="padding:7px 4px;border-bottom:1px solid #ddd"><span class="rd" style="border-color:#bbb"></span><span>16 · Acólito do templo de vidro</span><span class="bdg d" style="margin-left:auto">⊘ fonte "Pack Brasa &amp; Vidro" desativada</span></div>
+<div class="r dis" style="padding:7px 4px"><span class="rd" style="border-color:#bbb"></span><span>17 · Herdeiro de ofício</span><span class="bdg d" style="margin-left:auto">⊘ curadoria incomplete</span></div>
+</div>
+<div class="r sb"><span class="mu">6 opções · 3 indisponíveis (mostradas com motivo)</span><span class="btn s p">Usar esta opção</span></div></div>
+<div class="b c g"><div class="r"><span class="pin">8</span><b>"Ver dados e fonte"</b></div><span class="m">id: bg.human.05 · fonte Core Rules (placeholder) v1.2 · p. 00 · curadoria: curated · tabela 3d6 (16 linhas)</span></div>
+</div>
+</div>
+<span class="lbl">Estados</span>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+<div class="b c" style="gap:6px"><span class="lbl">Vazio</span><div class="r sb"><b>Porte · Human</b><span class="bdg w">pendente</span></div><div class="bd mu">○ vazio — nenhum resultado</div><div class="r"><span class="btn s">Escolher manualmente</span><span class="btn s">Sortear</span></div></div>
+<div class="b c" style="gap:6px"><span class="lbl">Prévia sorteada</span><div class="r sb"><b>Idade · Human</b><span class="bdg">tabela publicada</span></div><div class="bd r" style="background:#fafaf8"><span class="die">3</span><span class="die">4</span><span class="die">4</span><span>= 11 → Adulto</span></div><span class="bdg d" style="align-self:flex-start">◐ prévia — não confirmada</span><div class="r"><span class="btn s p">Confirmar</span><span class="btn s">Rolar novamente</span><span class="btn s">Descartar</span></div></div>
+<div class="b c" style="gap:6px"><span class="lbl">Confirmado</span><div class="r sb"><b>Aparência</b><span class="bdg">manual</span></div><div class="b g">Marcas de queimadura nas mãos</div><div class="r sb"><span class="bdg f">● confirmado</span><span class="mu">Consequências: Aplicadas</span></div><div class="r"><span class="btn s">Escolher manualmente</span><span class="btn s">Sortear</span><span class="btn s">Travar</span></div></div>
+<div class="b c" style="gap:6px"><span class="lbl">Travado</span><div class="r sb"><b>Interesting Thing</b><span class="bdg">tabela publicada</span></div><div class="b g">Um mapa costurado no forro</div><span class="bdg f" style="align-self:flex-start">▣ travado</span><div class="r"><span class="btn s x">Sortear</span><span class="btn s x">Rolar novamente</span><span class="btn s">Destravar</span></div><span class="m mu">travado: "Gerar tudo" não altera</span></div>
+<div class="b c" style="gap:6px"><span class="lbl">Requer revisão</span><div class="r sb"><b>Personalidade</b><span class="bdg">tabela publicada</span></div><div class="b g">Desconfiado, mas leal</div><span class="bdg w" style="align-self:flex-start">△ requer revisão</span><span class="mu">Motivo: a Ancestry mudou; a tabela usada não pertence à nova Ancestry.</span><div class="r"><span class="btn s">Revisar</span><span class="btn s">Manter mesmo assim</span></div></div>
+<div class="b c" style="gap:6px"><span class="lbl">Pendente · sem estratégia</span><div class="r sb"><b>Profissão 2</b><span class="bdg w">pendente</span></div><div class="r"><span class="btn s">Escolher manualmente</span><span class="btn s x">Sortear</span></div><div class="bd mu" style="font-size:14px">Sortear indisponível: não há tabela publicada para esta combinação e o sorteio uniforme (não oficial) não está autorizado.</div><span class="btn s q" style="align-self:flex-start">Autorizar em Fontes &amp; Ruleset →</span></div>
+<div class="b c sus" style="gap:6px"><span class="lbl">Suspenso</span><div class="r sb"><b>Spell · rank 1</b><span class="bdg">manual</span></div><div class="b g">Fio de Calor · Brasa Serena</div><span class="bdg d" style="align-self:flex-start">⊘ suspenso</span><span>Fonte "Pack Brasa &amp; Vidro" desativada. Escolha preservada, não apagada.</span><div class="r"><span class="btn s">Reativar fonte</span><span class="btn s">Escolher outra</span></div></div>
+<div class="b c" style="gap:6px"><span class="lbl">Foco por teclado</span><div class="r sb"><b>Porte · Human</b><span class="bdg w">pendente</span></div><div class="bd mu">○ vazio</div><div class="r"><span class="btn s">Escolher manualmente</span><span class="btn s fx">Sortear</span></div><span class="m mu">Tab → próxima ação · Enter/Espaço ativa · resultado anunciado em aria-live</span></div>
+</div>
+</div>
+<div class="anno"><h4>Interações</h4><ol>
+<li><span class="pin">1</span><span>Título = slot · contexto (Ancestry, fonte, página, dado).</span></li>
+<li><span class="pin">2</span><span>Badge de estratégia sempre visível em texto. Muda para "manual" se o usuário escolher na lista.</span></li>
+<li><span class="pin">3</span><span>"Rolar novamente" só existe depois de um resultado. "Travar" protege o slot de Sortear/Gerar tudo. Ações indisponíveis ficam visíveis, tracejadas, com motivo.</span></li>
+<li><span class="pin">4</span><span>Resultado sorteado é PRÉVIA: não altera a ficha até "Confirmar". "Descartar" volta ao valor anterior.</span></li>
+<li><span class="pin">5</span><span>Consequências: "Aplicadas" ou "Requerem revisão" (link leva ao passo afetado).</span></li>
+<li><span class="pin">6</span><span>Rastro expansível: expressão, cada face, total, faixa, tabela, fonte/página, seed, índice de rerolagem.</span></li>
+<li><span class="pin">7</span><span>Lista manual mostra TODAS as opções; inválidas desativadas com o motivo. Nunca escondidas.</span></li>
+<li><span class="pin">8</span><span>"Ver dados e fonte" abre painel inline com id, versão, curadoria.</span></li>
+</ol><div class="a11y c"><h4>A11y</h4><span>Slot = região com título (aria-labelledby). Ações = botões reais. Opções desativadas: aria-disabled + motivo em aria-describedby (continuam focáveis para ler o motivo).</span></div></div>
+</div></div></div>
+
+<!-- 1c INICIO -->
+<div class="dv-opt" id="1c"><div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a>1 · Início / Personagens (+ estado vazio)</div>
+<div class="dv-card"><div class="scr">
+<div class="frm wf" style="width:1440px">
+<div class="bar"><span>● ● ●</span><span class="in m" style="flex:1">forja / personagens</span><span>1440</span></div>
+<div class="app"><div class="r" style="gap:28px"><b class="h2">Forja de Personagens</b><div class="nav"><span class="on">Personagens</span><span>Fontes &amp; Ruleset</span><span>Histórico</span></div></div><span class="bdg d">offline · salvo neste navegador</span></div>
+<div class="c" style="padding:28px 40px;gap:20px">
+<div class="r sb"><div class="c" style="gap:2px"><span class="h1">Personagens</span><span class="mu">3 personagens</span></div><div class="r"><span class="pin">1</span><span class="btn">Importar personagem JSON</span><span class="btn p">+ Novo personagem</span></div></div>
+<div class="r"><span class="in" style="width:300px">Buscar por nome…</span><span class="btn s">Status: todos ▾</span><span class="btn s">Ordenar: atualizado ▾</span></div>
+<table class="t"><thead><tr><th>Nome</th><th>Nível</th><th>Ancestry</th><th>Path</th><th>Status</th><th>Atualizado</th><th></th></tr></thead><tbody>
+<tr><td><b>Ilsa Brasa</b></td><td>3</td><td>Human (Core)</td><td>Aprendiz da Centelha (Novice)</td><td><span class="bdg f">● Completo</span></td><td class="mu">hoje 14:02</td><td><div class="r"><span class="btn s">Abrir</span><span class="btn s">⋯</span></div></td></tr>
+<tr><td><b>Tomé da Ponte</b></td><td>0</td><td>Human (Core)</td><td class="mu">—</td><td><div class="r"><span class="pin">2</span><span class="bdg w">◇ Rascunho com pendências (4)</span></div></td><td class="mu">ontem</td><td><div class="r"><span class="btn s">Abrir</span><span class="btn s">⋯</span></div></td></tr>
+<tr><td><b>Sem nome #3</b></td><td>5</td><td>Human (Core)</td><td>Guardião da Trilha (Novice)</td><td><div class="r"><span class="bdg w">◇ Rascunho com pendências (1)</span><span class="bdg d">⊘ 1 escolha suspensa</span></div></td><td class="mu">12 out</td><td><div class="r"><span class="btn s">Abrir</span><span class="btn s fx">⋯</span></div></td></tr>
+</tbody></table>
+<div class="r" style="justify-content:flex-end"><div class="b c" style="width:220px;gap:4px;margin-top:-14px"><span class="pin">3</span><span>Duplicar</span><span>Exportar…</span><span>Ver histórico</span><span style="border-top:1px solid #ccc;padding-top:4px">Excluir… (confirma)</span></div></div>
+<div class="r" style="gap:24px;align-items:flex-start">
+<div class="c" style="gap:6px"><span class="lbl">Estado vazio</span><div class="bd c" style="width:560px;align-items:center;text-align:center;padding:36px;gap:12px"><div class="ph" style="width:90px;height:90px">ilustração</div><span class="h2">Nenhum personagem ainda</span><span class="mu">Crie do zero — manual, híbrido ou tudo aleatório — ou importe um arquivo JSON exportado pela Forja.</span><div class="r"><span class="btn">Importar personagem JSON</span><span class="btn p">+ Novo personagem</span></div></div></div>
+<div class="c" style="gap:6px"><span class="lbl">Erro de importação</span><div class="b c" style="width:420px;border-color:#b8441f"><b>Não foi possível importar "tome.json"</b><span>Versão de esquema desconhecida (v9). Nada foi alterado.</span><div class="r"><span class="btn s">Ver detalhes</span><span class="btn s">Fechar</span></div></div><div class="b c" style="width:420px"><b>Importado: "ilsa.json"</b><span class="mu">Usa 1 fonte não instalada → abre como rascunho, escolha suspensa.</span></div></div>
+</div>
+</div></div>
+<div class="anno"><h4>Notas</h4><ol>
+<li><span class="pin">1</span><span>"Novo personagem" abre o Criador no passo a (Ruleset). Importar aceita JSON da Forja; valida antes de gravar.</span></li>
+<li><span class="pin">2</span><span>Status em texto. Contador de pendências. "Abrir" leva à Ficha se completo, ao Criador (primeiro passo pendente) se rascunho.</span></li>
+<li><span class="pin">3</span><span>Menu ⋯ por linha. Excluir pede confirmação e sugere exportar antes.</span></li>
+<li><span class="pin">i</span><span>Sem contas: aviso discreto "salvo neste navegador" sempre visível.</span></li>
+</ol><div class="a11y c"><h4>A11y</h4><span>Tabela com cabeçalhos reais; menu ⋯ com aria-label "Ações de Sem nome #3"; foco volta ao ⋯ ao fechar com Esc.</span></div></div>
+</div></div></div>
+
+<!-- 1d FONTES -->
+<div class="dv-opt" id="1d"><div class="dv-olabel"><a class="dv-oid" href="#1d">1d</a>2 · Biblioteca de fontes &amp; Ruleset</div>
+<div class="dv-card"><div class="scr">
+<div class="frm wf" style="width:1440px">
+<div class="bar"><span>● ● ●</span><span class="in m" style="flex:1">forja / fontes</span><span>1440</span></div>
+<div class="app"><div class="r" style="gap:28px"><b class="h2">Forja de Personagens</b><div class="nav"><span>Personagens</span><span class="on">Fontes &amp; Ruleset</span><span>Histórico</span></div></div><span class="bdg d">offline · salvo neste navegador</span></div>
+<div style="display:grid;grid-template-columns:1fr 380px;gap:28px;padding:28px 40px">
+<div class="c" style="gap:14px">
+<div class="r sb"><div class="c" style="gap:2px"><span class="h1">Biblioteca de fontes</span><span class="mu">95 publicações / packs · 12 ativas</span></div><div class="r"><span class="pin">1</span><span class="btn">Importar pack JSON</span><span class="m mu">máx. 5 MB</span></div></div>
+<div class="b g r sb"><span>✓ "pack-ventos.json" importado (1,2 MB · 34 entradas). <b>Importar não ativa</b> — ative abaixo para usar.</span><span class="btn s">Ativar agora</span></div>
+<div class="r"><span class="in" style="width:280px">Buscar título…</span><span class="btn s">Tipo: todos ▾</span><span class="btn s">Curadoria: todas ▾</span><span class="btn s">Somente ativas</span><span class="btn s">Usadas por personagens</span><span class="pin">2</span></div>
+<table class="t"><thead><tr><th>Ativa</th><th>Título</th><th>Versão</th><th>Ancestry</th><th>Path</th><th>Spell</th><th>Item</th><th>Tabela</th><th>Curadoria</th><th>Usada por</th></tr></thead><tbody>
+<tr><td><span class="tg on"></span></td><td><b>Core Rules (placeholder)</b></td><td class="m">1.2</td><td>6</td><td>12</td><td>140</td><td>90</td><td>48</td><td><span class="bdg">curated</span></td><td>3</td></tr>
+<tr><td><span class="tg on"></span></td><td>Compêndio de Tabelas Menores</td><td class="m">0.9</td><td>0</td><td>0</td><td>0</td><td>12</td><td>36</td><td><span class="bdg w">needs-review</span></td><td>1</td></tr>
+<tr style="background:#fafaf8"><td><div class="r"><span class="tg fx"></span><span class="pin">3</span></div></td><td><b>Pack Brasa &amp; Vidro</b></td><td class="m">2.0</td><td>1</td><td>4</td><td>22</td><td>8</td><td>3</td><td><span class="bdg">curated</span></td><td>2</td></tr>
+<tr><td><span class="tg"></span></td><td>Pack Ventos do Norte <span class="bdg d">importado</span></td><td class="m">1.0</td><td>2</td><td>3</td><td>10</td><td>14</td><td>5</td><td><span class="bdg d">incomplete</span></td><td>0</td></tr>
+<tr><td><span class="tg on"></span></td><td>Pack Comunitário: Estradas</td><td class="m">0.4</td><td>0</td><td>2</td><td>6</td><td>20</td><td>9</td><td><span class="bdg w">needs-review</span></td><td>0</td></tr>
+<tr><td><span class="tg"></span></td><td>Publicação Placeholder 06</td><td class="m">1.0</td><td>3</td><td>8</td><td>40</td><td>30</td><td>12</td><td><span class="bdg">curated</span></td><td>0</td></tr>
+<tr><td><span class="tg"></span></td><td>Publicação Placeholder 07</td><td class="m">1.1</td><td>0</td><td>6</td><td>18</td><td>4</td><td>2</td><td><span class="bdg">curated</span></td><td>0</td></tr>
+</tbody></table>
+<div class="r sb mu"><span>Mostrando 1–7 de 95</span><span class="r"><span class="btn s">‹</span><span>1 2 3 … 14</span><span class="btn s">›</span></span></div>
+</div>
+<div class="c" style="gap:16px">
+<div class="b c" style="border-width:2px;box-shadow:4px 4px 0 #222"><div class="r"><span class="pin">3</span><b class="h3">Desativar "Pack Brasa &amp; Vidro"?</b></div><span>Usada por <b>2 personagens</b> (Ilsa Brasa, Sem nome #3) em 3 escolhas.</span><div class="bd">As escolhas ficarão <b>suspensas, não apagadas</b>. Reativar a fonte as restaura.</div><div class="r" style="justify-content:flex-end"><span class="btn">Cancelar</span><span class="btn p">Desativar mesmo assim</span></div></div>
+<div class="b c"><div class="r sb"><b class="h3">Regras opcionais &amp; house rules</b><span class="pin">4</span></div><span class="mu">Perfil: <u>Campanha Ponte Cinza ▾</u></span>
+<div class="r sb" style="border-top:1px solid #ddd;padding-top:8px"><span>Transferir 1 ponto de atributo</span><span class="tg on"></span></div>
+<div class="r sb"><span>Rolar atributos aleatórios quando a Ancestry permitir</span><span class="tg on"></span></div>
+<div class="r sb"><span>Permitir sorteio uniforme entre opções válidas (não oficial)</span><span class="tg"></span></div>
+<div class="r sb"><span>Exibir conteúdo needs-review nas listas</span><span class="tg on"></span></div>
+<div class="r sb" style="border-top:1px solid #ddd;padding-top:8px"><span>House rule: "Riqueza mínima Confortável"</span><span class="r"><span class="tg on"></span><span class="btn s">Editar</span></span></div>
+<span class="btn s" style="align-self:flex-start">+ Adicionar house rule</span></div>
+</div>
+</div></div>
+<div class="anno"><h4>Notas</h4><ol>
+<li><span class="pin">1</span><span>Import: valida esquema e tamanho (&gt; 5 MB recusa com mensagem). Pack entra DESATIVADO; aviso explícito.</span></li>
+<li><span class="pin">2</span><span>Filtros combináveis; contagens por tipo ajudam o mestre a ver o que cada pack traz.</span></li>
+<li><span class="pin">3</span><span>Desativar fonte usada por personagem abre confirmação com contagem; escolhas viram "suspenso" (ver <a href="#1b">1b</a>).</span></li>
+<li><span class="pin">4</span><span>Toggles explícitos, rótulo em texto e estado lido como "ligado/desligado". Perfil por campanha agrupa fontes + regras.</span></li>
+</ol><div class="a11y c"><h4>A11y</h4><span>Toggles = role="switch" com nome da fonte no rótulo. Confirmação é diálogo modal; Esc = Cancelar.</span></div></div>
+</div></div></div>
+
+<!-- 1e CRIADOR -->
+<div class="dv-opt" id="1e"><div class="dv-olabel"><a class="dv-oid" href="#1e">1e</a>3 · Criador — layout do wizard (passo b · Ancestry)</div>
+<div class="dv-card"><div class="scr">
+<div class="frm wf" style="width:1440px">
+<div class="bar"><span>● ● ●</span><span class="in m" style="flex:1">forja / criador / tome-da-ponte / ancestry</span><span>1440</span></div>
+<div class="r sb" style="padding:10px 24px;border-bottom:2px solid #222;gap:16px">
+<div class="r" style="gap:14px"><span class="btn s q">← Personagens</span><b class="h3">Rascunho: Tomé da Ponte</b><span class="bdg w">◇ pendências (4)</span></div>
+<div class="r" style="gap:14px"><span class="pin">1</span><div class="r" style="gap:0;border:1.5px solid #222;border-radius:6px;overflow:hidden"><span style="padding:3px 12px">Manual</span><span style="padding:3px 12px;background:#222;color:#fff">Híbrido</span><span style="padding:3px 12px">Tudo aleatório</span></div>
+<span class="r"><span class="lbl">Nível-alvo</span><span class="btn s">−</span><b>3</b><span class="btn s">+</span><span class="m mu">0–10</span></span>
+<span class="m">seed 7F3A-21C9</span><span class="btn s">copiar</span>
+<span class="btn p">Gerar tudo aleatoriamente</span><span class="btn s">Histórico</span><span class="btn s">Salvar rascunho</span></div></div>
+<div style="display:grid;grid-template-columns:260px 1fr 320px;gap:24px;padding:24px">
+<div class="c" style="gap:4px"><div class="r"><span class="pin">2</span><span class="lbl">Passos</span></div>
+<div class="r sb" style="padding:6px 8px"><span>a · Ruleset e fontes</span><span class="m">●</span></div>
+<div class="r sb" style="padding:6px 8px;border:2px solid #222;border-radius:5px;background:#f3f2ef"><b>b · Ancestry</b><span class="m">◐</span></div>
+<div class="r sb" style="padding:6px 8px"><span>c · Atributos</span><span class="bdg w">△ revisão</span></div>
+<div class="r sb" style="padding:6px 8px"><span>d · Detalhes narrativos</span><span class="m mu">○ 0/5</span></div>
+<div class="r sb" style="padding:6px 8px"><span>e · Profissões e Idiomas</span><span class="m mu">○</span></div>
+<div class="r sb" style="padding:6px 8px"><span>f · Riqueza e Equipamento</span><span class="m mu">○</span></div>
+<div class="r sb" style="padding:6px 8px"><span>g · Interesting Thing</span><span class="m">▣</span></div>
+<div class="r sb" style="padding:6px 8px"><span>h · Nome e Notas</span><span class="m mu">○</span></div>
+<div class="r sb" style="padding:6px 8px"><span>i · Progressão por nível</span><span class="bdg w">◇ nv 1–3</span></div>
+<div class="r sb" style="padding:6px 8px"><span>j · Tradições e Magias</span><span class="bdg w">◇</span></div>
+<div class="r sb" style="padding:6px 8px"><span>k · Revisão final</span><span class="m mu">—</span></div>
+<div class="bd m mu" style="margin-top:8px;font-size:11px;line-height:1.6">○ vazio · ● escolhido<br>▣ travado · ◇ pendente<br>△ requer revisão · ◐ prévia</div>
+</div>
+<div class="c" style="gap:16px">
+<div class="c" style="gap:2px"><span class="m mu">Passo b de k</span><span class="h1">Ancestry</span><span class="mu">Escolha a Ancestry, a variante e como os atributos iniciais são definidos.</span></div>
+<div class="b c" style="gap:10px"><div class="r sb"><div class="c" style="gap:2px"><span class="h2">Ancestry</span><span class="m mu">fontes ativas: 4 · 6 opções</span></div><div class="r"><span class="bdg">manual</span><span class="bdg f">● confirmado</span></div></div>
+<div class="r"><span class="btn s">Escolher manualmente</span><span class="btn s">Sortear</span><span class="btn s">Rolar novamente</span><span class="btn s">Travar</span><span class="btn s">Ver dados e fonte</span><span class="btn s">Histórico</span></div>
+<div class="c" style="gap:0">
+<div class="r" style="padding:7px 4px;border-bottom:1px solid #ddd;background:#f3f2ef"><span class="rd on"></span><b>Human (Core)</b><span class="m mu" style="margin-left:auto">Core Rules p. 00</span></div>
+<div class="r" style="padding:7px 4px;border-bottom:1px solid #ddd"><span class="rd"></span><span>Ancestry Placeholder B</span><span class="m mu" style="margin-left:auto">Compêndio p. 00</span></div>
+<div class="r dis" style="padding:7px 4px;border-bottom:1px solid #ddd"><span class="rd" style="border-color:#bbb"></span><span>Ancestry Placeholder C</span><span class="bdg d" style="margin-left:auto">⊘ fonte "Pack Ventos do Norte" desativada</span></div>
+<div class="r dis" style="padding:7px 4px"><span class="rd" style="border-color:#bbb"></span><span>Ancestry Placeholder D</span><span class="bdg d" style="margin-left:auto">⊘ curadoria incomplete: faltam dados de Speed</span></div></div>
+<div class="r sb"><span class="lbl">Consequências</span><span class="bdg">Aplicadas</span></div><span class="mu">Atributos base 10/10/10/10 · Size 1 · Speed 10 · idioma Common</span>
+<div class="bd r"><span class="pin">3</span><span>Trocar a Ancestry abre a <a href="#1h">Prévia de impacto</a> antes de aplicar.</span></div></div>
+<div class="b c" style="gap:10px"><div class="r sb"><span class="h2">Variante · Human</span><div class="r"><span class="bdg">aleatório entre opções válidas (não oficial)</span><span class="bdg d">◐ prévia — não confirmada</span></div></div>
+<div class="r"><span class="btn s">Escolher manualmente</span><span class="btn s">Sortear</span><span class="btn s">Rolar novamente</span><span class="btn s">Travar</span><span class="btn s">Ver dados e fonte</span></div>
+<div class="b g r sb"><span><b>Variante regional (placeholder)</b> · 1 de 2 opções válidas</span><span class="r"><span class="btn s p">Confirmar</span><span class="btn s">Descartar</span></span></div>
+<details><summary class="m">▸ Rastro: d2 → [2] · uniforme · seed 7F3A-21C9 · #0</summary></details></div>
+<div class="b c" style="gap:10px"><div class="r sb"><span class="h2">Atributos iniciais</span><div class="r"><span class="bdg">manual</span><span class="bdg f">● confirmado</span></div></div>
+<div class="r" style="gap:0;border:1.5px solid #222;border-radius:6px;overflow:hidden;align-self:flex-start"><span style="padding:4px 14px;background:#222;color:#fff">● Usar atributos fixos</span><span style="padding:4px 14px">○ Rolar atributos aleatórios</span></div>
+<span class="mu">Disponível porque Human (Core) permite atributos aleatórios e a regra está ativa no Ruleset.</span></div>
+<div class="r sb" style="border-top:1.5px solid #222;padding-top:12px"><span class="btn">← Anterior: Ruleset</span><span class="btn p">Próximo: Atributos →</span></div>
+</div>
+<div class="c" style="gap:12px;align-self:start;position:sticky;top:0">
+<div class="b c"><div class="r sb"><b class="h3">Ficha ao vivo</b><span class="pin">4</span></div><span class="m mu">nv 0 · alvo 3 · rascunho</span>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+<div class="b c" style="gap:0;padding:6px;align-items:center"><span class="lbl">Strength</span><b class="h2">10</b><span class="m">+0</span></div>
+<div class="b c" style="gap:0;padding:6px;align-items:center"><span class="lbl">Agility</span><b class="h2">10</b><span class="m">+0</span></div>
+<div class="b c" style="gap:0;padding:6px;align-items:center"><span class="lbl">Intellect</span><b class="h2 hl">11</b><span class="m">+1 Δ</span></div>
+<div class="b c" style="gap:0;padding:6px;align-items:center"><span class="lbl">Will</span><b class="h2">10</b><span class="m">+0</span></div></div>
+<div style="display:grid;grid-template-columns:1fr auto;gap:3px 10px;font-size:15px"><span>Perception</span><b>11</b><span>Defense</span><b>10</b><span>Health</span><b>10</b><span>Healing Rate</span><b>2</b><span>Size</span><b>1</b><span>Speed</span><b>10</b><span>Power</span><b>0</b><span>Insanity</span><b>0</b><span>Corruption</span><b>0</b></div>
+<span class="m mu">Δ = mudou na última escolha</span></div>
+<div class="b c"><b>Pendências (4)</b><span>◇ c · Atributos — requer revisão</span><span>◇ i · Novice Path (nv 1)</span><span>◇ i · Expert Path (nv 3)</span><span>◇ j · Tradição</span></div>
+</div>
+</div></div>
+<div class="anno"><h4>Notas</h4><ol>
+<li><span class="pin">1</span><span>Modo: Manual (só escolha), Híbrido (cada slot pode sortear), Tudo aleatório (pré-seleciona "Gerar tudo"). Nível-alvo mudando abre Prévia de impacto. Seed copiável.</span></li>
+<li><span class="pin">2</span><span>Stepper: estado em glifo + texto; livre navegação (não bloqueia passos). Passo atual com borda grossa.</span></li>
+<li><span class="pin">3</span><span>Mudanças com dependentes passam pela Prévia de impacto (<a href="#1h">1h</a>).</span></li>
+<li><span class="pin">4</span><span>Mini-ficha fixa; atualiza ao confirmar (prévia aparece tracejada). Clique num valor → drawer Origem (<a href="#1j">1j</a>).</span></li>
+<li><span class="pin">i</span><span>Demais passos: <a href="#1f">1f</a>.</span></li>
+</ol><div class="a11y c"><h4>A11y</h4><span>Stepper = nav com aria-current="step". Mini-ficha anuncia mudanças com aria-live polite. Atalhos: Alt+→/← próximo/anterior passo.</span></div></div>
+</div></div></div>
+
+<!-- 1f PASSOS -->
+<div class="dv-opt" id="1f"><div class="dv-olabel"><a class="dv-oid" href="#1f">1f</a>3a–3k · Coluna central de cada passo (mesmo layout de <a class="dv-oid" href="#1e">1e</a>)</div>
+<div class="dv-card wf" style="padding:28px;background:#f7f6f3"><div style="display:grid;grid-template-columns:repeat(3,580px);gap:22px;align-items:start">
+
+<div class="b c" style="padding:0;overflow:hidden;gap:0"><div class="r sb" style="padding:8px 12px;border-bottom:1.5px solid #222;background:#f3f2ef"><b>a · Ruleset e fontes</b><span class="bdg f">● escolhido</span></div><div class="c" style="padding:14px;gap:10px">
+<span>Perfil: <b>Campanha Ponte Cinza</b></span><div class="b g c" style="gap:4px"><span>4 fontes ativas: Core Rules, Compêndio de Tabelas Menores, Pack Brasa &amp; Vidro, Pack Comunitário: Estradas</span><span class="mu">Regras: Transferir 1 ponto · Atributos aleatórios · house rule "Riqueza mínima"</span><span class="mu">Sorteio uniforme não oficial: desligado</span></div>
+<div class="bd">⚠ 1 conteúdo needs-review em uso (Compêndio).</div><span class="btn s" style="align-self:flex-start">Gerenciar fontes &amp; Ruleset →</span></div>
+<div class="an">Resumo só leitura; link abre <a href="#1d">1d</a> e volta ao passo. Mudar fontes aqui = mesma regra de suspensão.</div></div>
+
+<div class="b c" style="padding:0;overflow:hidden;gap:0"><div class="r sb" style="padding:8px 12px;border-bottom:1.5px solid #222;background:#f3f2ef"><b>c · Atributos</b><span class="bdg w">△ requer revisão</span></div><div class="c" style="padding:14px;gap:10px">
+<table class="t"><thead><tr><th>Atributo</th><th>Base (Ancestry)</th><th>Transferência</th><th>Final</th></tr></thead><tbody><tr><td>Strength</td><td>10</td><td>−1</td><td><b>9</b></td></tr><tr><td>Agility</td><td>10</td><td>—</td><td><b>10</b></td></tr><tr><td>Intellect</td><td>10</td><td>+1</td><td><b>11</b></td></tr><tr><td>Will</td><td>10</td><td>—</td><td><b>10</b></td></tr></tbody></table>
+<div class="b g c" style="gap:6px"><span class="r"><b>Transferir 1 ponto</b><span class="bdg">manual</span><span class="mu">regra opcional ativa · máx. 1 vez</span></span><div class="r"><span>De</span><span class="in">Strength ▾</span><span>para</span><span class="in">Intellect ▾</span><span class="btn s">Aplicar</span><span class="btn s">Desfazer</span></div></div>
+<span class="m">Cálculo: Intellect = 10 (Human) + 1 (transferência) = 11</span>
+<div class="bd">△ Ex-soldado (Background) exigia Strength 11 — agora 9. <u>Revisar Background</u></div></div>
+<div class="an">Sem a regra, o bloco aparece desativado com "regra 'Transferir 1 ponto' desligada no Ruleset".</div></div>
+
+<div class="b c" style="padding:0;overflow:hidden;gap:0"><div class="r sb" style="padding:8px 12px;border-bottom:1.5px solid #222;background:#f3f2ef"><b>d · Detalhes narrativos</b><span class="m mu">3/5</span></div><div class="c" style="padding:14px;gap:8px">
+<div class="b c" style="gap:4px;padding:8px"><div class="r sb"><b>Idade</b><span class="r"><span class="bdg">tabela publicada</span><span class="bdg f">●</span></span></div><div class="r"><span class="die">3</span><span class="die">4</span><span class="die">4</span><span class="m">3d6=11</span><span>→ Adulto</span></div></div>
+<div class="b c" style="gap:4px;padding:8px"><div class="r sb"><b>Porte</b><span class="r"><span class="bdg">tabela publicada</span><span class="bdg d">◐ prévia</span></span></div><div class="r"><span class="die">5</span><span class="m">d6=5</span><span>→ Alto e magro</span><span class="btn s p" style="margin-left:auto">Confirmar</span><span class="btn s">Rolar novamente</span></div></div>
+<div class="b c" style="gap:4px;padding:8px"><div class="r sb"><b>Aparência</b><span class="bdg w">pendente</span></div><div class="r"><span class="mu">○ vazio</span><span class="btn s" style="margin-left:auto">Escolher</span><span class="btn s">Sortear</span></div></div>
+<div class="b c" style="gap:4px;padding:8px"><div class="r sb"><b>Background</b><span class="r"><span class="bdg">tabela publicada</span><span class="bdg w">△ revisão</span></span></div><div class="r"><span class="m">3d6=15</span><span>→ Ex-soldado da guarda</span></div></div>
+<div class="b c" style="gap:4px;padding:8px"><div class="r sb"><b>Personalidade</b><span class="r"><span class="bdg">manual</span><span class="bdg f">▣ travado</span></span></div><span>Desconfiado, mas leal</span></div>
+<span class="btn s" style="align-self:flex-start">Sortear todos os vazios deste passo</span></div>
+<div class="an">5 ChoiceSlots compactos; cada um expande para o card completo de <a href="#1b">1b</a>. "Sortear vazios" ignora travados e confirmados.</div></div>
+
+<div class="b c" style="padding:0;overflow:hidden;gap:0"><div class="r sb" style="padding:8px 12px;border-bottom:1.5px solid #222;background:#f3f2ef"><b>e · Profissões e Idiomas</b><span class="bdg w">◇ 1</span></div><div class="c" style="padding:14px;gap:8px">
+<div class="b c" style="gap:4px;padding:8px"><div class="r sb"><b>Profissão 1</b><span class="r"><span class="bdg">tabela publicada</span><span class="bdg f">●</span></span></div><div class="r"><span class="m">d6=2</span><span>→ categoria Acadêmica</span><span class="mu">→</span><span class="m">d20=14</span><span>→ <b>Escriba</b></span></div><span class="m mu">tabela principal → sub-tabela "Acadêmica" · ambas no rastro</span></div>
+<div class="b c" style="gap:4px;padding:8px"><div class="r sb"><b>Profissão 2</b><span class="bdg w">pendente</span></div><div class="r"><span class="btn s">Escolher manualmente</span><span class="btn s x">Sortear</span></div><span class="mu" style="font-size:14px">Sortear indisponível: sem tabela para esta combinação; sorteio não oficial desligado.</span></div>
+<div class="b c" style="gap:4px;padding:8px"><b>Idiomas</b><div class="r"><span class="bdg f">Common · fixo da Ancestry</span><span class="bdg">+ 1 (Background) · ◐ escolher</span></div><div class="r"><span class="rd"></span><span>Idioma Placeholder A</span><span class="rd"></span><span>Idioma B</span><span class="rd" style="border-color:#bbb"></span><span class="dis">Idioma C ⊘ fonte desativada</span></div></div>
+<div class="r"><span class="ck">✓</span><span>Alfabetizado (lê e escreve Common)</span><span class="m mu">via Profissão "Escriba"</span></div></div>
+<div class="an">Sub-tabelas encadeadas aparecem como uma linha com setas; cada rolagem tem seu próprio rastro.</div></div>
+
+<div class="b c" style="padding:0;overflow:hidden;gap:0"><div class="r sb" style="padding:8px 12px;border-bottom:1.5px solid #222;background:#f3f2ef"><b>f · Riqueza e Equipamento inicial</b><span class="bdg f">●</span></div><div class="c" style="padding:14px;gap:8px">
+<div class="b c" style="gap:4px;padding:8px"><div class="r sb"><b>Wealth</b><span class="r"><span class="bdg">tabela publicada</span><span class="bdg f">●</span></span></div><div class="r"><span class="die">2</span><span class="die">6</span><span class="die">4</span><span class="m">3d6=12</span><span>→ Confortável (placeholder)</span></div><span class="m mu">house rule "Riqueza mínima Confortável" aplicada — veja rastro</span></div>
+<div class="b c" style="gap:4px;padding:8px"><b>Kit inicial</b><div class="r"><span class="rd on"></span><span>Kit do viajante</span></div><div class="r"><span class="rd"></span><span>Kit do estudioso</span></div><div class="r dis"><span class="rd" style="border-color:#bbb"></span><span>Kit do guarda</span><span class="bdg d">⊘ requer Path marcial</span></div></div>
+<table class="t"><thead><tr><th>Item</th><th>Qtd</th><th>Fonte</th></tr></thead><tbody><tr><td>Bastão de Viagem</td><td>1</td><td class="m">Core p.00</td></tr><tr><td>Mochila</td><td>1</td><td class="m">Core p.00</td></tr><tr><td>Ração de viagem</td><td>5</td><td class="m">Core p.00</td></tr><tr><td>Moedas</td><td>4 cp</td><td class="m">Wealth</td></tr></tbody></table>
+<span class="btn s" style="align-self:flex-start">+ Adicionar item</span></div>
+<div class="an">Trocar o kit recalcula a lista; itens adicionados à mão recebem badge "manual".</div></div>
+
+<div class="b c" style="padding:0;overflow:hidden;gap:0"><div class="r sb" style="padding:8px 12px;border-bottom:1.5px solid #222;background:#f3f2ef"><b>g · Interesting Thing</b><span class="bdg f">▣ travado</span></div><div class="c" style="padding:14px;gap:10px">
+<div class="r sb"><span class="bdg">tabela publicada</span><span class="r"><span class="btn s x">Sortear</span><span class="btn s">Destravar</span><span class="btn s">Histórico</span></span></div>
+<div class="r" style="gap:10px;align-items:stretch"><div class="b c" style="flex:1;gap:4px"><span class="lbl">Rolagem 1 · escolhe tabela</span><div class="r"><span class="die">4</span><span class="m">d6=4</span></div><span>→ Tabela B</span></div><span class="arr">→</span><div class="b c" style="flex:1;gap:4px"><span class="lbl">Rolagem 2 · Tabela B</span><div class="r"><span class="die">17</span><span class="m">d20=17</span></div><span>→ linha 17</span></div></div>
+<div class="b g"><b>Um mapa costurado no forro do casaco</b> <span class="mu">(placeholder)</span></div>
+<div class="trace">d6 [4] → Tabela B (Core p.00) · d20 [17] → linha 17<br>seed 7F3A-21C9 · índices 14, 15 · rerolagem #0</div></div>
+<div class="an">Rolagem encadeada: ambas visíveis. "Rolar novamente" refaz as duas (ou só a 2ª, opção no menu).</div></div>
+
+<div class="b c" style="padding:0;overflow:hidden;gap:0"><div class="r sb" style="padding:8px 12px;border-bottom:1.5px solid #222;background:#f3f2ef"><b>h · Nome e Notas</b><span class="bdg d">opcional</span></div><div class="c" style="padding:14px;gap:10px">
+<span class="lbl">Nome</span><div class="r"><span class="in" style="flex:1;color:#222">Tomé da Ponte</span><span class="btn s">Sortear nome</span></div><span class="m mu">Sortear nome: tabela publicada (se a fonte tiver) ou desativado com motivo</span>
+<span class="lbl">Notas</span><div class="in" style="height:110px;align-items:flex-start;width:100%">Notas livres do jogador…</div>
+<div class="r sb"><span class="bdg w">● alterações não salvas</span><span class="r"><span class="btn s">Descartar</span><span class="btn s p">Salvar</span></span></div></div>
+<div class="an">Salvar explícito (texto livre não auto-salva para não poluir o Histórico). Sair com alterações → confirmação.</div></div>
+
+<div class="b c" style="padding:0;overflow:hidden;gap:0;grid-column:span 2"><div class="r sb" style="padding:8px 12px;border-bottom:1.5px solid #222;background:#f3f2ef"><b>i · Progressão por nível</b><span class="bdg w">◇ 2 pendentes</span></div><div class="c" style="padding:14px;gap:12px">
+<span class="lbl">Linha do tempo · nível-alvo 3</span>
+<div style="display:grid;grid-template-columns:repeat(11,1fr);gap:4px">
+<div class="b c" style="padding:5px;gap:1px;font-size:13px"><b>0</b><span>Ancestry</span><span class="m">●</span></div>
+<div class="b c" style="padding:5px;gap:1px;font-size:13px;border-width:2.5px"><b>1</b><span>Novice Path</span><span class="m">◇</span></div>
+<div class="b c" style="padding:5px;gap:1px;font-size:13px"><b>2</b><span>benefício Novice</span><span class="m">○</span></div>
+<div class="b c" style="padding:5px;gap:1px;font-size:13px"><b>3</b><span>Expert Path</span><span class="m">◇</span></div>
+<div class="bd c" style="padding:5px;gap:1px;font-size:13px;color:#999"><b>4</b><span>benefício</span></div>
+<div class="bd c" style="padding:5px;gap:1px;font-size:13px;color:#999"><b>5</b><span>benefício</span></div>
+<div class="bd c" style="padding:5px;gap:1px;font-size:13px;color:#999"><b>6</b><span>benefício</span></div>
+<div class="bd c" style="padding:5px;gap:1px;font-size:13px;color:#999"><b>7</b><span>Master Path</span></div>
+<div class="bd c" style="padding:5px;gap:1px;font-size:13px;color:#999"><b>8</b><span>benefício</span></div>
+<div class="bd c" style="padding:5px;gap:1px;font-size:13px;color:#999"><b>9</b><span>benefício</span></div>
+<div class="bd c" style="padding:5px;gap:1px;font-size:13px;color:#999"><b>10</b><span>benefício</span></div></div>
+<span class="m mu">tracejado = acima do nível-alvo (planejável, não obrigatório) · rótulos ilustrativos</span>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+<div class="b c" style="gap:6px"><div class="r sb"><b>Nível 1 · Novice Path</b><span class="bdg w">pendente</span></div><div class="r"><span class="rd"></span><span>Guardião da Trilha</span><span class="m mu">marcial</span></div><div class="r"><span class="rd"></span><span>Aprendiz da Centelha</span><span class="m mu">magia</span></div><div class="r dis"><span class="rd" style="border-color:#bbb"></span><span>Path Placeholder X</span><span class="bdg d">⊘ fonte desativada</span></div><div class="r"><span class="btn s">Sortear</span><span class="btn s">Travar</span></div></div>
+<div class="b c" style="gap:6px"><div class="r sb"><b>Nível 1 · Talentos e treinamentos</b><span class="bdg d">○ aguarda Path</span></div><span class="mu">Liberado após escolher o Novice Path. Cada talento mostra fonte.</span><div class="r"><span class="ck"></span><span class="dis">Treinamento A</span><span class="ck"></span><span class="dis">Treinamento B</span></div></div>
+<div class="b c" style="gap:6px"><div class="r sb"><b>Nível 2 · benefício Novice</b><span class="bdg d">○</span></div><span class="mu">+ Health, talento do Path (depende do nível 1)</span></div>
+<div class="b c" style="gap:6px"><div class="r sb"><b>Nível 3 · Expert Path</b><span class="bdg w">pendente</span></div><span class="mu">Nenhuma opção válida com as fontes ativas → "Resolver manualmente" ou ativar fonte.</span></div>
+</div></div>
+<div class="an">Cada nível = grupo de ChoiceSlots. Slots de nível dependem dos anteriores; dependente fica "aguarda X" (não pendente) até o pré-requisito existir.</div></div>
+
+<div class="b c" style="padding:0;overflow:hidden;gap:0"><div class="r sb" style="padding:8px 12px;border-bottom:1.5px solid #222;background:#f3f2ef"><b>j · Tradições e Magias</b><span class="bdg w">◇</span></div><div class="c" style="padding:14px;gap:8px">
+<span class="mu">Slots em ordem; cada um libera o próximo.</span>
+<div class="b c" style="gap:4px;padding:8px"><div class="r sb"><b>1 · Tradition</b><span class="r"><span class="bdg">manual</span><span class="bdg f">●</span></span></div><div class="r"><span class="rd on"></span><span>Brasa Serena</span><span class="rd"></span><span>Eco de Vidro</span></div></div>
+<div class="b c" style="gap:4px;padding:8px"><div class="r sb"><b>2 · Spell rank 0</b><span class="r"><span class="bdg">aleatório entre opções válidas (não oficial)</span></span></div><div class="r"><span>Lanterna de Brasa · rank 0 · Brasa Serena</span><span class="bdg d">◐ prévia</span></div><span class="m mu">fonte Pack Brasa &amp; Vidro p. 00</span><div class="r"><span class="btn s p">Confirmar</span><span class="btn s">Rolar novamente</span></div></div>
+<div class="bd c" style="gap:4px;padding:8px;color:#999"><div class="r sb"><b>3 · Spell rank 1</b><span class="bdg d">○ aguarda slot 2</span></div><span>Fio de Calor · Brasa Serena (sugestão)</span></div>
+<div class="r dis"><span>Tradition "Eco de Vidro" rank 1</span><span class="bdg d">⊘ requer Power 1 (atual 0)</span></div></div>
+<div class="an">Só aparece se o Path concede magia; caso contrário o passo mostra "Este personagem não conjura (Path atual: Guardião da Trilha)".</div></div>
+
+<div class="b c" style="padding:0;overflow:hidden;gap:0;grid-column:span 2"><div class="r sb" style="padding:8px 12px;border-bottom:1.5px solid #222;background:#f3f2ef"><b>k · Revisão final</b><span class="bdg w">◇ Rascunho com pendências (2)</span></div><div class="c" style="padding:14px;gap:12px">
+<div style="display:grid;grid-template-columns:1.4fr 1fr;gap:14px;align-items:start">
+<div class="c" style="gap:0"><div class="r sb" style="padding:6px 0;border-bottom:2px solid #222"><span class="lbl">Decisão</span><span class="lbl">Estratégia · estado</span></div>
+<div class="r sb" style="padding:5px 0;border-bottom:1px solid #ddd"><span>nv 0 · Ancestry: Human (Core)</span><span class="r"><span class="bdg">manual</span><span class="bdg f">▣</span></span></div>
+<div class="r sb" style="padding:5px 0;border-bottom:1px solid #ddd"><span>nv 0 · Idade: Adulto (3d6=11)</span><span class="r"><span class="bdg">tabela publicada</span><span class="bdg f">●</span></span></div>
+<div class="r sb" style="padding:5px 0;border-bottom:1px solid #ddd"><span>nv 0 · Background: Aprendiz de cartógrafo</span><span class="r"><span class="bdg">manual</span><span class="bdg f">●</span></span></div>
+<div class="r sb" style="padding:5px 0;border-bottom:1px solid #ddd"><span>nv 1 · Novice Path: Aprendiz da Centelha</span><span class="r"><span class="bdg">aleatório entre opções válidas (não oficial)</span><span class="bdg f">●</span></span></div>
+<div class="r sb" style="padding:5px 0;border-bottom:1px solid #ddd"><span>nv 1 · Spell rank 0: Lanterna de Brasa</span><span class="r"><span class="bdg">manual</span><span class="bdg f">●</span></span></div>
+<div class="r sb" style="padding:5px 0"><span class="mu">… 14 decisões · <u>ver todas</u></span><span class="btn s q">Histórico completo</span></div></div>
+<div class="c" style="gap:10px"><div class="b c" style="border-color:#b8441f"><b>Pendências (2)</b><div class="r sb"><span>◇ nv 3 · Expert Path — sem opção válida</span><span class="btn s q">Resolver</span></div><div class="r sb"><span>◇ e · Profissão 2</span><span class="btn s q">Resolver</span></div></div><div class="b c"><b>Avisos</b><span>⚠ 2 decisões usaram sorteio não oficial</span><span>⚠ 1 fonte needs-review em uso</span></div></div></div>
+<div class="r sb" style="border-top:1.5px solid #222;padding-top:12px"><span class="mu">Status ao salvar: <b>Rascunho com pendências</b> — "Completo" só com 0 pendências.</span><span class="r"><span class="btn">Voltar</span><span class="btn">Salvar como rascunho</span><span class="btn x">Confirmar personagem</span></span></div>
+<span class="m mu" style="text-align:right">Confirmar desativado: resolva 2 pendências</span></div>
+<div class="an">Com 0 pendências: badge vira "● Completo", Confirmar fica ativo e leva à Ficha (<a href="#1i">1i</a>).</div></div>
+
+</div></div></div>
+
+<!-- 1g GERAR TUDO -->
+<div class="dv-opt" id="1g"><div class="dv-olabel"><a class="dv-oid" href="#1g">1g</a>4 · Modal "Gerar tudo aleatoriamente" — etapa 1 Configuração · etapa 2 Prévia</div>
+<div class="dv-card"><div class="scr">
+<div class="frm wf dim" style="width:1760px;padding:30px;box-sizing:border-box;flex-direction:row;gap:30px;align-items:flex-start">
+<div class="b c" style="width:820px;padding:0;gap:0;border-width:2px;box-shadow:6px 6px 0 #222">
+<div class="r sb" style="padding:12px 18px;border-bottom:1.5px solid #222"><div class="c" style="gap:0"><span class="m mu">etapa 1 de 2</span><span class="h2">Gerar tudo · Configuração</span></div><span class="btn s">✕ Fechar (Esc)</span></div>
+<div class="c" style="padding:18px;gap:16px">
+<div class="c" style="gap:6px"><div class="r"><span class="pin">1</span><span class="lbl">Ruleset e packs</span></div><div class="r"><span class="bdg f">✓ Core Rules</span><span class="bdg f">✓ Compêndio</span><span class="bdg f">✓ Brasa &amp; Vidro</span><span class="bdg f">✓ Estradas</span><span class="bdg d">Ventos do Norte (inativo)</span><span class="btn s q">alterar</span></div></div>
+<div class="r" style="gap:28px"><div class="c" style="gap:4px"><span class="lbl">Nível-alvo</span><div class="r"><span class="btn s">−</span><b class="h2">3</b><span class="btn s">+</span></div></div><div class="c" style="gap:4px"><span class="lbl">Filtros</span><div class="r"><span class="in">Path: qualquer ▾</span><span class="r"><span class="ck">✓</span><span>excluir conteúdo needs-review</span></span></div></div></div>
+<div class="c" style="gap:4px"><div class="r"><span class="pin">2</span><span class="lbl">Slots preservados (travados não são sorteados)</span></div>
+<div class="b c" style="gap:4px;padding:8px"><div class="r"><span class="ck">✓</span><span>Ancestry: Human (Core)</span><span class="bdg f">▣ travado</span></div><div class="r"><span class="ck">✓</span><span>Interesting Thing: mapa costurado</span><span class="bdg f">▣ travado</span></div><div class="r"><span class="ck">✓</span><span>Personalidade: Desconfiado, mas leal</span><span class="bdg f">▣</span></div><div class="r"><span class="ck"></span><span>Background: Ex-soldado da guarda</span><span class="mu">— será sorteado</span></div><div class="r"><span class="ck"></span><span>Nome: Tomé da Ponte</span><span class="mu">— será sorteado</span></div><span class="btn s q" style="align-self:flex-start">Travar todos os confirmados</span></div></div>
+<div class="b g c" style="gap:4px"><div class="r"><span class="pin">3</span><span class="ck"></span><b>Permitir sorteio uniforme entre opções válidas (não oficial)</b></div><span class="mu">Sem isso, slots sem tabela publicada ficam pendentes.</span></div>
+<div class="c" style="gap:4px"><span class="lbl">Seed (opcional)</span><div class="r"><span class="in m" style="width:220px;color:#222">7F3A-21C9</span><span class="btn s">Nova seed</span><span class="m mu">mesma seed + mesma config = mesmo resultado</span></div></div>
+</div>
+<div class="r sb" style="padding:12px 18px;border-top:1.5px solid #222"><span class="mu">Nada é alterado nesta etapa.</span><span class="r"><span class="btn">Cancelar</span><span class="btn p">Gerar prévia →</span></span></div></div>
+
+<div class="b c" style="width:860px;padding:0;gap:0;border-width:2px;box-shadow:6px 6px 0 #222">
+<div class="r sb" style="padding:12px 18px;border-bottom:1.5px solid #222"><div class="c" style="gap:0"><span class="m mu">etapa 2 de 2 · seed 7F3A-21C9 · PRNG v1</span><span class="h2">Gerar tudo · Prévia</span></div><div class="r"><span class="pin">4</span><span class="bdg w">fullyResolved: não</span><span class="btn s">✕</span></div></div>
+<div class="c" style="padding:18px;gap:12px">
+<div class="r"><span class="lbl">Nível 0</span><span class="m mu">9 decisões</span></div>
+<div class="c" style="gap:0">
+<div class="r sb" style="padding:5px 0;border-bottom:1px solid #ddd"><span>Ancestry: Human (Core)</span><span class="r"><span class="bdg">manual</span><span class="bdg f">▣ preservado</span></span></div>
+<details open=""><summary class="r sb" style="padding:5px 0;border-bottom:1px solid #ddd"><span>▾ Background: Aprendiz de cartógrafo</span><span class="r"><span class="bdg">tabela publicada</span><span class="m">3d6=13</span></span></summary><div class="trace"><div class="r"><span>3d6</span><span class="die">6</span><span class="die">2</span><span class="die">5</span><span>= 13 · faixa 13–14 · Background (Human) · Core p.00 · #0</span></div></div></details>
+<div class="r sb" style="padding:5px 0;border-bottom:1px solid #ddd"><span>▸ Idade: Adulto</span><span class="r"><span class="bdg">tabela publicada</span><span class="m">3d6=11</span></span></div>
+<div class="r sb" style="padding:5px 0;border-bottom:1px solid #ddd"><span>▸ Wealth: Confortável</span><span class="r"><span class="bdg">tabela publicada</span><span class="m">3d6=12</span></span></div>
+<div class="r sb" style="padding:5px 0;border-bottom:1px solid #ddd"><span>▸ Nome: Bruna Sal</span><span class="r"><span class="bdg">aleatório entre opções válidas (não oficial)</span></span></div>
+<span class="m mu" style="padding:4px 0">… +4</span></div>
+<div class="r"><span class="lbl">Nível 1</span></div>
+<div class="c" style="gap:0">
+<div class="r sb" style="padding:5px 0;border-bottom:1px solid #ddd"><span>▸ Novice Path: Aprendiz da Centelha</span><span class="r"><span class="bdg">aleatório entre opções válidas (não oficial)</span></span></div>
+<div class="r sb" style="padding:5px 0;border-bottom:1px solid #ddd"><span>▸ Tradition: Brasa Serena</span><span class="r"><span class="bdg">aleatório entre opções válidas (não oficial)</span></span></div>
+<div class="r sb" style="padding:5px 0;border-bottom:1px solid #ddd"><span>▸ Spell rank 0: Lanterna de Brasa</span><span class="r"><span class="bdg">aleatório entre opções válidas (não oficial)</span></span></div></div>
+<div class="r"><span class="lbl">Nível 3</span></div>
+<div class="r sb" style="padding:5px 0;border-bottom:1px solid #ddd"><span>Expert Path</span><span class="bdg w">pendente</span></div>
+<div class="b c" style="border-color:#b8441f;gap:4px"><div class="r"><span class="pin">5</span><b>Pendências (1)</b></div><div class="r sb"><span>Expert Path (nv 3) — causa: nenhuma opção válida com os packs selecionados.</span><span class="btn s q">Resolver manualmente</span></div></div>
+<div class="b c" style="gap:2px"><b>Avisos</b><span>⚠ 4 decisões usaram sorteio uniforme não oficial.</span><span>⚠ Background mudou: consequência em Idiomas requer revisão.</span></div>
+</div>
+<div class="r sb" style="padding:12px 18px;border-top:1.5px solid #222"><span class="mu">Cancelar: a ficha atual não será alterada.</span><span class="r"><span class="btn">Cancelar</span><span class="btn">← Editar slot</span><span class="btn p">Confirmar</span></span></div></div>
+</div>
+<div class="anno"><h4>Notas</h4><ol>
+<li><span class="pin">1</span><span>Pré-preenchido com o Ruleset do personagem; mudar aqui vale só para esta geração.</span></li>
+<li><span class="pin">2</span><span>Lista de slots com checkbox: marcado = preservado. Já vem com os travados.</span></li>
+<li><span class="pin">3</span><span>Fallback não oficial é opt-in explícito, por geração.</span></li>
+<li><span class="pin">4</span><span>Prévia agrupada por nível; cada linha expande o rastro. Flag fullyResolved em texto.</span></li>
+<li><span class="pin">5</span><span>Pendências com causa + atalho. Confirmar com pendências salva como "Rascunho com pendências".</span></li>
+<li><span class="pin">i</span><span>"Editar slot" volta à etapa 1 com o slot focado. Nada é gravado antes de Confirmar.</span></li>
+</ol><div class="a11y c"><h4>A11y</h4><span>role="dialog" com título; foco preso no modal; Esc = Cancelar e devolve foco ao botão "Gerar tudo". Grupos por nível são headings navegáveis.</span></div></div>
+</div></div></div>
+
+<!-- 1h IMPACTO -->
+<div class="dv-opt" id="1h"><div class="dv-olabel"><a class="dv-oid" href="#1h">1h</a>5 · Prévia de mudança / árvore de impacto (troca de Ancestry · redução de nível-alvo)</div>
+<div class="dv-card"><div class="scr">
+<div class="frm wf dim" style="width:1440px;padding:30px;box-sizing:border-box;flex-direction:row;gap:30px;align-items:flex-start">
+<div class="b c" style="width:780px;padding:0;gap:0;border-width:2px;box-shadow:6px 6px 0 #222">
+<div class="r sb" style="padding:12px 18px;border-bottom:1.5px solid #222"><div class="c" style="gap:0"><span class="m mu">prévia de impacto</span><span class="h2">Mudar Ancestry: Human (Core) → Ancestry Placeholder B</span></div><span class="btn s">✕</span></div>
+<div class="c" style="padding:18px;gap:10px">
+<div class="r"><span class="pin">1</span><span class="bdg">7 preservado</span><span class="bdg w">3 requer revisão</span><span class="bdg d">2 suspenso</span></div>
+<div class="c m" style="gap:0;font-size:13px">
+<div class="r sb" style="padding:5px 0;border-bottom:1px solid #ddd"><b>Ancestry → Placeholder B</b><span class="bdg f">nova escolha</span></div>
+<div class="r sb" style="padding:5px 0 5px 20px;border-bottom:1px solid #ddd"><span>├ Atributos base (10/10/10/10 → 9/11/10/10)</span><span class="bdg w">requer revisão</span></div>
+<div class="r sb" style="padding:5px 0 5px 44px;border-bottom:1px solid #ddd"><span>│ └ Transferência Strength→Intellect</span><span class="bdg w">requer revisão</span></div>
+<div class="r sb" style="padding:5px 0 5px 20px;border-bottom:1px solid #ddd"><span>├ Idade (tabela da nova Ancestry)</span><span class="bdg w">requer revisão</span></div>
+<div class="r sb" style="padding:5px 0 5px 20px;border-bottom:1px solid #ddd;opacity:.6"><span>├ Background "Aprendiz de cartógrafo"</span><span class="r"><span class="bdg d">suspenso</span><span class="pin">2</span></span></div>
+<div class="r sb" style="padding:5px 0 5px 44px;border-bottom:1px solid #ddd;opacity:.6"><span>│ └ Idioma extra (do Background)</span><span class="bdg d">suspenso</span></div>
+<div class="r sb" style="padding:5px 0 5px 20px;border-bottom:1px solid #ddd"><span>├ Aparência, Personalidade</span><span class="bdg">preservado</span></div>
+<div class="r sb" style="padding:5px 0 5px 20px;border-bottom:1px solid #ddd"><span>├ Profissão 1 "Escriba", Idioma Common</span><span class="bdg">preservado</span></div>
+<div class="r sb" style="padding:5px 0 5px 20px;border-bottom:1px solid #ddd"><span>├ Interesting Thing (travado)</span><span class="bdg">preservado</span></div>
+<div class="r sb" style="padding:5px 0 5px 20px"><span>└ nv 1 Novice Path, Tradition, Spell rank 0</span><span class="bdg">preservado</span></div></div>
+<div class="b g c" style="gap:4px"><div class="r"><span class="pin">3</span><b>Restaurar escolha anterior</b></div><span>Esta Ancestry já foi usada antes neste personagem (há 10 min). Restaurar Idade "Adulto" e Background anteriores?</span><span class="btn s" style="align-self:flex-start">Restaurar escolha anterior</span></div>
+</div>
+<div class="r sb" style="padding:12px 18px;border-top:1.5px solid #222"><span class="mu">Suspensos ficam guardados; nada é apagado.</span><span class="r"><span class="btn">Cancelar</span><span class="btn p">Aplicar mudança</span></span></div></div>
+
+<div class="b c" style="width:520px;padding:0;gap:0;border-width:2px;box-shadow:6px 6px 0 #222">
+<div class="r sb" style="padding:12px 18px;border-bottom:1.5px solid #222"><span class="h2">Nível-alvo: 5 → 2</span><span class="btn s">✕</span></div>
+<div class="c m" style="padding:18px;gap:0;font-size:13px">
+<div class="r sb" style="padding:5px 0;border-bottom:1px solid #ddd"><span>nv 0–2 · 18 decisões</span><span class="bdg">preservado</span></div>
+<div class="r sb" style="padding:5px 0;border-bottom:1px solid #ddd;opacity:.6"><span>nv 3 · Expert Path: Guardião (exp.)</span><span class="bdg d">suspenso</span></div>
+<div class="r sb" style="padding:5px 0;border-bottom:1px solid #ddd;opacity:.6"><span>nv 4–5 · 4 talentos, 1 spell</span><span class="bdg d">suspenso</span></div>
+<div class="r sb" style="padding:5px 0"><span>Health máx. 24 → 16</span><span class="bdg w">recalculado</span></div></div>
+<div class="r sb" style="padding:12px 18px;border-top:1.5px solid #222"><span class="mu">Subir de novo restaura.</span><span class="r"><span class="btn">Cancelar</span><span class="btn p">Aplicar</span></span></div></div>
+</div>
+<div class="anno"><h4>Notas</h4><ol>
+<li><span class="pin">1</span><span>Aparece antes de aplicar qualquer mudança em Ancestry, Path ou nível-alvo. Resumo por estado em texto.</span></li>
+<li><span class="pin">2</span><span>Árvore = dependências reais (filho indentado). Suspenso = acinzentado + rótulo.</span></li>
+<li><span class="pin">3</span><span>"Restaurar escolha anterior" só quando existe um snapshot compatível no Histórico.</span></li>
+<li><span class="pin">i</span><span>Cancelar fecha sem alterar nada e devolve o seletor ao valor antigo.</span></li>
+</ol><div class="a11y c"><h4>A11y</h4><span>Árvore = role="tree" com níveis; cada item lê "Background, suspenso, filho de Ancestry".</span></div></div>
+</div></div></div>
+
+<!-- 1i FICHA -->
+<div class="dv-opt" id="1i"><div class="dv-olabel"><a class="dv-oid" href="#1i">1i</a>6 · Ficha do personagem (modo visualização)</div>
+<div class="dv-card"><div class="scr">
+<div class="frm wf" style="width:1440px">
+<div class="bar"><span>● ● ●</span><span class="in m" style="flex:1">forja / ficha / ilsa-brasa</span><span>1440</span></div>
+<div class="app"><div class="r" style="gap:28px"><b class="h2">Forja de Personagens</b><div class="nav"><span class="on">Personagens</span><span>Fontes &amp; Ruleset</span><span>Histórico</span></div></div><span class="bdg d">offline · salvo neste navegador</span></div>
+<div class="c" style="padding:22px 32px;gap:16px">
+<div class="r sb" style="align-items:flex-start"><div class="r" style="gap:16px;align-items:flex-start"><div class="ph" style="width:96px;height:96px">retrato</div><div class="c" style="gap:4px"><span class="h1">Ilsa Brasa</span><span>Nível 3 · Human (Core) · Novice: Aprendiz da Centelha · Expert: —</span><div class="r"><span class="bdg w">◇ Rascunho com pendências (1)</span><span class="bdg d">⊘ 1 escolha suspensa</span></div></div></div>
+<div class="r"><span class="pin">1</span><div class="r" style="gap:0;border:1.5px solid #222;border-radius:6px;overflow:hidden"><span style="padding:3px 12px;background:#222;color:#fff">Visualizar</span><span style="padding:3px 12px">Editar</span></div><span class="btn s">Histórico</span><span class="btn s">Exportar</span></div></div>
+<div class="b r sb" style="border-width:2.5px;background:#f3f2ef"><div class="r"><span class="pin">2</span><b>Transformação ativa: Forma de Brasa (placeholder)</b><span class="mu">Speed 10→14 · Defense +2 · valores originais preservados</span></div><span class="btn s">Encerrar transformação</span></div>
+<div style="display:grid;grid-template-columns:1.05fr 1fr 1fr;gap:16px;align-items:start">
+<div class="c" style="gap:16px">
+<div class="b c"><b class="h3">Atributos</b><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px">
+<div class="b c" style="gap:0;padding:6px;align-items:center"><span class="lbl">Strength</span><b class="h2">9</b><span class="m">−1</span></div><div class="b c" style="gap:0;padding:6px;align-items:center"><span class="lbl">Agility</span><b class="h2">10</b><span class="m">+0</span></div><div class="b c" style="gap:0;padding:6px;align-items:center"><span class="lbl">Intellect</span><b class="h2">11</b><span class="m">+1</span></div><div class="b c" style="gap:0;padding:6px;align-items:center"><span class="lbl">Will</span><b class="h2">10</b><span class="m">+0</span></div></div></div>
+<div class="b c"><div class="r sb"><b class="h3">Características</b><span class="r"><span class="pin">3</span><span class="m mu">clique = origem</span></span></div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px">
+<div class="b c" style="gap:0;padding:6px"><span class="lbl">Perception</span><b class="h3">11 ⓘ</b></div><div class="b c fx" style="gap:0;padding:6px"><span class="lbl">Defense</span><b class="h3"><span class="hl">12</span> ⓘ</b><span class="m mu">base 10</span></div><div class="b c" style="gap:0;padding:6px"><span class="lbl">Health</span><b class="h3">14 / 18 ⓘ</b></div>
+<div class="b c" style="gap:0;padding:6px"><span class="lbl">Healing Rate</span><b class="h3">4 ⓘ</b></div><div class="b c" style="gap:0;padding:6px"><span class="lbl">Size</span><b class="h3">1 ⓘ</b></div><div class="b c" style="gap:0;padding:6px"><span class="lbl">Speed</span><b class="h3"><span class="hl">14</span> ⓘ</b><span class="m mu">orig. 10</span></div>
+<div class="b c" style="gap:0;padding:6px"><span class="lbl">Power</span><b class="h3">1 ⓘ</b></div><div class="b c" style="gap:0;padding:6px"><span class="lbl">Damage</span><b class="h3">4 ⓘ</b></div><div class="b c" style="gap:0;padding:6px"><span class="lbl">Insanity</span><b class="h3">0 ⓘ</b></div>
+<div class="b c" style="gap:0;padding:6px"><span class="lbl">Corruption</span><b class="h3">1 ⓘ</b></div></div></div>
+</div>
+<div class="c" style="gap:16px">
+<div class="b c"><b class="h3">Talentos / treinamentos</b><div class="r sb"><span>Talento Placeholder da Centelha</span><span class="m mu">Brasa &amp; Vidro p.00</span></div><div class="r sb"><span>Treinamento: Escrita</span><span class="m mu">Profissão</span></div><div class="r sb"><span>Treinamento: Rituais</span><span class="m mu">Core p.00</span></div></div>
+<div class="b c"><div class="r sb"><b class="h3">Grimório</b><span class="r"><span class="pin">4</span><span class="m mu">Tradition: Brasa Serena</span></span></div>
+<div class="b g c" style="gap:2px"><div class="r sb"><b>Lanterna de Brasa</b><span class="bdg">rank 0</span></div><span class="mu">Brasa Serena · cria luz suave (placeholder)</span><span class="m mu">Brasa &amp; Vidro p. 00</span></div>
+<div class="b g c" style="gap:2px"><div class="r sb"><b>Fio de Calor</b><span class="bdg">rank 1</span></div><span class="mu">Brasa Serena · aquece um alvo (placeholder)</span><span class="m mu">Brasa &amp; Vidro p. 00</span></div></div>
+</div>
+<div class="c" style="gap:16px">
+<div class="b c"><div class="r sb"><b class="h3">Conjuração e efeitos de sessão</b><span class="pin">5</span></div>
+<div class="r sb"><span>Conjurações rank 0</span><b>2 / 2</b></div><div class="r sb"><span>Conjurações rank 1</span><b>0 / 1</b></div><span class="btn s" style="align-self:flex-start">Registrar conjuração ▾</span>
+<div class="c" style="gap:0;border-top:1px solid #ccc">
+<div class="r sb" style="padding:6px 0;border-bottom:1px solid #ddd"><div class="c" style="gap:0"><b>Fio de Calor</b><span class="m mu">até fim da cena · próprio · Defense +2</span></div><span class="btn s">Encerrar</span></div>
+<div class="r sb" style="padding:6px 0;border-bottom:1px solid #ddd"><div class="c" style="gap:0"><span>Lanterna de Brasa</span><span class="m mu">1 hora · área · —</span></div><span class="btn s">Ativar</span></div></div>
+<span class="btn s" style="align-self:flex-start">Descansar e restaurar usos</span></div>
+<div class="b c" style="border-color:#b8441f"><b class="h3">Pendências da ficha</b><span>◇ nv 3 · Expert Path não escolhido <u>Resolver</u></span><b>Avisos</b><span>⚠ Escudo de Vime: fonte "Compêndio" desativada → suspenso</span></div>
+</div></div>
+<div style="display:grid;grid-template-columns:2fr 1fr;gap:16px;align-items:start">
+<div class="b c"><div class="r sb"><b class="h3">Inventário e equipamento</b><span class="r"><span class="pin">6</span><span class="m mu">Wealth: Confortável · 4 cp</span></span></div>
+<table class="t"><thead><tr><th>Item</th><th>Qtd</th><th>Fonte</th><th>Modificador</th><th>Estado</th><th></th></tr></thead><tbody>
+<tr><td>Bastão de Viagem</td><td>1</td><td class="m">Core p.00</td><td>Damage 1d6</td><td><span class="bdg f">Equipado</span></td><td><span class="btn s">Desequipar</span></td></tr>
+<tr><td>Gibão acolchoado</td><td>1</td><td class="m">Core p.00</td><td>Defense 11</td><td><span class="bdg">Guardado</span></td><td><span class="btn s">Equipar</span></td></tr>
+<tr style="opacity:.55"><td>Escudo de Vime</td><td>1</td><td class="m">Compêndio</td><td>Defense +1</td><td><span class="bdg d">Suspenso</span></td><td><span class="btn s x">Equipar</span></td></tr>
+<tr><td>Ração de viagem</td><td>5</td><td class="m">Core p.00</td><td>—</td><td><span class="bdg">Guardado</span></td><td><span class="r"><span class="btn s">−</span><span class="btn s">+</span></span></td></tr></tbody></table></div>
+<div class="b c"><b class="h3">Escolhas e proveniência</b><div class="r sb"><span>Ancestry: Human</span><span class="bdg">manual</span></div><div class="r sb"><span>Background</span><span class="bdg">tabela publicada</span></div><div class="r sb"><span>Novice Path</span><span class="bdg">aleatório… (não oficial)</span></div><div class="r sb"><span>Expert Path</span><span class="bdg w">pendente</span></div><span class="btn s q" style="align-self:flex-start">Ver todas (17) no Histórico</span></div>
+</div>
+</div></div>
+<div class="anno"><h4>Notas</h4><ol>
+<li><span class="pin">1</span><span>Editar: cada seção ganha "Alterar" → abre o passo do Criador correspondente (mudanças dependentes passam por <a href="#1h">1h</a>). Efeitos de sessão funcionam nos dois modos.</span></li>
+<li><span class="pin">2</span><span>Banner de transformação destacado; Encerrar restaura os valores originais (mostrados em "orig.").</span></li>
+<li><span class="pin">3</span><span>Todo número é botão → drawer Origem dos valores (<a href="#1j">1j</a>). Valor alterado por efeito ganha marca-texto.</span></li>
+<li><span class="pin">4</span><span>Grimório só existe se houver spells.</span></li>
+<li><span class="pin">5</span><span>Registrar conjuração decrementa usos; ativar efeito aplica o valor afetado; Descansar restaura e encerra efeitos com duração "até descanso".</span></li>
+<li><span class="pin">6</span><span>Equipar/Desequipar recalcula Defense/Damage na hora. Suspenso = fonte desativada, não pode equipar.</span></li>
+</ol><div class="a11y c"><h4>A11y</h4><span>Cada número tem nome acessível: "Defense 12, modificado por efeito, abrir origem". Contadores de uso anunciados ao mudar.</span></div></div>
+</div></div></div>
+
+<!-- 1j DRAWER -->
+<div class="dv-opt" id="1j"><div class="dv-olabel"><a class="dv-oid" href="#1j">1j</a>7 · Drawer "Origem dos valores" (Defense)</div>
+<div class="dv-card"><div class="scr">
+<div class="frm wf" style="width:1440px;height:760px;flex-direction:row">
+<div class="dim" style="flex:1;padding:30px;box-sizing:border-box"><div class="ph" style="height:100%;background:rgba(255,255,255,.5)">ficha (escurecida) · foco estava em "Defense"</div></div>
+<div class="c" style="width:560px;border-left:2.5px solid #222;background:#fff;padding:0;gap:0;box-sizing:border-box">
+<div class="r sb" style="padding:14px 20px;border-bottom:1.5px solid #222"><div class="c" style="gap:0"><span class="m mu">Origem dos valores</span><span class="h1">Defense = 12</span></div><span class="btn s">✕ Fechar (Esc)</span></div>
+<div class="c" style="padding:18px 20px;gap:12px">
+<div class="r"><span class="pin">1</span><span class="lbl">Operações em ordem</span></div>
+<table class="t"><thead><tr><th>#</th><th>Operação</th><th>Valor</th><th>Fonte</th><th>Duração</th></tr></thead><tbody>
+<tr><td>1</td><td>Base = Agility</td><td class="m">= 10</td><td class="m">Core p.00</td><td>permanente</td></tr>
+<tr><td>2</td><td>Ancestry Human</td><td class="m">+0</td><td class="m">Core p.00</td><td>permanente</td></tr>
+<tr><td>3</td><td>Armadura (nenhuma equipada)</td><td class="m">—</td><td class="m">—</td><td>—</td></tr>
+<tr style="opacity:.55"><td>4</td><td class="st">Escudo de Vime</td><td class="m st">+1</td><td class="m">Compêndio</td><td><span class="bdg d">suspenso</span></td></tr>
+<tr style="background:#fafaf8"><td>5</td><td>Spell ativo: Fio de Calor</td><td class="m">+2</td><td class="m">Brasa &amp; Vidro p.00</td><td>até fim da cena</td></tr>
+<tr><td>6</td><td>Limite máximo (cap 25)</td><td class="m">sem efeito</td><td class="m">Core p.00</td><td>—</td></tr>
+<tr><td></td><td><b>Valor final</b></td><td class="m"><b>= 12</b></td><td></td><td></td></tr></tbody></table>
+<div class="bd c" style="gap:4px;border-color:#b8441f"><div class="r"><span class="pin">2</span><b>Aviso</b></div><span>Escudo de Vime está suspenso: a fonte "Compêndio de Tabelas Menores" foi desativada. Sem a suspensão: Defense 13.</span><span class="btn s q" style="align-self:flex-start">Abrir Fontes &amp; Ruleset</span></div>
+<div class="r"><span class="pin">3</span><span class="btn s">Encerrar Fio de Calor</span><span class="btn s">Ver no Histórico</span></div>
+</div></div>
+</div>
+<div class="anno"><h4>Notas</h4><ol>
+<li><span class="pin">1</span><span>Ordem exata de aplicação, cada linha com fonte e duração. Operações temporárias destacadas.</span></li>
+<li><span class="pin">2</span><span>Suspensos aparecem riscados com o motivo e o valor "sem suspensão".</span></li>
+<li><span class="pin">3</span><span>Ações rápidas contextuais (encerrar efeito) atualizam a tabela no lugar.</span></li>
+</ol><div class="a11y c"><h4>A11y</h4><span>Drawer = diálogo não-modal com título; Esc fecha e devolve foco ao número clicado. Tabela com caption "Cálculo de Defense".</span></div></div>
+</div></div></div>
+
+<!-- 1k HISTORICO -->
+<div class="dv-opt" id="1k"><div class="dv-olabel"><a class="dv-oid" href="#1k">1k</a>8 · Histórico / Auditoria</div>
+<div class="dv-card"><div class="scr">
+<div class="frm wf" style="width:1440px">
+<div class="bar"><span>● ● ●</span><span class="in m" style="flex:1">forja / historico / ilsa-brasa</span><span>1440</span></div>
+<div class="app"><div class="r" style="gap:28px"><b class="h2">Forja de Personagens</b><div class="nav"><span>Personagens</span><span>Fontes &amp; Ruleset</span><span class="on">Histórico</span></div></div><span class="bdg d">offline · salvo neste navegador</span></div>
+<div style="display:grid;grid-template-columns:1fr 320px;gap:28px;padding:24px 40px">
+<div class="c" style="gap:14px">
+<div class="r sb"><span class="h1">Histórico · Ilsa Brasa</span><span class="btn s">Exportar log (JSON)</span></div>
+<div class="r"><span class="pin">1</span><span class="btn s">Nível: todos ▾</span><span class="btn s">Slot: todos ▾</span><span class="btn s">Tipo: decisões · rolagens · substituições · nível ▾</span><span class="in" style="width:220px">Buscar…</span></div>
+<div class="c" style="gap:0">
+<div class="r" style="padding:10px 0;border-bottom:1px solid #ddd;align-items:flex-start;gap:16px"><span class="m mu" style="width:110px">hoje 14:02</span><span class="bdg" style="width:110px;justify-content:center">nível</span><div class="c" style="gap:2px;flex:1"><b>Nível-alvo 2 → 3</b><span class="mu">Expert Path adicionado como pendente</span></div></div>
+<div class="r" style="padding:10px 0;border-bottom:1px solid #ddd;align-items:flex-start;gap:16px"><span class="m mu" style="width:110px">hoje 13:58</span><span class="bdg" style="width:110px;justify-content:center">substituição</span><div class="c" style="gap:2px;flex:1"><b>nv 0 · Background</b><span><span class="st">Ex-soldado da guarda (3d6=15)</span> → Aprendiz de cartógrafo <span class="bdg">manual</span></span><span class="m mu">motivo: requisito Strength 11 deixou de valer</span></div></div>
+<div class="r" style="padding:10px 0;border-bottom:1px solid #ddd;align-items:flex-start;gap:16px"><span class="m mu" style="width:110px">hoje 13:51</span><span class="bdg" style="width:110px;justify-content:center">rolagem</span><div class="c" style="gap:2px;flex:1"><b>nv 0 · Interesting Thing</b><div class="r"><span class="m">d6</span><span class="die">4</span><span>→ Tabela B ·</span><span class="m">d20</span><span class="die">17</span><span>→ "mapa costurado"</span><span class="bdg">tabela publicada</span></div><span class="m mu">seed 7F3A-21C9 · idx 14–15 · Core p.00 · rerolagem #0</span></div></div>
+<div class="r" style="padding:10px 0;border-bottom:1px solid #ddd;align-items:flex-start;gap:16px"><span class="m mu" style="width:110px">hoje 13:50</span><span class="bdg" style="width:110px;justify-content:center">rolagem</span><div class="c" style="gap:2px;flex:1"><b>nv 0 · Idade · rerolagem #1</b><div class="r"><span class="st m">3d6 [1][2][2]=5 Jovem</span><span>→</span><span class="m">3d6</span><span class="die">3</span><span class="die">4</span><span class="die">4</span><span>= 11 Adulto</span></div></div></div>
+<div class="r" style="padding:10px 0;border-bottom:1px solid #ddd;align-items:flex-start;gap:16px"><span class="m mu" style="width:110px">hoje 13:44</span><span class="bdg" style="width:110px;justify-content:center">decisão</span><div class="c" style="gap:2px;flex:1"><b>nv 0 · Ancestry: Human (Core)</b><span class="r"><span class="bdg">manual</span><span class="bdg f">▣ travado</span></span></div></div>
+<div class="r" style="padding:10px 0;align-items:flex-start;gap:16px"><span class="m mu" style="width:110px">hoje 13:40</span><span class="bdg" style="width:110px;justify-content:center">sessão</span><div class="c" style="gap:2px;flex:1"><b>Personagem criado · seed 7F3A-21C9 · PRNG xoshiro128 v1</b></div></div>
+</div></div>
+<div class="c" style="gap:14px"><div class="b c"><div class="r"><span class="pin">2</span><b class="h3">Reprodutibilidade</b></div><span class="m">seed 7F3A-21C9</span><span class="m">PRNG xoshiro128 · v1</span><span class="m">ruleset: 4 fontes (hash 9c1e…)</span><span class="mu">Mesma seed + ruleset = mesmos resultados.</span></div>
+<div class="b c"><b class="h3">Resumo</b><span>32 eventos · 11 rolagens</span><span>3 substituições · 1 mudança de nível</span></div></div>
+</div></div>
+<div class="anno"><h4>Notas</h4><ol>
+<li><span class="pin">1</span><span>Log cronológico (mais recente no topo), filtrável por nível/slot/tipo. Substituição: antigo riscado, nunca apagado.</span></li>
+<li><span class="pin">2</span><span>Seed e versão do PRNG sempre visíveis para auditoria.</span></li>
+<li><span class="pin">i</span><span>Clicar num evento abre o slot no Criador.</span></li>
+</ol><div class="a11y c"><h4>A11y</h4><span>Log = lista ordenada; cada item tem texto completo ("Idade, rerolagem 1: 3d6, 3, 4, 4, total 11, Adulto; antes 5, Jovem"). Riscado também dito como "substituído".</span></div></div>
+</div></div></div>
+
+<!-- 1l EXPORTAR -->
+<div class="dv-opt" id="1l"><div class="dv-olabel"><a class="dv-oid" href="#1l">1l</a>9 · Exportar</div>
+<div class="dv-card"><div class="scr">
+<div class="frm wf" style="width:1440px">
+<div class="bar"><span>● ● ●</span><span class="in m" style="flex:1">forja / exportar / ilsa-brasa</span><span>1440</span></div>
+<div class="c" style="padding:28px 40px;gap:18px">
+<div class="r sb"><div class="c" style="gap:2px"><span class="h1">Exportar · Ilsa Brasa</span><span class="mu">Nível 3 · Rascunho com pendências (1)</span></div><span class="btn">← Voltar à ficha</span></div>
+<div class="b g r"><span class="pin">1</span><b>Somente o estado confirmado é exportado.</b><span class="mu">1 prévia não confirmada (Spell rank 0) será ignorada.</span></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+<div class="b c"><span class="h2">Exportar JSON</span><span class="mu">Backup completo, reimportável na Forja.</span><div class="r"><span class="ck">✓</span><span>incluir histórico de rolagens</span></div><div class="r"><span class="ck">✓</span><span>incluir ruleset (lista de fontes)</span></div><span class="btn p" style="align-self:flex-start">Baixar ilsa-brasa.json</span></div>
+<div class="b c"><span class="h2">Exportar HTML offline</span><span class="mu">Arquivo único, abre sem internet; ficha editável (efeitos, usos, equipamento).</span><div class="r"><span class="pin">2</span><span class="m mu">dados embutidos · ~400 KB</span></div><span class="btn p" style="align-self:flex-start">Baixar ilsa-brasa.html</span></div>
+<div class="b c"><span class="h2">Visualizar ficha A4</span><span class="mu">Prévia de impressão, 1–2 páginas, legível em P&amp;B.</span><span class="btn" style="align-self:flex-start">Abrir prévia A4 →</span></div>
+<div class="b c"><span class="h2">Imprimir / Salvar como PDF</span><span class="mu">Usa o diálogo de impressão do navegador.</span><div class="bd c" style="gap:2px"><div class="r"><span class="pin">3</span><b>Dica</b></div><span>Papel A4 · escala 100% · desativar cabeçalhos e rodapés do navegador.</span></div><span class="btn" style="align-self:flex-start">Imprimir…</span></div>
+</div></div></div>
+<div class="anno"><h4>Notas</h4><ol>
+<li><span class="pin">1</span><span>Aviso fixo; lista o que foi deixado de fora se houver prévias.</span></li>
+<li><span class="pin">2</span><span>HTML offline = cópia autônoma; mudanças nele não voltam ao app (só via JSON).</span></li>
+<li><span class="pin">3</span><span>Dica de impressão sempre visível, não só em tooltip.</span></li>
+</ol><div class="a11y c"><h4>A11y</h4><span>Cada cartão é um grupo com heading; downloads anunciam "arquivo salvo" via aria-live.</span></div></div>
+</div></div></div>
+
+<!-- 1m A4 -->
+<div class="dv-opt" id="1m"><div class="dv-olabel"><a class="dv-oid" href="#1m">1m</a>10 · Ficha A4 — prévia de impressão (2 páginas, P&amp;B)</div>
+<div class="dv-card"><div class="scr">
+<div class="frm wf" style="width:1720px;background:#d9d8d4">
+<div class="r sb" style="padding:10px 24px;background:#fff;border-bottom:2px solid #222"><div class="r"><span class="btn s">← Voltar</span><b>Prévia A4</b><span class="m mu">A4 · escala 100% · desative cabeçalhos do navegador</span></div><span class="btn p">Imprimir / Salvar como PDF</span></div>
+<div class="r" style="padding:30px;gap:0;align-items:flex-start;flex-wrap:nowrap">
+<div class="a4">
+<div class="r sb" style="border-bottom:2.5px solid #222;padding-bottom:8px;align-items:flex-end"><div class="r" style="gap:12px;align-items:flex-end"><div class="ph" style="width:64px;height:64px">retrato</div><div class="c" style="gap:0"><span class="h2">Ilsa Brasa</span><span>Nível 3 · Human (Core) · Novice: Aprendiz da Centelha</span></div></div><span class="bdg w">◇ Rascunho com pendências (1)</span></div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px"><div class="b c" style="gap:0;padding:6px;align-items:center"><span class="lbl">Strength</span><b class="h2">9</b><span class="m">−1</span></div><div class="b c" style="gap:0;padding:6px;align-items:center"><span class="lbl">Agility</span><b class="h2">10</b><span class="m">+0</span></div><div class="b c" style="gap:0;padding:6px;align-items:center"><span class="lbl">Intellect</span><b class="h2">11</b><span class="m">+1</span></div><div class="b c" style="gap:0;padding:6px;align-items:center"><span class="lbl">Will</span><b class="h2">10</b><span class="m">+0</span></div></div>
+<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px"><div class="b c" style="gap:0;padding:5px"><span class="lbl">Perception</span><b>11</b></div><div class="b c" style="gap:0;padding:5px"><span class="lbl">Defense</span><b>10 <span class="m">(12*)</span></b></div><div class="b c" style="gap:0;padding:5px"><span class="lbl">Health</span><b>__ / 18</b></div><div class="b c" style="gap:0;padding:5px"><span class="lbl">Healing Rate</span><b>4</b></div><div class="b c" style="gap:0;padding:5px"><span class="lbl">Size</span><b>1</b></div><div class="b c" style="gap:0;padding:5px"><span class="lbl">Speed</span><b>10</b></div><div class="b c" style="gap:0;padding:5px"><span class="lbl">Power</span><b>1</b></div><div class="b c" style="gap:0;padding:5px"><span class="lbl">Damage</span><b>__</b></div><div class="b c" style="gap:0;padding:5px"><span class="lbl">Insanity</span><b>__</b></div><div class="b c" style="gap:0;padding:5px"><span class="lbl">Corruption</span><b>1</b></div></div>
+<span class="m mu">* com efeito ativo na exportação. Campos "__" para preencher à mão.</span>
+<b class="lbl" style="border-bottom:1.5px solid #222">Talentos e treinamentos</b>
+<table class="t"><tbody><tr><td>Talento Placeholder da Centelha</td><td class="m">Brasa &amp; Vidro p.00</td></tr><tr><td>Treinamento: Escrita</td><td class="m">Profissão</td></tr><tr><td>Treinamento: Rituais</td><td class="m">Core p.00</td></tr></tbody></table>
+<b class="lbl" style="border-bottom:1.5px solid #222">Detalhes</b>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:3px 16px"><span>Idade: Adulto</span><span>Porte: Alto e magro</span><span>Aparência: marcas de queimadura</span><span>Personalidade: desconfiado, leal</span><span>Background: Aprendiz de cartógrafo</span><span>Profissão: Escriba</span><span>Idiomas: Common, Idioma A</span><span>Interesting Thing: mapa costurado</span></div>
+<b class="lbl" style="border-bottom:1.5px solid #222">Notas</b>
+<div style="flex:1;background:repeating-linear-gradient(transparent 0 23px,#ccc 23px 24px)"></div>
+<div class="r sb m mu"><span>Forja de Personagens · exportado 27/10/2026</span><span>1 / 2</span></div>
+</div>
+<div class="c" style="width:44px;align-self:stretch;align-items:center;justify-content:center;gap:6px"><span class="m mu" style="writing-mode:vertical-rl">— quebra de página —</span></div>
+<div class="a4">
+<div class="r sb" style="border-bottom:1.5px solid #222;padding-bottom:6px"><b>Ilsa Brasa · continuação</b><span class="m mu">nível 3</span></div>
+<b class="lbl" style="border-bottom:1.5px solid #222">Grimório · Tradition Brasa Serena</b>
+<table class="t"><thead><tr><th>Spell</th><th>Rank</th><th>Usos</th><th>Fonte</th></tr></thead><tbody><tr><td>Lanterna de Brasa — luz suave (placeholder)</td><td>0</td><td>☐ ☐</td><td class="m">B&amp;V p.00</td></tr><tr><td>Fio de Calor — aquece alvo (placeholder)</td><td>1</td><td>☐</td><td class="m">B&amp;V p.00</td></tr></tbody></table>
+<b class="lbl" style="border-bottom:1.5px solid #222">Inventário</b>
+<table class="t"><thead><tr><th>Item</th><th>Qtd</th><th>Mod.</th><th>Estado</th></tr></thead><tbody><tr><td>Bastão de Viagem</td><td>1</td><td>1d6</td><td>Equipado</td></tr><tr><td>Gibão acolchoado</td><td>1</td><td>Def 11</td><td>Guardado</td></tr><tr><td>Escudo de Vime</td><td>1</td><td>Def +1</td><td>Suspenso</td></tr><tr><td>Ração de viagem</td><td>5</td><td>—</td><td>Guardado</td></tr><tr><td>Moedas</td><td>4 cp</td><td></td><td></td></tr></tbody></table>
+<b class="lbl" style="border-bottom:1.5px solid #222">Efeitos ativos na exportação</b>
+<span>☐ Fio de Calor — Defense +2 · até fim da cena</span><span>☐ Transformação: Forma de Brasa — Speed 14 (orig. 10)</span>
+<b class="lbl" style="border-bottom:1.5px solid #222">Pendências</b>
+<span>◇ nv 3 · Expert Path não escolhido</span><span>⚠ Escudo de Vime suspenso: fonte desativada</span>
+<b class="lbl" style="border-bottom:1.5px solid #222">Fontes usadas</b>
+<span class="m">Core Rules (placeholder) v1.2 · Compêndio de Tabelas Menores v0.9 (desativada) · Pack Brasa &amp; Vidro v2.0</span>
+<span class="m">seed 7F3A-21C9 · PRNG v1</span>
+<div style="flex:1"></div>
+<div class="r sb m mu"><span>Forja de Personagens · exportado 27/10/2026</span><span>2 / 2</span></div>
+</div>
+</div></div>
+<div class="anno"><h4>Notas</h4><ol>
+<li><span class="pin">i</span><span>Sem cor: estados em texto (Equipado/Suspenso), caixas com borda. Tipografia ≥ 12pt.</span></li>
+<li><span class="pin">i</span><span>Seções não quebram no meio (break-inside: avoid); quebra de página visível na prévia.</span></li>
+<li><span class="pin">i</span><span>Valores voláteis (Health atual, Damage, Insanity) ficam em branco para lápis; efeitos com caixas de marcar.</span></li>
+<li><span class="pin">i</span><span>Personagem sem spells: Grimório some e o conteúdo cabe em 1 página.</span></li>
+<li><span class="pin">i</span><span>Status de rascunho impresso no topo — nunca "Completo" indevido.</span></li>
+</ol></div>
+</div></div></div>
+
+<!-- 1n MOBILE -->
+<div class="dv-opt" id="1n"><div class="dv-olabel"><a class="dv-oid" href="#1n">1n</a>11 · Mobile 390 — passo do wizard · stepper em drawer · ficha · prévia Gerar tudo</div>
+<div class="dv-card"><div class="scr">
+<div class="frm wf" style="width:1740px;padding:30px;box-sizing:border-box;flex-direction:row;gap:30px;background:#f7f6f3">
+
+<div class="phone">
+<div class="r sb m" style="padding:12px 22px 4px"><span>9:41</span><span>▮▮▮</span></div>
+<div class="c" style="padding:6px 14px 10px;gap:6px;border-bottom:1.5px solid #222"><div class="r sb"><span class="btn s">☰ Passos</span><b>Tomé da Ponte</b><span class="btn s">⋯</span></div><div class="r sb m"><span>Passo d de k · Detalhes</span><span>4/11</span></div><div style="height:8px;border:1.5px solid #222;border-radius:5px;overflow:hidden"><div style="width:36%;height:100%;background:#222"></div></div></div>
+<div class="c" style="padding:14px;gap:10px;flex:1;overflow:hidden">
+<div class="b c" style="gap:8px"><div class="c" style="gap:2px"><b class="h3">Background · Human</b><span class="m mu">Core p.00 · 3d6</span></div><div class="r"><span class="bdg">tabela publicada</span><span class="bdg d">◐ prévia</span></div>
+<div class="b g c" style="gap:4px"><div class="r"><span class="die">4</span><span class="die">5</span><span class="die">3</span><span class="m">= 12</span></div><b>Cresceu atrás do balcão de uma estalagem</b></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px"><span class="btn p" style="justify-content:center;padding:10px">Confirmar</span><span class="btn" style="justify-content:center;padding:10px">Rolar novamente</span><span class="btn" style="justify-content:center;padding:10px">Escolher</span><span class="btn" style="justify-content:center;padding:10px">Travar</span></div>
+<div class="r sb"><span class="lbl">Consequências</span><span class="bdg w">Requerem revisão</span></div><span class="mu">+1 idioma em Profissões</span>
+<span class="m">▸ Rastro da rolagem · Dados e fonte · Histórico</span></div>
+<div class="b c" style="gap:4px;padding:10px"><div class="r sb"><b>Idade</b><span class="bdg f">●</span></div><span class="mu">3d6=11 → Adulto</span></div>
+<div class="b c" style="gap:4px;padding:10px"><div class="r sb"><b>Aparência</b><span class="bdg w">pendente</span></div></div></div>
+<div class="r sb" style="padding:10px 14px 22px;border-top:1.5px solid #222"><span class="btn" style="padding:10px 12px">Ficha ▴</span><span class="btn p" style="padding:10px 16px">Próximo →</span></div>
+</div>
+
+<div class="phone" style="position:relative">
+<div class="dim" style="position:absolute;inset:0"></div>
+<div class="c" style="position:absolute;left:0;top:0;bottom:0;width:300px;background:#fff;border-right:2.5px solid #222;padding:44px 14px 14px;gap:2px;box-sizing:border-box">
+<div class="r sb" style="margin-bottom:8px"><b class="h3">Passos</b><span class="btn s">✕</span></div>
+<div class="r sb" style="padding:10px 6px"><span>a · Ruleset</span><span class="m">●</span></div><div class="r sb" style="padding:10px 6px"><span>b · Ancestry</span><span class="m">●</span></div><div class="r sb" style="padding:10px 6px"><span>c · Atributos</span><span class="bdg w">△</span></div><div class="r sb" style="padding:10px 6px;border:2px solid #222;border-radius:5px"><b>d · Detalhes</b><span class="m">◐</span></div><div class="r sb" style="padding:10px 6px"><span>e · Profissões</span><span class="m">○</span></div><div class="r sb" style="padding:10px 6px"><span>f · Riqueza</span><span class="m">○</span></div><div class="r sb" style="padding:10px 6px"><span>g · Interesting Thing</span><span class="m">▣</span></div><div class="r sb" style="padding:10px 6px"><span>h · Nome e Notas</span><span class="m">○</span></div><div class="r sb" style="padding:10px 6px"><span>i · Progressão</span><span class="bdg w">◇</span></div><div class="r sb" style="padding:10px 6px"><span>j · Magias</span><span class="bdg w">◇</span></div><div class="r sb" style="padding:10px 6px"><span>k · Revisão</span><span class="m">—</span></div>
+<div style="flex:1"></div><span class="btn p" style="justify-content:center;padding:10px">Gerar tudo aleatoriamente</span><span class="m mu" style="text-align:center">modo Híbrido · alvo nv 3 · seed 7F3A-21C9</span></div>
+</div>
+
+<div class="phone">
+<div class="r sb m" style="padding:12px 22px 4px"><span>9:41</span><span>▮▮▮</span></div>
+<div class="c" style="padding:6px 14px 10px;gap:4px;border-bottom:1.5px solid #222"><div class="r sb"><span class="btn s">←</span><span class="btn s">Ver | Editar</span></div><div class="r"><div class="ph" style="width:48px;height:48px">retrato</div><div class="c" style="gap:0"><b class="h3">Ilsa Brasa</b><span class="mu" style="font-size:14px">nv 3 · Human · Aprendiz da Centelha</span></div></div><span class="bdg w" style="align-self:flex-start">◇ Rascunho (1)</span></div>
+<div class="c" style="padding:12px 14px;gap:8px;flex:1;overflow:hidden">
+<div class="b r sb" style="padding:8px;border-width:2px"><b style="font-size:14px">Transformação: Forma de Brasa</b><span class="btn s">Encerrar</span></div>
+<div class="b c" style="padding:10px;gap:6px"><div class="r sb"><b>▾ Atributos</b></div><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:4px;text-align:center;font-size:13px"><div class="b" style="padding:4px">STR<br><b>9</b></div><div class="b" style="padding:4px">AGI<br><b>10</b></div><div class="b" style="padding:4px">INT<br><b>11</b></div><div class="b" style="padding:4px">WIL<br><b>10</b></div></div></div>
+<div class="b c" style="padding:10px;gap:6px"><b>▾ Características</b><div style="display:grid;grid-template-columns:1fr 1fr;gap:4px 12px;font-size:15px"><span>Defense <b class="hl">12</b> ⓘ</span><span>Health <b>14/18</b> ⓘ</span><span>Perception <b>11</b></span><span>Speed <b class="hl">14</b></span><span>Power <b>1</b></span><span>Healing Rate <b>4</b></span></div></div>
+<div class="b c" style="padding:10px;gap:6px"><div class="r sb"><b>▾ Conjuração e efeitos</b><span class="m">rank 1: 0/1</span></div><div class="r sb"><span>Fio de Calor · Def +2</span><span class="btn s">Encerrar</span></div><span class="btn" style="justify-content:center;padding:9px">Registrar conjuração</span></div>
+<div class="b r sb" style="padding:10px"><b>▸ Grimório (2)</b></div><div class="b r sb" style="padding:10px"><b>▸ Inventário (5)</b></div><div class="b r sb" style="padding:10px"><b>▸ Talentos (3)</b></div><div class="b r sb" style="padding:10px"><b>▸ Pendências e avisos (2)</b></div>
+</div></div>
+
+<div class="phone">
+<div class="r sb m" style="padding:12px 22px 4px"><span>9:41</span><span>▮▮▮</span></div>
+<div class="c" style="padding:6px 14px 10px;gap:2px;border-bottom:1.5px solid #222"><div class="r sb"><b class="h3">Gerar tudo · Prévia</b><span class="btn s">✕</span></div><span class="m mu">etapa 2/2 · seed 7F3A-21C9</span><span class="bdg w" style="align-self:flex-start">fullyResolved: não</span></div>
+<div class="c" style="padding:12px 14px;gap:6px;flex:1;overflow:hidden">
+<div class="b c" style="padding:10px;border-color:#b8441f;gap:4px"><b>Pendências (1)</b><span style="font-size:14px">Expert Path (nv 3): sem opção válida</span><span class="btn s q" style="align-self:flex-start">Resolver manualmente</span></div>
+<span class="lbl">Nível 0</span>
+<div class="b c" style="padding:8px;gap:2px"><div class="r sb"><span>▾ Background</span><span class="m">3d6=13</span></div><span style="font-size:14px">Aprendiz de cartógrafo</span><span class="bdg" style="align-self:flex-start">tabela publicada</span><div class="trace" style="font-size:11px">[6][2][5]=13 · Core p.00 · #0</div></div>
+<div class="b c" style="padding:8px;gap:2px"><div class="r sb"><span>▸ Idade · Adulto</span><span class="m">3d6=11</span></div><span class="bdg" style="align-self:flex-start">tabela publicada</span></div>
+<div class="b c" style="padding:8px;gap:2px"><div class="r sb"><span>▸ Ancestry · Human</span></div><span class="bdg f" style="align-self:flex-start">▣ preservado</span></div>
+<span class="lbl">Nível 1</span>
+<div class="b c" style="padding:8px;gap:2px"><span>▸ Novice Path · Aprendiz da Centelha</span><span class="bdg" style="align-self:flex-start">aleatório entre opções válidas (não oficial)</span></div>
+</div>
+<div class="c" style="padding:10px 14px 22px;border-top:1.5px solid #222;gap:6px"><span class="btn p" style="justify-content:center;padding:10px">Confirmar</span><div class="r" style="flex-wrap:nowrap"><span class="btn" style="flex:1;justify-content:center;padding:9px">Editar slot</span><span class="btn" style="flex:1;justify-content:center;padding:9px">Cancelar</span></div><span class="m mu" style="text-align:center;font-size:11px">Cancelar: a ficha atual não será alterada</span></div>
+</div>
+
+</div>
+<div class="anno"><h4>Notas</h4><ol>
+<li><span class="pin">i</span><span>Stepper vira barra de progresso + drawer "☰ Passos". Mini-ficha vira bottom sheet "Ficha ▴".</span></li>
+<li><span class="pin">i</span><span>ChoiceSlot: mesmas ações, em grade 2×2 de alvos ≥ 44px; ações secundárias no rodapé do card.</span></li>
+<li><span class="pin">i</span><span>Ficha: seções empilhadas e colapsáveis; Atributos, Características e Conjuração abertas por padrão (uso em mesa).</span></li>
+<li><span class="pin">i</span><span>Prévia Gerar tudo: Pendências no topo; ações fixas no rodapé.</span></li>
+<li><span class="pin">i</span><span>A4 não existe no mobile — é modo separado (Exportar).</span></li>
+</ol><div class="a11y c"><h4>A11y</h4><span>Drawer e bottom sheet: foco preso, Esc/gesto voltar fecha e devolve foco ao gatilho.</span></div></div>
+</div></div></div>
+
+</div>
+<p class="dv-next">Próximos passos: "explore 3 alternativas para o ChoiceSlot <a class="dv-oid" href="#1b">1b</a> (mais compacto)" · "teste um layout de ficha <a class="dv-oid" href="#1i">1i</a> em abas" · "mostre o modo Editar da ficha"</p>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;annotations&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Wireframes&quot;},&quot;sketchy&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Wireframes&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const a = this.props.annotations ?? true;
+    const s = this.props.sketchy ?? true;
+    return { rootCls: (a ? '' : 'noanno ') + (s ? '' : 'clean') };
+  }
+}
+</script>
+</body>
+</html>
