@@ -19,6 +19,15 @@
 ## Fixture Liliana
 O HTML de referência expõe 16 parâmetros-base e 31 efeitos. Capturar um conjunto **autorizado** de snapshots antes/depois para casos simples: `arcane_armor`, `rune_speed`, `alter_size_grow`, `alter_size_shrink`, interações de efeitos sobrepostos. Esses resultados são *comportamento do HTML*, não aprovação automática como regra oficial. Após implementação, comparar com textos/fontes.
 
+## CI mínima
+
+O gate automático está em `.github/workflows/ci.yml`: `npm ci`, `npm test` (`vitest run`) e `npm run build` (`tsc --noEmit && vite build`) com Node.js 22, em pull requests e em pushes para `main`. A mesma sequência é o gate local; ver o README, seção «Gate de CI (testes e build)».
+
+Dois conjuntos ficam fora desse gate no GitHub, porque não rodam só com `npm ci`:
+
+- **Curadoria sobre `rules/*.md`.** Os compêndios são locais e estão no `.gitignore`. Sem os quatro arquivos, o Vitest não inclui os testes que os abrem. Com os quatro no disco, `npm test` volta a rodá-los. Follow-up: publicar esses testes no runner quando a política de distribuição permitir fornecer o corpus sem commitá-lo.
+- **Playwright (`npm run test:e2e`).** Instala o Chromium, chama Python com `pypdf` e cobre PDF, download e HTML `file://`. Entra num workflow posterior, quando for estável no `ubuntu-latest`. Até lá, execute-o localmente antes de mudanças de interface.
+
 ## Definition of Done por task
 Implementação, tipagem, teste unitário relevante, aceitação verificável, atualização de docs, referência de fontes (quando mecânica), tratamento de estado de erro e ausência de regressões.
 
