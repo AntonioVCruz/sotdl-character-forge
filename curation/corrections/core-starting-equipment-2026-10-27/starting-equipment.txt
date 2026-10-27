@@ -1,0 +1,16 @@
+Starting Equipment
+You start with equipment based on your character’s wealth.
+To determine your wealth, roll and total 3d6, then consult the Wealth table. Keeping your professions and ancestry in mind, come up with a story for how your character came by this lifestyle.
+Your starting wealth tells you the equipment you have when the adventure begins. For details on equipment, see Chapter 6.
+Destitute
+You have a club or sling with 20 stones, rags, and a pouch containing 1d6 bits.
+Poor
+You have a staff or club or sling with 20 stones, patched basic clothing, a sack, bread, a waterskin, a tinderbox, a candle, and a pouch containing 2d6 bits.
+Getting By
+You have a dagger, a staff or club or sling with 20 stones, basic clothing, a backpack, a week of rations, a waterskin, a tinderbox, 2 torches, and a pouch containing 1d6 cp.
+Comfortable
+You have a dagger, a staff or club or sling with 20 stones, fine clothing, a backpack, a cloak, a week of rations, a waterskin, a coil of rope, a tinderbox, 2 torches, a healing potion, and a pouch containing 2d6 cp. You also have a small shield; an incantation of a rank 0 spell of the GM’s choice written on a scroll; or a healer’s kit, tool kit, or writing kit.
+Wealthy
+You have a dagger, courtier’s clothing, a cloak, a backpack, a week of rations, a waterskin, a coil of rope, a tinderbox, a lantern, 2 flasks of oil, a healing potion, and a pouch containing 1d6 ss. You also have a shield; an incantation of a rank 0 spell of the GM’s choice written on a scroll; or a healer’s kit, tool kit, or writing kit.
+Rich
+You have a dagger, noble’s clothing, a cloak, a week of rations, a waterskin, a healing potion, and a pouch containing 2d6 ss. You also have a personal servant, a guard, and three horses with saddles.

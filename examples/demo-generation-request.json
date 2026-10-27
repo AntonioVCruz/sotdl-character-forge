@@ -1,0 +1,39 @@
+{
+  "fictionalData": true,
+  "notice": "Pedido ilustrativo; IDs de slot/candidatos são demonstrativos, não regras oficiais",
+  "examples": [
+    {
+      "mode": "hybrid",
+      "targetLevel": 1,
+      "seed": "example-seed-2026",
+      "prngVersion": "random-v1",
+      "rulesetId": "test-ruleset",
+      "allowUniformEligibleFallback": true,
+      "perSlotModes": {
+        "ancestry@0": "manual",
+        "background@0": "random",
+        "profession@0": "random",
+        "path@1": "random"
+      },
+      "locks": [
+        "ancestry@0"
+      ],
+      "candidates": {
+        "path@1": [
+          "demo:path:alpha",
+          "demo:path:beta"
+        ]
+      }
+    },
+    {
+      "mode": "all-random",
+      "targetLevel": 10,
+      "seed": "example-seed-2026",
+      "prngVersion": "random-v1",
+      "rulesetId": "test-ruleset",
+      "allowUniformEligibleFallback": true,
+      "perSlotModes": {},
+      "locks": []
+    }
+  ]
+}

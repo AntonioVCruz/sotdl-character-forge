@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "aliases": [
+    { "label": "Hunger in the Void", "canonicalTitle": "The Hunger in the Void", "status": "confirmed-in-md", "reason": "Título canônico já registrado no manifesto MD; correspondência do alias confirmada explicitamente pelo usuário nesta sessão em 2026-10-26. Resolve a identidade da publicação; não certifica edição, paginação, autorização ou revisão do PDF." },
+    { "label": "Disciple of The Demon Lord", "canonicalTitle": "The Disciple of the Demon Lord", "status": "proposed", "reason": "Título de PDF declarado difere do manifesto; edição não confirmada." },
+    { "label": "Do We Not Die", "canonicalTitle": "Do We Not Die?", "status": "proposed", "reason": "Pontuação ausente no nome declarado do PDF; confirmar identidade." },
+    { "label": "Oddities Artifacts and Esoterica", "canonicalTitle": "Oddities, Artifacts, and Esoterica", "status": "proposed", "reason": "Vírgulas ausentes no nome declarado do PDF; confirmar identidade." },
+    { "label": "Heavens Sent", "canonicalTitle": "Heaven’s Sent", "status": "proposed", "reason": "Apóstrofo ausente; confirmar identidade/edição." }
+  ]
+}

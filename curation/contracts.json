@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "contractVersion": "1.0.0",
+  "reviewDate": "2026-10-26",
+  "files": [
+    {
+      "path": "docs/contratos-curadoria.md",
+      "sha256": "9b7b95698b843e315c8643f900e733d4055eee010f75e3ddf37ca46f2bff83ea"
+    },
+    {
+      "path": "docs/curadoria-evidencia.md",
+      "sha256": "d583ede97a6a322d6d38eac10e2ba0d8bac07839b6406a2357a3e0a1627ebf57"
+    },
+    {
+      "path": "docs/curadoria-fontes-erratas.md",
+      "sha256": "4838125a857100f44804b1f4759931eab43014f16be2e2040f17c6aa0f2dfee9"
+    },
+    {
+      "path": "docs/curadoria-identidade.md",
+      "sha256": "a79a179997bf99370bdf92dc28f5de4c99d7922b8aaa812f2b7b20b01e797c16"
+    },
+    {
+      "path": "packages/catalog/index.ts",
+      "sha256": "fe64a8dc7dbbdae9ca726bfa685877085c6133e995f45a213472a00f94626c6c"
+    },
+    {
+      "path": "packages/curation/contracts.ts",
+      "sha256": "369c738c559bcf823e3135acdf6f7a4f2cf1ab870f0db1f954e981658b5fa6df"
+    },
+    {
+      "path": "packages/curation/evidence.ts",
+      "sha256": "4793e8b6447ca5618d9a2b59014e3308570282f8ae0464d8ce1e710e6d005e77"
+    },
+    {
+      "path": "packages/curation/identity.ts",
+      "sha256": "6a2e46ee73c2efcbc63e6f017f38903127ae1399e550fd0d8de838db8a19ed1f"
+    },
+    {
+      "path": "packages/curation/registries.ts",
+      "sha256": "bff9f45665113dbae0a7f5e4f3eda81bd7678e253774188a5ea02f0eb662e298"
+    },
+    {
+      "path": "packages/curation/source-policy.ts",
+      "sha256": "6724ccee854df638a5af24cc17986ca8aae02dcfd20cc019901e80f27fed94e6"
+    },
+    {
+      "path": "packages/random-tables/index.ts",
+      "sha256": "cd3134c478a222c9cc690a1a6b873a40a05873e53a8aa519044c4c61ca53a434"
+    },
+    {
+      "path": "tools/curation/examples.mjs",
+      "sha256": "c77561d91a0ba9f3610ee205bb4cb9521ea121a736f618dfa51abff2adeaa0a7"
+    },
+    {
+      "path": "tools/curation/freeze.mjs",
+      "sha256": "7f2084c6515b9ab3a5c41bce41ec3ccb24cbd1310e0141ee61a6337f7c767f1f"
+    },
+    {
+      "path": "tools/curation/inputs.mjs",
+      "sha256": "eb45d83d0bd73afa082947a0a4d5dbbb26a1d915c290f055b03ff7e1ffb4b906"
+    },
+    {
+      "path": "tools/curation/policy-evidence.mjs",
+      "sha256": "aea516280f6c1be82ae89c7124bdbdbb4fc2fcbc5679bbf6383a57b497d06953"
+    },
+    {
+      "path": "tools/curation/sources.mjs",
+      "sha256": "1ce5328bd38383643ed7b798e7b264ca24ee18ccca7f94e6f890eaefddf778a0"
+    }
+  ]
+}

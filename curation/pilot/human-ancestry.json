@@ -1,0 +1,1507 @@
+{
+  "schemaVersion": 1,
+  "kind": "curation-ancestry-formalization",
+  "reviewDate": "2026-10-27",
+  "status": "structured-for-pilot-review",
+  "gates": {
+    "importablePack": false,
+    "runtimeIntegrated": false,
+    "officialGenerationEnabled": false,
+    "pdfCertified": false,
+    "stagingPromoted": false
+  },
+  "spec": {
+    "schemaVersion": 1,
+    "task": "CUR-015",
+    "targetLevel": 0,
+    "variants": [
+      {
+        "id": "core",
+        "sourceId": "sotdl:shadow-of-the-demon-lord-core",
+        "entityId": "sotdl:shadow-of-the-demon-lord-core:ancestry:human:default",
+        "evidenceIds": [
+          "human-source",
+          "human-stats",
+          "human-language"
+        ],
+        "attributeModes": [
+          "fixed"
+        ],
+        "languages": {
+          "grantedSpeech": [
+            "Common Tongue"
+          ],
+          "grantedLiteracy": [],
+          "additionalChoice": "one-language-or-random-profession",
+          "evidenceIds": [
+            "human-language"
+          ]
+        },
+        "startingNamedTraits": [],
+        "excludedFutureEvidenceIds": [
+          "human-future"
+        ]
+      },
+      {
+        "id": "only-human",
+        "sourceId": "sotdl:only-human",
+        "entityId": "sotdl:only-human:ancestry:human:variant",
+        "evidenceIds": [
+          "human-expansion-source",
+          "human-expansion-attributes"
+        ],
+        "attributeModes": [
+          "fixed",
+          "random"
+        ],
+        "languages": {
+          "grantedSpeech": [
+            "Common Tongue"
+          ],
+          "grantedLiteracy": [],
+          "additionalChoice": "development-tables",
+          "evidenceIds": [
+            "human-expansion-attributes",
+            "human-expansion-procedure"
+          ]
+        },
+        "startingNamedTraits": [],
+        "excludedFutureEvidenceIds": [
+          "human-expansion-level-four"
+        ]
+      }
+    ],
+    "attributes": {
+      "fixed": {
+        "base": 10,
+        "increaseOneBy": 1,
+        "evidenceIds": [
+          "human-stats",
+          "human-expansion-attributes"
+        ]
+      },
+      "random": {
+        "base": 8,
+        "count": 1,
+        "sides": 3,
+        "independentRolls": 4,
+        "evidenceIds": [
+          "human-expansion-attributes"
+        ]
+      },
+      "adjustment": {
+        "optional": true,
+        "maximumTransfers": 1,
+        "amount": 1,
+        "distinctAttributes": true,
+        "applyAfterMode": true,
+        "minimumScore": 1,
+        "maximumScore": 20,
+        "evidenceIds": [
+          "general-scores"
+        ]
+      }
+    },
+    "size": {
+      "choices": [
+        0.5,
+        1
+      ],
+      "independentOfBuild": true,
+      "evidenceIds": [
+        "human-stats",
+        "human-expansion-attributes"
+      ]
+    },
+    "rules": [
+      {
+        "id": "human-base:health",
+        "target": "health",
+        "formula": {
+          "op": "copy",
+          "ref": "strength"
+        },
+        "minimum": null,
+        "maximum": null,
+        "evidenceIds": [
+          "human-stats",
+          "human-expansion-attributes"
+        ],
+        "composition": "direct",
+        "reason": "Health is the final Strength score in both published blocks."
+      },
+      {
+        "id": "human-base:perception",
+        "target": "perception",
+        "formula": {
+          "op": "copy",
+          "ref": "intellect"
+        },
+        "minimum": null,
+        "maximum": 25,
+        "evidenceIds": [
+          "human-stats",
+          "human-expansion-attributes",
+          "derived"
+        ],
+        "composition": "direct",
+        "reason": "Base Perception equals final Intellect; general cap 25."
+      },
+      {
+        "id": "human-base:defense",
+        "target": "defense",
+        "formula": {
+          "op": "copy",
+          "ref": "agility"
+        },
+        "minimum": null,
+        "maximum": 25,
+        "evidenceIds": [
+          "human-stats",
+          "human-expansion-attributes",
+          "derived"
+        ],
+        "composition": "direct",
+        "reason": "Unarmored base Defense equals final Agility; general cap 25. Armor/shields are later layers."
+      },
+      {
+        "id": "human-base:healingRate",
+        "target": "healingRate",
+        "formula": {
+          "op": "divide-floor",
+          "ref": "health",
+          "divisor": 4
+        },
+        "minimum": 1,
+        "maximum": null,
+        "evidenceIds": [
+          "human-stats",
+          "human-expansion-attributes",
+          "derived"
+        ],
+        "composition": "inherited-core",
+        "reason": "Core Human explicitly rounds down; Only Human repeats the quarter formula without a different rounding instruction, inheriting floor. General rule supplies minimum 1."
+      },
+      {
+        "id": "human-base:size",
+        "target": "size",
+        "formula": {
+          "op": "copy",
+          "ref": "selectedSize"
+        },
+        "minimum": null,
+        "maximum": null,
+        "evidenceIds": [
+          "human-stats",
+          "human-expansion-attributes"
+        ],
+        "composition": "direct",
+        "reason": "Choose Size 1/2 or 1 independently of Build under the explicit user decision."
+      },
+      {
+        "id": "human-base:speed",
+        "target": "speed",
+        "formula": {
+          "op": "constant",
+          "value": 10
+        },
+        "minimum": null,
+        "maximum": null,
+        "evidenceIds": [
+          "human-stats",
+          "human-expansion-attributes"
+        ],
+        "composition": "direct",
+        "reason": "Speed 10 is declared in both blocks."
+      },
+      {
+        "id": "human-base:power",
+        "target": "power",
+        "formula": {
+          "op": "constant",
+          "value": 0
+        },
+        "minimum": null,
+        "maximum": null,
+        "evidenceIds": [
+          "human-stats",
+          "human-expansion-attributes"
+        ],
+        "composition": "direct",
+        "reason": "Power 0 is declared in both blocks."
+      },
+      {
+        "id": "human-base:damage",
+        "target": "damage",
+        "formula": {
+          "op": "constant",
+          "value": 0
+        },
+        "minimum": 0,
+        "maximum": null,
+        "evidenceIds": [
+          "human-stats",
+          "human-expansion-attributes"
+        ],
+        "composition": "inherited-core",
+        "reason": "Core explicitly initializes this state to zero. Only Human omits it; inherit the Core baseline, never claim a direct supplement value or reset later table effects."
+      },
+      {
+        "id": "human-base:insanity",
+        "target": "insanity",
+        "formula": {
+          "op": "constant",
+          "value": 0
+        },
+        "minimum": 0,
+        "maximum": null,
+        "evidenceIds": [
+          "human-stats",
+          "human-expansion-attributes"
+        ],
+        "composition": "inherited-core",
+        "reason": "Core explicitly initializes this state to zero. Only Human omits it; inherit the Core baseline, never claim a direct supplement value or reset later table effects."
+      },
+      {
+        "id": "human-base:corruption",
+        "target": "corruption",
+        "formula": {
+          "op": "constant",
+          "value": 0
+        },
+        "minimum": 0,
+        "maximum": null,
+        "evidenceIds": [
+          "human-stats",
+          "human-expansion-attributes"
+        ],
+        "composition": "inherited-core",
+        "reason": "Core explicitly initializes this state to zero. Only Human omits it; inherit the Core baseline, never claim a direct supplement value or reset later table effects."
+      },
+      {
+        "id": "human-base:strengthModifier",
+        "target": "strengthModifier",
+        "formula": {
+          "op": "subtract",
+          "ref": "strength",
+          "amount": 10
+        },
+        "minimum": null,
+        "maximum": null,
+        "evidenceIds": [
+          "general-scores",
+          "attributes"
+        ],
+        "composition": "general-rule",
+        "reason": "Attribute modifier = final score minus 10; Perception works as an attribute with a score and modifier."
+      },
+      {
+        "id": "human-base:agilityModifier",
+        "target": "agilityModifier",
+        "formula": {
+          "op": "subtract",
+          "ref": "agility",
+          "amount": 10
+        },
+        "minimum": null,
+        "maximum": null,
+        "evidenceIds": [
+          "general-scores",
+          "attributes"
+        ],
+        "composition": "general-rule",
+        "reason": "Attribute modifier = final score minus 10; Perception works as an attribute with a score and modifier."
+      },
+      {
+        "id": "human-base:intellectModifier",
+        "target": "intellectModifier",
+        "formula": {
+          "op": "subtract",
+          "ref": "intellect",
+          "amount": 10
+        },
+        "minimum": null,
+        "maximum": null,
+        "evidenceIds": [
+          "general-scores",
+          "attributes"
+        ],
+        "composition": "general-rule",
+        "reason": "Attribute modifier = final score minus 10; Perception works as an attribute with a score and modifier."
+      },
+      {
+        "id": "human-base:willModifier",
+        "target": "willModifier",
+        "formula": {
+          "op": "subtract",
+          "ref": "will",
+          "amount": 10
+        },
+        "minimum": null,
+        "maximum": null,
+        "evidenceIds": [
+          "general-scores",
+          "attributes"
+        ],
+        "composition": "general-rule",
+        "reason": "Attribute modifier = final score minus 10; Perception works as an attribute with a score and modifier."
+      },
+      {
+        "id": "human-base:perceptionModifier",
+        "target": "perceptionModifier",
+        "formula": {
+          "op": "subtract",
+          "ref": "perception",
+          "amount": 10
+        },
+        "minimum": null,
+        "maximum": null,
+        "evidenceIds": [
+          "general-scores",
+          "attributes",
+          "derived"
+        ],
+        "composition": "general-rule",
+        "reason": "Attribute modifier = final score minus 10; Perception works as an attribute with a score and modifier."
+      }
+    ],
+    "deferred": [
+      {
+        "id": "development-and-background",
+        "taskRefs": [
+          "CUR-016",
+          "CUR-017",
+          "CUR-021"
+        ],
+        "reason": "Keep table procedure independent of attribute mode; outcomes can change attributes, states, languages or professions. No table outcomes applied to base preview."
+      },
+      {
+        "id": "equipment-and-effects",
+        "taskRefs": [
+          "CUR-018",
+          "CUR-019",
+          "CUR-020",
+          "CUR-027",
+          "CUR-034"
+        ],
+        "reason": "Armor replaces/protects Defense and may alter Speed; scope/conditional effects cannot be invented from the base or generic item name."
+      },
+      {
+        "id": "future-levels",
+        "taskRefs": [
+          "CUR-023"
+        ],
+        "reason": "Both level-4 blocks excluded at level 0. Do not stack Health +5 or merge different Determined text."
+      },
+      {
+        "id": "runtime-selection-and-formulas",
+        "taskRefs": [
+          "CUR-033",
+          "CUR-034"
+        ],
+        "reason": "Current demo stores seven numeric baseStats. Add variant/mode selection, declarative formulas, modifiers, Size, Perception, Healing Rate and separate initial states. Recompute dependencies after attribute changes, composing later direct characteristic modifiers in their proper layer instead of freezing final numbers."
+      },
+      {
+        "id": "runtime-rolls-and-history",
+        "taskRefs": [
+          "CUR-035",
+          "CUR-036"
+        ],
+        "reason": "Persist one d3 roll per attribute with source, seed, faces and version; calculation/import must not draw RNG. Keep source, mode and transfer events distinct."
+      },
+      {
+        "id": "runtime-language-grants",
+        "taskRefs": [
+          "CUR-017",
+          "CUR-033",
+          "CUR-036"
+        ],
+        "reason": "Separate speech/read/write grants and target languages; do not impose exchange caps or stack publication blocks."
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "id": "attributes",
+      "sourceId": "sotdl:shadow-of-the-demon-lord-core",
+      "medium": "md",
+      "path": "rules/SotDL_Compendio_Regras_Equipamentos_Monstros_v4_All_Project_Sources.md",
+      "inputSha256": "af5b377d003c96910c5c7d4c4909a66d381513cbda93de22b5d83a6ca5474ece",
+      "startLine": 1076,
+      "endLine": 1086,
+      "anchor": "score − 10",
+      "excerpt": "Attributes\nAttributes describe a creature’s basic capabilities in the\ngame. Most creatures have four attributes: Strength,\nAgility, Intellect, and Will. Each attribute has two\nnumbers: a score and a modifier. Together, these numbers\nreflect a creature’s natural talent and formal training when\nattempting to do things in the game.\nScore: An attribute’s score ranges from 1 to 20. Player\ncharacters usually have starting scores from 8 to 13.\nModifier: An attribute’s modifier equals its score − 10. You\napply this number to d20 rolls when you use the attribute.",
+      "excerptSha256": "3519506b8003de15b97710ea554a69aafd4b1e76243035c08743ea6d3d2b111f",
+      "origin": "Reconciled local MD",
+      "evidenceScope": "CUR-013 corpus",
+      "declaredPagination": "Parent section PDF-page declaration only; no per-entry printed-page certification.",
+      "inventoryRefs": [
+        {
+          "id": "mechanics:u000073",
+          "state": "captured",
+          "entityId": "sotdl:shadow-of-the-demon-lord-core:rule:u000073:procedure",
+          "reference": {
+            "path": "curation/segments/mechanics.jsonl",
+            "record": 74
+          }
+        },
+        {
+          "id": "mechanics:u000074",
+          "state": "captured",
+          "entityId": "sotdl:shadow-of-the-demon-lord-core:rule:u000074:procedure",
+          "reference": {
+            "path": "curation/segments/mechanics.jsonl",
+            "record": 75
+          }
+        },
+        {
+          "id": "mechanics:u000075",
+          "state": "captured",
+          "entityId": "sotdl:shadow-of-the-demon-lord-core:rule:u000075:procedure",
+          "reference": {
+            "path": "curation/segments/mechanics.jsonl",
+            "record": 76
+          }
+        }
+      ]
+    },
+    {
+      "id": "derived",
+      "sourceId": "sotdl:shadow-of-the-demon-lord-core",
+      "medium": "md",
+      "path": "rules/SotDL_Compendio_Regras_Equipamentos_Monstros_v4_All_Project_Sources.md",
+      "inputSha256": "af5b377d003c96910c5c7d4c4909a66d381513cbda93de22b5d83a6ca5474ece",
+      "startLine": 1241,
+      "endLine": 1269,
+      "anchor": "cannot exceed 25",
+      "excerpt": "Healing Rate\nAll creatures can recover from damage, given enough time.\nA creature’s healing rate is how much damage it heals after\nit completes a rest or when targeted by an effect that heals\ndamage. A creature’s healing rate equals one-quarter its\nHealth (minimum 1). If the creature’s Health increases, its\nhealing rate also increases.\nDefense\nDefense represents the protection a creature or object has\nagainst attacks made with weapons.\nScore: Unless your ancestry states otherwise, while\nunarmored, your Defense equals your Agility score.\nWearing armor and wielding a shield increase or replace\nthis number.\nObjects typically have Defense 5.\nMaximum Defense\nA creature’s Defense cannot exceed 25, even if weapons,\narmor, and other effects would increase it beyond that\nnumber.\nPerception\nPerception works just like an attribute. It has both a score\nand a modifier. A high Perception indicates sharp senses,\nwhile a lower number indicates a creature has poor vision\nor hearing, or its senses are otherwise limited.\nScore: Your base Perception score equals your\nIntellect score. Your ancestry can increase this\nnumber. Other creatures might also have increased\nPerception scores based on their nature. A creature’s\nPerception score cannot exceed 25.",
+      "excerptSha256": "2271ad2cb618ef4d20053ca60af17bb72590381b58b8b222a017cba4b40dea0b",
+      "origin": "Reconciled local MD",
+      "evidenceScope": "CUR-013 corpus",
+      "declaredPagination": "Parent section PDF-page declaration only; no per-entry printed-page certification.",
+      "inventoryRefs": [
+        {
+          "id": "mechanics:u000088",
+          "state": "captured",
+          "entityId": "sotdl:shadow-of-the-demon-lord-core:rule:u000088:procedure",
+          "reference": {
+            "path": "curation/segments/mechanics.jsonl",
+            "record": 89
+          }
+        },
+        {
+          "id": "mechanics:u000089",
+          "state": "captured",
+          "entityId": "sotdl:shadow-of-the-demon-lord-core:rule:u000089:procedure",
+          "reference": {
+            "path": "curation/segments/mechanics.jsonl",
+            "record": 90
+          }
+        },
+        {
+          "id": "mechanics:u000090",
+          "state": "captured",
+          "entityId": "sotdl:shadow-of-the-demon-lord-core:rule:u000090:procedure",
+          "reference": {
+            "path": "curation/segments/mechanics.jsonl",
+            "record": 91
+          }
+        },
+        {
+          "id": "mechanics:u000091",
+          "state": "captured",
+          "entityId": "sotdl:shadow-of-the-demon-lord-core:rule:u000091:procedure",
+          "reference": {
+            "path": "curation/segments/mechanics.jsonl",
+            "record": 92
+          }
+        }
+      ]
+    },
+    {
+      "id": "general-scores",
+      "sourceId": "sotdl:shadow-of-the-demon-lord-core",
+      "medium": "text",
+      "path": "curation/corrections/core-character-creation-2026-10-27/introduction.txt",
+      "inputSha256": "51524877da4e81c6146392d35f4fdca222e6e0b4ff9b7507b0e93c6bcb43f9ef",
+      "startLine": 16,
+      "endLine": 23,
+      "anchor": "only once",
+      "excerpt": "Attributes\nFour attributes describe your character’s fundamental capabilities. They are Strength, Agility, Intellect, and Will. For each attribute, you have a score and a modifier. For information on what attributes mean and how you use scores and modifiers, see Chapter 2.\nScores\nA score is a number ranging from 1 to 20. Average people have a score of 10. Record the starting scores from your ancestry in the spaces provided on your character sheet.\n• Adjusting Scores: You can increase one score by 1 by decreasing another score by 1. You can make this adjustment only once.\n• Increasing Scores: Your scores increase as your group’s level increases.\nModifier\nYour score determines your modifier. It is equal to the score minus 10. So if you have a 12 Strength, your Strength modifier is +2. Note the modifiers for each attribute in the spaces provided.",
+      "excerptSha256": "917a3700dace96f1ca6ce3ac6f7bd75e5d0bc8d11886eb86604cf310b1b75f8a",
+      "origin": "User attachment: Pasted text.txt, 07be6b61-869d-4432-88d5-b50546e6599e; copied byte-for-byte.",
+      "evidenceScope": "User-supplied supplement; not a CUR-013 inventory or staging entry.",
+      "declaredPagination": null,
+      "inventoryRefs": []
+    },
+    {
+      "id": "human-expansion-attributes",
+      "sourceId": "sotdl:only-human",
+      "medium": "md",
+      "path": "rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md",
+      "inputSha256": "020d9d62d9046475552dbaf9f989f07e69b87b7a386cadc1af3e82f930502baf",
+      "startLine": 13626,
+      "endLine": 13651,
+      "anchor": "Choose an Attribute Scores option",
+      "excerpt": "Human\nCharacters\nEverything you need to make a human\ncharacter can be found in Shadow of\nthe Demon Lord. The rules in that book\nhelp you create a character quickly and\nwith enough information to help you visualize and\nportray the character in play. The following optional\nrules are intended to give you more tools for building\nvaried human characters in order to reﬂect their natural\ndiversity and to help you individuate your character\nfrom other humans in your group.\nCreating a Human (Variant)\nChoose an Attribute Scores option\nRandom Attribute Scores Strength 8 + 1d3, Agility 8 + 1d3,\nIntellect 8 + 1d3, Will 8 + 1d3\nStandard Attribute Scores Strength 10, Agility 10, Intellect 10,\nWill 10. Increase one attribute by 1.\nPerception equals your Intellect score\nDefense equals your Agility score\nHealth equals your Strength score\nHealing Rate equals one-quarter your Health\nSize 1/2 or 1, Speed 10, Power 0\nLanguages and Professions You speak the Common Tongue.\nYou might gain additional languages and professions from\nthe Human Development tables.",
+      "excerptSha256": "da7435587c2c3c82e50e58455b961793069186b192dc13f7e141283b1a129b65",
+      "origin": "Reconciled local MD",
+      "evidenceScope": "CUR-013 corpus",
+      "declaredPagination": "Source Page 5 / PDF Page 5 declared at entry start; not certified for every subrange.",
+      "inventoryRefs": [
+        {
+          "id": "ancestries:human-only-human",
+          "state": "captured",
+          "entityId": "sotdl:only-human:ancestry:human:variant",
+          "reference": {
+            "path": "curation/reports/ancestries.json",
+            "collection": "occurrences",
+            "record": 30
+          }
+        }
+      ]
+    },
+    {
+      "id": "human-expansion-level-four",
+      "sourceId": "sotdl:only-human",
+      "medium": "md",
+      "path": "rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md",
+      "inputSha256": "020d9d62d9046475552dbaf9f989f07e69b87b7a386cadc1af3e82f930502baf",
+      "startLine": 13719,
+      "endLine": 13725,
+      "anchor": "You discover a tradition",
+      "excerpt": "Level 4 Human Expert\nCharacteristics Health +5\nYou discover a tradition, learn one spell from a tradition you\nhave already discovered, or gain the Determined talent,\nwhich is described below.\nDetermined When you roll a 1 on the die from a boon, you\ncan reroll the die and use the new number.",
+      "excerptSha256": "2d36aa3c0a53b398e72dbcf3bf80c19c997b19fcd7608ef425935013a997a19c",
+      "origin": "Reconciled local MD",
+      "evidenceScope": "CUR-013 corpus",
+      "declaredPagination": "Source Page 5 / PDF Page 5 declared at entry start; not certified for every subrange.",
+      "inventoryRefs": [
+        {
+          "id": "ancestries:human-only-human",
+          "state": "captured",
+          "entityId": "sotdl:only-human:ancestry:human:variant",
+          "reference": {
+            "path": "curation/reports/ancestries.json",
+            "collection": "occurrences",
+            "record": 30
+          }
+        }
+      ]
+    },
+    {
+      "id": "human-expansion-procedure",
+      "sourceId": "sotdl:only-human",
+      "medium": "md",
+      "path": "rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md",
+      "inputSha256": "020d9d62d9046475552dbaf9f989f07e69b87b7a386cadc1af3e82f930502baf",
+      "startLine": 13726,
+      "endLine": 13734,
+      "anchor": "do not roll for random starting professions",
+      "excerpt": "Human Development Tables\nWhether or not you use the variant human described\nabove, you can use the following tables in place of\nthose presented in Shadow of the Demon Lord to create\na more detailed background for your character. If you\ndo, you do not roll for random starting professions or\nstarting wealth as normal, and instead use all the tables\npresented here. You must roll dice for each table and\ntake the result rolled.",
+      "excerptSha256": "d4df85929a091201ba2fdb0ef4b912561e48070216b4e2b59d6ed1dc87519a86",
+      "origin": "Reconciled local MD",
+      "evidenceScope": "CUR-013 corpus",
+      "declaredPagination": "Source Page 5 / PDF Page 5 declared at entry start; not certified for every subrange.",
+      "inventoryRefs": [
+        {
+          "id": "ancestries:human-only-human",
+          "state": "captured",
+          "entityId": "sotdl:only-human:ancestry:human:variant",
+          "reference": {
+            "path": "curation/reports/ancestries.json",
+            "collection": "occurrences",
+            "record": 30
+          }
+        }
+      ]
+    },
+    {
+      "id": "human-expansion-source",
+      "sourceId": "sotdl:only-human",
+      "medium": "md",
+      "path": "rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md",
+      "inputSha256": "020d9d62d9046475552dbaf9f989f07e69b87b7a386cadc1af3e82f930502baf",
+      "startLine": 13618,
+      "endLine": 13623,
+      "anchor": "Source:** Only Human",
+      "excerpt": "### Human — Only Human\n\n- **Entry Type:** Ancestry Variant\n- **Source:** Only Human\n- **Source Page:** 5\n- **PDF Page:** 5",
+      "excerptSha256": "5cf4327cc11d7659a8a2e497eaddc949bfb6b2be29045d3fc69136cfe40d9443",
+      "origin": "Reconciled local MD",
+      "evidenceScope": "CUR-013 corpus",
+      "declaredPagination": "Source Page 5 / PDF Page 5 declared at entry start; not certified for every subrange.",
+      "inventoryRefs": [
+        {
+          "id": "ancestries:human-only-human",
+          "state": "captured",
+          "entityId": "sotdl:only-human:ancestry:human:variant",
+          "reference": {
+            "path": "curation/reports/ancestries.json",
+            "collection": "occurrences",
+            "record": 30
+          }
+        }
+      ]
+    },
+    {
+      "id": "human-future",
+      "sourceId": "sotdl:shadow-of-the-demon-lord-core",
+      "medium": "md",
+      "path": "rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md",
+      "inputSha256": "020d9d62d9046475552dbaf9f989f07e69b87b7a386cadc1af3e82f930502baf",
+      "startLine": 14771,
+      "endLine": 14775,
+      "anchor": "Level 4 Expert Human",
+      "excerpt": "Level 4 Expert Human\nCharacteristics Health +5\nYou either learn one spell or gain Determined.\nDetermined When you roll a 1 on the die from a boon, you\ncan reroll the die and choose to use the new number.",
+      "excerptSha256": "57d4e02a273dc1eeb904646da2a2141973f904971ff414ce07f1e0672dfc7888",
+      "origin": "Reconciled local MD",
+      "evidenceScope": "CUR-013 corpus",
+      "declaredPagination": "Source Page 11 / PDF Page 12 declared at entry start; not certified for every subrange.",
+      "inventoryRefs": [
+        {
+          "id": "ancestries:human-shadow-of-the-demon-lord-core",
+          "state": "captured",
+          "entityId": "sotdl:shadow-of-the-demon-lord-core:ancestry:human:default",
+          "reference": {
+            "path": "curation/reports/ancestries.json",
+            "collection": "occurrences",
+            "record": 31
+          }
+        }
+      ]
+    },
+    {
+      "id": "human-language",
+      "sourceId": "sotdl:shadow-of-the-demon-lord-core",
+      "medium": "md",
+      "path": "rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md",
+      "inputSha256": "020d9d62d9046475552dbaf9f989f07e69b87b7a386cadc1af3e82f930502baf",
+      "startLine": 14768,
+      "endLine": 14770,
+      "anchor": "random profession",
+      "excerpt": "Languages and Professions You speak the Common\nTongue, and you can either speak one additional\nlanguage or add a random profession.",
+      "excerptSha256": "123e7492230499b7af79d5153f99f1fb54d0ba036e19622a65fb7af8105d6e12",
+      "origin": "Reconciled local MD",
+      "evidenceScope": "CUR-013 corpus",
+      "declaredPagination": "Source Page 11 / PDF Page 12 declared at entry start; not certified for every subrange.",
+      "inventoryRefs": [
+        {
+          "id": "ancestries:human-shadow-of-the-demon-lord-core",
+          "state": "captured",
+          "entityId": "sotdl:shadow-of-the-demon-lord-core:ancestry:human:default",
+          "reference": {
+            "path": "curation/reports/ancestries.json",
+            "collection": "occurrences",
+            "record": 31
+          }
+        }
+      ]
+    },
+    {
+      "id": "human-source",
+      "sourceId": "sotdl:shadow-of-the-demon-lord-core",
+      "medium": "md",
+      "path": "rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md",
+      "inputSha256": "020d9d62d9046475552dbaf9f989f07e69b87b7a386cadc1af3e82f930502baf",
+      "startLine": 14712,
+      "endLine": 14717,
+      "anchor": "Source Page:** 11",
+      "excerpt": "### Human — Shadow of the Demon Lord Core\n\n- **Entry Type:** Standard Ancestry\n- **Source:** Shadow of the Demon Lord Core\n- **Source Page:** 11\n- **PDF Page:** 12",
+      "excerptSha256": "bfc1bcddb74fc84f3cdce15bf87be0a1e95ab12c020d9c9c72fda470bdb79429",
+      "origin": "Reconciled local MD",
+      "evidenceScope": "CUR-013 corpus",
+      "declaredPagination": "Source Page 11 / PDF Page 12 declared at entry start; not certified for every subrange.",
+      "inventoryRefs": [
+        {
+          "id": "ancestries:human-shadow-of-the-demon-lord-core",
+          "state": "captured",
+          "entityId": "sotdl:shadow-of-the-demon-lord-core:ancestry:human:default",
+          "reference": {
+            "path": "curation/reports/ancestries.json",
+            "collection": "occurrences",
+            "record": 31
+          }
+        }
+      ]
+    },
+    {
+      "id": "human-stats",
+      "sourceId": "sotdl:shadow-of-the-demon-lord-core",
+      "medium": "md",
+      "path": "rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md",
+      "inputSha256": "020d9d62d9046475552dbaf9f989f07e69b87b7a386cadc1af3e82f930502baf",
+      "startLine": 14759,
+      "endLine": 14767,
+      "anchor": "Choose one attribute",
+      "excerpt": "Creating A Human\nStarting Attribute Scores Strength 10, Agility 10, Intellect\n10, Will 10. Choose one attribute and increase it by 1.\nPerception equals your Intellect score\nDefense equals your Agility score\nHealth equals your Strength score\nHealing Rate equals one-quarter your Health, round down\nSize 1/2 or 1, Speed 10, Power 0\nDamage 0, Insanity 0, Corruption 0",
+      "excerptSha256": "b668ad1e6a8b76ef2dd3a021a333d5afb05cf44e0b22d58aecedc694518436a1",
+      "origin": "Reconciled local MD",
+      "evidenceScope": "CUR-013 corpus",
+      "declaredPagination": "Source Page 11 / PDF Page 12 declared at entry start; not certified for every subrange.",
+      "inventoryRefs": [
+        {
+          "id": "ancestries:human-shadow-of-the-demon-lord-core",
+          "state": "captured",
+          "entityId": "sotdl:shadow-of-the-demon-lord-core:ancestry:human:default",
+          "reference": {
+            "path": "curation/reports/ancestries.json",
+            "collection": "occurrences",
+            "record": 31
+          }
+        }
+      ]
+    }
+  ],
+  "inputRefs": [
+    {
+      "path": "curation/pilot/core-level-zero.json",
+      "sha256": "36291fc64d1e27ba34993ecb8e2c886dd4c42eb5d6aab86d4f09c22bdc56f6fc"
+    },
+    {
+      "path": "tools/curation/human-ancestry-formalizer.ts",
+      "sha256": "f761af4bec81d08937043828063fb83033df9ba8f19ac81950fc8f3cd09569d0"
+    },
+    {
+      "path": "tools/curation/human-ancestry.mjs",
+      "sha256": "150afc6be224387413f5d9b082c384f99e99bf92cd4b8917b4ca6fe1fd1ac848"
+    },
+    {
+      "path": "packages/curation/ancestry-base-model.ts",
+      "sha256": "54aec5dabdcbd0eba4e5baf61015e98fd2cf0764adec4ec98f79888f2f1ca636"
+    },
+    {
+      "path": "packages/character-generator/index.ts",
+      "sha256": "6edd53eef44684078575447b7786d82f2baa635367d3f1861f372677a1d174d7"
+    },
+    {
+      "path": "packages/random-tables/index.ts",
+      "sha256": "cd3134c478a222c9cc690a1a6b873a40a05873e53a8aa519044c4c61ca53a434"
+    }
+  ],
+  "decisions": {
+    "path": "curation/pilot/creation-decisions.json",
+    "appliesTo": [
+      "scope",
+      "attributes",
+      "size",
+      "human-build",
+      "roleplaying",
+      "human-benefit",
+      "profession-language",
+      "profession-details",
+      "background-effects",
+      "starting-kit",
+      "kit-options",
+      "inventory"
+    ],
+    "decisions": {
+      "schemaVersion": 1,
+      "date": "2026-10-27",
+      "authority": "explicit-user-instruction",
+      "ancestryExpansions": {
+        "mechanics": "incorporate-applicable-published-expansion",
+        "tableDefault": "supplement-when-applicable",
+        "preserveCoreTables": true,
+        "coreTablesSelectable": true,
+        "attributeMode": "player-choice-when-published",
+        "fixedAndRandomMutuallyExclusive": true,
+        "defaultAttributeMode": null,
+        "preserveSourceVersions": true,
+        "duplicateBenefitsStack": false,
+        "replacementScope": "as-published",
+        "reason": "O usuário determinou incorporar mecânicas e tabelas de suplementos que expandem a ancestry, incluindo geração aleatória de atributos e opções de nível 4 quando publicadas. Tabelas do suplemento são o padrão; tabelas Core permanecem disponíveis como alternativa. Quando houver atributos fixos e aleatórios, o jogador escolhe o modo, sem obrigatoriedade de sorteio por usar o suplemento. Preservar proveniência, alternativas, substituições e procedimentos completos; não acumular ganhos duplicados nem misturar variantes conflitantes."
+      },
+      "size": {
+        "default": "ancestry-independent-of-build",
+        "exception": "explicit-table-or-rule-only",
+        "reason": "Não há relação direta. O Size da ancestralidade independe da Build, exceto se a tabela mencionar diretamente; o usuário cita Clockwork Form como exemplo, sem solicitar sua implementação neste piloto Human."
+      },
+      "languages": {
+        "defaultGrant": "speak-only",
+        "literacyGrant": "explicit-only",
+        "explicitGrantTargets": [
+          "new-language",
+          "previously-known-language"
+        ],
+        "professionExchangeCap": null,
+        "tableRestrictions": "out-of-application-scope",
+        "reason": "Conforme o usuário, idioma sem especificação refere-se apenas à fala. Uma opção explícita pode conceder idioma adicional alfabetizado ou leitura/escrita em idiomas anteriores. O aplicativo não impõe limite próprio de trocas entre idioma e profissão; restrições de cada mesa estão fora do escopo. Preservar as origens das concessões e trocas."
+      },
+      "inventory": {
+        "policy": "generic-editable-items",
+        "fixedItemLabel": "Item fixo",
+        "rankZeroIncantationLabel": "Incantation de rank 0",
+        "userMayRenameAndDescribe": true,
+        "detailsRequiredAtCreation": false,
+        "preserveSourceAndQuantities": true,
+        "collapseDistinctGrants": false,
+        "incantationRequiresSpellAtCreation": false,
+        "incantationTeachesSpell": false,
+        "inferMechanicalBonusesFromLabel": false,
+        "reason": "O usuário determinou nomes genéricos como Item fixo e Incantation de rank 0, editáveis posteriormente. A referência específica de item/spell não bloqueia a criação. Manter identidades de ganho, quantidades, alternativas e origem, sem transformar o rótulo em efeito, preço ou spell aprendida."
+      },
+      "roleplaying": {
+        "policy": "optional-free-text",
+        "requiredAnswers": 0,
+        "minimumSecrets": 0,
+        "requiresGMSharing": false,
+        "fields": [
+          {
+            "id": "relationships",
+            "label": "Vínculos",
+            "required": false
+          },
+          {
+            "id": "values-and-motivations",
+            "label": "Valores e motivações",
+            "required": false
+          },
+          {
+            "id": "secrets",
+            "label": "Segredos",
+            "required": false
+          },
+          {
+            "id": "roleplaying-notes",
+            "label": "Notas de interpretação",
+            "required": false
+          }
+        ],
+        "reason": "Para Roleplaying Questions, deixar apenas alguns campos não obrigatórios para o usuário preencher caso queira. O texto original continua como referência, sem exigir respostas, quantidade de segredos ou compartilhamento com GM. Esta é uma decisão do produto."
+      }
+    }
+  },
+  "examples": {
+    "fixedWithTransfer": {
+      "kind": "curation-human-base-preview",
+      "variant": "core",
+      "ancestryEntityId": "sotdl:shadow-of-the-demon-lord-core:ancestry:human:default",
+      "mode": "fixed",
+      "base": {
+        "strength": 12,
+        "agility": 9,
+        "intellect": 10,
+        "will": 10,
+        "health": 12,
+        "perception": 10,
+        "defense": 9,
+        "healingRate": 3,
+        "size": 1,
+        "speed": 10,
+        "power": 0,
+        "damage": 0,
+        "insanity": 0,
+        "corruption": 0,
+        "strengthModifier": 2,
+        "agilityModifier": -1,
+        "intellectModifier": 0,
+        "willModifier": 0,
+        "perceptionModifier": 0
+      },
+      "traces": [
+        {
+          "target": "strength",
+          "value": 12,
+          "ruleId": "human-base:attribute:strength",
+          "composition": "direct",
+          "evidenceIds": [
+            "human-stats",
+            "human-expansion-attributes",
+            "general-scores"
+          ]
+        },
+        {
+          "target": "agility",
+          "value": 9,
+          "ruleId": "human-base:attribute:agility",
+          "composition": "direct",
+          "evidenceIds": [
+            "human-stats",
+            "human-expansion-attributes",
+            "general-scores"
+          ]
+        },
+        {
+          "target": "intellect",
+          "value": 10,
+          "ruleId": "human-base:attribute:intellect",
+          "composition": "direct",
+          "evidenceIds": [
+            "human-stats",
+            "human-expansion-attributes"
+          ]
+        },
+        {
+          "target": "will",
+          "value": 10,
+          "ruleId": "human-base:attribute:will",
+          "composition": "direct",
+          "evidenceIds": [
+            "human-stats",
+            "human-expansion-attributes"
+          ]
+        },
+        {
+          "target": "health",
+          "value": 12,
+          "ruleId": "human-base:health",
+          "evidenceIds": [
+            "human-stats",
+            "human-expansion-attributes"
+          ],
+          "composition": "direct"
+        },
+        {
+          "target": "perception",
+          "value": 10,
+          "ruleId": "human-base:perception",
+          "evidenceIds": [
+            "human-stats",
+            "human-expansion-attributes",
+            "derived"
+          ],
+          "composition": "direct"
+        },
+        {
+          "target": "defense",
+          "value": 9,
+          "ruleId": "human-base:defense",
+          "evidenceIds": [
+            "human-stats",
+            "human-expansion-attributes",
+            "derived"
+          ],
+          "composition": "direct"
+        },
+        {
+          "target": "healingRate",
+          "value": 3,
+          "ruleId": "human-base:healingRate",
+          "evidenceIds": [
+            "human-stats",
+            "human-expansion-attributes",
+            "derived"
+          ],
+          "composition": "direct"
+        },
+        {
+          "target": "size",
+          "value": 1,
+          "ruleId": "human-base:size",
+          "evidenceIds": [
+            "human-stats",
+            "human-expansion-attributes"
+          ],
+          "composition": "direct"
+        },
+        {
+          "target": "speed",
+          "value": 10,
+          "ruleId": "human-base:speed",
+          "evidenceIds": [
+            "human-stats",
+            "human-expansion-attributes"
+          ],
+          "composition": "direct"
+        },
+        {
+          "target": "power",
+          "value": 0,
+          "ruleId": "human-base:power",
+          "evidenceIds": [
+            "human-stats",
+            "human-expansion-attributes"
+          ],
+          "composition": "direct"
+        },
+        {
+          "target": "damage",
+          "value": 0,
+          "ruleId": "human-base:damage",
+          "evidenceIds": [
+            "human-stats",
+            "human-expansion-attributes"
+          ],
+          "composition": "direct"
+        },
+        {
+          "target": "insanity",
+          "value": 0,
+          "ruleId": "human-base:insanity",
+          "evidenceIds": [
+            "human-stats",
+            "human-expansion-attributes"
+          ],
+          "composition": "direct"
+        },
+        {
+          "target": "corruption",
+          "value": 0,
+          "ruleId": "human-base:corruption",
+          "evidenceIds": [
+            "human-stats",
+            "human-expansion-attributes"
+          ],
+          "composition": "direct"
+        },
+        {
+          "target": "strengthModifier",
+          "value": 2,
+          "ruleId": "human-base:strengthModifier",
+          "evidenceIds": [
+            "general-scores",
+            "attributes"
+          ],
+          "composition": "general-rule"
+        },
+        {
+          "target": "agilityModifier",
+          "value": -1,
+          "ruleId": "human-base:agilityModifier",
+          "evidenceIds": [
+            "general-scores",
+            "attributes"
+          ],
+          "composition": "general-rule"
+        },
+        {
+          "target": "intellectModifier",
+          "value": 0,
+          "ruleId": "human-base:intellectModifier",
+          "evidenceIds": [
+            "general-scores",
+            "attributes"
+          ],
+          "composition": "general-rule"
+        },
+        {
+          "target": "willModifier",
+          "value": 0,
+          "ruleId": "human-base:willModifier",
+          "evidenceIds": [
+            "general-scores",
+            "attributes"
+          ],
+          "composition": "general-rule"
+        },
+        {
+          "target": "perceptionModifier",
+          "value": 0,
+          "ruleId": "human-base:perceptionModifier",
+          "evidenceIds": [
+            "general-scores",
+            "attributes",
+            "derived"
+          ],
+          "composition": "general-rule"
+        }
+      ],
+      "languageRules": {
+        "grantedSpeech": [
+          "Common Tongue"
+        ],
+        "grantedLiteracy": [],
+        "additionalChoice": "one-language-or-random-profession",
+        "evidenceIds": [
+          "human-language"
+        ]
+      },
+      "startingNamedTraits": [],
+      "deferred": [
+        {
+          "id": "development-and-background",
+          "taskRefs": [
+            "CUR-016",
+            "CUR-017",
+            "CUR-021"
+          ],
+          "reason": "Keep table procedure independent of attribute mode; outcomes can change attributes, states, languages or professions. No table outcomes applied to base preview."
+        },
+        {
+          "id": "equipment-and-effects",
+          "taskRefs": [
+            "CUR-018",
+            "CUR-019",
+            "CUR-020",
+            "CUR-027",
+            "CUR-034"
+          ],
+          "reason": "Armor replaces/protects Defense and may alter Speed; scope/conditional effects cannot be invented from the base or generic item name."
+        },
+        {
+          "id": "future-levels",
+          "taskRefs": [
+            "CUR-023"
+          ],
+          "reason": "Both level-4 blocks excluded at level 0. Do not stack Health +5 or merge different Determined text."
+        },
+        {
+          "id": "runtime-selection-and-formulas",
+          "taskRefs": [
+            "CUR-033",
+            "CUR-034"
+          ],
+          "reason": "Current demo stores seven numeric baseStats. Add variant/mode selection, declarative formulas, modifiers, Size, Perception, Healing Rate and separate initial states. Recompute dependencies after attribute changes, composing later direct characteristic modifiers in their proper layer instead of freezing final numbers."
+        },
+        {
+          "id": "runtime-rolls-and-history",
+          "taskRefs": [
+            "CUR-035",
+            "CUR-036"
+          ],
+          "reason": "Persist one d3 roll per attribute with source, seed, faces and version; calculation/import must not draw RNG. Keep source, mode and transfer events distinct."
+        },
+        {
+          "id": "runtime-language-grants",
+          "taskRefs": [
+            "CUR-017",
+            "CUR-033",
+            "CUR-036"
+          ],
+          "reason": "Separate speech/read/write grants and target languages; do not impose exchange caps or stack publication blocks."
+        }
+      ],
+      "completeCharacter": false
+    },
+    "randomWithoutTransfer": {
+      "kind": "curation-human-base-preview",
+      "variant": "only-human",
+      "ancestryEntityId": "sotdl:only-human:ancestry:human:variant",
+      "mode": "random",
+      "base": {
+        "strength": 9,
+        "agility": 10,
+        "intellect": 11,
+        "will": 9,
+        "health": 9,
+        "perception": 11,
+        "defense": 10,
+        "healingRate": 2,
+        "size": 0.5,
+        "speed": 10,
+        "power": 0,
+        "damage": 0,
+        "insanity": 0,
+        "corruption": 0,
+        "strengthModifier": -1,
+        "agilityModifier": 0,
+        "intellectModifier": 1,
+        "willModifier": -1,
+        "perceptionModifier": 1
+      },
+      "traces": [
+        {
+          "target": "strength",
+          "value": 9,
+          "ruleId": "human-base:attribute:strength",
+          "composition": "direct",
+          "evidenceIds": [
+            "human-expansion-attributes"
+          ]
+        },
+        {
+          "target": "agility",
+          "value": 10,
+          "ruleId": "human-base:attribute:agility",
+          "composition": "direct",
+          "evidenceIds": [
+            "human-expansion-attributes"
+          ]
+        },
+        {
+          "target": "intellect",
+          "value": 11,
+          "ruleId": "human-base:attribute:intellect",
+          "composition": "direct",
+          "evidenceIds": [
+            "human-expansion-attributes"
+          ]
+        },
+        {
+          "target": "will",
+          "value": 9,
+          "ruleId": "human-base:attribute:will",
+          "composition": "direct",
+          "evidenceIds": [
+            "human-expansion-attributes"
+          ]
+        },
+        {
+          "target": "health",
+          "value": 9,
+          "ruleId": "human-base:health",
+          "evidenceIds": [
+            "human-stats",
+            "human-expansion-attributes"
+          ],
+          "composition": "direct"
+        },
+        {
+          "target": "perception",
+          "value": 11,
+          "ruleId": "human-base:perception",
+          "evidenceIds": [
+            "human-stats",
+            "human-expansion-attributes",
+            "derived"
+          ],
+          "composition": "direct"
+        },
+        {
+          "target": "defense",
+          "value": 10,
+          "ruleId": "human-base:defense",
+          "evidenceIds": [
+            "human-stats",
+            "human-expansion-attributes",
+            "derived"
+          ],
+          "composition": "direct"
+        },
+        {
+          "target": "healingRate",
+          "value": 2,
+          "ruleId": "human-base:healingRate",
+          "evidenceIds": [
+            "human-stats",
+            "human-expansion-attributes",
+            "derived"
+          ],
+          "composition": "inherited-core"
+        },
+        {
+          "target": "size",
+          "value": 0.5,
+          "ruleId": "human-base:size",
+          "evidenceIds": [
+            "human-stats",
+            "human-expansion-attributes"
+          ],
+          "composition": "direct"
+        },
+        {
+          "target": "speed",
+          "value": 10,
+          "ruleId": "human-base:speed",
+          "evidenceIds": [
+            "human-stats",
+            "human-expansion-attributes"
+          ],
+          "composition": "direct"
+        },
+        {
+          "target": "power",
+          "value": 0,
+          "ruleId": "human-base:power",
+          "evidenceIds": [
+            "human-stats",
+            "human-expansion-attributes"
+          ],
+          "composition": "direct"
+        },
+        {
+          "target": "damage",
+          "value": 0,
+          "ruleId": "human-base:damage",
+          "evidenceIds": [
+            "human-stats",
+            "human-expansion-attributes"
+          ],
+          "composition": "inherited-core"
+        },
+        {
+          "target": "insanity",
+          "value": 0,
+          "ruleId": "human-base:insanity",
+          "evidenceIds": [
+            "human-stats",
+            "human-expansion-attributes"
+          ],
+          "composition": "inherited-core"
+        },
+        {
+          "target": "corruption",
+          "value": 0,
+          "ruleId": "human-base:corruption",
+          "evidenceIds": [
+            "human-stats",
+            "human-expansion-attributes"
+          ],
+          "composition": "inherited-core"
+        },
+        {
+          "target": "strengthModifier",
+          "value": -1,
+          "ruleId": "human-base:strengthModifier",
+          "evidenceIds": [
+            "general-scores",
+            "attributes"
+          ],
+          "composition": "general-rule"
+        },
+        {
+          "target": "agilityModifier",
+          "value": 0,
+          "ruleId": "human-base:agilityModifier",
+          "evidenceIds": [
+            "general-scores",
+            "attributes"
+          ],
+          "composition": "general-rule"
+        },
+        {
+          "target": "intellectModifier",
+          "value": 1,
+          "ruleId": "human-base:intellectModifier",
+          "evidenceIds": [
+            "general-scores",
+            "attributes"
+          ],
+          "composition": "general-rule"
+        },
+        {
+          "target": "willModifier",
+          "value": -1,
+          "ruleId": "human-base:willModifier",
+          "evidenceIds": [
+            "general-scores",
+            "attributes"
+          ],
+          "composition": "general-rule"
+        },
+        {
+          "target": "perceptionModifier",
+          "value": 1,
+          "ruleId": "human-base:perceptionModifier",
+          "evidenceIds": [
+            "general-scores",
+            "attributes",
+            "derived"
+          ],
+          "composition": "general-rule"
+        }
+      ],
+      "languageRules": {
+        "grantedSpeech": [
+          "Common Tongue"
+        ],
+        "grantedLiteracy": [],
+        "additionalChoice": "development-tables",
+        "evidenceIds": [
+          "human-expansion-attributes",
+          "human-expansion-procedure"
+        ]
+      },
+      "startingNamedTraits": [],
+      "deferred": [
+        {
+          "id": "development-and-background",
+          "taskRefs": [
+            "CUR-016",
+            "CUR-017",
+            "CUR-021"
+          ],
+          "reason": "Keep table procedure independent of attribute mode; outcomes can change attributes, states, languages or professions. No table outcomes applied to base preview."
+        },
+        {
+          "id": "equipment-and-effects",
+          "taskRefs": [
+            "CUR-018",
+            "CUR-019",
+            "CUR-020",
+            "CUR-027",
+            "CUR-034"
+          ],
+          "reason": "Armor replaces/protects Defense and may alter Speed; scope/conditional effects cannot be invented from the base or generic item name."
+        },
+        {
+          "id": "future-levels",
+          "taskRefs": [
+            "CUR-023"
+          ],
+          "reason": "Both level-4 blocks excluded at level 0. Do not stack Health +5 or merge different Determined text."
+        },
+        {
+          "id": "runtime-selection-and-formulas",
+          "taskRefs": [
+            "CUR-033",
+            "CUR-034"
+          ],
+          "reason": "Current demo stores seven numeric baseStats. Add variant/mode selection, declarative formulas, modifiers, Size, Perception, Healing Rate and separate initial states. Recompute dependencies after attribute changes, composing later direct characteristic modifiers in their proper layer instead of freezing final numbers."
+        },
+        {
+          "id": "runtime-rolls-and-history",
+          "taskRefs": [
+            "CUR-035",
+            "CUR-036"
+          ],
+          "reason": "Persist one d3 roll per attribute with source, seed, faces and version; calculation/import must not draw RNG. Keep source, mode and transfer events distinct."
+        },
+        {
+          "id": "runtime-language-grants",
+          "taskRefs": [
+            "CUR-017",
+            "CUR-033",
+            "CUR-036"
+          ],
+          "reason": "Separate speech/read/write grants and target languages; do not impose exchange caps or stack publication blocks."
+        }
+      ],
+      "completeCharacter": false
+    }
+  },
+  "consumerSupport": {
+    "currentStoredBaseFields": [
+      "strength",
+      "agility",
+      "intellect",
+      "will",
+      "health",
+      "defense",
+      "speed"
+    ],
+    "requiredMissingBaseFields": [
+      "perception",
+      "healingRate",
+      "size",
+      "power",
+      "damage",
+      "insanity",
+      "corruption",
+      "strengthModifier",
+      "agilityModifier",
+      "intellectModifier",
+      "willModifier",
+      "perceptionModifier"
+    ],
+    "referenceEvaluator": "packages/curation/ancestry-base-model.ts#previewHumanBase",
+    "referenceEvaluatorIsRuntimeHandler": false,
+    "engineTasks": [
+      {
+        "id": "runtime-selection-and-formulas",
+        "taskRefs": [
+          "CUR-033",
+          "CUR-034"
+        ],
+        "reason": "Current demo stores seven numeric baseStats. Add variant/mode selection, declarative formulas, modifiers, Size, Perception, Healing Rate and separate initial states. Recompute dependencies after attribute changes, composing later direct characteristic modifiers in their proper layer instead of freezing final numbers."
+      },
+      {
+        "id": "runtime-rolls-and-history",
+        "taskRefs": [
+          "CUR-035",
+          "CUR-036"
+        ],
+        "reason": "Persist one d3 roll per attribute with source, seed, faces and version; calculation/import must not draw RNG. Keep source, mode and transfer events distinct."
+      },
+      {
+        "id": "runtime-language-grants",
+        "taskRefs": [
+          "CUR-017",
+          "CUR-033",
+          "CUR-036"
+        ],
+        "reason": "Separate speech/read/write grants and target languages; do not impose exchange caps or stack publication blocks."
+      }
+    ]
+  },
+  "compositionScope": "Base only. Core and Only Human IDs remain distinct; published replacements govern language benefits. Floor and initial zero-state inheritance are explicit. Development/table/equipment/level effects are deferred, never fabricated."
+}

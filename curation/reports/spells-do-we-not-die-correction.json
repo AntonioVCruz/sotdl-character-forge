@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-26",
+  "authority": "explicit-user-instruction",
+  "inputPath": "rules/SotDL_Spells_All_Sources_Expanded_All_Project_Sources_v2.md",
+  "previousInputSha256": "4f9842ab60455054255add289602fbe2a33720ac06cbc5c105d1b6fc8ad74340",
+  "inputSha256": "a609a833f9f6a7909720ba1ee5398bb176b6710793b3b01f9d5d29e2fdf11f31",
+  "historyPath": "curation/history/spells-do-we-not-die-2026-10-26",
+  "aliasDecision": {
+    "label": "Do We Not Die",
+    "canonicalTitle": "Do We Not Die?",
+    "sourceId": "sotdl:do-we-not-die"
+  },
+  "changes": [
+    {
+      "name": "ANIMATE OBJECT",
+      "operation": "Replace only Full Entry body with supplied text.",
+      "replacementPath": "curation/corrections/spells-do-we-not-die-2026-10-26/animate-object.txt",
+      "previousBodySha256": "fe210dad7b4dbe9e6356a8cd41cb1908b76c1fcea48153488e84481cca3e1f73",
+      "replacementSha256": "3f50102db355df65a75661694d05f203fdc71c47f458abfa1aaed0f58acdc21e"
+    },
+    {
+      "name": "SHADOW FORM",
+      "operation": "Replace only Full Entry body with supplied text.",
+      "replacementPath": "curation/corrections/spells-do-we-not-die-2026-10-26/shadow-form.txt",
+      "previousBodySha256": "fe3e87f92bac889123c6feebaec0d5c1e23b2a4c73113673c663ad72d20d7ddd",
+      "replacementSha256": "cbcb9e0e6bcee4d3f3acf3cd3f6641abcb6eeeb49c142e7fd100004d4f5dd739"
+    }
+  ],
+  "scope": "Publication identity and user-supplied MD correction only; no PDF or mechanical certification.",
+  "aliasMigrations": [
+    {
+      "name": "ASSASSIN SPIDER",
+      "previousSubjectId": "pending:assassin-spider-technomancy-rank-4-do-we-not-die",
+      "entityId": "sotdl:do-we-not-die:spell:assassin-spider:technomancy-rank-4",
+      "stage": "captured",
+      "originalTextUnchanged": true
+    },
+    {
+      "name": "BOLSTER HEALTH",
+      "previousSubjectId": "pending:bolster-health-alteration-rank-4-do-we-not-die",
+      "entityId": "sotdl:do-we-not-die:spell:bolster-health:alteration-rank-4",
+      "stage": "captured",
+      "originalTextUnchanged": true
+    },
+    {
+      "name": "CONTAMINATE WATER",
+      "previousSubjectId": "pending:contaminate-water-water-rank-1-do-we-not-die",
+      "entityId": "sotdl:do-we-not-die:spell:contaminate-water:water-rank-1",
+      "stage": "captured",
+      "originalTextUnchanged": true
+    },
+    {
+      "name": "CURSE OF THE EMERALD HAND",
+      "previousSubjectId": "pending:curse-of-the-emerald-hand-curse-rank-2-do-we-not-die",
+      "entityId": "sotdl:do-we-not-die:spell:curse-of-the-emerald-hand:curse-rank-2",
+      "stage": "captured",
+      "originalTextUnchanged": true
+    },
+    {
+      "name": "POISON IVY",
+      "previousSubjectId": "pending:poison-ivy-nature-rank-2-do-we-not-die",
+      "entityId": "sotdl:do-we-not-die:spell:poison-ivy:nature-rank-2",
+      "stage": "captured",
+      "originalTextUnchanged": true
+    },
+    {
+      "name": "SENSE PERIL",
+      "previousSubjectId": "pending:sense-peril-divination-rank-1-do-we-not-die",
+      "entityId": "sotdl:do-we-not-die:spell:sense-peril:divination-rank-1",
+      "stage": "captured",
+      "originalTextUnchanged": true
+    },
+    {
+      "name": "SERPENT TONGUE",
+      "previousSubjectId": "pending:serpent-tongue-forbidden-rank-1-do-we-not-die",
+      "entityId": "sotdl:do-we-not-die:spell:serpent-tongue:forbidden-rank-1",
+      "stage": "captured",
+      "originalTextUnchanged": true
+    },
+    {
+      "name": "SICKENING RUNE",
+      "previousSubjectId": "pending:sickening-rune-rune-rank-2-do-we-not-die",
+      "entityId": "sotdl:do-we-not-die:spell:sickening-rune:rune-rank-2",
+      "stage": "captured",
+      "originalTextUnchanged": true
+    },
+    {
+      "name": "SPECTACULAR EXPULSION",
+      "previousSubjectId": "pending:spectacular-expulsion-forbidden-rank-4-do-we-not-die",
+      "entityId": "sotdl:do-we-not-die:spell:spectacular-expulsion:forbidden-rank-4",
+      "stage": "captured",
+      "originalTextUnchanged": true
+    },
+    {
+      "name": "UNDO CONSTITUTION",
+      "previousSubjectId": "pending:undo-constitution-death-rank-1-do-we-not-die",
+      "entityId": "sotdl:do-we-not-die:spell:undo-constitution:death-rank-1",
+      "stage": "captured",
+      "originalTextUnchanged": true
+    },
+    {
+      "name": "VENOMOUS DART",
+      "previousSubjectId": "pending:venomous-dart-alchemy-rank-0-do-we-not-die",
+      "entityId": "sotdl:do-we-not-die:spell:venomous-dart:alchemy-rank-0",
+      "stage": "captured",
+      "originalTextUnchanged": true
+    },
+    {
+      "name": "VENOMOUS FANGS",
+      "previousSubjectId": "pending:venomous-fangs-primal-rank-1-do-we-not-die",
+      "entityId": "sotdl:do-we-not-die:spell:venomous-fangs:primal-rank-1",
+      "stage": "captured",
+      "originalTextUnchanged": true
+    },
+    {
+      "name": "VENOMOUS SHAPE",
+      "previousSubjectId": "pending:venomous-shape-transformation-rank-1-do-we-not-die",
+      "entityId": "sotdl:do-we-not-die:spell:venomous-shape:transformation-rank-1",
+      "stage": "captured",
+      "originalTextUnchanged": true
+    }
+  ],
+  "result": {
+    "spellsCaptured": 1520,
+    "spellsBlocked": 0,
+    "allInputSourceReferencesPending": 6
+  }
+}

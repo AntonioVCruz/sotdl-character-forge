@@ -1,0 +1,23 @@
+{
+    "schemaVersion":  1,
+    "date":  "2026-10-27",
+    "authority":  "user-supplied-transcription",
+    "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+    "scope":  "Starting Equipment kits plus explicit user clarification of Wealth limits: 17 Wealthy and 18 Rich. No PDF/page/permission certification.",
+    "physicalPdfPage":  null,
+    "printedPage":  null,
+    "files":  [
+                  {
+                      "path":  "curation/corrections/core-starting-equipment-2026-10-27/starting-equipment.txt",
+                      "sha256":  "09d6aea94bd84ec913fbc2dc271953bb5e88865fe9ed4acf918a9c0a6c5fb702",
+                      "bytes":  1777,
+                      "origin":  "User message supplying Starting Equipment, 2026-10-27; preserved as UTF-8 text."
+                  },
+                  {
+                      "path":  "curation/corrections/core-starting-equipment-2026-10-27/wealth-limits.txt",
+                      "sha256":  "22f64e43bb96a042e13bdcaf315e1ead900cd18b68d56a62aff16be9aa38bc9e",
+                      "bytes":  19,
+                      "origin":  "Explicit user clarification: 17 Wealthy; 18 Rich. Supplied after the Starting Equipment message."
+                  }
+              ]
+}

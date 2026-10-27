@@ -1,0 +1,4 @@
+ANIMATE OBJECT TECHNOMANCER UTILITY 1
+Target One Size 2 or smaller object within short range 
+Duration 1 minute 
+The target becomes a compelled construct of its Size for the duration. If the target was secured, its Speed is 0.

@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "task": "CUR-020",
+  "reviewDate": "2026-10-27",
+  "counts": {
+    "items": 409,
+    "publishedCoreDefinitions": 67,
+    "grantOnlyDefinitions": 57,
+    "specialOutcomeDefinitions": 285,
+    "references": 641,
+    "startingGrantReferences": 281,
+    "interestingThingReferences": 360,
+    "exactReferences": 182,
+    "choiceReferences": 5,
+    "genericReferences": 75,
+    "specialReferences": 285,
+    "nonInventoryReferences": 75,
+    "currencyReferences": 19,
+    "rules": 28,
+    "evidenceRanges": 710
+  },
+  "inputRefs": [
+    {
+      "path": "curation/pilot/interesting-things.json",
+      "sha256": "db06dcde31a34410386df5044cab269ec28b5d34c628f617eadbeb4af35a348c"
+    },
+    {
+      "path": "curation/reports/interesting-things.json",
+      "sha256": "937a448f9ecd87841af3a1fa611027f7d55b51c0a4b0b4ed54d3ec03e5e73155"
+    },
+    {
+      "path": "curation/pilot/wealth-equipment.json",
+      "sha256": "77ba7ab57983373843f1a62dd5558798a0122b82f0ea9ace94a4b1e97a92219f"
+    },
+    {
+      "path": "rules/SotDL_Compendio_Regras_Equipamentos_Monstros_v4_All_Project_Sources.md",
+      "sha256": "af5b377d003c96910c5c7d4c4909a66d381513cbda93de22b5d83a6ca5474ece"
+    },
+    {
+      "path": "tools/curation/pilot-items-formalizer.ts",
+      "sha256": "f2a919118e619ede5feb6ce8e7031d77be832548d545a0ec5c309f975d39e8ad"
+    },
+    {
+      "path": "tools/curation/pilot-item-definitions.ts",
+      "sha256": "e7fd660b99170455e337a33c176fd6cd44fa04630896b5ee2a76b77aa4b01aef"
+    },
+    {
+      "path": "tools/curation/pilot-items.mjs",
+      "sha256": "293ac573ac622fb33108b8cbf45423397a68286caa665065cc50151123f160cb"
+    },
+    {
+      "path": "packages/curation/pilot-item-model.ts",
+      "sha256": "e892cd65a8f382e57edac5f1d81d8b43275e23674d0172f131c63437c905b5f0"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "curation/pilot/items.json",
+      "sha256": "cb768b3359b70ca07d9ce49ed7deb4f3225a36c5540c87cccf6abe86fe25653f"
+    }
+  ],
+  "unchanged": {
+    "rawInputs": true,
+    "frozenContracts": true,
+    "previousDerivatives": true,
+    "demoConsumer": true
+  },
+  "nextTask": "CUR-021"
+}

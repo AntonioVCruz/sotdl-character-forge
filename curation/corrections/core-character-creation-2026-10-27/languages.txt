@@ -1,0 +1,10 @@
+Languages of the Northern Reach
+The following languages are used throughout the lands of the Northern Reach.
+• Common Tongue: The dominant language in the ruined lands of the Empire, merchants cobbled the Common Tongue (or just Common) from local languages to facilitate trade. It uses its own alphabet.
+• Dark Speech: A guttural language filled with hard consonants, Dark Speech originated centuries ago in Gog, the accursed kingdom that spread across the lands of Rûl and was cast down and destroyed by the Empire’s founders. Beastmen, cultists, and others seeking forbidden knowledge learn and use this language.
+• Dwarfish: The language of the dwarfs has a harsh sound, a precise lexicon, and long, compound words. It uses a runic alphabet.
+• Elvish: The language used by the elves and other faeries has a soft and musical sound, perfectly suited for singing and reciting poetry. Elvish uses its own script, its characters flowing into one another.
+• High Archaic: The language of scholarship and magic, few people use High Archaic in conversation. It uses the same alphabet as the Common Tongue.
+• Trollish: The language of the trolls is as ugly as Elvish is beautiful. It belongs almost exclusively to trolls and giants, and it sounds like a mixture of grunts and barks. It uses a runic alphabet similar to Dwarfish.
+• Secret Language: Many organizations use secret languages to communicate. Druids, assassins, thieves, and even rangers use such languages.
+• Dead Languages: Many languages fall out of common usage. The GM can introduce languages from lost peoples and languages that have largely fallen out of favor. Such languages may be important for deciphering ancient scrolls and tomes.

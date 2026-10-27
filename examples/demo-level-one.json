@@ -1,0 +1,13 @@
+{
+  "packId": "demo-level-one", "version": "0.0.1", "system": "sotdl", "fictionalData": true,
+  "legalNotice": "CAMINHOS FICTÍCIOS: valores inventados para testar progressão, não são regras oficiais.",
+  "source": { "id": "demo-level-one-source", "title": "Laboratório fictício de nível 1", "sourcePage": null, "status": "fictional" },
+  "entities": [
+    { "id": "demo:path:guardian", "kind": "path", "name": "Guardião da Trilha (marcial fictício)", "sourceRef": "demo-level-one-source", "status": "curated", "demoSlot": "novicePath", "demoLevel": 1, "mechanicalEvents": [{ "type": "stat-add", "target": "health", "value": 4 }] },
+    { "id": "demo:path:spark", "kind": "path", "name": "Aprendiz da Centelha (mágico fictício)", "sourceRef": "demo-level-one-source", "status": "curated", "demoSlot": "novicePath", "demoLevel": 1, "mechanicalEvents": [{ "type": "stat-add", "target": "health", "value": 2 }, { "type": "resource-add", "target": "demo-arcane-reserve", "value": 2 }] },
+    { "id": "demo:training:guard", "kind": "trait", "name": "Proteção da trilha (fictício)", "sourceRef": "demo-level-one-source", "status": "curated", "demoSlot": "pathTraining", "demoLevel": 1, "requiresPath": "demo:path:guardian", "mechanicalEvents": [{ "type": "stat-add", "target": "defense", "value": 1 }] },
+    { "id": "demo:training:stride", "kind": "trait", "name": "Passo da trilha (fictício)", "sourceRef": "demo-level-one-source", "status": "curated", "demoSlot": "pathTraining", "demoLevel": 1, "requiresPath": "demo:path:guardian", "mechanicalEvents": [{ "type": "stat-add", "target": "speed", "value": 1 }] },
+    { "id": "demo:training:insight", "kind": "trait", "name": "Estudo da centelha (fictício)", "sourceRef": "demo-level-one-source", "status": "curated", "demoSlot": "pathTraining", "demoLevel": 1, "requiresPath": "demo:path:spark", "mechanicalEvents": [{ "type": "stat-add", "target": "intellect", "value": 1 }] },
+    { "id": "demo:training:focus", "kind": "trait", "name": "Foco da centelha (fictício)", "sourceRef": "demo-level-one-source", "status": "curated", "demoSlot": "pathTraining", "demoLevel": 1, "requiresPath": "demo:path:spark", "mechanicalEvents": [{ "type": "stat-add", "target": "will", "value": 1 }] }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-26",
+  "extractor": {
+    "id": "curation-inputs",
+    "version": "1.0.0",
+    "sha256": "eb45d83d0bd73afa082947a0a4d5dbbb26a1d915c290f055b03ff7e1ffb4b906"
+  },
+  "files": [
+    {
+      "path": "rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md",
+      "bytes": 889589,
+      "lines": 23372,
+      "sha256": "020d9d62d9046475552dbaf9f989f07e69b87b7a386cadc1af3e82f930502baf",
+      "revisionId": "sha256:020d9d62d9046475552dbaf9f989f07e69b87b7a386cadc1af3e82f930502baf",
+      "encoding": "utf-8",
+      "bom": false,
+      "lineEndings": {
+        "crlf": 0,
+        "lf": 23372,
+        "cr": 0
+      },
+      "finalNewline": true,
+      "title": "# Shadow of the Demon Lord — Ancestry Compendium"
+    },
+    {
+      "path": "rules/SotDL_All_Paths_Compendium_Expanded_All_Project_Sources.md",
+      "bytes": 1211954,
+      "lines": 29614,
+      "sha256": "bc13f370447d5ca308c303697bd982fd6f9d9363cfaa71f9fc7924bf68f17a27",
+      "revisionId": "sha256:bc13f370447d5ca308c303697bd982fd6f9d9363cfaa71f9fc7924bf68f17a27",
+      "encoding": "utf-8",
+      "bom": false,
+      "lineEndings": {
+        "crlf": 0,
+        "lf": 29614,
+        "cr": 0
+      },
+      "finalNewline": true,
+      "title": "# Shadow of the Demon Lord — Class / Path Compendium"
+    },
+    {
+      "path": "rules/SotDL_Compendio_Regras_Equipamentos_Monstros_v4_All_Project_Sources.md",
+      "bytes": 2581928,
+      "lines": 65057,
+      "sha256": "af5b377d003c96910c5c7d4c4909a66d381513cbda93de22b5d83a6ca5474ece",
+      "revisionId": "sha256:af5b377d003c96910c5c7d4c4909a66d381513cbda93de22b5d83a6ca5474ece",
+      "encoding": "utf-8",
+      "bom": false,
+      "lineEndings": {
+        "crlf": 0,
+        "lf": 65057,
+        "cr": 0
+      },
+      "finalNewline": true,
+      "title": "# Shadow of the Demon Lord — Compêndio mecânico do projeto"
+    },
+    {
+      "path": "rules/SotDL_Spells_All_Sources_Expanded_All_Project_Sources_v2.md",
+      "bytes": 1081779,
+      "lines": 33599,
+      "sha256": "4f9842ab60455054255add289602fbe2a33720ac06cbc5c105d1b6fc8ad74340",
+      "revisionId": "sha256:4f9842ab60455054255add289602fbe2a33720ac06cbc5c105d1b6fc8ad74340",
+      "encoding": "utf-8",
+      "bom": false,
+      "lineEndings": {
+        "crlf": 0,
+        "lf": 33599,
+        "cr": 0
+      },
+      "finalNewline": true,
+      "title": "# Shadow of the Demon Lord — Spell Compendium"
+    }
+  ]
+}

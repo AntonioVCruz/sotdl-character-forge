@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "task": "CUR-016",
+  "reviewDate": "2026-10-27",
+  "counts": {
+    "tables": 61,
+    "coreTables": 22,
+    "expandedTables": 39,
+    "randomTables": 56,
+    "lifestyleLookups": 5,
+    "links": 61,
+    "cyclicTables": 4,
+    "findings": 7
+  },
+  "inputRefs": [
+    {
+      "path": "curation/pilot/human-ancestry.json",
+      "sha256": "1ad515c8c6e529c9d526e12bd40a0aaec85f10782ee1d312fa539c1e7041e91b"
+    },
+    {
+      "path": "curation/reports/human-ancestry.json",
+      "sha256": "49e1d21fe0a11e1be417d737125636eb75f7494048abf4aa902bea81fb2784ec"
+    },
+    {
+      "path": "curation/pilot/core-level-zero.json",
+      "sha256": "36291fc64d1e27ba34993ecb8e2c886dd4c42eb5d6aab86d4f09c22bdc56f6fc"
+    },
+    {
+      "path": "rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md",
+      "sha256": "020d9d62d9046475552dbaf9f989f07e69b87b7a386cadc1af3e82f930502baf"
+    },
+    {
+      "path": "tools/curation/creation-table-inventory.ts",
+      "sha256": "aa189ad90d74e7608869e33f58644c53f3ccdad04ade0321eb8dbb31c9d1d244"
+    },
+    {
+      "path": "tools/curation/creation-tables.mjs",
+      "sha256": "4e6df8549b949f6b5c2e1dacae352f5859943d5b8e857099f8c9120fcadf72a4"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "curation/pilot/creation-table-inventory.json",
+      "sha256": "9820afa2ff8529cdfa09ae21867fdb3f9b863688fa150baae82fb0fa9aa53ec2"
+    }
+  ],
+  "nextTask": "CUR-017",
+  "unchanged": {
+    "rawInputs": true,
+    "ledgers": true,
+    "staging": true,
+    "frozenContracts": true,
+    "demoConsumer": true
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "packId": "fixture-curation",
+  "version": "1.0.0",
+  "system": "sotdl",
+  "fictionalData": true,
+  "source": {
+    "id": "fixture:curation",
+    "title": "Fictional format fixture",
+    "sourcePage": null,
+    "status": "fictional"
+  },
+  "dependencies": [],
+  "entities": [
+    {
+      "id": "fixture:curation:rule:format:default",
+      "kind": "rule",
+      "name": "Format fixture (fictional)",
+      "sourceRef": "fixture:curation",
+      "sourcePage": null,
+      "variantKey": "default",
+      "revision": "1",
+      "status": "needs-review",
+      "text": "Regra fictícia para validar o formato; não representa SotDL."
+    }
+  ]
+}

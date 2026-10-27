@@ -1,0 +1,1546 @@
+{
+  "schemaVersion": 1,
+  "task": "CUR-013",
+  "reviewDate": "2026-10-27",
+  "inputReviewDate": "2026-10-26",
+  "scope": "Local-corpus accounting only; no PDF completeness, permission, mechanical or automation certification.",
+  "tool": {
+    "version": "1.0.0",
+    "sha256": "f99600abca3f8cd47472543c5777877199cd57f9de04e2995ec87f5bf36ec67f",
+    "runnerSha256": "a3c2134dcfec6b6b2ec2c673de096614e5c4d78b59c05d6eea482331da898563"
+  },
+  "counts": {
+    "inputs": 4,
+    "lines": 151625,
+    "inventoryRecords": 5560,
+    "inventoryByCorpus": {
+      "ancestries": 59,
+      "mechanics": 3589,
+      "paths": 392,
+      "spells": 1520
+    },
+    "states": {
+      "blocked": 230,
+      "captured": 3932,
+      "layout": 78,
+      "quarantined": 1320
+    },
+    "staged": 4162,
+    "uniqueNonNullEntityIds": 4162,
+    "publications": 95,
+    "pendingAliasReferences": 0,
+    "sourceListDeclarations": 189,
+    "duplicateCandidateGroups": 509,
+    "findingsByCategory": {
+      "blocked": 230,
+      "declared-count-discrepancy": 1,
+      "editorial-review": 11,
+      "headings-versus-occurrences": 3,
+      "publication-not-listed-in-scope-summary": 1,
+      "quarantined": 1320
+    },
+    "editorialReviewSignals": 28971,
+    "normalizationChangesAccounted": 2216,
+    "overlaysAccounted": 656
+  },
+  "gates": {
+    "exactCoverage": [
+      {
+        "path": "rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md",
+        "inputSha256": "020d9d62d9046475552dbaf9f989f07e69b87b7a386cadc1af3e82f930502baf",
+        "totalLines": 23372,
+        "coveredLines": 23372,
+        "ranges": 60,
+        "gaps": 0,
+        "overlaps": 0
+      },
+      {
+        "path": "rules/SotDL_All_Paths_Compendium_Expanded_All_Project_Sources.md",
+        "inputSha256": "bc13f370447d5ca308c303697bd982fd6f9d9363cfaa71f9fc7924bf68f17a27",
+        "totalLines": 29614,
+        "coveredLines": 29614,
+        "ranges": 397,
+        "gaps": 0,
+        "overlaps": 0
+      },
+      {
+        "path": "rules/SotDL_Compendio_Regras_Equipamentos_Monstros_v4_All_Project_Sources.md",
+        "inputSha256": "af5b377d003c96910c5c7d4c4909a66d381513cbda93de22b5d83a6ca5474ece",
+        "totalLines": 65057,
+        "coveredLines": 65057,
+        "ranges": 3707,
+        "gaps": 0,
+        "overlaps": 0
+      },
+      {
+        "path": "rules/SotDL_Spells_All_Sources_Expanded_All_Project_Sources_v2.md",
+        "inputSha256": "a609a833f9f6a7909720ba1ee5398bb176b6710793b3b01f9d5d29e2fdf11f31",
+        "totalLines": 33582,
+        "coveredLines": 33582,
+        "ranges": 2006,
+        "gaps": 0,
+        "overlaps": 0
+      }
+    ],
+    "allStagingMapped": true,
+    "sourceMetadataMapped": true,
+    "allPayloadFencesMapped": true,
+    "normalizationReversible": true,
+    "noChangeWithoutOverlay": true,
+    "rawInputsModified": false,
+    "statusesPromoted": false
+  },
+  "countChecks": [
+    {
+      "corpus": "ancestries",
+      "metric": "publication-occurrences",
+      "declared": 59,
+      "observed": 59,
+      "evidence": {
+        "path": "rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md",
+        "line": 64
+      },
+      "status": "matched"
+    },
+    {
+      "corpus": "ancestries",
+      "metric": "publication-labels",
+      "declared": 40,
+      "observed": 40,
+      "evidence": {
+        "path": "rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md",
+        "line": 73
+      },
+      "status": "matched"
+    },
+    {
+      "corpus": "ancestries",
+      "metric": "unique-names-or-name-category",
+      "declared": 45,
+      "observed": 45,
+      "evidence": {
+        "path": "rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md",
+        "line": 65
+      },
+      "status": "matched"
+    },
+    {
+      "corpus": "ancestries",
+      "metric": "category:Ancestry Template",
+      "declared": 1,
+      "observed": 1,
+      "evidence": {
+        "path": "rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md",
+        "line": 66
+      },
+      "status": "matched"
+    },
+    {
+      "corpus": "ancestries",
+      "metric": "category:Ancestry Variant",
+      "declared": 4,
+      "observed": 4,
+      "evidence": {
+        "path": "rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md",
+        "line": 67
+      },
+      "status": "matched"
+    },
+    {
+      "corpus": "ancestries",
+      "metric": "category:Beastman Ancestry",
+      "declared": 3,
+      "observed": 3,
+      "evidence": {
+        "path": "rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md",
+        "line": 68
+      },
+      "status": "matched"
+    },
+    {
+      "corpus": "ancestries",
+      "metric": "category:Derived Ancestry",
+      "declared": 6,
+      "observed": 6,
+      "evidence": {
+        "path": "rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md",
+        "line": 69
+      },
+      "status": "matched"
+    },
+    {
+      "corpus": "ancestries",
+      "metric": "category:Expanded Ancestry",
+      "declared": 11,
+      "observed": 11,
+      "evidence": {
+        "path": "rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md",
+        "line": 70
+      },
+      "status": "matched"
+    },
+    {
+      "corpus": "ancestries",
+      "metric": "category:Powerful Ancestry",
+      "declared": 3,
+      "observed": 3,
+      "evidence": {
+        "path": "rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md",
+        "line": 71
+      },
+      "status": "matched"
+    },
+    {
+      "corpus": "ancestries",
+      "metric": "category:Standard Ancestry",
+      "declared": 31,
+      "observed": 31,
+      "evidence": {
+        "path": "rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md",
+        "line": 72
+      },
+      "status": "matched"
+    },
+    {
+      "corpus": "paths",
+      "metric": "publication-occurrences",
+      "declared": 392,
+      "observed": 392,
+      "evidence": {
+        "path": "rules/SotDL_All_Paths_Compendium_Expanded_All_Project_Sources.md",
+        "line": 53
+      },
+      "status": "matched"
+    },
+    {
+      "corpus": "paths",
+      "metric": "publication-labels",
+      "declared": 59,
+      "observed": 59,
+      "evidence": {
+        "path": "rules/SotDL_All_Paths_Compendium_Expanded_All_Project_Sources.md",
+        "line": 60
+      },
+      "status": "matched"
+    },
+    {
+      "corpus": "paths",
+      "metric": "unique-names-or-name-category",
+      "declared": 380,
+      "observed": 380,
+      "evidence": {
+        "path": "rules/SotDL_All_Paths_Compendium_Expanded_All_Project_Sources.md",
+        "line": 54
+      },
+      "status": "matched"
+    },
+    {
+      "corpus": "paths",
+      "metric": "category:Novice",
+      "declared": 19,
+      "observed": 19,
+      "evidence": {
+        "path": "rules/SotDL_All_Paths_Compendium_Expanded_All_Project_Sources.md",
+        "line": 55
+      },
+      "status": "matched"
+    },
+    {
+      "corpus": "paths",
+      "metric": "category:Novice Variant",
+      "declared": 23,
+      "observed": 23,
+      "evidence": {
+        "path": "rules/SotDL_All_Paths_Compendium_Expanded_All_Project_Sources.md",
+        "line": 56
+      },
+      "status": "matched"
+    },
+    {
+      "corpus": "paths",
+      "metric": "category:Expert",
+      "declared": 151,
+      "observed": 151,
+      "evidence": {
+        "path": "rules/SotDL_All_Paths_Compendium_Expanded_All_Project_Sources.md",
+        "line": 57
+      },
+      "status": "matched"
+    },
+    {
+      "corpus": "paths",
+      "metric": "category:Master",
+      "declared": 197,
+      "observed": 197,
+      "evidence": {
+        "path": "rules/SotDL_All_Paths_Compendium_Expanded_All_Project_Sources.md",
+        "line": 58
+      },
+      "status": "matched"
+    },
+    {
+      "corpus": "paths",
+      "metric": "category:Legendary",
+      "declared": 2,
+      "observed": 2,
+      "evidence": {
+        "path": "rules/SotDL_All_Paths_Compendium_Expanded_All_Project_Sources.md",
+        "line": 59
+      },
+      "status": "matched"
+    },
+    {
+      "corpus": "spells",
+      "metric": "publication-occurrences",
+      "declared": 1520,
+      "observed": 1520,
+      "evidence": {
+        "path": "rules/SotDL_Spells_All_Sources_Expanded_All_Project_Sources_v2.md",
+        "line": 139
+      },
+      "status": "matched"
+    },
+    {
+      "corpus": "spells",
+      "metric": "publication-labels",
+      "declared": 27,
+      "observed": 28,
+      "evidence": {
+        "path": "rules/SotDL_Spells_All_Sources_Expanded_All_Project_Sources_v2.md",
+        "line": 141
+      },
+      "status": "open-discrepancy"
+    },
+    {
+      "corpus": "spells",
+      "metric": "origin-groups",
+      "declared": 57,
+      "observed": 57,
+      "evidence": {
+        "path": "rules/SotDL_Spells_All_Sources_Expanded_All_Project_Sources_v2.md",
+        "line": 140
+      },
+      "status": "matched"
+    },
+    {
+      "corpus": "manifest",
+      "metric": "publications",
+      "declared": 95,
+      "observed": 95,
+      "evidence": {
+        "path": "rules/SotDL_Compendio_Regras_Equipamentos_Monstros_v4_All_Project_Sources.md",
+        "line": 47
+      },
+      "status": "matched"
+    }
+  ],
+  "inputRefs": [
+    {
+      "path": "curation/input-manifest.json",
+      "sha256": "e0fa4d9dae830c0cfc000955855da800a1d75f0af06f7cbfaf3d56631463679e",
+      "bytes": 2465
+    },
+    {
+      "path": "curation/sources.json",
+      "sha256": "c66b832ebf34cc047fdf7c18f97bc9965b4cf3e632f7fa29876972f372e15608",
+      "bytes": 1385531
+    },
+    {
+      "path": "curation/source-aliases.json",
+      "sha256": "912daea6b3a66e562e64c54652515a04fbd42e515f780fa56459e14cbba26d90",
+      "bytes": 1938
+    },
+    {
+      "path": "rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md",
+      "sha256": "020d9d62d9046475552dbaf9f989f07e69b87b7a386cadc1af3e82f930502baf",
+      "bytes": 889589
+    },
+    {
+      "path": "rules/SotDL_All_Paths_Compendium_Expanded_All_Project_Sources.md",
+      "sha256": "bc13f370447d5ca308c303697bd982fd6f9d9363cfaa71f9fc7924bf68f17a27",
+      "bytes": 1211954
+    },
+    {
+      "path": "rules/SotDL_Compendio_Regras_Equipamentos_Monstros_v4_All_Project_Sources.md",
+      "sha256": "af5b377d003c96910c5c7d4c4909a66d381513cbda93de22b5d83a6ca5474ece",
+      "bytes": 2581928
+    },
+    {
+      "path": "rules/SotDL_Spells_All_Sources_Expanded_All_Project_Sources_v2.md",
+      "sha256": "a609a833f9f6a7909720ba1ee5398bb176b6710793b3b01f9d5d29e2fdf11f31",
+      "bytes": 1081266
+    },
+    {
+      "path": "curation/reports/ancestries.json",
+      "sha256": "6d446eb7e8fbea09138937df009dd0a9a75b52ee083b3eb493bb0cec533fb25b",
+      "bytes": 65010
+    },
+    {
+      "path": "curation/entries/sotdl%3Aa-glorious-death/ancestry.jsonl",
+      "sha256": "3cf31c42fed43aabf3f1f60ea46e4dcb00067dc13592f04446f36f98873734a2",
+      "bytes": 28307
+    },
+    {
+      "path": "curation/entries/sotdl%3Abetween-life-and-death/ancestry.jsonl",
+      "sha256": "183e361125742c9a29ec0491eb2d4ca94f5df64597d3e8dd8e3728df7c7d8841",
+      "bytes": 18572
+    },
+    {
+      "path": "curation/entries/sotdl%3Abetween-two-worlds/ancestry.jsonl",
+      "sha256": "82537267f985546973b5f53e677172e88335d895bf9e70b74428b8e0846524c8",
+      "bytes": 79934
+    },
+    {
+      "path": "curation/entries/sotdl%3Ablood-scions/ancestry.jsonl",
+      "sha256": "302471411f44561747d27e7fc472a4ad7521f0f919b377f98dfa4a0e3c324a05",
+      "bytes": 30714
+    },
+    {
+      "path": "curation/entries/sotdl%3Aborn-to-kill/ancestry.jsonl",
+      "sha256": "a9004d9bd10e9a7fa6e0f02caa59c8218a1a946b71430c826d28a70a1289850f",
+      "bytes": 75670
+    },
+    {
+      "path": "curation/entries/sotdl%3Abrood-of-the-mother-spore/ancestry.jsonl",
+      "sha256": "84b308c5ec77161b59ea300577395bc3d0a4a6ee4a276161a776268adea67567",
+      "bytes": 37139
+    },
+    {
+      "path": "curation/entries/sotdl%3Achildren-of-the-hive/ancestry.jsonl",
+      "sha256": "adfaa86c8662b9b8111f47b412447da2ff8e23d05f3b33b6a6c6bd3e4ef4361a",
+      "bytes": 31236
+    },
+    {
+      "path": "curation/entries/sotdl%3Achildren-of-the-restless-earth/ancestry.jsonl",
+      "sha256": "4835a689541d6297479bb9de5b9e5c053e86a153a50bee4db4733a8b03b3a687",
+      "bytes": 27002
+    },
+    {
+      "path": "curation/entries/sotdl%3Acult-of-the-cog-god/ancestry.jsonl",
+      "sha256": "3fcd9929ccd98ae3b4553d5fe031a17db67d86d20954a7dc6a61b30df001fae3",
+      "bytes": 7956
+    },
+    {
+      "path": "curation/entries/sotdl%3Acurse-of-the-spider-wood/ancestry.jsonl",
+      "sha256": "6c9c420dabb4f7ebbeff173a9790b2007e4f13aed37bb198b788ac681c4e8e49",
+      "bytes": 22098
+    },
+    {
+      "path": "curation/entries/sotdl%3Ademon-lord-s-companion-2/ancestry.jsonl",
+      "sha256": "2a1768d6e07ef10a4cee5c8c70cad457782ef6405ba82dbbb836bbbc44bc4bdc",
+      "bytes": 114720
+    },
+    {
+      "path": "curation/entries/sotdl%3Ademon-lord-s-companion/ancestry.jsonl",
+      "sha256": "9391e02287067be6b45beb42f5892d55b0bf40dc9e91594d10a3335921481a13",
+      "bytes": 45788
+    },
+    {
+      "path": "curation/entries/sotdl%3Aexquisite-agony/ancestry.jsonl",
+      "sha256": "499f11316646bc8bb0239e931b7a8bbb80ac61e640556f763a99c102cc40521d",
+      "bytes": 20197
+    },
+    {
+      "path": "curation/entries/sotdl%3Afaerie-friends/ancestry.jsonl",
+      "sha256": "3f107dd45f9ec5b0426a71be78d18575b254952df9e6c14107f43c4f6ead4c41",
+      "bytes": 36876
+    },
+    {
+      "path": "curation/entries/sotdl%3Aflesh-of-the-fallen/ancestry.jsonl",
+      "sha256": "3460c98b2d8f651747d2dca73c7ebf7523986427c0b0184e0424c07f092a8f20",
+      "bytes": 15649
+    },
+    {
+      "path": "curation/entries/sotdl%3Afor-gold-and-glory/ancestry.jsonl",
+      "sha256": "fedd74fb0497d7cdd1c0a50ff430f6ed63be2f799121290edecb5282fdc65131",
+      "bytes": 73374
+    },
+    {
+      "path": "curation/entries/sotdl%3Afoulest-reptiles/ancestry.jsonl",
+      "sha256": "e173699a492cead8d3c71af3b3fe0c5e9ac768adcec5117dfa4a04ca52e7472a",
+      "bytes": 5438
+    },
+    {
+      "path": "curation/entries/sotdl%3Afreeport-companion/ancestry.jsonl",
+      "sha256": "6b269e56ab7131505008e0d4219a3ab6c89e31a22a0b5b19254c373d7abcde7c",
+      "bytes": 55606
+    },
+    {
+      "path": "curation/entries/sotdl%3Aghastly-gourmands/ancestry.jsonl",
+      "sha256": "84e82ca4331129c4e9a55781c39876c2f162d79649618b7a5de4ecd7b105925a",
+      "bytes": 5132
+    },
+    {
+      "path": "curation/entries/sotdl%3Aghosts-in-machines/ancestry.jsonl",
+      "sha256": "1b8afdbd4b39ac80214ccfa163a391a3198c29c35ef17c21105fa02595284597",
+      "bytes": 74405
+    },
+    {
+      "path": "curation/entries/sotdl%3Aguardians-of-the-cosmic-egg/ancestry.jsonl",
+      "sha256": "8652e47ccb5fce12cdc86eb3fd71acf6fd0155ec2664ac189b1dab8da9b422b3",
+      "bytes": 34665
+    },
+    {
+      "path": "curation/entries/sotdl%3Aheaven-s-sent/ancestry.jsonl",
+      "sha256": "afa1a85718a7987c2f93db6683458f687ca8bce6e761679266d8b7138277b300",
+      "bytes": 56903
+    },
+    {
+      "path": "curation/entries/sotdl%3Ain-plain-sight/ancestry.jsonl",
+      "sha256": "2b8f31a6a604e84bd438bc2cdd55a1de5b61317a581f0e3fc15574788192efbe",
+      "bytes": 77446
+    },
+    {
+      "path": "curation/entries/sotdl%3Akingdom-of-skulls/ancestry.jsonl",
+      "sha256": "5f0245d5cc22921333c8ebe546eba2dcc77ade37112cd84fd512883f455f1452",
+      "bytes": 16476
+    },
+    {
+      "path": "curation/entries/sotdl%3Amen-of-gog/ancestry.jsonl",
+      "sha256": "6748cb5311ec01f51cdfe56bb5a3f592181925fa309de0cd14cdf249e5cf1982",
+      "bytes": 12803
+    },
+    {
+      "path": "curation/entries/sotdl%3Aonly-human/ancestry.jsonl",
+      "sha256": "c254cf0b094a2980eef07a44da39c34190727f8495f00db1d7f65ae348fc067d",
+      "bytes": 81565
+    },
+    {
+      "path": "curation/entries/sotdl%3Ariders-of-the-wind/ancestry.jsonl",
+      "sha256": "9a513cfd5a8b19cffed59bcd3418178d3363437729703474a0e4f60fcb64c5db",
+      "bytes": 23453
+    },
+    {
+      "path": "curation/entries/sotdl%3Ascions-of-nature/ancestry.jsonl",
+      "sha256": "4c23c3a85978df6b71168788a96094614df1509c857181e8a2c69d423c84fb3b",
+      "bytes": 67100
+    },
+    {
+      "path": "curation/entries/sotdl%3Ascions-of-the-betrayer/ancestry.jsonl",
+      "sha256": "92fd53070b89e0379c88a61f35e416404ef337942e3005fa27bfb4878b2a9f87",
+      "bytes": 62111
+    },
+    {
+      "path": "curation/entries/sotdl%3Ashadow-of-the-demon-lord-core/ancestry.jsonl",
+      "sha256": "70f11e254454c3b495bae7623fc2ed30821e9dd94442393b3ad61b4d756f4e82",
+      "bytes": 107616
+    },
+    {
+      "path": "curation/entries/sotdl%3Asnot-and-stitches/ancestry.jsonl",
+      "sha256": "a61143f97233310e134aaf999cdc9b3936eac97fbdec1d315eb2b57545d1d12e",
+      "bytes": 84604
+    },
+    {
+      "path": "curation/entries/sotdl%3Asong-of-the-woad/ancestry.jsonl",
+      "sha256": "ede8edc23be5b24aa477a11cfe23ae75aac3e52449c89ef05106d8dcd1467126",
+      "bytes": 15703
+    },
+    {
+      "path": "curation/entries/sotdl%3Astolen-lives/ancestry.jsonl",
+      "sha256": "19169bf69190e056f36852ec1bb49fe6b6d468af4c7fe1c41035956aee606499",
+      "bytes": 97934
+    },
+    {
+      "path": "curation/entries/sotdl%3Aterrible-beauty/ancestry.jsonl",
+      "sha256": "d478d15431ed0cc9e1e5206170e186965c8e24d71a5151b1e1d0e939e753a912",
+      "bytes": 66601
+    },
+    {
+      "path": "curation/entries/sotdl%3Athe-great-mother-s-brood/ancestry.jsonl",
+      "sha256": "d68c0616b051b95cfb0c6661f8c8932e931b6a78057c97975745e698f438f5c2",
+      "bytes": 59824
+    },
+    {
+      "path": "curation/entries/sotdl%3Athe-hunger-in-the-void/ancestry.jsonl",
+      "sha256": "2f758b6a7e4c8e2c96be3b935ad61157d2f0e8bca7b497a7d1d7ab57fdde79e1",
+      "bytes": 74563
+    },
+    {
+      "path": "curation/entries/sotdl%3Atombs-of-the-desolation/ancestry.jsonl",
+      "sha256": "6722135689c350b59375c7e12775dfe2ac0d04dde3c1ce98101fcc7b0eab0c88",
+      "bytes": 68119
+    },
+    {
+      "path": "curation/entries/sotdl%3Atooth-claw/ancestry.jsonl",
+      "sha256": "f79b95a3ea980e264153cbac0b09b46a13e2d317d79fa30c172c42ebf0069825",
+      "bytes": 36199
+    },
+    {
+      "path": "curation/entries/sotdl%3Auncommon-courage/ancestry.jsonl",
+      "sha256": "df14c2aa29a43100a1511134e50eab4c0e9d1b3b2eda1e325da48dd4397f115d",
+      "bytes": 82186
+    },
+    {
+      "path": "curation/entries/sotdl%3Awretched-and-unclean/ancestry.jsonl",
+      "sha256": "ad5b13ccc15ee5cd1445844a4ddda900c4ec153b4bd0fb7ca62a434a1656ceb3",
+      "bytes": 6021
+    },
+    {
+      "path": "curation/reports/paths.json",
+      "sha256": "8f988ba119a189e940dde607b101ebfd43000e309af086e233948722830ecb1b",
+      "bytes": 2280202
+    },
+    {
+      "path": "curation/entries/sotdl%3Aa-glorious-death/path.jsonl",
+      "sha256": "80f7311f20525ea2b7f5a41375e23a7d7dbc0767b332623399801e58fa1076d3",
+      "bytes": 35704
+    },
+    {
+      "path": "curation/entries/sotdl%3Abeloved-of-euphobia/path.jsonl",
+      "sha256": "c02574f2527a3d65a58e605ce52c56487ca2ece32ba4cf303e37357c3c24a213",
+      "bytes": 9149
+    },
+    {
+      "path": "curation/entries/sotdl%3Abetween-two-worlds/path.jsonl",
+      "sha256": "f1c3b4e5e3106fd2af4d49fa15d7697c063060656259f2e7278f4fdda4ce5bba",
+      "bytes": 16920
+    },
+    {
+      "path": "curation/entries/sotdl%3Aborn-to-kill/path.jsonl",
+      "sha256": "6a5d1085d989ea3f517885f00ba432bb5da66143d38e843551fa177a8e20e987",
+      "bytes": 8920
+    },
+    {
+      "path": "curation/entries/sotdl%3Abred-for-battle/path.jsonl",
+      "sha256": "ecf31053653e0fad7ffa34c0b84fed459193abf1b2e1611d79ccce3900a791f0",
+      "bytes": 104594
+    },
+    {
+      "path": "curation/entries/sotdl%3Acaecras/path.jsonl",
+      "sha256": "4f76bd842f236845be7814f4233cc6cbd2bc03cfaa81ef3509d756c5dda70596",
+      "bytes": 28452
+    },
+    {
+      "path": "curation/entries/sotdl%3Acalled-to-serve/path.jsonl",
+      "sha256": "95aa2a66c383a89e2b10063960487a89100f03397e9a1b7b0b494cb131d400b0",
+      "bytes": 166327
+    },
+    {
+      "path": "curation/entries/sotdl%3Acity-of-chains/path.jsonl",
+      "sha256": "f807f30280df900ca6e7d565d7b320e88f7ada77c4296f12e4ffb2d6bdda113c",
+      "bytes": 11326
+    },
+    {
+      "path": "curation/entries/sotdl%3Acity-of-decay/path.jsonl",
+      "sha256": "fa0dde5fa8750b2baaa3ed16b33cdfba95d32c7086b6d1272130d4f949daa083",
+      "bytes": 10927
+    },
+    {
+      "path": "curation/entries/sotdl%3Acult-of-the-cog-god/path.jsonl",
+      "sha256": "06cccfce49c571a54a287d0891ecdd63a62e1a3cb2c97339d797dc5c73a6fa7b",
+      "bytes": 12231
+    },
+    {
+      "path": "curation/entries/sotdl%3Acurse-of-the-spider-wood/path.jsonl",
+      "sha256": "df30ad44f05b3b256bef46865ed8f8dc84fb3212ba79156206e8ef10af4c4db0",
+      "bytes": 46284
+    },
+    {
+      "path": "curation/entries/sotdl%3Ademon-lord-s-companion-2/path.jsonl",
+      "sha256": "836366b3ea77e4eafcc018d92a7961dc31d884832c66498b06fbbd6314aafbe0",
+      "bytes": 108089
+    },
+    {
+      "path": "curation/entries/sotdl%3Ademon-lord-s-companion/path.jsonl",
+      "sha256": "e2b44ad40aae1928440e6875381f2e85e2fd73fe3d6105f988f2ee6f177e5b59",
+      "bytes": 179086
+    },
+    {
+      "path": "curation/entries/sotdl%3Aexquisite-agony/path.jsonl",
+      "sha256": "ab0bf616f0b1d92130bf3a85c0557fa9cfc6a94dcc3fbb21e1c2daca6cbc3b9e",
+      "bytes": 29209
+    },
+    {
+      "path": "curation/entries/sotdl%3Aflesh-of-the-fallen/path.jsonl",
+      "sha256": "f01dee751c834e1aa710f44399395e48dfe89571e677f0341abc6656e450b34e",
+      "bytes": 26387
+    },
+    {
+      "path": "curation/entries/sotdl%3Afor-gold-and-glory/path.jsonl",
+      "sha256": "c1ef5301c6098881c5dea81610a9c4dd63b449f8aef1d976855f3a7d172d714f",
+      "bytes": 10874
+    },
+    {
+      "path": "curation/entries/sotdl%3Aforbidden-rules/path.jsonl",
+      "sha256": "2023e56a38cc93a314f35b31bdb2ab5922d6cdf4f3c811200455fd3a42c09c78",
+      "bytes": 36755
+    },
+    {
+      "path": "curation/entries/sotdl%3Afreeport-companion/path.jsonl",
+      "sha256": "0f8041cea2db56322a9c5219cd6bac57b4b22f1301b6db3a238a0d2e8a920d1c",
+      "bytes": 84982
+    },
+    {
+      "path": "curation/entries/sotdl%3Aguardians-of-the-cosmic-egg/path.jsonl",
+      "sha256": "3d197d969767a0e5822ed3be57a809c92ca1f5c2e08e99445ea73ae0e484b1d5",
+      "bytes": 8867
+    },
+    {
+      "path": "curation/entries/sotdl%3Aheaven-s-sent/path.jsonl",
+      "sha256": "b8a7bc8a6a5d9a38b4a8f055b239cb119f85074a3223095653d99649ad3ab802",
+      "bytes": 16445
+    },
+    {
+      "path": "curation/entries/sotdl%3Aheirs-of-eremea/path.jsonl",
+      "sha256": "ba26705512e71b9464c04ba010d587465d721ba2a0fd48029d633ff09434b9b6",
+      "bytes": 13285
+    },
+    {
+      "path": "curation/entries/sotdl%3Ain-plain-sight/path.jsonl",
+      "sha256": "88f9d430f7e2a26af60a024dad79cf649db2f5263ccd311f3dc7422906bd0d05",
+      "bytes": 14486
+    },
+    {
+      "path": "curation/entries/sotdl%3Akingdom-of-god/path.jsonl",
+      "sha256": "8d5151327dc0bb68ab531641dc43b59ad019f620787aef0731f8f877d51cd801",
+      "bytes": 47047
+    },
+    {
+      "path": "curation/entries/sotdl%3Akingdom-of-skulls/path.jsonl",
+      "sha256": "5697df27619e9313ff76fe9767acaee068a6705297cf15c74c1c629214754be5",
+      "bytes": 38517
+    },
+    {
+      "path": "curation/entries/sotdl%3Amen-of-gog/path.jsonl",
+      "sha256": "cf417ae8bd35887174287027f9823b51e30ec9fa897683fbf6dc39495045413c",
+      "bytes": 66230
+    },
+    {
+      "path": "curation/entries/sotdl%3Anatural-born-scoundrels/path.jsonl",
+      "sha256": "4cb1ba177707c3017aec9ad6979ca8161b667177d8201a6791615cfef797a1e0",
+      "bytes": 105416
+    },
+    {
+      "path": "curation/entries/sotdl%3Aoccult-philosophy/path.jsonl",
+      "sha256": "676505a41c63fc3b355cdd7226de3f4bf0797b8f58aa093811c60e76d3f517f8",
+      "bytes": 678079
+    },
+    {
+      "path": "curation/entries/sotdl%3Aof-fire-and-venom/path.jsonl",
+      "sha256": "f9c7b27689745a328fbe69681571437505ad7c93730295da161dad7484313008",
+      "bytes": 9292
+    },
+    {
+      "path": "curation/entries/sotdl%3Aof-gears-and-ghosts/path.jsonl",
+      "sha256": "b963ae8838cd383277579ef38b184c0df0b2611473b2ec3198a35547a009804c",
+      "bytes": 15976
+    },
+    {
+      "path": "curation/entries/sotdl%3Aparagons-of-virtue/path.jsonl",
+      "sha256": "ba730d121ee9f0a8f4ec532ca5cf60a0ac10f1839bc5bc70783ee425857db00b",
+      "bytes": 7806
+    },
+    {
+      "path": "curation/entries/sotdl%3Apath-of-the-adept/path.jsonl",
+      "sha256": "f84ac5fe0e8b355126dc5a870ebe3c60ebd92b98dc551738d90c0419f29a2257",
+      "bytes": 52137
+    },
+    {
+      "path": "curation/entries/sotdl%3Apaths-of-battle/path.jsonl",
+      "sha256": "d61a2e6ec659d1a92221715a86f6aa0127e3e23a422b3a5a4d43c89bf9dd9ce7",
+      "bytes": 59297
+    },
+    {
+      "path": "curation/entries/sotdl%3Apaths-of-conflict/path.jsonl",
+      "sha256": "8dfba6699db532a168487b188d9c32fe1a10c1bb8de8f9a3da4470b069cf4f15",
+      "bytes": 70332
+    },
+    {
+      "path": "curation/entries/sotdl%3Apaths-of-darkness/path.jsonl",
+      "sha256": "b45cf329d46194914869817fddaa19cd3569f40cf5af7ac73e8ab5d8bf08629f",
+      "bytes": 63400
+    },
+    {
+      "path": "curation/entries/sotdl%3Apaths-of-horror/path.jsonl",
+      "sha256": "774b60fef126d76853ab5a668d8edba9a56f30503ef76ee99f2bb3f455300fb4",
+      "bytes": 86565
+    },
+    {
+      "path": "curation/entries/sotdl%3Apaths-of-iron/path.jsonl",
+      "sha256": "3c38c57703462e28aa98dea73433ec7b2a8f024a9bc4e6d51d56d2762d492e94",
+      "bytes": 62823
+    },
+    {
+      "path": "curation/entries/sotdl%3Apaths-of-power/path.jsonl",
+      "sha256": "466a798f069826cae8759fd16b7e4d93547ef786d72b9b1d2921d3c7307ab220",
+      "bytes": 68828
+    },
+    {
+      "path": "curation/entries/sotdl%3Apaths-of-purpose/path.jsonl",
+      "sha256": "3c8ea14003cbb9e74439ced5ee0d42abbc743ea7fe7a39c9c69e9342647b1a2e",
+      "bytes": 93247
+    },
+    {
+      "path": "curation/entries/sotdl%3Apaths-of-science/path.jsonl",
+      "sha256": "74271d0c7d1bff6b93ef97436f8548a7be5cbfc4e81cac4254d1d707ea635622",
+      "bytes": 61610
+    },
+    {
+      "path": "curation/entries/sotdl%3Apower-in-a-name/path.jsonl",
+      "sha256": "f6012cdf9ecfac08dc0d78896e8c8cbbbf3cd0c7b5835a3f2c76c39de601063a",
+      "bytes": 7629
+    },
+    {
+      "path": "curation/entries/sotdl%3Ariders-of-the-wind/path.jsonl",
+      "sha256": "d0849b9feaf0a37fae775f639c72a883a7af4a7b32e45ac19ba007e1755ffb82",
+      "bytes": 6437
+    },
+    {
+      "path": "curation/entries/sotdl%3Ascions-of-nature/path.jsonl",
+      "sha256": "a4534ca05af63132f70f6bba1525fd5f46c63ed8e40b90f74d2a7a9eb94e5a9b",
+      "bytes": 27665
+    },
+    {
+      "path": "curation/entries/sotdl%3Ascions-of-the-betrayer/path.jsonl",
+      "sha256": "0b710f27993e9eef8228f96f1abc0c7a3feb32aba33d12fee5f0d61fae2b03a9",
+      "bytes": 24949
+    },
+    {
+      "path": "curation/entries/sotdl%3Aseekers-of-the-sleeping-god/path.jsonl",
+      "sha256": "637365d186ada53b29ffead76de7c7ae1506654831a43c1aede01ed327d3607d",
+      "bytes": 10672
+    },
+    {
+      "path": "curation/entries/sotdl%3Ashadow-of-the-demon-lord-core/path.jsonl",
+      "sha256": "8e6c14f472194174aff8eeebbb31a69d0f0b3046e98fd6cf2049893af673c6d1",
+      "bytes": 650036
+    },
+    {
+      "path": "curation/entries/sotdl%3Asnot-and-stitches/path.jsonl",
+      "sha256": "570fd48c4beb016cc9f13738a2561be7c51cacb4b69554b963e78a69945d7f0d",
+      "bytes": 9720
+    },
+    {
+      "path": "curation/entries/sotdl%3Asoldiers-of-fortune/path.jsonl",
+      "sha256": "c8f35dc19b7e4383f7c06d6f8df8e9288f91d255609b65e215181c2eb89cc1a4",
+      "bytes": 31046
+    },
+    {
+      "path": "curation/entries/sotdl%3Asong-of-the-woad/path.jsonl",
+      "sha256": "664dda421e19a087caff147bda4962916e1deebfde9d72a54678663021c34125",
+      "bytes": 13879
+    },
+    {
+      "path": "curation/entries/sotdl%3Astolen-lives/path.jsonl",
+      "sha256": "176a277fdbf6cff53dd0276564dda667fa165cf18f781b9d25ad66fb9d993a6d",
+      "bytes": 7525
+    },
+    {
+      "path": "curation/entries/sotdl%3Aterrible-beauty/path.jsonl",
+      "sha256": "8869a6576076a6e9d5e8bb98705aa7cb7254cc57c937c0ef9e9daa87c0afbff3",
+      "bytes": 85001
+    },
+    {
+      "path": "curation/entries/sotdl%3Athe-disciple-of-the-demon-lord/path.jsonl",
+      "sha256": "14760f4642fa8904bb6de227f4fab40232015232725944f067e6ac57a592b8b0",
+      "bytes": 46247
+    },
+    {
+      "path": "curation/entries/sotdl%3Athe-great-mother-s-brood/path.jsonl",
+      "sha256": "0f6a0ba658b1eae66c32da5fd03f55b10fe0cc05be3b15a8d35763b7e95d747f",
+      "bytes": 24620
+    },
+    {
+      "path": "curation/entries/sotdl%3Athe-hunger-in-the-void/path.jsonl",
+      "sha256": "f51499f087355836fe6543eeb7b321b312d462b33d040ff3a1ec4cb8d0bb9780",
+      "bytes": 9073
+    },
+    {
+      "path": "curation/entries/sotdl%3Athe-scientific-method/path.jsonl",
+      "sha256": "4b8fff26d20dae2ab3b151092ee5f0408a876398dedadeed8de1692a78050a20",
+      "bytes": 75807
+    },
+    {
+      "path": "curation/entries/sotdl%3Atombs-of-the-desolation/path.jsonl",
+      "sha256": "119ecd6dcb2c166d9c67331e1749990b81787f0ca490b74bd5f708ffb74525ad",
+      "bytes": 31997
+    },
+    {
+      "path": "curation/entries/sotdl%3Atooth-claw/path.jsonl",
+      "sha256": "5ddcf2fc4373965b7117b62b89799186963e729d48aaa99b78be49ecfd3f282a",
+      "bytes": 5950
+    },
+    {
+      "path": "curation/entries/sotdl%3Auncertain-faith/path.jsonl",
+      "sha256": "2e8ef9065d644fbe66f20c0a42dcb1ebe1bed9a5fe1ff9bc5ed98dc4008d3f87",
+      "bytes": 171898
+    },
+    {
+      "path": "curation/entries/sotdl%3Auncommon-courage/path.jsonl",
+      "sha256": "35e8d5c59ae885a8974178760e248b722be6ef9dfe3d161a07db7c8da1336637",
+      "bytes": 10817
+    },
+    {
+      "path": "curation/entries/sotdl%3Awild-beasts/path.jsonl",
+      "sha256": "b18fbe6e204c7c8d0e420f06183167ca7a89e353c72645a0d2a737c99ef84545",
+      "bytes": 9744
+    },
+    {
+      "path": "curation/reports/spells.json",
+      "sha256": "1da03edc5bbd38a1d018cf9fe7fa65aeeb9f8a3a7e37c4a1383e39ad44c0aecf",
+      "bytes": 2380436
+    },
+    {
+      "path": "curation/entries/sotdl%3Aa-glorious-death/spell.jsonl",
+      "sha256": "14c82367605085291a27a34bcd21d81b386c03efc9a19ba0dcce7ee3963b1efa",
+      "bytes": 101991
+    },
+    {
+      "path": "curation/entries/sotdl%3Abattle-scars/spell.jsonl",
+      "sha256": "8657165a1bbcc9d5c2c24d0e7571dd388ae1009338453464689f93c313ee9edd",
+      "bytes": 11816
+    },
+    {
+      "path": "curation/entries/sotdl%3Achildren-of-the-restless-earth/spell.jsonl",
+      "sha256": "8e3cda39e552fbb085fa6d18496e5ee4b4ecba27ae53f4b552a7031c15a3bc06",
+      "bytes": 21353
+    },
+    {
+      "path": "curation/entries/sotdl%3Acult-of-the-cog-god/spell.jsonl",
+      "sha256": "9a68acd808e8652c82e8f05b119efeaffb237365237f1b988538a4f3f0e8f107",
+      "bytes": 5574
+    },
+    {
+      "path": "curation/entries/sotdl%3Ademon-lord-s-companion-2/spell.jsonl",
+      "sha256": "99dce1bc85fb6932cf11634ec50b0cafe1191015846c9abdd8fdbff07b2dad77",
+      "bytes": 245969
+    },
+    {
+      "path": "curation/entries/sotdl%3Ademon-lord-s-companion/spell.jsonl",
+      "sha256": "cbd509909f09880d51fd75ba55d1c96a8412cb781c68c7d4edab43e0e9969217",
+      "bytes": 426007
+    },
+    {
+      "path": "curation/entries/sotdl%3Ado-we-not-die/spell.jsonl",
+      "sha256": "08c8b6e26c1c6c74815cc1f627ba88f1bba2a72f18588fc19ddc2d7140d5cf14",
+      "bytes": 67771
+    },
+    {
+      "path": "curation/entries/sotdl%3Aexquisite-agony/spell.jsonl",
+      "sha256": "7cea9e34181db4cc0fae0ea997942bbd21133b6d1167c6b5e42c314ff3ffaab5",
+      "bytes": 123837
+    },
+    {
+      "path": "curation/entries/sotdl%3Afalse-lives/spell.jsonl",
+      "sha256": "144eabd018744114fd677576f2a4bc1b81732fd6b2e5d44512dcc1a4046a3562",
+      "bytes": 13161
+    },
+    {
+      "path": "curation/entries/sotdl%3Afor-gold-and-glory/spell.jsonl",
+      "sha256": "29b6c831e6adf3aee4b3d2e18f0ac6cb80f64bd21b2fe23ac1b9cfb9ad6b4ac4",
+      "bytes": 21069
+    },
+    {
+      "path": "curation/entries/sotdl%3Aforbidden-rules/spell.jsonl",
+      "sha256": "54fc14ddb15e202f87028937f11208126c2bfd2b9074b8c360f394478063aaba",
+      "bytes": 30546
+    },
+    {
+      "path": "curation/entries/sotdl%3Aforgeborn-magicmade/spell.jsonl",
+      "sha256": "7999b1189c37f1c884e08c2b078ee8823798934b9eae7d2c14092e92050a5fe6",
+      "bytes": 27510
+    },
+    {
+      "path": "curation/entries/sotdl%3Afreeport-companion/spell.jsonl",
+      "sha256": "3dc3b11be95f6b6648495108a8bcefc8d11ec7b2dff7421561dbbf8546b24b81",
+      "bytes": 286797
+    },
+    {
+      "path": "curation/entries/sotdl%3Aghosts-in-machines/spell.jsonl",
+      "sha256": "0f01e55e32d8330b0a0119ec774c834a629018562a22188e971710353fd4a723",
+      "bytes": 11525
+    },
+    {
+      "path": "curation/entries/sotdl%3Aoccult-philosophy/spell.jsonl",
+      "sha256": "272717b8277bf4a724f1f1ce9f9abdbe6eecfe69bc4d12704890b498a88eb73a",
+      "bytes": 4456611
+    },
+    {
+      "path": "curation/entries/sotdl%3Aparagons-of-virtue/spell.jsonl",
+      "sha256": "02928b042d9ff9a4424619e165521bcd38c6abaad4baf65e73eaaa0101f9ebd0",
+      "bytes": 125221
+    },
+    {
+      "path": "curation/entries/sotdl%3Apaths-of-power/spell.jsonl",
+      "sha256": "7d737683b8aa5970757e98a49f2b3a04ebfe367517d04e64b976b5230143da6b",
+      "bytes": 5948
+    },
+    {
+      "path": "curation/entries/sotdl%3Apower-in-a-name/spell.jsonl",
+      "sha256": "ea2662836847a08671b54278d992c422f9aa5dcc20e64fd2f259d2e8254c090d",
+      "bytes": 5797
+    },
+    {
+      "path": "curation/entries/sotdl%3Apull-of-the-stars/spell.jsonl",
+      "sha256": "6164fc13e494c87673f99fcce551c43ecfb1e5f2403799c80afaba5a29a65e64",
+      "bytes": 4894
+    },
+    {
+      "path": "curation/entries/sotdl%3Ashadow-of-the-demon-lord-core/spell.jsonl",
+      "sha256": "3a31b9349ec44a4d61133be4a8b6220b50f380684b3979e9f14a1afd00ff8209",
+      "bytes": 1795609
+    },
+    {
+      "path": "curation/entries/sotdl%3Aslaves-in-death/spell.jsonl",
+      "sha256": "08bb71bbbd220f5f503752377ae45252d5924edf8fbc69030d6c5d1c5c30b610",
+      "bytes": 26796
+    },
+    {
+      "path": "curation/entries/sotdl%3Aterrible-beauty/spell.jsonl",
+      "sha256": "87c20d8aafcb84bc72c09853804611cba8de9b49e27f7d9fddd0f088c25c8423",
+      "bytes": 155128
+    },
+    {
+      "path": "curation/entries/sotdl%3Athe-hunger-in-the-void/spell.jsonl",
+      "sha256": "c2d34928de6a7ba77724add39b15041169ec7707cafb9e8a81f016bea9c05662",
+      "bytes": 153384
+    },
+    {
+      "path": "curation/entries/sotdl%3Atombs-of-the-desolation/spell.jsonl",
+      "sha256": "2e135016c7a1bdb35dc0617bcdb71e157f3928fb5e4341fd64843c8336aaee9e",
+      "bytes": 91940
+    },
+    {
+      "path": "curation/entries/sotdl%3Atooth-claw/spell.jsonl",
+      "sha256": "721eaa9c240bdceb0d3154b23bcfd6dbde31e784ff93d309ac1f5e8ea7cd19b1",
+      "bytes": 20056
+    },
+    {
+      "path": "curation/entries/sotdl%3Auncertain-faith/spell.jsonl",
+      "sha256": "d563af00107d4db8ffdac2d59651219add3fab29955166c9f1752df72862ff5c",
+      "bytes": 205929
+    },
+    {
+      "path": "curation/entries/sotdl%3Aunhinge-the-mind/spell.jsonl",
+      "sha256": "675706e0d5e881a390a9d2a7bd096706ffe169da39a078e5a3dcf0657fd69628",
+      "bytes": 5365
+    },
+    {
+      "path": "curation/entries/sotdl%3Avine-and-willow/spell.jsonl",
+      "sha256": "5ef4b7df0cb3c8c92e814ac507c0cef978c56cc3644e14bb38cb7c75f9d00f12",
+      "bytes": 102921
+    },
+    {
+      "path": "curation/reports/mechanics.json",
+      "sha256": "17b6cbb27e1e1f04b98fca10caa8d8d8d08fb24e283f758a82fb1a65c35d1b6c",
+      "bytes": 3085578
+    },
+    {
+      "path": "curation/mechanics-decisions.json",
+      "sha256": "0094de2bd0579b84300c5a55da8d0c4ad6b1f556976b63f5e9bb0512d834a881",
+      "bytes": 13768
+    },
+    {
+      "path": "curation/entries/sotdl%3Aa-glorious-death/creature.jsonl",
+      "sha256": "516ffe66569f7a1a5d758b3318f54b2b17dbc293eb90937070db457ed3374ed7",
+      "bytes": 170620
+    },
+    {
+      "path": "curation/entries/sotdl%3Aa-glorious-death/rule.jsonl",
+      "sha256": "58e0e50264ee8257046ad43630468fa121903988e8d9f86e1853aab0149919db",
+      "bytes": 278138
+    },
+    {
+      "path": "curation/entries/sotdl%3Abattle-scars/item.jsonl",
+      "sha256": "aff7e397fcf693c496bd6960c7f870551162e1bb6f3462f5007ea9e4f9dcb260",
+      "bytes": 80370
+    },
+    {
+      "path": "curation/entries/sotdl%3Abattle-scars/rule.jsonl",
+      "sha256": "516ca59d744a95c1eeda0c0941a1cb0bf36e35e23445395b20bc9de389cc522d",
+      "bytes": 170159
+    },
+    {
+      "path": "curation/entries/sotdl%3Abeloved-of-euphobia/creature.jsonl",
+      "sha256": "2f9d7d18707ee7fd74df22cfaa60278ba6d6610ebdd3b76b87dd1fe147f93165",
+      "bytes": 39432
+    },
+    {
+      "path": "curation/entries/sotdl%3Ablack-sun-dawn/creature.jsonl",
+      "sha256": "307e57504dda1e0bc3ba1eacd21a5df9674cbe855f58188efb66ff7231910106",
+      "bytes": 131342
+    },
+    {
+      "path": "curation/entries/sotdl%3Abrood-of-the-mother-spore/creature.jsonl",
+      "sha256": "2142d583e5c01ff7d21f4a1054c9a88b1ed6b237b84d134549f0cec273bf023d",
+      "bytes": 26655
+    },
+    {
+      "path": "curation/entries/sotdl%3Acaecras/creature.jsonl",
+      "sha256": "b0e7bdc516076a56276c0f896ece100ccc6fdd7836e0bcb292246aa16f5a7d62",
+      "bytes": 128197
+    },
+    {
+      "path": "curation/entries/sotdl%3Acaecras/rule.jsonl",
+      "sha256": "8b83708c9697d4eb0ceed52236cfabf67a274a4deee57fe3e0f9ceb84a0b031c",
+      "bytes": 5841
+    },
+    {
+      "path": "curation/entries/sotdl%3Acity-of-chains/creature.jsonl",
+      "sha256": "aa000ed1ee8161f9e449e1e5b7694941c7257ce2a763d928ae793bfc40d973bd",
+      "bytes": 27557
+    },
+    {
+      "path": "curation/entries/sotdl%3Acity-of-decay/creature.jsonl",
+      "sha256": "3a16f4deb02163846c736656906c962fd2545a4b67e3a6e0ba0286e109f4e99a",
+      "bytes": 41858
+    },
+    {
+      "path": "curation/entries/sotdl%3Acurse-of-the-spider-wood/creature.jsonl",
+      "sha256": "b379ad47c23c503953c1de54880e963e6bea177fd33b52ab346eab256062fd6f",
+      "bytes": 187126
+    },
+    {
+      "path": "curation/entries/sotdl%3Acurse-of-the-spider-wood/rule.jsonl",
+      "sha256": "ae97c99dd250c4501ee436dc98b8df007b0214973a288940218bda9ff1af1029",
+      "bytes": 72995
+    },
+    {
+      "path": "curation/entries/sotdl%3Adark-passages/rule.jsonl",
+      "sha256": "35919dc7234fbd79af23995e8e673c4ab8cb58ba2da3eece24198c6b3f439551",
+      "bytes": 27893
+    },
+    {
+      "path": "curation/entries/sotdl%3Ademon-lord-errata-19nov17/rule.jsonl",
+      "sha256": "5170bded0d37a97abf18024cda3468f51868ded2344a8b51aa30a112ae3061dc",
+      "bytes": 102154
+    },
+    {
+      "path": "curation/entries/sotdl%3Ademon-lord-s-companion-2/rule.jsonl",
+      "sha256": "900cdbf6a00ad0653424e13b16dd4088219b041f32486c001b1ffb35b7649236",
+      "bytes": 217618
+    },
+    {
+      "path": "curation/entries/sotdl%3Ademon-lord-s-companion/creature.jsonl",
+      "sha256": "e0a22215479e63d6d901172c8d37a3cdfcbe724dea1a4c827588dcefc4804f2a",
+      "bytes": 79694
+    },
+    {
+      "path": "curation/entries/sotdl%3Ademon-lord-s-companion/item.jsonl",
+      "sha256": "cc46643d6a75e3c231dfb6c315c76b3ae3d0e64fb019add355b5622e48290b63",
+      "bytes": 290230
+    },
+    {
+      "path": "curation/entries/sotdl%3Ademon-lord-s-companion/rule.jsonl",
+      "sha256": "4402acc2928cedc84f3b6be5b4d2d87088719733d11f221b6badd8362788e094",
+      "bytes": 73972
+    },
+    {
+      "path": "curation/entries/sotdl%3Ado-we-not-die/item.jsonl",
+      "sha256": "14ad084eb7bd7fc54130fc5206490db254916d8eec9b0ec46ca98b7539e45cbe",
+      "bytes": 167409
+    },
+    {
+      "path": "curation/entries/sotdl%3Ado-we-not-die/rule.jsonl",
+      "sha256": "db1bd0a9dc34058786e7eeb0709f4c68547b1463f5e1c6da2a7426711ca08d0e",
+      "bytes": 24093
+    },
+    {
+      "path": "curation/entries/sotdl%3Aexquisite-agony/creature.jsonl",
+      "sha256": "a5576866268ee0c4cf116db267e1a0fe93b8c4a03ed3305708627f4c95984ade",
+      "bytes": 207728
+    },
+    {
+      "path": "curation/entries/sotdl%3Aexquisite-agony/rule.jsonl",
+      "sha256": "f34937f2cf13f13e31f6b187734eb1cfcb5e8e54acd84b5a906a98ad321fdd2e",
+      "bytes": 43029
+    },
+    {
+      "path": "curation/entries/sotdl%3Afalse-lives/creature.jsonl",
+      "sha256": "6fba47d46e258f0a8efcf596b88991d98009895e22dcaf0d42ae6db1e296a986",
+      "bytes": 140618
+    },
+    {
+      "path": "curation/entries/sotdl%3Aforbidden-rules/rule.jsonl",
+      "sha256": "c5316fb6da71857ad0713c91f24c48e2082c6a3badc667e227d808f4ed2e626c",
+      "bytes": 225495
+    },
+    {
+      "path": "curation/entries/sotdl%3Aforgeborn-magicmade/creature.jsonl",
+      "sha256": "e79f95ac7da25e88e0216c8c43dbe4a2e80fb97cdd412d373c14661889acf8b3",
+      "bytes": 53936
+    },
+    {
+      "path": "curation/entries/sotdl%3Aforgeborn-magicmade/item.jsonl",
+      "sha256": "db9c566145b370ca18e8b2b0971e4ff6674822861d02ce09d30d4a0ef2f5f1fb",
+      "bytes": 25558
+    },
+    {
+      "path": "curation/entries/sotdl%3Aforgeborn-magicmade/rule.jsonl",
+      "sha256": "2a8e517f373df7596acfc5f8cc8a86a1e85885b4efbfff930458a7a2ae8b03ab",
+      "bytes": 224733
+    },
+    {
+      "path": "curation/entries/sotdl%3Afoulest-reptiles/creature.jsonl",
+      "sha256": "28eb5721465f35ad3b55d0b0ea01c26929d28fc6946e23da32b3c19de1cdad96",
+      "bytes": 45162
+    },
+    {
+      "path": "curation/entries/sotdl%3Afoulest-reptiles/rule.jsonl",
+      "sha256": "8c9ae1f4d4f9e65ae27799f93f1631ef0cfa8982cd9af7ff71bc2e26572c73b3",
+      "bytes": 14780
+    },
+    {
+      "path": "curation/entries/sotdl%3Afrayed-ends/rule.jsonl",
+      "sha256": "9651cb1c381f12b2faeae5a327e4c966566631409f141b6188191f6e829266b1",
+      "bytes": 21344
+    },
+    {
+      "path": "curation/entries/sotdl%3Afreeport-companion/creature.jsonl",
+      "sha256": "a17b8b7be178dafe3e0f15248820014db7e732c52ac9dad83f81ce0df8cc1d0e",
+      "bytes": 338115
+    },
+    {
+      "path": "curation/entries/sotdl%3Afreeport-companion/item.jsonl",
+      "sha256": "8983681ef45a3187d5d3f4e33464c12940318dabfae8aea9f17c9f655582cf59",
+      "bytes": 267837
+    },
+    {
+      "path": "curation/entries/sotdl%3Afreeport-companion/rule.jsonl",
+      "sha256": "8dc8379466350bd563b490e851523c627f87c1b0b9829544f9ea7bf16234763f",
+      "bytes": 37953
+    },
+    {
+      "path": "curation/entries/sotdl%3Aghastly-gourmands/creature.jsonl",
+      "sha256": "51c45f550bf22c4071be7abcdabc76f304ae31a8d63930ff6e9f902b8948d06b",
+      "bytes": 80808
+    },
+    {
+      "path": "curation/entries/sotdl%3Aghastly-gourmands/rule.jsonl",
+      "sha256": "005989453502addf5678c0024895f8bd219c516bda271e0ee29870d0897a8d43",
+      "bytes": 20250
+    },
+    {
+      "path": "curation/entries/sotdl%3Aghosts-in-machines/item.jsonl",
+      "sha256": "c17f609dc79a0142a63a8fae917390f3152e09a9922796750323f2bb19e9ac38",
+      "bytes": 163612
+    },
+    {
+      "path": "curation/entries/sotdl%3Aghosts-in-machines/rule.jsonl",
+      "sha256": "5a9ef63495b42e759745736c7d5ccb7c08125135a6b95b50df9f681f53e81b4a",
+      "bytes": 15037
+    },
+    {
+      "path": "curation/entries/sotdl%3Aguardians-of-the-cosmic-egg/rule.jsonl",
+      "sha256": "4bbcf87964b65b371aaa46edf2d6f006e793144ab0f9ee7f963674a5f589b928",
+      "bytes": 5433
+    },
+    {
+      "path": "curation/entries/sotdl%3Aheart-of-the-machine-god/rule.jsonl",
+      "sha256": "9b04807a253a3053c8666c13b1f00861b52be7d2b556bffd642f69bcb4f1101f",
+      "bytes": 111086
+    },
+    {
+      "path": "curation/entries/sotdl%3Aheaven-s-sent/creature.jsonl",
+      "sha256": "7be9517bf524a069afd8e3d0785337f4969b19228d25249d1bbfbcee2be552a8",
+      "bytes": 6622
+    },
+    {
+      "path": "curation/entries/sotdl%3Aheirs-of-eremea/creature.jsonl",
+      "sha256": "058d11008ec4c612d42b073a7ee6ca48aba44164c23f2f87128b74962fecd1b6",
+      "bytes": 21820
+    },
+    {
+      "path": "curation/entries/sotdl%3Ahired-help/creature.jsonl",
+      "sha256": "1c9d2a3cff55bce0a5771d505311e17cdd2512191dac2a1375f12488c0500e16",
+      "bytes": 46383
+    },
+    {
+      "path": "curation/entries/sotdl%3Ahired-help/rule.jsonl",
+      "sha256": "86d3ad3083bff3b9a9f88ca8d8c69c4cffb1bf255e01a9c63f6eae18a8cafb3b",
+      "bytes": 79728
+    },
+    {
+      "path": "curation/entries/sotdl%3Ain-the-emperors-secret-service/rule.jsonl",
+      "sha256": "ae4977929e230ab66aaeb7a3a6d3c70dc148626ca78588d4d4fe6fc9af7a7d0d",
+      "bytes": 20044
+    },
+    {
+      "path": "curation/entries/sotdl%3Ainsupposable-instruments/item.jsonl",
+      "sha256": "ad3c15df956fad32c72899072cc0e2fc805ea3d1057f7f98e32f3d8daf1f899a",
+      "bytes": 829866
+    },
+    {
+      "path": "curation/entries/sotdl%3Akingdom-of-god/creature.jsonl",
+      "sha256": "e4eeb6b217bbd998ea0f68d16decd73052123364009220f5971530418c8cb48a",
+      "bytes": 66025
+    },
+    {
+      "path": "curation/entries/sotdl%3Akingdom-of-god/rule.jsonl",
+      "sha256": "e43e2ef95fde3113733950afd71f221683af1dcbecb044e495df185d98f9e0b6",
+      "bytes": 67667
+    },
+    {
+      "path": "curation/entries/sotdl%3Akingdom-of-skulls/creature.jsonl",
+      "sha256": "8fc238ffbbe27e5157fb355042a1ad12aad8427ed6499fda7d07e41143431014",
+      "bytes": 16058
+    },
+    {
+      "path": "curation/entries/sotdl%3Amen-of-gog/creature.jsonl",
+      "sha256": "235ea8b9257373cd87ce971f31adfc580698caa0ba5ffdac4106bcb989bcf8fa",
+      "bytes": 320635
+    },
+    {
+      "path": "curation/entries/sotdl%3Amen-of-gog/rule.jsonl",
+      "sha256": "50d5ed727aba9e4bcbbe8ccb219164a18f5611e144bfcd6bdaba61615368c861",
+      "bytes": 14920
+    },
+    {
+      "path": "curation/entries/sotdl%3Amurder-by-numbers/creature.jsonl",
+      "sha256": "aa2d222104749a14ad9c6f4e3d582fab69921f970ce1d12a68aee840a8eed4fd",
+      "bytes": 18604
+    },
+    {
+      "path": "curation/entries/sotdl%3Aoccult-philosophy/creature.jsonl",
+      "sha256": "f07938eb4bbb47ce078baef0c3662953e90240109a89088942620e3cbfd375bd",
+      "bytes": 218813
+    },
+    {
+      "path": "curation/entries/sotdl%3Aoccult-philosophy/rule.jsonl",
+      "sha256": "9e694426e8fdcb981b2e1407b002a59ff7f7ac7554c3ac68cfd90a42e34e09f6",
+      "bytes": 25736
+    },
+    {
+      "path": "curation/entries/sotdl%3Aof-fire-and-venom/creature.jsonl",
+      "sha256": "00ed3bc034a6e247c921a3717735bf8aedd84fde2bfb28efa4834e52581b97f4",
+      "bytes": 73998
+    },
+    {
+      "path": "curation/entries/sotdl%3Aof-fire-and-venom/rule.jsonl",
+      "sha256": "fdb5928392eabf04798328eb7155fa517048040fdf3c7a0a36f0a72b22364f85",
+      "bytes": 26948
+    },
+    {
+      "path": "curation/entries/sotdl%3Aparagons-of-virtue/rule.jsonl",
+      "sha256": "7da081473d496a1b8f025c135ae040b141319578e1e2ceb19690aee6cf134d77",
+      "bytes": 88069
+    },
+    {
+      "path": "curation/entries/sotdl%3Apaths-of-horror/creature.jsonl",
+      "sha256": "acd9ae2b6201ee2bde545b060846a386e296a0d9bbfecd9ee0b2fc6a4d56db40",
+      "bytes": 26298
+    },
+    {
+      "path": "curation/entries/sotdl%3Apaths-of-iron/item.jsonl",
+      "sha256": "be9e3867f380616510d086e9cce337452b062318491a7c10b339d5568f557dd7",
+      "bytes": 63974
+    },
+    {
+      "path": "curation/entries/sotdl%3Apaths-of-iron/rule.jsonl",
+      "sha256": "a339d2902dda929c986228a6f4f8e99a2465588f26986be547b8363fe090cecf",
+      "bytes": 6155
+    },
+    {
+      "path": "curation/entries/sotdl%3Apower-in-a-name/rule.jsonl",
+      "sha256": "0ab4fb176d904458732c6651c0af7fe7a0656b9c350eeb950bac4e2c38d45bb5",
+      "bytes": 87383
+    },
+    {
+      "path": "curation/entries/sotdl%3Apull-of-the-stars/rule.jsonl",
+      "sha256": "a6fd891487ee09e835cb10a2190b1b9b8e02c79b22b27f1dd1c504e9e9586136",
+      "bytes": 200817
+    },
+    {
+      "path": "curation/entries/sotdl%3Ariders-of-the-wind/creature.jsonl",
+      "sha256": "f19ccda1fb9e1a240420652ee8f385112908561b782d7ba200eca7364b83569a",
+      "bytes": 22755
+    },
+    {
+      "path": "curation/entries/sotdl%3Ascions-of-the-betrayer/creature.jsonl",
+      "sha256": "94222d5b7afc0b47e2712ac1f1bab6bd858d58bea81ba60606442673f859e885",
+      "bytes": 29996
+    },
+    {
+      "path": "curation/entries/sotdl%3Aseekers-of-the-sleeping-god/creature.jsonl",
+      "sha256": "0694e5869e72d31a8f03569e0d466a2d606706ae00576084f27a690c94b1de27",
+      "bytes": 25886
+    },
+    {
+      "path": "curation/entries/sotdl%3Ashadow-of-the-demon-lord-core/creature.jsonl",
+      "sha256": "bbce5292dc08001c28bcd7b9a93c9205823e5c339212608e65af73044b853096",
+      "bytes": 1009827
+    },
+    {
+      "path": "curation/entries/sotdl%3Ashadow-of-the-demon-lord-core/item.jsonl",
+      "sha256": "d6933bb38be3a9b2c123414a1ceb95c4e38e1f9cd1233281dd20c185b1747eb7",
+      "bytes": 1026338
+    },
+    {
+      "path": "curation/entries/sotdl%3Ashadow-of-the-demon-lord-core/rule.jsonl",
+      "sha256": "75ce4053f6caf9e0a266fe59b5d6688554ed685518323e1b07f70b793b02bceb",
+      "bytes": 3561217
+    },
+    {
+      "path": "curation/entries/sotdl%3Aslaves-in-death/creature.jsonl",
+      "sha256": "1dc5c570322315cdcd8cabf6b894bc1c4e7e6e2f8104df5ae3ae56305916461b",
+      "bytes": 34646
+    },
+    {
+      "path": "curation/entries/sotdl%3Aslaves-in-death/rule.jsonl",
+      "sha256": "fed6de4597283d57a9aab6a4ed44f336106d99d3afa1135093aff2911f6a2bcd",
+      "bytes": 11597
+    },
+    {
+      "path": "curation/entries/sotdl%3Aterrible-beauty/creature.jsonl",
+      "sha256": "260fd808bf97a10e0a6ac27baf70a9a45197207afc46333932806298390172f5",
+      "bytes": 208880
+    },
+    {
+      "path": "curation/entries/sotdl%3Aterrible-beauty/rule.jsonl",
+      "sha256": "11398091ad19919e17c5049bcdc09a71906476b6caf6585ecdf27187c7acbc2f",
+      "bytes": 125415
+    },
+    {
+      "path": "curation/entries/sotdl%3Athe-devil-s-due/rule.jsonl",
+      "sha256": "27c2f890d382ea4caa174f82a611a95f4640e877ffc8717003545d90fb298903",
+      "bytes": 46824
+    },
+    {
+      "path": "curation/entries/sotdl%3Athe-hunger-in-the-void/creature.jsonl",
+      "sha256": "bf3af2f18f70d1b8cea3534116b565fccd138e204a96afa23576db4cb277f94a",
+      "bytes": 172736
+    },
+    {
+      "path": "curation/entries/sotdl%3Athe-hunger-in-the-void/rule.jsonl",
+      "sha256": "a89eb4b4d144e0475cfc8128be694426680e91e2a6f3cd547620a1cab5028d0b",
+      "bytes": 663541
+    },
+    {
+      "path": "curation/entries/sotdl%3Athe-price-of-evil/rule.jsonl",
+      "sha256": "fc401f05445f38b0d371b532481587b5da4b15f0b2188fdfb8669fbb74f36e87",
+      "bytes": 117944
+    },
+    {
+      "path": "curation/entries/sotdl%3Atombs-of-the-desolation/creature.jsonl",
+      "sha256": "e04c6820f421624ff29612ba0e3d741aaf39ece7402f52c973cead16c0955a9d",
+      "bytes": 162295
+    },
+    {
+      "path": "curation/entries/sotdl%3Atombs-of-the-desolation/rule.jsonl",
+      "sha256": "5f466723d71adbefaf59e3bf1161a5583ac855892f7966c5391e341a150648c5",
+      "bytes": 252907
+    },
+    {
+      "path": "curation/entries/sotdl%3Atooth-claw/rule.jsonl",
+      "sha256": "4425739a41b32926a14b717f4047e4ff361eae88493963a351853232af7cf9a8",
+      "bytes": 42688
+    },
+    {
+      "path": "curation/entries/sotdl%3Auncertain-faith/rule.jsonl",
+      "sha256": "7aec6480eaa8d2281947643be86efb9ecdb35ed0a4fa23999dfaabe4db0a3be4",
+      "bytes": 6506
+    },
+    {
+      "path": "curation/entries/sotdl%3Aunhinge-the-mind/rule.jsonl",
+      "sha256": "f26a09257d3fd82cec7eab6472f49548cee7a6d31d2b42fa6b9cccd4c7a07668",
+      "bytes": 162294
+    },
+    {
+      "path": "curation/entries/sotdl%3Aunwelcome-guests/creature.jsonl",
+      "sha256": "b5bd2533d37886e89cb3aa77b040a8439747e519d816f2f59aa3cf3445c8247f",
+      "bytes": 28628
+    },
+    {
+      "path": "curation/entries/sotdl%3Avine-and-willow/item.jsonl",
+      "sha256": "0f1e3dd467a4db357e08f3d79cb61b338e177e6d86e1159c20eaa125d0e189f0",
+      "bytes": 30998
+    },
+    {
+      "path": "curation/entries/sotdl%3Avine-and-willow/rule.jsonl",
+      "sha256": "7d6984d75e91c12181b53a1c10c7f43e5b50ece9ce440e76e298b98ed7ffcc3c",
+      "bytes": 4863
+    },
+    {
+      "path": "curation/entries/sotdl%3Awild-beasts/creature.jsonl",
+      "sha256": "32c1edc7da038aa58a9d171dd54036d2bd2f7877a20af7f733ad56e83447d991",
+      "bytes": 31638
+    },
+    {
+      "path": "curation/entries/sotdl%3Awretched-and-unclean/creature.jsonl",
+      "sha256": "e4e3cbf436bc44f1848ddd98ba8007b1b85eff093a69bfe17f62ad856e39e7a0",
+      "bytes": 65152
+    },
+    {
+      "path": "curation/segments/mechanics.jsonl",
+      "sha256": "4d1995e330de47a76254777a2b72f810f312c406261c0ea4fafcf2c301ea1684",
+      "bytes": 11652372
+    },
+    {
+      "path": "curation/reports/editorial-normalization.json",
+      "sha256": "49e8040785935e5c62870125bd57e35de0a17dd5b14dbf17f9f722f3b7976442",
+      "bytes": 46231
+    },
+    {
+      "path": "curation/normalized/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md",
+      "sha256": "b26236b310483b0cea6d4512677a3320cd8d30db0abca6a93326824961318dba",
+      "bytes": 889133
+    },
+    {
+      "path": "curation/normalized/SotDL_All_Paths_Compendium_Expanded_All_Project_Sources.md",
+      "sha256": "073a1444208082b82e9b4b4eb71792542e9f44265976bd498ff54e22cd6ccb3f",
+      "bytes": 1211515
+    },
+    {
+      "path": "curation/normalized/SotDL_Compendio_Regras_Equipamentos_Monstros_v4_All_Project_Sources.md",
+      "sha256": "bf305c721bd8e18336420f26bee2b911f399452cd160c6c9716ab4024aa1464c",
+      "bytes": 2579078
+    },
+    {
+      "path": "curation/normalized/SotDL_Spells_All_Sources_Expanded_All_Project_Sources_v2.md",
+      "sha256": "6a14be7be3ddd2e36607861bd7c9ae44f19883a6c3b6a4a113b6a336dfaaa495",
+      "bytes": 1081246
+    },
+    {
+      "path": "curation/normalization/changes.jsonl",
+      "sha256": "790a148ddf51c7c8b0eca355424e9ad0316fcfdf67c3f5d14e2db35754af2962",
+      "bytes": 1552926
+    },
+    {
+      "path": "curation/normalization/diagnostics.jsonl",
+      "sha256": "393af4bd90f7de65d4d2a227821637090b677c5a2989114fb3a7f0b6a6ff2427",
+      "bytes": 16714400
+    },
+    {
+      "path": "curation/normalization/overlays.jsonl",
+      "sha256": "7a81046e38cff59064f5a803ebd924d42fb2c797a2f3ec439047ea830d5dea9b",
+      "bytes": 3244531
+    },
+    {
+      "path": "tools/curation/reconciler.ts",
+      "sha256": "f99600abca3f8cd47472543c5777877199cd57f9de04e2995ec87f5bf36ec67f",
+      "bytes": 39121
+    },
+    {
+      "path": "tools/curation/reconcile.mjs",
+      "sha256": "a3c2134dcfec6b6b2ec2c673de096614e5c4d78b59c05d6eea482331da898563",
+      "bytes": 640
+    }
+  ],
+  "outputs": [
+    {
+      "path": "curation/reconciliation/inventory.jsonl",
+      "sha256": "4d0a61b7477087112263e139fc3718594d80119d320e192a831a636cd99a5f7e",
+      "bytes": 5121575
+    },
+    {
+      "path": "curation/reconciliation/coverage.jsonl",
+      "sha256": "1bc668ee6663e53b327689dd674b1958940695532c1c1925585dad0a8085a431",
+      "bytes": 2837359
+    },
+    {
+      "path": "curation/reconciliation/sources.json",
+      "sha256": "400d66fa96f71e970dd7fe28d57f941387bd504e2682436f50e73c1634780043",
+      "bytes": 277210
+    },
+    {
+      "path": "curation/reconciliation/duplicates.jsonl",
+      "sha256": "365a385c801a626efceadd0d2a749b62f06cf1154a34135835262827ebf13be5",
+      "bytes": 399166
+    },
+    {
+      "path": "curation/reconciliation/findings.jsonl",
+      "sha256": "df627d35ee5d788625efd821319516b9190e45ff4b0037440549db1b3c08b2d2",
+      "bytes": 373472
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "task": "CUR-015",
+  "reviewDate": "2026-10-27",
+  "inputRefs": [
+    {
+      "path": "curation/pilot/core-level-zero.json",
+      "sha256": "36291fc64d1e27ba34993ecb8e2c886dd4c42eb5d6aab86d4f09c22bdc56f6fc"
+    },
+    {
+      "path": "tools/curation/human-ancestry-formalizer.ts",
+      "sha256": "f761af4bec81d08937043828063fb83033df9ba8f19ac81950fc8f3cd09569d0"
+    },
+    {
+      "path": "tools/curation/human-ancestry.mjs",
+      "sha256": "150afc6be224387413f5d9b082c384f99e99bf92cd4b8917b4ca6fe1fd1ac848"
+    },
+    {
+      "path": "packages/curation/ancestry-base-model.ts",
+      "sha256": "54aec5dabdcbd0eba4e5baf61015e98fd2cf0764adec4ec98f79888f2f1ca636"
+    },
+    {
+      "path": "packages/character-generator/index.ts",
+      "sha256": "6edd53eef44684078575447b7786d82f2baa635367d3f1861f372677a1d174d7"
+    },
+    {
+      "path": "packages/random-tables/index.ts",
+      "sha256": "cd3134c478a222c9cc690a1a6b873a40a05873e53a8aa519044c4c61ca53a434"
+    }
+  ],
+  "variants": [
+    {
+      "id": "core",
+      "entityId": "sotdl:shadow-of-the-demon-lord-core:ancestry:human:default"
+    },
+    {
+      "id": "only-human",
+      "entityId": "sotdl:only-human:ancestry:human:variant"
+    }
+  ],
+  "counts": {
+    "variants": 2,
+    "formulas": 15,
+    "evidenceRanges": 11,
+    "deferredRequirements": 6
+  },
+  "outputs": [
+    {
+      "path": "curation/pilot/human-ancestry.json",
+      "sha256": "1ad515c8c6e529c9d526e12bd40a0aaec85f10782ee1d312fa539c1e7041e91b"
+    }
+  ],
+  "unchanged": {
+    "originalInputs": true,
+    "ledgers": true,
+    "staging": true,
+    "frozenContracts": true,
+    "demoConsumer": true
+  },
+  "nextTask": "CUR-016",
+  "scope": "Formalization and reference verification, not runtime adoption or a complete character."
+}

@@ -1,0 +1,19 @@
+{
+  "packId": "demo-level-zero", "version": "0.0.1", "system": "sotdl", "fictionalData": true,
+  "legalNotice": "PERSONAGEM DEMONSTRATIVO: valores inventados, não são regras de SotDL.",
+  "source": { "id": "demo-level-zero-source", "title": "Laboratório fictício de nível 0", "sourcePage": null, "status": "fictional" },
+  "entities": [
+    { "id": "demo:ancestry:test", "kind": "ancestry", "name": "Viajante das montanhas (fictício)", "sourceRef": "demo-level-zero-source", "status": "curated", "demoSlot": "ancestry", "baseStats": { "strength": 10, "agility": 10, "intellect": 10, "will": 10, "health": 10, "defense": 10, "speed": 10 } },
+    { "id": "demo:ancestry:coast", "kind": "ancestry", "name": "Viajante da costa (fictício)", "sourceRef": "demo-level-zero-source", "status": "curated", "demoSlot": "ancestry", "baseStats": { "strength": 9, "agility": 11, "intellect": 10, "will": 10, "health": 9, "defense": 11, "speed": 10 } },
+    { "id": "demo:equipment:coat", "kind": "item", "name": "Casaco reforçado (fictício)", "sourceRef": "demo-level-zero-source", "status": "curated", "demoSlot": "equipment", "mechanicalEvents": [{ "type": "stat-add", "target": "defense", "value": 1 }] },
+    { "id": "demo:equipment:boots", "kind": "item", "name": "Botas leves (fictícias)", "sourceRef": "demo-level-zero-source", "status": "curated", "demoSlot": "equipment", "mechanicalEvents": [{ "type": "stat-add", "target": "speed", "value": 1 }] },
+    { "id": "demo:table:coast-background", "kind": "randomTable", "name": "Background costeiro (fictício)", "sourceRef": "demo-level-zero-source", "status": "curated", "appliesTo": { "slotKind": "background", "ancestryId": "demo:ancestry:coast" },
+      "diceExpr": { "count": 3, "sides": 6, "modifier": 0 },
+      "ranges": [{ "min": 3, "max": 10, "outcomeId": "harbor" }, { "min": 11, "max": 18, "outcomeId": "island" }],
+      "outcomes": [
+        { "id": "harbor", "text": "Demo: aprendiz do porto", "mechanicalEvents": [{ "type": "resource-add", "target": "demo-token", "value": 2 }] },
+        { "id": "island", "text": "Demo: viajante das ilhas", "mechanicalEvents": [] }
+      ]
+    }
+  ]
+}

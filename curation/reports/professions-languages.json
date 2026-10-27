@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "task": "CUR-017",
+  "reviewDate": "2026-10-27",
+  "counts": {
+    "tableOptions": 168,
+    "directOptions": 1,
+    "coreOptions": 102,
+    "expandedOptions": 67,
+    "literacyGrantingOptions": 25,
+    "developmentTemplates": 19,
+    "evidenceRanges": 35
+  },
+  "inputRefs": [
+    {
+      "path": "curation/pilot/creation-table-inventory.json",
+      "sha256": "9820afa2ff8529cdfa09ae21867fdb3f9b863688fa150baae82fb0fa9aa53ec2"
+    },
+    {
+      "path": "curation/reports/creation-table-inventory.json",
+      "sha256": "05df2e2fa03b9e0c7a3a1cfeda155ff199c49bb2e70494c593f1a523e0b9baf7"
+    },
+    {
+      "path": "curation/pilot/core-level-zero.json",
+      "sha256": "36291fc64d1e27ba34993ecb8e2c886dd4c42eb5d6aab86d4f09c22bdc56f6fc"
+    },
+    {
+      "path": "tools/curation/professions-languages-formalizer.ts",
+      "sha256": "378096806d737f3915719ac929deaa6826707ae3a636d4da122d32f18f0ec34d"
+    },
+    {
+      "path": "tools/curation/professions-languages.mjs",
+      "sha256": "4c22564c301b8cd1519bb1b8d4a51452bac97ee8e20121db1da6fe201b8c9e9b"
+    },
+    {
+      "path": "packages/curation/profession-language-model.ts",
+      "sha256": "e91d5168faa24c830d8a5d7d8d90b486a2cd7e69019607680bdca34a422f30f9"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "curation/pilot/professions-languages.json",
+      "sha256": "84903811e05946c29280e3ed673ed3f089bd0c5daf19ba4ad3730f365b5f3188"
+    }
+  ],
+  "nextTask": "CUR-018"
+}

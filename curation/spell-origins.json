@@ -1,0 +1,291 @@
+{
+  "schemaVersion": 1,
+  "responsible": "Codex / local grouping classification",
+  "origins": [
+    {
+      "label": "Air",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Alchemy",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Alteration",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Arcana",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Battle",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Blighter",
+      "kind": "path",
+      "reason": "Explicit Path grouping; verify matching CUR-009 publication for each spell."
+    },
+    {
+      "label": "Blood",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Celestial",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Chaos",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Conjuration",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Curse",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Death",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Demonology",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Destruction",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Diabolist",
+      "kind": "path",
+      "reason": "Explicit Path grouping; verify matching CUR-009 publication for each spell."
+    },
+    {
+      "label": "Divination",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Eudaemon",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Earth",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Enchantment",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Exorcist",
+      "kind": "path",
+      "reason": "Explicit Path grouping; verify matching CUR-009 publication for each spell."
+    },
+    {
+      "label": "Fey",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Fire",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Forbidden",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Illusion",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Invocation",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Life",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Madness",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Magician",
+      "kind": "path",
+      "reason": "Explicit Path grouping; verify matching CUR-009 publication for each spell."
+    },
+    {
+      "label": "Metal",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Nature",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Necromancer",
+      "kind": "path",
+      "reason": "Explicit Path grouping; verify matching CUR-009 publication for each spell."
+    },
+    {
+      "label": "Necromancy",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Order",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Priest",
+      "kind": "path",
+      "reason": "Explicit Path grouping; verify matching CUR-009 publication for each spell."
+    },
+    {
+      "label": "Primal",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Protection",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Rune",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Shadow",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Shaman",
+      "kind": "path",
+      "reason": "Explicit Path grouping; verify matching CUR-009 publication for each spell."
+    },
+    {
+      "label": "Song",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Soul",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Spellbinder",
+      "kind": "path",
+      "reason": "Explicit Path grouping; verify matching CUR-009 publication for each spell."
+    },
+    {
+      "label": "Spiritualism",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Storm",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Technomancer",
+      "kind": "path",
+      "reason": "Explicit Path grouping; verify matching CUR-009 publication for each spell."
+    },
+    {
+      "label": "Technomancy",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Telekinesis",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Telepathy",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Teleportation",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Templar",
+      "kind": "path",
+      "reason": "Explicit Path grouping; verify matching CUR-009 publication for each spell."
+    },
+    {
+      "label": "Tenebrist",
+      "kind": "path",
+      "reason": "Explicit Path grouping; verify matching CUR-009 publication for each spell."
+    },
+    {
+      "label": "Theurgy",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Time",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Transformation",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Warden",
+      "kind": "path",
+      "reason": "Explicit Path grouping; verify matching CUR-009 publication for each spell."
+    },
+    {
+      "label": "Water",
+      "kind": "tradition",
+      "reason": "Tradition grouping in this inspected MD; no access or mechanical rules inferred."
+    },
+    {
+      "label": "Witch",
+      "kind": "path",
+      "reason": "Explicit Path grouping; verify matching CUR-009 publication for each spell."
+    }
+  ]
+}

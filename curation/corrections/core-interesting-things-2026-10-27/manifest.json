@@ -1,0 +1,17 @@
+{
+    "schemaVersion":  1,
+    "date":  "2026-10-27",
+    "authority":  "user-supplied-transcription",
+    "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+    "scope":  "Interesting Things initial procedure, numbered d6 selector and six numbered d20 tables. Supplementary CUR-014 evidence, not imported tables/items or implemented effects. No PDF pagination certification.",
+    "physicalPdfPage":  null,
+    "printedPage":  null,
+    "files":  [
+                  {
+                      "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                      "sha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                      "bytes":  6960,
+                      "origin":  "User attachment: Pasted text.txt, e6450502-639e-4f62-be52-bb6472720beb; copied byte-for-byte."
+                  }
+              ]
+}

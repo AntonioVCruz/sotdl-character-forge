@@ -1,0 +1,49 @@
+{
+  "name": "sotdl-character-forge",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "predev": "node tools/build-standalone.mjs",
+    "dev": "vite --host 127.0.0.1",
+    "prebuild": "node tools/build-standalone.mjs",
+    "build:standalone": "node tools/build-standalone.mjs",
+    "build": "tsc --noEmit && vite build",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "audit:demo": "node tools/audit-demo-random.mjs",
+    "curation:inputs": "node tools/curation/inputs.mjs --check",
+    "curation:ancestries": "node tools/curation/ancestries.mjs --write",
+    "curation:paths": "node tools/curation/paths.mjs --write",
+    "curation:spells": "node tools/curation/spells.mjs --write",
+    "curation:mechanics": "node tools/curation/mechanics.mjs --write",
+    "curation:normalize": "node tools/curation/normalize.mjs --write",
+    "curation:reconcile": "node tools/curation/reconcile.mjs --write",
+    "curation:pilot": "node tools/curation/core-pilot.mjs --write",
+    "curation:human": "node tools/curation/human-ancestry.mjs --write",
+    "curation:creation-tables": "node tools/curation/creation-tables.mjs --write",
+    "curation:professions-languages": "node tools/curation/professions-languages.mjs --write",
+    "curation:wealth-equipment": "node tools/curation/wealth-equipment.mjs --write",
+    "curation:check": "node tools/curation/inputs.mjs --check && node tools/curation/sources.mjs --check && node tools/curation/policy-evidence.mjs --check && node tools/curation/examples.mjs --check && node tools/curation/freeze.mjs --check && node tools/curation/ancestries.mjs --check && node tools/curation/paths.mjs --check && node tools/curation/spells.mjs --check && node tools/curation/mechanics.mjs --check && node tools/curation/normalize.mjs --check && node tools/curation/reconcile.mjs --check && node tools/curation/core-pilot.mjs --check && node tools/curation/human-ancestry.mjs --check && node tools/curation/creation-tables.mjs --check && node tools/curation/professions-languages.mjs --check && node tools/curation/wealth-equipment.mjs --check && node tools/curation/interesting-things.mjs --check && node tools/curation/pilot-items.mjs --check && node tools/curation/pilot-tables.mjs --check && vitest run tests/curation-",
+    "curation:interesting-things": "node tools/curation/interesting-things.mjs --write",
+    "curation:pilot-items": "node tools/curation/pilot-items.mjs --write",
+    "curation:pilot-tables": "node tools/curation/pilot-tables.mjs --write"
+  },
+  "dependencies": {
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.1",
+    "@types/node": "22.20.5",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "@vitejs/plugin-react": "5.0.4",
+    "esbuild": "0.28.2",
+    "fake-indexeddb": "6.2.4",
+    "typescript": "5.9.3",
+    "vite": "7.3.7",
+    "vitest": "4.1.12"
+  }
+}

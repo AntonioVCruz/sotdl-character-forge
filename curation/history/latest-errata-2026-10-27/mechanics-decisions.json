@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "decisions": [
+    {
+      "unitKey": "u002901",
+      "name": "GIANT RAVEN",
+      "sourceId": "sotdl:heaven-s-sent",
+      "originalTextSha256": "633f179d6de956a2da5771fa6927990c113a23b166ba6ad8219eefb8cd1453b4",
+      "resolution": "standalone-creature",
+      "date": "2026-10-27",
+      "authority": "explicit-user-instruction",
+      "reason": "Giant Raven pode ser usado como monstro caso não esteja associado a Raven Rider. Esta decisão resolve a dependência somente para uso independente; não implementa a associação ou os benefícios do caminho Raven Rider."
+    }
+  ]
+}

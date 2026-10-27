@@ -1,0 +1,2095 @@
+{
+  "schemaVersion": 1,
+  "task": "CUR-008",
+  "reviewDate": "2026-10-26",
+  "extractor": {
+    "version": "1.0.0",
+    "sha256": "8a187edef1a7abfd7ccbfc544c926ae096d091f06dec04e44a1226dad0536ed2",
+    "runnerSha256": "d430a8da91bb86ad323097896af59a6b976bc7b6dac03ec96bb089d1f54b4f72"
+  },
+  "input": {
+    "path": "rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md",
+    "bytes": 889589,
+    "lines": 23372,
+    "sha256": "020d9d62d9046475552dbaf9f989f07e69b87b7a386cadc1af3e82f930502baf",
+    "revisionId": "sha256:020d9d62d9046475552dbaf9f989f07e69b87b7a386cadc1af3e82f930502baf",
+    "encoding": "utf-8",
+    "bom": false,
+    "lineEndings": {
+      "crlf": 0,
+      "lf": 23372,
+      "cr": 0
+    },
+    "finalNewline": true,
+    "title": "# Shadow of the Demon Lord — Ancestry Compendium"
+  },
+  "inputManifestSha256": "7d4f1488b5e786ff698372e4df9d5acf25a7d650ef984a8a50ddb8905785f0df",
+  "sourceRegistrySha256": "21bb0cb7c726a9558623a1fa7de2b997c107c6cbc187210c7ed3ce151138479b",
+  "ledgerSha256": "77eb9e5b548058965d77fdfe41a4cd1fdbeecf708a9a3de28e8c0a22571af55c",
+  "counts": {
+    "occurrences": 59,
+    "names": 45,
+    "sourceLabels": 40,
+    "resolved": 59,
+    "blocked": 0,
+    "entryTypes": {
+      "Ancestry Template": 1,
+      "Ancestry Variant": 4,
+      "Beastman Ancestry": 3,
+      "Derived Ancestry": 6,
+      "Expanded Ancestry": 11,
+      "Powerful Ancestry": 3,
+      "Standard Ancestry": 31
+    }
+  },
+  "coverage": {
+    "inputLines": 23372,
+    "prelude": {
+      "startLine": 1,
+      "endLine": 177
+    },
+    "occurrenceLines": 23195,
+    "trailingNonEntryLines": 0,
+    "note": "Counts describe this ancestry MD only; cross-corpus reconciliation remains CUR-013. No publication completeness or mechanical certification."
+  },
+  "outputs": [
+    {
+      "path": "curation/entries/sotdl%3Aa-glorious-death/ancestry.jsonl",
+      "sha256": "3cf31c42fed43aabf3f1f60ea46e4dcb00067dc13592f04446f36f98873734a2",
+      "records": 1
+    },
+    {
+      "path": "curation/entries/sotdl%3Abetween-life-and-death/ancestry.jsonl",
+      "sha256": "183e361125742c9a29ec0491eb2d4ca94f5df64597d3e8dd8e3728df7c7d8841",
+      "records": 1
+    },
+    {
+      "path": "curation/entries/sotdl%3Abetween-two-worlds/ancestry.jsonl",
+      "sha256": "82537267f985546973b5f53e677172e88335d895bf9e70b74428b8e0846524c8",
+      "records": 1
+    },
+    {
+      "path": "curation/entries/sotdl%3Ablood-scions/ancestry.jsonl",
+      "sha256": "302471411f44561747d27e7fc472a4ad7521f0f919b377f98dfa4a0e3c324a05",
+      "records": 1
+    },
+    {
+      "path": "curation/entries/sotdl%3Aborn-to-kill/ancestry.jsonl",
+      "sha256": "a9004d9bd10e9a7fa6e0f02caa59c8218a1a946b71430c826d28a70a1289850f",
+      "records": 1
+    },
+    {
+      "path": "curation/entries/sotdl%3Abrood-of-the-mother-spore/ancestry.jsonl",
+      "sha256": "84b308c5ec77161b59ea300577395bc3d0a4a6ee4a276161a776268adea67567",
+      "records": 1
+    },
+    {
+      "path": "curation/entries/sotdl%3Achildren-of-the-hive/ancestry.jsonl",
+      "sha256": "adfaa86c8662b9b8111f47b412447da2ff8e23d05f3b33b6a6c6bd3e4ef4361a",
+      "records": 1
+    },
+    {
+      "path": "curation/entries/sotdl%3Achildren-of-the-restless-earth/ancestry.jsonl",
+      "sha256": "4835a689541d6297479bb9de5b9e5c053e86a153a50bee4db4733a8b03b3a687",
+      "records": 1
+    },
+    {
+      "path": "curation/entries/sotdl%3Acult-of-the-cog-god/ancestry.jsonl",
+      "sha256": "3fcd9929ccd98ae3b4553d5fe031a17db67d86d20954a7dc6a61b30df001fae3",
+      "records": 1
+    },
+    {
+      "path": "curation/entries/sotdl%3Acurse-of-the-spider-wood/ancestry.jsonl",
+      "sha256": "6c9c420dabb4f7ebbeff173a9790b2007e4f13aed37bb198b788ac681c4e8e49",
+      "records": 1
+    },
+    {
+      "path": "curation/entries/sotdl%3Ademon-lord-s-companion-2/ancestry.jsonl",
+      "sha256": "2a1768d6e07ef10a4cee5c8c70cad457782ef6405ba82dbbb836bbbc44bc4bdc",
+      "records": 6
+    },
+    {
+      "path": "curation/entries/sotdl%3Ademon-lord-s-companion/ancestry.jsonl",
+      "sha256": "9391e02287067be6b45beb42f5892d55b0bf40dc9e91594d10a3335921481a13",
+      "records": 2
+    },
+    {
+      "path": "curation/entries/sotdl%3Aexquisite-agony/ancestry.jsonl",
+      "sha256": "499f11316646bc8bb0239e931b7a8bbb80ac61e640556f763a99c102cc40521d",
+      "records": 1
+    },
+    {
+      "path": "curation/entries/sotdl%3Afaerie-friends/ancestry.jsonl",
+      "sha256": "3f107dd45f9ec5b0426a71be78d18575b254952df9e6c14107f43c4f6ead4c41",
+      "records": 1
+    },
+    {
+      "path": "curation/entries/sotdl%3Aflesh-of-the-fallen/ancestry.jsonl",
+      "sha256": "3460c98b2d8f651747d2dca73c7ebf7523986427c0b0184e0424c07f092a8f20",
+      "records": 1
+    },
+    {
+      "path": "curation/entries/sotdl%3Afor-gold-and-glory/ancestry.jsonl",
+      "sha256": "fedd74fb0497d7cdd1c0a50ff430f6ed63be2f799121290edecb5282fdc65131",
+      "records": 1
+    },
+    {
+      "path": "curation/entries/sotdl%3Afoulest-reptiles/ancestry.jsonl",
+      "sha256": "e173699a492cead8d3c71af3b3fe0c5e9ac768adcec5117dfa4a04ca52e7472a",
+      "records": 1
+    },
+    {
+      "path": "curation/entries/sotdl%3Afreeport-companion/ancestry.jsonl",
+      "sha256": "6b269e56ab7131505008e0d4219a3ab6c89e31a22a0b5b19254c373d7abcde7c",
+      "records": 2
+    },
+    {
+      "path": "curation/entries/sotdl%3Aghastly-gourmands/ancestry.jsonl",
+      "sha256": "84e82ca4331129c4e9a55781c39876c2f162d79649618b7a5de4ecd7b105925a",
+      "records": 1
+    },
+    {
+      "path": "curation/entries/sotdl%3Aghosts-in-machines/ancestry.jsonl",
+      "sha256": "1b8afdbd4b39ac80214ccfa163a391a3198c29c35ef17c21105fa02595284597",
+      "records": 1
+    },
+    {
+      "path": "curation/entries/sotdl%3Aguardians-of-the-cosmic-egg/ancestry.jsonl",
+      "sha256": "8652e47ccb5fce12cdc86eb3fd71acf6fd0155ec2664ac189b1dab8da9b422b3",
+      "records": 1
+    },
+    {
+      "path": "curation/entries/sotdl%3Aheaven-s-sent/ancestry.jsonl",
+      "sha256": "afa1a85718a7987c2f93db6683458f687ca8bce6e761679266d8b7138277b300",
+      "records": 1
+    },
+    {
+      "path": "curation/entries/sotdl%3Ain-plain-sight/ancestry.jsonl",
+      "sha256": "2b8f31a6a604e84bd438bc2cdd55a1de5b61317a581f0e3fc15574788192efbe",
+      "records": 1
+    },
+    {
+      "path": "curation/entries/sotdl%3Akingdom-of-skulls/ancestry.jsonl",
+      "sha256": "5f0245d5cc22921333c8ebe546eba2dcc77ade37112cd84fd512883f455f1452",
+      "records": 1
+    },
+    {
+      "path": "curation/entries/sotdl%3Amen-of-gog/ancestry.jsonl",
+      "sha256": "6748cb5311ec01f51cdfe56bb5a3f592181925fa309de0cd14cdf249e5cf1982",
+      "records": 1
+    },
+    {
+      "path": "curation/entries/sotdl%3Aonly-human/ancestry.jsonl",
+      "sha256": "c254cf0b094a2980eef07a44da39c34190727f8495f00db1d7f65ae348fc067d",
+      "records": 1
+    },
+    {
+      "path": "curation/entries/sotdl%3Ariders-of-the-wind/ancestry.jsonl",
+      "sha256": "9a513cfd5a8b19cffed59bcd3418178d3363437729703474a0e4f60fcb64c5db",
+      "records": 1
+    },
+    {
+      "path": "curation/entries/sotdl%3Ascions-of-nature/ancestry.jsonl",
+      "sha256": "4c23c3a85978df6b71168788a96094614df1509c857181e8a2c69d423c84fb3b",
+      "records": 1
+    },
+    {
+      "path": "curation/entries/sotdl%3Ascions-of-the-betrayer/ancestry.jsonl",
+      "sha256": "92fd53070b89e0379c88a61f35e416404ef337942e3005fa27bfb4878b2a9f87",
+      "records": 1
+    },
+    {
+      "path": "curation/entries/sotdl%3Ashadow-of-the-demon-lord-core/ancestry.jsonl",
+      "sha256": "70f11e254454c3b495bae7623fc2ed30821e9dd94442393b3ad61b4d756f4e82",
+      "records": 6
+    },
+    {
+      "path": "curation/entries/sotdl%3Asnot-and-stitches/ancestry.jsonl",
+      "sha256": "a61143f97233310e134aaf999cdc9b3936eac97fbdec1d315eb2b57545d1d12e",
+      "records": 1
+    },
+    {
+      "path": "curation/entries/sotdl%3Asong-of-the-woad/ancestry.jsonl",
+      "sha256": "ede8edc23be5b24aa477a11cfe23ae75aac3e52449c89ef05106d8dcd1467126",
+      "records": 1
+    },
+    {
+      "path": "curation/entries/sotdl%3Astolen-lives/ancestry.jsonl",
+      "sha256": "19169bf69190e056f36852ec1bb49fe6b6d468af4c7fe1c41035956aee606499",
+      "records": 1
+    },
+    {
+      "path": "curation/entries/sotdl%3Aterrible-beauty/ancestry.jsonl",
+      "sha256": "d478d15431ed0cc9e1e5206170e186965c8e24d71a5151b1e1d0e939e753a912",
+      "records": 3
+    },
+    {
+      "path": "curation/entries/sotdl%3Athe-great-mother-s-brood/ancestry.jsonl",
+      "sha256": "d68c0616b051b95cfb0c6661f8c8932e931b6a78057c97975745e698f438f5c2",
+      "records": 1
+    },
+    {
+      "path": "curation/entries/sotdl%3Athe-hunger-in-the-void/ancestry.jsonl",
+      "sha256": "2f758b6a7e4c8e2c96be3b935ad61157d2f0e8bca7b497a7d1d7ab57fdde79e1",
+      "records": 4
+    },
+    {
+      "path": "curation/entries/sotdl%3Atombs-of-the-desolation/ancestry.jsonl",
+      "sha256": "6722135689c350b59375c7e12775dfe2ac0d04dde3c1ce98101fcc7b0eab0c88",
+      "records": 3
+    },
+    {
+      "path": "curation/entries/sotdl%3Atooth-claw/ancestry.jsonl",
+      "sha256": "f79b95a3ea980e264153cbac0b09b46a13e2d317d79fa30c172c42ebf0069825",
+      "records": 1
+    },
+    {
+      "path": "curation/entries/sotdl%3Auncommon-courage/ancestry.jsonl",
+      "sha256": "df14c2aa29a43100a1511134e50eab4c0e9d1b3b2eda1e325da48dd4397f115d",
+      "records": 1
+    },
+    {
+      "path": "curation/entries/sotdl%3Awretched-and-unclean/ancestry.jsonl",
+      "sha256": "ad5b13ccc15ee5cd1445844a4ddda900c4ec153b4bd0fb7ca62a434a1656ceb3",
+      "records": 1
+    }
+  ],
+  "occurrences": [
+    {
+      "occurrenceKey": "arachne-curse-of-the-spider-wood",
+      "entityId": "sotdl:curse-of-the-spider-wood:ancestry:arachne:default",
+      "heading": "### Arachne",
+      "name": "Arachne",
+      "entryType": "Standard Ancestry",
+      "sourceLabel": "Curse of the Spider Wood",
+      "sourceId": "sotdl:curse-of-the-spider-wood",
+      "candidateSourceId": null,
+      "variantKey": "default",
+      "printedPageDeclared": "15",
+      "pdfPageDeclared": "15",
+      "startLine": 178,
+      "endLine": 402,
+      "metadataLines": {
+        "Entry Type": 180,
+        "Source": 181,
+        "Source Page": 182,
+        "PDF Page": 183
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 186,
+          "endLine": 400,
+          "language": "text",
+          "sha256": "440b631ebc1b1501d725ef5b6ce631becbef21f0a42b90972ef0f047e231b35b"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "bugbear-hunger-in-the-void",
+      "entityId": "sotdl:the-hunger-in-the-void:ancestry:bugbear:beastman",
+      "heading": "### Bugbear",
+      "name": "Bugbear",
+      "entryType": "Beastman Ancestry",
+      "sourceLabel": "Hunger in the Void",
+      "sourceId": "sotdl:the-hunger-in-the-void",
+      "candidateSourceId": null,
+      "variantKey": "beastman",
+      "printedPageDeclared": "46",
+      "pdfPageDeclared": "47",
+      "startLine": 403,
+      "endLine": 522,
+      "metadataLines": {
+        "Entry Type": 405,
+        "Source": 406,
+        "Source Page": 407,
+        "PDF Page": 408
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 411,
+          "endLine": 520,
+          "language": "text",
+          "sha256": "92b1e19cbab3e7fe17ded2c3077e91cab11368a30d1b2d41144243b43551900d"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "cambion-exquisite-agony",
+      "entityId": "sotdl:exquisite-agony:ancestry:cambion:default",
+      "heading": "### Cambion",
+      "name": "Cambion",
+      "entryType": "Standard Ancestry",
+      "sourceLabel": "Exquisite Agony",
+      "sourceId": "sotdl:exquisite-agony",
+      "candidateSourceId": null,
+      "variantKey": "default",
+      "printedPageDeclared": "41",
+      "pdfPageDeclared": "42",
+      "startLine": 523,
+      "endLine": 745,
+      "metadataLines": {
+        "Entry Type": 525,
+        "Source": 526,
+        "Source Page": 527,
+        "PDF Page": 528
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 531,
+          "endLine": 743,
+          "language": "text",
+          "sha256": "a21906a59c590561c984247446e13c8683c800b8c7b4466fc60d90daca8f8c50"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "centaur-riders-of-the-wind",
+      "entityId": "sotdl:riders-of-the-wind:ancestry:centaur:powerful",
+      "heading": "### Centaur",
+      "name": "Centaur",
+      "entryType": "Powerful Ancestry",
+      "sourceLabel": "Riders of the Wind",
+      "sourceId": "sotdl:riders-of-the-wind",
+      "candidateSourceId": null,
+      "variantKey": "powerful",
+      "printedPageDeclared": "2",
+      "pdfPageDeclared": "2",
+      "startLine": 746,
+      "endLine": 998,
+      "metadataLines": {
+        "Entry Type": 748,
+        "Source": 749,
+        "Source Page": 750,
+        "PDF Page": 751
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 754,
+          "endLine": 996,
+          "language": "text",
+          "sha256": "6943fe1adae2eaa083ba97b561bdbf83f5457770f5de71e82e300748791afd54"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "changeling-stolen-lives",
+      "entityId": "sotdl:stolen-lives:ancestry:changeling:variant",
+      "heading": "### Changeling — Stolen Lives",
+      "name": "Changeling",
+      "entryType": "Ancestry Variant",
+      "sourceLabel": "Stolen Lives",
+      "sourceId": "sotdl:stolen-lives",
+      "candidateSourceId": null,
+      "variantKey": "variant",
+      "printedPageDeclared": "5",
+      "pdfPageDeclared": "5",
+      "startLine": 999,
+      "endLine": 2206,
+      "metadataLines": {
+        "Entry Type": 1001,
+        "Source": 1002,
+        "Source Page": 1003,
+        "PDF Page": 1004
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 1007,
+          "endLine": 2204,
+          "language": "text",
+          "sha256": "fd0f36af67a6b7850b8628dbe6ad5adf3f1e3781d9230762f635d70a752ec94f"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "changeling-shadow-of-the-demon-lord-core",
+      "entityId": "sotdl:shadow-of-the-demon-lord-core:ancestry:changeling:default",
+      "heading": "### Changeling — Shadow of the Demon Lord Core",
+      "name": "Changeling",
+      "entryType": "Standard Ancestry",
+      "sourceLabel": "Shadow of the Demon Lord Core",
+      "sourceId": "sotdl:shadow-of-the-demon-lord-core",
+      "candidateSourceId": null,
+      "variantKey": "default",
+      "printedPageDeclared": "13",
+      "pdfPageDeclared": "14",
+      "startLine": 2207,
+      "endLine": 2426,
+      "metadataLines": {
+        "Entry Type": 2209,
+        "Source": 2210,
+        "Source Page": 2211,
+        "PDF Page": 2212
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 2215,
+          "endLine": 2424,
+          "language": "text",
+          "sha256": "5ffde839400729d8302a09606a71984e86aa5e9da2bc8628566345e5bc18a3d3"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "clockwork-ghosts-in-machines",
+      "entityId": "sotdl:ghosts-in-machines:ancestry:clockwork:variant",
+      "heading": "### Clockwork — Ghosts in Machines",
+      "name": "Clockwork",
+      "entryType": "Ancestry Variant",
+      "sourceLabel": "Ghosts in Machines",
+      "sourceId": "sotdl:ghosts-in-machines",
+      "candidateSourceId": null,
+      "variantKey": "variant",
+      "printedPageDeclared": "7",
+      "pdfPageDeclared": "7",
+      "startLine": 2427,
+      "endLine": 3363,
+      "metadataLines": {
+        "Entry Type": 2429,
+        "Source": 2430,
+        "Source Page": 2431,
+        "PDF Page": 2432
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 2435,
+          "endLine": 3361,
+          "language": "text",
+          "sha256": "81b9d3a26592dc3d5646dd6409da75ddb2b669da1f66a3694835511167c70201"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "clockwork-shadow-of-the-demon-lord-core",
+      "entityId": "sotdl:shadow-of-the-demon-lord-core:ancestry:clockwork:default",
+      "heading": "### Clockwork — Shadow of the Demon Lord Core",
+      "name": "Clockwork",
+      "entryType": "Standard Ancestry",
+      "sourceLabel": "Shadow of the Demon Lord Core",
+      "sourceId": "sotdl:shadow-of-the-demon-lord-core",
+      "candidateSourceId": null,
+      "variantKey": "default",
+      "printedPageDeclared": "15",
+      "pdfPageDeclared": "16",
+      "startLine": 3364,
+      "endLine": 3618,
+      "metadataLines": {
+        "Entry Type": 3366,
+        "Source": 3367,
+        "Source Page": 3368,
+        "PDF Page": 3369
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 3372,
+          "endLine": 3616,
+          "language": "text",
+          "sha256": "a3a8490e864d6c4bf3d9fb1b85a6112f6d1425010041f458da8c675260cbba57"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "darkling-scions-of-the-betrayer",
+      "entityId": "sotdl:scions-of-the-betrayer:ancestry:darkling:default",
+      "heading": "### Darkling",
+      "name": "Darkling",
+      "entryType": "Standard Ancestry",
+      "sourceLabel": "Scions of the Betrayer",
+      "sourceId": "sotdl:scions-of-the-betrayer",
+      "candidateSourceId": null,
+      "variantKey": "default",
+      "printedPageDeclared": "4",
+      "pdfPageDeclared": "6",
+      "startLine": 3619,
+      "endLine": 4176,
+      "metadataLines": {
+        "Entry Type": 3621,
+        "Source": 3622,
+        "Source Page": 3623,
+        "PDF Page": 3624
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 3627,
+          "endLine": 4174,
+          "language": "text",
+          "sha256": "789eea78591248d04eae36171ffe11576194bd99e9a25fe16d56191b8f66857d"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "dhampir-blood-scions",
+      "entityId": "sotdl:blood-scions:ancestry:dhampir:default",
+      "heading": "### Dhampir",
+      "name": "Dhampir",
+      "entryType": "Standard Ancestry",
+      "sourceLabel": "Blood Scions",
+      "sourceId": "sotdl:blood-scions",
+      "candidateSourceId": null,
+      "variantKey": "default",
+      "printedPageDeclared": "2",
+      "pdfPageDeclared": "2",
+      "startLine": 4177,
+      "endLine": 4497,
+      "metadataLines": {
+        "Entry Type": 4179,
+        "Source": 4180,
+        "Source Page": 4181,
+        "PDF Page": 4182
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 4185,
+          "endLine": 4495,
+          "language": "text",
+          "sha256": "528a85b2637dfdeb8e225ae77f0a23d4a10458667d2f78ff2451f94a8e06f7b8"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "dwarf-for-gold-and-glory",
+      "entityId": "sotdl:for-gold-and-glory:ancestry:dwarf:expanded",
+      "heading": "### Dwarf — For Gold and Glory",
+      "name": "Dwarf",
+      "entryType": "Expanded Ancestry",
+      "sourceLabel": "For Gold and Glory",
+      "sourceId": "sotdl:for-gold-and-glory",
+      "candidateSourceId": null,
+      "variantKey": "expanded",
+      "printedPageDeclared": "7",
+      "pdfPageDeclared": "7",
+      "startLine": 4498,
+      "endLine": 5449,
+      "metadataLines": {
+        "Entry Type": 4500,
+        "Source": 4501,
+        "Source Page": 4502,
+        "PDF Page": 4503
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 4506,
+          "endLine": 5447,
+          "language": "text",
+          "sha256": "7ee9641603ceda666706f5703b3a51c2056636285f13065562b0fe62bb43f9e0"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "dwarf-shadow-of-the-demon-lord-core",
+      "entityId": "sotdl:shadow-of-the-demon-lord-core:ancestry:dwarf:default",
+      "heading": "### Dwarf — Shadow of the Demon Lord Core",
+      "name": "Dwarf",
+      "entryType": "Standard Ancestry",
+      "sourceLabel": "Shadow of the Demon Lord Core",
+      "sourceId": "sotdl:shadow-of-the-demon-lord-core",
+      "candidateSourceId": null,
+      "variantKey": "default",
+      "printedPageDeclared": "17",
+      "pdfPageDeclared": "18",
+      "startLine": 5450,
+      "endLine": 5662,
+      "metadataLines": {
+        "Entry Type": 5452,
+        "Source": 5453,
+        "Source Page": 5454,
+        "PDF Page": 5455
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 5458,
+          "endLine": 5660,
+          "language": "text",
+          "sha256": "8ae4ea020130386b9cef078d260a84460828351a644f2b10e67542d8681c650b"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "elf-terrible-beauty",
+      "entityId": "sotdl:terrible-beauty:ancestry:elf:default",
+      "heading": "### Elf",
+      "name": "Elf",
+      "entryType": "Standard Ancestry",
+      "sourceLabel": "Terrible Beauty",
+      "sourceId": "sotdl:terrible-beauty",
+      "candidateSourceId": null,
+      "variantKey": "default",
+      "printedPageDeclared": "7",
+      "pdfPageDeclared": "8",
+      "startLine": 5663,
+      "endLine": 5909,
+      "metadataLines": {
+        "Entry Type": 5665,
+        "Source": 5666,
+        "Source Page": 5667,
+        "PDF Page": 5668
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 5671,
+          "endLine": 5907,
+          "language": "text",
+          "sha256": "049adbe36e3c58d75d8407575ca608c3ab275950829950774e987fe170e9fb25"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "faun-between-two-worlds",
+      "entityId": "sotdl:between-two-worlds:ancestry:faun:expanded",
+      "heading": "### Faun — Between Two Worlds",
+      "name": "Faun",
+      "entryType": "Expanded Ancestry",
+      "sourceLabel": "Between Two Worlds",
+      "sourceId": "sotdl:between-two-worlds",
+      "candidateSourceId": null,
+      "variantKey": "expanded",
+      "printedPageDeclared": "4",
+      "pdfPageDeclared": "4",
+      "startLine": 5910,
+      "endLine": 6922,
+      "metadataLines": {
+        "Entry Type": 5912,
+        "Source": 5913,
+        "Source Page": 5914,
+        "PDF Page": 5915
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 5918,
+          "endLine": 6920,
+          "language": "text",
+          "sha256": "d1e0bbc089cd21686b33e09ddb9a11af17ba5526273c1fa5eb31c9cc106f2c64"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "faun-demon-lord-s-companion",
+      "entityId": "sotdl:demon-lord-s-companion:ancestry:faun:default",
+      "heading": "### Faun — Demon Lord's Companion",
+      "name": "Faun",
+      "entryType": "Standard Ancestry",
+      "sourceLabel": "Demon Lord's Companion",
+      "sourceId": "sotdl:demon-lord-s-companion",
+      "candidateSourceId": null,
+      "variantKey": "default",
+      "printedPageDeclared": "5",
+      "pdfPageDeclared": "6",
+      "startLine": 6923,
+      "endLine": 7184,
+      "metadataLines": {
+        "Entry Type": 6925,
+        "Source": 6926,
+        "Source Page": 6927,
+        "PDF Page": 6928
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 6931,
+          "endLine": 7182,
+          "language": "text",
+          "sha256": "2352bfbde7670c76ac34b911492b2014c0739aafcab4f73c31ca91660a4d1fdc"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "ferren-in-plain-sight",
+      "entityId": "sotdl:in-plain-sight:ancestry:ferren:expanded",
+      "heading": "### Ferren — In Plain Sight",
+      "name": "Ferren",
+      "entryType": "Expanded Ancestry",
+      "sourceLabel": "In Plain Sight",
+      "sourceId": "sotdl:in-plain-sight",
+      "candidateSourceId": null,
+      "variantKey": "expanded",
+      "printedPageDeclared": "5",
+      "pdfPageDeclared": "5",
+      "startLine": 7185,
+      "endLine": 8221,
+      "metadataLines": {
+        "Entry Type": 7187,
+        "Source": 7188,
+        "Source Page": 7189,
+        "PDF Page": 7190
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 7193,
+          "endLine": 8219,
+          "language": "text",
+          "sha256": "a39fc06daea4403c20eefa20503f55ae8ab4d176b5a71c3181c8e13b41e5bb41"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "ferren-demon-lord-s-companion-2",
+      "entityId": "sotdl:demon-lord-s-companion-2:ancestry:ferren:default",
+      "heading": "### Ferren — Demon Lord's Companion 2",
+      "name": "Ferren",
+      "entryType": "Standard Ancestry",
+      "sourceLabel": "Demon Lord's Companion 2",
+      "sourceId": "sotdl:demon-lord-s-companion-2",
+      "candidateSourceId": null,
+      "variantKey": "default",
+      "printedPageDeclared": "5",
+      "pdfPageDeclared": "6",
+      "startLine": 8222,
+      "endLine": 8439,
+      "metadataLines": {
+        "Entry Type": 8224,
+        "Source": 8225,
+        "Source Page": 8226,
+        "PDF Page": 8227
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 8230,
+          "endLine": 8437,
+          "language": "text",
+          "sha256": "585f658b026eb47124a3c834928af923737db43c6a2e56de1057d9fb8cb383c8"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "fomor-hunger-in-the-void",
+      "entityId": "sotdl:the-hunger-in-the-void:ancestry:fomor:beastman",
+      "heading": "### Fomor",
+      "name": "Fomor",
+      "entryType": "Beastman Ancestry",
+      "sourceLabel": "Hunger in the Void",
+      "sourceId": "sotdl:the-hunger-in-the-void",
+      "candidateSourceId": null,
+      "variantKey": "beastman",
+      "printedPageDeclared": "43",
+      "pdfPageDeclared": "44",
+      "startLine": 8440,
+      "endLine": 8629,
+      "metadataLines": {
+        "Entry Type": 8442,
+        "Source": 8443,
+        "Source Page": 8444,
+        "PDF Page": 8445
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 8448,
+          "endLine": 8627,
+          "language": "text",
+          "sha256": "c533dff355957974af215e8b9936e51d208ecd2f58e796a6072bca629147c0ef"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "ghost-between-life-and-death",
+      "entityId": "sotdl:between-life-and-death:ancestry:ghost:derived",
+      "heading": "### Ghost",
+      "name": "Ghost",
+      "entryType": "Derived Ancestry",
+      "sourceLabel": "Between Life and Death",
+      "sourceId": "sotdl:between-life-and-death",
+      "candidateSourceId": null,
+      "variantKey": "derived",
+      "printedPageDeclared": "3",
+      "pdfPageDeclared": "3",
+      "startLine": 8630,
+      "endLine": 8815,
+      "metadataLines": {
+        "Entry Type": 8632,
+        "Source": 8633,
+        "Source Page": 8634,
+        "PDF Page": 8635
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 8638,
+          "endLine": 8813,
+          "language": "text",
+          "sha256": "07014fa397f37d3a46a1c9877c52d8018d3b1b8fbf3c667b3a24d452699e25e8"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "ghoul-flesh-of-the-fallen",
+      "entityId": "sotdl:flesh-of-the-fallen:ancestry:ghoul:derived",
+      "heading": "### Ghoul",
+      "name": "Ghoul",
+      "entryType": "Derived Ancestry",
+      "sourceLabel": "Flesh of the Fallen",
+      "sourceId": "sotdl:flesh-of-the-fallen",
+      "candidateSourceId": null,
+      "variantKey": "derived",
+      "printedPageDeclared": "2",
+      "pdfPageDeclared": "2",
+      "startLine": 8816,
+      "endLine": 8966,
+      "metadataLines": {
+        "Entry Type": 8818,
+        "Source": 8819,
+        "Source Page": 8820,
+        "PDF Page": 8821
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 8824,
+          "endLine": 8964,
+          "language": "text",
+          "sha256": "bdb4510ac1dd390bb5d064760788b5729b7bc6a76903e3c817ab59ca3ddb620e"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "gnome-children-of-the-restless-earth",
+      "entityId": "sotdl:children-of-the-restless-earth:ancestry:gnome:default",
+      "heading": "### Gnome",
+      "name": "Gnome",
+      "entryType": "Standard Ancestry",
+      "sourceLabel": "Children of the Restless Earth",
+      "sourceId": "sotdl:children-of-the-restless-earth",
+      "candidateSourceId": null,
+      "variantKey": "default",
+      "printedPageDeclared": "2",
+      "pdfPageDeclared": "2",
+      "startLine": 8967,
+      "endLine": 9265,
+      "metadataLines": {
+        "Entry Type": 8969,
+        "Source": 8970,
+        "Source Page": 8971,
+        "PDF Page": 8972
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 8975,
+          "endLine": 9263,
+          "language": "text",
+          "sha256": "0225d70b52f85f9d7ee302e96aefe1ae122c3e6d81aae8b383ae0995a0f4aa51"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "goblin-snot-and-stitches",
+      "entityId": "sotdl:snot-and-stitches:ancestry:goblin:expanded",
+      "heading": "### Goblin — Snot and Stitches",
+      "name": "Goblin",
+      "entryType": "Expanded Ancestry",
+      "sourceLabel": "Snot and Stitches",
+      "sourceId": "sotdl:snot-and-stitches",
+      "candidateSourceId": null,
+      "variantKey": "expanded",
+      "printedPageDeclared": "5",
+      "pdfPageDeclared": "5",
+      "startLine": 9266,
+      "endLine": 10449,
+      "metadataLines": {
+        "Entry Type": 9268,
+        "Source": 9269,
+        "Source Page": 9270,
+        "PDF Page": 9271
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 9274,
+          "endLine": 10447,
+          "language": "text",
+          "sha256": "f15dab1bba42c04f9ac60cec0b220748e77b2a9d64550bd4f1d3ae647191eb05"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "goblin-shadow-of-the-demon-lord-core",
+      "entityId": "sotdl:shadow-of-the-demon-lord-core:ancestry:goblin:default",
+      "heading": "### Goblin — Shadow of the Demon Lord Core",
+      "name": "Goblin",
+      "entryType": "Standard Ancestry",
+      "sourceLabel": "Shadow of the Demon Lord Core",
+      "sourceId": "sotdl:shadow-of-the-demon-lord-core",
+      "candidateSourceId": null,
+      "variantKey": "default",
+      "printedPageDeclared": "19",
+      "pdfPageDeclared": "20",
+      "startLine": 10450,
+      "endLine": 10663,
+      "metadataLines": {
+        "Entry Type": 10452,
+        "Source": 10453,
+        "Source Page": 10454,
+        "PDF Page": 10455
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 10458,
+          "endLine": 10661,
+          "language": "text",
+          "sha256": "4f37b323aa85984442c4d9bf6ff0839390d63b98736e68e8e822cc81141ed99c"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "grave-thrall-kingdom-of-skulls",
+      "entityId": "sotdl:kingdom-of-skulls:ancestry:grave-thrall:derived",
+      "heading": "### Grave Thrall",
+      "name": "Grave Thrall",
+      "entryType": "Derived Ancestry",
+      "sourceLabel": "Kingdom of Skulls",
+      "sourceId": "sotdl:kingdom-of-skulls",
+      "candidateSourceId": null,
+      "variantKey": "derived",
+      "printedPageDeclared": "23",
+      "pdfPageDeclared": "23",
+      "startLine": 10664,
+      "endLine": 10825,
+      "metadataLines": {
+        "Entry Type": 10666,
+        "Source": 10667,
+        "Source Page": 10668,
+        "PDF Page": 10669
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 10672,
+          "endLine": 10823,
+          "language": "text",
+          "sha256": "1987a6c7100ed080d45a37444bc66c61ea80d1b1f5283b14ee29d63134b7f1be"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "halfling-uncommon-courage",
+      "entityId": "sotdl:uncommon-courage:ancestry:halfling:expanded",
+      "heading": "### Halfling — Uncommon Courage",
+      "name": "Halfling",
+      "entryType": "Expanded Ancestry",
+      "sourceLabel": "Uncommon Courage",
+      "sourceId": "sotdl:uncommon-courage",
+      "candidateSourceId": null,
+      "variantKey": "expanded",
+      "printedPageDeclared": "5",
+      "pdfPageDeclared": "5",
+      "startLine": 10826,
+      "endLine": 11864,
+      "metadataLines": {
+        "Entry Type": 10828,
+        "Source": 10829,
+        "Source Page": 10830,
+        "PDF Page": 10831
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 10834,
+          "endLine": 11862,
+          "language": "text",
+          "sha256": "803517a5d92554f59554fb7ae25e2c5ca535a57ff3300a84b401478f5947dc23"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "halfling-demon-lord-s-companion",
+      "entityId": "sotdl:demon-lord-s-companion:ancestry:halfling:default",
+      "heading": "### Halfling — Demon Lord's Companion",
+      "name": "Halfling",
+      "entryType": "Standard Ancestry",
+      "sourceLabel": "Demon Lord's Companion",
+      "sourceId": "sotdl:demon-lord-s-companion",
+      "candidateSourceId": null,
+      "variantKey": "default",
+      "printedPageDeclared": "7",
+      "pdfPageDeclared": "8",
+      "startLine": 11865,
+      "endLine": 12193,
+      "metadataLines": {
+        "Entry Type": 11867,
+        "Source": 11868,
+        "Source Page": 11869,
+        "PDF Page": 11870
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 11873,
+          "endLine": 12191,
+          "language": "text",
+          "sha256": "1b889fe864df9725bd87aa27066a537d8f364f4d00e7e635a1194caa8934d187"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "hamadryad-scions-of-nature",
+      "entityId": "sotdl:scions-of-nature:ancestry:hamadryad:expanded",
+      "heading": "### Hamadryad — Scions of Nature",
+      "name": "Hamadryad",
+      "entryType": "Expanded Ancestry",
+      "sourceLabel": "Scions of Nature",
+      "sourceId": "sotdl:scions-of-nature",
+      "candidateSourceId": null,
+      "variantKey": "expanded",
+      "printedPageDeclared": "3",
+      "pdfPageDeclared": "3",
+      "startLine": 12194,
+      "endLine": 13093,
+      "metadataLines": {
+        "Entry Type": 12196,
+        "Source": 12197,
+        "Source Page": 12198,
+        "PDF Page": 12199
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 12202,
+          "endLine": 13091,
+          "language": "text",
+          "sha256": "a31d78df25225636fea3ea36706f4a389b854a60508bf465d4b56a8ebeb40093"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "hamadryad-demon-lord-s-companion-2",
+      "entityId": "sotdl:demon-lord-s-companion-2:ancestry:hamadryad:default",
+      "heading": "### Hamadryad — Demon Lord's Companion 2",
+      "name": "Hamadryad",
+      "entryType": "Standard Ancestry",
+      "sourceLabel": "Demon Lord's Companion 2",
+      "sourceId": "sotdl:demon-lord-s-companion-2",
+      "candidateSourceId": null,
+      "variantKey": "default",
+      "printedPageDeclared": "7",
+      "pdfPageDeclared": "8",
+      "startLine": 13094,
+      "endLine": 13338,
+      "metadataLines": {
+        "Entry Type": 13096,
+        "Source": 13097,
+        "Source Page": 13098,
+        "PDF Page": 13099
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 13102,
+          "endLine": 13336,
+          "language": "text",
+          "sha256": "4ed2339a9c4c5e81c87aa38d2decdc9ae313a44b575939dc6954dffa48755028"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "hobgoblin-terrible-beauty",
+      "entityId": "sotdl:terrible-beauty:ancestry:hobgoblin:default",
+      "heading": "### Hobgoblin",
+      "name": "Hobgoblin",
+      "entryType": "Standard Ancestry",
+      "sourceLabel": "Terrible Beauty",
+      "sourceId": "sotdl:terrible-beauty",
+      "candidateSourceId": null,
+      "variantKey": "default",
+      "printedPageDeclared": "9",
+      "pdfPageDeclared": "10",
+      "startLine": 13339,
+      "endLine": 13617,
+      "metadataLines": {
+        "Entry Type": 13341,
+        "Source": 13342,
+        "Source Page": 13343,
+        "PDF Page": 13344
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 13347,
+          "endLine": 13615,
+          "language": "text",
+          "sha256": "f5b2d16e7a46f10369274a4c17bdb858c1bef440041e7773eada40b52239349b"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "human-only-human",
+      "entityId": "sotdl:only-human:ancestry:human:variant",
+      "heading": "### Human — Only Human",
+      "name": "Human",
+      "entryType": "Ancestry Variant",
+      "sourceLabel": "Only Human",
+      "sourceId": "sotdl:only-human",
+      "candidateSourceId": null,
+      "variantKey": "variant",
+      "printedPageDeclared": "5",
+      "pdfPageDeclared": "5",
+      "startLine": 13618,
+      "endLine": 14711,
+      "metadataLines": {
+        "Entry Type": 13620,
+        "Source": 13621,
+        "Source Page": 13622,
+        "PDF Page": 13623
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 13626,
+          "endLine": 14709,
+          "language": "text",
+          "sha256": "53ceda9e02147f9410010992f62b7e7dde1afd24bdfaf9248e8cd766431c47d1"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "human-shadow-of-the-demon-lord-core",
+      "entityId": "sotdl:shadow-of-the-demon-lord-core:ancestry:human:default",
+      "heading": "### Human — Shadow of the Demon Lord Core",
+      "name": "Human",
+      "entryType": "Standard Ancestry",
+      "sourceLabel": "Shadow of the Demon Lord Core",
+      "sourceId": "sotdl:shadow-of-the-demon-lord-core",
+      "candidateSourceId": null,
+      "variantKey": "default",
+      "printedPageDeclared": "11",
+      "pdfPageDeclared": "12",
+      "startLine": 14712,
+      "endLine": 14923,
+      "metadataLines": {
+        "Entry Type": 14714,
+        "Source": 14715,
+        "Source Page": 14716,
+        "PDF Page": 14717
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 14720,
+          "endLine": 14921,
+          "language": "text",
+          "sha256": "11329564060abdee6f8ff8d2c3b7c4325a0e948232c8b7c781a3034dbaeec521"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "incarnation-hunger-in-the-void",
+      "entityId": "sotdl:the-hunger-in-the-void:ancestry:incarnation:powerful",
+      "heading": "### Incarnation",
+      "name": "Incarnation",
+      "entryType": "Powerful Ancestry",
+      "sourceLabel": "Hunger in the Void",
+      "sourceId": "sotdl:the-hunger-in-the-void",
+      "candidateSourceId": null,
+      "variantKey": "powerful",
+      "printedPageDeclared": "72",
+      "pdfPageDeclared": "73",
+      "startLine": 14924,
+      "endLine": 15268,
+      "metadataLines": {
+        "Entry Type": 14926,
+        "Source": 14927,
+        "Source Page": 14928,
+        "PDF Page": 14929
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 14932,
+          "endLine": 15266,
+          "language": "text",
+          "sha256": "309e5ea2643574d31384e605942ea7ab53545671873f905964c8bf526c1e21cf"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "jotun-a-glorious-death",
+      "entityId": "sotdl:a-glorious-death:ancestry:jotun:powerful",
+      "heading": "### Jotun",
+      "name": "Jotun",
+      "entryType": "Powerful Ancestry",
+      "sourceLabel": "A Glorious Death",
+      "sourceId": "sotdl:a-glorious-death",
+      "candidateSourceId": null,
+      "variantKey": "powerful",
+      "printedPageDeclared": "6",
+      "pdfPageDeclared": "7",
+      "startLine": 15269,
+      "endLine": 15591,
+      "metadataLines": {
+        "Entry Type": 15271,
+        "Source": 15272,
+        "Source Page": 15273,
+        "PDF Page": 15274
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 15277,
+          "endLine": 15589,
+          "language": "text",
+          "sha256": "a7f8fff3d4cbb6bd188c1546879179816c584a3a863a6a8b2184fdb85eca19b9"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "lizardman-foulest-reptiles",
+      "entityId": "sotdl:foulest-reptiles:ancestry:lizardman:default",
+      "heading": "### Lizardman",
+      "name": "Lizardman",
+      "entryType": "Standard Ancestry",
+      "sourceLabel": "Foulest Reptiles",
+      "sourceId": "sotdl:foulest-reptiles",
+      "candidateSourceId": null,
+      "variantKey": "default",
+      "printedPageDeclared": "3",
+      "pdfPageDeclared": "3",
+      "startLine": 15592,
+      "endLine": 15636,
+      "metadataLines": {
+        "Entry Type": 15594,
+        "Source": 15595,
+        "Source Page": 15596,
+        "PDF Page": 15597
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 15600,
+          "endLine": 15634,
+          "language": "text",
+          "sha256": "1adb48e896020979fe7f66280b256da1a7aeacfff879810e51c477f1765ffc55"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "lutin-faerie-friends",
+      "entityId": "sotdl:faerie-friends:ancestry:lutin:default",
+      "heading": "### Lutin",
+      "name": "Lutin",
+      "entryType": "Standard Ancestry",
+      "sourceLabel": "Faerie Friends",
+      "sourceId": "sotdl:faerie-friends",
+      "candidateSourceId": null,
+      "variantKey": "default",
+      "printedPageDeclared": "2",
+      "pdfPageDeclared": "2",
+      "startLine": 15637,
+      "endLine": 16046,
+      "metadataLines": {
+        "Entry Type": 15639,
+        "Source": 15640,
+        "Source Page": 15641,
+        "PDF Page": 15642
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 15645,
+          "endLine": 16044,
+          "language": "text",
+          "sha256": "392682612490f435ada80fe1756a95cb0bf4be3c18b89a78d0356772ea1ffd99"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "man-of-gog-men-of-gog",
+      "entityId": "sotdl:men-of-gog:ancestry:man-of-gog:variant",
+      "heading": "### Man of Gog",
+      "name": "Man of Gog",
+      "entryType": "Ancestry Variant",
+      "sourceLabel": "Men of Gog",
+      "sourceId": "sotdl:men-of-gog",
+      "candidateSourceId": null,
+      "variantKey": "variant",
+      "printedPageDeclared": "43",
+      "pdfPageDeclared": "43",
+      "startLine": 16047,
+      "endLine": 16168,
+      "metadataLines": {
+        "Entry Type": 16049,
+        "Source": 16050,
+        "Source Page": 16051,
+        "PDF Page": 16052
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 16055,
+          "endLine": 16166,
+          "language": "text",
+          "sha256": "3d74d237c40b2b85a5226928bad0d82cd443cf9696385951894dd61e52d41b5e"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "molekin-the-great-mother-s-brood",
+      "entityId": "sotdl:the-great-mother-s-brood:ancestry:molekin:expanded",
+      "heading": "### Molekin — The Great Mother’s Brood",
+      "name": "Molekin",
+      "entryType": "Expanded Ancestry",
+      "sourceLabel": "The Great Mother’s Brood",
+      "sourceId": "sotdl:the-great-mother-s-brood",
+      "candidateSourceId": null,
+      "variantKey": "expanded",
+      "printedPageDeclared": "4",
+      "pdfPageDeclared": "4",
+      "startLine": 16169,
+      "endLine": 16982,
+      "metadataLines": {
+        "Entry Type": 16171,
+        "Source": 16172,
+        "Source Page": 16173,
+        "PDF Page": 16174
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 16177,
+          "endLine": 16980,
+          "language": "text",
+          "sha256": "a5425fb5eb758c60ac5dfd6b90e357c320eae429ee4d674395c1b5be75c4a25b"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "molekin-demon-lord-s-companion-2",
+      "entityId": "sotdl:demon-lord-s-companion-2:ancestry:molekin:default",
+      "heading": "### Molekin — Demon Lord's Companion 2",
+      "name": "Molekin",
+      "entryType": "Standard Ancestry",
+      "sourceLabel": "Demon Lord's Companion 2",
+      "sourceId": "sotdl:demon-lord-s-companion-2",
+      "candidateSourceId": null,
+      "variantKey": "default",
+      "printedPageDeclared": "9",
+      "pdfPageDeclared": "10",
+      "startLine": 16983,
+      "endLine": 17197,
+      "metadataLines": {
+        "Entry Type": 16985,
+        "Source": 16986,
+        "Source Page": 16987,
+        "PDF Page": 16988
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 16991,
+          "endLine": 17195,
+          "language": "text",
+          "sha256": "5cfed5c3349d7fe2a2b67e5de2d3520e1aa897c7cbf74f036f857e5f3f8bc793"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "naga-guardians-of-the-cosmic-egg",
+      "entityId": "sotdl:guardians-of-the-cosmic-egg:ancestry:naga:expanded",
+      "heading": "### Naga — Guardians of the Cosmic Egg",
+      "name": "Naga",
+      "entryType": "Expanded Ancestry",
+      "sourceLabel": "Guardians of the Cosmic Egg",
+      "sourceId": "sotdl:guardians-of-the-cosmic-egg",
+      "candidateSourceId": null,
+      "variantKey": "expanded",
+      "printedPageDeclared": "4",
+      "pdfPageDeclared": "4",
+      "startLine": 17198,
+      "endLine": 17617,
+      "metadataLines": {
+        "Entry Type": 17200,
+        "Source": 17201,
+        "Source Page": 17202,
+        "PDF Page": 17203
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 17206,
+          "endLine": 17615,
+          "language": "text",
+          "sha256": "8c0f9232a6d84514569a34f2b5fb1c03755ba49a811f3d97305a22bc88417c00"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "naga-demon-lord-s-companion-2",
+      "entityId": "sotdl:demon-lord-s-companion-2:ancestry:naga:default",
+      "heading": "### Naga — Demon Lord's Companion 2",
+      "name": "Naga",
+      "entryType": "Standard Ancestry",
+      "sourceLabel": "Demon Lord's Companion 2",
+      "sourceId": "sotdl:demon-lord-s-companion-2",
+      "candidateSourceId": null,
+      "variantKey": "default",
+      "printedPageDeclared": "11",
+      "pdfPageDeclared": "12",
+      "startLine": 17618,
+      "endLine": 17864,
+      "metadataLines": {
+        "Entry Type": 17620,
+        "Source": 17621,
+        "Source Page": 17622,
+        "PDF Page": 17623
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 17626,
+          "endLine": 17862,
+          "language": "text",
+          "sha256": "253e32bc96e067fd83bab25b8f542b743b2da3d2917ce5bfb7294ceb1069a240"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "ogre-ghastly-gourmands",
+      "entityId": "sotdl:ghastly-gourmands:ancestry:ogre:default",
+      "heading": "### Ogre",
+      "name": "Ogre",
+      "entryType": "Standard Ancestry",
+      "sourceLabel": "Ghastly Gourmands",
+      "sourceId": "sotdl:ghastly-gourmands",
+      "candidateSourceId": null,
+      "variantKey": "default",
+      "printedPageDeclared": "3",
+      "pdfPageDeclared": "3",
+      "startLine": 17865,
+      "endLine": 17904,
+      "metadataLines": {
+        "Entry Type": 17867,
+        "Source": 17868,
+        "Source Page": 17869,
+        "PDF Page": 17870
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 17873,
+          "endLine": 17902,
+          "language": "text",
+          "sha256": "4793f6be06d23bc56d5aa6b6f167225e39bcd7ff29155449e4129d5cd7c62779"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "orc-born-to-kill",
+      "entityId": "sotdl:born-to-kill:ancestry:orc:expanded",
+      "heading": "### Orc — Born to Kill",
+      "name": "Orc",
+      "entryType": "Expanded Ancestry",
+      "sourceLabel": "Born to Kill",
+      "sourceId": "sotdl:born-to-kill",
+      "candidateSourceId": null,
+      "variantKey": "expanded",
+      "printedPageDeclared": "9",
+      "pdfPageDeclared": "9",
+      "startLine": 17905,
+      "endLine": 18846,
+      "metadataLines": {
+        "Entry Type": 17907,
+        "Source": 17908,
+        "Source Page": 17909,
+        "PDF Page": 17910
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 17913,
+          "endLine": 18844,
+          "language": "text",
+          "sha256": "276a9475c6209bbcf33dbf3fd205b47b48911c70217b85bc0abcff4b3a08d51d"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "orc-shadow-of-the-demon-lord-core",
+      "entityId": "sotdl:shadow-of-the-demon-lord-core:ancestry:orc:default",
+      "heading": "### Orc — Shadow of the Demon Lord Core",
+      "name": "Orc",
+      "entryType": "Standard Ancestry",
+      "sourceLabel": "Shadow of the Demon Lord Core",
+      "sourceId": "sotdl:shadow-of-the-demon-lord-core",
+      "candidateSourceId": null,
+      "variantKey": "default",
+      "printedPageDeclared": "21",
+      "pdfPageDeclared": "22",
+      "startLine": 18847,
+      "endLine": 19044,
+      "metadataLines": {
+        "Entry Type": 18849,
+        "Source": 18850,
+        "Source Page": 18851,
+        "PDF Page": 18852
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 18855,
+          "endLine": 19042,
+          "language": "text",
+          "sha256": "3f4687ad456e30770ab63495980908b83a14a3bd8de74b32b1d57f87aef69bfd"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "pixie-terrible-beauty",
+      "entityId": "sotdl:terrible-beauty:ancestry:pixie:default",
+      "heading": "### Pixie",
+      "name": "Pixie",
+      "entryType": "Standard Ancestry",
+      "sourceLabel": "Terrible Beauty",
+      "sourceId": "sotdl:terrible-beauty",
+      "candidateSourceId": null,
+      "variantKey": "default",
+      "printedPageDeclared": "11",
+      "pdfPageDeclared": "12",
+      "startLine": 19045,
+      "endLine": 19288,
+      "metadataLines": {
+        "Entry Type": 19047,
+        "Source": 19048,
+        "Source Page": 19049,
+        "PDF Page": 19050
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 19053,
+          "endLine": 19286,
+          "language": "text",
+          "sha256": "d783338ff7570bb19a4ac68aa1bf224c67f9a756a24fe1eb30262165f0531981"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "remade-cult-of-the-cog-god",
+      "entityId": "sotdl:cult-of-the-cog-god:ancestry:remade:derived",
+      "heading": "### Remade",
+      "name": "Remade",
+      "entryType": "Derived Ancestry",
+      "sourceLabel": "Cult of the Cog God",
+      "sourceId": "sotdl:cult-of-the-cog-god",
+      "candidateSourceId": null,
+      "variantKey": "derived",
+      "printedPageDeclared": "7",
+      "pdfPageDeclared": "7",
+      "startLine": 19289,
+      "endLine": 19356,
+      "metadataLines": {
+        "Entry Type": 19291,
+        "Source": 19292,
+        "Source Page": 19293,
+        "PDF Page": 19294
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 19297,
+          "endLine": 19354,
+          "language": "text",
+          "sha256": "a252d6b7518f681108c3456fc3c9cc662877a95ace94aff443030fbb35a2af73"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "revenant-tombs-of-the-desolation",
+      "entityId": "sotdl:tombs-of-the-desolation:ancestry:revenant:derived",
+      "heading": "### Revenant",
+      "name": "Revenant",
+      "entryType": "Derived Ancestry",
+      "sourceLabel": "Tombs of the Desolation",
+      "sourceId": "sotdl:tombs-of-the-desolation",
+      "candidateSourceId": null,
+      "variantKey": "derived",
+      "printedPageDeclared": "5",
+      "pdfPageDeclared": "6",
+      "startLine": 19357,
+      "endLine": 19603,
+      "metadataLines": {
+        "Entry Type": 19359,
+        "Source": 19360,
+        "Source Page": 19361,
+        "PDF Page": 19362
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 19365,
+          "endLine": 19601,
+          "language": "text",
+          "sha256": "353e8b316d9056d4c1eb277f6be90fc3227ea3220fcf0ee2a6fc7c92e298d352"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "salamander-tombs-of-the-desolation",
+      "entityId": "sotdl:tombs-of-the-desolation:ancestry:salamander:default",
+      "heading": "### Salamander",
+      "name": "Salamander",
+      "entryType": "Standard Ancestry",
+      "sourceLabel": "Tombs of the Desolation",
+      "sourceId": "sotdl:tombs-of-the-desolation",
+      "candidateSourceId": null,
+      "variantKey": "default",
+      "printedPageDeclared": "7",
+      "pdfPageDeclared": "8",
+      "startLine": 19604,
+      "endLine": 19846,
+      "metadataLines": {
+        "Entry Type": 19606,
+        "Source": 19607,
+        "Source Page": 19608,
+        "PDF Page": 19609
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 19612,
+          "endLine": 19844,
+          "language": "text",
+          "sha256": "4dc716bcd16e00a34e4f0dc918fc5189ecce95953992b2e6c253fe422b9dd0c4"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "saprophican-brood-of-the-mother-spore",
+      "entityId": "sotdl:brood-of-the-mother-spore:ancestry:saprophican:default",
+      "heading": "### Saprophican",
+      "name": "Saprophican",
+      "entryType": "Standard Ancestry",
+      "sourceLabel": "Brood of the Mother Spore",
+      "sourceId": "sotdl:brood-of-the-mother-spore",
+      "candidateSourceId": null,
+      "variantKey": "default",
+      "printedPageDeclared": "2",
+      "pdfPageDeclared": "2",
+      "startLine": 19847,
+      "endLine": 20233,
+      "metadataLines": {
+        "Entry Type": 19849,
+        "Source": 19850,
+        "Source Page": 19851,
+        "PDF Page": 19852
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 19855,
+          "endLine": 20231,
+          "language": "text",
+          "sha256": "4f0048a923ca4303c02047059d1292e461058f905cd59ea7df3c40b2aac609c0"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "serpent-person-freeport-companion",
+      "entityId": "sotdl:freeport-companion:ancestry:serpent-person:default",
+      "heading": "### Serpent Person",
+      "name": "Serpent Person",
+      "entryType": "Standard Ancestry",
+      "sourceLabel": "Freeport Companion",
+      "sourceId": "sotdl:freeport-companion",
+      "candidateSourceId": null,
+      "variantKey": "default",
+      "printedPageDeclared": "7",
+      "pdfPageDeclared": "8",
+      "startLine": 20234,
+      "endLine": 20510,
+      "metadataLines": {
+        "Entry Type": 20236,
+        "Source": 20237,
+        "Source Page": 20238,
+        "PDF Page": 20239
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 20242,
+          "endLine": 20508,
+          "language": "text",
+          "sha256": "d0b4c13df67b88ff66110336b76479bc18b1d12339989513190e3a537f27a7b4"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "skinchanger-tooth-claw",
+      "entityId": "sotdl:tooth-claw:ancestry:skinchanger:template",
+      "heading": "### Skinchanger",
+      "name": "Skinchanger",
+      "entryType": "Ancestry Template",
+      "sourceLabel": "Tooth & Claw",
+      "sourceId": "sotdl:tooth-claw",
+      "candidateSourceId": null,
+      "variantKey": "template",
+      "printedPageDeclared": "2",
+      "pdfPageDeclared": "2",
+      "startLine": 20511,
+      "endLine": 20924,
+      "metadataLines": {
+        "Entry Type": 20513,
+        "Source": 20514,
+        "Source Page": 20515,
+        "PDF Page": 20516
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 20519,
+          "endLine": 20922,
+          "language": "text",
+          "sha256": "8f41b180571f61d7dde503abede3e8419727c4149c09029bf0654afa5e21dcce"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "sylph-heaven-s-sent",
+      "entityId": "sotdl:heaven-s-sent:ancestry:sylph:expanded",
+      "heading": "### Sylph — Heaven’s Sent",
+      "name": "Sylph",
+      "entryType": "Expanded Ancestry",
+      "sourceLabel": "Heaven’s Sent",
+      "sourceId": "sotdl:heaven-s-sent",
+      "candidateSourceId": null,
+      "variantKey": "expanded",
+      "printedPageDeclared": "4",
+      "pdfPageDeclared": "4",
+      "startLine": 20925,
+      "endLine": 21611,
+      "metadataLines": {
+        "Entry Type": 20927,
+        "Source": 20928,
+        "Source Page": 20929,
+        "PDF Page": 20930
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 20933,
+          "endLine": 21609,
+          "language": "text",
+          "sha256": "5e948a1997f436c0b441110401abd8a4b149e13d6e45e4758578c9402dbe32dd"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "sylph-demon-lord-s-companion-2",
+      "entityId": "sotdl:demon-lord-s-companion-2:ancestry:sylph:default",
+      "heading": "### Sylph — Demon Lord's Companion 2",
+      "name": "Sylph",
+      "entryType": "Standard Ancestry",
+      "sourceLabel": "Demon Lord's Companion 2",
+      "sourceId": "sotdl:demon-lord-s-companion-2",
+      "candidateSourceId": null,
+      "variantKey": "default",
+      "printedPageDeclared": "13",
+      "pdfPageDeclared": "14",
+      "startLine": 21612,
+      "endLine": 21838,
+      "metadataLines": {
+        "Entry Type": 21614,
+        "Source": 21615,
+        "Source Page": 21616,
+        "PDF Page": 21617
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 21620,
+          "endLine": 21836,
+          "language": "text",
+          "sha256": "8f7006e8e175daba00d02034cbe7c8917768c3fa40c46086df9572c97575985c"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "troglodyte-wretched-and-unclean",
+      "entityId": "sotdl:wretched-and-unclean:ancestry:troglodyte:default",
+      "heading": "### Troglodyte",
+      "name": "Troglodyte",
+      "entryType": "Standard Ancestry",
+      "sourceLabel": "Wretched and Unclean",
+      "sourceId": "sotdl:wretched-and-unclean",
+      "candidateSourceId": null,
+      "variantKey": "default",
+      "printedPageDeclared": "3",
+      "pdfPageDeclared": "3",
+      "startLine": 21839,
+      "endLine": 21888,
+      "metadataLines": {
+        "Entry Type": 21841,
+        "Source": 21842,
+        "Source Page": 21843,
+        "PDF Page": 21844
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 21847,
+          "endLine": 21886,
+          "language": "text",
+          "sha256": "b9d3b9e063c54e02f54393794e9d80976b4d8a8dd16cde0852a02f862f3cde31"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "undine-freeport-companion",
+      "entityId": "sotdl:freeport-companion:ancestry:undine:default",
+      "heading": "### Undine",
+      "name": "Undine",
+      "entryType": "Standard Ancestry",
+      "sourceLabel": "Freeport Companion",
+      "sourceId": "sotdl:freeport-companion",
+      "candidateSourceId": null,
+      "variantKey": "default",
+      "printedPageDeclared": "10",
+      "pdfPageDeclared": "11",
+      "startLine": 21889,
+      "endLine": 22188,
+      "metadataLines": {
+        "Entry Type": 21891,
+        "Source": 21892,
+        "Source Page": 21893,
+        "PDF Page": 21894
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 21897,
+          "endLine": 22184,
+          "language": "text",
+          "sha256": "54c5854c50d4306e543d5ee2710746729381bce902af14eb55c7ef212dcf867b"
+        }
+      ],
+      "notes": [
+        {
+          "startLine": 22187,
+          "endLine": 22187,
+          "text": "**Errata associada — Demon Lord Errata (10oct17) e Demon Lord Errata (19nov17), p. 2:** a linha de imunidades foi omitida de `Creating an Undine` em *Freeport Companion*: `Immune damage from disease and poison; diseased, poisoned`. Esta nota registra a correção publicada sem reescrever silenciosamente o `Full Entry` acima.",
+          "applied": false
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "vampire-tombs-of-the-desolation",
+      "entityId": "sotdl:tombs-of-the-desolation:ancestry:vampire:derived",
+      "heading": "### Vampire",
+      "name": "Vampire",
+      "entryType": "Derived Ancestry",
+      "sourceLabel": "Tombs of the Desolation",
+      "sourceId": "sotdl:tombs-of-the-desolation",
+      "candidateSourceId": null,
+      "variantKey": "derived",
+      "printedPageDeclared": "9",
+      "pdfPageDeclared": "10",
+      "startLine": 22189,
+      "endLine": 22487,
+      "metadataLines": {
+        "Entry Type": 22191,
+        "Source": 22192,
+        "Source Page": 22193,
+        "PDF Page": 22194
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 22197,
+          "endLine": 22485,
+          "language": "text",
+          "sha256": "3d0190a07ee36d71ff099d4c48aed1fb76c2cb1eae07389ede8a3fe4d4493dfa"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "warg-hunger-in-the-void",
+      "entityId": "sotdl:the-hunger-in-the-void:ancestry:warg:beastman",
+      "heading": "### Warg",
+      "name": "Warg",
+      "entryType": "Beastman Ancestry",
+      "sourceLabel": "Hunger in the Void",
+      "sourceId": "sotdl:the-hunger-in-the-void",
+      "candidateSourceId": null,
+      "variantKey": "beastman",
+      "printedPageDeclared": "45",
+      "pdfPageDeclared": "46",
+      "startLine": 22488,
+      "endLine": 22610,
+      "metadataLines": {
+        "Entry Type": 22490,
+        "Source": 22491,
+        "Source Page": 22492,
+        "PDF Page": 22493
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 22496,
+          "endLine": 22608,
+          "language": "text",
+          "sha256": "359683fc4defc1c8ba53ff73c922f1af7269dc4127d71f790cf2a9b77dae8c8a"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "woad-song-of-the-woad",
+      "entityId": "sotdl:song-of-the-woad:ancestry:woad:default",
+      "heading": "### Woad",
+      "name": "Woad",
+      "entryType": "Standard Ancestry",
+      "sourceLabel": "Song of the Woad",
+      "sourceId": "sotdl:song-of-the-woad",
+      "candidateSourceId": null,
+      "variantKey": "default",
+      "printedPageDeclared": "7",
+      "pdfPageDeclared": "7",
+      "startLine": 22611,
+      "endLine": 22786,
+      "metadataLines": {
+        "Entry Type": 22613,
+        "Source": 22614,
+        "Source Page": 22615,
+        "PDF Page": 22616
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 22619,
+          "endLine": 22784,
+          "language": "text",
+          "sha256": "50573cdabe3591fd3f740edf572da5bf2af9d16c1b61232aba56475796547c19"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "yerath-children-of-the-hive",
+      "entityId": "sotdl:children-of-the-hive:ancestry:yerath:expanded",
+      "heading": "### Yerath — Children of the Hive",
+      "name": "Yerath",
+      "entryType": "Expanded Ancestry",
+      "sourceLabel": "Children of the Hive",
+      "sourceId": "sotdl:children-of-the-hive",
+      "candidateSourceId": null,
+      "variantKey": "expanded",
+      "printedPageDeclared": "4",
+      "pdfPageDeclared": "4",
+      "startLine": 22787,
+      "endLine": 23149,
+      "metadataLines": {
+        "Entry Type": 22789,
+        "Source": 22790,
+        "Source Page": 22791,
+        "PDF Page": 22792
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 22795,
+          "endLine": 23147,
+          "language": "text",
+          "sha256": "1c59aedd9595bdea663c28a51573541a36c9e536cbd8849040bdc85d55ce6cb2"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    },
+    {
+      "occurrenceKey": "yerath-demon-lord-s-companion-2",
+      "entityId": "sotdl:demon-lord-s-companion-2:ancestry:yerath:default",
+      "heading": "### Yerath — Demon Lord's Companion 2",
+      "name": "Yerath",
+      "entryType": "Standard Ancestry",
+      "sourceLabel": "Demon Lord's Companion 2",
+      "sourceId": "sotdl:demon-lord-s-companion-2",
+      "candidateSourceId": null,
+      "variantKey": "default",
+      "printedPageDeclared": "16",
+      "pdfPageDeclared": "17",
+      "startLine": 23150,
+      "endLine": 23372,
+      "metadataLines": {
+        "Entry Type": 23152,
+        "Source": 23153,
+        "Source Page": 23154,
+        "PDF Page": 23155
+      },
+      "fullEntryBlocks": [
+        {
+          "startLine": 23158,
+          "endLine": 23371,
+          "language": "text",
+          "sha256": "f02adff25e5cc56cd0562fcafb1c4d94fdc4f0a47db148c4987ccc75309f7d64"
+        }
+      ],
+      "notes": [],
+      "warnings": []
+    }
+  ]
+}
