@@ -195,7 +195,13 @@ function ActionButton({ label, blocked, reason, reasonId, expanded, onClick }: {
       aria-disabled={blocked || undefined}
       aria-describedby={blocked && reason ? reasonId : undefined}
       aria-expanded={expanded}
-      onClick={onClick}
+      onClick={event => {
+        if (blocked) {
+          event.preventDefault();
+          return;
+        }
+        onClick(event);
+      }}
     >{label}</button>
     {blocked && reason && <span className="choice-reason" id={reasonId}>{reason}</span>}
   </span>;
