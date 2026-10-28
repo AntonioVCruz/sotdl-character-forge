@@ -7,6 +7,7 @@ import { SessionPanel } from './SessionPanel';
 import { PrintSheet } from './PrintSheet';
 import { CharacterSheet } from './CharacterSheet';
 import { EquipmentPanel } from './EquipmentPanel';
+import { WizardL0 } from './WizardL0';
 
 function SlotEditor({ slot, character, disabled, policy, onPolicy, onChoose, onLock }: {
   slot: Slot; character: Character; disabled: boolean; policy: Policy; onPolicy: (policy: Policy) => void;
@@ -81,6 +82,9 @@ export function CharacterBuilder({ catalog, catalogReady, catalogBusy, prepareDe
   }, [printPreview]);
   return <section aria-label="Criador demonstrativo" className="builder">
     <h2>Personagem demonstrativo · níveis 0 e 1</h2><p>Crie com escolhas manuais, misture escolhas e sorteios, ou gere todos os campos livres. Valores, caminhos, treinamentos, tradições e magias desta demonstração são fictícios. O Aprendiz da Centelha aprende uma tradição e depois uma magia de rank 0; o Guardião mantém o treinamento marcial.</p>
+    <WizardL0 />
+    <h3>Motor demonstrativo anterior</h3>
+    <p>A grade abaixo continua o motor fictício já existente, inclusive o nível 1. Ela não é o wizard de nível 0.</p>
     <button disabled={disabled || !!draft} onClick={prepareDemo}>Preparar fontes da demonstração</button>
     <p className="muted">Adiciona e habilita os packs fictícios necessários no catálogo abaixo.</p>
     {error && <div role="alert" className="error">{error}</div>}
