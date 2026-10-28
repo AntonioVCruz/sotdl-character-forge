@@ -8,6 +8,7 @@ import levelZero from '../../examples/demo-level-zero.json';
 import levelOne from '../../examples/demo-level-one.json';
 import magic from '../../examples/demo-magic.json';
 import spellSession from '../../examples/demo-spell-session.json';
+import { clearCharacter } from '../../packages/character-generator/storage';
 import { CharacterBuilder } from './CharacterBuilder';
 import { ErrorBoundary, onCaughtError } from './ErrorBoundary';
 import { errorMessage } from './errors';
@@ -42,7 +43,7 @@ function App() {
     <aside className="notice">Demonstração dos níveis 0 e 1, com dois caminhos fictícios e catálogo local. Os exemplos não representam regras oficiais. Níveis 2–10 e conteúdo oficial ainda não estão disponíveis.</aside>
     {error && <div role="alert" className="error"><strong>Operação não concluída</strong><pre>{error}</pre></div>}
     <p role="status" aria-live="polite">{busy ? 'Salvando…' : message || (!ready && !error ? 'Abrindo catálogo…' : '')}</p>
-    <ErrorBoundary scope="criador"><CharacterBuilder catalog={snapshot} catalogReady={ready} catalogBusy={busy} prepareDemo={() => void change(() => {
+    <ErrorBoundary scope="criador" onReset={clearCharacter}><CharacterBuilder catalog={snapshot} catalogReady={ready} catalogBusy={busy} prepareDemo={() => void change(() => {
       let next = importPack(snapshot, tables).snapshot;
       next = importPack(next, levelZero).snapshot;
       next = importPack(next, levelOne).snapshot;

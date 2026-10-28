@@ -4,7 +4,7 @@ import type { Character } from '../../packages/character-generator';
 
 const sheet = (p: Page) => p.getByRole('region', { name: 'Ficha confirmada', exact: true });
 const panel = (p: Page) => p.getByRole('region', { name: 'Conjuração e efeitos de sessão', exact: true });
-const defense = (p: Page) => sheet(p).locator('dl > div').filter({ has: p.locator('dt', { hasText: /^defense$/ }) }).locator('dd');
+const defense = (p: Page) => sheet(p).locator('dl > div').filter({ has: p.locator('dt', { hasText: /^Defense$/ }) }).locator('dd');
 async function confirm(p: Page) {
   const draft = p.getByRole('region', { name: 'Prévia da geração', exact: true });
   await draft.getByRole('button', { name: /Confirmar prévia|Salvar rascunho com pendências/ }).click();
