@@ -36,7 +36,7 @@ const corpusTests = [
 export default defineConfig({
   plugins: [react()],
   test: {
-    include: ['tests/**/*.test.ts'],
+    include: ['tests/**/*.test.ts', 'tests/**/*.test.tsx'],
     exclude: [...configDefaults.exclude, ...(rulesCorpusPresent ? [] : corpusTests)],
   },
 });
