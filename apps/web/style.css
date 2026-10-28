@@ -52,6 +52,8 @@ textarea { min-height: 100px; resize: vertical; }
 .wizard-l0 { border: 1px solid #687680; border-radius: 8px; padding: 16px; margin: 20px 0 28px; }
 .wizard-l0 button[aria-disabled="true"] { border-style: dashed; background: transparent; color: #e9e5df; }
 .wizard-top, .wizard-modes, .choice-badges, .choice-actions, .choice-preview-bar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.choice-badges { flex-shrink: 0; }
+.choice-badges .badge, .wizard-steps button span:last-child { white-space: nowrap; }
 .wizard-top { justify-content: space-between; margin-bottom: 16px; }
 .wizard-top label { min-width: 180px; }
 .wizard-level { display: flex; gap: 8px; align-items: center; }
@@ -67,7 +69,8 @@ textarea { min-height: 100px; resize: vertical; }
 .choice-action { display: flex; flex-direction: column; gap: 4px; max-width: 100%; }
 .choice-action button[aria-disabled="true"] { border-style: dashed; background: transparent; color: #e9e5df; }
 .choice-reason { color: #efc5a6; font-size: .85rem; }
-.choice-option { display: flex; justify-content: space-between; gap: 8px; padding: 8px 4px; border-bottom: 1px solid #465058; cursor: pointer; }
+.choice-option { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; padding: 8px 4px; border-bottom: 1px solid #465058; cursor: pointer; align-items: flex-start; }
+.choice-option > span:first-child { flex: 1 1 12rem; }
 .choice-option.is-ineligible { cursor: default; }
 .choice-preview { margin-top: 12px; border-style: dashed; }
 .choice-trace { font-size: .9rem; }
