@@ -9,6 +9,7 @@ import levelOne from '../../examples/demo-level-one.json';
 import magic from '../../examples/demo-magic.json';
 import spellSession from '../../examples/demo-spell-session.json';
 import { CharacterBuilder } from './CharacterBuilder';
+import { ErrorBoundary, onCaughtError } from './ErrorBoundary';
 import { errorMessage } from './errors';
 import './style.css';
 
@@ -41,7 +42,7 @@ function App() {
     <aside className="notice">Demonstração dos níveis 0 e 1, com dois caminhos fictícios e catálogo local. Os exemplos não representam regras oficiais. Níveis 2–10 e conteúdo oficial ainda não estão disponíveis.</aside>
     {error && <div role="alert" className="error"><strong>Operação não concluída</strong><pre>{error}</pre></div>}
     <p role="status" aria-live="polite">{busy ? 'Salvando…' : message || (!ready && !error ? 'Abrindo catálogo…' : '')}</p>
-    <CharacterBuilder catalog={snapshot} catalogReady={ready} catalogBusy={busy} prepareDemo={() => void change(() => {
+    <ErrorBoundary scope="criador"><CharacterBuilder catalog={snapshot} catalogReady={ready} catalogBusy={busy} prepareDemo={() => void change(() => {
       let next = importPack(snapshot, tables).snapshot;
       next = importPack(next, levelZero).snapshot;
       next = importPack(next, levelOne).snapshot;
@@ -49,7 +50,7 @@ function App() {
       next = importPack(next, spellSession).snapshot;
       for (const pack of next.packs.filter(p => [tables.packId, levelZero.packId, levelOne.packId, magic.packId, spellSession.packId].includes(p.packId))) next = setEnabled(next, pack, true);
       return next;
-    }, 'Fontes da demonstração prontas.')} />
+    }, 'Fontes da demonstração prontas.')} /></ErrorBoundary>
     <section aria-labelledby="sources-title"><h2 id="sources-title">Biblioteca de fontes</h2><p>Importar adiciona à biblioteca. Habilite uma fonte para usá-la no catálogo da campanha.</p>
       <div className="actions"><button disabled={!ready || busy} onClick={() => change(() => {
         let next = importPack(snapshot, demo).snapshot;
@@ -91,4 +92,4 @@ function App() {
     </section><footer>Dados salvos neste navegador · sem conta ou envio ao servidor. Mantenha os arquivos JSON originais como backup.</footer>
   </main>;
 }
-createRoot(document.getElementById('root')!).render(<React.StrictMode><App /></React.StrictMode>);
+createRoot(document.getElementById('root')!, { onCaughtError }).render(<React.StrictMode><ErrorBoundary scope="forja"><App /></ErrorBoundary></React.StrictMode>);
