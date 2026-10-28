@@ -132,6 +132,8 @@ Use **fatias verticais**: um personagem criado do zero deve atravessar interface
 
 ## Materiais locais do projeto
 
+- O que pode entrar no git, nos packs e nos exports (JSON/HTML/PDF): [política de distribuição de conteúdo](docs/politica-distribuicao-conteudo.md) (S0, [#2](https://github.com/AntonioVCruz/sotdl-character-forge/issues/2)).
+
 A **Etapa A da curadoria (CUR-001 a CUR-007)** está concluída: [tarefas e estados](docs/tarefas-curadoria-compendios.md), [relatório dos gates](curation/reports/stage-a.md) e [contratos 1.0.0](docs/contratos-curadoria.md). `npm run curation:check` verifica hashes, registro das 95 fontes e exemplos de formato. Todas as 2.397 referências de fonte estão resolvidas após confirmação dos aliases pelo usuário; não há conteúdo mecânico real certificado nesta etapa. As três últimas decisões estão em `curation/reports/remaining-source-aliases.json`.
 
 **CUR-008 concluída:** [59 ocorrências de ancestries extraídas para staging](docs/entrega-ancestries-staging.md), todas capturadas com fonte resolvida e texto/evidências preservados. Bugbear, Fomor, Incarnation e Warg foram vinculadas a The Hunger in the Void por confirmação explícita do usuário. `npm run curation:ancestries` reproduz os derivados.
