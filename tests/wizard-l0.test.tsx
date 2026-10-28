@@ -111,14 +111,14 @@ describe('wizard L0', () => {
     expect(text()).not.toContain('sotdl:');
     pick('Ancestry', 'Human — recorte Core (fictício)');
     expect(text()).toContain('Ficha atualizada: Ancestry confirmado.');
-    expect(host.querySelector('dt')?.textContent).toBe('strength');
+    expect(host.querySelector('dt')?.textContent).toBe('Strength');
     expect(host.querySelector('dt')?.nextElementSibling?.textContent).toBe('indisponível');
     clickStep('Atributos');
     pick('Modo de atributos', 'Usar atributos fixos');
     pick('Aumento fixo', 'Strength');
-    const strength = [...host.querySelectorAll('dt')].find(node => node.textContent === 'strength');
+    const strength = [...host.querySelectorAll('dt')].find(node => node.textContent === 'Strength');
     expect(strength?.nextElementSibling?.textContent).toBe('11');
-    expect([...host.querySelectorAll('dt')].find(node => node.textContent === 'health')?.nextElementSibling?.textContent).toBe('indisponível');
+    expect([...host.querySelectorAll('dt')].find(node => node.textContent === 'Health')?.nextElementSibling?.textContent).toBe('indisponível');
     expect(text()).toContain('Ficha atualizada. Strength 11, Agility 10, Intellect 10, Will 10.');
     clickStep('Size');
     clickButton('Escolher manualmente', slot('Size'));
