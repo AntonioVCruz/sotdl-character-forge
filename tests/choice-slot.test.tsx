@@ -141,6 +141,10 @@ describe('ChoiceSlot', () => {
     await render(<ChoiceSlot {...locked} />);
     expect(text()).toContain('travado');
     expect(text()).toContain('Travar não executa rolagem.');
+    clickButton('Escolher manualmente');
+    expect(locked.onManualOpen).not.toHaveBeenCalled();
+    expect(text()).not.toContain('Fechar (Esc)');
+    expect(text()).toContain('Slot travado. Destrave para alterar.');
     clickButton('Sortear');
     expect(locked.onRoll).not.toHaveBeenCalled();
     clickButton('Destravar');
