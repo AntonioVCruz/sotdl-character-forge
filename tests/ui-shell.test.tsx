@@ -8,7 +8,7 @@ import { StatsSchema, type Stats as StatBlock } from '../packages/random-tables'
 import { CharacterSheet } from '../apps/web/CharacterSheet';
 import { ErrorBoundary, onCaughtError } from '../apps/web/ErrorBoundary';
 import { reportBoundaryError } from '../apps/web/errors';
-import { STAT_GAPS, STAT_KEYS, Stats } from '../apps/web/Stats';
+import { STAT_GAPS, STAT_KEYS, STAT_LABELS, Stats } from '../apps/web/Stats';
 
 const secret = 'segredo-seed-7F3A-notas-do-personagem';
 let host: HTMLDivElement;
@@ -31,10 +31,10 @@ async function render(node: ReactNode) {
   await act(async () => { root.render(node); });
 }
 function text() { return host.textContent ?? ''; }
-function click(name: string) {
+async function click(name: string) {
   const button = [...host.querySelectorAll('button')].find(item => item.textContent === name);
   if (!button) throw new Error(`botão ausente: ${name}`);
-  act(() => { button.dispatchEvent(new MouseEvent('click', { bubbles: true })); });
+  await act(async () => { button.dispatchEvent(new MouseEvent('click', { bubbles: true })); });
 }
 function loggedLines(): string[] {
   return consoleError.mock.calls.map((call: unknown[]) => call.map(item => String(item)).join(' '));
@@ -47,7 +47,7 @@ describe('ErrorBoundary', () => {
     expect(text()).toContain('Biblioteca de fontes');
     expect(text()).toContain('Não foi possível mostrar o criador.');
     expect(text()).toContain('Tentar de novo');
-    expect(text()).toContain('Recomeçar');
+    expect(text()).not.toContain('Recomeçar');
     expect(text()).not.toContain(secret);
     expect(text()).not.toContain('at Boom');
     expect(host.querySelector('[data-boundary="criador"]')).toBeTruthy();
@@ -65,14 +65,43 @@ describe('ErrorBoundary', () => {
       return <p>criador visível</p>;
     }
     await render(<ErrorBoundary scope="criador" onReset={onReset}><Child /></ErrorBoundary>);
-    click('Tentar de novo');
+    await click('Tentar de novo');
     expect(onReset).not.toHaveBeenCalled();
     expect(text()).toContain('Não foi possível mostrar o criador.');
     expect(text()).not.toContain(secret);
-    click('Recomeçar');
+    await click('Recomeçar');
     expect(onReset).toHaveBeenCalledOnce();
     expect(text()).toContain('criador visível');
     expect(text()).not.toContain('Não foi possível mostrar o criador.');
+  });
+
+  it('espera o descarte do personagem antes de remontar e esconde Recomeçar sem onReset', async () => {
+    function Boom(): ReactNode { throw new Error(secret); }
+    await render(<ErrorBoundary scope="forja"><Boom /></ErrorBoundary>);
+    expect(host.querySelectorAll('button')).toHaveLength(1);
+    let fail = true;
+    let release: () => void = () => {};
+    const gate = new Promise<void>(resolve => { release = resolve; });
+    function Child(): ReactNode {
+      if (fail) throw new Error(secret);
+      return <p>criador limpo</p>;
+    }
+    await render(<ErrorBoundary scope="criador" onReset={() => gate.then(() => { fail = false; })}><Child /></ErrorBoundary>);
+    await click('Recomeçar');
+    expect(text()).toContain('Não foi possível mostrar o criador.');
+    expect(text()).toContain('descarta o personagem salvo');
+    await act(async () => { release(); });
+    expect(text()).toContain('criador limpo');
+  });
+
+  it('mantém o aviso se o descarte falha, sem mostrar a causa', async () => {
+    function Boom(): ReactNode { throw new Error('outro'); }
+    await render(<ErrorBoundary scope="criador" onReset={async () => { throw new Error(secret); }}><Boom /></ErrorBoundary>);
+    await click('Recomeçar');
+    await act(async () => { await Promise.resolve(); });
+    expect(text()).toContain('Não foi possível mostrar o criador.');
+    expect(text()).toContain('Nada foi substituído.');
+    expect(text()).not.toContain(secret);
   });
 
   it('registra só o nome do erro, mesmo com mensagem sensível', () => {
@@ -92,8 +121,10 @@ describe('Stats', () => {
     expect(STAT_KEYS).toEqual(Object.keys(StatsSchema.shape));
     for (const gap of STAT_GAPS) expect(STAT_KEYS).not.toContain(gap.key);
     await render(<Stats stats={shown} />);
+    expect([...host.querySelectorAll('.stats dt')].map(node => node.textContent)).toEqual(STAT_KEYS.map(key => STAT_LABELS[key]));
     for (const key of STAT_KEYS) {
-      const term = [...host.querySelectorAll('dt')].find(node => node.textContent === key);
+      const term = [...host.querySelectorAll('dt')].find(node => node.textContent === STAT_LABELS[key]);
+      expect(term?.textContent).not.toBe(key);
       expect(term?.nextElementSibling?.textContent).toBe(String(shown[key]));
     }
     for (const gap of STAT_GAPS) {
@@ -108,7 +139,7 @@ describe('Stats', () => {
   it('deixa explícito quando o cálculo demonstrativo ainda não tem número', async () => {
     await render(<CharacterSheet character={newCharacter()} catalog={emptySnapshot()} title="Ficha confirmada" />);
     for (const key of STAT_KEYS) {
-      const term = [...host.querySelectorAll('dt')].find(node => node.textContent === key);
+      const term = [...host.querySelectorAll('dt')].find(node => node.textContent === STAT_LABELS[key]);
       expect(term?.nextElementSibling?.textContent).toBe('indisponível');
     }
     expect(host.querySelector('[data-stat-gap="perception"]')?.textContent).toBe('Perception: indisponível');

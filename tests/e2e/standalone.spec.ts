@@ -55,7 +55,7 @@ async function offlineBrowser() {
   return { context, network, browser };
 }
 const offlineSheet = (page: Page) => page.getByRole('region', { name: 'Ficha offline', exact: true });
-const defense = (page: Page) => offlineSheet(page).locator('dl > div').filter({ has: page.locator('dt', { hasText: /^defense$/ }) }).locator('dd');
+const defense = (page: Page) => offlineSheet(page).locator('dl > div').filter({ has: page.locator('dt', { hasText: /^Defense$/ }) }).locator('dd');
 
 test('HTML file:// opera offline, salva nova cópia e JSON reimportável sem perder histórico', async ({ page }) => {
   const { character, catalog } = fixture(), initialView = calculateCharacter(character, catalog);

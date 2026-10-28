@@ -12,11 +12,11 @@ const fallbackCopy: Record<BoundaryScope, string> = {
   ficha: 'Não foi possível mostrar a ficha.',
 };
 
-type Props = { scope: BoundaryScope; children: ReactNode; onReset?: () => void };
-type State = { failed: boolean; nonce: number };
+type Props = { scope: BoundaryScope; children: ReactNode; onReset?: () => void | Promise<void> };
+type State = { failed: boolean; nonce: number; resetting: boolean; resetFailed: boolean };
 
 export class ErrorBoundary extends Component<Props, State> {
-  state: State = { failed: false, nonce: 0 };
+  state: State = { failed: false, nonce: 0, resetting: false, resetFailed: false };
   private alertRef: RefObject<HTMLDivElement | null> = createRef();
 
   static getDerivedStateFromError(): Pick<State, 'failed'> {
@@ -35,20 +35,32 @@ export class ErrorBoundary extends Component<Props, State> {
     if (!prevState.failed && this.state.failed) this.alertRef.current?.focus();
   }
 
-  private retry = () => this.setState(state => ({ failed: false, nonce: state.nonce + 1 }));
+  private retry = () => this.setState(state => ({ failed: false, nonce: state.nonce + 1, resetting: false, resetFailed: false }));
 
   private reset = () => {
-    this.props.onReset?.();
-    this.setState(state => ({ failed: false, nonce: state.nonce + 1 }));
+    const onReset = this.props.onReset;
+    if (!onReset || this.state.resetting) return;
+    this.setState({ resetting: true, resetFailed: false });
+    void Promise.resolve()
+      .then(() => onReset())
+      .then(() => {
+        this.setState(state => ({ failed: false, nonce: state.nonce + 1, resetting: false, resetFailed: false }));
+      })
+      .catch(() => {
+        this.setState({ resetting: false, resetFailed: true });
+      });
   };
 
   render() {
     if (this.state.failed) return <div role="alert" tabIndex={-1} ref={this.alertRef} className="error" data-boundary={this.props.scope}>
       <strong>{fallbackCopy[this.props.scope]}</strong>
-      <p>Esta parte falhou ao desenhar. A falha ficou contida aqui. Nenhum dado foi apagado.</p>
+      <p>{this.props.onReset
+        ? 'A falha ficou contida aqui. Tentar de novo redesenha sem apagar o personagem. Recomeçar descarta o personagem salvo neste navegador e abre um novo.'
+        : 'A falha ficou contida aqui. Nenhum dado foi apagado.'}</p>
+      {this.state.resetFailed && <p>Não foi possível descartar o personagem salvo. Nada foi substituído.</p>}
       <div className="actions">
-        <button type="button" onClick={this.retry}>Tentar de novo</button>
-        <button type="button" onClick={this.reset}>Recomeçar</button>
+        <button type="button" onClick={this.retry} disabled={this.state.resetting}>Tentar de novo</button>
+        {this.props.onReset && <button type="button" onClick={this.reset} disabled={this.state.resetting}>Recomeçar</button>}
       </div>
     </div>;
     return <Fragment key={this.state.nonce}>{this.props.children}</Fragment>;

@@ -19,6 +19,18 @@ export async function loadCharacter(): Promise<Character> {
     });
   } finally { db.close(); }
 }
+export async function clearCharacter(): Promise<void> {
+  const db = await open();
+  try {
+    await new Promise<void>((resolve, reject) => {
+      const tx = db.transaction('state', 'readwrite');
+      tx.objectStore('state').delete('character');
+      tx.oncomplete = () => resolve();
+      tx.onabort = () => reject(tx.error ?? new Error('Gravação cancelada.'));
+      tx.onerror = () => reject(tx.error);
+    });
+  } finally { db.close(); }
+}
 export async function saveCharacter(character: Character, expected: Character): Promise<void> {
   const validated = parseCharacter(character), db = await open();
   try {
