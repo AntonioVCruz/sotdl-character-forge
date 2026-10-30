@@ -1,0 +1,27 @@
+{
+  "packId": "sotdl-only-human-l0",
+  "version": "0.1.0",
+  "system": "sotdl",
+  "fictionalData": false,
+  "source": {
+    "id": "sotdl:only-human",
+    "title": "Only Human",
+    "sourcePage": null,
+    "status": "needs-review"
+  },
+  "dependencies": [
+    { "packId": "sotdl-core-human-l0", "version": "0.1.0" }
+  ],
+  "entities": [
+    {
+      "id": "sotdl:only-human:ancestry:human:variant",
+      "kind": "ancestry",
+      "name": "Human",
+      "sourceRef": "sotdl:only-human",
+      "sourcePage": null,
+      "variantKey": "variant",
+      "revision": "0.1.0",
+      "status": "needs-review"
+    }
+  ]
+}
