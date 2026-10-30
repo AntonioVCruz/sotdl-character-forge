@@ -2,6 +2,8 @@
 
 Revisão técnica do Codex em 2026-10-30, contra a main `76414a3`, respeitando a ordem da dependência. Ambos os PRs já estavam mesclados; os registros abaixo são revisões posteriores do código integrado.
 
+**Atualização posterior em 2026-10-30: os dois P2 abaixo foram corrigidos.** A confirmação agora revalida a prévia no reducer e a UI mostra o motivo do bloqueio, preservando a última escolha aprovada. Sorteios locais funcionam em Manual com as mesmas guardas dos demais modos. Foram adicionadas cinco regressões do adapter, uma de componente e dois E2E do wizard. Os dois testes isolados da revisão também passaram após a correção. O relato abaixo conserva o comportamento observado nos commits originais; contrato Zod e aceite UX continuam pendentes nas #9/#10.
+
 ## Base #14: sem achados técnicos bloqueantes
 
 Commit revisado: `b06819d3c7ae596f8fda35d427b17689accc6c90`. [Revisão registrada](https://github.com/AntonioVCruz/sotdl-character-forge/pull/14#pullrequestreview-5708427983).
@@ -43,7 +45,7 @@ Manter os bloqueios por trava, fontes/dados ausentes, seed e autorização, reti
 - 38 testes existentes de seis arquivos aprovados: ErrorBoundary/Stats, armazenamento/geração, ChoiceSlot, adapter L0, wizard e stubs Human.
 - 17 testes E2E existentes aprovados, incluindo ficha, sessão, equipamento, impressão e runtime offline. Esses testes não são uma inspeção visual dos frames 1b/1e do wizard novo.
 - Dois testes isolados de revisão, guardados em `tmp/review-pr14-15/`, reproduziram os dois achados acima e falharam nas expectativas corretas. Não foram adicionados como testes falhando na suíte versionada.
-- Nenhum código de produção foi alterado nesta revisão. As correções e seus testes de regressão continuam pendentes nas #9/#10.
+- Na revisão original, nenhum código de produção foi alterado. As correções foram executadas posteriormente, conforme a atualização acima, com regressões versionadas em `tests/l0-demo.test.ts`, `tests/choice-slot.test.tsx` e `tests/e2e/wizard-l0.spec.ts`.
 
 O navegador integrado estava indisponível; não houve inspeção visual interativa nem parecer do Designer. Testes de componente/teclado e a suíte Playwright existente fornecem evidência técnica, sem substituir esse aceite.
 
@@ -51,4 +53,4 @@ O contrato de props é TypeScript; a validação Zod de slot/evento solicitada n
 
 ## Disposição
 
-Revisão técnica do #14 concluída sem achados bloqueantes. Revisão técnica do #15 concluída com duas correções P2. Os registros foram publicados como `COMMENT`, por se tratar de PRs mesclados e da mesma conta; não são `APPROVE` ou aceite atribuído a outro papel. #9 e #10 permanecem abertas para correções, contrato e aceite UX. A pendência deixou de ser realizar a revisão técnica: agora é resolver seus achados e registrar os aceites restantes.
+Revisão técnica do #14 concluída sem achados bloqueantes. Revisão original do #15 concluída com duas correções P2, agora atendidas pela implementação posterior. Os registros foram publicados como `COMMENT`, por se tratar de PRs mesclados e da mesma conta; não são `APPROVE` ou aceite atribuído a outro papel. #9 e #10 permanecem abertas para contrato, disposição do AC-X1 do demo legado e aceite UX. A correção técnica dos dois P2 não certifica esses aceites restantes.
