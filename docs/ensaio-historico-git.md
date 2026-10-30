@@ -1,6 +1,6 @@
 # Ensaio de limpeza da #16
 
-Registro em 2026-10-30. Responsável pelo repositório: `AntonioVCruz`. Preparação e verificação: Codex. **Publicação ainda não autorizada nem executada.** A [issue #16](https://github.com/AntonioVCruz/sotdl-character-forge/issues/16) permanece aberta.
+Registro em 2026-10-30. Responsável pelo repositório: `AntonioVCruz`. Preparação e verificação: Codex. **Publicação aprovada pelo dono e executada em 2026-10-30.** A [issue #16](https://github.com/AntonioVCruz/sotdl-character-forge/issues/16) permanece aberta pelos resíduos locais e do serviço. Ver [resultado da publicação](publicacao-historico-git.md).
 
 ## Inventário e resultado
 
@@ -17,7 +17,7 @@ O repositório é público. No inventário havia 12 branches, nenhuma tag, 11 re
 
 A árvore do `main` original (`a884616b4eac9a87908a278d65c19dd85be5dc71`) é idêntica à do `main` filtrado (`00b03bd9d1e96659816f877497f4c548d140604a`), antes da adição dos scripts, workflow e documentação deste ensaio. `git fsck --full --no-reflogs` passou. Os relatórios finais incluem também o commit de prevenção preparado sobre essa ponta.
 
-Não havia artefatos de Actions nem releases. Foram examinados os ZIPs de logs dos 27 runs disponíveis, sem correspondências dos padrões conhecidos. Há cinco caches npm regeneráveis; sua invalidação consta do plano de publicação, ainda não aplicada. Isso não comprova ausência de outros dados sensíveis não cobertos pelos detectores.
+Não havia artefatos de Actions nem releases. Foram examinados os ZIPs de logs dos 27 runs disponíveis, sem correspondências dos padrões conhecidos. Os cinco caches npm inventariados foram invalidados na publicação; caches novos podem ser recriados normalmente. Isso não comprova ausência de outros dados sensíveis não cobertos pelos detectores.
 
 ## Transformação e prevenção
 
@@ -25,7 +25,7 @@ Foi usado `git-filter-repo==2.47.0` em um espelho independente, sem hardlinks, c
 
 `tools/curation/history-audit.py` verifica todos os commits, paths e objetos alcançáveis pelas refs locais. Examina blobs, commits e tags; emite somente hashes, caminhos e contagens. A CI passa a buscar histórico completo e executar esse gate, além das verificações existentes e dos testes de regressão do auditor. O gate público reconhece padrões de compra e caminhos proibidos; a checagem dos valores privados é adicional no ensaio e na publicação. O gate de CI depende da publicação do histórico limpo.
 
-## Plano concreto, pendente de aprovação
+## Plano aprovado
 
 O plano privado está em `tmp/history-rewrite/publication-plan.json`. O executável `tools/curation/publish-history.py` usa esse arquivo e, por padrão, faz apenas preflight e push com `--dry-run`. Para aplicar exige `--apply --approval <SHA256 exato do plano>`.
 
@@ -42,8 +42,8 @@ O primeiro commit afetado é `5d2ca7ea2a2652ef28a6d6bf93106ebc49969edf`. As refs
 
 `tmp/history-rewrite/` está ignorado e tem ACL restrita ao usuário atual e SYSTEM. Contém espelho original, substituições privadas, valores usados no detector, mapas de commits, relatórios e snapshots de proteção. **Não anexar esse diretório a issue/PR nem distribuí-lo.** O workspace original também conserva os objetos antigos em `.git`.
 
-Proposta de retenção a aprovar: manter o backup somente até verificação da publicação e atendimento do Support, com revisão obrigatória em sete dias; então autorizar descarte ou registrar prazo adicional e responsável. Não há exclusão agendada ou já executada. Backups de sistema e clones externos exigem tratamento pelo respectivo responsável.
+Retenção aprovada: manter o backup somente até verificação da publicação e atendimento do Support, com revisão obrigatória em sete dias (2026-11-06), pelo dono; então autorizar descarte ou registrar prazo adicional e responsável. Não há exclusão agendada ou já executada. Backups de sistema e clones externos exigem tratamento pelo respectivo responsável.
 
 Na migração, primeiro criar um clone novo em diretório separado e verificar seus SHAs/auditoria. Preservar os arquivos locais ignorados de `rules/` e `curation/`, bem como alterações de trabalho. Não fazer checkout de branches antigas neste workspace. Após aprovação, validar os caminhos absolutos dentro do workspace, colocar os metadados `.git` antigos em quarentena privada e instalar os metadados do clone novo; conferir status e arquivos locais antes de liberar o uso. O espelho de recuperação continua privado até o descarte autorizado. Não fazer merge, pull com histórico antigo ou push de refs de um clone antigo; recuperar trabalho pendente por patches revisados.
 
-Nada nesta preparação alterou a visibilidade do repositório, enviou mensagens a terceiros ou certificou remoção das cópias fora do controle do dono.
+O ensaio e a publicação não alteraram a visibilidade do repositório, enviaram mensagens a terceiros ou certificaram remoção das cópias fora do controle do dono.
