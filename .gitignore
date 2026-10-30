@@ -9,3 +9,13 @@ output/html/
 apps/web/generated/
 # Insumos locais de regras, incluindo todos os arquivos Markdown.
 /rules/
+
+# Evidencias, transcricoes e derivados de livros: somente locais (#1).
+/curation/entries/
+/curation/segments/
+/curation/normalized/
+/curation/normalization/
+/curation/corrections/
+/curation/history/
+/curation/pilot/
+/curation/reports/

@@ -1,3 +1,5 @@
+import { assertSafeArtifact } from './privacy.mjs';
+import { redactBuyerLines } from './privacy.mjs';
 import { createHash } from 'node:crypto';
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { resolve, dirname, isAbsolute, sep } from 'node:path';
@@ -140,10 +142,10 @@ export async function buildArtifacts(root: string) {
     for (let i = 0; i < rows.length; i++) {
       const entry = StagingEntrySchema.parse(JSON.parse(rows[i])), e = entry.review.evidence[0], doc = documents.get(e.path);
       if (entry.originalText === null || !doc || e.medium !== 'md' || e.inputSha256 !== doc.hash || e.startLine === null || e.endLine === null) throw new Error(`Invalid staging provenance: ${path}:${i + 1}`);
-      if (doc.lines.slice(e.startLine - 1, e.endLine).map(l => l.raw).join('') !== entry.originalText) throw new Error(`Staging text/range mismatch: ${path}:${i + 1}`);
+      if (redactBuyerLines(doc.lines.slice(e.startLine - 1, e.endLine).map(l => l.raw).join('')) !== entry.originalText) throw new Error(`Staging text/range mismatch: ${path}:${i + 1}`);
       for (const ev of entry.review.evidence) {
         const d = documents.get(ev.path);
-        if (ev.medium !== 'md' || !d || ev.inputSha256 !== d.hash || ev.startLine === null || ev.endLine === null || ev.excerpt !== d.lines.slice(ev.startLine - 1, ev.endLine).map(l => l.text).join('\n') || ev.excerptSha256 !== sha(ev.excerpt)) throw new Error(`Stale staging evidence: ${path}:${i + 1}`);
+        if (ev.medium !== 'md' || !d || ev.inputSha256 !== d.hash || ev.startLine === null || ev.endLine === null || ev.excerpt !== redactBuyerLines(d.lines.slice(ev.startLine - 1, ev.endLine).map(l => l.text).join('\n')) || ev.excerptSha256 !== sha(ev.excerpt)) throw new Error(`Stale staging evidence: ${path}:${i + 1}`);
       }
       if (entry.id && entityIds.has(entry.id)) throw new Error(`Duplicate entity identity: ${entry.id}`); if (entry.id) entityIds.add(entry.id);
       const key = `${path}:${i + 1}`, spanKey = JSON.stringify([e.path, e.startLine, e.endLine, entry.kind]);
@@ -246,7 +248,7 @@ export async function buildArtifacts(root: string) {
   for (let i = 0; i < segments.length; i++) {
     const s = segments[i], reported = reportedUnits[i];
     if (reported.startLine !== s.startLine || reported.endLine !== s.endLine || reported.unitKey !== s.unitKey || reported.entityId !== s.entityId || reported.status !== s.status || reported.name !== s.name) throw new Error(`Mechanics sidecar/report mismatch at ${i + 1}`);
-    if (s.evidence.path !== mechDoc.path || s.evidence.inputSha256 !== mechDoc.hash || s.startLine !== s.evidence.startLine || s.endLine !== s.evidence.endLine || s.originalText !== mechDoc.lines.slice(s.startLine - 1, s.endLine).map(l => l.raw).join('') || s.evidence.excerptSha256 !== sha(s.evidence.excerpt)) throw new Error(`Mechanics raw range mismatch at ${i + 1}`);
+    if (s.evidence.path !== mechDoc.path || s.evidence.inputSha256 !== mechDoc.hash || s.startLine !== s.evidence.startLine || s.endLine !== s.evidence.endLine || s.originalText !== redactBuyerLines(mechDoc.lines.slice(s.startLine - 1, s.endLine).map(l => l.raw).join('')) || s.evidence.excerptSha256 !== sha(s.evidence.excerpt)) throw new Error(`Mechanics raw range mismatch at ${i + 1}`);
     mechOwners.add(s.container.sourceLine); containerSpans.set(`${s.container.startLine}:${s.container.endLine}`, s.container);
     const refs = registry.references.filter(r => r.path === mechDoc.path && r.line === s.container.sourceLine && r.role === 'metadata');
     if (JSON.stringify(refs.map(r => [r.sourceId, r.label])) !== JSON.stringify(s.sources.map(r => [r.sourceId, r.label]))) throw new Error(`Mechanics source mismatch at ${i + 1}`);
@@ -346,7 +348,7 @@ export async function buildArtifacts(root: string) {
   if (usedChanges.size !== changeIds.size) throw new Error('Normalization change without overlay destination');
   for (const doc of documents.values()) {
     const ds = changes.filter(c => c.path === doc.path), normalizedPath = `curation/normalized/${doc.path.slice('rules/'.length)}`, normalized = (await bytes(normalizedPath)).toString('utf8');
-    if (replayChanges(doc.text, ds) !== normalized || replayChanges(normalized, ds, true) !== doc.text) throw new Error(`Normalization replay mismatch: ${doc.path}`);
+    if (replayChanges(doc.text, ds) !== normalized || replayChanges(normalized, ds, true, doc.text) !== doc.text) throw new Error(`Normalization replay mismatch: ${doc.path}`);
   }
   const reviewDiags = diagnosticRows.filter(d => d.action === 'review-required');
   for (const d of diagnosticRows) { const doc = documents.get(d.path); if (!doc || d.inputSha256 !== doc.hash || d.startLine > d.endLine || d.endLine > doc.lines.length) throw new Error('Diagnostic without valid source destination'); }
@@ -359,7 +361,7 @@ export async function buildArtifacts(root: string) {
   artifacts.set(`${BASE}/duplicates.jsonl`, jsonl(duplicates)); artifacts.set(`${BASE}/findings.jsonl`, jsonl(findings));
   const report = { schemaVersion: 1, task: 'CUR-013', reviewDate: AUDIT_DATE, inputReviewDate: manifest.reviewDate,
     scope: 'Local-corpus accounting only; no PDF completeness, permission, mechanical or automation certification.',
-    tool: { version: '1.0.0', sha256: sha(await bytes('tools/curation/reconciler.ts')), runnerSha256: sha(await bytes('tools/curation/reconcile.mjs')) },
+    tool: { privacyPolicySha256: sha(await bytes('tools/curation/privacy.mjs')), version: '1.0.0', sha256: sha(await bytes('tools/curation/reconciler.ts')), runnerSha256: sha(await bytes('tools/curation/reconcile.mjs')) },
     counts: { inputs: documents.size, lines: coverageChecks.reduce((sum, c) => sum + c.totalLines, 0), inventoryRecords: inventory.length,
       inventoryByCorpus: countBy(inventory.map(o => o.corpus)), states: countBy(inventory.map(o => o.state)), staged: stage.size, uniqueNonNullEntityIds: entityIds.size,
       publications: matrix.length, pendingAliasReferences: registry.pending.length, sourceListDeclarations: declarations.length,
@@ -375,7 +377,7 @@ export async function buildArtifacts(root: string) {
 export async function main(args: string[], root = process.cwd()) {
   if (args.length !== 1 || !['--write', '--check'].includes(args[0])) throw new Error('Use --write or --check');
   const { artifacts, report } = await buildArtifacts(root);
-  for (const [path, output] of artifacts) {
+  for (const [path, output] of artifacts) { assertSafeArtifact(path, output);
     if (args[0] === '--write') { await mkdir(dirname(resolve(root, path)), { recursive: true }); await writeFile(resolve(root, path), output); }
     else if (await readFile(resolve(root, path), 'utf8') !== output) throw new Error(`Reconciliation artifact changed: ${path}`);
   }
