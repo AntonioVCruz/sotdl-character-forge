@@ -8,6 +8,7 @@ import { PrintSheet } from './PrintSheet';
 import { CharacterSheet } from './CharacterSheet';
 import { EquipmentPanel } from './EquipmentPanel';
 import { WizardL0 } from './WizardL0';
+import { slotLabel } from './slot-labels';
 
 function SlotEditor({ slot, character, disabled, policy, onPolicy, onChoose, onLock }: {
   slot: Slot; character: Character; disabled: boolean; policy: Policy; onPolicy: (policy: Policy) => void;
@@ -106,8 +107,8 @@ export function CharacterBuilder({ catalog, catalogReady, catalogBusy, prepareDe
       {draft.character.level !== character.level && <p className="notice">Mudança de nível: {character.level} → {draft.character.level}. {draft.character.level === 0 ? 'Caminho e treinamento serão suspensos; decisões e travas serão preservadas.' : 'Escolhas existentes serão revalidadas. Preencha caminho e treinamento se estiverem pendentes.'}</p>}
       <p>{draft.fullyResolved ? 'Todas as escolhas obrigatórias foram resolvidas.' : 'Esta prévia tem pendências. Pode ser salva como rascunho.'}</p>
       <CharacterSheet character={draft.character} catalog={catalog} title="Ficha proposta" />
-      {!!draft.unresolved.length && <ul>{draft.unresolved.map((i,n) => <li key={n}>{i.slotId}: {i.reason}</li>)}</ul>}
-      <details open><summary>Novas decisões e dados</summary>{draft.character.events.slice(character.events.length).map(event => <article key={event.id}><h4>{event.slotId}: {event.resolution.label}</h4><p>{strategyLabels[event.strategy]} · seed {event.seed} · contador {event.rerollIndex}</p>
+      {!!draft.unresolved.length && <ul>{draft.unresolved.map((i,n) => <li key={n}>{slotLabel(i.slotId)}: {i.reason}</li>)}</ul>}
+      <details open><summary>Novas decisões e dados</summary>{draft.character.events.slice(character.events.length).map(event => <article key={event.id}><h4>{slotLabel(event.slotId)}: {event.resolution.label}</h4><p>{strategyLabels[event.strategy]} · seed {event.seed} · contador {event.rerollIndex}</p>
         {event.resolution.rolls.map(roll => <p key={roll.id}>{roll.diceExpr.count}d{roll.diceExpr.sides}: [{roll.faces.join(', ')}]{roll.diceExpr.modifier ? ` + (${roll.diceExpr.modifier})` : ''} = {roll.total} · {roll.outcomeId ?? roll.ruleId} · {roll.parentRollId ? `filha de ${roll.parentRollId}` : 'rolagem principal'}</p>)}
         {event.resolution.sources.map((source,i) => <p key={i}>Fonte: {source.sourceRef} · {source.packId}@{source.version} · página {source.sourcePage ?? 'não informada (demo)'} · {source.entityId}</p>)}
       </article>)}</details>

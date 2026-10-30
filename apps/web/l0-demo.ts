@@ -1,3 +1,5 @@
+import { z } from 'zod';
+import { createSlotCommandSchema } from './choice-slot-contract';
 import { createSubstream, type Stats } from '../../packages/random-tables';
 import type { ChoiceOption, RollTrace, SlotUiState, Strategy } from './choice-slot';
 
@@ -25,25 +27,11 @@ const ATTRS = ['strength', 'agility', 'intellect', 'will'] as const;
 type Attr = (typeof ATTRS)[number];
 const ATTR_LABEL: Record<Attr, string> = { strength: 'Strength', agility: 'Agility', intellect: 'Intellect', will: 'Will' };
 
-export type SlotKey =
-  | 'ancestry'
-  | 'attribute-mode'
-  | 'attribute-fixed'
-  | 'attribute-random'
-  | 'attribute-transfer'
-  | 'size'
-  | 'benefit'
-  | 'narrative'
-  | 'profession'
-  | 'language'
-  | 'wealth'
-  | 'kit'
-  | 'interesting-thing';
-
-const SLOT_KEYS: SlotKey[] = [
+const SLOT_KEYS = [
   'ancestry', 'attribute-mode', 'attribute-fixed', 'attribute-random', 'attribute-transfer',
   'size', 'benefit', 'narrative', 'profession', 'language', 'wealth', 'kit', 'interesting-thing',
-];
+] as const;
+export type SlotKey = (typeof SLOT_KEYS)[number];
 
 const META: Record<SlotKey, { title: string; step: L0StepId; context: string }> = {
   ancestry: { title: 'Ancestry', step: 'ancestry', context: 'Adapter demonstrativo · fictionalData true · sem página de livro. Não é tabela publicada.' },
@@ -107,27 +95,22 @@ export type L0State = {
   sheetAnnounce: string;
 };
 
-export type L0Action =
-  | { type: 'mode'; mode: WizardMode }
-  | { type: 'seed'; seed: string }
-  | { type: 'uniform'; value: boolean }
-  | { type: 'transfer'; value: boolean }
-  | { type: 'step'; step: L0StepId }
-  | { type: 'select'; key: SlotKey; ids: string[] }
-  | { type: 'roll'; key: SlotKey }
-  | { type: 'reroll'; key: SlotKey }
-  | { type: 'confirm'; key: SlotKey }
-  | { type: 'discard'; key: SlotKey }
-  | { type: 'lock'; key: SlotKey }
-  | { type: 'generate-flag'; key: SlotKey }
-  | { type: 'name-draft'; value: string }
-  | { type: 'notes-draft'; value: string }
-  | { type: 'save-name' }
-  | { type: 'discard-name' }
-  | { type: 'role-draft'; field: RoleField; value: string }
-  | { type: 'save-role' }
-  | { type: 'discard-role' }
-  | { type: 'confirm-review' };
+const slotCommands = createSlotCommandSchema(z.enum(SLOT_KEYS), z.literal(0).default(0));
+export const L0ActionSchema = z.discriminatedUnion('type', [
+  ...slotCommands.options,
+  z.object({ type: z.literal('mode'), mode: z.enum(['manual', 'hybrid', 'all-random']) }).strict(),
+  z.object({ type: z.literal('seed'), seed: z.string().max(200) }).strict(),
+  z.object({ type: z.literal('uniform'), value: z.boolean() }).strict(),
+  z.object({ type: z.literal('transfer'), value: z.boolean() }).strict(),
+  z.object({ type: z.literal('step'), step: z.enum(L0_STEPS.map(step => step.id)) }).strict(),
+  z.object({ type: z.literal('name-draft'), value: z.string().max(200) }).strict(),
+  z.object({ type: z.literal('notes-draft'), value: z.string().max(10000) }).strict(),
+  z.object({ type: z.literal('save-name') }).strict(), z.object({ type: z.literal('discard-name') }).strict(),
+  z.object({ type: z.literal('role-draft'), field: z.enum(['bonds', 'values', 'secrets', 'play']), value: z.string().max(2000) }).strict(),
+  z.object({ type: z.literal('save-role') }).strict(), z.object({ type: z.literal('discard-role') }).strict(),
+  z.object({ type: z.literal('confirm-review') }).strict(),
+]);
+export type L0Action = z.input<typeof L0ActionSchema>;
 
 export type SlotView = {
   slotId: SlotKey;
@@ -628,6 +611,11 @@ function announceStats(state: L0State): string {
 }
 
 export function reduceL0(state: L0State, action: L0Action): L0State {
+  const parsed = L0ActionSchema.safeParse(action);
+  return parsed.success ? reduceValidatedL0(state, parsed.data) : state;
+}
+
+function reduceValidatedL0(state: L0State, action: z.output<typeof L0ActionSchema>): L0State {
   if (action.type === 'mode') return { ...state, mode: action.mode };
   if (action.type === 'seed') return { ...state, seed: action.seed.slice(0, 200) };
   if (action.type === 'uniform') return { ...state, allowUniform: action.value };

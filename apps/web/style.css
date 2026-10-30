@@ -50,6 +50,7 @@ textarea { min-height: 100px; resize: vertical; }
 @media(max-width:600px) { main { padding: 24px 16px; } .actions > * { width: 100%; } }
 
 .wizard-l0 { border: 1px solid #687680; border-radius: 8px; padding: 16px; margin: 20px 0 28px; }
+.wizard-l0 :focus-visible { outline: 3px solid #f4cd85; outline-offset: 3px; }
 .wizard-l0 button[aria-disabled="true"] { border-style: dashed; background: transparent; color: #e9e5df; }
 .wizard-top, .wizard-modes, .choice-badges, .choice-actions, .choice-preview-bar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
 .choice-badges { flex-shrink: 0; }
