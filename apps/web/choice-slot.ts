@@ -44,6 +44,7 @@ export type ChoiceSlotProps = {
   cardinality: { min: number; max: number };
   selectedIds: string[];
   preview?: { label: string; confirmed: false };
+  confirmReason?: string;
   consequences?: { status: 'applied' | 'needs-review'; items: string[] };
   rollTrace?: RollTrace;
   locked: boolean;

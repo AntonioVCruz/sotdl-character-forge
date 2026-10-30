@@ -107,7 +107,7 @@ export function ChoiceSlot(props: ChoiceSlotProps) {
       <div className="choice-preview-bar">
         <p>Resultado proposto</p>
         <div className="actions">
-          <button type="button" onClick={props.onConfirmPreview}>Confirmar</button>
+          <ActionButton label="Confirmar" blocked={Boolean(props.confirmReason)} reason={props.confirmReason} reasonId={`${reasonBase}-confirm`} onClick={props.onConfirmPreview} />
           <button type="button" onClick={props.onDiscardPreview}>Descartar prévia</button>
         </div>
       </div>
