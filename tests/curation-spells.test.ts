@@ -154,7 +154,7 @@ describe('CUR-010 spell extraction', () => {
   it('checks artifacts without overwriting changed data and refuses stale inputs or path evidence', async () => {
     const root = await mkdtemp(join(tmpdir(), 'sotdl-spells-'));
     try {
-      for (const path of [INPUT, 'rules/SotDL_All_Paths_Compendium_Expanded_All_Project_Sources.md', 'curation/input-manifest.json', 'curation/sources.json', 'curation/source-aliases.json',
+      for (const path of ['tools/curation/privacy.mjs', INPUT, 'rules/SotDL_All_Paths_Compendium_Expanded_All_Project_Sources.md', 'curation/input-manifest.json', 'curation/sources.json', 'curation/source-aliases.json',
         'curation/spell-ledger.json', 'curation/spell-origins.json', 'curation/reports/paths.json', 'tools/curation/spell-extractor.ts', 'tools/curation/spells.mjs', 'tools/curation/ancestry-extractor.ts']) {
         await mkdir(dirname(resolve(root, path)), { recursive: true }); await copyFile(path, resolve(root, path));
       }

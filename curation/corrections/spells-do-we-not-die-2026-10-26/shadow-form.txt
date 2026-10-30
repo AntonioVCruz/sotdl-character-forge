@@ -1,6 +1,0 @@
-SHADOW FORM TENEBRIST UTILITY 1
-Duration 1 minute
-You become shadowy and indistinct for the duration, gaining the following benefits.
-• Creatures attacking your Defense or Agility make the attack roll with 1 bane, and on a failure, you can use a triggered action to move up to your Speed. This movement does not trigger free attacks.
-• You are invisible while you are in areas obscured by shadows or darkness.
-• When moving, you can move through spaces occupied by other creatures.

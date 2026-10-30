@@ -196,7 +196,7 @@ describe('CUR-011 mechanics segmentation', () => {
   it('detects tampered outputs and stale input without overwriting data during check', async () => {
     const root = await mkdtemp(join(tmpdir(), 'sotdl-mechanics-'));
     try {
-      for (const path of [INPUT, 'curation/input-manifest.json', 'curation/sources.json', 'curation/source-aliases.json', 'curation/mechanics-ledger.json', 'curation/mechanics-decisions.json',
+      for (const path of ['tools/curation/privacy.mjs', INPUT, 'curation/input-manifest.json', 'curation/sources.json', 'curation/source-aliases.json', 'curation/mechanics-ledger.json', 'curation/mechanics-decisions.json',
         'tools/curation/mechanics-extractor.ts', 'tools/curation/mechanics.mjs', 'tools/curation/ancestry-extractor.ts']) {
         await mkdir(dirname(resolve(root, path)), { recursive: true }); await copyFile(path, resolve(root, path));
       }

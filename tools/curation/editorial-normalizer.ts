@@ -1,3 +1,5 @@
+import { assertSafeArtifact } from './privacy.mjs';
+import { redactBuyerLines, hasBuyerData, sanitizeArtifact } from './privacy.mjs';
 import { createHash } from 'node:crypto';
 import { readFile, writeFile, mkdir, readdir } from 'node:fs/promises';
 import { dirname, resolve, relative } from 'node:path';
@@ -9,7 +11,6 @@ import { sourceLines } from './ancestry-extractor';
 
 const sha = (value: string | Buffer) => createHash('sha256').update(value).digest('hex');
 const LIGATURES: Record<string, string> = { 'ﬀ': 'ff', 'ﬁ': 'fi', 'ﬂ': 'fl', 'ﬃ': 'ffi', 'ﬄ': 'ffl', 'ﬅ': 'st', 'ﬆ': 'st' };
-const watermark = /^[\p{L}][\p{L}.'’ -]{1,100}\s+\(order #\d{4,}\)\s*$/u;
 const numberTokens = (text: string) => text.match(/[+\-−–]?\d+(?:[.,/]\d+)?/g) ?? [];
 const REPORT = 'curation/reports/editorial-normalization.json';
 const CHANGES = 'curation/normalization/changes.jsonl', DIAGNOSTICS = 'curation/normalization/diagnostics.jsonl', OVERLAYS = 'curation/normalization/overlays.jsonl';
@@ -17,7 +18,7 @@ const CHANGES = 'curation/normalization/changes.jsonl', DIAGNOSTICS = 'curation/
 export const LineChangeSchema = z.object({
   schemaVersion: z.literal(1), id: z.string().min(1), path: z.string().min(1), inputSha256: z.string().regex(/^[a-f0-9]{64}$/),
   line: z.number().int().positive(), sourceByteOffset: z.number().int().nonnegative(),
-  before: z.string(), after: z.string(), eol: z.enum(['', '\n', '\r\n', '\r']),
+  before: z.string(), beforeSha256: Sha256.optional(), after: z.string(), eol: z.enum(['', '\n', '\r\n', '\r']),
   rules: z.array(z.enum(['expand-latin-ligatures', 'remove-buyer-watermark-line'])).min(1),
   occurrences: z.number().int().positive(), originalCodeUnitColumns: z.array(z.number().int().positive()),
   responsible: z.literal('Codex / deterministic editorial policy 1.0.0'), reason: z.string().min(1),
@@ -37,11 +38,19 @@ export const NormalizationOverlaySchema = z.object({
 function records(text: string): Line[] { return sourceLines(text).map(l => ({ ...l, eol: l.raw.slice(l.text.length) })); }
 
 /** Replays only exact recorded line substitutions; neither forward nor reverse accepts changed context. */
-export function replayChanges(text: string, changesInput: unknown[], reverse = false) {
+export function replayChanges(text: string, changesInput: unknown[], reverse = false, originalText?: string) {
   const changes = changesInput.map(c => LineChangeSchema.parse(c)), lines = records(text), seen = new Set<number>();
   for (const c of changes) {
     if (seen.has(c.line)) throw new Error('Duplicate line change'); seen.add(c.line);
-    const before = reverse ? c.after : c.before, after = reverse ? c.before : c.after;
+    let rawBefore = c.before;
+    if (c.beforeSha256) {
+      if (!c.rules.includes('remove-buyer-watermark-line') || c.before !== '[buyer watermark redacted]' || c.after !== '') throw new Error('Invalid redacted diff');
+      if (reverse && originalText === undefined) throw new Error('Local original required to reverse redacted diff');
+      if (originalText !== undefined && sha(originalText) !== c.inputSha256) throw new Error('Original revision mismatch');
+      rawBefore = reverse ? records(originalText!)[c.line - 1]?.text : lines[c.line - 1]?.text;
+      if (rawBefore === undefined || sha(rawBefore) !== c.beforeSha256) throw new Error('Diff context mismatch for redacted line');
+    }
+    const before = reverse ? c.after : rawBefore, after = reverse ? rawBefore : c.after;
     // A removed final watermark without an EOL leaves a virtual empty EOF line.
     if (reverse && c.line === lines.length + 1 && before === '' && c.eol === '') lines.push({ text: '', eol: '', raw: '' });
     const line = lines[c.line - 1];
@@ -57,7 +66,7 @@ export function normalizeDocument(text: string, path: string) {
   for (const l of lines) if (/^[\p{L}][\p{L}\s’'&-]{2,69}$/u.test(l.text.trim())) frequencies.set(l.text.trim(), (frequencies.get(l.text.trim()) ?? 0) + 1);
   const diagnostic = (kind: string, startLine: number, endLine: number, action: Diagnostic['action'], reason: string) => {
     diagnostics.push({ schemaVersion: 1, path, inputSha256: hash, kind, startLine, endLine, action,
-      snippet: lines.slice(startLine - 1, endLine).map(l => l.text).join('\n'), reason });
+      snippet: redactBuyerLines(lines.slice(startLine - 1, endLine).map(l => l.text).join('\n')), reason });
   };
   let fence: { char: string; length: number; line: number } | null = null, offset = 0;
   const inside: boolean[] = [];
@@ -74,12 +83,12 @@ export function normalizeDocument(text: string, path: string) {
     const ligatures = [...before.matchAll(/[ﬀﬁﬂﬃﬄﬅﬆ]/g)]; inventory.ligaturesObserved += ligatures.length;
     inventory.standardBulletsPreserved += (before.match(/[•◦▪]/g) ?? []).length;
     inventory.nonBreakingSpacesPreserved += (before.match(/\u00a0/g) ?? []).length;
-    if (payload && watermark.test(before)) {
+    if (hasBuyerData(before)) {
       after = ''; inventory.watermarksRemoved++;
       changes.push(LineChangeSchema.parse({ schemaVersion: 1, id: `norm:${sha(path).slice(0, 12)}:${hash}:${n}`, path, inputSha256: hash, line: n, sourceByteOffset: offset,
-        before, after, eol: line.eol, rules: ['remove-buyer-watermark-line'], occurrences: 1, originalCodeUnitColumns: [1],
+        before: '[buyer watermark redacted]', beforeSha256: sha(before), after, eol: line.eol, rules: ['remove-buyer-watermark-line'], occurrences: 1, originalCodeUnitColumns: [1],
         responsible: 'Codex / deterministic editorial policy 1.0.0', reason: 'Whole buyer watermark line inside a fenced payload; line ending retained. Order ID is not game data.' }));
-      diagnostic('buyer-watermark', n, n, 'normalized', 'Whole-line buyer/order pattern; raw input and reverse diff preserve the original.');
+      diagnostic('buyer-watermark', n, n, 'normalized', 'Buyer/order pattern redacted; reverse replay requires the licensed local original.');
     } else if (payload && ligatures.length) {
       after = before.replace(/[ﬀﬁﬂﬃﬄﬅﬆ]/g, c => LIGATURES[c]);
       if (JSON.stringify(numberTokens(before)) !== JSON.stringify(numberTokens(after))) throw new Error('Numeric token changed during typography normalization');
@@ -89,7 +98,6 @@ export function normalizeDocument(text: string, path: string) {
         responsible: 'Codex / deterministic editorial policy 1.0.0', reason: 'Expand only Latin presentation ligatures U+FB00–U+FB06; no general Unicode folding or reflow.' }));
       diagnostic('latin-ligature', n, n, 'normalized', 'Explicit Latin ligature expansion; numeric tokens unchanged.');
     } else if (ligatures.length) diagnostic('ligature-outside-payload', n, n, 'review-required', 'Metadata/editorial text preserved; automatic cleanup is limited to fenced payloads.');
-    if (!payload && watermark.test(before)) diagnostic('watermark-outside-payload', n, n, 'review-required', 'Buyer-like line outside a fenced payload; metadata/editorial text is preserved.');
     if (/\uFFFD|(?:Ã[\u0080-\u00ff])|â€|Â[\u0080-\u00ff]/u.test(before)) diagnostic('encoding-or-replacement-character', n, n, 'review-required', 'Possible character loss/mojibake; original bytes do not identify the intended character.');
     if (/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f\ue000-\uf8ff]/u.test(before)) diagnostic('control-or-private-glyph', n, n, 'review-required', 'Unknown/control/font glyph, possibly a bullet or extraction artifact; no guessed replacement.');
     if (/[\u00ad\u200b\u200c\u200d\u2060\ufeff]/u.test(before)) diagnostic('invisible-or-soft-hyphen', n, n, 'review-required', 'Invisible character preserved; removal could change a word boundary or identifier.');
@@ -116,7 +124,7 @@ export function normalizeDocument(text: string, path: string) {
     diagnostic('wrapped-prose-candidate', start + 1, i + 1, 'review-required', 'Possible prose wrapping; no reflow because column order and unit boundaries remain unreviewed.');
   }
   const normalizedText = normalizedLines.join('');
-  if (replayChanges(text, changes) !== normalizedText || replayChanges(normalizedText, changes, true) !== text) throw new Error('Normalization diff is not reversible');
+  if (replayChanges(text, changes) !== normalizedText || replayChanges(normalizedText, changes, true, text) !== text) throw new Error('Normalization diff is not reversible');
   return { path, inputSha256: hash, normalizedText, originalLines: lines.map(l => l.raw), normalizedLines, changes, diagnostics, inventory };
 }
 
@@ -153,13 +161,13 @@ export async function buildArtifacts(root: string) {
     const doc = documents.get(source.path);
     if (!doc || source.inputSha256 !== doc.inputSha256 || source.startLine === null || source.endLine === null) throw new Error(`Stale/missing source evidence: ${reference.path}:${reference.record}`);
     const before = doc.originalLines.slice(source.startLine - 1, source.endLine).join('');
-    if (before !== originalText) throw new Error(`Original range mismatch: ${reference.path}:${reference.record}`);
+    if (redactBuyerLines(before) !== originalText) throw new Error(`Original range mismatch: ${reference.path}:${reference.record}`);
     const changes = doc.changes.filter(c => c.line >= source.startLine! && c.line <= source.endLine!);
     const spanKey = `${source.path}:${source.startLine}:${source.endLine}`; seenSpans.add(spanKey);
     if (!changes.length) return;
     const normalizedText = doc.normalizedLines.slice(source.startLine - 1, source.endLine).join('');
     const id = `overlay:${sha(JSON.stringify([reference, source.inputSha256, source.startLine, source.endLine]))}`;
-    overlays.push(NormalizationOverlaySchema.parse({ schemaVersion: 1, id, origin, reference, subjectId, entityId, source,
+    overlays.push(NormalizationOverlaySchema.parse({ schemaVersion: 1, id, origin, reference, subjectId, entityId, source: sanitizeArtifact(source),
       originalTextSha256: sha(originalText), normalizedTextSha256: sha(normalizedText), normalizedText,
       normalizationDiffRef: `${OVERLAYS}#${id}`, changeRefs: { path: CHANGES, changeIds: changes.map(c => c.id) }, status: 'editorial-only', appliedToStaging: false }));
   }
@@ -183,10 +191,10 @@ export async function buildArtifacts(root: string) {
   artifacts.set(CHANGES, jsonl(allChanges)); artifacts.set(DIAGNOSTICS, jsonl(allDiagnostics)); artifacts.set(OVERLAYS, jsonl(overlays));
   const counts = (values: string[]) => Object.fromEntries([...new Set(values)].sort().map(value => [value, values.filter(v => v === value).length]));
   const report = { schemaVersion: 1, task: 'CUR-012', reviewDate: manifest.reviewDate,
-    policy: { version: '1.0.0', automaticRules: ['expand-latin-ligatures', 'remove-buyer-watermark-line'], fencedPayloadOnly: true,
+    policy: { version: '1.1.0', automaticRules: ['expand-latin-ligatures', 'remove-buyer-watermark-line'], fencedPayloadOnly: false, buyerDataPolicy: 'redacted-diff-local-original-required-v1',
       lineEndingsPreserved: true, rawInputsModified: false, stagingModified: false, mechanicalReviewPromoted: false,
       columns: 'UTF-16 code units, base 1; sourceByteOffset counts original UTF-8 bytes from zero.' },
-    tool: { sha256: sha(await read('tools/curation/editorial-normalizer.ts')), runnerSha256: sha(await read('tools/curation/normalize.mjs')), lineUtilitySha256: sha(await read('tools/curation/ancestry-extractor.ts')) },
+    tool: { privacyPolicySha256: sha(await read('tools/curation/privacy.mjs')), sha256: sha(await read('tools/curation/editorial-normalizer.ts')), runnerSha256: sha(await read('tools/curation/normalize.mjs')), lineUtilitySha256: sha(await read('tools/curation/ancestry-extractor.ts')) },
     inputManifestSha256: sha(manifestBytes), inputRefs,
     counts: { documents: documents.size, changedLines: allChanges.length, changesByRule: counts(allChanges.flatMap(c => c.rules)),
       ligaturesExpanded: [...documents.values()].reduce((sum, d) => sum + d.inventory.ligaturesExpanded, 0), watermarksRemoved: [...documents.values()].reduce((sum, d) => sum + d.inventory.watermarksRemoved, 0),
@@ -201,7 +209,7 @@ export async function buildArtifacts(root: string) {
 export async function main(args: string[], root = process.cwd()) {
   if (args.length !== 1 || !['--write', '--check'].includes(args[0])) throw new Error('Use --write or --check');
   const { artifacts, report } = await buildArtifacts(root);
-  for (const [path, output] of artifacts) {
+  for (const [path, output] of artifacts) { assertSafeArtifact(path, output);
     if (args[0] === '--write') { await mkdir(dirname(resolve(root, path)), { recursive: true }); await writeFile(resolve(root, path), output); }
     else if (await readFile(resolve(root, path), 'utf8') !== output) throw new Error(`Normalization artifact changed: ${path}`);
   }

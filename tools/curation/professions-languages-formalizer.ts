@@ -1,3 +1,4 @@
+import { assertSafeArtifact } from './privacy.mjs';
 import {createHash} from 'node:crypto';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {resolve,dirname} from 'node:path';
@@ -120,7 +121,7 @@ export async function buildArtifacts(root:string){
 export async function main(args:string[],root=process.cwd()){
   if(args.length!==1||!['--write','--check'].includes(args[0]))throw new Error('Use --write or --check');
   const r=await buildArtifacts(root);
-  for(const [path,data]of r.artifacts){if(args[0]==='--check'){if(await readFile(resolve(root,path),'utf8')!==data)throw new Error(`Profession/language artifact changed: ${path}`);}
+  for(const [path,data]of r.artifacts){ assertSafeArtifact(path, data);if(args[0]==='--check'){if(await readFile(resolve(root,path),'utf8')!==data)throw new Error(`Profession/language artifact changed: ${path}`);}
     else{await mkdir(dirname(resolve(root,path)),{recursive:true});await writeFile(resolve(root,path),data);}}
   console.log(`Professions/languages: ${r.report.counts.tableOptions} table options + ${r.report.counts.directOptions} direct grant; runtime disabled. ${args[0]}`);
 }

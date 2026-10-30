@@ -1,3 +1,4 @@
+import { assertSafeArtifact } from './privacy.mjs';
 import { createHash } from 'node:crypto';
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { resolve, dirname } from 'node:path';
@@ -84,7 +85,7 @@ export async function buildArtifacts(root: string) {
 export async function main(args: string[], root = process.cwd()) {
   if (args.length !== 1 || !['--write', '--check'].includes(args[0])) throw new Error('Use --write or --check');
   const result = await buildArtifacts(root);
-  for (const [path, data] of result.artifacts) {
+  for (const [path, data] of result.artifacts) { assertSafeArtifact(path, data);
     if (args[0] === '--check') { if (await readFile(resolve(root, path), 'utf8') !== data) throw new Error(`Human ancestry artifact changed: ${path}`); }
     else { await mkdir(dirname(resolve(root, path)), { recursive: true }); await writeFile(resolve(root, path), data); }
   }

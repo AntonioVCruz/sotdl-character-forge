@@ -52,3 +52,7 @@ Aprovadas pelo **dono do repo** com parecer do **Curador STD**. Registrar na iss
 - Pack Human L0: [#7](https://github.com/AntonioVCruz/sotdl-character-forge/issues/7)
 - Stub ancestry-only: [#11](https://github.com/AntonioVCruz/sotdl-character-forge/pull/11)
 - CUR-031 / CUR-041
+
+## Aplica??o da limpeza S0 (#1)
+
+A entrega de 2026-10-30 mant?m localmente tamb?m os relat?rios completos e o piloto, por misturarem metadados com transcri??es e evid?ncias extensas. Esta ? a aplica??o conservadora da tabela: somente uma proje??o auditada sem esses excertos poder? voltar ao git. `curation/reconciliation/` permanece como metadados. Ver [entrega e reprodu??o](entrega-higiene-pii-s0.md) e [hist?rico separado](higiene-historico-git.md).
