@@ -111,7 +111,7 @@ describe('CUR-008 ancestry extraction', () => {
   it('detects modified outputs and changed input in a scratch workspace without overwriting them during --check', async () => {
     const root = await mkdtemp(join(tmpdir(), 'sotdl-ancestries-'));
     try {
-      for (const path of [INPUT, 'curation/input-manifest.json', 'curation/sources.json', 'curation/source-aliases.json', 'curation/ancestry-ledger.json', 'tools/curation/ancestry-extractor.ts', 'tools/curation/ancestries.mjs']) {
+      for (const path of ['tools/curation/privacy.mjs', INPUT, 'curation/input-manifest.json', 'curation/sources.json', 'curation/source-aliases.json', 'curation/ancestry-ledger.json', 'tools/curation/ancestry-extractor.ts', 'tools/curation/ancestries.mjs']) {
         await mkdir(dirname(resolve(root, path)), { recursive: true }); await copyFile(path, resolve(root, path));
       }
       await main(['--write'], root); await main(['--check'], root);

@@ -28,6 +28,9 @@ jobs:
 
       # vitest run. Arquivos que leem rules/*.md ficam de fora quando o
       # corpus gitignored não está no checkout. Ver README, «Gate de CI».
+      - name: Content privacy
+        run: npm run curation:privacy
+
       - name: Test
         run: npm test
 

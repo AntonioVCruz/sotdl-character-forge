@@ -1,3 +1,4 @@
+import { assertSafeArtifact } from './privacy.mjs';
 import {createHash} from 'node:crypto';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {resolve,dirname} from 'node:path';
@@ -159,7 +160,7 @@ export async function buildArtifacts(root:string){
 export async function main(args:string[],root=process.cwd()){
   if(args.length!==1||!['--write','--check'].includes(args[0]))throw new Error('Use --write or --check');
   const built=await buildArtifacts(root);
-  for(const[path,content]of built.artifacts){if(args[0]==='--check'){if(await readFile(resolve(root,path),'utf8')!==content)throw new Error(`Interesting Things artifact changed: ${path}`);}
+  for(const[path,content]of built.artifacts){ assertSafeArtifact(path, content);if(args[0]==='--check'){if(await readFile(resolve(root,path),'utf8')!==content)throw new Error(`Interesting Things artifact changed: ${path}`);}
     else{await mkdir(dirname(resolve(root,path)),{recursive:true});await writeFile(resolve(root,path),content);}}
   console.log(`Interesting Things: ${built.report.counts.totalOutcomes} positions, supplement default, ${built.report.counts.mappingReviewOutcomes} mapping reviews; runtime disabled. ${args[0]}`);
 }

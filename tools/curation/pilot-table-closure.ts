@@ -1,3 +1,4 @@
+import { assertSafeArtifact } from './privacy.mjs';
 import {createHash} from 'node:crypto';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {resolve,dirname} from 'node:path';
@@ -147,7 +148,7 @@ export async function buildArtifacts(root:string){
 export async function main(args:string[],root=process.cwd()){
   if(args.length!==1||!['--write','--check'].includes(args[0]))throw new Error('Use --write or --check');
   const built=await buildArtifacts(root);
-  for(const[path,text]of built.artifacts){if(args[0]==='--check'){if(await readFile(resolve(root,path),'utf8')!==text)throw new Error(`Pilot table closure artifact changed: ${path}`);}
+  for(const[path,text]of built.artifacts){ assertSafeArtifact(path, text);if(args[0]==='--check'){if(await readFile(resolve(root,path),'utf8')!==text)throw new Error(`Pilot table closure artifact changed: ${path}`);}
     else{await mkdir(dirname(resolve(root,path)),{recursive:true});await writeFile(resolve(root,path),text);}}
   console.log(`Pilot tables: ${built.report.counts.tables} tables, ${built.report.counts.completeNumericStreams}/${built.report.counts.streams} numeric streams covered, ${built.report.counts.associationReviewTables} association reviews; official generation disabled. ${args[0]}`);
 }

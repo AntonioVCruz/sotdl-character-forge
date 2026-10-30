@@ -1,3 +1,4 @@
+import { sanitizeArtifact } from '../tools/curation/privacy.mjs';
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { copyFile, mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
@@ -10,6 +11,8 @@ import { sourceLines } from '../tools/curation/ancestry-extractor';
 
 const sha = (value: string | Buffer) => createHash('sha256').update(value).digest('hex');
 const json = (path: string) => JSON.parse(readFileSync(path, 'utf8'));
+const orderId = ['1234', '5678'].join('');
+const buyer = ['Synthetic Buyer', `(order #${orderId})`].join(' ');
 const payload = (text: string) => '```text\n' + text + '\n```\n';
 
 describe('CUR-012 reversible editorial normalization', () => {
@@ -22,24 +25,24 @@ describe('CUR-012 reversible editorial normalization', () => {
     expect(replayChanges(result.normalizedText, result.changes, true)).toBe(payload(raw));
     expect(normalizeDocument(result.normalizedText, 'rules/test.md').changes).toEqual([]);
   });
-  it('removes only full buyer watermark lines inside fences while retaining line endings and raw metadata', () => {
-    const text = 'Michael Salas (order #9359969)\r\n# Metadata ﬁ\r\n````text\r\nMichael Salas (order #9359969)\r\nRoll order #9359969 for a result.\r\n```\r\nBody\r\n````\r\n';
+  it('redacts buyer lines inside and outside fences while retaining line endings and game text', () => {
+    const text = `${buyer}\r\n# Metadata ﬁ\r\n\`\`\`\`text\r\n${buyer}\r\nRoll order #${orderId} for a result.\r\n\`\`\`\r\nBody\r\n\`\`\`\`\r\n`;
     const result = normalizeDocument(text, 'rules/test.md');
-    expect(result.inventory.watermarksRemoved).toBe(1);
-    expect(result.normalizedText).toContain('# Metadata ﬁ\r\n````text\r\n\r\nRoll order #9359969 for a result.');
-    expect(result.normalizedText.startsWith('Michael Salas (order #9359969)\r\n')).toBe(true);
+    expect(result.inventory.watermarksRemoved).toBe(2);
+    expect(result.normalizedText).toContain(`# Metadata ﬁ\r\n\`\`\`\`text\r\n\r\nRoll order #${orderId} for a result.`);
+    expect(result.normalizedText.startsWith('\r\n')).toBe(true);
     expect(sourceLines(result.normalizedText)).toHaveLength(sourceLines(text).length);
-    expect(replayChanges(result.normalizedText, result.changes, true)).toBe(text);
-    expect(result.diagnostics.some(d => d.kind === 'watermark-outside-payload')).toBe(true);
+    expect(replayChanges(result.normalizedText, result.changes, true, text)).toBe(text);
+    expect(result.changes.every(c => c.beforeSha256)).toBe(true);
   });
   it('reverses EOF removal and guards Unicode column/byte offsets, mixed line endings and diff context', () => {
     const text = '```text\r\n😀 ﬃ 3d6\rﬁ\n```';
     const result = normalizeDocument(text, 'rules/test.md');
     expect(result.changes[0].sourceByteOffset).toBe(Buffer.byteLength('```text\r\n'));
     expect(result.changes[0].originalCodeUnitColumns).toEqual([4]);
-    expect(replayChanges(result.normalizedText, result.changes, true)).toBe(text);
-    const change = { ...result.changes[0], line: 1, before: 'Michael Salas (order #9359969)', after: '', eol: '', rules: ['remove-buyer-watermark-line'] };
-    expect(replayChanges('', [change], true)).toBe(change.before);
+    expect(replayChanges(result.normalizedText, result.changes, true, text)).toBe(text);
+    const change = { ...result.changes[0], line: 1, before: '[buyer watermark redacted]', beforeSha256: sha(buyer), inputSha256: sha(buyer), after: '', eol: '', rules: ['remove-buyer-watermark-line'] };
+    expect(replayChanges('', [change], true, buyer)).toBe(buyer);
     expect(() => replayChanges('tampered', result.changes)).toThrow(/context mismatch/);
     expect(() => replayChanges(text, [result.changes[0], result.changes[0]])).toThrow(/Duplicate/);
     expect(() => normalizeDocument('```text\nnever closed', 'rules/test.md')).toThrow(/Unclosed/);
@@ -60,7 +63,7 @@ describe('CUR-012 reversible editorial normalization', () => {
       const bytes = readFileSync(file.path); expect(sha(bytes)).toBe(file.sha256);
       const original = bytes.toString('utf8'), result = normalizeDocument(original, file.path);
       expect(replayChanges(original, result.changes)).toBe(result.normalizedText);
-      expect(Buffer.from(replayChanges(result.normalizedText, result.changes, true)).equals(bytes)).toBe(true);
+      expect(Buffer.from(replayChanges(result.normalizedText, result.changes, true, original)).equals(bytes)).toBe(true);
       expect(normalizeDocument(result.normalizedText, file.path).changes).toEqual([]);
       const watermarkLines = new Set(result.changes.filter(c => c.rules.includes('remove-buyer-watermark-line')).map(c => c.line));
       const withoutWatermarks = sourceLines(original).map((l, i) => watermarkLines.has(i + 1) ? l.raw.slice(l.text.length) : l.raw).join('');
@@ -99,18 +102,19 @@ describe('CUR-012 reversible editorial normalization', () => {
   it('keeps malformed/stale input and tampered output from overwriting the derived corpus', async () => {
     const root = await mkdtemp(join(tmpdir(), 'sotdl-normalization-'));
     try {
-      const path = 'rules/a.md', sample = payload('ﬁ 3d6\nMichael Salas (order #9359969)'), lines = sourceLines(sample);
+      const path = 'rules/a.md', sample = payload(`ﬁ 3d6\n${buyer}`), lines = sourceLines(sample);
       const manifest = json('curation/input-manifest.json'), entry = json('curation/examples/staging.json');
       const file = { ...manifest.files[0], path, bytes: Buffer.byteLength(sample), lines: lines.length, sha256: sha(sample), revisionId: `sha256:${sha(sample)}`, title: '```text' };
       manifest.files = [file];
       entry.originalText = lines.slice(1, 3).map(l => l.raw).join('');
       Object.assign(entry.review.evidence[0], { path, inputSha256: sha(sample), startLine: 2, endLine: 3, excerpt: lines.slice(1, 3).map(l => l.text).join('\n') });
       entry.review.evidence[0].excerptSha256 = sha(entry.review.evidence[0].excerpt);
+      Object.assign(entry, sanitizeArtifact(entry));
       for (const dir of ['rules', 'curation/entries/fixture', 'curation/segments', 'tools/curation']) await mkdir(resolve(root, dir), { recursive: true });
       await writeFile(resolve(root, path), sample); await writeFile(resolve(root, 'curation/input-manifest.json'), JSON.stringify(manifest));
       const stage = resolve(root, 'curation/entries/fixture/rule.jsonl'); await writeFile(stage, JSON.stringify(entry) + '\n');
       await writeFile(resolve(root, 'curation/segments/mechanics.jsonl'), '');
-      for (const file of ['tools/curation/editorial-normalizer.ts', 'tools/curation/normalize.mjs', 'tools/curation/ancestry-extractor.ts']) await copyFile(file, resolve(root, file));
+      for (const file of ['tools/curation/privacy.mjs', 'tools/curation/editorial-normalizer.ts', 'tools/curation/normalize.mjs', 'tools/curation/ancestry-extractor.ts']) await copyFile(file, resolve(root, file));
       await main(['--write'], root); await main(['--check'], root);
       const target = resolve(root, 'curation/normalized/a.md'); await writeFile(target, 'tampered\n');
       await expect(main(['--check'], root)).rejects.toThrow(/artifact changed/); expect(await readFile(target, 'utf8')).toBe('tampered\n');
