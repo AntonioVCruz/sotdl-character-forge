@@ -32,7 +32,7 @@ Duas compilações do staging local e o check produziram:
 |---|---|
 | Core | `cc819c55e162b357f4fccf333b346fa1f2f19d263c004fcf9da806a2f8559fe5` |
 | Only Human | `9d1ca0023ffb45e53c8df122e3e4790491e6eb172410ee9408a96abe4e067cd8` |
-| Conjunto ordenado de caminhos/hashes | `4fe3e568715b760bb5bae44a8b6df298b77dab53dc0c1b0d574b3e9152c57b44` |
+| Conjunto original de packs, antes da atividade 2 | `4fe3e568715b760bb5bae44a8b6df298b77dab53dc0c1b0d574b3e9152c57b44` |
 
 Os testes públicos em `tests/curation-pack-compiler.test.ts` usam staging sintético, sem livros: repetição, variação da ordem das chaves/registros/receita, mudança de dados projetados, exclusão de evidências, rejeição de entradas inválidas e persistência/check sem sobrescrever versões existentes.
 
@@ -41,7 +41,7 @@ Validação local: nove testes novos e 266 testes completos aprovados com `node 
 ## Atividades seguintes
 
 - [x] 1. Compilação determinística desta projeção Human L0.
-- [ ] 2. Índices temáticos com referências exatas.
+- [x] 2. [Índice temático com referências exatas](entrega-indices-human-l0.md), acrescentado posteriormente; o hash do conjunto agora inclui o índice e os hashes dos packs permanecem iguais.
 - [ ] 3. Relatório de inclusões, exclusões, pendências e hashes de insumos.
 - [ ] 4. Validação integrada da fatia e dependência Core → Only Human.
 

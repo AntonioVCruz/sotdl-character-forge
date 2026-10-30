@@ -6,6 +6,8 @@ import { PackSchema, parsePack, validatePack } from '../../packages/catalog';
 import { StagingEntrySchema } from '../../packages/curation/contracts';
 import { SourceRegistrySchema } from '../../packages/curation/registries';
 import { assertSafeArtifact } from './privacy.mjs';
+import { canonicalJson, compareStrings as compare } from './canonical-json';
+import { buildThematicIndexes } from './thematic-indexes';
 
 const CORE = 'sotdl:shadow-of-the-demon-lord-core';
 const ONLY_HUMAN = 'sotdl:only-human';
@@ -24,22 +26,9 @@ function checked<T>(schema: z.ZodType<T>, value: unknown, location: string): T {
   if (!result.success) throw new Error(`${location}: invalid input.`);
   return result.data;
 }
-const compare = (a: string, b: string) => a < b ? -1 : a > b ? 1 : 0;
 const sha256 = (text: string) => createHash('sha256').update(text, 'utf8').digest('hex');
 
-/** Sort object keys by code unit, without locale dependence; arrays retain their meaning. */
-function canonicalJson(input: unknown): string {
-  function sorted(value: unknown): unknown {
-    if (Array.isArray(value)) return value.map(sorted);
-    if (value !== null && typeof value === 'object') {
-      return Object.fromEntries(Object.entries(value).sort(([a], [b]) => compare(a, b)).map(([key, child]) => [key, sorted(child)]));
-    }
-    return value;
-  }
-  return JSON.stringify(sorted(input), null, 2) + '\n';
-}
-
-/** CUR-031 activity 1: metadata projection only; no evidence, mechanics or review promotion. */
+/** CUR-031 activities 1/2: metadata packs and exact indexes; no review promotion or mechanics. */
 export function compileHumanL0(recipeInput: unknown, registryInput: unknown, entries: unknown[]) {
   const recipe = checked(RecipeSchema, recipeInput, 'Compilation recipe');
   const registry = checked(SourceRegistrySchema, registryInput, 'Source registry');
@@ -81,6 +70,11 @@ export function compileHumanL0(recipeInput: unknown, registryInput: unknown, ent
     if (validatePack(pack, packs).some(d => d.severity === 'error')) throw new Error('Compiled pack failed catalog validation.');
     const path = `content-packs/${encodeURIComponent(pack.source.id)}/${pack.version}/pack.json`;
     const text = canonicalJson(pack);
+    assertSafeArtifact(path, text);
+    artifacts.set(path, text);
+  }
+  for (const [path, index] of buildThematicIndexes(packs)) {
+    const text = canonicalJson(index);
     assertSafeArtifact(path, text);
     artifacts.set(path, text);
   }
@@ -132,8 +126,8 @@ export async function main(args: string[], root = process.cwd()) {
   if (!location || location === '..' || location.startsWith(`..${sep}`) || isAbsolute(location))
     throw new Error('Compilation output must be a directory inside tmp/.');
   const result = await buildArtifacts(root);
-  // Preflight all destinations before writing anything; never mutate an existing pack/version.
-  const missing: [string, string][] = [];
+  // Preflight all destinations before writing; packs are immutable, indexes follow the recipe.
+  const writes: [string, string, boolean][] = [];
   for (const [path, text] of result.artifacts) {
     const target = resolve(output, path);
     await rejectOutputLinks(root, target);
@@ -141,13 +135,19 @@ export async function main(args: string[], root = process.cwd()) {
     try { current = await readFile(target, 'utf8'); }
     catch (error) {
       if ((error as NodeJS.ErrnoException).code !== 'ENOENT' || args[0] === '--check') throw error;
-      missing.push([target, text]); continue;
+      writes.push([target, text, false]); continue;
     }
-    if (current !== text) throw new Error(`Compiled artifact differs: ${path}. Choose a new version or a separate output directory.`);
+    if (current !== text) {
+      if (args[0] === '--write' && path.startsWith('compendios/')) writes.push([target, text, true]);
+      else if (path.startsWith('compendios/')) throw new Error(`Compiled index differs: ${path}. Rebuild with --write.`);
+      else throw new Error(`Compiled artifact differs: ${path}. Choose a new version or a separate output directory.`);
+    }
   }
-  for (const [target, text] of missing) {
+  // Finish pack writes before publishing any index that references them.
+  writes.sort(([a], [b]) => Number(a.endsWith('.index.json')) - Number(b.endsWith('.index.json')));
+  for (const [target, text, replace] of writes) {
     await mkdir(dirname(target), { recursive: true });
-    await writeFile(target, text, { encoding: 'utf8', flag: 'wx' });
+    await writeFile(target, text, { encoding: 'utf8', flag: replace ? 'w' : 'wx' });
   }
   for (const hash of result.hashes) console.log(`${hash.sha256}  ${hash.path}`);
   console.log(`Human L0 metadata compilation SHA256: ${result.sha256}; ${args[0]}`);
