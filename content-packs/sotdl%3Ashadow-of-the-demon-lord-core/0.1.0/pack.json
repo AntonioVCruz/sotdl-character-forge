@@ -1,0 +1,25 @@
+{
+  "packId": "sotdl-core-human-l0",
+  "version": "0.1.0",
+  "system": "sotdl",
+  "fictionalData": false,
+  "source": {
+    "id": "sotdl:shadow-of-the-demon-lord-core",
+    "title": "Shadow of the Demon Lord Core",
+    "sourcePage": null,
+    "status": "needs-review"
+  },
+  "dependencies": [],
+  "entities": [
+    {
+      "id": "sotdl:shadow-of-the-demon-lord-core:ancestry:human:default",
+      "kind": "ancestry",
+      "name": "Human",
+      "sourceRef": "sotdl:shadow-of-the-demon-lord-core",
+      "sourcePage": null,
+      "variantKey": "default",
+      "revision": "0.1.0",
+      "status": "needs-review"
+    }
+  ]
+}
