@@ -7,6 +7,7 @@ import { CharacterSheet } from '../web/CharacterSheet';
 import { PrintSheet } from '../web/PrintSheet';
 import { SessionPanel } from '../web/SessionPanel';
 import { EquipmentPanel } from '../web/EquipmentPanel';
+import { ErrorBoundary, onCaughtError } from '../web/ErrorBoundary';
 import { errorMessage } from '../web/errors';
 import '../web/style.css';
 
@@ -66,7 +67,7 @@ function OfflineSheet({ initial }: { initial: StandalonePayload }) {
 }
 try {
   const initial = parseStandalonePayload(JSON.parse(document.getElementById('standalone-state')?.textContent ?? 'null'));
-  createRoot(document.getElementById('root')!).render(<OfflineSheet initial={initial} />);
+  createRoot(document.getElementById('root')!, { onCaughtError }).render(<ErrorBoundary scope="ficha"><OfflineSheet initial={initial} /></ErrorBoundary>);
 } catch (e) {
   const root = document.getElementById('root');
   if (root) root.textContent = `Não foi possível abrir esta ficha: ${errorMessage(e)}`;

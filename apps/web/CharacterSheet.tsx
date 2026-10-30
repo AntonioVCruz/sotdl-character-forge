@@ -1,11 +1,12 @@
 import type { Snapshot } from '../../packages/catalog';
 import { calculateCharacter, strategyLabels, type Character } from '../../packages/character-generator';
+import { Stats } from './Stats';
 
 export function CharacterSheet({ character, catalog, title, calculated }: { character: Character; catalog: Snapshot; title: string; calculated?: ReturnType<typeof calculateCharacter> }) {
   const view = calculated ?? calculateCharacter(character, catalog);
   return <section aria-label={title} className="sheet"><h3>{title}</h3><p><strong>{character.name || 'Personagem sem nome'}</strong> · nível {character.level} · fictício</p>
     <p className="badge">{view.fullyResolved ? 'Personagem demonstrativo completo' : 'Rascunho com pendências'}</p>
-    <dl>{Object.entries(view.stats).map(([key,value]) => <div key={key}><dt>{key}</dt><dd>{value}</dd></div>)}</dl>
+    <Stats stats={view.stats} />
     <ul>{Object.entries(view.choices).map(([slot, e]) => <li key={slot}>{slot}: {e!.resolution.label} — {strategyLabels[e!.strategy]}</li>)}</ul>
     {view.equipment && <p>Equipamento da ficha: <strong>{view.equipment.status}</strong> · {view.equipment.name} · quantidade {view.equipment.quantity}.{view.equipment.reason && ` ${view.equipment.reason}`}</p>}
     {view.spell && <section aria-label="Grimório demonstrativo"><h4>Magia aprendida</h4><p><strong>{view.spell.name}</strong> · rank {view.spell.rank ?? '?'} · {view.spell.tradition}</p>

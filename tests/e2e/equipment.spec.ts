@@ -24,7 +24,7 @@ function fixture() {
 }
 const panel = (p: Page) => p.getByRole('region', { name: 'Inventário e equipamento', exact: true });
 const sheet = (p: Page) => p.getByRole('region', { name: 'Ficha confirmada', exact: true });
-const defense = (p: Page) => sheet(p).locator('dl > div').filter({ has: p.locator('dt', { hasText: /^defense$/ }) }).locator('dd');
+const defense = (p: Page) => sheet(p).locator('dl > div').filter({ has: p.locator('dt', { hasText: /^Defense$/ }) }).locator('dd');
 async function json(p: Page) {
   const waiting = p.waitForEvent('download'); await p.getByRole('button', { name: 'Exportar personagem JSON' }).click();
   return JSON.parse(await readFile((await (await waiting).path())!, 'utf8'));
