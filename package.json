@@ -28,7 +28,9 @@
     "curation:interesting-things": "node tools/curation/interesting-things.mjs --write",
     "curation:pilot-items": "node tools/curation/pilot-items.mjs --write",
     "curation:pilot-tables": "node tools/curation/pilot-tables.mjs --write",
-    "curation:privacy": "node tools/curation/privacy-check.mjs"
+    "curation:privacy": "node tools/curation/privacy-check.mjs",
+    "curation:compile": "node tools/curation/compile-packs.mjs --write",
+    "curation:compile:check": "node tools/curation/compile-packs.mjs --check"
   },
   "dependencies": {
     "react": "19.2.0",
