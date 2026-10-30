@@ -139,6 +139,7 @@ export type SlotView = {
   cardinality: { min: number; max: number };
   selectedIds: string[];
   preview?: { label: string; confirmed: false };
+  confirmReason?: string;
   consequences?: { status: 'applied' | 'needs-review'; items: string[] };
   rollTrace?: RollTrace;
   locked: boolean;
@@ -430,8 +431,9 @@ export function requiredPendencias(state: L0State): { step: L0StepId; title: str
     reason: pendingReason(state, key),
   }));
   for (const key of SLOT_KEYS) {
-    if (!state.slots[key].needsReviewReason || pending.some(item => item.title === META[key].title)) continue;
-    pending.push({ step: META[key].step, title: META[key].title, reason: state.slots[key].needsReviewReason });
+    const reason = (isShown(state, key) ? confirmationBlockReason(state, key) : undefined) ?? state.slots[key].needsReviewReason;
+    if (!reason || pending.some(item => item.title === META[key].title)) continue;
+    pending.push({ step: META[key].step, title: META[key].title, reason });
   }
   return pending;
 }
@@ -445,7 +447,6 @@ export function sortBlockReason(state: L0State, key: SlotKey): string | undefine
   const blocked = blockedReason(state, key);
   if (blocked) return blocked;
   if (!state.seed.trim()) return 'Informe uma seed. Esta sessão não traz seed pronta.';
-  if (state.mode === 'manual') return 'Modo manual: só escolha na lista. Sortear fica desligado.';
   if (key === 'attribute-random') return undefined;
   if (!optionsFor(state, key).some(option => option.eligible)) return 'Nenhuma opção elegível para sortear.';
   if (!state.allowUniform) return 'Sorteio uniforme entre opções válidas (não oficial) não está autorizado.';
@@ -460,10 +461,28 @@ function viewStrategy(slot: SlotData): Strategy {
   return slot.previewStrategy ?? slot.confirmedStrategy ?? 'pending';
 }
 
+/** Recomputed from the current context; an old UI callback cannot approve an obsolete proposal. */
+function confirmationBlockReason(state: L0State, key: SlotKey): string | undefined {
+  const slot = state.slots[key];
+  if (!slot.previewIds) return undefined;
+  if (slot.suspendedReason) return slot.suspendedReason;
+  if (!isShown(state, key)) return 'Esta prévia pertence a um modo de atributos que não está ativo.';
+  const blocked = dataGap(state, key) ?? blockedReason(state, key);
+  if (blocked) return blocked;
+  const card = cardinality(state, key);
+  if (slot.previewIds.length < card.min || slot.previewIds.length > card.max || new Set(slot.previewIds).size !== slot.previewIds.length)
+    return 'A quantidade de escolhas desta prévia não é válida no contexto atual.';
+  const options = optionsFor(state, key);
+  if (slot.previewIds.some(id => !options.some(option => option.id === id && option.eligible)))
+    return 'A prévia deixou de ser elegível. Descarte e prepare uma nova escolha.';
+  return undefined;
+}
+
 function viewState(state: L0State, key: SlotKey): SlotUiState {
   const slot = state.slots[key];
   const card = cardinality(state, key);
   if (slot.suspendedReason) return 'suspended';
+  if (confirmationBlockReason(state, key)) return 'needs-review';
   if (slot.needsReviewReason && !slot.previewIds?.length) return 'needs-review';
   if (slot.previewIds?.length) return 'preview';
   if (slot.confirmedIds.length > 0 && slot.confirmedIds.length < card.min) return 'partial';
@@ -480,10 +499,12 @@ export function viewSlot(state: L0State, key: SlotKey): SlotView {
   const selectedIds = slot.previewIds ?? slot.confirmedIds;
   const rollTrace = slot.previewTrace ?? slot.confirmedTrace;
   const items: string[] = [];
+  const confirmReason = confirmationBlockReason(state, key);
+  if (confirmReason) items.push(confirmReason);
   if (slot.needsReviewReason) items.push(slot.needsReviewReason);
   if (key === 'ancestry' && slot.confirmedIds.length && !slot.needsReviewReason) items.push('Variante fictícia registrada. Packs oficiais não foram habilitados.');
   if ((key === 'attribute-fixed' || key === 'attribute-random' || key === 'attribute-transfer') && slot.confirmedIds.length) items.push('Health, Defense e Speed continuam indisponíveis nesta ficha.');
-  const consequences = items.length ? { status: slot.needsReviewReason ? 'needs-review' as const : 'applied' as const, items } : undefined;
+  const consequences = items.length ? { status: slot.needsReviewReason || confirmReason ? 'needs-review' as const : 'applied' as const, items } : undefined;
   return {
     slotId: key,
     title: META[key].title,
@@ -494,6 +515,7 @@ export function viewSlot(state: L0State, key: SlotKey): SlotView {
     cardinality: cardinality(state, key),
     selectedIds,
     preview: slot.previewLabel ? { label: slot.previewLabel, confirmed: false } : undefined,
+    confirmReason,
     consequences,
     rollTrace,
     locked: slot.locked,
@@ -667,7 +689,7 @@ export function reduceL0(state: L0State, action: L0Action): L0State {
   }
   if (action.type === 'confirm') {
     const current = state.slots[action.key];
-    if (!current.previewIds?.length) return state;
+    if (!current.previewIds?.length || confirmationBlockReason(state, action.key)) return state;
     const next = clone(state);
     const slot = next.slots[action.key];
     slot.confirmedIds = [...(current.previewIds ?? [])];
