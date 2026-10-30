@@ -6,7 +6,7 @@ Registro em 2026-10-30, separado da limpeza da ponta da issue #1. Acompanhamento
 
 O commit inicial `5d2ca7e` introduziu os derivados de livros e linhas de compra inventariados em [higiene-pii-inventario-s0.md](higiene-pii-inventario-s0.md). Remover os caminhos do índice e corrigir os geradores evita novos arquivos indevidos na ponta, mas não elimina objetos anteriores, diffs de remoção, branches, tags, refs de PR, forks, clones, caches ou artefatos de CI.
 
-Esta entrega não executa `filter-repo`, BFG, expiração de reflogs, coleta de objetos nem force-push. A tarefa de histórico permanece aberta e independente; a limpeza atual não certifica expurgo histórico.
+O [ensaio isolado de 2026-10-30](ensaio-historico-git.md) executou `git-filter-repo` em uma cópia privada e passou na auditoria. Nenhuma ref remota foi reescrita e o histórico do workspace original continua intacto. A tarefa permanece aberta: o ensaio não certifica expurgo no GitHub ou nas cópias antigas.
 
 ## Plano de execução pelo responsável pelo repositório
 

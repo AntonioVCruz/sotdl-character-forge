@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -30,6 +32,12 @@ jobs:
       # corpus gitignored não está no checkout. Ver README, «Gate de CI».
       - name: Content privacy
         run: npm run curation:privacy
+
+      - name: History privacy
+        run: python3 tools/curation/history-audit.py . --require-clean
+
+      - name: History audit regression tests
+        run: python3 -m unittest discover -s tools/curation -p test_history_audit.py
 
       - name: Test
         run: npm test
