@@ -5,6 +5,7 @@ import { dirname, join } from 'node:path';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { compileHumanL0, main } from '../tools/curation/pack-compiler';
 import { parsePack, validatePack } from '../packages/catalog';
+import { validateIndexReferences } from '../tools/curation/thematic-indexes';
 
 const read = (path: string) => JSON.parse(readFileSync(path, 'utf8'));
 const recipe = read('curation/human-l0-compilation.json');
@@ -49,7 +50,7 @@ async function workspace() {
   return root;
 }
 
-describe('CUR-031 activity 1: deterministic Human L0 compilation', () => {
+describe('CUR-031: deterministic Human L0 compilation and index persistence', () => {
   it('emits identical UTF-8/LF bytes and SHA256 across runs, key order and reading order', () => {
     const entries = staging();
     const first = compileHumanL0(recipe, registry, entries);
@@ -68,7 +69,7 @@ describe('CUR-031 activity 1: deterministic Human L0 compilation', () => {
     expect(compileHumanL0(recipe, registry, entries).sha256).toBe(first.sha256);
     entries[0].printedPage += 1;
     expect(compileHumanL0(recipe, registry, entries).sha256).not.toBe(first.sha256);
-    const packs = [...first.artifacts.values()].map(text => parsePack(JSON.parse(text)));
+    const packs = [...first.artifacts].filter(([path]) => path.startsWith('content-packs/')).map(([, text]) => parsePack(JSON.parse(text)));
     for (const pack of packs) {
       expect(validatePack(pack, packs).filter(d => d.severity === 'error')).toEqual([]);
       expect(pack.fictionalData).toBe(false);
@@ -124,7 +125,8 @@ describe('CUR-031 activity 1: deterministic Human L0 compilation', () => {
 
   it('refuses same-version replacement and confines output to the ignored tmp directory', async () => {
     const root = await workspace(), first = await main(['--write'], root);
-    const [path] = first.artifacts.keys(); const target = join(root, 'tmp/curation/compiled-human-l0', path);
+    const path = [...first.artifacts.keys()].find(path => path.startsWith('content-packs/'))!;
+    const target = join(root, 'tmp/curation/compiled-human-l0', path);
     await writeFile(target, 'Existing version content\n');
     await expect(main(['--write'], root)).rejects.toThrow(/Choose a new version/);
     expect(await readFile(target, 'utf8')).toBe('Existing version content\n');
@@ -139,5 +141,42 @@ describe('CUR-031 activity 1: deterministic Human L0 compilation', () => {
     await mkdir(join(root, 'tmp'));
     await symlink(join(root, 'destination'), join(root, 'tmp/link'), 'junction');
     await expect(main(['--write', '--output', 'tmp/link'], root)).rejects.toThrow(/symbolic links/);
+  });
+
+  it('emits an index pinned to the actual compiled pack versions and repairs a stale index', async () => {
+    const root = await workspace(), result = await main(['--write'], root);
+    const packs = [...result.artifacts].filter(([path]) => path.startsWith('content-packs/')).map(([, text]) => parsePack(JSON.parse(text)));
+    const path = join(root, 'tmp/curation/compiled-human-l0/compendios/ancestry.index.json');
+    const index = validateIndexReferences(JSON.parse(await readFile(path, 'utf8')), packs);
+    expect(index.entries).toHaveLength(2);
+    expect(index.entries.every(e => e.ref.version === '0.1.1')).toBe(true);
+    await writeFile(path, '{}\n');
+    await expect(main(['--check'], root)).rejects.toThrow(/differs/);
+    await main(['--write'], root);
+    expect(await readFile(path, 'utf8')).toBe(result.artifacts.get('compendios/ancestry.index.json'));
+  });
+
+  it('moves index refs to explicitly selected new versions without changing old pack bytes', async () => {
+    const root = await workspace(), first = await main(['--write'], root);
+    const next = structuredClone(recipe);
+    for (const pack of next.packs) { pack.version = '0.1.2'; for (const dep of pack.dependencies) dep.version = '0.1.2'; }
+    await writeFile(join(root, 'curation/human-l0-compilation.json'), JSON.stringify(next));
+    const second = await main(['--write'], root);
+    const index = JSON.parse(second.artifacts.get('compendios/ancestry.index.json')!);
+    expect(index.entries.every((e: { ref: { version: string } }) => e.ref.version === '0.1.2')).toBe(true);
+    for (const [path, text] of first.artifacts) if (path.startsWith('content-packs/'))
+      expect(await readFile(join(root, 'tmp/curation/compiled-human-l0', path), 'utf8')).toBe(text);
+    await expect(main(['--check'], root)).resolves.toMatchObject({ sha256: second.sha256 });
+  });
+
+  it('does not replace an index when a pack preflight fails', async () => {
+    const root = await workspace(), result = await main(['--write'], root);
+    const output = join(root, 'tmp/curation/compiled-human-l0');
+    const packPath = [...result.artifacts.keys()].find(path => path.startsWith('content-packs/'))!;
+    await writeFile(join(output, packPath), 'Existing changed pack\n');
+    const indexPath = join(output, 'compendios/ancestry.index.json');
+    await writeFile(indexPath, '{}\n');
+    await expect(main(['--write'], root)).rejects.toThrow(/Choose a new version/);
+    expect(await readFile(indexPath, 'utf8')).toBe('{}\n');
   });
 });
