@@ -28,11 +28,11 @@ No ambiente local completo, executar a limpeza uma vez, regenerar ancestries →
 
 O [inventário anterior](higiene-pii-inventario-s0.md) permanece como evidência da situação antes da correção. A conclusão da ponta e o risco residual do histórico devem ser registrados separadamente na issue/PR.
 
-## Valida??o final
+## Validação final
 
-- 336 arquivos de derivados retirados do ?ndice e preservados localmente; limpeza local idempotente sem ocorr?ncias remanescentes.
-- Gate sobre os 271 arquivos restantes: zero achados; testes adicionais da corre??o inclu?dos nessa ?rvore.
-- Su?te completa com corpus: 245 testes em 34 arquivos aprovados.
+- 336 arquivos de derivados retirados do índice e preservados localmente; limpeza local idempotente sem ocorrências remanescentes.
+- Gate sobre os 271 arquivos restantes: zero achados; testes adicionais da correção incluídos nessa árvore.
+- Suíte completa com corpus: 245 testes em 34 arquivos aprovados.
 - `npm run curation:check`: todos os checks de artefatos e os 150 testes de curadoria aprovados; contrato congelado 1.0.0 e seus 16 arquivos preservados.
-- C?pia isolada apenas dos arquivos version?veis, sem `rules/` ou derivados locais: gate, 109 testes em 17 arquivos e build aprovados.
-- Build do ambiente completo aprovado. Insumos mantidos nos hashes do manifesto; sem habilita??o de conte?do oficial.
+- Cópia isolada apenas dos arquivos versionáveis, sem `rules/` ou derivados locais: gate, 109 testes em 17 arquivos e build aprovados.
+- Build do ambiente completo aprovado. Insumos mantidos nos hashes do manifesto; sem habilitação de conteúdo oficial.
