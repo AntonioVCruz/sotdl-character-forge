@@ -4,6 +4,8 @@ Inventário da ponta (`HEAD`), sem reescrita de histórico. Relacionado a [#1](h
 
 Este documento traz contagens e caminhos. Não reproduz o texto casado, números de pedido, nomes nem trechos de livro.
 
+**Registro histórico do PR #13:** a limpeza posterior foi entregue pelo PR #17 e encerrou a #1. Ver a [entrega da higiene](entrega-higiene-pii-s0.md), a [política consolidada](politica-distribuicao-conteudo.md) e o [tratamento histórico separado na #16](higiene-historico-git.md). As limitações de redação descritas abaixo se referem ao estado anterior à correção dos geradores.
+
 ## Método
 
 Varredura em 2026-10-28 sobre os arquivos rastreados por `git ls-files` (581 arquivos; 359 em `curation/`). O diretório `rules/` está no `.gitignore` e não entrou na conta.

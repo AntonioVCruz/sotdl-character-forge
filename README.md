@@ -3,6 +3,8 @@
 **Estado:** catálogo e criador demonstrativo de níveis 0–1 implementados, com dois caminhos, duas tradições e quatro magias fictícias, modos manual/híbrido/aleatório, equipamento ativável, conjuração e efeitos de sessão, ficha, histórico, JSON, impressão A4/PDF e HTML editável offline. Níveis 2–10 e conteúdo oficial ainda não implementados.
 **Idioma das especificações:** português. **Identificadores mecânicos oficiais:** inglês.
 
+**Estado operacional em 2026-10-30:** [política consolidada](docs/politica-distribuicao-conteudo.md) e [issues conferidas](docs/estado-issues.md). Higiene da ponta e política entregues; stubs Human e wizard L0 demonstrativo integrados. Compilador/índices, consumo oficial e aceite final de UX continuam pendentes; histórico antigo na #16. As seções de entregas abaixo conservam suas datas.
+
 Os quatro compêndios MD de regras estão em `rules/`. A lista de tarefas para analisá-los, gerar packs JSON por publicação e integrar regras reais ao criador está em [tarefas-curadoria-compendios.md](docs/tarefas-curadoria-compendios.md).
 
 ## Executar o catálogo e o criador demonstrativo
@@ -198,10 +200,10 @@ Atualização posterior: **CUR-018 concluída** como [formalização de riqueza 
 
 **CUR-021 concluída como auditoria com restrições:** [fechamento das tabelas](docs/entrega-fechamento-tabelas-piloto.md), com 74 identidades, 70 fluxos numéricos completos, probabilidades compostas e guardas de referência para Piety/Strange. Fears/Desires foram confirmados pelo usuário, sem associações pendentes; efeitos, escolhas de GM e orquestração preservam seus gates. `npm run curation:pilot-tables` reproduz auditoria/relatório e integra `curation:check`. Geração oficial permanece desabilitada. Validação: 145 testes de curadoria, 219 completos e build aprovados. Próximo passo para o piloto: **CUR-031 — compilador por publicação**, seguido de CUR-032; CUR-022 permanece a trilha de progressão.
 
-## Higiene de conte?do e ambiente local
+## Higiene de conteúdo e ambiente local
 
-A corre??o S0 da issue #1 est? em [entrega-higiene-pii-s0.md](docs/entrega-higiene-pii-s0.md). Os diret?rios de evid?ncias, transcri??es, snapshots e formaliza??es com excertos s?o locais e ignorados; continuam dispon?veis neste ambiente, mas n?o acompanham novos clones. `rules/` e complementos de curadoria devem ser obtidos sob licen?a pr?pria. Os comandos de curadoria sobre livros exigem esse ambiente completo; a su?te p?blica usa contratos e fixtures redistribu?veis.
+A correção S0 da issue #1 está em [entrega-higiene-pii-s0.md](docs/entrega-higiene-pii-s0.md). Os diretórios de evidências, transcrições, snapshots e formalizações com excertos são locais e ignorados; continuam disponíveis neste ambiente, mas não acompanham novos clones. `rules/` e complementos de curadoria devem ser obtidos sob licença própria. Os comandos de curadoria sobre livros exigem esse ambiente completo; a suíte pública usa contratos e fixtures redistribuíveis.
 
-Execute `npm run curation:privacy` antes de publicar altera??es. A CI rejeita dados de compra e caminhos locais rastreados. Os geradores redigem evid?ncias e recusam artefatos com o padr?o sens?vel remanescente. N?o use `git add -f` para publicar esses diret?rios.
+Execute `npm run curation:privacy` antes de publicar alterações. A CI rejeita dados de compra e caminhos locais rastreados. Os geradores redigem evidências e recusam artefatos com o padrão sensível remanescente. Não use `git add -f` para publicar esses diretórios.
 
-O hist?rico anterior exige tratamento pr?prio: [plano de hist?rico Git](docs/higiene-historico-git.md). A limpeza da ponta n?o expurga commits e objetos antigos.
+O histórico anterior exige tratamento próprio: [plano de histórico Git](docs/higiene-historico-git.md). A limpeza da ponta não expurga commits e objetos antigos.
