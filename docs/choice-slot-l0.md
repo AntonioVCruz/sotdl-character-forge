@@ -14,6 +14,10 @@ O audit `vazio | parcial | completo` corresponde a `empty | partial | confirmed`
 
 `cardinality` é `{ min, max }` (N escolhas). Prévia tem Confirmar e Descartar por slot. Travar não sorteia. "Rolar novamente" só aparece depois de um resultado. Badges são texto em português: `manual`, `tabela publicada`, `aleatório entre opções válidas (não oficial)`, `pendente`. O `slotId` não aparece na tela.
 
+`confirmReason`, quando presente, torna Confirmar indisponível e associa o motivo pelo `aria-describedby`. O reducer revalida a proposta no contexto atual mesmo se receber uma ação de uma UI antiga: slot ativo, dados/dependências, suspensão, cardinalidade sem duplicatas e elegibilidade de cada opção. Uma prévia inválida fica em `needs-review`, continua disponível para descarte e não substitui a última escolha confirmada. Prévia de um ramo de atributos inativo não bloqueia a revisão do ramo atual; continua impedida de confirmar enquanto estiver inativa.
+
+O modo Manual permite Sortear e Rolar novamente por slot, sujeitos aos bloqueios de seed, autorização de fallback, trava, dados e dependências. O comando explícito prepara uma prévia; não aplica o resultado nem dispara geração conjunta.
+
 ## Wizard
 
 Ordem do stepper, só nível 0: Ruleset e fontes, Ancestry, Atributos, Size, Benefício Human, Tabelas narrativas, Profissões e idiomas, Wealth e kit, Interesting Thing, Roleplaying, Nome e notas, Revisão L0. Não há passo de nível 1.

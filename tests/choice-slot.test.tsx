@@ -88,9 +88,9 @@ describe('ChoiceSlot', () => {
   });
 
   it('mostra Sortear indisponível com motivo e só oferece rerrolagem depois do resultado', async () => {
-    const blocked = props({ sortReason: 'Modo manual: só escolha na lista. Sortear fica desligado.' });
+    const blocked = props({ sortReason: 'Sorteio uniforme não autorizado nesta sessão.' });
     await render(<ChoiceSlot {...blocked} />);
-    expect(text()).toContain('Modo manual: só escolha na lista. Sortear fica desligado.');
+    expect(text()).toContain('Sorteio uniforme não autorizado nesta sessão.');
     clickButton('Sortear');
     expect(blocked.onRoll).not.toHaveBeenCalled();
     const ready = props({
@@ -110,6 +110,19 @@ describe('ChoiceSlot', () => {
     expect(ready.onDiscardPreview).toHaveBeenCalledOnce();
     clickButton('Rolar novamente');
     expect(ready.onReroll).toHaveBeenCalledOnce();
+  });
+
+  it('mantém a prévia revisável e bloqueia Confirmar com motivo sem impedir o descarte', async () => {
+    const slot = props({ uiState: 'needs-review', preview: { label: 'Proposta anterior', confirmed: false }, confirmReason: 'A proposta deixou de ser elegível.' });
+    await render(<ChoiceSlot {...slot} />);
+    const confirm = [...host.querySelectorAll('button')].find(button => button.textContent === 'Confirmar')!;
+    expect(confirm.getAttribute('aria-disabled')).toBe('true');
+    expect(document.getElementById(confirm.getAttribute('aria-describedby')!)?.textContent).toBe(slot.confirmReason);
+    clickButton('Confirmar');
+    expect(slot.onConfirmPreview).not.toHaveBeenCalled();
+    expect(text()).toContain('Proposta anterior');
+    clickButton('Descartar prévia');
+    expect(slot.onDiscardPreview).toHaveBeenCalledOnce();
   });
 
   it('fecha o painel com Esc e escreve cada badge de estratégia', async () => {

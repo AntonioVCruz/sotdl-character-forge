@@ -121,6 +121,7 @@ function SlotCard({ view, mode, dispatch }: { view: SlotView; mode: L0State['mod
       cardinality={view.cardinality}
       selectedIds={view.selectedIds}
       preview={view.preview}
+      confirmReason={view.confirmReason}
       consequences={view.consequences}
       rollTrace={view.rollTrace}
       locked={view.locked}

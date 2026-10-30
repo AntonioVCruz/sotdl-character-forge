@@ -8,6 +8,7 @@ import {
   reduceL0,
   requiredPendencias,
   summarizeStubs,
+  sortBlockReason,
   viewSlot,
   type L0State,
 } from '../apps/web/l0-demo';
@@ -33,6 +34,83 @@ function choose(state: L0State, key: Parameters<typeof viewSlot>[1], id: string)
 }
 
 describe('adapter L0', () => {
+  it('permite sorteio e rerrolagem explícitos em modo Manual sem alterar o resultado aprovado na prévia', () => {
+    let state = choose(createL0State(), 'ancestry', 'anc-core');
+    state = reduceL0(state, { type: 'seed', seed: 'manual-explicito' });
+    state = reduceL0(state, { type: 'uniform', value: true });
+    expect(state.mode).toBe('manual');
+    expect(sortBlockReason(state, 'ancestry')).toBeUndefined();
+    const rolled = reduceL0(state, { type: 'roll', key: 'ancestry' });
+    expect(rolled.slots.ancestry.previewTrace?.rerollIndex).toBe(0);
+    expect(rolled.slots.ancestry.previewStrategy).toBe('uniform-eligible-unofficial');
+    expect(rolled.slots.ancestry.confirmedIds).toEqual(['anc-core']);
+    const rerolled = reduceL0(rolled, { type: 'reroll', key: 'ancestry' });
+    expect(rerolled.slots.ancestry.previewTrace?.rerollIndex).toBe(1);
+    expect(rerolled.slots.ancestry.confirmedIds).toEqual(['anc-core']);
+    expect(reduceL0(rerolled, { type: 'discard', key: 'ancestry' }).slots.ancestry).toEqual(state.slots.ancestry);
+  });
+
+  it('mantém no modo Manual os bloqueios de seed, autorização, trava, dados e dependências', () => {
+    const empty = createL0State();
+    expect(reduceL0(empty, { type: 'roll', key: 'ancestry' })).toBe(empty);
+    const seeded = reduceL0(empty, { type: 'seed', seed: 'bloqueios' });
+    expect(reduceL0(seeded, { type: 'roll', key: 'ancestry' })).toBe(seeded);
+    const allowed = reduceL0(seeded, { type: 'uniform', value: true });
+    for (const key of ['benefit', 'narrative'] as const) expect(reduceL0(allowed, { type: 'roll', key })).toBe(allowed);
+    const locked = reduceL0(allowed, { type: 'lock', key: 'ancestry' });
+    expect(reduceL0(locked, { type: 'roll', key: 'ancestry' })).toBe(locked);
+    const suspended = { ...allowed, slots: { ...allowed.slots, ancestry: { ...allowed.slots.ancestry, suspendedReason: 'Fonte suspensa.' } } };
+    expect(reduceL0(suspended, { type: 'roll', key: 'ancestry' })).toBe(suspended);
+  });
+
+  it('marca a prévia inelegível após trocar Ancestry e rejeita até uma confirmação disparada pela UI antiga', () => {
+    let state = choose(createL0State(), 'ancestry', 'anc-core');
+    state = reduceL0(state, { type: 'select', key: 'benefit', ids: ['ben-job'] });
+    state = choose(state, 'ancestry', 'anc-oh');
+    expect(viewSlot(state, 'benefit').uiState).toBe('needs-review');
+    expect(viewSlot(state, 'benefit').confirmReason).toContain('Human Development');
+    expect(state.slots.benefit.previewIds).toEqual(['ben-job']);
+    expect(reduceL0(state, { type: 'confirm', key: 'benefit' })).toBe(state);
+    expect(state.slots.benefit.confirmedIds).toEqual([]);
+    const discarded = reduceL0(state, { type: 'discard', key: 'benefit' });
+    expect(viewSlot(discarded, 'benefit').preview).toBeUndefined();
+  });
+
+  it('preserva a última escolha aprovada quando rejeita a proposta dependente e aceita uma nova escolha válida', () => {
+    let state = choose(createL0State(), 'ancestry', 'anc-core');
+    state = choose(state, 'benefit', 'ben-lang');
+    const approved = state.slots.benefit.confirmedLabel;
+    state = reduceL0(state, { type: 'select', key: 'benefit', ids: ['ben-job'] });
+    state = choose(state, 'ancestry', 'anc-oh');
+    expect(reduceL0(state, { type: 'confirm', key: 'benefit' })).toBe(state);
+    expect(state.slots.benefit.confirmedIds).toEqual(['ben-lang']);
+    expect(state.slots.benefit.confirmedLabel).toBe(approved);
+    state = choose(state, 'ancestry', 'anc-core');
+    state = choose(state, 'benefit', 'ben-job');
+    expect(state.slots.benefit.confirmedIds).toEqual(['ben-job']);
+    expect(viewSlot(state, 'benefit').confirmReason).toBeUndefined();
+  });
+
+  it('revalida cardinalidade, slot ativo e regra opcional na confirmação', () => {
+    let state = choose(createL0State(), 'ancestry', 'anc-core');
+    state = reduceL0(state, { type: 'select', key: 'benefit', ids: ['ben-job'] });
+    const malformed = { ...state, slots: { ...state.slots, benefit: { ...state.slots.benefit, previewIds: ['ben-job', 'ben-job'] } } };
+    expect(reduceL0(malformed, { type: 'confirm', key: 'benefit' })).toBe(malformed);
+    state = choose(state, 'attribute-mode', 'mode-fixed');
+    state = reduceL0(state, { type: 'select', key: 'attribute-fixed', ids: ['attr-strength'] });
+    state = choose(state, 'ancestry', 'anc-oh');
+    state = choose(state, 'attribute-mode', 'mode-random');
+    expect(reduceL0(state, { type: 'confirm', key: 'attribute-fixed' })).toBe(state);
+    expect(requiredPendencias(state).some(item => item.title === 'Aumento fixo')).toBe(false);
+    state = choose(state, 'attribute-mode', 'mode-fixed');
+    state = choose(state, 'attribute-fixed', 'attr-strength');
+    state = reduceL0(state, { type: 'transfer', value: true });
+    state = reduceL0(state, { type: 'select', key: 'attribute-transfer', ids: ['xfer-strength-agility'] });
+    state = reduceL0(state, { type: 'transfer', value: false });
+    expect(reduceL0(state, { type: 'confirm', key: 'attribute-transfer' })).toBe(state);
+    expect(requiredPendencias(state).some(item => item.title === 'Transferir 1 ponto')).toBe(true);
+  });
+
   it('marca o adapter como fictício e não habilita ruleset oficial', () => {
     expect(ADAPTER_FICTIONAL).toBe(true);
     const empty = summarizeStubs([]);
