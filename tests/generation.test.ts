@@ -5,7 +5,7 @@ import levelZero from '../examples/demo-level-zero.json';
 import { emptySnapshot, importPack, setEnabled, type Snapshot } from '../packages/catalog';
 import { createSubstream, rollDice, resolveTable, tableOptions, uniformInt } from '../packages/random-tables';
 import { calculateCharacter, chooseSlot, commitDraft, currentEvents, exportCharacter, importCharacter, newCharacter, parseCharacter, planSlots, preview, slotIssues, type Policy } from '../packages/character-generator';
-import { loadCharacter, saveCharacter } from '../packages/character-generator/storage';
+import { clearCharacter, loadCharacter, saveCharacter } from '../packages/character-generator/storage';
 
 function catalog() {
   let c = importPack(emptySnapshot(), tables).snapshot;
@@ -191,5 +191,7 @@ describe('personagem nível 0', () => {
     expect(exportCharacter(await loadCharacter())).toBe(exportCharacter(next));
     await expect(saveCharacter({ ...next, name: 'other' }, previous)).rejects.toThrow('outra aba');
     expect(exportCharacter(await loadCharacter())).toBe(exportCharacter(next));
+    await clearCharacter();
+    expect(exportCharacter(await loadCharacter())).toBe(exportCharacter(newCharacter()));
   });
 });
