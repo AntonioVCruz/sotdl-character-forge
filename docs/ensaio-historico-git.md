@@ -40,7 +40,7 @@ O primeiro commit afetado é `5d2ca7ea2a2652ef28a6d6bf93106ebc49969edf`. As refs
 
 ## Cópias privadas e migração local
 
-`tmp/history-rewrite/` está ignorado e tem ACL restrita ao usuário atual e SYSTEM. Contém espelho original, substituições privadas, valores usados no detector, mapas de commits, relatórios e snapshots de proteção. **Não anexar esse diretório a issue/PR nem distribuí-lo.** O workspace original também conserva os objetos antigos em `.git`.
+`tmp/history-rewrite/` está ignorado e tem ACL restrita ao usuário atual e SYSTEM. Contém espelho original, cópia dos metadados locais antigos, substituições privadas, valores usados no detector, mapas de commits, relatórios e snapshots de proteção. **Não anexar esse diretório a issue/PR nem distribuí-lo.** O `.git` ativo já passou pela coleta local especificamente autorizada, conforme o registro da publicação; os backups antigos foram preservados.
 
 Retenção aprovada: manter o backup somente até verificação da publicação e atendimento do Support, com revisão obrigatória em sete dias (2026-11-06), pelo dono; então autorizar descarte ou registrar prazo adicional e responsável. Não há exclusão agendada ou já executada. Backups de sistema e clones externos exigem tratamento pelo respectivo responsável.
 
