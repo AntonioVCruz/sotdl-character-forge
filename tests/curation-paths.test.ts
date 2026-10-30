@@ -147,7 +147,7 @@ describe('CUR-009 path extraction', () => {
   it('detects tampered outputs and inputs without overwriting them during check', async () => {
     const root = await mkdtemp(join(tmpdir(), 'sotdl-paths-'));
     try {
-      for (const path of [INPUT, 'curation/input-manifest.json', 'curation/sources.json', 'curation/source-aliases.json', 'curation/path-ledger.json', 'tools/curation/path-extractor.ts', 'tools/curation/paths.mjs', 'tools/curation/ancestry-extractor.ts']) {
+      for (const path of ['tools/curation/privacy.mjs', INPUT, 'curation/input-manifest.json', 'curation/sources.json', 'curation/source-aliases.json', 'curation/path-ledger.json', 'tools/curation/path-extractor.ts', 'tools/curation/paths.mjs', 'tools/curation/ancestry-extractor.ts']) {
         await mkdir(dirname(resolve(root, path)), { recursive: true }); await copyFile(path, resolve(root, path));
       }
       await main(['--write'], root); await main(['--check'], root);

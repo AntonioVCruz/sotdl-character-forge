@@ -1,3 +1,5 @@
+import { assertSafeArtifact } from './privacy.mjs';
+import { sanitizeArtifact } from './privacy.mjs';
 import { createHash } from 'node:crypto';
 import { readFile, writeFile, mkdir, readdir, access } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
@@ -211,7 +213,7 @@ export async function buildArtifacts(root: string) {
   const results = extractSpells(text, registry, JSON.parse(ledgerBytes.toString('utf8')), JSON.parse(originsBytes.toString('utf8')), paths);
   const artifacts = new Map<string, string>();
   for (const r of [...results].sort((a, b) => { const left = a.staging.id ?? a.detail.occurrenceKey, right = b.staging.id ?? b.detail.occurrenceKey; return left < right ? -1 : left > right ? 1 : 0; })) {
-    const output = JSON.stringify(r.staging) + '\n'; if (Buffer.byteLength(output) > 4 * 1024 * 1024) throw new Error('Staging record exceeds 4 MiB');
+    const output = JSON.stringify(sanitizeArtifact(r.staging)) + '\n'; if (Buffer.byteLength(output) > 4 * 1024 * 1024) throw new Error('Staging record exceeds 4 MiB');
     artifacts.set(r.outputPath, (artifacts.get(r.outputPath) ?? '') + output);
   }
   const lines = sourceLines(text), excludedRanges: (Span & { reason: string })[] = []; let cursor = 1;
@@ -220,7 +222,7 @@ export async function buildArtifacts(root: string) {
   const counts = (values: string[]) => Object.fromEntries([...new Set(values)].sort().map(v => [v, values.filter(x => x === v).length]));
   const sourceLabels = new Set(results.map(r => r.detail.sourceLabel)).size;
   const report = { schemaVersion: 1, task: 'CUR-010', reviewDate: manifest.reviewDate,
-    extractor: { version: '1.0.0', sha256: sha(await read('tools/curation/spell-extractor.ts')), runnerSha256: sha(await read('tools/curation/spells.mjs')), lineUtilitySha256: sha(await read('tools/curation/ancestry-extractor.ts')) },
+    extractor: { privacyPolicySha256: sha(await read('tools/curation/privacy.mjs')), version: '1.0.0', sha256: sha(await read('tools/curation/spell-extractor.ts')), runnerSha256: sha(await read('tools/curation/spells.mjs')), lineUtilitySha256: sha(await read('tools/curation/ancestry-extractor.ts')) },
     input: file, inputManifestSha256: sha(manifestBytes), sourceRegistrySha256: sha(registryBytes), ledgerSha256: sha(ledgerBytes), originsSha256: sha(originsBytes), pathReportSha256: sha(pathsBytes),
     counts: { occurrences: results.length, origins: new Set(results.map(r => r.detail.origin)).size, sourceLabels,
       originKinds: counts([...new Map(results.map(r => [r.detail.origin, r.detail.originKind])).values()]),
@@ -233,7 +235,7 @@ export async function buildArtifacts(root: string) {
     coverage: { inputLines: lines.length, occurrenceLines: results.reduce((sum, r) => sum + r.detail.endLine - r.detail.startLine + 1, 0), excludedRanges },
     outputs: [...artifacts].sort(([a], [b]) => a < b ? -1 : a > b ? 1 : 0).map(([path, data]) => ({ path, sha256: sha(data), records: data.trimEnd().split('\n').length })),
     occurrences: results.map(r => r.detail) };
-  artifacts.set(REPORT, JSON.stringify(report, null, 2) + '\n'); return { artifacts, report };
+  artifacts.set(REPORT, JSON.stringify(sanitizeArtifact(report), null, 2) + '\n'); return { artifacts, report };
 }
 
 export async function main(args: string[], root = process.cwd()) {
@@ -260,7 +262,7 @@ export async function main(args: string[], root = process.cwd()) {
     try { await readFile(resolve(root, path)); if (!artifacts.has(path)) throw new Error(`Orphan spell output requires reconciliation: ${path}`); }
     catch (error) { if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error; }
   }
-  for (const [path, output] of artifacts) {
+  for (const [path, output] of artifacts) { assertSafeArtifact(path, output);
     if (args[0] === '--write') { await mkdir(dirname(resolve(root, path)), { recursive: true }); await writeFile(resolve(root, path), output); }
     else if (await readFile(resolve(root, path), 'utf8') !== output) throw new Error(`Generated spell artifact changed: ${path}`);
   }

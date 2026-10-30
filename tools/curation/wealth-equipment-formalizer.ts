@@ -1,3 +1,4 @@
+import { assertSafeArtifact } from './privacy.mjs';
 import {createHash} from 'node:crypto';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {dirname,resolve} from 'node:path';
@@ -150,6 +151,6 @@ export async function buildArtifacts(root:string){
 }
 export async function main(args:string[],root=process.cwd()){
   if(args.length!==1||!['--write','--check'].includes(args[0]))throw new Error('Use --write or --check');
-  const r=await buildArtifacts(root);for(const[path,text]of r.artifacts){if(args[0]==='--check'){if(await readFile(resolve(root,path),'utf8')!==text)throw new Error(`Wealth/equipment artifact changed: ${path}`);}else{await mkdir(dirname(resolve(root,path)),{recursive:true});await writeFile(resolve(root,path),text);}}
+  const r=await buildArtifacts(root);for(const[path,text]of r.artifacts){ assertSafeArtifact(path, text);if(args[0]==='--check'){if(await readFile(resolve(root,path),'utf8')!==text)throw new Error(`Wealth/equipment artifact changed: ${path}`);}else{await mkdir(dirname(resolve(root,path)),{recursive:true});await writeFile(resolve(root,path),text);}}
   console.log(`Wealth/equipment: ${r.report.counts.lifestylePrograms} kits, ${r.report.counts.professionPrograms} profession grants; exact currency, runtime disabled. ${args[0]}`);
 }

@@ -27,7 +27,8 @@
     "curation:check": "node tools/curation/inputs.mjs --check && node tools/curation/sources.mjs --check && node tools/curation/policy-evidence.mjs --check && node tools/curation/examples.mjs --check && node tools/curation/freeze.mjs --check && node tools/curation/ancestries.mjs --check && node tools/curation/paths.mjs --check && node tools/curation/spells.mjs --check && node tools/curation/mechanics.mjs --check && node tools/curation/normalize.mjs --check && node tools/curation/reconcile.mjs --check && node tools/curation/core-pilot.mjs --check && node tools/curation/human-ancestry.mjs --check && node tools/curation/creation-tables.mjs --check && node tools/curation/professions-languages.mjs --check && node tools/curation/wealth-equipment.mjs --check && node tools/curation/interesting-things.mjs --check && node tools/curation/pilot-items.mjs --check && node tools/curation/pilot-tables.mjs --check && vitest run tests/curation-",
     "curation:interesting-things": "node tools/curation/interesting-things.mjs --write",
     "curation:pilot-items": "node tools/curation/pilot-items.mjs --write",
-    "curation:pilot-tables": "node tools/curation/pilot-tables.mjs --write"
+    "curation:pilot-tables": "node tools/curation/pilot-tables.mjs --write",
+    "curation:privacy": "node tools/curation/privacy-check.mjs"
   },
   "dependencies": {
     "react": "19.2.0",

@@ -1,3 +1,5 @@
+import { assertSafeArtifact } from './privacy.mjs';
+import { sanitizeArtifact } from './privacy.mjs';
 import { createHash } from 'node:crypto';
 import { readFile, writeFile, mkdir, readdir, access } from 'node:fs/promises';
 import { resolve, dirname } from 'node:path';
@@ -291,15 +293,15 @@ export async function buildArtifacts(root: string) {
   const decisionBytes = await read(DECISIONS);
   const { results, containers } = extractMechanics(text, registry, JSON.parse(ledgerBytes.toString('utf8')), JSON.parse(decisionBytes.toString('utf8'))), artifacts = new Map<string, string>();
   for (const r of [...results].sort((a, b) => (a.segment.unitKey ?? '') < (b.segment.unitKey ?? '') ? -1 : (a.segment.unitKey ?? '') > (b.segment.unitKey ?? '') ? 1 : a.segment.startLine - b.segment.startLine)) {
-    if (r.staging && r.outputPath) { const output = JSON.stringify(r.staging) + '\n'; if (Buffer.byteLength(output) > 4 * 1024 * 1024) throw new Error('Staging record exceeds 4 MiB'); artifacts.set(r.outputPath, (artifacts.get(r.outputPath) ?? '') + output); }
+    if (r.staging && r.outputPath) { const output = JSON.stringify(sanitizeArtifact(r.staging)) + '\n'; if (Buffer.byteLength(output) > 4 * 1024 * 1024) throw new Error('Staging record exceeds 4 MiB'); artifacts.set(r.outputPath, (artifacts.get(r.outputPath) ?? '') + output); }
   }
-  artifacts.set(SEGMENTS, results.map(r => JSON.stringify(r.segment)).join('\n') + '\n');
+  artifacts.set(SEGMENTS, results.map(r => JSON.stringify(sanitizeArtifact(r.segment))).join('\n') + '\n');
   const lines = sourceLines(text), excludedRanges: (Span & { reason: string })[] = []; let cursor = 1;
   for (const c of containers) { if (cursor < c.startLine) excludedRanges.push({ startLine: cursor, endLine: c.startLine - 1, reason: 'editorial-manifest-metadata-or-fence' }); cursor = c.endLine + 1; }
   if (cursor <= lines.length) excludedRanges.push({ startLine: cursor, endLine: lines.length, reason: 'editorial-audit-and-maintenance' });
   const counts = (values: string[]) => Object.fromEntries([...new Set(values)].sort().map(v => [v, values.filter(x => x === v).length]));
   const report = { schemaVersion: 1, task: 'CUR-011', reviewDate: manifest.reviewDate,
-    extractor: { version: '1.0.0', sha256: sha(await read('tools/curation/mechanics-extractor.ts')), runnerSha256: sha(await read('tools/curation/mechanics.mjs')), lineUtilitySha256: sha(await read('tools/curation/ancestry-extractor.ts')) },
+    extractor: { privacyPolicySha256: sha(await read('tools/curation/privacy.mjs')), version: '1.0.0', sha256: sha(await read('tools/curation/mechanics-extractor.ts')), runnerSha256: sha(await read('tools/curation/mechanics.mjs')), lineUtilitySha256: sha(await read('tools/curation/ancestry-extractor.ts')) },
     input: file, inputManifestSha256: sha(manifestBytes), sourceRegistrySha256: sha(registryBytes), ledgerSha256: sha(ledgerBytes),
     decisionRef: { path: DECISIONS, sha256: sha(decisionBytes) },
     counts: { containers: containers.length, segments: results.length, categories: counts(results.map(r => r.segment.category)),
@@ -314,7 +316,7 @@ export async function buildArtifacts(root: string) {
       startLine: r.segment.startLine, endLine: r.segment.endLine, section: r.segment.container.section, subsection: r.segment.container.subsection,
       sourceLine: r.segment.container.sourceLine, sourceIds: r.segment.sources.map(s => s.sourceId), outputPath: r.outputPath, scopeTags: r.segment.scopeTags,
       status: r.segment.status, warnings: r.segment.warnings, dependencyResolution: r.segment.dependencyResolution, attributionResolution: r.segment.attributionResolution, domainCandidates: r.segment.domainCandidates, originalTextSha256: sha(r.segment.originalText) })) };
-  artifacts.set(REPORT, JSON.stringify(report, null, 2) + '\n'); return { artifacts, report };
+  artifacts.set(REPORT, JSON.stringify(sanitizeArtifact(report), null, 2) + '\n'); return { artifacts, report };
 }
 
 export async function main(args: string[], root = process.cwd()) {
@@ -334,7 +336,7 @@ export async function main(args: string[], root = process.cwd()) {
       catch (error) { if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error; }
     }
   }
-  for (const [path, output] of artifacts) {
+  for (const [path, output] of artifacts) { assertSafeArtifact(path, output);
     if (args[0] === '--write') { await mkdir(dirname(resolve(root, path)), { recursive: true }); await writeFile(resolve(root, path), output); }
     else if (await readFile(resolve(root, path), 'utf8') !== output) throw new Error(`Generated mechanics artifact changed: ${path}`);
   }
