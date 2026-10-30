@@ -34,6 +34,9 @@ test('tudo aleatório: cancelar, confirmar, exportar/importar e reabrir preserva
   await page.getByRole('button', { name: 'Gerar personagem inteiro — prévia' }).click();
   await confirm(page);
   await expect(confirmed(page)).toContainText('Personagem demonstrativo completo');
+  await expect(confirmed(page)).toContainText('Interesting Thing:');
+  await expect(confirmed(page)).not.toContainText('interestingThing:');
+  await expect(confirmed(page)).not.toContainText('ancestry:');
   const original = await downloadCharacter(page);
   expect(original.events).toHaveLength(4);
   expect(original.events.some(e => e.resolution.rolls.length >= 2)).toBe(true);

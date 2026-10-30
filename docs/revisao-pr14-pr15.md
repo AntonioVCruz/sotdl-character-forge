@@ -1,5 +1,7 @@
 # Revisão final dos PRs #14 e #15
 
+**Disposição posterior das #9/#10:** contrato Zod de slot/comandos integrado ao runtime, rótulos de slots legados corrigidos e [aceite S1 técnico/UX executado pelo Codex](aceite-s1-issues9-10.md). Encerramento restrito ao L0 demonstrativo; L1 adiado na #21. Não há aprovação externa atribuída ao Designer. As pendências descritas nos commits originais abaixo são histórico da revisão, não o estado atual.
+
 Revisão técnica do Codex em 2026-10-30, contra a main `76414a3`, respeitando a ordem da dependência. Ambos os PRs já estavam mesclados; os registros abaixo são revisões posteriores do código integrado.
 
 **Atualização posterior em 2026-10-30: os dois P2 abaixo foram corrigidos.** A confirmação agora revalida a prévia no reducer e a UI mostra o motivo do bloqueio, preservando a última escolha aprovada. Sorteios locais funcionam em Manual com as mesmas guardas dos demais modos. Foram adicionadas cinco regressões do adapter, uma de componente e dois E2E do wizard. Os dois testes isolados da revisão também passaram após a correção. O relato abaixo conserva o comportamento observado nos commits originais; contrato Zod e aceite UX continuam pendentes nas #9/#10.

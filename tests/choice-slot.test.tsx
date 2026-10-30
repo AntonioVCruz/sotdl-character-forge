@@ -57,6 +57,21 @@ function props(overrides: Partial<ChoiceSlotProps> = {}): ChoiceSlotProps {
 }
 
 describe('ChoiceSlot', () => {
+  it('só aceita Usar esta opção depois de preencher N escolhas', async () => {
+    const slot = props({ cardinality: { min: 2, max: 2 }, options: [
+      { id: 'first', label: 'Primeira', eligible: true }, { id: 'second', label: 'Segunda', eligible: true },
+    ] });
+    await render(<ChoiceSlot {...slot} />);
+    clickButton('Escolher manualmente');
+    const options = host.querySelectorAll('[role="checkbox"]');
+    act(() => { options[0].dispatchEvent(new KeyboardEvent('keydown', { key: ' ', bubbles: true })); });
+    clickButton('Usar esta opção');
+    expect(slot.onSelect).not.toHaveBeenCalled();
+    act(() => { options[1].dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true })); });
+    clickButton('Usar esta opção');
+    expect(slot.onSelect).toHaveBeenCalledWith(['first', 'second']);
+  });
+
   it('não mostra o id cru e esconde Rolar novamente antes do resultado', async () => {
     await render(<ChoiceSlot {...props()} />);
     expect(text()).not.toContain('secret-slot-id');

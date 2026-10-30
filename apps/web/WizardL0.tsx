@@ -61,7 +61,7 @@ export function WizardL0({ stubs }: { stubs?: unknown[] }) {
           <button type="button" key={mode} aria-pressed={state.mode === mode} onClick={() => dispatch({ type: 'mode', mode })}>{label}</button>)}
       </div>
       <label>Seed da sessão
-        <input aria-label="Seed da sessão" value={state.seed} autoComplete="off" placeholder="vazia de propósito" onChange={event => { setCopied(''); dispatch({ type: 'seed', seed: event.target.value }); }} />
+        <input aria-label="Seed da sessão" value={state.seed} maxLength={200} autoComplete="off" placeholder="vazia de propósito" onChange={event => { setCopied(''); dispatch({ type: 'seed', seed: event.target.value }); }} />
       </label>
       <button type="button" aria-disabled={state.seed.trim() ? undefined : true} aria-describedby="seed-copy-reason" onClick={() => void copySeed()}>Copiar seed</button>
       <p id="seed-copy-reason">{state.seed.trim() ? (copied || 'Copia a seed desta sessão.') : 'Nada para copiar: a seed está vazia de propósito.'}</p>
@@ -162,7 +162,7 @@ function Roleplaying({ state, dispatch }: { state: L0State; dispatch: (action: L
   return <div>
     <p>Quatro campos opcionais. Deixar tudo vazio não é pendência obrigatória.</p>
     {ROLE_FIELDS.map(field => <label key={field.id}>{field.label}
-      <textarea aria-label={field.label} value={state.role[field.id].draft} onChange={event => dispatch({ type: 'role-draft', field: field.id, value: event.target.value })} />
+      <textarea aria-label={field.label} value={state.role[field.id].draft} maxLength={2000} onChange={event => dispatch({ type: 'role-draft', field: field.id, value: event.target.value })} />
     </label>)}
     <div className="actions">
       <button type="button" onClick={() => dispatch({ type: 'save-role' })}>Salvar Roleplaying</button>
