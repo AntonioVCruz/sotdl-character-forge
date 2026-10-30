@@ -35,6 +35,10 @@ test('progressão manual marcial/mágica, revisão do treinamento e restauraçã
   await training.getByLabel('Escolha manual — Treinamento do caminho').selectOption('demo:training:guard');
   await training.getByRole('button', { name: 'Prévia da escolha manual' }).click(); await confirm(page);
   await expect(sheet(page)).toContainText('Personagem demonstrativo completo');
+  await expect(sheet(page)).toContainText('Caminho iniciante:');
+  await expect(sheet(page)).toContainText('Treinamento:');
+  await expect(sheet(page)).not.toContainText('novicePath:');
+  await expect(sheet(page)).not.toContainText('pathTraining:');
   expect((await exported(page)).events.slice(0,4)).toEqual(base.events);
   await path.getByLabel('Travar Caminho iniciante').click();
   await expect(path.getByLabel('Travar Caminho iniciante')).not.toBeChecked();

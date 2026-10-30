@@ -1,55 +1,14 @@
 /** Contrato de props do ChoiceSlot. Issues #9 e #10, frames 1b/1e. */
 
-export type Strategy =
-  | 'manual'
-  | 'published-table'
-  | 'uniform-eligible-unofficial'
-  | 'pending';
+import { z } from 'zod';
+import { ChoiceOptionSchema, ChoiceSlotSchema, RollTraceSchema, SlotUiStateSchema, StrategySchema } from './choice-slot-contract';
 
-export type SlotUiState =
-  | 'empty'
-  | 'preview'
-  | 'confirmed'
-  | 'partial'
-  | 'locked'
-  | 'needs-review'
-  | 'pending'
-  | 'suspended';
+export type Strategy = z.infer<typeof StrategySchema>;
+export type SlotUiState = z.infer<typeof SlotUiStateSchema>;
+export type ChoiceOption = z.infer<typeof ChoiceOptionSchema>;
+export type RollTrace = z.infer<typeof RollTraceSchema>;
 
-export type ChoiceOption = {
-  id: string;
-  label: string;
-  eligible: boolean;
-  /** Obrigatório quando `eligible` é false. A UI sempre mostra o texto. */
-  disabledReason?: string;
-};
-
-export type RollTrace = {
-  expression: string;
-  faces: number[];
-  total: number;
-  table?: string;
-  source?: string;
-  seed?: string;
-  rerollIndex?: number;
-};
-
-export type ChoiceSlotProps = {
-  slotId: string;
-  title: string;
-  contextLine?: string;
-  strategy: Strategy;
-  uiState: SlotUiState;
-  options: ChoiceOption[];
-  cardinality: { min: number; max: number };
-  selectedIds: string[];
-  preview?: { label: string; confirmed: false };
-  confirmReason?: string;
-  consequences?: { status: 'applied' | 'needs-review'; items: string[] };
-  rollTrace?: RollTrace;
-  locked: boolean;
-  canReroll: boolean;
-  sortReason?: string;
+export type ChoiceSlotProps = z.input<typeof ChoiceSlotSchema> & {
   onManualOpen: () => void;
   onSelect: (ids: string[]) => void;
   onRoll: () => void;

@@ -1,11 +1,13 @@
 import { useEffect, useId, useRef, useState, type MouseEvent } from 'react';
 import { STRATEGY_BADGE, STATE_BADGE, hasRollResult, type ChoiceSlotProps } from './choice-slot';
+import { parseChoiceSlotProps } from './choice-slot-contract';
 
 type Panel = 'manual' | 'source' | 'history' | null;
 
 const LOCK_REASON = 'Slot travado. Destrave para alterar. Travar não sorteia e não entra no lugar de Gerar tudo.';
 
-export function ChoiceSlot(props: ChoiceSlotProps) {
+export function ChoiceSlot(input: ChoiceSlotProps) {
+  const props = { ...input, ...parseChoiceSlotProps(input) };
   const titleId = useId();
   const reasonBase = useId();
   const [panel, setPanel] = useState<Panel>(null);

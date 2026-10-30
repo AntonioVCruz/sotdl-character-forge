@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { levelSchema } from './level';
 import { registry, packKey, RulesetSchema, type Snapshot } from '../catalog';
 import { PRNG_VERSION, ResolutionSchema, StatsSchema, createSubstream, resolveTable, tableOptions, sourceOf, supportedEffects, type Stats, type Resolution, type ManualOption } from '../random-tables';
 import { SessionSchema, emptySession, replaySession } from '../session/model';
@@ -13,7 +14,6 @@ export function activeSlotIds(character: Character): SlotId[] {
   const path = character.events.filter(e => e.slotId === 'novicePath' && e.level <= character.level).at(-1)?.resolution.key;
   return SLOT_IDS.filter(id => slotLevel(id) <= character.level && (!['tradition', 'spell'].includes(id) || path === MAGIC_PATH));
 }
-const levelSchema = z.union([z.literal(0), z.literal(1)]);
 function dependenciesFor(id: SlotId, current: Partial<Record<SlotId, ChoiceEvent>>): Record<string, string> {
   if (id === 'background' || id === 'novicePath') return { ancestry: current.ancestry?.resolution.key ?? '' };
   if (id === 'pathTraining') return { novicePath: current.novicePath?.resolution.key ?? '' };

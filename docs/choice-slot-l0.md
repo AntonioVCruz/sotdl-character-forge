@@ -4,6 +4,8 @@ Contrato de UI das issues [#9](https://github.com/AntonioVCruz/sotdl-character-f
 
 ## Props
 
+Dados validados por `ChoiceSlotSchema` antes da renderização; tipos derivados dos schemas Zod em `apps/web/choice-slot-contract.ts`. `levelSchema` é compartilhado com o motor (0|1), sem habilitar L1 no wizard atual. Comandos genéricos passam por `ChoiceSlotCommandSchema`; `L0ActionSchema` restringe as chaves e ações do adapter a nível 0 e o reducer rejeita entrada inválida sem mutação. Callbacks de UI não fazem parte do documento serializável.
+
 `Strategy`: `manual` | `published-table` | `uniform-eligible-unofficial` | `pending`.
 
 `SlotUiState`: `empty` | `preview` | `confirmed` | `partial` | `locked` | `needs-review` | `pending` | `suspended`.
@@ -33,3 +35,7 @@ Seed começa vazia. Copiar não inventa uma seed. Nível-alvo fica em 0. "Gerar 
 Se `content-packs/**/pack.json` existir, o passo Ruleset lê stubs de ancestry com `fictionalData: false`. Eles aparecem como opção inelegível. `rulesetEnabled` permanece `false` (soft-block; sem compilador CUR-031). Neste checkout os stubs podem estar ausentes: o motivo fica na lista.
 
 Tabelas narrativas e, no recorte Only Human, Human Development Tables ficam pendentes com motivo. O caminho que fecha a revisão L0 é o recorte Core fictício, com benefício, profissão, Wealth, kit e Interesting Thing também fictícios.
+
+## Aceite S1
+
+O [aceite das #9/#10](aceite-s1-issues9-10.md) registra a verificação técnica e UX executada pelo Codex, a matriz dos frames 1b/1e, as capturas inspecionadas e os limites. Rótulos de escolhas/pendências do motor legado também foram corrigidos; IDs de proveniência e JSON técnico continuam nos detalhes apropriados. O trabalho L1 adiado é acompanhado na [#21](https://github.com/AntonioVCruz/sotdl-character-forge/issues/21).
