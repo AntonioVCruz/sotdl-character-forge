@@ -11,6 +11,8 @@ import spellSession from '../../examples/demo-spell-session.json';
 import { clearCharacter } from '../../packages/character-generator/storage';
 import { CharacterBuilder } from './CharacterBuilder';
 import { ErrorBoundary, onCaughtError } from './ErrorBoundary';
+import { HumanL0FixturePreview } from './HumanL0FixturePreview';
+import { HUMAN_L0_FIXTURE_PREVIEW_ENABLED } from './human-l0-preview';
 import { errorMessage } from './errors';
 import './style.css';
 
@@ -52,6 +54,7 @@ function App() {
       for (const pack of next.packs.filter(p => [tables.packId, levelZero.packId, levelOne.packId, magic.packId, spellSession.packId].includes(p.packId))) next = setEnabled(next, pack, true);
       return next;
     }, 'Fontes da demonstração prontas.')} /></ErrorBoundary>
+    {HUMAN_L0_FIXTURE_PREVIEW_ENABLED && <ErrorBoundary scope="ficha"><HumanL0FixturePreview /></ErrorBoundary>}
     <section aria-labelledby="sources-title"><h2 id="sources-title">Biblioteca de fontes</h2><p>Importar adiciona à biblioteca. Habilite uma fonte para usá-la no catálogo da campanha.</p>
       <div className="actions"><button disabled={!ready || busy} onClick={() => change(() => {
         let next = importPack(snapshot, demo).snapshot;
