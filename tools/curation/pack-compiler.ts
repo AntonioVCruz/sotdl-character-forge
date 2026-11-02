@@ -117,13 +117,22 @@ async function rejectOutputLinks(root: string, target: string) {
 }
 
 export async function main(args: string[], root = process.cwd()) {
+  return runCompilation(args, root, () => buildArtifacts(root), false);
+}
+
+export async function mainMechanical(args: string[], root = process.cwd()) {
+  return runCompilation(args, root, async () => (await import('./human-l0-mechanical-compiler')).buildMechanicalArtifacts(root), true);
+}
+
+async function runCompilation<T extends { artifacts: Map<string,string>; hashes: {path:string;sha256:string}[];
+  sha256: string; validation: {status:string;packs:number;entities:number} }>(args: string[], root: string, build: () => Promise<T>, mechanical: boolean) {
   if (!['--write', '--check'].includes(args[0]) || ![1, 3].includes(args.length) || args.length === 3 && args[1] !== '--output')
     throw new Error('Use --write|--check [--output tmp/<directory>].');
-  const output = resolve(root, args[2] ?? 'tmp/curation/compiled-human-l0');
+  const output = resolve(root, args[2] ?? (mechanical ? 'tmp/curation/compiled-human-l0-mechanics' : 'tmp/curation/compiled-human-l0'));
   const location = relative(resolve(root, 'tmp'), output);
   if (!location || location === '..' || location.startsWith(`..${sep}`) || isAbsolute(location))
     throw new Error('Compilation output must be a directory inside tmp/.');
-  const result = await buildArtifacts(root);
+  const result = await build();
   // Preflight all destinations; packs are immutable, indexes/reports follow the current inputs.
   const writes: [string, string, boolean][] = [];
   for (const [path, text] of result.artifacts) {
@@ -150,7 +159,7 @@ export async function main(args: string[], root = process.cwd()) {
     await writeFile(target, text, { encoding: 'utf8', flag: replace ? 'w' : 'wx' });
   }
   for (const hash of result.hashes) console.log(`${hash.sha256}  ${hash.path}`);
-  console.log(`Human L0 metadata compilation SHA256: ${result.sha256}; ${args[0]}`);
+  console.log(`Human L0 ${mechanical ? 'mechanical' : 'metadata'} compilation SHA256: ${result.sha256}; ${args[0]}`);
   console.log(`Integrated validation: ${result.validation.status}; ${result.validation.packs} packs, ${result.validation.entities} entities; ruleset disabled.`);
   return result;
 }

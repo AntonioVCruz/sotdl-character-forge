@@ -31,7 +31,9 @@
     "curation:privacy": "node tools/curation/privacy-check.mjs",
     "curation:compile": "node tools/curation/compile-packs.mjs --write",
     "curation:compile:check": "node tools/curation/compile-packs.mjs --check",
-    "curation:validate": "node tools/curation/compile-packs.mjs --check"
+    "curation:validate": "node tools/curation/compile-packs.mjs --check",
+    "curation:compile:mechanical": "node tools/curation/compile-packs.mjs --write --mechanical",
+    "curation:validate:mechanical": "node tools/curation/compile-packs.mjs --check --mechanical"
   },
   "dependencies": {
     "react": "19.2.0",
