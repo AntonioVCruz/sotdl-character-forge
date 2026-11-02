@@ -8,6 +8,7 @@ import { SourceRegistrySchema } from '../../packages/curation/registries';
 import { assertSafeArtifact } from './privacy.mjs';
 import { canonicalJson, compareStrings as compare } from './canonical-json';
 import { buildThematicIndexes } from './thematic-indexes';
+import { buildCompilationReport, STAGING_PATHS, type InputDigest, type LocatedRecord } from './compilation-report';
 
 const CORE = 'sotdl:shadow-of-the-demon-lord-core';
 const ONLY_HUMAN = 'sotdl:only-human';
@@ -26,7 +27,7 @@ function checked<T>(schema: z.ZodType<T>, value: unknown, location: string): T {
   if (!result.success) throw new Error(`${location}: invalid input.`);
   return result.data;
 }
-const sha256 = (text: string) => createHash('sha256').update(text, 'utf8').digest('hex');
+const sha256 = (text: string | Buffer) => createHash('sha256').update(text).digest('hex');
 
 /** CUR-031 activities 1/2: metadata packs and exact indexes; no review promotion or mechanics. */
 export function compileHumanL0(recipeInput: unknown, registryInput: unknown, entries: unknown[]) {
@@ -80,29 +81,41 @@ export function compileHumanL0(recipeInput: unknown, registryInput: unknown, ent
   }
   const ordered = new Map([...artifacts].sort(([a], [b]) => compare(a, b)));
   const hashes = [...ordered].map(([path, text]) => ({ path, sha256: sha256(text) }));
-  return { artifacts: ordered, hashes, sha256: sha256(canonicalJson(hashes)) };
-}
-
-async function jsonFile(path: string) {
-  const text = await readFile(path, 'utf8');
-  try { return JSON.parse(text) as unknown; }
-  catch { throw new Error('Invalid JSON input; contents omitted.'); }
+  return { packs, artifacts: ordered, hashes, sha256: sha256(canonicalJson(hashes)) };
 }
 
 export async function buildArtifacts(root: string) {
-  const recipeInput = await jsonFile(resolve(root, 'curation/human-l0-compilation.json'));
+  const inputs: InputDigest[] = [];
+  async function load(path: InputDigest['path']) {
+    const bytes = await readFile(resolve(root, path));
+    inputs.push({ path, bytes: bytes.length, sha256: sha256(bytes) });
+    try { return new TextDecoder('utf-8', { fatal: true, ignoreBOM: true }).decode(bytes); }
+    catch { throw new Error(`Invalid UTF-8 input at ${path}; contents omitted.`); }
+  }
+  async function jsonFile(path: InputDigest['path']) {
+    const text = await load(path);
+    try { return JSON.parse(text) as unknown; }
+    catch { throw new Error(`Invalid JSON input at ${path}; contents omitted.`); }
+  }
+  const recipeInput = await jsonFile('curation/human-l0-compilation.json');
   const recipe = checked(RecipeSchema, recipeInput, 'Compilation recipe');
-  const entries: unknown[] = [];
+  const records: LocatedRecord[] = [];
   for (const sourceId of [...new Set(recipe.packs.map(p => p.sourceId))].sort(compare)) {
-    const path = `curation/entries/${encodeURIComponent(sourceId)}/ancestry.jsonl`;
-    const lines = (await readFile(resolve(root, path), 'utf8')).split(/\r\n|\n|\r/);
+    const path = STAGING_PATHS[sourceId];
+    const lines = (await load(path)).split(/\r\n|\n|\r/);
     for (const [index, line] of lines.entries()) {
       if (!line.trim()) continue;
-      try { entries.push(JSON.parse(line)); }
+      try { records.push({ path, sourceId, line: index + 1, sha256: sha256(line), value: JSON.parse(line) }); }
       catch { throw new Error(`Invalid staging JSON at ${path}:${index + 1}; contents omitted.`); }
     }
   }
-  return compileHumanL0(recipeInput, await jsonFile(resolve(root, 'curation/sources.json')), entries);
+  const result = compileHumanL0(recipeInput, await jsonFile('curation/sources.json'), records.map(r => r.value));
+  const report = buildCompilationReport(inputs, records, result.packs, result);
+  const path = 'reports/human-l0-compilation.json', text = canonicalJson(report);
+  assertSafeArtifact(path, text);
+  const artifacts = new Map([...result.artifacts, [path, text] as [string, string]].sort(([a], [b]) => compare(a, b)));
+  const hashes = [...artifacts].map(([path, text]) => ({ path, sha256: sha256(text) }));
+  return { ...result, report, artifacts, hashes, sha256: sha256(canonicalJson(hashes)) };
 }
 
 async function rejectOutputLinks(root: string, target: string) {
@@ -126,7 +139,7 @@ export async function main(args: string[], root = process.cwd()) {
   if (!location || location === '..' || location.startsWith(`..${sep}`) || isAbsolute(location))
     throw new Error('Compilation output must be a directory inside tmp/.');
   const result = await buildArtifacts(root);
-  // Preflight all destinations before writing; packs are immutable, indexes follow the recipe.
+  // Preflight all destinations; packs are immutable, indexes/reports follow the current inputs.
   const writes: [string, string, boolean][] = [];
   for (const [path, text] of result.artifacts) {
     const target = resolve(output, path);
@@ -138,13 +151,15 @@ export async function main(args: string[], root = process.cwd()) {
       writes.push([target, text, false]); continue;
     }
     if (current !== text) {
-      if (args[0] === '--write' && path.startsWith('compendios/')) writes.push([target, text, true]);
-      else if (path.startsWith('compendios/')) throw new Error(`Compiled index differs: ${path}. Rebuild with --write.`);
+      const derived = path.startsWith('compendios/') || path.startsWith('reports/');
+      if (args[0] === '--write' && derived) writes.push([target, text, true]);
+      else if (derived) throw new Error(`Compiled ${path.startsWith('reports/') ? 'report' : 'index'} differs: ${path}. Rebuild with --write.`);
       else throw new Error(`Compiled artifact differs: ${path}. Choose a new version or a separate output directory.`);
     }
   }
-  // Finish pack writes before publishing any index that references them.
-  writes.sort(([a], [b]) => Number(a.endsWith('.index.json')) - Number(b.endsWith('.index.json')));
+  // Write packs, then indexes, then the report describing the completed artifact set.
+  const priority = (path: string) => path.endsWith('pack.json') ? 0 : path.endsWith('.index.json') ? 1 : 2;
+  writes.sort(([a], [b]) => priority(a) - priority(b));
   for (const [target, text, replace] of writes) {
     await mkdir(dirname(target), { recursive: true });
     await writeFile(target, text, { encoding: 'utf8', flag: replace ? 'w' : 'wx' });

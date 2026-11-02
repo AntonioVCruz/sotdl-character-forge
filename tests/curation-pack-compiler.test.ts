@@ -1,5 +1,6 @@
 import { mkdtemp, mkdir, readFile, rm, symlink, writeFile } from 'node:fs/promises';
 import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { afterEach, describe, expect, it, vi } from 'vitest';
@@ -176,7 +177,50 @@ describe('CUR-031: deterministic Human L0 compilation and index persistence', ()
     await writeFile(join(output, packPath), 'Existing changed pack\n');
     const indexPath = join(output, 'compendios/ancestry.index.json');
     await writeFile(indexPath, '{}\n');
+    const reportPath = join(output, 'reports/human-l0-compilation.json');
+    await writeFile(reportPath, '{}\n');
     await expect(main(['--write'], root)).rejects.toThrow(/Choose a new version/);
     expect(await readFile(indexPath, 'utf8')).toBe('{}\n');
+    expect(await readFile(reportPath, 'utf8')).toBe('{}\n');
+  });
+
+  it('reports exact input byte hashes and record line hashes with no report self-reference', async () => {
+    const root = await workspace(), result = await main(['--write'], root);
+    expect(result.report.inputs).toHaveLength(4);
+    for (const input of result.report.inputs) {
+      const bytes = await readFile(join(root, input.path));
+      expect(input.bytes).toBe(bytes.length);
+      expect(input.sha256).toBe(createHash('sha256').update(bytes).digest('hex'));
+    }
+    for (const entry of result.report.included) {
+      const line = (await readFile(join(root, entry.origin.path), 'utf8')).split(/\r\n|\n|\r/)[entry.origin.line - 1];
+      expect(entry.origin.sha256).toBe(createHash('sha256').update(line).digest('hex'));
+    }
+    expect(result.hashes).toHaveLength(4);
+    expect(result.report.outputs.files).toHaveLength(3);
+  });
+
+  it('refreshes provenance after a private input changes while preserving pack/index bytes', async () => {
+    const root = await workspace(), first = await main(['--write'], root);
+    const input = first.report.inputs.find(i => i.path.startsWith('curation/entries/'))!;
+    const path = join(root, input.path), entry = JSON.parse(await readFile(path, 'utf8'));
+    entry.originalText = 'Updated private text, absent from all public artifacts';
+    await writeFile(path, JSON.stringify(entry) + '\n');
+    await expect(main(['--check'], root)).rejects.toThrow(/report differs/);
+    const second = await main(['--write'], root);
+    expect(second.report.outputs).toEqual(first.report.outputs);
+    expect(second.report.inputs.find(i => i.path === input.path)?.sha256).not.toBe(input.sha256);
+    expect(second.sha256).not.toBe(first.sha256);
+    for (const [path, text] of first.artifacts) if (!path.startsWith('reports/')) expect(second.artifacts.get(path)).toBe(text);
+    await expect(main(['--check'], root)).resolves.toMatchObject({ sha256: second.sha256 });
+  });
+
+  it('refuses invalid UTF-8 input without replacing an existing successful report', async () => {
+    const root = await workspace(), first = await main(['--write'], root);
+    const reportPath = join(root, 'tmp/curation/compiled-human-l0/reports/human-l0-compilation.json');
+    const before = await readFile(reportPath);
+    await writeFile(join(root, first.report.inputs.find(i => i.path.startsWith('curation/entries/'))!.path), Buffer.from([0xff]));
+    await expect(main(['--write'], root)).rejects.toThrow(/Invalid UTF-8/);
+    expect(await readFile(reportPath)).toEqual(before);
   });
 });
