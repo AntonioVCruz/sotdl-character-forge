@@ -83,7 +83,7 @@ Esse é o contrato da composição. Cálculo de personagem, aplicação de efeit
 
 Exemplo completo: `curation/examples/human-l0-mechanics.synthetic.json`. Usa fontes, valores e evidências inventados, `fictionalData: true` e estados `needs-review`; não representa regras publicadas de SotDL. Por exemplo, sua base de score e seu dado diferem dos insumos Human revisados. Não foi criado pack mecânico oficial no Git nem marcado conteúdo oficial como fictício.
 
-Os packs atuais, o índice, o relatório, os saves e o consumidor demonstrativo permanecem no formato anterior. Uma futura projeção mecânica precisa de versão nova de pack, validação explícita deste contrato, proveniência e auditoria permitidas pela política; a definição do schema não promove conteúdo ou habilita ruleset.
+A projeção anterior de metadados e seus índice/relatório, os saves e o consumidor demonstrativo permanecem no formato anterior. A projeção mecânica local adotou packs `0.2.0`, validação explícita deste contrato e auditoria documentada; distribuição e integração ao motor permanecem pendentes. A definição do schema não promove conteúdo ou habilita ruleset.
 
 Os 27 cenários novos verificam envelope, versão, Core independente, dependência exata, evidências por fonte/componente, valores herdados, decisão de Size, fases de composição, escolhas independentes, rolagens armazenadas, limites e ausência de RNG/mutação.
 
