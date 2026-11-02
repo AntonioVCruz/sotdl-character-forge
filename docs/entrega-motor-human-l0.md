@@ -67,4 +67,4 @@ Autoria do aceite técnico: Codex, com fixtures fictícias públicas e conferên
 - [x] Estender compilador e validação da base revisada.
 - [x] Integrar a base ao motor, com mudanças de escolhas e salvamento/reabertura.
 
-A #7 continua aberta para os demais lotes/procedimentos, integração do fluxo completo, fonte/distribuição, PDF, freeze e habilitação oficial. L1 continua na #21; histórico e backups permanecem na #16.
+As pendências dos demais lotes/procedimentos, interface real, fonte/distribuição, PDF, freeze e habilitação oficial foram [transferidas da #7 para as #34–#37](transferencia-escopo-issue7.md). A #7 conserva o contrato/fatia draft S1 aceitos e permanece aberta para decisão de encerramento. L1 continua na #21; histórico e backups permanecem na #16.
