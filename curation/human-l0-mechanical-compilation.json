@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "projection": "human-l0-mechanics",
+  "packs": [
+    {
+      "packId": "sotdl-core-human-l0",
+      "version": "0.2.0",
+      "sourceId": "sotdl:shadow-of-the-demon-lord-core",
+      "dependencies": [],
+      "entityIds": ["sotdl:shadow-of-the-demon-lord-core:ancestry:human:default"]
+    },
+    {
+      "packId": "sotdl-only-human-l0",
+      "version": "0.2.0",
+      "sourceId": "sotdl:only-human",
+      "dependencies": [{ "packId": "sotdl-core-human-l0", "version": "0.2.0" }],
+      "entityIds": ["sotdl:only-human:ancestry:human:variant"]
+    }
+  ]
+}

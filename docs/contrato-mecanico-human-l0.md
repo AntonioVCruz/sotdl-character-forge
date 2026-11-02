@@ -15,7 +15,7 @@ APIs públicas:
 - `parseHumanL0MechanicalPacks(inputs)`: gate contextual de fonte, identidade, dependências e proveniência. Recebe Core sozinho ou Core + expansão, em uma versão selecionada de cada; retorna Core antes da expansão.
 - `HumanL0SelectionSchema` / `parseHumanL0Selection(input, packs)`: formato e validação contextual de escolhas, sem rolar dados ou produzir um personagem.
 
-`parsePack` genérico continua aceitando propriedades extras de entidades; isso não valida o conteúdo de `mechanics`. O projetor/importador mecânico deverá chamar o gate específico. O compilador atual de metadados permanece em seu contrato anterior e continua recusando payloads mecânicos.
+`parsePack` genérico continua aceitando propriedades extras de entidades; isso não valida o conteúdo de `mechanics`. A [projeção mecânica local](entrega-projecao-mecanica-human-l0.md) chama o gate específico; a integração ao importador/runtime ainda está pendente. O compilador de metadados permanece em seu contrato anterior e continua recusando payloads mecânicos.
 
 Core independe da instalação do suplemento. A expansão exige o Core exato por packId/versão, sem fallback para uma versão mais nova. Referências selecionam também entityId. O gate recebe a fatia escolhida, não todas as versões eventualmente instaladas no catálogo. Versões de contrato desconhecidas são recusadas, sem conversão silenciosa.
 
@@ -39,7 +39,7 @@ Core independe da instalação do suplemento. A expansão exige o Core exato por
 | `procedure` | Perfil Core ou Human Development, independente do modo de atributos; limites e concessões externas descritos abaixo. |
 | `evaluationOrder` | Ordem de dependências fixa, sem código executável. |
 
-O schema valida formato, referências e coerência; não prova que os números coincidem com uma publicação nem concede autorização de distribuição. Os valores reais serão projetados a partir dos insumos revisados na atividade seguinte.
+O schema valida formato, referências e coerência; não prova que os números coincidem com uma publicação nem concede autorização de distribuição. O projetor local usa os insumos revisados e confere seus hashes e faixas de evidência antes de emitir os valores reais.
 
 ## C01 — Evidência por variante e por componente
 
@@ -95,5 +95,5 @@ Autoria da definição e validação técnica: Codex. O ledger de revisão anter
 
 - [x] Revisão local do conteúdo-base Human L0.
 - [x] Definição do contrato mecânico do pack.
-- [ ] Projeção pelo compilador e validação dos dados reais permitidos.
+- [x] Projeção local pelo compilador e validação da base revisada; distribuição permanece pendente.
 - [ ] Integração dos handlers no motor e aceite do personagem.

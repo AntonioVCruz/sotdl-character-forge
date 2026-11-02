@@ -10,8 +10,10 @@ try {
     packages: 'external', platform: 'node', format: 'esm', target: 'node22', outfile: output, write: false });
   await mkdir(dirname(output), { recursive: true });
   await writeFile(output, result.outputFiles[0].contents);
-  const { main } = await import(pathToFileURL(output).href);
-  await main(process.argv.slice(2), root);
+  const { main, mainMechanical } = await import(pathToFileURL(output).href);
+  const args = process.argv.slice(2);
+  if (args.includes('--mechanical')) await mainMechanical(args.filter(arg => arg !== '--mechanical'), root);
+  else await main(args, root);
 } catch (error) {
   console.error(error.message);
   process.exitCode = 1;
