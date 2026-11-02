@@ -2,6 +2,8 @@
 
 Revisão de 2026-11-02, executada por **Codex / análise local**, como atividade 1 da próxima entrega mecânica. Registro de metadados: [human-l0-base-2026-11-02.json](../curation/reviews/human-l0-base-2026-11-02.json).
 
+Entrega posterior: o [contrato mecânico Human L0 v1](contrato-mecanico-human-l0.md) atende C01–C03 no formato e na validação. As conclusões e evidências abaixo conservam o escopo da revisão original; projeção e integração ao motor continuam pendentes.
+
 ## Resultado e escopo
 
 A base de Human nível 0 foi conferida contra os MDs e transcrições locais: atributos, ajuste opcional, características derivadas, Size, estados iniciais, idiomas/profissões e fronteiras de procedimento/nível. Foram examinadas **15 verificações temáticas e 15 faixas de evidência**, com reabertura dos arquivos e conferência dos hashes e limites dos trechos. As **15 fórmulas numéricas** do modelo de referência são coerentes com essa base. Não foi encontrada divergência numérica que exija corrigir o formalizador nesta revisão.
