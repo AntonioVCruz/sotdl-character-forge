@@ -1,0 +1,440 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "human-l0-base-md-2026-11-02",
+  "reviewDate": "2026-11-02",
+  "reviewer": "Codex / local content review",
+  "scope": "human-l0-base-attributes-derived-language-and-procedure-boundaries",
+  "assessment": "base-confirmed-against-local-text-with-explicit-inheritance-and-decisions",
+  "axes": {
+    "sourcePermission": "needs-review",
+    "transcription": "md-checked",
+    "structure": "checked-for-scoped-ranges",
+    "mechanics": "checked-for-base-claims",
+    "automation": "unsupported",
+    "pdfInspection": "not-performed",
+    "distribution": "not-certified"
+  },
+  "subjects": [
+    {
+      "variant": "core",
+      "sourceId": "sotdl:shadow-of-the-demon-lord-core",
+      "entityId": "sotdl:shadow-of-the-demon-lord-core:ancestry:human:default",
+      "entryPrintedPageDeclared": 11,
+      "entryPdfPageDeclared": 12,
+      "physicalPdfPageInspected": null,
+      "subrangePaginationCertified": false
+    },
+    {
+      "variant": "only-human",
+      "sourceId": "sotdl:only-human",
+      "entityId": "sotdl:only-human:ancestry:human:variant",
+      "entryPrintedPageDeclared": 5,
+      "entryPdfPageDeclared": 5,
+      "physicalPdfPageInspected": null,
+      "subrangePaginationCertified": false
+    }
+  ],
+  "inputs": [
+    {
+      "path": "curation/corrections/core-character-creation-2026-10-27/introduction.txt",
+      "sha256": "51524877da4e81c6146392d35f4fdca222e6e0b4ff9b7507b0e93c6bcb43f9ef"
+    },
+    {
+      "path": "curation/corrections/core-character-creation-2026-10-27/manifest.json",
+      "sha256": "9dea0ea654bbea13db2e1b6165a3f63f3a1fdc4021f1413a2bda81e9a61e2a7f"
+    },
+    {
+      "path": "curation/corrections/core-professions-2026-10-27/professions.txt",
+      "sha256": "4609a3f4a51c5bc1fa77af9db00a757adc381d78301c2adb85661a53f421c150"
+    },
+    {
+      "path": "curation/pilot/creation-decisions.json",
+      "sha256": "0ac80080b3a0c1e8e2d8e27301a209f88927a1baf07aaaac7129892a6eef861d"
+    },
+    {
+      "path": "rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md",
+      "sha256": "020d9d62d9046475552dbaf9f989f07e69b87b7a386cadc1af3e82f930502baf"
+    },
+    {
+      "path": "rules/SotDL_Compendio_Regras_Equipamentos_Monstros_v4_All_Project_Sources.md",
+      "sha256": "af5b377d003c96910c5c7d4c4909a66d381513cbda93de22b5d83a6ca5474ece"
+    }
+  ],
+  "reviewedArtifacts": [
+    {
+      "path": "curation/pilot/core-level-zero.json",
+      "sha256": "e65855746b30c4219449be21de93bf10e5db9e8b5d21cc95b87eec22e0cee263"
+    },
+    {
+      "path": "curation/pilot/human-ancestry.json",
+      "sha256": "24fec52b8c05c0cfc349d10ef369d9d93457b3177b2a237e9187320c50489437"
+    },
+    {
+      "path": "curation/pilot/professions-languages.json",
+      "sha256": "69127d05ec80db91b824b509b1cde7c9711932f1c7d5182d5ec7696075a01e02"
+    },
+    {
+      "path": "packages/curation/ancestry-base-model.ts",
+      "sha256": "54aec5dabdcbd0eba4e5baf61015e98fd2cf0764adec4ec98f79888f2f1ca636"
+    },
+    {
+      "path": "tests/curation-human-ancestry.test.ts",
+      "sha256": "05aa543e8f6638835b2a7fd92c1a420e988a4904595b942b968edd9cd3677bf1"
+    },
+    {
+      "path": "tools/curation/human-ancestry-formalizer.ts",
+      "sha256": "41d6e44dccedc70a5770234081fd2de7662772ce30604457f545cbc98392a24d"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ancestry-table-options",
+      "sourceId": "sotdl:shadow-of-the-demon-lord-core",
+      "medium": "text",
+      "path": "curation/corrections/core-character-creation-2026-10-27/introduction.txt",
+      "inputSha256": "51524877da4e81c6146392d35f4fdca222e6e0b4ff9b7507b0e93c6bcb43f9ef",
+      "startLine": 32,
+      "endLine": 33,
+      "excerptSha256": "574da41b330eb1432e3c3913d683fd1d2d28d6c3021151430319ef3cdaf79794"
+    },
+    {
+      "id": "attributes",
+      "sourceId": "sotdl:shadow-of-the-demon-lord-core",
+      "medium": "md",
+      "path": "rules/SotDL_Compendio_Regras_Equipamentos_Monstros_v4_All_Project_Sources.md",
+      "inputSha256": "af5b377d003c96910c5c7d4c4909a66d381513cbda93de22b5d83a6ca5474ece",
+      "startLine": 1076,
+      "endLine": 1086,
+      "excerptSha256": "3519506b8003de15b97710ea554a69aafd4b1e76243035c08743ea6d3d2b111f"
+    },
+    {
+      "id": "derived",
+      "sourceId": "sotdl:shadow-of-the-demon-lord-core",
+      "medium": "md",
+      "path": "rules/SotDL_Compendio_Regras_Equipamentos_Monstros_v4_All_Project_Sources.md",
+      "inputSha256": "af5b377d003c96910c5c7d4c4909a66d381513cbda93de22b5d83a6ca5474ece",
+      "startLine": 1241,
+      "endLine": 1269,
+      "excerptSha256": "2271ad2cb618ef4d20053ca60af17bb72590381b58b8b222a017cba4b40dea0b"
+    },
+    {
+      "id": "general-level-four",
+      "sourceId": "sotdl:shadow-of-the-demon-lord-core",
+      "medium": "text",
+      "path": "curation/corrections/core-character-creation-2026-10-27/introduction.txt",
+      "inputSha256": "51524877da4e81c6146392d35f4fdca222e6e0b4ff9b7507b0e93c6bcb43f9ef",
+      "startLine": 30,
+      "endLine": 31,
+      "excerptSha256": "345f7bf972ae5ba8ffc7ae8fe37674b3f69784f94d0698811066a9e09a25b496"
+    },
+    {
+      "id": "general-scores",
+      "sourceId": "sotdl:shadow-of-the-demon-lord-core",
+      "medium": "text",
+      "path": "curation/corrections/core-character-creation-2026-10-27/introduction.txt",
+      "inputSha256": "51524877da4e81c6146392d35f4fdca222e6e0b4ff9b7507b0e93c6bcb43f9ef",
+      "startLine": 16,
+      "endLine": 23,
+      "excerptSha256": "917a3700dace96f1ca6ce3ac6f7bd75e5d0bc8d11886eb86604cf310b1b75f8a"
+    },
+    {
+      "id": "human-build",
+      "sourceId": "sotdl:shadow-of-the-demon-lord-core",
+      "medium": "md",
+      "path": "rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md",
+      "inputSha256": "020d9d62d9046475552dbaf9f989f07e69b87b7a386cadc1af3e82f930502baf",
+      "startLine": 14866,
+      "endLine": 14876,
+      "excerptSha256": "35aa4b2d1b536b4d1c3e2a4ca33308a62041ecfaa4e217f12bd93d98e60c75ce"
+    },
+    {
+      "id": "human-expansion-attributes",
+      "sourceId": "sotdl:only-human",
+      "medium": "md",
+      "path": "rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md",
+      "inputSha256": "020d9d62d9046475552dbaf9f989f07e69b87b7a386cadc1af3e82f930502baf",
+      "startLine": 13626,
+      "endLine": 13651,
+      "excerptSha256": "da7435587c2c3c82e50e58455b961793069186b192dc13f7e141283b1a129b65"
+    },
+    {
+      "id": "human-expansion-level-four",
+      "sourceId": "sotdl:only-human",
+      "medium": "md",
+      "path": "rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md",
+      "inputSha256": "020d9d62d9046475552dbaf9f989f07e69b87b7a386cadc1af3e82f930502baf",
+      "startLine": 13719,
+      "endLine": 13725,
+      "excerptSha256": "2d36aa3c0a53b398e72dbcf3bf80c19c997b19fcd7608ef425935013a997a19c"
+    },
+    {
+      "id": "human-expansion-procedure",
+      "sourceId": "sotdl:only-human",
+      "medium": "md",
+      "path": "rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md",
+      "inputSha256": "020d9d62d9046475552dbaf9f989f07e69b87b7a386cadc1af3e82f930502baf",
+      "startLine": 13726,
+      "endLine": 13734,
+      "excerptSha256": "d4df85929a091201ba2fdb0ef4b912561e48070216b4e2b59d6ed1dc87519a86"
+    },
+    {
+      "id": "human-expansion-source",
+      "sourceId": "sotdl:only-human",
+      "medium": "md",
+      "path": "rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md",
+      "inputSha256": "020d9d62d9046475552dbaf9f989f07e69b87b7a386cadc1af3e82f930502baf",
+      "startLine": 13618,
+      "endLine": 13623,
+      "excerptSha256": "5cf4327cc11d7659a8a2e497eaddc949bfb6b2be29045d3fc69136cfe40d9443"
+    },
+    {
+      "id": "human-future",
+      "sourceId": "sotdl:shadow-of-the-demon-lord-core",
+      "medium": "md",
+      "path": "rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md",
+      "inputSha256": "020d9d62d9046475552dbaf9f989f07e69b87b7a386cadc1af3e82f930502baf",
+      "startLine": 14771,
+      "endLine": 14775,
+      "excerptSha256": "57d4e02a273dc1eeb904646da2a2141973f904971ff414ce07f1e0672dfc7888"
+    },
+    {
+      "id": "human-language",
+      "sourceId": "sotdl:shadow-of-the-demon-lord-core",
+      "medium": "md",
+      "path": "rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md",
+      "inputSha256": "020d9d62d9046475552dbaf9f989f07e69b87b7a386cadc1af3e82f930502baf",
+      "startLine": 14768,
+      "endLine": 14770,
+      "excerptSha256": "123e7492230499b7af79d5153f99f1fb54d0ba036e19622a65fb7af8105d6e12"
+    },
+    {
+      "id": "human-source",
+      "sourceId": "sotdl:shadow-of-the-demon-lord-core",
+      "medium": "md",
+      "path": "rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md",
+      "inputSha256": "020d9d62d9046475552dbaf9f989f07e69b87b7a386cadc1af3e82f930502baf",
+      "startLine": 14712,
+      "endLine": 14717,
+      "excerptSha256": "bfc1bcddb74fc84f3cdce15bf87be0a1e95ab12c020d9c9c72fda470bdb79429"
+    },
+    {
+      "id": "human-stats",
+      "sourceId": "sotdl:shadow-of-the-demon-lord-core",
+      "medium": "md",
+      "path": "rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md",
+      "inputSha256": "020d9d62d9046475552dbaf9f989f07e69b87b7a386cadc1af3e82f930502baf",
+      "startLine": 14759,
+      "endLine": 14767,
+      "excerptSha256": "b668ad1e6a8b76ef2dd3a021a333d5afb05cf44e0b22d58aecedc694518436a1"
+    },
+    {
+      "id": "supplied-profession-procedure",
+      "sourceId": "sotdl:shadow-of-the-demon-lord-core",
+      "medium": "text",
+      "path": "curation/corrections/core-professions-2026-10-27/professions.txt",
+      "inputSha256": "4609a3f4a51c5bc1fa77af9db00a757adc381d78301c2adb85661a53f421c150",
+      "startLine": 22,
+      "endLine": 30,
+      "excerptSha256": "dbfc0a3fcd44bcbf13812c4993e0108b103c2c55e40d96858e737a9bc460b205"
+    }
+  ],
+  "claims": [
+    {
+      "id": "R01",
+      "topic": "publication-and-entry-page-declarations",
+      "assessment": "confirmed-md",
+      "evidenceIds": [
+        "human-source",
+        "human-expansion-source"
+      ]
+    },
+    {
+      "id": "R02",
+      "topic": "fixed-attributes-exclusive-increase",
+      "assessment": "confirmed-md",
+      "evidenceIds": [
+        "human-stats",
+        "human-expansion-attributes"
+      ]
+    },
+    {
+      "id": "R03",
+      "topic": "only-human-four-independent-d3",
+      "assessment": "confirmed-md",
+      "evidenceIds": [
+        "human-expansion-attributes"
+      ]
+    },
+    {
+      "id": "R04",
+      "topic": "one-optional-post-mode-transfer",
+      "assessment": "confirmed-md",
+      "evidenceIds": [
+        "general-scores",
+        "human-stats",
+        "human-expansion-attributes"
+      ]
+    },
+    {
+      "id": "R05",
+      "topic": "health-defense-perception-from-final-attributes",
+      "assessment": "confirmed-md",
+      "evidenceIds": [
+        "human-stats",
+        "human-expansion-attributes"
+      ]
+    },
+    {
+      "id": "R06",
+      "topic": "healing-rate-floor-and-minimum",
+      "assessment": "supported-inheritance",
+      "evidenceIds": [
+        "human-stats",
+        "human-expansion-attributes",
+        "derived"
+      ]
+    },
+    {
+      "id": "R07",
+      "topic": "size-options-speed-power",
+      "assessment": "confirmed-md",
+      "evidenceIds": [
+        "human-stats",
+        "human-expansion-attributes"
+      ]
+    },
+    {
+      "id": "R08",
+      "topic": "size-independent-from-build",
+      "assessment": "product-decision",
+      "evidenceIds": [
+        "human-build",
+        "human-stats",
+        "human-expansion-attributes"
+      ]
+    },
+    {
+      "id": "R09",
+      "topic": "initial-damage-insanity-corruption",
+      "assessment": "supported-inheritance",
+      "evidenceIds": [
+        "human-stats",
+        "human-expansion-attributes"
+      ]
+    },
+    {
+      "id": "R10",
+      "topic": "modifiers-and-general-caps",
+      "assessment": "confirmed-md",
+      "evidenceIds": [
+        "attributes",
+        "derived",
+        "general-scores"
+      ]
+    },
+    {
+      "id": "R11",
+      "topic": "common-speech-no-automatic-literacy",
+      "assessment": "confirmed-md",
+      "evidenceIds": [
+        "human-language",
+        "human-expansion-attributes"
+      ]
+    },
+    {
+      "id": "R12",
+      "topic": "core-professions-and-exclusive-ancestry-benefit",
+      "assessment": "confirmed-md",
+      "evidenceIds": [
+        "human-language",
+        "supplied-profession-procedure"
+      ]
+    },
+    {
+      "id": "R13",
+      "topic": "published-language-profession-replacement",
+      "assessment": "supported-replacement",
+      "evidenceIds": [
+        "human-language",
+        "human-expansion-attributes",
+        "human-expansion-procedure"
+      ]
+    },
+    {
+      "id": "R14",
+      "topic": "attribute-and-table-procedures-independent",
+      "assessment": "confirmed-md",
+      "evidenceIds": [
+        "human-expansion-procedure",
+        "ancestry-table-options"
+      ]
+    },
+    {
+      "id": "R15",
+      "topic": "no-level-four-benefits-at-level-zero",
+      "assessment": "confirmed-md",
+      "evidenceIds": [
+        "human-future",
+        "human-expansion-level-four",
+        "general-level-four"
+      ]
+    }
+  ],
+  "productDecisionRefs": [
+    "ancestryExpansions",
+    "size",
+    "languages"
+  ],
+  "nextContractRequirements": [
+    {
+      "id": "C01",
+      "topic": "variant-specific-evidence-and-inheritance",
+      "state": "pending-contract",
+      "artifact": "packages/curation/ancestry-base-model.ts",
+      "relatesTo": [
+        "R02",
+        "R06",
+        "R09"
+      ]
+    },
+    {
+      "id": "C02",
+      "topic": "independent-attribute-and-table-procedures",
+      "state": "pending-contract",
+      "artifact": "packages/curation/ancestry-base-model.ts",
+      "relatesTo": [
+        "R12",
+        "R13",
+        "R14"
+      ]
+    },
+    {
+      "id": "C03",
+      "topic": "base-and-final-layer-composition",
+      "state": "pending-contract",
+      "artifact": "packages/curation/ancestry-base-model.ts",
+      "relatesTo": [
+        "R05",
+        "R06",
+        "R09",
+        "R10"
+      ]
+    }
+  ],
+  "remaining": [
+    "pdf-and-subrange-pagination-verification",
+    "source-and-distribution-permission",
+    "all-table-outcome-and-equipment-acceptance",
+    "mechanical-pack-contract",
+    "mechanical-projection-and-handlers",
+    "freeze-and-official-enablement"
+  ],
+  "effect": {
+    "wholeStagingPromoted": false,
+    "sourceAuthorized": false,
+    "packCurated": false,
+    "runtimeEnabled": false,
+    "fullTableCatalogReviewedAgain": false,
+    "levelFourMechanicsApproved": false
+  }
+}
