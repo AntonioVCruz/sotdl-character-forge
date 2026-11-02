@@ -15,7 +15,7 @@ APIs públicas:
 - `parseHumanL0MechanicalPacks(inputs)`: gate contextual de fonte, identidade, dependências e proveniência. Recebe Core sozinho ou Core + expansão, em uma versão selecionada de cada; retorna Core antes da expansão.
 - `HumanL0SelectionSchema` / `parseHumanL0Selection(input, packs)`: formato e validação contextual de escolhas, sem rolar dados ou produzir um personagem.
 
-`parsePack` genérico continua aceitando propriedades extras de entidades; isso não valida o conteúdo de `mechanics`. A [projeção mecânica local](entrega-projecao-mecanica-human-l0.md) chama o gate específico; a integração ao importador/runtime ainda está pendente. O compilador de metadados permanece em seu contrato anterior e continua recusando payloads mecânicos.
+`parsePack` genérico continua aceitando propriedades extras de entidades; isso não valida o conteúdo de `mechanics`. A [projeção mecânica local](entrega-projecao-mecanica-human-l0.md) e a [API do motor Human L0](entrega-motor-human-l0.md) chamam o gate específico. A integração ao fluxo completo do aplicativo permanece pendente. O compilador de metadados permanece em seu contrato anterior e continua recusando payloads mecânicos.
 
 Core independe da instalação do suplemento. A expansão exige o Core exato por packId/versão, sem fallback para uma versão mais nova. Referências selecionam também entityId. O gate recebe a fatia escolhida, não todas as versões eventualmente instaladas no catálogo. Versões de contrato desconhecidas são recusadas, sem conversão silenciosa.
 
@@ -77,13 +77,13 @@ modo de atributos → ajuste opcional → efeitos nos atributos → limites dos 
 
 A inicialização dos estados é um evento exclusivo da criação, fora da recomposição recorrente. O schema rejeita entrada de Healing Rate baseada no Health inicial, limites aplicados antes do equipamento, características calculadas dos atributos iniciais, ordem de avaliação trocada e reaplicação dos estados iniciais.
 
-Esse é o contrato da composição. Cálculo de personagem, aplicação de efeitos, execução de tabelas, RNG, persistência de eventos e migrações do motor ainda serão implementados. A validação de seleção calcula apenas os scores-base necessários para conferir os limites da escolha e da transferência; não aplica características, efeitos ou ganhos de procedimento.
+Esse é o contrato da composição. Cálculo da base, ajustes manuais em camadas, RNG explícito e persistência de eventos foram implementados na [API do motor](entrega-motor-human-l0.md). Execução de tabelas, itens publicados, fluxo completo e migrações entre revisões continuam pendentes. A validação de seleção deste contrato calcula apenas os scores-base necessários para conferir os limites da escolha e da transferência; não aplica características, efeitos ou ganhos de procedimento.
 
 ## Fixture, compatibilidade e entrega
 
 Exemplo completo: `curation/examples/human-l0-mechanics.synthetic.json`. Usa fontes, valores e evidências inventados, `fictionalData: true` e estados `needs-review`; não representa regras publicadas de SotDL. Por exemplo, sua base de score e seu dado diferem dos insumos Human revisados. Não foi criado pack mecânico oficial no Git nem marcado conteúdo oficial como fictício.
 
-A projeção anterior de metadados e seus índice/relatório, os saves e o consumidor demonstrativo permanecem no formato anterior. A projeção mecânica local adotou packs `0.2.0`, validação explícita deste contrato e auditoria documentada; distribuição e integração ao motor permanecem pendentes. A definição do schema não promove conteúdo ou habilita ruleset.
+A projeção anterior de metadados e seus índice/relatório, os saves e o consumidor demonstrativo permanecem no formato anterior. A projeção mecânica local adotou packs `0.2.0`, validação explícita deste contrato e auditoria documentada. A base tem API própria no motor; distribuição, procedimentos completos e habilitação permanecem pendentes. A definição do schema não promove conteúdo ou habilita ruleset.
 
 Os 27 cenários novos verificam envelope, versão, Core independente, dependência exata, evidências por fonte/componente, valores herdados, decisão de Size, fases de composição, escolhas independentes, rolagens armazenadas, limites e ausência de RNG/mutação.
 
@@ -96,4 +96,4 @@ Autoria da definição e validação técnica: Codex. O ledger de revisão anter
 - [x] Revisão local do conteúdo-base Human L0.
 - [x] Definição do contrato mecânico do pack.
 - [x] Projeção local pelo compilador e validação da base revisada; distribuição permanece pendente.
-- [ ] Integração dos handlers no motor e aceite do personagem.
+- [x] [Integração dos handlers da base e aceite local do personagem](entrega-motor-human-l0.md); procedimentos completos e habilitação permanecem pendentes.

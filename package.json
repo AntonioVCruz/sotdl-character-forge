@@ -33,7 +33,8 @@
     "curation:compile:check": "node tools/curation/compile-packs.mjs --check",
     "curation:validate": "node tools/curation/compile-packs.mjs --check",
     "curation:compile:mechanical": "node tools/curation/compile-packs.mjs --write --mechanical",
-    "curation:validate:mechanical": "node tools/curation/compile-packs.mjs --check --mechanical"
+    "curation:validate:mechanical": "node tools/curation/compile-packs.mjs --check --mechanical",
+    "curation:accept:runtime": "node tools/curation/accept-human-l0-runtime.mjs"
   },
   "dependencies": {
     "react": "19.2.0",

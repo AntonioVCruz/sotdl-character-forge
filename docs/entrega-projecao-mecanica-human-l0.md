@@ -60,4 +60,4 @@ Permanecem fora desta entrega: resultados de tabelas e seus efeitos, equipamento
 - [x] Revisar o conteúdo-base Human L0.
 - [x] Definir o contrato mecânico do pack.
 - [x] Estender compilador e validação para a projeção local da base revisada.
-- [ ] Integrar os handlers no motor e realizar o aceite do personagem.
+- [x] Integrar os handlers da base ao motor e realizar o [aceite local de mudanças/salvamento/reabertura](entrega-motor-human-l0.md). Procedimentos completos e habilitação permanecem pendentes.
