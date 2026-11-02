@@ -87,7 +87,7 @@ describe('CUR-031 activity 3: compilation accounting and provenance', () => {
     expect(pending.map(p => p.code)).toEqual(['automation-support', 'mechanics-review', 'printed-page', 'source-permission-review', 'structure-review']);
     expect(pending.find(p => p.code === 'automation-support')?.state).toBe('unsupported');
     expect(report.pending.filter(p => p.ref === null).map(p => p.code))
-      .toEqual(['content-review', 'integrated-validation', 'mechanical-projection', 'ruleset-integration']);
+      .toEqual(['content-review', 'mechanical-projection', 'ruleset-integration']);
   });
 
   it('preserves manual mechanics as pending rather than treating them as implemented', () => {

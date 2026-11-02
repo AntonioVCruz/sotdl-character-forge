@@ -45,6 +45,6 @@ Validação local: 280 testes completos aprovados com dois workers, incluindo 14
 - [x] 1. Compilação determinística da projeção de metadados.
 - [x] 2. Índice temático com referências exatas aos packs emitidos.
 - [x] 3. [Relatório de inclusões, exclusões, pendências e hashes dos insumos](entrega-relatorio-compilacao-human-l0.md), acrescentado em 2026-11-02.
-- [ ] 4. Validação integrada da fatia e dependência Core → Only Human.
+- [x] 4. [Validação integrada técnica da fatia e dependência Core → Only Human](aceite-integrado-human-l0.md), acrescentada em 2026-11-02.
 
-O gate desta atividade verifica as referências do índice; não conclui o aceite integrado da atividade 4 ou toda a CUR-032. A #7 e a CUR-031 permanecem parciais, com revisão de conteúdo, projeções mecânicas e integração no motor ainda necessárias.
+O gate desta atividade verifica as referências do índice; o aceite técnico do conjunto foi complementado na atividade 4. A #7, a CUR-031 e a CUR-032 completas permanecem parciais, com revisão de conteúdo, projeções mecânicas e integração no motor ainda necessárias.
