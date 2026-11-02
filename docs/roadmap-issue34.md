@@ -1,6 +1,8 @@
 # Roadmap da #34 — tabelas e equipamentos Human L0
 
-Plano de 2026-11-02 para a [issue #34](https://github.com/AntonioVCruz/sotdl-character-forge/issues/34). **As oito atividades abaixo estão planejadas, não executadas por este documento.** A ordem define dependências técnicas, sem atribuir prazos, sprint ou responsáveis.
+Plano de 2026-11-02 para a [issue #34](https://github.com/AntonioVCruz/sotdl-character-forge/issues/34). **As oito atividades abaixo foram planejadas por este documento; a execução é registrada à parte.** A ordem define dependências técnicas, sem atribuir prazos, sprint ou responsáveis.
+
+Atividade 1 registrada em [matriz-lacunas-issue34-atividade1.md](matriz-lacunas-issue34-atividade1.md). Atividades 2–8 continuam por executar.
 
 ## Objetivo e fronteiras
 
@@ -130,7 +132,7 @@ Preferir entregas revisáveis por atividade ou lote, referenciando **#34 / ativi
 
 O checklist de execução permanece aberto:
 
-- [ ] 1. Auditar o recorte e as lacunas.
+- [x] 1. Auditar o recorte e as lacunas. Registro: [matriz](matriz-lacunas-issue34-atividade1.md).
 - [ ] 2. Definir o contrato consumível.
 - [ ] 3. Projetar o lote de tabelas Core.
 - [ ] 4. Projetar Only Human e Oddities.
@@ -139,4 +141,4 @@ O checklist de execução permanece aberto:
 - [ ] 7. Integrar resolvedores e handlers.
 - [ ] 8. Auditar o conjunto e entregar aos consumidores.
 
-Próxima atividade executável: **1 — auditar o recorte e as lacunas**. Este roadmap não altera código, artefatos reais, versões, estados de revisão ou flags de habilitação; não cria novas subissues nem executa as oito atividades.
+Próxima atividade executável: **2 — definir o contrato consumível**. A atividade 1 está registrada na matriz ligada acima. Este roadmap não altera código de runtime, artefatos reais, versões, estados de revisão ou flags de habilitação; não cria novas subissues nem executa as atividades 2–8.
