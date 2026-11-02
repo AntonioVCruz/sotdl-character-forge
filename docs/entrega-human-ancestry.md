@@ -1,5 +1,7 @@
 # CUR-015 — Human/Core + Only Human: base e características derivadas
 
+Revisão de conteúdo posterior em 2026-11-02: [conferência Human L0 contra os insumos locais](revisao-conteudo-human-l0.md), com 15 verificações/evidências e requisitos C01–C03 para o contrato mecânico. A formalização abaixo conserva a data e o escopo originais.
+
 Revisão de 2026-10-27, conforme [plano-human-ancestry.md](plano-human-ancestry.md). Formalização local da base de Human no nível 0, com **duas variantes de publicação**, **15 fórmulas/regras numéricas** e **11 faixas de evidência**. O resultado não é um personagem completo nem um pack habilitado.
 
 ## Entrega
