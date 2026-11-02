@@ -14,3 +14,5 @@ Os stubs não habilitam geração. As quatro atividades da projeção Human L0 e
 Only Human depende de `sotdl-core-human-l0@0.1.0`. Parse e valide o Core primeiro; só então Only Human, com o Core já instalado.
 
 Não adicionar texto de livro, trechos longos, watermarks ou PII.
+
+O [contrato mecânico Human L0 v1](../docs/contrato-mecanico-human-l0.md) está definido em módulo próprio, com fixture sintética em `curation/examples/`. O campo proposto é `entities[].mechanics`, com validação contextual explícita. Os packs desta pasta e o compilador de metadados ainda não consomem esse payload; projeção e habilitação seguem pendentes.

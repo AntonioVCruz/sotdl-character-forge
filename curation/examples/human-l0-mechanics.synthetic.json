@@ -1,0 +1,800 @@
+{
+  "notice": "Synthetic format fixture: invented sources, values and evidence; does not represent published SotDL rules.",
+  "packs": [
+    {
+      "packId": "fixture-human-core",
+      "version": "1.0.0",
+      "system": "sotdl",
+      "fictionalData": true,
+      "source": {
+        "id": "fixture:human-core",
+        "title": "Synthetic mechanics format fixture A",
+        "sourcePage": null,
+        "status": "fictional"
+      },
+      "dependencies": [],
+      "entities": [
+        {
+          "id": "fixture:human-core:ancestry:human:default",
+          "kind": "ancestry",
+          "name": "Synthetic ancestry",
+          "sourceRef": "fixture:human-core",
+          "sourcePage": null,
+          "variantKey": "default",
+          "revision": "1.0.0",
+          "status": "needs-review",
+          "mechanics": {
+            "contract": "sotdl.human-l0.mechanics",
+            "contractVersion": "1.0.0",
+            "level": 0,
+            "variant": "core",
+            "evidence": [
+              {
+                "id": "own-stats",
+                "kind": "source",
+                "sourceId": "fixture:human-core",
+                "medium": "md",
+                "inputSha256": "1111111111111111111111111111111111111111111111111111111111111111",
+                "startLine": 1,
+                "endLine": 2,
+                "printedPageDeclared": null,
+                "pdfPageDeclared": null
+              },
+              {
+                "id": "own-general",
+                "kind": "source",
+                "sourceId": "fixture:human-core",
+                "medium": "md",
+                "inputSha256": "2222222222222222222222222222222222222222222222222222222222222222",
+                "startLine": 2,
+                "endLine": 3,
+                "printedPageDeclared": null,
+                "pdfPageDeclared": null
+              },
+              {
+                "id": "policy",
+                "kind": "product-decision",
+                "inputSha256": "5555555555555555555555555555555555555555555555555555555555555555",
+                "decisionId": "fixture-size-policy",
+                "pointer": "/sizeIndependent"
+              }
+            ],
+            "attributes": {
+              "fixed": {
+                "base": 6,
+                "chooseExactly": 1,
+                "increaseBy": 2,
+                "origin": {
+                  "kind": "declared",
+                  "scope": "ancestry",
+                  "evidenceIds": [
+                    "own-stats"
+                  ]
+                }
+              },
+              "random": null,
+              "adjustment": {
+                "optional": true,
+                "maximumTransfers": 1,
+                "amount": 1,
+                "distinctAttributes": true,
+                "phase": "after-mode",
+                "origin": {
+                  "kind": "declared",
+                  "scope": "general-rule",
+                  "evidenceIds": [
+                    "own-general"
+                  ]
+                }
+              },
+              "limits": {
+                "minimum": 1,
+                "maximum": 30,
+                "phase": "after-attribute-effects",
+                "origin": {
+                  "kind": "declared",
+                  "scope": "general-rule",
+                  "evidenceIds": [
+                    "own-general"
+                  ]
+                }
+              }
+            },
+            "characteristics": {
+              "health": {
+                "op": "copy",
+                "attribute": "strength",
+                "input": "final-attributes",
+                "origin": {
+                  "kind": "declared",
+                  "scope": "ancestry",
+                  "evidenceIds": [
+                    "own-stats"
+                  ]
+                }
+              },
+              "defense": {
+                "op": "copy",
+                "attribute": "agility",
+                "input": "final-attributes",
+                "origin": {
+                  "kind": "declared",
+                  "scope": "ancestry",
+                  "evidenceIds": [
+                    "own-stats"
+                  ]
+                }
+              },
+              "perception": {
+                "op": "copy",
+                "attribute": "intellect",
+                "input": "final-attributes",
+                "origin": {
+                  "kind": "declared",
+                  "scope": "ancestry",
+                  "evidenceIds": [
+                    "own-stats"
+                  ]
+                }
+              },
+              "speed": {
+                "value": 7,
+                "origin": {
+                  "kind": "declared",
+                  "scope": "ancestry",
+                  "evidenceIds": [
+                    "own-stats"
+                  ]
+                }
+              },
+              "power": {
+                "value": 0,
+                "origin": {
+                  "kind": "declared",
+                  "scope": "ancestry",
+                  "evidenceIds": [
+                    "own-stats"
+                  ]
+                }
+              }
+            },
+            "healingRate": {
+              "input": "final-health",
+              "divisor": {
+                "value": 3,
+                "origin": {
+                  "kind": "declared",
+                  "scope": "ancestry",
+                  "evidenceIds": [
+                    "own-stats"
+                  ]
+                }
+              },
+              "rounding": {
+                "mode": "floor",
+                "origin": {
+                  "kind": "declared",
+                  "scope": "ancestry",
+                  "evidenceIds": [
+                    "own-stats"
+                  ]
+                }
+              },
+              "minimum": {
+                "value": 1,
+                "origin": {
+                  "kind": "declared",
+                  "scope": "general-rule",
+                  "evidenceIds": [
+                    "own-general"
+                  ]
+                }
+              }
+            },
+            "size": {
+              "choices": [
+                0.5,
+                1
+              ],
+              "origin": {
+                "kind": "declared",
+                "scope": "ancestry",
+                "evidenceIds": [
+                  "own-stats"
+                ]
+              },
+              "independence": {
+                "fromBuild": false,
+                "origin": {
+                  "kind": "product-decision",
+                  "evidenceIds": [
+                    "policy"
+                  ]
+                }
+              }
+            },
+            "initialStates": {
+              "phase": "creation-only",
+              "reapplyOnRecalculation": false,
+              "damage": {
+                "value": 0,
+                "origin": {
+                  "kind": "declared",
+                  "scope": "ancestry",
+                  "evidenceIds": [
+                    "own-stats"
+                  ]
+                }
+              },
+              "insanity": {
+                "value": 0,
+                "origin": {
+                  "kind": "declared",
+                  "scope": "ancestry",
+                  "evidenceIds": [
+                    "own-stats"
+                  ]
+                }
+              },
+              "corruption": {
+                "value": 0,
+                "origin": {
+                  "kind": "declared",
+                  "scope": "ancestry",
+                  "evidenceIds": [
+                    "own-stats"
+                  ]
+                }
+              }
+            },
+            "modifiers": {
+              "input": "final-scores",
+              "subtract": {
+                "value": 6,
+                "origin": {
+                  "kind": "declared",
+                  "scope": "general-rule",
+                  "evidenceIds": [
+                    "own-general"
+                  ]
+                }
+              },
+              "targets": [
+                "strength",
+                "agility",
+                "intellect",
+                "will",
+                "perception"
+              ]
+            },
+            "finalLimits": {
+              "phase": "after-direct-effects-and-equipment",
+              "defense": {
+                "value": 18,
+                "origin": {
+                  "kind": "declared",
+                  "scope": "general-rule",
+                  "evidenceIds": [
+                    "own-general"
+                  ]
+                }
+              },
+              "perception": {
+                "value": 18,
+                "origin": {
+                  "kind": "declared",
+                  "scope": "general-rule",
+                  "evidenceIds": [
+                    "own-general"
+                  ]
+                }
+              }
+            },
+            "baseLanguage": {
+              "languageId": "fixture-language",
+              "abilities": [
+                "speak"
+              ],
+              "origin": {
+                "kind": "declared",
+                "scope": "ancestry",
+                "evidenceIds": [
+                  "own-stats"
+                ]
+              }
+            },
+            "procedure": {
+              "kind": "core",
+              "attributeModeIndependent": true,
+              "storySelection": "manual-or-random",
+              "startingProfessions": {
+                "count": 3,
+                "selection": "manual-or-random",
+                "origin": {
+                  "kind": "declared",
+                  "scope": "general-rule",
+                  "evidenceIds": [
+                    "own-general"
+                  ]
+                }
+              },
+              "ancestryBenefit": {
+                "chooseExactly": 1,
+                "alternatives": [
+                  "speak-language",
+                  "random-profession"
+                ],
+                "origin": {
+                  "kind": "declared",
+                  "scope": "ancestry",
+                  "evidenceIds": [
+                    "own-stats"
+                  ]
+                }
+              },
+              "wealthResolution": "external-core-procedure",
+              "origin": {
+                "kind": "declared",
+                "scope": "general-rule",
+                "evidenceIds": [
+                  "own-general"
+                ]
+              }
+            },
+            "evaluationOrder": [
+              "attribute-mode",
+              "optional-transfer",
+              "attribute-effects",
+              "attribute-limits",
+              "base-characteristics",
+              "direct-characteristic-effects",
+              "final-limits",
+              "healing-rate",
+              "modifiers"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "packId": "fixture-human-expansion",
+      "version": "1.0.0",
+      "system": "sotdl",
+      "fictionalData": true,
+      "source": {
+        "id": "fixture:human-expansion",
+        "title": "Synthetic mechanics format fixture B",
+        "sourcePage": null,
+        "status": "fictional"
+      },
+      "dependencies": [
+        {
+          "packId": "fixture-human-core",
+          "version": "1.0.0"
+        }
+      ],
+      "entities": [
+        {
+          "id": "fixture:human-expansion:ancestry:human:variant",
+          "kind": "ancestry",
+          "name": "Synthetic ancestry",
+          "sourceRef": "fixture:human-expansion",
+          "sourcePage": null,
+          "variantKey": "variant",
+          "revision": "1.0.0",
+          "status": "needs-review",
+          "mechanics": {
+            "contract": "sotdl.human-l0.mechanics",
+            "contractVersion": "1.0.0",
+            "level": 0,
+            "variant": "only-human",
+            "evidence": [
+              {
+                "id": "own-stats",
+                "kind": "source",
+                "sourceId": "fixture:human-expansion",
+                "medium": "md",
+                "inputSha256": "3333333333333333333333333333333333333333333333333333333333333333",
+                "startLine": 3,
+                "endLine": 4,
+                "printedPageDeclared": null,
+                "pdfPageDeclared": null
+              },
+              {
+                "id": "core-stats",
+                "kind": "source",
+                "sourceId": "fixture:human-core",
+                "medium": "md",
+                "inputSha256": "1111111111111111111111111111111111111111111111111111111111111111",
+                "startLine": 1,
+                "endLine": 2,
+                "printedPageDeclared": null,
+                "pdfPageDeclared": null
+              },
+              {
+                "id": "core-general",
+                "kind": "source",
+                "sourceId": "fixture:human-core",
+                "medium": "md",
+                "inputSha256": "2222222222222222222222222222222222222222222222222222222222222222",
+                "startLine": 2,
+                "endLine": 3,
+                "printedPageDeclared": null,
+                "pdfPageDeclared": null
+              },
+              {
+                "id": "policy",
+                "kind": "product-decision",
+                "inputSha256": "5555555555555555555555555555555555555555555555555555555555555555",
+                "decisionId": "fixture-size-policy",
+                "pointer": "/sizeIndependent"
+              }
+            ],
+            "attributes": {
+              "fixed": {
+                "base": 6,
+                "chooseExactly": 1,
+                "increaseBy": 2,
+                "origin": {
+                  "kind": "declared",
+                  "scope": "ancestry",
+                  "evidenceIds": [
+                    "own-stats"
+                  ]
+                }
+              },
+              "random": {
+                "base": 3,
+                "dice": {
+                  "count": 1,
+                  "sides": 4
+                },
+                "rolls": "one-independent-roll-per-attribute",
+                "origin": {
+                  "kind": "declared",
+                  "scope": "ancestry",
+                  "evidenceIds": [
+                    "own-stats"
+                  ]
+                }
+              },
+              "adjustment": {
+                "optional": true,
+                "maximumTransfers": 1,
+                "amount": 1,
+                "distinctAttributes": true,
+                "phase": "after-mode",
+                "origin": {
+                  "kind": "inherited",
+                  "from": {
+                    "packId": "fixture-human-core",
+                    "version": "1.0.0",
+                    "entityId": "fixture:human-core:ancestry:human:default",
+                    "componentId": "attributes.adjustment"
+                  },
+                  "evidenceIds": [
+                    "core-general"
+                  ]
+                }
+              },
+              "limits": {
+                "minimum": 1,
+                "maximum": 30,
+                "phase": "after-attribute-effects",
+                "origin": {
+                  "kind": "inherited",
+                  "from": {
+                    "packId": "fixture-human-core",
+                    "version": "1.0.0",
+                    "entityId": "fixture:human-core:ancestry:human:default",
+                    "componentId": "attributes.limits"
+                  },
+                  "evidenceIds": [
+                    "core-general"
+                  ]
+                }
+              }
+            },
+            "characteristics": {
+              "health": {
+                "op": "copy",
+                "attribute": "strength",
+                "input": "final-attributes",
+                "origin": {
+                  "kind": "declared",
+                  "scope": "ancestry",
+                  "evidenceIds": [
+                    "own-stats"
+                  ]
+                }
+              },
+              "defense": {
+                "op": "copy",
+                "attribute": "agility",
+                "input": "final-attributes",
+                "origin": {
+                  "kind": "declared",
+                  "scope": "ancestry",
+                  "evidenceIds": [
+                    "own-stats"
+                  ]
+                }
+              },
+              "perception": {
+                "op": "copy",
+                "attribute": "intellect",
+                "input": "final-attributes",
+                "origin": {
+                  "kind": "declared",
+                  "scope": "ancestry",
+                  "evidenceIds": [
+                    "own-stats"
+                  ]
+                }
+              },
+              "speed": {
+                "value": 7,
+                "origin": {
+                  "kind": "declared",
+                  "scope": "ancestry",
+                  "evidenceIds": [
+                    "own-stats"
+                  ]
+                }
+              },
+              "power": {
+                "value": 0,
+                "origin": {
+                  "kind": "declared",
+                  "scope": "ancestry",
+                  "evidenceIds": [
+                    "own-stats"
+                  ]
+                }
+              }
+            },
+            "healingRate": {
+              "input": "final-health",
+              "divisor": {
+                "value": 3,
+                "origin": {
+                  "kind": "declared",
+                  "scope": "ancestry",
+                  "evidenceIds": [
+                    "own-stats"
+                  ]
+                }
+              },
+              "rounding": {
+                "mode": "floor",
+                "origin": {
+                  "kind": "inherited",
+                  "from": {
+                    "packId": "fixture-human-core",
+                    "version": "1.0.0",
+                    "entityId": "fixture:human-core:ancestry:human:default",
+                    "componentId": "healingRate.rounding"
+                  },
+                  "evidenceIds": [
+                    "core-stats"
+                  ]
+                }
+              },
+              "minimum": {
+                "value": 1,
+                "origin": {
+                  "kind": "inherited",
+                  "from": {
+                    "packId": "fixture-human-core",
+                    "version": "1.0.0",
+                    "entityId": "fixture:human-core:ancestry:human:default",
+                    "componentId": "healingRate.minimum"
+                  },
+                  "evidenceIds": [
+                    "core-general"
+                  ]
+                }
+              }
+            },
+            "size": {
+              "choices": [
+                0.5,
+                1
+              ],
+              "origin": {
+                "kind": "declared",
+                "scope": "ancestry",
+                "evidenceIds": [
+                  "own-stats"
+                ]
+              },
+              "independence": {
+                "fromBuild": false,
+                "origin": {
+                  "kind": "product-decision",
+                  "evidenceIds": [
+                    "policy"
+                  ]
+                }
+              }
+            },
+            "initialStates": {
+              "phase": "creation-only",
+              "reapplyOnRecalculation": false,
+              "damage": {
+                "value": 0,
+                "origin": {
+                  "kind": "inherited",
+                  "from": {
+                    "packId": "fixture-human-core",
+                    "version": "1.0.0",
+                    "entityId": "fixture:human-core:ancestry:human:default",
+                    "componentId": "initialStates.damage"
+                  },
+                  "evidenceIds": [
+                    "core-stats"
+                  ]
+                }
+              },
+              "insanity": {
+                "value": 0,
+                "origin": {
+                  "kind": "inherited",
+                  "from": {
+                    "packId": "fixture-human-core",
+                    "version": "1.0.0",
+                    "entityId": "fixture:human-core:ancestry:human:default",
+                    "componentId": "initialStates.insanity"
+                  },
+                  "evidenceIds": [
+                    "core-stats"
+                  ]
+                }
+              },
+              "corruption": {
+                "value": 0,
+                "origin": {
+                  "kind": "inherited",
+                  "from": {
+                    "packId": "fixture-human-core",
+                    "version": "1.0.0",
+                    "entityId": "fixture:human-core:ancestry:human:default",
+                    "componentId": "initialStates.corruption"
+                  },
+                  "evidenceIds": [
+                    "core-stats"
+                  ]
+                }
+              }
+            },
+            "modifiers": {
+              "input": "final-scores",
+              "subtract": {
+                "value": 6,
+                "origin": {
+                  "kind": "inherited",
+                  "from": {
+                    "packId": "fixture-human-core",
+                    "version": "1.0.0",
+                    "entityId": "fixture:human-core:ancestry:human:default",
+                    "componentId": "modifiers.subtract"
+                  },
+                  "evidenceIds": [
+                    "core-general"
+                  ]
+                }
+              },
+              "targets": [
+                "strength",
+                "agility",
+                "intellect",
+                "will",
+                "perception"
+              ]
+            },
+            "finalLimits": {
+              "phase": "after-direct-effects-and-equipment",
+              "defense": {
+                "value": 18,
+                "origin": {
+                  "kind": "inherited",
+                  "from": {
+                    "packId": "fixture-human-core",
+                    "version": "1.0.0",
+                    "entityId": "fixture:human-core:ancestry:human:default",
+                    "componentId": "finalLimits.defense"
+                  },
+                  "evidenceIds": [
+                    "core-general"
+                  ]
+                }
+              },
+              "perception": {
+                "value": 18,
+                "origin": {
+                  "kind": "inherited",
+                  "from": {
+                    "packId": "fixture-human-core",
+                    "version": "1.0.0",
+                    "entityId": "fixture:human-core:ancestry:human:default",
+                    "componentId": "finalLimits.perception"
+                  },
+                  "evidenceIds": [
+                    "core-general"
+                  ]
+                }
+              }
+            },
+            "baseLanguage": {
+              "languageId": "fixture-language",
+              "abilities": [
+                "speak"
+              ],
+              "origin": {
+                "kind": "declared",
+                "scope": "ancestry",
+                "evidenceIds": [
+                  "own-stats"
+                ]
+              }
+            },
+            "procedure": {
+              "kind": "human-development",
+              "attributeModeIndependent": true,
+              "storySelection": "published-rolls",
+              "replaces": [
+                "random-starting-professions",
+                "starting-wealth"
+              ],
+              "grants": "from-complete-development-procedure",
+              "implicitCoreBenefit": false,
+              "origin": {
+                "kind": "declared",
+                "scope": "ancestry",
+                "evidenceIds": [
+                  "own-stats"
+                ]
+              }
+            },
+            "evaluationOrder": [
+              "attribute-mode",
+              "optional-transfer",
+              "attribute-effects",
+              "attribute-limits",
+              "base-characteristics",
+              "direct-characteristic-effects",
+              "final-limits",
+              "healing-rate",
+              "modifiers"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "selection": {
+    "schemaVersion": 1,
+    "contract": "sotdl.human-l0.mechanics",
+    "contractVersion": "1.0.0",
+    "ancestry": {
+      "packId": "fixture-human-expansion",
+      "version": "1.0.0",
+      "entityId": "fixture:human-expansion:ancestry:human:variant"
+    },
+    "attributes": {
+      "mode": "fixed",
+      "increase": "strength"
+    },
+    "adjustment": null,
+    "size": 1,
+    "procedure": {
+      "ref": {
+        "packId": "fixture-human-core",
+        "version": "1.0.0",
+        "entityId": "fixture:human-core:ancestry:human:default"
+      },
+      "kind": "core"
+    },
+    "coreBenefit": null
+  }
+}
