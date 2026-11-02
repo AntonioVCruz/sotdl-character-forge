@@ -1,6 +1,6 @@
 # Relatório de compilação Human L0 — atividade 3 da #7
 
-Entrega de 2026-11-02. O compilador passa a emitir `reports/human-l0-compilation.json` no diretório local ignorado `tmp/curation/compiled-human-l0/`, junto dos packs e do índice. A atividade 4, validação integrada da fatia, permanece pendente.
+Entrega de 2026-11-02. O compilador passa a emitir `reports/human-l0-compilation.json` no diretório local ignorado `tmp/curation/compiled-human-l0/`, junto dos packs e do índice. O [aceite técnico integrado da atividade 4](aceite-integrado-human-l0.md) foi acrescentado posteriormente e atualizou o relatório de 12 para 11 pendências.
 
 ## Escopo e contabilidade
 
@@ -30,7 +30,7 @@ npm run curation:compile:check
 
 O relatório é determinístico para os mesmos bytes de entrada, sem relógio, caminho absoluto ou hash autorreferente. Alterar texto privado sem mudar os metadados projetados conserva packs/índice e seu hash conjunto, mas muda a proveniência do relatório. O modo write reconstrói relatório/índice após conferir todos os destinos; packs continuam imutáveis por versão. A ordem de escrita é packs → índice → relatório. Backups e insumos não são alterados.
 
-## Resultado local em 2026-11-02
+## Resultado local da atividade 3, antes do aceite da atividade 4
 
 | Medida | Resultado |
 |---|---:|
@@ -57,6 +57,6 @@ Validação: 291 testes completos aprovados com dois workers, incluindo 11 novos
 - [x] 1. Compilação determinística da projeção de metadados.
 - [x] 2. Índice ancestry com referências exatas.
 - [x] 3. Relatório de inclusões, exclusões, pendências e hashes.
-- [ ] 4. Validação integrada da fatia e dependência Core → Only Human.
+- [x] 4. [Validação integrada técnica da fatia e dependência Core → Only Human](aceite-integrado-human-l0.md).
 
 Não há freeze mecânico ou geração oficial habilitada. A #7, a CUR-031 completa e a CUR-032 permanecem parciais; o relatório expõe essas pendências e não as considera aprovadas automaticamente.

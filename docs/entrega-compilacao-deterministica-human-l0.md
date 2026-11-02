@@ -43,6 +43,6 @@ Validação local: nove testes novos e 266 testes completos aprovados com `node 
 - [x] 1. Compilação determinística desta projeção Human L0.
 - [x] 2. [Índice temático com referências exatas](entrega-indices-human-l0.md), acrescentado posteriormente; o hash do conjunto agora inclui o índice e os hashes dos packs permanecem iguais.
 - [x] 3. [Relatório de inclusões, exclusões, pendências e hashes](entrega-relatorio-compilacao-human-l0.md), acrescentado em 2026-11-02.
-- [ ] 4. Validação integrada da fatia e dependência Core → Only Human.
+- [x] 4. [Validação integrada técnica da fatia e dependência Core → Only Human](aceite-integrado-human-l0.md), acrescentada em 2026-11-02.
 
-Os testes incluídos nesta atividade verificam o compilador e reutilizam a validação básica do catálogo; não concluem a validação cruzada CUR-032 ou o aceite integrado da atividade 4. A #7 e a CUR-031 permanecem parciais; projeções mecânicas, revisão de conteúdo e integração CUR-033/034 continuam necessárias.
+Os testes desta primeira atividade verificam o compilador e a validação básica do catálogo. O aceite integrado técnico foi complementado na atividade 4. A #7 e a CUR-031 permanecem parciais; projeções mecânicas, revisão de conteúdo, CUR-032 completa e integração CUR-033/034 continuam necessárias.

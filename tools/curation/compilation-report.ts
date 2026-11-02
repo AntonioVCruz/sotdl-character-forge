@@ -86,7 +86,6 @@ export function buildCompilationReport(inputs: InputDigest[], records: LocatedRe
   }
   pending.push({ code: 'content-review', ref: null, state: 'needs-review' },
     { code: 'mechanical-projection', ref: null, state: 'not-implemented' },
-    { code: 'integrated-validation', ref: null, state: 'not-implemented' },
     { code: 'ruleset-integration', ref: null, state: 'not-enabled' });
   included.sort((a, b) => compareStrings(refKey(a.ref), refKey(b.ref)));
   excluded.sort((a, b) => originOrder(a.origin, b.origin));

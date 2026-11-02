@@ -2,24 +2,15 @@ import { createHash } from 'node:crypto';
 import { lstat, mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, isAbsolute, relative, resolve, sep } from 'node:path';
 import { z } from 'zod';
-import { PackSchema, parsePack, validatePack } from '../../packages/catalog';
+import { parsePack, validatePack } from '../../packages/catalog';
 import { StagingEntrySchema } from '../../packages/curation/contracts';
 import { SourceRegistrySchema } from '../../packages/curation/registries';
 import { assertSafeArtifact } from './privacy.mjs';
 import { canonicalJson, compareStrings as compare } from './canonical-json';
 import { buildThematicIndexes } from './thematic-indexes';
 import { buildCompilationReport, STAGING_PATHS, type InputDigest, type LocatedRecord } from './compilation-report';
-
-const CORE = 'sotdl:shadow-of-the-demon-lord-core';
-const ONLY_HUMAN = 'sotdl:only-human';
-const RecipeSchema = z.object({
-  schemaVersion: z.literal(1), projection: z.literal('human-l0-ancestry-stubs'),
-  packs: z.array(z.object({
-    packId: PackSchema.shape.packId, version: PackSchema.shape.version,
-    sourceId: z.enum([CORE, ONLY_HUMAN]), dependencies: PackSchema.shape.dependencies,
-    entityIds: z.array(z.string().min(1).max(200)).min(1).max(10000),
-  }).strict()).length(2),
-}).strict();
+import { parseHumanL0Recipe } from './human-l0-recipe';
+import { validateHumanL0Bundle } from './human-l0-validation';
 
 function checked<T>(schema: z.ZodType<T>, value: unknown, location: string): T {
   const result = schema.safeParse(value);
@@ -31,20 +22,12 @@ const sha256 = (text: string | Buffer) => createHash('sha256').update(text).dige
 
 /** CUR-031 activities 1/2: metadata packs and exact indexes; no review promotion or mechanics. */
 export function compileHumanL0(recipeInput: unknown, registryInput: unknown, entries: unknown[]) {
-  const recipe = checked(RecipeSchema, recipeInput, 'Compilation recipe');
+  const recipe = parseHumanL0Recipe(recipeInput);
   const registry = checked(SourceRegistrySchema, registryInput, 'Source registry');
-  if (new Set(recipe.packs.map(p => p.sourceId)).size !== 2 || new Set(recipe.packs.map(p => p.packId)).size !== 2)
-    throw new Error('Compilation recipe: duplicate source or pack ID.');
-  const core = recipe.packs.find(p => p.sourceId === CORE)!;
-  const supplement = recipe.packs.find(p => p.sourceId === ONLY_HUMAN)!;
-  if (core.dependencies.length || supplement.dependencies.length !== 1 ||
-      supplement.dependencies[0].packId !== core.packId || supplement.dependencies[0].version !== core.version)
-    throw new Error('Compilation recipe: Only Human requires the exact Core version.');
 
   const packs = recipe.packs.map(spec => {
     const source = registry.sources.find(s => s.id === spec.sourceId);
     if (!source) throw new Error('Source registry: required publication missing.');
-    if (new Set(spec.entityIds).size !== spec.entityIds.length) throw new Error('Compilation recipe: duplicate entity selection.');
     const entities = spec.entityIds.map(id => {
       const matches = entries.filter(e => e !== null && typeof e === 'object' && 'id' in e && e.id === id);
       if (matches.length !== 1) throw new Error('Staging: selected entity missing or duplicated.');
@@ -98,7 +81,7 @@ export async function buildArtifacts(root: string) {
     catch { throw new Error(`Invalid JSON input at ${path}; contents omitted.`); }
   }
   const recipeInput = await jsonFile('curation/human-l0-compilation.json');
-  const recipe = checked(RecipeSchema, recipeInput, 'Compilation recipe');
+  const recipe = parseHumanL0Recipe(recipeInput);
   const records: LocatedRecord[] = [];
   for (const sourceId of [...new Set(recipe.packs.map(p => p.sourceId))].sort(compare)) {
     const path = STAGING_PATHS[sourceId];
@@ -109,13 +92,15 @@ export async function buildArtifacts(root: string) {
       catch { throw new Error(`Invalid staging JSON at ${path}:${index + 1}; contents omitted.`); }
     }
   }
-  const result = compileHumanL0(recipeInput, await jsonFile('curation/sources.json'), records.map(r => r.value));
+  const registryInput = await jsonFile('curation/sources.json');
+  const result = compileHumanL0(recipeInput, registryInput, records.map(r => r.value));
   const report = buildCompilationReport(inputs, records, result.packs, result);
   const path = 'reports/human-l0-compilation.json', text = canonicalJson(report);
   assertSafeArtifact(path, text);
   const artifacts = new Map([...result.artifacts, [path, text] as [string, string]].sort(([a], [b]) => compare(a, b)));
+  const validation = validateHumanL0Bundle(artifacts, recipeInput, { inputs, records, registry: registryInput });
   const hashes = [...artifacts].map(([path, text]) => ({ path, sha256: sha256(text) }));
-  return { ...result, report, artifacts, hashes, sha256: sha256(canonicalJson(hashes)) };
+  return { ...result, report, artifacts, hashes, validation, sha256: sha256(canonicalJson(hashes)) };
 }
 
 async function rejectOutputLinks(root: string, target: string) {
@@ -166,5 +151,6 @@ export async function main(args: string[], root = process.cwd()) {
   }
   for (const hash of result.hashes) console.log(`${hash.sha256}  ${hash.path}`);
   console.log(`Human L0 metadata compilation SHA256: ${result.sha256}; ${args[0]}`);
+  console.log(`Integrated validation: ${result.validation.status}; ${result.validation.packs} packs, ${result.validation.entities} entities; ruleset disabled.`);
   return result;
 }
