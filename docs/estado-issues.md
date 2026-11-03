@@ -1,5 +1,7 @@
 # Estado das issues
 
+Integração sequencial em 2026-11-03: #44 mesclado em `06e6270` e #47 em `b6a298a`; esta branch do #46 incorpora ambos e preserva todos os P2 corrigidos. O contrato reúne as pendências das atividades 4/5 e os lookups usam os resultados do produtor Only Human. Merge de fixtures sintéticas não encerra as atividades 3–8 nem habilita geração oficial.
+
 Integração sequencial autorizada em 2026-11-03: #44 mesclado em `06e6270`; esta branch do #47 foi atualizada com essa main, preservando os P2 corrigidos dos dois lotes. #46 entra depois. A integração de código/fixtures sintéticas não concede aceite dos dados reais; atividades 3–8 seguem abertas.
 
 Atualização de integração em 2026-11-03: a branch do PR #44 (Core, atividade 3 da #34) foi sincronizada com a main para resolver os conflitos que impediam a CI de `pull_request`. A correção P2 desta branch foi preservada. Atividades 1/2 continuam concluídas; 3–8 continuam abertas, sem aceite semântico dos lotes reais ou habilitação. Referências ao hash-check aberto nas fixtures antigas descrevem o snapshot histórico, não reabrem a atividade 1 fechada no #49.

@@ -1,0 +1,1812 @@
+{
+  "contract": "sotdl.human-l0.consumable",
+  "contractVersion": "1.0.0",
+  "distribution": "public-synthetic",
+  "fictionalData": true,
+  "reviewStatus": "needs-review",
+  "rulesetEnabled": false,
+  "importablePack": false,
+  "promotesReview": false,
+  "compatibility": {
+    "frozenCurationContract": "1.0.0",
+    "frozenFileCount": 16,
+    "mechanicsContract": "sotdl.human-l0.mechanics",
+    "mechanicsContractVersion": "1.0.0",
+    "mechanicsProjection": "0.2.0",
+    "semanticsUnchanged": true
+  },
+  "matrix": {
+    "activity": 1,
+    "closure": "pending-act1-local-hash-check",
+    "sourceVersion": null,
+    "path": "docs/matriz-lacunas-issue34-atividade1.json"
+  },
+  "blockers": [
+    {
+      "id": "act1-local-hash-check",
+      "count": 258,
+      "blocksSyntheticFixtures": false,
+      "evidenceStatus": "declared-hash-not-recomputed",
+      "activities": [
+        1
+      ]
+    },
+    {
+      "id": "act3-act5-grouped-local-only",
+      "count": 350,
+      "linkedDefinition": "local-only",
+      "individualEvidence": false,
+      "coreProfessionOptions": 36,
+      "catalogRecords": 314,
+      "activities": [
+        3,
+        5
+      ],
+      "members": [
+        {
+          "id": "pilot-profession:core:martial:*",
+          "count": 12,
+          "activity": 3,
+          "reason": "range-starts-not-reextracted"
+        },
+        {
+          "id": "pilot-profession:core:religious:*",
+          "count": 7,
+          "activity": 3,
+          "reason": "range-starts-not-reextracted"
+        },
+        {
+          "id": "pilot-profession:core:wilderness:*",
+          "count": 17,
+          "activity": 3,
+          "reason": "range-starts-not-reextracted"
+        },
+        {
+          "id": "class:source-grant-only",
+          "count": 57,
+          "activity": 5,
+          "reason": "catalog-group-not-individual"
+        },
+        {
+          "id": "class:exact-definition-refs",
+          "count": 182,
+          "activity": 5,
+          "reason": "catalog-group-not-individual"
+        },
+        {
+          "id": "class:generic-editable-refs",
+          "count": 75,
+          "activity": 5,
+          "reason": "catalog-group-not-individual"
+        }
+      ]
+    }
+  ],
+  "recursion": {
+    "maxDepth": 4,
+    "onLimit": "pending",
+    "pendingReason": "bounded-recursion",
+    "silentReroll": false,
+    "discardOutcome": false
+  },
+  "unprojectedPublishedCycles": [
+    {
+      "id": "only-human:character-fate",
+      "projected": false
+    },
+    {
+      "id": "only-human:piety",
+      "projected": false
+    },
+    {
+      "id": "only-human:siblings",
+      "projected": false
+    },
+    {
+      "id": "only-human:strange",
+      "projected": false
+    }
+  ],
+  "choices": [
+    {
+      "id": "choice:core-kit-wealthy-shield",
+      "options": [
+        "pilot-item:core:large-shield",
+        "pilot-item:core:small-shield"
+      ]
+    }
+  ],
+  "producedQueries": [
+    {
+      "id": "query:starting-lifestyle:only-human",
+      "producedBy": {
+        "tableId": "only-human:lifestyle",
+        "columnId": "main"
+      }
+    }
+  ],
+  "tables": [
+    {
+      "id": "only-human:lifestyle",
+      "kind": "weighted-table",
+      "publishedCycle": false,
+      "columns": [
+        {
+          "id": "main",
+          "rollId": "only-human:lifestyle#main",
+          "dice": {
+            "count": 3,
+            "sides": 6
+          },
+          "modifierDomain": {
+            "kind": "pending",
+            "reason": "open-tail-domain"
+          },
+          "rows": [
+            {
+              "id": "only-human:lifestyle:open-3",
+              "min": null,
+              "max": 3,
+              "tail": "open-low",
+              "publishedWeight": {
+                "ways": "1",
+                "denominator": "216",
+                "basis": "natural-dice-faces"
+              },
+              "consequence": {
+                "kind": "effect",
+                "pending": null,
+                "effect": {
+                  "op": "narrative-marker",
+                  "code": "lifestyle-prior",
+                  "timing": "narrative",
+                  "mutatesMechanics": false
+                }
+              }
+            },
+            {
+              "id": "only-human:lifestyle:4-5",
+              "min": 4,
+              "max": 5,
+              "tail": "none",
+              "publishedWeight": {
+                "ways": "9",
+                "denominator": "216",
+                "basis": "natural-dice-faces"
+              },
+              "consequence": {
+                "kind": "effect",
+                "pending": null,
+                "effect": {
+                  "op": "narrative-marker",
+                  "code": "lifestyle-prior",
+                  "timing": "narrative",
+                  "mutatesMechanics": false
+                }
+              }
+            },
+            {
+              "id": "only-human:lifestyle:6-12",
+              "min": 6,
+              "max": 12,
+              "tail": "none",
+              "publishedWeight": {
+                "ways": "150",
+                "denominator": "216",
+                "basis": "natural-dice-faces"
+              },
+              "consequence": {
+                "kind": "effect",
+                "pending": null,
+                "effect": {
+                  "op": "narrative-marker",
+                  "code": "lifestyle-prior",
+                  "timing": "narrative",
+                  "mutatesMechanics": false
+                }
+              }
+            },
+            {
+              "id": "only-human:lifestyle:13-15",
+              "min": 13,
+              "max": 15,
+              "tail": "none",
+              "publishedWeight": {
+                "ways": "46",
+                "denominator": "216",
+                "basis": "natural-dice-faces"
+              },
+              "consequence": {
+                "kind": "effect",
+                "pending": null,
+                "effect": {
+                  "op": "narrative-marker",
+                  "code": "lifestyle-prior",
+                  "timing": "narrative",
+                  "mutatesMechanics": false
+                }
+              }
+            },
+            {
+              "id": "only-human:lifestyle:16-17",
+              "min": 16,
+              "max": 17,
+              "tail": "none",
+              "publishedWeight": {
+                "ways": "9",
+                "denominator": "216",
+                "basis": "natural-dice-faces"
+              },
+              "consequence": {
+                "kind": "effect",
+                "pending": null,
+                "effect": {
+                  "op": "narrative-marker",
+                  "code": "lifestyle-prior",
+                  "timing": "narrative",
+                  "mutatesMechanics": false
+                }
+              }
+            },
+            {
+              "id": "only-human:lifestyle:18-open",
+              "min": 18,
+              "max": null,
+              "tail": "open-high",
+              "publishedWeight": {
+                "ways": "1",
+                "denominator": "216",
+                "basis": "natural-dice-faces"
+              },
+              "consequence": {
+                "kind": "effect",
+                "pending": null,
+                "effect": {
+                  "op": "narrative-marker",
+                  "code": "lifestyle-prior",
+                  "timing": "narrative",
+                  "mutatesMechanics": false
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "lookups": [
+    {
+      "id": "only-human:clothing",
+      "kind": "lookup",
+      "dice": null,
+      "reads": {
+        "queryId": "query:starting-lifestyle:only-human",
+        "component": "result"
+      },
+      "keys": [
+        {
+          "key": "only-human:lifestyle:open-3",
+          "consequence": {
+            "kind": "pending",
+            "effect": null,
+            "pending": {
+              "reason": "grant-program-local-only",
+              "retainsConsequence": true,
+              "matrixSelection": null,
+              "linkedDefinition": {
+                "kind": "local-only",
+                "individualEvidence": false
+              }
+            }
+          }
+        },
+        {
+          "key": "only-human:lifestyle:4-5",
+          "consequence": {
+            "kind": "pending",
+            "effect": null,
+            "pending": {
+              "reason": "grant-program-local-only",
+              "retainsConsequence": true,
+              "matrixSelection": null,
+              "linkedDefinition": {
+                "kind": "local-only",
+                "individualEvidence": false
+              }
+            }
+          }
+        },
+        {
+          "key": "only-human:lifestyle:6-12",
+          "consequence": {
+            "kind": "pending",
+            "effect": null,
+            "pending": {
+              "reason": "grant-program-local-only",
+              "retainsConsequence": true,
+              "matrixSelection": null,
+              "linkedDefinition": {
+                "kind": "local-only",
+                "individualEvidence": false
+              }
+            }
+          }
+        },
+        {
+          "key": "only-human:lifestyle:13-15",
+          "consequence": {
+            "kind": "pending",
+            "effect": null,
+            "pending": {
+              "reason": "grant-program-local-only",
+              "retainsConsequence": true,
+              "matrixSelection": null,
+              "linkedDefinition": {
+                "kind": "local-only",
+                "individualEvidence": false
+              }
+            }
+          }
+        },
+        {
+          "key": "only-human:lifestyle:16-17",
+          "consequence": {
+            "kind": "pending",
+            "effect": null,
+            "pending": {
+              "reason": "grant-program-local-only",
+              "retainsConsequence": true,
+              "matrixSelection": null,
+              "linkedDefinition": {
+                "kind": "local-only",
+                "individualEvidence": false
+              }
+            }
+          }
+        },
+        {
+          "key": "only-human:lifestyle:18-open",
+          "consequence": {
+            "kind": "pending",
+            "effect": null,
+            "pending": {
+              "reason": "grant-program-local-only",
+              "retainsConsequence": true,
+              "matrixSelection": null,
+              "linkedDefinition": {
+                "kind": "local-only",
+                "individualEvidence": false
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "only-human:weapons",
+      "kind": "lookup",
+      "dice": null,
+      "reads": {
+        "queryId": "query:starting-lifestyle:only-human",
+        "component": "result"
+      },
+      "keys": [
+        {
+          "key": "only-human:lifestyle:open-3",
+          "consequence": {
+            "kind": "pending",
+            "effect": null,
+            "pending": {
+              "reason": "grant-program-local-only",
+              "retainsConsequence": true,
+              "matrixSelection": null,
+              "linkedDefinition": {
+                "kind": "local-only",
+                "individualEvidence": false
+              }
+            }
+          }
+        },
+        {
+          "key": "only-human:lifestyle:4-5",
+          "consequence": {
+            "kind": "pending",
+            "effect": null,
+            "pending": {
+              "reason": "grant-program-local-only",
+              "retainsConsequence": true,
+              "matrixSelection": null,
+              "linkedDefinition": {
+                "kind": "local-only",
+                "individualEvidence": false
+              }
+            }
+          }
+        },
+        {
+          "key": "only-human:lifestyle:6-12",
+          "consequence": {
+            "kind": "pending",
+            "effect": null,
+            "pending": {
+              "reason": "grant-program-local-only",
+              "retainsConsequence": true,
+              "matrixSelection": null,
+              "linkedDefinition": {
+                "kind": "local-only",
+                "individualEvidence": false
+              }
+            }
+          }
+        },
+        {
+          "key": "only-human:lifestyle:13-15",
+          "consequence": {
+            "kind": "pending",
+            "effect": null,
+            "pending": {
+              "reason": "grant-program-local-only",
+              "retainsConsequence": true,
+              "matrixSelection": null,
+              "linkedDefinition": {
+                "kind": "local-only",
+                "individualEvidence": false
+              }
+            }
+          }
+        },
+        {
+          "key": "only-human:lifestyle:16-17",
+          "consequence": {
+            "kind": "pending",
+            "effect": null,
+            "pending": {
+              "reason": "grant-program-local-only",
+              "retainsConsequence": true,
+              "matrixSelection": null,
+              "linkedDefinition": {
+                "kind": "local-only",
+                "individualEvidence": false
+              }
+            }
+          }
+        },
+        {
+          "key": "only-human:lifestyle:18-open",
+          "consequence": {
+            "kind": "pending",
+            "effect": null,
+            "pending": {
+              "reason": "grant-program-local-only",
+              "retainsConsequence": true,
+              "matrixSelection": null,
+              "linkedDefinition": {
+                "kind": "local-only",
+                "individualEvidence": false
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "only-human:personal-gear",
+      "kind": "lookup",
+      "dice": null,
+      "reads": {
+        "queryId": "query:starting-lifestyle:only-human",
+        "component": "result"
+      },
+      "keys": [
+        {
+          "key": "only-human:lifestyle:open-3",
+          "consequence": {
+            "kind": "pending",
+            "effect": null,
+            "pending": {
+              "reason": "grant-program-local-only",
+              "retainsConsequence": true,
+              "matrixSelection": null,
+              "linkedDefinition": {
+                "kind": "local-only",
+                "individualEvidence": false
+              }
+            }
+          }
+        },
+        {
+          "key": "only-human:lifestyle:4-5",
+          "consequence": {
+            "kind": "pending",
+            "effect": null,
+            "pending": {
+              "reason": "grant-program-local-only",
+              "retainsConsequence": true,
+              "matrixSelection": null,
+              "linkedDefinition": {
+                "kind": "local-only",
+                "individualEvidence": false
+              }
+            }
+          }
+        },
+        {
+          "key": "only-human:lifestyle:6-12",
+          "consequence": {
+            "kind": "pending",
+            "effect": null,
+            "pending": {
+              "reason": "grant-program-local-only",
+              "retainsConsequence": true,
+              "matrixSelection": null,
+              "linkedDefinition": {
+                "kind": "local-only",
+                "individualEvidence": false
+              }
+            }
+          }
+        },
+        {
+          "key": "only-human:lifestyle:13-15",
+          "consequence": {
+            "kind": "pending",
+            "effect": null,
+            "pending": {
+              "reason": "grant-program-local-only",
+              "retainsConsequence": true,
+              "matrixSelection": null,
+              "linkedDefinition": {
+                "kind": "local-only",
+                "individualEvidence": false
+              }
+            }
+          }
+        },
+        {
+          "key": "only-human:lifestyle:16-17",
+          "consequence": {
+            "kind": "pending",
+            "effect": null,
+            "pending": {
+              "reason": "grant-program-local-only",
+              "retainsConsequence": true,
+              "matrixSelection": null,
+              "linkedDefinition": {
+                "kind": "local-only",
+                "individualEvidence": false
+              }
+            }
+          }
+        },
+        {
+          "key": "only-human:lifestyle:18-open",
+          "consequence": {
+            "kind": "pending",
+            "effect": null,
+            "pending": {
+              "reason": "grant-program-local-only",
+              "retainsConsequence": true,
+              "matrixSelection": null,
+              "linkedDefinition": {
+                "kind": "local-only",
+                "individualEvidence": false
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "only-human:special-gear",
+      "kind": "lookup",
+      "dice": null,
+      "reads": {
+        "queryId": "query:starting-lifestyle:only-human",
+        "component": "result"
+      },
+      "keys": [
+        {
+          "key": "only-human:lifestyle:open-3",
+          "consequence": {
+            "kind": "pending",
+            "effect": null,
+            "pending": {
+              "reason": "grant-program-local-only",
+              "retainsConsequence": true,
+              "matrixSelection": null,
+              "linkedDefinition": {
+                "kind": "local-only",
+                "individualEvidence": false
+              }
+            }
+          }
+        },
+        {
+          "key": "only-human:lifestyle:4-5",
+          "consequence": {
+            "kind": "pending",
+            "effect": null,
+            "pending": {
+              "reason": "grant-program-local-only",
+              "retainsConsequence": true,
+              "matrixSelection": null,
+              "linkedDefinition": {
+                "kind": "local-only",
+                "individualEvidence": false
+              }
+            }
+          }
+        },
+        {
+          "key": "only-human:lifestyle:6-12",
+          "consequence": {
+            "kind": "pending",
+            "effect": null,
+            "pending": {
+              "reason": "grant-program-local-only",
+              "retainsConsequence": true,
+              "matrixSelection": null,
+              "linkedDefinition": {
+                "kind": "local-only",
+                "individualEvidence": false
+              }
+            }
+          }
+        },
+        {
+          "key": "only-human:lifestyle:13-15",
+          "consequence": {
+            "kind": "pending",
+            "effect": null,
+            "pending": {
+              "reason": "grant-program-local-only",
+              "retainsConsequence": true,
+              "matrixSelection": null,
+              "linkedDefinition": {
+                "kind": "local-only",
+                "individualEvidence": false
+              }
+            }
+          }
+        },
+        {
+          "key": "only-human:lifestyle:16-17",
+          "consequence": {
+            "kind": "pending",
+            "effect": null,
+            "pending": {
+              "reason": "grant-program-local-only",
+              "retainsConsequence": true,
+              "matrixSelection": null,
+              "linkedDefinition": {
+                "kind": "local-only",
+                "individualEvidence": false
+              }
+            }
+          }
+        },
+        {
+          "key": "only-human:lifestyle:18-open",
+          "consequence": {
+            "kind": "pending",
+            "effect": null,
+            "pending": {
+              "reason": "grant-program-local-only",
+              "retainsConsequence": true,
+              "matrixSelection": null,
+              "linkedDefinition": {
+                "kind": "local-only",
+                "individualEvidence": false
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "only-human:money",
+      "kind": "lookup",
+      "dice": null,
+      "reads": {
+        "queryId": "query:starting-lifestyle:only-human",
+        "component": "result"
+      },
+      "keys": [
+        {
+          "key": "only-human:lifestyle:open-3",
+          "consequence": {
+            "kind": "pending",
+            "effect": null,
+            "pending": {
+              "reason": "grant-program-local-only",
+              "retainsConsequence": true,
+              "matrixSelection": null,
+              "linkedDefinition": {
+                "kind": "not-an-item"
+              }
+            }
+          }
+        },
+        {
+          "key": "only-human:lifestyle:4-5",
+          "consequence": {
+            "kind": "pending",
+            "effect": null,
+            "pending": {
+              "reason": "grant-program-local-only",
+              "retainsConsequence": true,
+              "matrixSelection": null,
+              "linkedDefinition": {
+                "kind": "not-an-item"
+              }
+            }
+          }
+        },
+        {
+          "key": "only-human:lifestyle:6-12",
+          "consequence": {
+            "kind": "pending",
+            "effect": null,
+            "pending": {
+              "reason": "grant-program-local-only",
+              "retainsConsequence": true,
+              "matrixSelection": null,
+              "linkedDefinition": {
+                "kind": "not-an-item"
+              }
+            }
+          }
+        },
+        {
+          "key": "only-human:lifestyle:13-15",
+          "consequence": {
+            "kind": "pending",
+            "effect": null,
+            "pending": {
+              "reason": "grant-program-local-only",
+              "retainsConsequence": true,
+              "matrixSelection": null,
+              "linkedDefinition": {
+                "kind": "not-an-item"
+              }
+            }
+          }
+        },
+        {
+          "key": "only-human:lifestyle:16-17",
+          "consequence": {
+            "kind": "pending",
+            "effect": null,
+            "pending": {
+              "reason": "grant-program-local-only",
+              "retainsConsequence": true,
+              "matrixSelection": null,
+              "linkedDefinition": {
+                "kind": "not-an-item"
+              }
+            }
+          }
+        },
+        {
+          "key": "only-human:lifestyle:18-open",
+          "consequence": {
+            "kind": "pending",
+            "effect": null,
+            "pending": {
+              "reason": "grant-program-local-only",
+              "retainsConsequence": true,
+              "matrixSelection": null,
+              "linkedDefinition": {
+                "kind": "not-an-item"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "sideRolls": [],
+  "items": [
+    {
+      "id": "kit-fixture-armor",
+      "label": "kit-fixture-armor",
+      "price": {
+        "kind": "unknown",
+        "amount": null,
+        "denomination": null,
+        "bits": null
+      },
+      "priceConsequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "unknown-price",
+          "retainsConsequence": true,
+          "matrixSelection": null,
+          "linkedDefinition": {
+            "kind": "none"
+          }
+        }
+      },
+      "profile": "armor",
+      "possessionAppliesEffects": false,
+      "onPossess": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "possession-is-not-use",
+          "retainsConsequence": true,
+          "matrixSelection": null,
+          "linkedDefinition": {
+            "kind": "none"
+          }
+        }
+      },
+      "onEquip": {
+        "kind": "effect",
+        "pending": null,
+        "effect": {
+          "op": "substitute-defense",
+          "when": "equipped",
+          "mode": "substitute",
+          "base": "agility",
+          "value": 1,
+          "timing": "on-equip",
+          "possessionApplies": false
+        }
+      },
+      "onUse": null
+    },
+    {
+      "id": "kit-fixture-blade",
+      "label": "kit-fixture-blade",
+      "price": {
+        "kind": "unknown",
+        "amount": null,
+        "denomination": null,
+        "bits": null
+      },
+      "priceConsequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "unknown-price",
+          "retainsConsequence": true,
+          "matrixSelection": null,
+          "linkedDefinition": {
+            "kind": "none"
+          }
+        }
+      },
+      "profile": "weapon",
+      "possessionAppliesEffects": false,
+      "onPossess": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "possession-is-not-use",
+          "retainsConsequence": true,
+          "matrixSelection": null,
+          "linkedDefinition": {
+            "kind": "none"
+          }
+        }
+      },
+      "onEquip": null,
+      "onUse": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "weapon-no-defense",
+          "retainsConsequence": true,
+          "matrixSelection": null,
+          "linkedDefinition": {
+            "kind": "none"
+          }
+        }
+      }
+    },
+    {
+      "id": "kit-fixture-shield",
+      "label": "kit-fixture-shield",
+      "price": {
+        "kind": "unknown",
+        "amount": null,
+        "denomination": null,
+        "bits": null
+      },
+      "priceConsequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "unknown-price",
+          "retainsConsequence": true,
+          "matrixSelection": null,
+          "linkedDefinition": {
+            "kind": "none"
+          }
+        }
+      },
+      "profile": "armor",
+      "possessionAppliesEffects": false,
+      "onPossess": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "possession-is-not-use",
+          "retainsConsequence": true,
+          "matrixSelection": null,
+          "linkedDefinition": {
+            "kind": "none"
+          }
+        }
+      },
+      "onEquip": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "defense-bonus-not-substitution",
+          "retainsConsequence": true,
+          "matrixSelection": null,
+          "linkedDefinition": {
+            "kind": "none"
+          }
+        }
+      },
+      "onUse": null
+    },
+    {
+      "id": "kit-fixture-priced",
+      "label": "kit-fixture-priced",
+      "price": {
+        "kind": "exact",
+        "amount": "1",
+        "denomination": "gc",
+        "bits": "1000"
+      },
+      "priceConsequence": {
+        "kind": "effect",
+        "pending": null,
+        "effect": {
+          "op": "record-price",
+          "priceKind": "exact",
+          "bits": "1000",
+          "timing": "narrative",
+          "mutatesMechanics": false
+        }
+      },
+      "profile": "none",
+      "possessionAppliesEffects": false,
+      "onPossess": {
+        "kind": "effect",
+        "pending": null,
+        "effect": {
+          "op": "narrative-marker",
+          "code": "fixture-price-not-catalog",
+          "timing": "narrative",
+          "mutatesMechanics": false
+        }
+      },
+      "onEquip": null,
+      "onUse": null
+    },
+    {
+      "id": "kit-fixture-minimum",
+      "label": "kit-fixture-minimum",
+      "price": {
+        "kind": "minimum",
+        "amount": "1",
+        "denomination": "cp",
+        "bits": "10"
+      },
+      "priceConsequence": {
+        "kind": "effect",
+        "pending": null,
+        "effect": {
+          "op": "record-price",
+          "priceKind": "minimum",
+          "bits": "10",
+          "timing": "narrative",
+          "mutatesMechanics": false
+        }
+      },
+      "profile": "none",
+      "possessionAppliesEffects": false,
+      "onPossess": {
+        "kind": "effect",
+        "pending": null,
+        "effect": {
+          "op": "narrative-marker",
+          "code": "fixture-minimum-not-catalog",
+          "timing": "narrative",
+          "mutatesMechanics": false
+        }
+      },
+      "onEquip": null,
+      "onUse": null
+    },
+    {
+      "id": "kit-fixture-generic",
+      "label": "kit-fixture-generic",
+      "price": {
+        "kind": "variable",
+        "amount": null,
+        "denomination": null,
+        "bits": null
+      },
+      "priceConsequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "unknown-price",
+          "retainsConsequence": true,
+          "matrixSelection": null,
+          "linkedDefinition": {
+            "kind": "none"
+          }
+        }
+      },
+      "profile": "generic",
+      "possessionAppliesEffects": false,
+      "onPossess": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "generic-profile",
+          "retainsConsequence": true,
+          "matrixSelection": null,
+          "linkedDefinition": {
+            "kind": "none"
+          }
+        }
+      },
+      "onEquip": null,
+      "onUse": null
+    },
+    {
+      "id": "kit-fixture-incantation",
+      "label": "kit-fixture-incantation",
+      "price": {
+        "kind": "unknown",
+        "amount": null,
+        "denomination": null,
+        "bits": null
+      },
+      "priceConsequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "unknown-price",
+          "retainsConsequence": true,
+          "matrixSelection": null,
+          "linkedDefinition": {
+            "kind": "none"
+          }
+        }
+      },
+      "profile": "none",
+      "possessionAppliesEffects": false,
+      "onPossess": {
+        "kind": "effect",
+        "pending": null,
+        "effect": {
+          "op": "narrative-marker",
+          "code": "incantation-not-a-spell",
+          "timing": "narrative",
+          "mutatesMechanics": false
+        }
+      },
+      "onEquip": null,
+      "onUse": null
+    }
+  ],
+  "grants": [
+    {
+      "id": "kit-fixture:grant:armor",
+      "origin": {
+        "publicationId": "fixture-publication",
+        "version": null,
+        "entityId": "kit-fixture:armor",
+        "resultId": "shape",
+        "componentId": "grant"
+      },
+      "subject": "character",
+      "precondition": {
+        "kind": "prior-result",
+        "queryId": "query:starting-lifestyle:only-human"
+      },
+      "frequency": "once",
+      "source": "kit",
+      "consequence": {
+        "kind": "effect",
+        "pending": null,
+        "effect": {
+          "op": "grant-item",
+          "itemId": "kit-fixture-armor",
+          "quantity": 1,
+          "unit": "count",
+          "possession": "carried",
+          "usageApplied": false,
+          "timing": "creation"
+        }
+      }
+    },
+    {
+      "id": "kit-fixture:grant:currency",
+      "origin": {
+        "publicationId": "fixture-publication",
+        "version": null,
+        "entityId": "query:only-human:money",
+        "resultId": "kit-fixture:shape",
+        "componentId": "grant-currency"
+      },
+      "subject": "character",
+      "precondition": {
+        "kind": "prior-result",
+        "queryId": "query:starting-lifestyle:only-human"
+      },
+      "frequency": "once",
+      "source": "lookup",
+      "consequence": {
+        "kind": "effect",
+        "pending": null,
+        "effect": {
+          "op": "grant-currency",
+          "amount": "3",
+          "denomination": "cp",
+          "bits": "30",
+          "timing": "creation"
+        }
+      }
+    },
+    {
+      "id": "kit-fixture:grant:shield-choice",
+      "origin": {
+        "publicationId": "sotdl:shadow-of-the-demon-lord-core",
+        "version": null,
+        "entityId": "core:kit:wealthy",
+        "resultId": "shield",
+        "componentId": "choice"
+      },
+      "subject": "character",
+      "precondition": {
+        "kind": "prior-result",
+        "queryId": "query:starting-lifestyle:only-human"
+      },
+      "frequency": "once",
+      "source": "kit",
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "choice-required",
+          "retainsConsequence": true,
+          "matrixSelection": null,
+          "linkedDefinition": {
+            "kind": "choice",
+            "candidates": [
+              "pilot-item:core:large-shield",
+              "pilot-item:core:small-shield"
+            ],
+            "resolvedItemId": null
+          }
+        }
+      }
+    },
+    {
+      "id": "kit-fixture:grant:companion",
+      "origin": {
+        "publicationId": "fixture-publication",
+        "version": null,
+        "entityId": "kit-fixture:companion",
+        "resultId": "shape",
+        "componentId": "not-carried"
+      },
+      "subject": "character",
+      "precondition": {
+        "kind": "prior-result",
+        "queryId": "query:starting-lifestyle:only-human"
+      },
+      "frequency": "once",
+      "source": "kit",
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "not-carried",
+          "retainsConsequence": true,
+          "matrixSelection": null,
+          "linkedDefinition": {
+            "kind": "not-an-item"
+          }
+        }
+      }
+    },
+    {
+      "id": "kit-fixture:grant:property",
+      "origin": {
+        "publicationId": "fixture-publication",
+        "version": null,
+        "entityId": "kit-fixture:property",
+        "resultId": "shape",
+        "componentId": "not-carried"
+      },
+      "subject": "character",
+      "precondition": {
+        "kind": "prior-result",
+        "queryId": "query:starting-lifestyle:only-human"
+      },
+      "frequency": "once",
+      "source": "kit",
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "not-carried",
+          "retainsConsequence": true,
+          "matrixSelection": null,
+          "linkedDefinition": {
+            "kind": "not-an-item"
+          }
+        }
+      }
+    },
+    {
+      "id": "kit-fixture:grant:service",
+      "origin": {
+        "publicationId": "fixture-publication",
+        "version": null,
+        "entityId": "kit-fixture:service",
+        "resultId": "shape",
+        "componentId": "not-carried"
+      },
+      "subject": "character",
+      "precondition": {
+        "kind": "prior-result",
+        "queryId": "query:starting-lifestyle:only-human"
+      },
+      "frequency": "once",
+      "source": "kit",
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "not-carried",
+          "retainsConsequence": true,
+          "matrixSelection": null,
+          "linkedDefinition": {
+            "kind": "not-an-item"
+          }
+        }
+      }
+    },
+    {
+      "id": "kit-fixture:grant:incantation",
+      "origin": {
+        "publicationId": "fixture-publication",
+        "version": null,
+        "entityId": "kit-fixture:incantation",
+        "resultId": "shape",
+        "componentId": "grant"
+      },
+      "subject": "character",
+      "precondition": {
+        "kind": "prior-result",
+        "queryId": "query:starting-lifestyle:only-human"
+      },
+      "frequency": "once",
+      "source": "kit",
+      "consequence": {
+        "kind": "effect",
+        "pending": null,
+        "effect": {
+          "op": "grant-item",
+          "itemId": "kit-fixture-incantation",
+          "quantity": 1,
+          "unit": "count",
+          "possession": "carried",
+          "usageApplied": false,
+          "timing": "creation"
+        }
+      }
+    }
+  ],
+  "events": [
+    {
+      "id": "kit-fixture:event:armor:carry",
+      "originKey": "fixture-publication@null/kit-fixture:armor/shape/grant",
+      "origin": {
+        "publicationId": "fixture-publication",
+        "version": null,
+        "entityId": "kit-fixture:armor",
+        "resultId": "shape",
+        "componentId": "grant"
+      },
+      "subject": "character",
+      "phase": "creation",
+      "consequence": {
+        "kind": "effect",
+        "pending": null,
+        "effect": {
+          "op": "grant-item",
+          "itemId": "kit-fixture-armor",
+          "quantity": 1,
+          "unit": "count",
+          "possession": "carried",
+          "usageApplied": false,
+          "timing": "creation"
+        }
+      }
+    },
+    {
+      "id": "kit-fixture:event:armor:equip",
+      "originKey": "fixture-publication@null/kit-fixture:armor/shape/grant",
+      "origin": {
+        "publicationId": "fixture-publication",
+        "version": null,
+        "entityId": "kit-fixture:armor",
+        "resultId": "shape",
+        "componentId": "grant"
+      },
+      "subject": "character",
+      "phase": "on-equip",
+      "consequence": {
+        "kind": "effect",
+        "pending": null,
+        "effect": {
+          "op": "substitute-defense",
+          "when": "equipped",
+          "mode": "substitute",
+          "base": "agility",
+          "value": 1,
+          "timing": "on-equip",
+          "possessionApplies": false
+        }
+      }
+    }
+  ],
+  "groupedPendings": [
+    {
+      "id": "pilot-profession:core:martial:*",
+      "blockerId": "act3-act5-grouped-local-only",
+      "activity": 3,
+      "represents": 12,
+      "linkedDefinition": {
+        "kind": "local-only",
+        "individualEvidence": false
+      },
+      "evidence": {
+        "kind": "local-only-group",
+        "individualEvidence": false,
+        "recomputedHash": null
+      },
+      "weights": null,
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "range-starts-not-reextracted",
+          "retainsConsequence": true,
+          "matrixSelection": "agrupado",
+          "linkedDefinition": {
+            "kind": "local-only",
+            "individualEvidence": false
+          }
+        }
+      }
+    },
+    {
+      "id": "pilot-profession:core:religious:*",
+      "blockerId": "act3-act5-grouped-local-only",
+      "activity": 3,
+      "represents": 7,
+      "linkedDefinition": {
+        "kind": "local-only",
+        "individualEvidence": false
+      },
+      "evidence": {
+        "kind": "local-only-group",
+        "individualEvidence": false,
+        "recomputedHash": null
+      },
+      "weights": null,
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "range-starts-not-reextracted",
+          "retainsConsequence": true,
+          "matrixSelection": "agrupado",
+          "linkedDefinition": {
+            "kind": "local-only",
+            "individualEvidence": false
+          }
+        }
+      }
+    },
+    {
+      "id": "pilot-profession:core:wilderness:*",
+      "blockerId": "act3-act5-grouped-local-only",
+      "activity": 3,
+      "represents": 17,
+      "linkedDefinition": {
+        "kind": "local-only",
+        "individualEvidence": false
+      },
+      "evidence": {
+        "kind": "local-only-group",
+        "individualEvidence": false,
+        "recomputedHash": null
+      },
+      "weights": null,
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "range-starts-not-reextracted",
+          "retainsConsequence": true,
+          "matrixSelection": "agrupado",
+          "linkedDefinition": {
+            "kind": "local-only",
+            "individualEvidence": false
+          }
+        }
+      }
+    },
+    {
+      "id": "class:source-grant-only",
+      "blockerId": "act3-act5-grouped-local-only",
+      "activity": 5,
+      "represents": 57,
+      "linkedDefinition": {
+        "kind": "local-only",
+        "individualEvidence": false
+      },
+      "evidence": {
+        "kind": "local-only-group",
+        "individualEvidence": false,
+        "recomputedHash": null
+      },
+      "weights": null,
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "catalog-group-not-individual",
+          "retainsConsequence": true,
+          "matrixSelection": "agrupado",
+          "linkedDefinition": {
+            "kind": "local-only",
+            "individualEvidence": false
+          }
+        }
+      }
+    },
+    {
+      "id": "class:exact-definition-refs",
+      "blockerId": "act3-act5-grouped-local-only",
+      "activity": 5,
+      "represents": 182,
+      "linkedDefinition": {
+        "kind": "local-only",
+        "individualEvidence": false
+      },
+      "evidence": {
+        "kind": "local-only-group",
+        "individualEvidence": false,
+        "recomputedHash": null
+      },
+      "weights": null,
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "catalog-group-not-individual",
+          "retainsConsequence": true,
+          "matrixSelection": "agrupado",
+          "linkedDefinition": {
+            "kind": "local-only",
+            "individualEvidence": false
+          }
+        }
+      }
+    },
+    {
+      "id": "class:generic-editable-refs",
+      "blockerId": "act3-act5-grouped-local-only",
+      "activity": 5,
+      "represents": 75,
+      "linkedDefinition": {
+        "kind": "local-only",
+        "individualEvidence": false
+      },
+      "evidence": {
+        "kind": "local-only-group",
+        "individualEvidence": false,
+        "recomputedHash": null
+      },
+      "weights": null,
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "catalog-group-not-individual",
+          "retainsConsequence": true,
+          "matrixSelection": "agrupado",
+          "linkedDefinition": {
+            "kind": "local-only",
+            "individualEvidence": false
+          }
+        }
+      }
+    }
+  ],
+  "manualResolutions": [
+    {
+      "matrixId": "finding:death-multiplicity",
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "manual-procedure",
+          "retainsConsequence": true,
+          "matrixSelection": "selecionado-manual",
+          "linkedDefinition": {
+            "kind": "not-an-item"
+          }
+        }
+      }
+    },
+    {
+      "matrixId": "finding:dimension-order",
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "manual-composition",
+          "retainsConsequence": true,
+          "matrixSelection": "selecionado-manual",
+          "linkedDefinition": {
+            "kind": "not-an-item"
+          }
+        }
+      }
+    },
+    {
+      "matrixId": "finding:external-dependencies",
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "conditional-manual",
+          "retainsConsequence": true,
+          "matrixSelection": "selecionado-manual",
+          "linkedDefinition": {
+            "kind": "not-an-item"
+          }
+        }
+      }
+    },
+    {
+      "matrixId": "finding:outer-category-choice",
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "manual-category-choice",
+          "retainsConsequence": true,
+          "matrixSelection": "selecionado-manual",
+          "linkedDefinition": {
+            "kind": "not-an-item"
+          }
+        }
+      }
+    },
+    {
+      "matrixId": "finding:recursion",
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "bounded-recursion",
+          "retainsConsequence": true,
+          "matrixSelection": "selecionado-manual",
+          "linkedDefinition": {
+            "kind": "not-an-item"
+          }
+        }
+      }
+    },
+    {
+      "matrixId": "extra:major-windfall-1-fallback",
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "conditional-branch",
+          "retainsConsequence": true,
+          "matrixSelection": "selecionado-manual",
+          "linkedDefinition": {
+            "kind": "local-only",
+            "individualEvidence": false
+          }
+        }
+      }
+    },
+    {
+      "matrixId": "item-ref:grant:core:kit:wealthy/grant/special/shield/shield",
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "choice-required",
+          "retainsConsequence": true,
+          "matrixSelection": "selecionado-manual",
+          "linkedDefinition": {
+            "kind": "choice",
+            "candidates": [
+              "pilot-item:core:large-shield",
+              "pilot-item:core:small-shield"
+            ],
+            "resolvedItemId": null
+          }
+        }
+      }
+    },
+    {
+      "matrixId": "item-ref:grant:profession:pilot-profession:only-human:common:r11/grant/entertainer-clothing/costume/costume",
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "choice-required",
+          "retainsConsequence": true,
+          "matrixSelection": "selecionado-manual",
+          "linkedDefinition": {
+            "kind": "choice",
+            "candidates": [
+              "pilot-item:core:elaborate-costume",
+              "pilot-item:core:simple-costume"
+            ],
+            "resolvedItemId": null
+          }
+        }
+      }
+    },
+    {
+      "matrixId": "item-ref:grant:profession:pilot-profession:only-human:common:r11/grant/entertainer-clothing/dress/dress",
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "choice-required",
+          "retainsConsequence": true,
+          "matrixSelection": "selecionado-manual",
+          "linkedDefinition": {
+            "kind": "choice",
+            "candidates": [
+              "pilot-item:core:basic-dress",
+              "pilot-item:core:fancy-dress"
+            ],
+            "resolvedItemId": null
+          }
+        }
+      }
+    },
+    {
+      "matrixId": "item-ref:grant:profession:pilot-profession:only-human:military:r03/grant/spear",
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "choice-required",
+          "retainsConsequence": true,
+          "matrixSelection": "selecionado-manual",
+          "linkedDefinition": {
+            "kind": "choice",
+            "candidates": [
+              "pilot-item:core:basic-spear",
+              "pilot-item:core:military-spear"
+            ],
+            "resolvedItemId": null
+          }
+        }
+      }
+    },
+    {
+      "matrixId": "item-ref:grant:profession:pilot-profession:only-human:wilderness:r17/grant/spear",
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "choice-required",
+          "retainsConsequence": true,
+          "matrixSelection": "selecionado-manual",
+          "linkedDefinition": {
+            "kind": "choice",
+            "candidates": [
+              "pilot-item:core:basic-spear",
+              "pilot-item:core:military-spear"
+            ],
+            "resolvedItemId": null
+          }
+        }
+      }
+    },
+    {
+      "matrixId": "language:dead-languages",
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "open-category-language",
+          "retainsConsequence": true,
+          "matrixSelection": "selecionado-manual",
+          "linkedDefinition": {
+            "kind": "not-an-item"
+          }
+        }
+      }
+    },
+    {
+      "matrixId": "language:secret-language",
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "open-category-language",
+          "retainsConsequence": true,
+          "matrixSelection": "selecionado-manual",
+          "linkedDefinition": {
+            "kind": "not-an-item"
+          }
+        }
+      }
+    },
+    {
+      "matrixId": "procedure:dimension-composition",
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "no-extra-life-rolls",
+          "retainsConsequence": true,
+          "matrixSelection": "selecionado-manual",
+          "linkedDefinition": {
+            "kind": "not-an-item"
+          }
+        }
+      }
+    },
+    {
+      "matrixId": "procedure:expanded-free-appearance",
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "player-fields",
+          "retainsConsequence": true,
+          "matrixSelection": "selecionado-manual",
+          "linkedDefinition": {
+            "kind": "not-an-item"
+          }
+        }
+      }
+    },
+    {
+      "matrixId": "procedure:partial-literacy",
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "partial-literacy",
+          "retainsConsequence": true,
+          "matrixSelection": "selecionado-manual",
+          "linkedDefinition": {
+            "kind": "not-an-item"
+          }
+        }
+      }
+    }
+  ]
+}

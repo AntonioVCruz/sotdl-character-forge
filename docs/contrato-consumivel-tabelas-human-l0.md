@@ -68,6 +68,8 @@ Preço `exact` ou `minimum` guarda amount, denominação e bits conferidos. Pre�
 
 Pendência guarda `retainsConsequence: true`. A consequência manual não é apagada.
 
+A atividade 5 acrescenta duas razões, ainda em `1.0.0`: `grant-program-local-only` (programa selecionado cujas folhas continuam locais) e `not-carried` (criatura, relação, serviço ou propriedade não vira item carregado). Não há `1.1.0`.
+
 ## Bloqueios que o documento tem de repetir
 
 | Id | Contagem | Efeito neste contrato |
@@ -132,6 +134,6 @@ Human Development é o procedimento projetado. O procedimento Core de ancestrali
 
 ## Fora desta versão
 
-- Atividade 1 segue aberta até recomputar os hashes locais.
-- A atividade 3 projeta o lote Core. A atividade 5 projeta o corpo dos kits, lookups de lifestyle e programas de profissão. Atividades 6, 7 e 8 compilam, integram handlers e fazem o aceite.
-- Não há promoção `needs-review` → `curated`, `fictionalData: true` em pack real, nem `rulesetEnabled: true`.
+- A atividade 1 foi fechada no #49; as fixtures preservam o estado histórico do snapshot, sem reabrir esse aceite.
+- Os lotes sintéticos Core (#44), Only Human/Oddities (#47) e kits (#46, [entrega](lote-kits-itens-human-l0.md)) compartilham este contrato. Atividades 3–8 continuam abertas até seus aceites completos; merge não é aceite de dados reais.
+- Não há promoção `needs-review` → `curated`, `fictionalData: true` em pack real, nem `rulesetEnabled: true`. Um lote real continua a exigir versão nova; esta entrega não publica `1.1.0`.

@@ -142,6 +142,7 @@ const pendingReason = z.enum([
   'unknown-price', 'generic-profile', 'disabled-source', 'external-branch', 'open-tail-domain',
   'weapon-no-defense', 'defense-bonus-not-substitution', 'manual-adjudication', 'activity-5-body',
   'declared-hash-not-recomputed', 'text-reference', 'unprojected-alternative',
+  'grant-program-local-only', 'not-carried',
 ]);
 const link = z.discriminatedUnion('kind', [
   z.object({ kind: z.literal('not-an-item') }).strict(),

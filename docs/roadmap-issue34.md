@@ -1,5 +1,7 @@
 # Roadmap da #34 — tabelas e equipamentos Human L0
 
+Integração em 2026-11-03: #44 (`06e6270`) e #47 (`b6a298a`) já mesclados, incorporados ao #46 antes de sua própria integração. As correções dos três P2 permanecem no código; as atividades 3–8 continuam abertas para aceite completo dos lotes reais/compilador/handlers.
+
 Integração em 2026-11-03: #44 mesclado em `06e6270`; #47 sincronizado com esse resultado antes de sua própria integração. #46 depende dessa sequência. Os lotes permanecem sintéticos e o aceite das atividades 3–5 continua separado do merge.
 
 Plano de 2026-11-02 para a [issue #34](https://github.com/AntonioVCruz/sotdl-character-forge/issues/34). **As oito atividades abaixo foram planejadas por este documento; a execução é registrada à parte.** A ordem define dependências técnicas, sem atribuir prazos, sprint ou responsáveis.
