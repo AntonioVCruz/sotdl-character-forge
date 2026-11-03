@@ -12,6 +12,7 @@ import { CORE_SOURCE_ID, ONLY_HUMAN_SOURCE_ID, parseHumanL0Recipe } from './huma
 import { compileHumanL0 } from './pack-compiler';
 import { assertSafeArtifact } from './privacy.mjs';
 import { buildThematicIndexes, validateIndexReferences } from './thematic-indexes';
+import { ProvenanceReconciliationSchema, verifyProvenanceTransition } from './provenance-reconciliation';
 
 const sha = (value: string | Buffer) => createHash('sha256').update(value).digest('hex');
 const same = (a: unknown, b: unknown) => canonicalJson(a) === canonicalJson(b);
@@ -170,7 +171,19 @@ export async function buildMechanicalArtifacts(root: string) {
   const review = await json('curation/reviews/human-l0-base-2026-11-02.json');
   if (review.reviewId !== 'human-l0-base-md-2026-11-02' || review.assessment !== 'base-confirmed-against-local-text-with-explicit-inheritance-and-decisions' ||
       !Array.isArray(review.inputs) || !Array.isArray(review.reviewedArtifacts) || !Array.isArray(review.evidence)) return fail('review-invalid');
-  for (const ref of [...review.inputs,...review.reviewedArtifacts]) if (sha(await load(ref.path)) !== ref.sha256) return fail('review-input-stale');
+  for (const ref of [...review.inputs,...review.reviewedArtifacts]) {
+    const current=await load(ref.path);
+    if(sha(current)===ref.sha256)continue;
+    // Historical review is immutable. Only a receipt that reconstructs its exact bytes
+    // from current content and former top-level metadata can bridge a changed digest.
+    if(!review.reviewedArtifacts.some((r:{path:string})=>r.path===ref.path))return fail('review-input-stale');
+    let receiptInput:unknown;
+    try {receiptInput=await json('curation/reviews/issue34-activity1-provenance-2026-11-02.json');}catch{return fail('review-input-stale');}
+    const receipt=ProvenanceReconciliationSchema.safeParse(receiptInput);
+    if(!receipt.success||sha(await load(receipt.data.producerChange.path))!==receipt.data.producerChange.currentSha256)return fail('review-input-stale');
+    const transition=receipt.data.transitions.find(t=>t.path===ref.path);
+    try {verifyProvenanceTransition(current,transition,ref.sha256);}catch{return fail('review-input-stale');}
+  }
   const formalization = await json('curation/pilot/human-ancestry.json'), professions = await json('curation/pilot/professions-languages.json');
   const result = HumanBaseSpecSchema.safeParse(formalization.spec);
   if (!result.success || formalization.gates?.runtimeIntegrated !== false || formalization.gates?.importablePack !== false) return fail('pilot-invalid');

@@ -2,7 +2,7 @@
 
 Plano de 2026-11-02 para a [issue #34](https://github.com/AntonioVCruz/sotdl-character-forge/issues/34). **As oito atividades abaixo foram planejadas por este documento; a execução é registrada à parte.** A ordem define dependências técnicas, sem atribuir prazos, sprint ou responsáveis.
 
-A matriz da atividade 1 está em [matriz-lacunas-issue34-atividade1.md](matriz-lacunas-issue34-atividade1.md). O fechamento dessa atividade continua pendente em `act1-local-hash-check`: os hashes declarados ainda não foram recomputados com os livros. A atividade 2 está aceita: o contrato `sotdl.human-l0.consumable@1.0.0` está na main via [#42](https://github.com/AntonioVCruz/sotdl-character-forge/pull/42) (`5d729d4`). Atividades 3–8 continuam por executar.
+A matriz da atividade 1 está em [matriz-lacunas-issue34-atividade1.md](matriz-lacunas-issue34-atividade1.md), preservada como snapshot histórico. A atividade foi [fechada localmente no #49](fechamento-issue34-atividade1.md). A atividade 2 está aceita: contrato `sotdl.human-l0.consumable@1.0.0` na main via #42/#43. Atividades 3–8 permanecem abertas. Esta branch contém o lote sintético Only Human/Oddities do PR #47 / atividade 4, com seu P2 corrigido; isso não concede aceite dos dados reais.
 
 ## Objetivo e fronteiras
 
@@ -132,13 +132,13 @@ Preferir entregas revisáveis por atividade ou lote, referenciando **#34 / ativi
 
 O checklist de execução permanece aberto:
 
-- [ ] 1. Auditar o recorte e as lacunas. Matriz publicada em [matriz](matriz-lacunas-issue34-atividade1.md). Fechamento pendente: `act1-local-hash-check` (hashes declarados, não recomputados). Não bloqueia a fixture sintética da atividade 2.
+- [x] 1. Auditar o recorte e as lacunas. [Fechamento local](fechamento-issue34-atividade1.md): 301 hashes, 1.060 referências, oito pins e seis geradores conferidos; 12 derivados reconciliados somente em metadados. `act1-local-hash-check` encerrado. Matriz estrutural preservada como snapshot, vinculada ao comprovante atual.
 - [x] 2. Definir o contrato consumível. Contrato `sotdl.human-l0.consumable@1.0.0` em [contrato consumível](contrato-consumivel-tabelas-human-l0.md), na main via [#42](https://github.com/AntonioVCruz/sotdl-character-forge/pull/42) (`5d729d4`).
 - [ ] 3. Projetar o lote de tabelas Core.
-- [ ] 4. Projetar Only Human e Oddities. Lote sintético em `sotdl.human-l0.consumable@1.0.0` (`activityLot: 4`); lookups de equipamento continuam na atividade 5. Aceite deste item ainda não está registrado.
+- [ ] 4. Projetar Only Human e Oddities.
 - [ ] 5. Projetar kits, itens e equipamentos.
 - [ ] 6. Estender compilador e validação.
 - [ ] 7. Integrar resolvedores e handlers.
 - [ ] 8. Auditar o conjunto e entregar aos consumidores.
 
-A atividade 2 está na main ([#42](https://github.com/AntonioVCruz/sotdl-character-forge/pull/42)). A atividade 4 tem lote sintético no mesmo contrato, ainda sem aceite deste checklist. Atividades **3 e 5–8 permanecem abertas**. A atividade 1 permanece aberta até `act1-local-hash-check`. As três categorias Core agrupadas (martial, religious, wilderness) continuam pendência sem peso inventado. Este roadmap não habilita ruleset, não promove revisão e não executa o lote Core, o corpo de kits ou os handlers.
+As atividades **1 e 2 estão concluídas** no escopo registrado. Atividades **3–8 permanecem abertas** e exigem revisão/aceite próprios. As categorias e identidades agrupadas no snapshot público, as ambiguidades e restrições de aplicação continuam preservadas; fechar hashes não inventa pesos nem aprova projeção semântica. Este roadmap não habilita ruleset, não promove revisão e não executa os lotes 3–8.
