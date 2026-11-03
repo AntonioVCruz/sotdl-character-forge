@@ -1,0 +1,2143 @@
+{
+  "contract": "sotdl.human-l0.consumable",
+  "contractVersion": "1.0.0",
+  "distribution": "public-synthetic",
+  "fictionalData": true,
+  "realPack": false,
+  "reviewStatus": "needs-review",
+  "rulesetEnabled": false,
+  "importablePack": false,
+  "promotesReview": false,
+  "orchestratesProcedure": false,
+  "closesAct1HashCheck": false,
+  "publishedWeightsIncluded": false,
+  "act5CatalogProjected": false,
+  "odditiesProjected": false,
+  "counts": {
+    "matrixRows": 260,
+    "accountingIds": 293,
+    "tables": 22,
+    "flows": 23,
+    "links": 12,
+    "professionAccounting": 102,
+    "professionIndividual": 66,
+    "professionGrouped": 36,
+    "selectedLanguages": 6,
+    "manualLanguages": 2,
+    "interestingOutcomes": 120,
+    "projectedIdentities": 111,
+    "pendingIdentities": 149
+  },
+  "unprojectedTables": [
+    {
+      "id": "core:profession-martial",
+      "dice": {
+        "count": 1,
+        "sides": 20
+      },
+      "declaredRows": 14,
+      "reason": "range-starts-not-reextracted",
+      "weights": null,
+      "flowEvidence": "entailed-coverage"
+    },
+    {
+      "id": "core:profession-religious",
+      "dice": {
+        "count": 1,
+        "sides": 20
+      },
+      "declaredRows": 11,
+      "reason": "range-starts-not-reextracted",
+      "weights": null,
+      "flowEvidence": "code-anchor"
+    },
+    {
+      "id": "core:profession-wilderness",
+      "dice": {
+        "count": 1,
+        "sides": 20
+      },
+      "declaredRows": 17,
+      "reason": "range-starts-not-reextracted",
+      "weights": null,
+      "flowEvidence": "local-only"
+    }
+  ],
+  "unweightedProfessions": [
+    {
+      "id": "pilot-profession:core:martial:r03",
+      "category": "martial",
+      "rangeMin": 3,
+      "rangeMax": null,
+      "weights": null,
+      "reason": "range-starts-not-reextracted"
+    },
+    {
+      "id": "pilot-profession:core:martial:r13",
+      "category": "martial",
+      "rangeMin": 13,
+      "rangeMax": null,
+      "weights": null,
+      "reason": "range-starts-not-reextracted"
+    },
+    {
+      "id": "pilot-profession:core:religious:r01",
+      "category": "religious",
+      "rangeMin": 1,
+      "rangeMax": null,
+      "weights": null,
+      "reason": "range-starts-not-reextracted"
+    },
+    {
+      "id": "pilot-profession:core:religious:r03",
+      "category": "religious",
+      "rangeMin": 3,
+      "rangeMax": null,
+      "weights": null,
+      "reason": "range-starts-not-reextracted"
+    },
+    {
+      "id": "pilot-profession:core:religious:r09",
+      "category": "religious",
+      "rangeMin": 9,
+      "rangeMax": null,
+      "weights": null,
+      "reason": "range-starts-not-reextracted"
+    },
+    {
+      "id": "pilot-profession:core:religious:r11",
+      "category": "religious",
+      "rangeMin": 11,
+      "rangeMax": null,
+      "weights": null,
+      "reason": "range-starts-not-reextracted"
+    }
+  ],
+  "groupedProfessions": [
+    {
+      "id": "pilot-profession:core:martial:*",
+      "count": 12,
+      "weights": null,
+      "reason": "range-starts-not-reextracted"
+    },
+    {
+      "id": "pilot-profession:core:religious:*",
+      "count": 7,
+      "weights": null,
+      "reason": "range-starts-not-reextracted"
+    },
+    {
+      "id": "pilot-profession:core:wilderness:*",
+      "count": 17,
+      "weights": null,
+      "reason": "range-starts-not-reextracted"
+    }
+  ],
+  "links": [
+    {
+      "id": "pilot-link:50",
+      "from": "core:profession-router",
+      "to": "core:profession-academic",
+      "automaticExecution": false,
+      "projection": "follow-subtable"
+    },
+    {
+      "id": "pilot-link:51",
+      "from": "core:profession-router",
+      "to": "core:profession-common",
+      "automaticExecution": false,
+      "projection": "follow-subtable"
+    },
+    {
+      "id": "pilot-link:52",
+      "from": "core:profession-router",
+      "to": "core:profession-criminal",
+      "automaticExecution": false,
+      "projection": "follow-subtable"
+    },
+    {
+      "id": "pilot-link:53",
+      "from": "core:profession-router",
+      "to": "core:profession-martial",
+      "automaticExecution": false,
+      "projection": "pending-range-starts"
+    },
+    {
+      "id": "pilot-link:54",
+      "from": "core:profession-router",
+      "to": "core:profession-religious",
+      "automaticExecution": false,
+      "projection": "pending-range-starts"
+    },
+    {
+      "id": "pilot-link:55",
+      "from": "core:profession-router",
+      "to": "core:profession-wilderness",
+      "automaticExecution": false,
+      "projection": "pending-range-starts"
+    },
+    {
+      "id": "pilot-link:56",
+      "from": "core:thing-router",
+      "to": "core:thing-1",
+      "automaticExecution": false,
+      "projection": "follow-subtable"
+    },
+    {
+      "id": "pilot-link:57",
+      "from": "core:thing-router",
+      "to": "core:thing-2",
+      "automaticExecution": false,
+      "projection": "follow-subtable"
+    },
+    {
+      "id": "pilot-link:58",
+      "from": "core:thing-router",
+      "to": "core:thing-3",
+      "automaticExecution": false,
+      "projection": "follow-subtable"
+    },
+    {
+      "id": "pilot-link:59",
+      "from": "core:thing-router",
+      "to": "core:thing-4",
+      "automaticExecution": false,
+      "projection": "follow-subtable"
+    },
+    {
+      "id": "pilot-link:60",
+      "from": "core:thing-router",
+      "to": "core:thing-5",
+      "automaticExecution": false,
+      "projection": "follow-subtable"
+    },
+    {
+      "id": "pilot-link:61",
+      "from": "core:thing-router",
+      "to": "core:thing-6",
+      "automaticExecution": false,
+      "projection": "follow-subtable"
+    }
+  ],
+  "queries": [
+    {
+      "id": "query:profession-faces:core",
+      "kind": "lookup",
+      "dice": null,
+      "expandedModifiers": false,
+      "extraDice": false,
+      "rejectsIncompatibleFace": true,
+      "publishedThresholds": null
+    },
+    {
+      "id": "query:starting-lifestyle:core",
+      "kind": "produced-roll",
+      "dice": "3d6",
+      "expandedModifiers": false,
+      "extraDice": false,
+      "rejectsIncompatibleFace": false,
+      "publishedThresholds": null
+    }
+  ],
+  "sideRoll": {
+    "id": "side-roll:core:human-background:12",
+    "phase": "creation",
+    "dice": {
+      "count": 1,
+      "sides": 6
+    },
+    "minus": 2,
+    "minimum": 0,
+    "appliesOnPossession": false,
+    "applied": false,
+    "unconditionalTable": false
+  },
+  "languages": [
+    {
+      "id": "language:common-tongue",
+      "selection": "selecionado",
+      "speak": "default",
+      "readWrite": "explicit-only",
+      "grantedInDocument": false
+    },
+    {
+      "id": "language:dark-speech",
+      "selection": "selecionado",
+      "speak": "default",
+      "readWrite": "explicit-only",
+      "grantedInDocument": false
+    },
+    {
+      "id": "language:dead-languages",
+      "selection": "selecionado-manual",
+      "speak": "pending",
+      "readWrite": "open-category",
+      "grantedInDocument": false
+    },
+    {
+      "id": "language:dwarfish",
+      "selection": "selecionado",
+      "speak": "default",
+      "readWrite": "explicit-only",
+      "grantedInDocument": false
+    },
+    {
+      "id": "language:elvish",
+      "selection": "selecionado",
+      "speak": "default",
+      "readWrite": "explicit-only",
+      "grantedInDocument": false
+    },
+    {
+      "id": "language:high-archaic",
+      "selection": "selecionado",
+      "speak": "default",
+      "readWrite": "explicit-only",
+      "grantedInDocument": false
+    },
+    {
+      "id": "language:secret-language",
+      "selection": "selecionado-manual",
+      "speak": "pending",
+      "readWrite": "open-category",
+      "grantedInDocument": false
+    },
+    {
+      "id": "language:trollish",
+      "selection": "selecionado",
+      "speak": "default",
+      "readWrite": "explicit-only",
+      "grantedInDocument": false
+    }
+  ],
+  "templates": [
+    {
+      "id": "core-background-education",
+      "speak": false,
+      "read": true,
+      "write": false,
+      "grantsProfession": false,
+      "languageId": null,
+      "contract": "pending:partial-literacy"
+    },
+    {
+      "id": "core-background-travel",
+      "speak": true,
+      "read": false,
+      "write": false,
+      "grantsProfession": false,
+      "languageId": null,
+      "contract": "pending:conditional-manual"
+    }
+  ],
+  "choiceRights": {
+    "id": "syn-profession-choice-rights",
+    "count": 2,
+    "grantsProfession": false,
+    "contractOp": "narrative-marker"
+  },
+  "ancestryBenefit": {
+    "id": "syn-ancestry-benefit",
+    "exclusive": true,
+    "grantsProfession": false,
+    "grantsLanguage": false,
+    "options": [
+      "syn-extra-language",
+      "syn-random-profession"
+    ]
+  },
+  "initialThing": {
+    "id": "core-initial-thing",
+    "count": 1,
+    "additional": false,
+    "bindsSelectedProcedure": true,
+    "odditiesProjected": false
+  },
+  "bands": [
+    {
+      "id": "core:human-age#main",
+      "dice": {
+        "count": 3,
+        "sides": 6
+      },
+      "weightSource": "synthetic-even-split",
+      "ranges": [
+        {
+          "min": 3,
+          "max": 5
+        },
+        {
+          "min": 6,
+          "max": 8
+        },
+        {
+          "min": 9,
+          "max": 11
+        },
+        {
+          "min": 12,
+          "max": 14
+        },
+        {
+          "min": 15,
+          "max": 16
+        },
+        {
+          "min": 17,
+          "max": 18
+        }
+      ]
+    },
+    {
+      "id": "core:human-appearance#main",
+      "dice": {
+        "count": 3,
+        "sides": 6
+      },
+      "weightSource": "synthetic-even-split",
+      "ranges": [
+        {
+          "min": 3,
+          "max": 4
+        },
+        {
+          "min": 5,
+          "max": 6
+        },
+        {
+          "min": 7,
+          "max": 8
+        },
+        {
+          "min": 9,
+          "max": 10
+        },
+        {
+          "min": 11,
+          "max": 12
+        },
+        {
+          "min": 13,
+          "max": 14
+        },
+        {
+          "min": 15,
+          "max": 16
+        },
+        {
+          "min": 17,
+          "max": 17
+        },
+        {
+          "min": 18,
+          "max": 18
+        }
+      ]
+    },
+    {
+      "id": "core:human-background#main",
+      "dice": {
+        "count": 1,
+        "sides": 20
+      },
+      "weightSource": "entailed-singleton",
+      "ranges": [
+        {
+          "min": 1,
+          "max": 1
+        },
+        {
+          "min": 2,
+          "max": 2
+        },
+        {
+          "min": 3,
+          "max": 3
+        },
+        {
+          "min": 4,
+          "max": 4
+        },
+        {
+          "min": 5,
+          "max": 5
+        },
+        {
+          "min": 6,
+          "max": 6
+        },
+        {
+          "min": 7,
+          "max": 7
+        },
+        {
+          "min": 8,
+          "max": 8
+        },
+        {
+          "min": 9,
+          "max": 9
+        },
+        {
+          "min": 10,
+          "max": 10
+        },
+        {
+          "min": 11,
+          "max": 11
+        },
+        {
+          "min": 12,
+          "max": 12
+        },
+        {
+          "min": 13,
+          "max": 13
+        },
+        {
+          "min": 14,
+          "max": 14
+        },
+        {
+          "min": 15,
+          "max": 15
+        },
+        {
+          "min": 16,
+          "max": 16
+        },
+        {
+          "min": 17,
+          "max": 17
+        },
+        {
+          "min": 18,
+          "max": 18
+        },
+        {
+          "min": 19,
+          "max": 19
+        },
+        {
+          "min": 20,
+          "max": 20
+        }
+      ]
+    },
+    {
+      "id": "core:human-build#main",
+      "dice": {
+        "count": 3,
+        "sides": 6
+      },
+      "weightSource": "synthetic-even-split",
+      "ranges": [
+        {
+          "min": 3,
+          "max": 4
+        },
+        {
+          "min": 5,
+          "max": 6
+        },
+        {
+          "min": 7,
+          "max": 8
+        },
+        {
+          "min": 9,
+          "max": 10
+        },
+        {
+          "min": 11,
+          "max": 12
+        },
+        {
+          "min": 13,
+          "max": 14
+        },
+        {
+          "min": 15,
+          "max": 16
+        },
+        {
+          "min": 17,
+          "max": 17
+        },
+        {
+          "min": 18,
+          "max": 18
+        }
+      ]
+    },
+    {
+      "id": "core:human-personality#main",
+      "dice": {
+        "count": 3,
+        "sides": 6
+      },
+      "weightSource": "synthetic-even-split",
+      "ranges": [
+        {
+          "min": 3,
+          "max": 4
+        },
+        {
+          "min": 5,
+          "max": 6
+        },
+        {
+          "min": 7,
+          "max": 8
+        },
+        {
+          "min": 9,
+          "max": 10
+        },
+        {
+          "min": 11,
+          "max": 12
+        },
+        {
+          "min": 13,
+          "max": 14
+        },
+        {
+          "min": 15,
+          "max": 16
+        },
+        {
+          "min": 17,
+          "max": 17
+        },
+        {
+          "min": 18,
+          "max": 18
+        }
+      ]
+    },
+    {
+      "id": "core:human-religion#main",
+      "dice": {
+        "count": 3,
+        "sides": 6
+      },
+      "weightSource": "synthetic-even-split",
+      "ranges": [
+        {
+          "min": 3,
+          "max": 5
+        },
+        {
+          "min": 6,
+          "max": 8
+        },
+        {
+          "min": 9,
+          "max": 11
+        },
+        {
+          "min": 12,
+          "max": 14
+        },
+        {
+          "min": 15,
+          "max": 16
+        },
+        {
+          "min": 17,
+          "max": 18
+        }
+      ]
+    },
+    {
+      "id": "core:profession-academic#main",
+      "dice": {
+        "count": 1,
+        "sides": 20
+      },
+      "weightSource": "entailed-singleton",
+      "ranges": [
+        {
+          "min": 1,
+          "max": 1
+        },
+        {
+          "min": 2,
+          "max": 2
+        },
+        {
+          "min": 3,
+          "max": 3
+        },
+        {
+          "min": 4,
+          "max": 4
+        },
+        {
+          "min": 5,
+          "max": 5
+        },
+        {
+          "min": 6,
+          "max": 6
+        },
+        {
+          "min": 7,
+          "max": 7
+        },
+        {
+          "min": 8,
+          "max": 8
+        },
+        {
+          "min": 9,
+          "max": 9
+        },
+        {
+          "min": 10,
+          "max": 10
+        },
+        {
+          "min": 11,
+          "max": 11
+        },
+        {
+          "min": 12,
+          "max": 12
+        },
+        {
+          "min": 13,
+          "max": 13
+        },
+        {
+          "min": 14,
+          "max": 14
+        },
+        {
+          "min": 15,
+          "max": 15
+        },
+        {
+          "min": 16,
+          "max": 16
+        },
+        {
+          "min": 17,
+          "max": 17
+        },
+        {
+          "min": 18,
+          "max": 18
+        },
+        {
+          "min": 19,
+          "max": 19
+        },
+        {
+          "min": 20,
+          "max": 20
+        }
+      ]
+    },
+    {
+      "id": "core:profession-common#main",
+      "dice": {
+        "count": 1,
+        "sides": 20
+      },
+      "weightSource": "entailed-singleton",
+      "ranges": [
+        {
+          "min": 1,
+          "max": 1
+        },
+        {
+          "min": 2,
+          "max": 2
+        },
+        {
+          "min": 3,
+          "max": 3
+        },
+        {
+          "min": 4,
+          "max": 4
+        },
+        {
+          "min": 5,
+          "max": 5
+        },
+        {
+          "min": 6,
+          "max": 6
+        },
+        {
+          "min": 7,
+          "max": 7
+        },
+        {
+          "min": 8,
+          "max": 8
+        },
+        {
+          "min": 9,
+          "max": 9
+        },
+        {
+          "min": 10,
+          "max": 10
+        },
+        {
+          "min": 11,
+          "max": 11
+        },
+        {
+          "min": 12,
+          "max": 12
+        },
+        {
+          "min": 13,
+          "max": 13
+        },
+        {
+          "min": 14,
+          "max": 14
+        },
+        {
+          "min": 15,
+          "max": 15
+        },
+        {
+          "min": 16,
+          "max": 16
+        },
+        {
+          "min": 17,
+          "max": 17
+        },
+        {
+          "min": 18,
+          "max": 18
+        },
+        {
+          "min": 19,
+          "max": 19
+        },
+        {
+          "min": 20,
+          "max": 20
+        }
+      ]
+    },
+    {
+      "id": "core:profession-criminal#main",
+      "dice": {
+        "count": 1,
+        "sides": 20
+      },
+      "weightSource": "entailed-singleton",
+      "ranges": [
+        {
+          "min": 1,
+          "max": 1
+        },
+        {
+          "min": 2,
+          "max": 2
+        },
+        {
+          "min": 3,
+          "max": 3
+        },
+        {
+          "min": 4,
+          "max": 4
+        },
+        {
+          "min": 5,
+          "max": 5
+        },
+        {
+          "min": 6,
+          "max": 6
+        },
+        {
+          "min": 7,
+          "max": 7
+        },
+        {
+          "min": 8,
+          "max": 8
+        },
+        {
+          "min": 9,
+          "max": 9
+        },
+        {
+          "min": 10,
+          "max": 10
+        },
+        {
+          "min": 11,
+          "max": 11
+        },
+        {
+          "min": 12,
+          "max": 12
+        },
+        {
+          "min": 13,
+          "max": 13
+        },
+        {
+          "min": 14,
+          "max": 14
+        },
+        {
+          "min": 15,
+          "max": 15
+        },
+        {
+          "min": 16,
+          "max": 16
+        },
+        {
+          "min": 17,
+          "max": 17
+        },
+        {
+          "min": 18,
+          "max": 18
+        },
+        {
+          "min": 19,
+          "max": 19
+        },
+        {
+          "min": 20,
+          "max": 20
+        }
+      ]
+    },
+    {
+      "id": "core:profession-router#main",
+      "dice": {
+        "count": 1,
+        "sides": 6
+      },
+      "weightSource": "entailed-singleton",
+      "ranges": [
+        {
+          "min": 1,
+          "max": 1
+        },
+        {
+          "min": 2,
+          "max": 2
+        },
+        {
+          "min": 3,
+          "max": 3
+        },
+        {
+          "min": 4,
+          "max": 4
+        },
+        {
+          "min": 5,
+          "max": 5
+        },
+        {
+          "min": 6,
+          "max": 6
+        }
+      ]
+    },
+    {
+      "id": "core:role-traits#negative",
+      "dice": {
+        "count": 1,
+        "sides": 20
+      },
+      "weightSource": "entailed-singleton",
+      "ranges": [
+        {
+          "min": 1,
+          "max": 1
+        },
+        {
+          "min": 2,
+          "max": 2
+        },
+        {
+          "min": 3,
+          "max": 3
+        },
+        {
+          "min": 4,
+          "max": 4
+        },
+        {
+          "min": 5,
+          "max": 5
+        },
+        {
+          "min": 6,
+          "max": 6
+        },
+        {
+          "min": 7,
+          "max": 7
+        },
+        {
+          "min": 8,
+          "max": 8
+        },
+        {
+          "min": 9,
+          "max": 9
+        },
+        {
+          "min": 10,
+          "max": 10
+        },
+        {
+          "min": 11,
+          "max": 11
+        },
+        {
+          "min": 12,
+          "max": 12
+        },
+        {
+          "min": 13,
+          "max": 13
+        },
+        {
+          "min": 14,
+          "max": 14
+        },
+        {
+          "min": 15,
+          "max": 15
+        },
+        {
+          "min": 16,
+          "max": 16
+        },
+        {
+          "min": 17,
+          "max": 17
+        },
+        {
+          "min": 18,
+          "max": 18
+        },
+        {
+          "min": 19,
+          "max": 19
+        },
+        {
+          "min": 20,
+          "max": 20
+        }
+      ]
+    },
+    {
+      "id": "core:role-traits#positive",
+      "dice": {
+        "count": 1,
+        "sides": 20
+      },
+      "weightSource": "entailed-singleton",
+      "ranges": [
+        {
+          "min": 1,
+          "max": 1
+        },
+        {
+          "min": 2,
+          "max": 2
+        },
+        {
+          "min": 3,
+          "max": 3
+        },
+        {
+          "min": 4,
+          "max": 4
+        },
+        {
+          "min": 5,
+          "max": 5
+        },
+        {
+          "min": 6,
+          "max": 6
+        },
+        {
+          "min": 7,
+          "max": 7
+        },
+        {
+          "min": 8,
+          "max": 8
+        },
+        {
+          "min": 9,
+          "max": 9
+        },
+        {
+          "min": 10,
+          "max": 10
+        },
+        {
+          "min": 11,
+          "max": 11
+        },
+        {
+          "min": 12,
+          "max": 12
+        },
+        {
+          "min": 13,
+          "max": 13
+        },
+        {
+          "min": 14,
+          "max": 14
+        },
+        {
+          "min": 15,
+          "max": 15
+        },
+        {
+          "min": 16,
+          "max": 16
+        },
+        {
+          "min": 17,
+          "max": 17
+        },
+        {
+          "min": 18,
+          "max": 18
+        },
+        {
+          "min": 19,
+          "max": 19
+        },
+        {
+          "min": 20,
+          "max": 20
+        }
+      ]
+    },
+    {
+      "id": "core:thing-1#main",
+      "dice": {
+        "count": 1,
+        "sides": 20
+      },
+      "weightSource": "entailed-singleton",
+      "ranges": [
+        {
+          "min": 1,
+          "max": 1
+        },
+        {
+          "min": 2,
+          "max": 2
+        },
+        {
+          "min": 3,
+          "max": 3
+        },
+        {
+          "min": 4,
+          "max": 4
+        },
+        {
+          "min": 5,
+          "max": 5
+        },
+        {
+          "min": 6,
+          "max": 6
+        },
+        {
+          "min": 7,
+          "max": 7
+        },
+        {
+          "min": 8,
+          "max": 8
+        },
+        {
+          "min": 9,
+          "max": 9
+        },
+        {
+          "min": 10,
+          "max": 10
+        },
+        {
+          "min": 11,
+          "max": 11
+        },
+        {
+          "min": 12,
+          "max": 12
+        },
+        {
+          "min": 13,
+          "max": 13
+        },
+        {
+          "min": 14,
+          "max": 14
+        },
+        {
+          "min": 15,
+          "max": 15
+        },
+        {
+          "min": 16,
+          "max": 16
+        },
+        {
+          "min": 17,
+          "max": 17
+        },
+        {
+          "min": 18,
+          "max": 18
+        },
+        {
+          "min": 19,
+          "max": 19
+        },
+        {
+          "min": 20,
+          "max": 20
+        }
+      ]
+    },
+    {
+      "id": "core:thing-2#main",
+      "dice": {
+        "count": 1,
+        "sides": 20
+      },
+      "weightSource": "entailed-singleton",
+      "ranges": [
+        {
+          "min": 1,
+          "max": 1
+        },
+        {
+          "min": 2,
+          "max": 2
+        },
+        {
+          "min": 3,
+          "max": 3
+        },
+        {
+          "min": 4,
+          "max": 4
+        },
+        {
+          "min": 5,
+          "max": 5
+        },
+        {
+          "min": 6,
+          "max": 6
+        },
+        {
+          "min": 7,
+          "max": 7
+        },
+        {
+          "min": 8,
+          "max": 8
+        },
+        {
+          "min": 9,
+          "max": 9
+        },
+        {
+          "min": 10,
+          "max": 10
+        },
+        {
+          "min": 11,
+          "max": 11
+        },
+        {
+          "min": 12,
+          "max": 12
+        },
+        {
+          "min": 13,
+          "max": 13
+        },
+        {
+          "min": 14,
+          "max": 14
+        },
+        {
+          "min": 15,
+          "max": 15
+        },
+        {
+          "min": 16,
+          "max": 16
+        },
+        {
+          "min": 17,
+          "max": 17
+        },
+        {
+          "min": 18,
+          "max": 18
+        },
+        {
+          "min": 19,
+          "max": 19
+        },
+        {
+          "min": 20,
+          "max": 20
+        }
+      ]
+    },
+    {
+      "id": "core:thing-3#main",
+      "dice": {
+        "count": 1,
+        "sides": 20
+      },
+      "weightSource": "entailed-singleton",
+      "ranges": [
+        {
+          "min": 1,
+          "max": 1
+        },
+        {
+          "min": 2,
+          "max": 2
+        },
+        {
+          "min": 3,
+          "max": 3
+        },
+        {
+          "min": 4,
+          "max": 4
+        },
+        {
+          "min": 5,
+          "max": 5
+        },
+        {
+          "min": 6,
+          "max": 6
+        },
+        {
+          "min": 7,
+          "max": 7
+        },
+        {
+          "min": 8,
+          "max": 8
+        },
+        {
+          "min": 9,
+          "max": 9
+        },
+        {
+          "min": 10,
+          "max": 10
+        },
+        {
+          "min": 11,
+          "max": 11
+        },
+        {
+          "min": 12,
+          "max": 12
+        },
+        {
+          "min": 13,
+          "max": 13
+        },
+        {
+          "min": 14,
+          "max": 14
+        },
+        {
+          "min": 15,
+          "max": 15
+        },
+        {
+          "min": 16,
+          "max": 16
+        },
+        {
+          "min": 17,
+          "max": 17
+        },
+        {
+          "min": 18,
+          "max": 18
+        },
+        {
+          "min": 19,
+          "max": 19
+        },
+        {
+          "min": 20,
+          "max": 20
+        }
+      ]
+    },
+    {
+      "id": "core:thing-4#main",
+      "dice": {
+        "count": 1,
+        "sides": 20
+      },
+      "weightSource": "entailed-singleton",
+      "ranges": [
+        {
+          "min": 1,
+          "max": 1
+        },
+        {
+          "min": 2,
+          "max": 2
+        },
+        {
+          "min": 3,
+          "max": 3
+        },
+        {
+          "min": 4,
+          "max": 4
+        },
+        {
+          "min": 5,
+          "max": 5
+        },
+        {
+          "min": 6,
+          "max": 6
+        },
+        {
+          "min": 7,
+          "max": 7
+        },
+        {
+          "min": 8,
+          "max": 8
+        },
+        {
+          "min": 9,
+          "max": 9
+        },
+        {
+          "min": 10,
+          "max": 10
+        },
+        {
+          "min": 11,
+          "max": 11
+        },
+        {
+          "min": 12,
+          "max": 12
+        },
+        {
+          "min": 13,
+          "max": 13
+        },
+        {
+          "min": 14,
+          "max": 14
+        },
+        {
+          "min": 15,
+          "max": 15
+        },
+        {
+          "min": 16,
+          "max": 16
+        },
+        {
+          "min": 17,
+          "max": 17
+        },
+        {
+          "min": 18,
+          "max": 18
+        },
+        {
+          "min": 19,
+          "max": 19
+        },
+        {
+          "min": 20,
+          "max": 20
+        }
+      ]
+    },
+    {
+      "id": "core:thing-5#main",
+      "dice": {
+        "count": 1,
+        "sides": 20
+      },
+      "weightSource": "entailed-singleton",
+      "ranges": [
+        {
+          "min": 1,
+          "max": 1
+        },
+        {
+          "min": 2,
+          "max": 2
+        },
+        {
+          "min": 3,
+          "max": 3
+        },
+        {
+          "min": 4,
+          "max": 4
+        },
+        {
+          "min": 5,
+          "max": 5
+        },
+        {
+          "min": 6,
+          "max": 6
+        },
+        {
+          "min": 7,
+          "max": 7
+        },
+        {
+          "min": 8,
+          "max": 8
+        },
+        {
+          "min": 9,
+          "max": 9
+        },
+        {
+          "min": 10,
+          "max": 10
+        },
+        {
+          "min": 11,
+          "max": 11
+        },
+        {
+          "min": 12,
+          "max": 12
+        },
+        {
+          "min": 13,
+          "max": 13
+        },
+        {
+          "min": 14,
+          "max": 14
+        },
+        {
+          "min": 15,
+          "max": 15
+        },
+        {
+          "min": 16,
+          "max": 16
+        },
+        {
+          "min": 17,
+          "max": 17
+        },
+        {
+          "min": 18,
+          "max": 18
+        },
+        {
+          "min": 19,
+          "max": 19
+        },
+        {
+          "min": 20,
+          "max": 20
+        }
+      ]
+    },
+    {
+      "id": "core:thing-6#main",
+      "dice": {
+        "count": 1,
+        "sides": 20
+      },
+      "weightSource": "entailed-singleton",
+      "ranges": [
+        {
+          "min": 1,
+          "max": 1
+        },
+        {
+          "min": 2,
+          "max": 2
+        },
+        {
+          "min": 3,
+          "max": 3
+        },
+        {
+          "min": 4,
+          "max": 4
+        },
+        {
+          "min": 5,
+          "max": 5
+        },
+        {
+          "min": 6,
+          "max": 6
+        },
+        {
+          "min": 7,
+          "max": 7
+        },
+        {
+          "min": 8,
+          "max": 8
+        },
+        {
+          "min": 9,
+          "max": 9
+        },
+        {
+          "min": 10,
+          "max": 10
+        },
+        {
+          "min": 11,
+          "max": 11
+        },
+        {
+          "min": 12,
+          "max": 12
+        },
+        {
+          "min": 13,
+          "max": 13
+        },
+        {
+          "min": 14,
+          "max": 14
+        },
+        {
+          "min": 15,
+          "max": 15
+        },
+        {
+          "min": 16,
+          "max": 16
+        },
+        {
+          "min": 17,
+          "max": 17
+        },
+        {
+          "min": 18,
+          "max": 18
+        },
+        {
+          "min": 19,
+          "max": 19
+        },
+        {
+          "min": 20,
+          "max": 20
+        }
+      ]
+    },
+    {
+      "id": "core:thing-router#main",
+      "dice": {
+        "count": 1,
+        "sides": 6
+      },
+      "weightSource": "entailed-singleton",
+      "ranges": [
+        {
+          "min": 1,
+          "max": 1
+        },
+        {
+          "min": 2,
+          "max": 2
+        },
+        {
+          "min": 3,
+          "max": 3
+        },
+        {
+          "min": 4,
+          "max": 4
+        },
+        {
+          "min": 5,
+          "max": 5
+        },
+        {
+          "min": 6,
+          "max": 6
+        }
+      ]
+    },
+    {
+      "id": "core:wealth#main",
+      "dice": {
+        "count": 3,
+        "sides": 6
+      },
+      "weightSource": "synthetic-even-split",
+      "ranges": [
+        {
+          "min": 3,
+          "max": 5
+        },
+        {
+          "min": 6,
+          "max": 8
+        },
+        {
+          "min": 9,
+          "max": 11
+        },
+        {
+          "min": 12,
+          "max": 14
+        },
+        {
+          "min": 15,
+          "max": 16
+        },
+        {
+          "min": 17,
+          "max": 18
+        }
+      ]
+    }
+  ],
+  "thingSummary": {
+    "outcomes": 120,
+    "evidence": "hash-declarado-nao-refeito",
+    "text": null,
+    "byShape": {
+      "object": 95,
+      "narrative": 14,
+      "companion": 7,
+      "mixed": 4
+    },
+    "choices": 26,
+    "sideRolls": 10,
+    "sideRollDice": null,
+    "itemProfiles": 0
+  },
+  "applicability": {
+    "orchestratesProcedure": false,
+    "forIssue": 35,
+    "activations": [
+      {
+        "id": "core:human-age",
+        "activation": "optional-ancestry-inspiration"
+      },
+      {
+        "id": "core:human-appearance",
+        "activation": "optional-ancestry-inspiration"
+      },
+      {
+        "id": "core:human-background",
+        "activation": "optional-ancestry-inspiration"
+      },
+      {
+        "id": "core:human-build",
+        "activation": "optional-ancestry-inspiration"
+      },
+      {
+        "id": "core:human-personality",
+        "activation": "optional-ancestry-inspiration"
+      },
+      {
+        "id": "core:human-religion",
+        "activation": "optional-ancestry-inspiration"
+      },
+      {
+        "id": "core:profession-academic",
+        "activation": "conditional-profession"
+      },
+      {
+        "id": "core:profession-common",
+        "activation": "conditional-profession"
+      },
+      {
+        "id": "core:profession-criminal",
+        "activation": "conditional-profession"
+      },
+      {
+        "id": "core:profession-martial",
+        "activation": "conditional-profession"
+      },
+      {
+        "id": "core:profession-religious",
+        "activation": "conditional-profession"
+      },
+      {
+        "id": "core:profession-router",
+        "activation": "per-random-profession"
+      },
+      {
+        "id": "core:profession-wilderness",
+        "activation": "conditional-profession"
+      },
+      {
+        "id": "core:role-traits",
+        "activation": "optional-inspiration-two-positive-at-least-one-negative"
+      },
+      {
+        "id": "core:thing-1",
+        "activation": "selector-child"
+      },
+      {
+        "id": "core:thing-2",
+        "activation": "selector-child"
+      },
+      {
+        "id": "core:thing-3",
+        "activation": "selector-child"
+      },
+      {
+        "id": "core:thing-4",
+        "activation": "selector-child"
+      },
+      {
+        "id": "core:thing-5",
+        "activation": "selector-child"
+      },
+      {
+        "id": "core:thing-6",
+        "activation": "selector-child"
+      },
+      {
+        "id": "core:thing-router",
+        "activation": "one-initial-plus-explicit-extra-results"
+      },
+      {
+        "id": "core:wealth",
+        "activation": "core-wealth-once"
+      }
+    ]
+  },
+  "projected": {
+    "tables": [
+      "core:human-age",
+      "core:human-appearance",
+      "core:human-background",
+      "core:human-build",
+      "core:human-personality",
+      "core:human-religion",
+      "core:profession-academic",
+      "core:profession-common",
+      "core:profession-criminal",
+      "core:profession-router",
+      "core:role-traits",
+      "core:thing-1",
+      "core:thing-2",
+      "core:thing-3",
+      "core:thing-4",
+      "core:thing-5",
+      "core:thing-6",
+      "core:thing-router",
+      "core:wealth"
+    ],
+    "flows": [
+      "core:human-age#main",
+      "core:human-appearance#main",
+      "core:human-background#main",
+      "core:human-build#main",
+      "core:human-personality#main",
+      "core:human-religion#main",
+      "core:profession-academic#main",
+      "core:profession-common#main",
+      "core:profession-criminal#main",
+      "core:profession-router#main",
+      "core:role-traits#negative",
+      "core:role-traits#positive",
+      "core:thing-1#main",
+      "core:thing-2#main",
+      "core:thing-3#main",
+      "core:thing-4#main",
+      "core:thing-5#main",
+      "core:thing-6#main",
+      "core:thing-router#main",
+      "core:wealth#main"
+    ],
+    "links": [
+      "pilot-link:50",
+      "pilot-link:51",
+      "pilot-link:52",
+      "pilot-link:56",
+      "pilot-link:57",
+      "pilot-link:58",
+      "pilot-link:59",
+      "pilot-link:60",
+      "pilot-link:61"
+    ],
+    "professions": [
+      "pilot-profession:core:academic:r01",
+      "pilot-profession:core:academic:r02",
+      "pilot-profession:core:academic:r03",
+      "pilot-profession:core:academic:r04",
+      "pilot-profession:core:academic:r05",
+      "pilot-profession:core:academic:r06",
+      "pilot-profession:core:academic:r07",
+      "pilot-profession:core:academic:r08",
+      "pilot-profession:core:academic:r09",
+      "pilot-profession:core:academic:r10",
+      "pilot-profession:core:academic:r11",
+      "pilot-profession:core:academic:r12",
+      "pilot-profession:core:academic:r13",
+      "pilot-profession:core:academic:r14",
+      "pilot-profession:core:academic:r15",
+      "pilot-profession:core:academic:r16",
+      "pilot-profession:core:academic:r17",
+      "pilot-profession:core:academic:r18",
+      "pilot-profession:core:academic:r19",
+      "pilot-profession:core:academic:r20",
+      "pilot-profession:core:common:r01",
+      "pilot-profession:core:common:r02",
+      "pilot-profession:core:common:r03",
+      "pilot-profession:core:common:r04",
+      "pilot-profession:core:common:r05",
+      "pilot-profession:core:common:r06",
+      "pilot-profession:core:common:r07",
+      "pilot-profession:core:common:r08",
+      "pilot-profession:core:common:r09",
+      "pilot-profession:core:common:r10",
+      "pilot-profession:core:common:r11",
+      "pilot-profession:core:common:r12",
+      "pilot-profession:core:common:r13",
+      "pilot-profession:core:common:r14",
+      "pilot-profession:core:common:r15",
+      "pilot-profession:core:common:r16",
+      "pilot-profession:core:common:r17",
+      "pilot-profession:core:common:r18",
+      "pilot-profession:core:common:r19",
+      "pilot-profession:core:common:r20",
+      "pilot-profession:core:criminal:r01",
+      "pilot-profession:core:criminal:r02",
+      "pilot-profession:core:criminal:r03",
+      "pilot-profession:core:criminal:r04",
+      "pilot-profession:core:criminal:r05",
+      "pilot-profession:core:criminal:r06",
+      "pilot-profession:core:criminal:r07",
+      "pilot-profession:core:criminal:r08",
+      "pilot-profession:core:criminal:r09",
+      "pilot-profession:core:criminal:r10",
+      "pilot-profession:core:criminal:r11",
+      "pilot-profession:core:criminal:r12",
+      "pilot-profession:core:criminal:r13",
+      "pilot-profession:core:criminal:r14",
+      "pilot-profession:core:criminal:r15",
+      "pilot-profession:core:criminal:r16",
+      "pilot-profession:core:criminal:r17",
+      "pilot-profession:core:criminal:r18",
+      "pilot-profession:core:criminal:r19",
+      "pilot-profession:core:criminal:r20"
+    ],
+    "queries": [
+      "query:profession-faces:core",
+      "query:starting-lifestyle:core"
+    ],
+    "sideRoll": "side-roll:core:human-background:12"
+  },
+  "pending": {
+    "tables": [
+      "core:profession-martial",
+      "core:profession-religious",
+      "core:profession-wilderness"
+    ],
+    "flows": [
+      "core:profession-martial#main",
+      "core:profession-religious#main",
+      "core:profession-wilderness#main"
+    ],
+    "links": [
+      "pilot-link:53",
+      "pilot-link:54",
+      "pilot-link:55"
+    ],
+    "professions": [
+      "pilot-profession:core:martial:r03",
+      "pilot-profession:core:martial:r13",
+      "pilot-profession:core:religious:r01",
+      "pilot-profession:core:religious:r03",
+      "pilot-profession:core:religious:r09",
+      "pilot-profession:core:religious:r11",
+      "pilot-profession:core:martial:*",
+      "pilot-profession:core:religious:*",
+      "pilot-profession:core:wilderness:*"
+    ],
+    "things": [
+      "core:1:1",
+      "core:1:10",
+      "core:1:11",
+      "core:1:12",
+      "core:1:13",
+      "core:1:14",
+      "core:1:15",
+      "core:1:16",
+      "core:1:17",
+      "core:1:18",
+      "core:1:19",
+      "core:1:2",
+      "core:1:20",
+      "core:1:3",
+      "core:1:4",
+      "core:1:5",
+      "core:1:6",
+      "core:1:7",
+      "core:1:8",
+      "core:1:9",
+      "core:2:1",
+      "core:2:10",
+      "core:2:11",
+      "core:2:12",
+      "core:2:13",
+      "core:2:14",
+      "core:2:15",
+      "core:2:16",
+      "core:2:17",
+      "core:2:18",
+      "core:2:19",
+      "core:2:2",
+      "core:2:20",
+      "core:2:3",
+      "core:2:4",
+      "core:2:5",
+      "core:2:6",
+      "core:2:7",
+      "core:2:8",
+      "core:2:9",
+      "core:3:1",
+      "core:3:10",
+      "core:3:11",
+      "core:3:12",
+      "core:3:13",
+      "core:3:14",
+      "core:3:15",
+      "core:3:16",
+      "core:3:17",
+      "core:3:18",
+      "core:3:19",
+      "core:3:2",
+      "core:3:20",
+      "core:3:3",
+      "core:3:4",
+      "core:3:5",
+      "core:3:6",
+      "core:3:7",
+      "core:3:8",
+      "core:3:9",
+      "core:4:1",
+      "core:4:10",
+      "core:4:11",
+      "core:4:12",
+      "core:4:13",
+      "core:4:14",
+      "core:4:15",
+      "core:4:16",
+      "core:4:17",
+      "core:4:18",
+      "core:4:19",
+      "core:4:2",
+      "core:4:20",
+      "core:4:3",
+      "core:4:4",
+      "core:4:5",
+      "core:4:6",
+      "core:4:7",
+      "core:4:8",
+      "core:4:9",
+      "core:5:1",
+      "core:5:10",
+      "core:5:11",
+      "core:5:12",
+      "core:5:13",
+      "core:5:14",
+      "core:5:15",
+      "core:5:16",
+      "core:5:17",
+      "core:5:18",
+      "core:5:19",
+      "core:5:2",
+      "core:5:20",
+      "core:5:3",
+      "core:5:4",
+      "core:5:5",
+      "core:5:6",
+      "core:5:7",
+      "core:5:8",
+      "core:5:9",
+      "core:6:1",
+      "core:6:10",
+      "core:6:11",
+      "core:6:12",
+      "core:6:13",
+      "core:6:14",
+      "core:6:15",
+      "core:6:16",
+      "core:6:17",
+      "core:6:18",
+      "core:6:19",
+      "core:6:2",
+      "core:6:20",
+      "core:6:3",
+      "core:6:4",
+      "core:6:5",
+      "core:6:6",
+      "core:6:7",
+      "core:6:8",
+      "core:6:9"
+    ],
+    "languages": [
+      "language:common-tongue",
+      "language:dark-speech",
+      "language:dead-languages",
+      "language:dwarfish",
+      "language:elvish",
+      "language:high-archaic",
+      "language:secret-language",
+      "language:trollish"
+    ],
+    "templates": [
+      "core-background-education",
+      "core-background-travel"
+    ],
+    "initialThing": "core-initial-thing"
+  }
+}
