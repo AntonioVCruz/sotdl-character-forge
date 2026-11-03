@@ -11,7 +11,7 @@ const DATA = 'curation/pilot/creation-table-inventory.json', REPORT = 'curation/
 const sha = (v: string | Buffer) => createHash('sha256').update(v).digest('hex');
 const dice = (count: number, sides: number) => ({ count, sides });
 // Explicit inventory of the pinned Only Human text. These are table boundaries, not reconstructed outcomes.
-const expanded: [string, string, number, number, [number, number] | null, string, string][] = [
+export const expanded: [string, string, number, number, [number, number] | null, string, string][] = [
   ['ancestors', 'Ancestors', 13738, 13760, [3,6], 'root-once', 'Family reputation; do not turn narrative into an automatic bonus.'],
   ['family-circumstances', 'Family Circumstances', 13761, 13787, [3,6], 'root-once', 'Childhood modifier −6/−3/−1/+1/+3/+6; family profession drawn from restricted categories by result, not the full d6 selector.'],
   ['parents', 'Parents', 13788, 13801, [3,6], 'root-once', 'Death leads to Circumstances of Death; the text does not settle one shared cause versus separate causes when both parents died.'],
@@ -54,7 +54,7 @@ const expanded: [string, string, number, number, [number, number] | null, string
 ];
 
 type Link = { from: string; to: string; kind: string; instruction: string; startLine: number; endLine: number };
-const edges: [string, string, string, string, number, number][] = [
+export const edges: [string, string, string, string, number, number][] = [
   ['family-circumstances','childhood','modifier','Apply −6/−3/−1/+1/+3/+6 to the later Childhood roll by outcome.',13763,13785],
   ...['common','criminal','military','religious','wilderness'].map(t => ['family-circumstances',t,'restricted-category-choice','Use only categories permitted by the family result; no full-selector reroll implied.',13768,13783] as [string,string,string,string,number,number]),
   ['parents','death','conditional-roll','Dead-parent cases; multiplicity for both parents needs review.',13790,13801],
