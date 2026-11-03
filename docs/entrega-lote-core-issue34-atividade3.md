@@ -35,6 +35,8 @@ A facultatividade (ancestry opcional, Roleplaying Traits, Wealth uma vez, Intere
 
 ## Verificação
 
+Correção P2 em 2026-11-03: o gate específico agora confere `grant-profession.professionId` contra a identidade de cada linha, além da cobertura de profissões. Três regressões recusam alvo de outra linha da mesma categoria, alvo de outra categoria e troca mútua de dois alvos que preservava o conjunto completo. Não altera a fixture, os pesos ou as pendências de aceite semântico do lote.
+
 ```bash
 npm test
 npm run build

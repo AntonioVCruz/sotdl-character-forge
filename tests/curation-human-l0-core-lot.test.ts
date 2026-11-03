@@ -160,6 +160,27 @@ describe('Human L0 Core lot synthetic projection', () => {
     expect(lot.document.blockers[0]).toMatchObject(HASH_CHECK_BLOCKER);
   });
 
+  it.each(['pilot-profession:core:academic:r02', 'pilot-profession:core:common:r01'])(
+    'rejects granting %s from the academic r01 source row', professionId => {
+      const altered = structuredClone(lot);
+      const row = altered.document.tables.find(table => table.id === 'core:profession-academic')!.columns[0].rows[0];
+      if (row.consequence.kind !== 'effect' || row.consequence.effect.op !== 'grant-profession') throw new Error('missing profession effect');
+      row.consequence.effect.professionId = professionId;
+      expect(() => parseHumanL0CoreLot(altered)).toThrow(/profession-target-mismatch/);
+    },
+  );
+
+  it('rejects swapped profession targets even when their complete set is unchanged', () => {
+    const altered = structuredClone(lot);
+    const rows = altered.document.tables.find(table => table.id === 'core:profession-academic')!.columns[0].rows;
+    for (const [index, target] of [rows[1].id, rows[0].id].entries()) {
+      const consequence = rows[index].consequence;
+      if (consequence.kind !== 'effect' || consequence.effect.op !== 'grant-profession') throw new Error('missing profession effect');
+      consequence.effect.professionId = target;
+    }
+    expect(() => parseHumanL0CoreLot(altered)).toThrow(/profession-target-mismatch/);
+  });
+
   it('rejects invalid Core shapes', () => {
     const uniform = structuredClone(lot.document);
     uniform.tables[0].columns[0].rows[0].publishedWeight.basis = 'uniform-per-row';

@@ -744,10 +744,15 @@ export function parseHumanL0CoreLot(input: unknown): HumanL0CoreLot {
   }
   if (lot.thingSummary.text !== null || lot.thingSummary.sideRollDice !== null || lot.thingSummary.itemProfiles !== 0) fail('interesting-text-invented', '/thingSummary');
   if (lot.links.some(link => link.automaticExecution)) fail('procedure-orchestrated', '/links');
-  const granted = document.tables.flatMap(table => table.columns.flatMap(columnValue => columnValue.rows))
-    .filter(row => row.consequence.kind === 'effect' && row.consequence.effect.op === 'grant-profession')
-    .map(row => row.id);
+  const professionRows = document.tables.flatMap(table => table.columns.flatMap(columnValue => columnValue.rows))
+    .filter(row => row.consequence.kind === 'effect' && row.consequence.effect.op === 'grant-profession');
+  const granted = professionRows.map(row => row.id);
   if (granted.join() !== lot.projected.professions.join()) fail('invented-grouped-face', '/professions');
+  for (const row of professionRows) {
+    const consequence = row.consequence;
+    if (consequence.kind === 'effect' && consequence.effect.op === 'grant-profession' && consequence.effect.professionId !== row.id)
+      fail('profession-target-mismatch', `/professions/${row.id}`);
+  }
   const states = new Set([...lot.projected.tables, ...lot.projected.flows, ...lot.projected.links, ...lot.projected.professions, ...lot.projected.queries, lot.projected.sideRoll,
     ...lot.pending.tables, ...lot.pending.flows, ...lot.pending.links, ...lot.pending.professions, ...lot.pending.things, ...lot.pending.languages, ...lot.pending.templates, lot.pending.initialThing]);
   if (states.size !== HUMAN_L0_CORE_LOT_COUNTS.matrixRows) fail('identity-missing', '/identities');
