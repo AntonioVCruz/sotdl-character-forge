@@ -79,3 +79,7 @@ textarea { min-height: 100px; resize: vertical; }
   .wizard-shell { display: grid; grid-template-columns: minmax(200px, 240px) minmax(0, 1fr) minmax(220px, 280px); gap: 24px; align-items: start; }
   .mini-ficha { position: sticky; top: 12px; }
 }
+
+.human-l0-preview { border: 1px solid #827052; border-radius: 8px; padding: 16px; margin: 28px 0; }
+.human-l0-preview h2 { margin-top: 8px; }
+.human-l0-preview .human-l0-sheet dd { font-size: 1.15rem; }

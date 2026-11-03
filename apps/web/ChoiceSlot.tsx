@@ -63,7 +63,8 @@ export function ChoiceSlot(input: ChoiceSlotProps) {
   }
 
   const draftReady = draftIds.length >= props.cardinality.min && draftIds.length <= props.cardinality.max;
-  const draftReason = draftReady ? undefined : `Escolha entre ${props.cardinality.min} e ${props.cardinality.max}.`;
+  const draftReason = props.useReason ?? (draftReady ? undefined : `Escolha entre ${props.cardinality.min} e ${props.cardinality.max}.`);
+  const useBlocked = Boolean(props.useReason) || !draftReady || manualBlocked;
 
   return <article className="choice-slot-card" aria-labelledby={titleId} data-choice-slot={props.uiState}>
     <header className="choice-slot-head">
@@ -163,8 +164,8 @@ export function ChoiceSlot(input: ChoiceSlotProps) {
           })}
         </div>
         <p className="muted">{props.options.length} opções · {props.options.filter(option => !option.eligible).length} indisponíveis (mostradas com motivo)</p>
-        <ActionButton label="Usar esta opção" blocked={!draftReady || manualBlocked} reason={manualBlocked ? LOCK_REASON : draftReason} reasonId={`${reasonBase}-use`} onClick={() => {
-          if (!draftReady || manualBlocked) return;
+        <ActionButton label="Usar esta opção" blocked={useBlocked} reason={useBlocked ? (manualBlocked ? LOCK_REASON : draftReason) : undefined} reasonId={`${reasonBase}-use`} onClick={() => {
+          if (useBlocked) return;
           props.onSelect(draftIds);
           closePanel();
         }} />

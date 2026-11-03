@@ -18,6 +18,8 @@ export type ChoiceSlotProps = z.input<typeof ChoiceSlotSchema> & {
   onToggleLock: () => void;
   onShowSource: () => void;
   onShowHistory: () => void;
+  /** When set, “Usar esta opção” stays blocked and shows this text. */
+  useReason?: string;
 };
 
 export const STRATEGY_BADGE: Record<Strategy, string> = {

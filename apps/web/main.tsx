@@ -11,10 +11,22 @@ import spellSession from '../../examples/demo-spell-session.json';
 import { clearCharacter } from '../../packages/character-generator/storage';
 import { CharacterBuilder } from './CharacterBuilder';
 import { ErrorBoundary, onCaughtError } from './ErrorBoundary';
+import { HumanL0FixturePreview } from './HumanL0FixturePreview';
+import { HUMAN_L0_FIXTURE_PREVIEW_ENABLED, isHumanL0Route, resetHumanL0FixtureCharacter } from './human-l0-preview';
 import { errorMessage } from './errors';
 import './style.css';
 
-function App() {
+function useLocationHash() {
+  const [hash, setHash] = useState(() => window.location.hash);
+  useEffect(() => {
+    const sync = () => setHash(window.location.hash);
+    window.addEventListener('hashchange', sync);
+    return () => window.removeEventListener('hashchange', sync);
+  }, []);
+  return hash;
+}
+
+function ForgeApp() {
   const [snapshot, setSnapshot] = useState<Snapshot>(emptySnapshot);
   const [ready, setReady] = useState(false);
   const [busy, setBusy] = useState(false);
@@ -39,7 +51,9 @@ function App() {
   const entries = [...registry(snapshot).values()].filter(({ entity, pack }) =>
     (kind === 'all' || entity.kind === kind) && `${entity.name} ${entity.id} ${pack.source.title}`.toLocaleLowerCase().includes(query.toLocaleLowerCase()));
   return <main>
-    <header><p className="eyebrow">SHADOW OF THE DEMON LORD · CHARACTER FORGE</p><h1>Forja de personagens</h1><p>Crie um personagem demonstrativo e consulte a origem de cada escolha.</p></header>
+    <header><p className="eyebrow">SHADOW OF THE DEMON LORD · CHARACTER FORGE</p><h1>Forja de personagens</h1><p>Crie um personagem demonstrativo e consulte a origem de cada escolha.</p>
+      {HUMAN_L0_FIXTURE_PREVIEW_ENABLED && <p><a href="#/human-l0">Abrir prévia local Human L0 (fixture)</a></p>}
+    </header>
     <aside className="notice">Demonstração dos níveis 0 e 1, com dois caminhos fictícios e catálogo local. Os exemplos não representam regras oficiais. Níveis 2–10 e conteúdo oficial ainda não estão disponíveis.</aside>
     {error && <div role="alert" className="error"><strong>Operação não concluída</strong><pre>{error}</pre></div>}
     <p role="status" aria-live="polite">{busy ? 'Salvando…' : message || (!ready && !error ? 'Abrindo catálogo…' : '')}</p>
@@ -93,4 +107,15 @@ function App() {
     </section><footer>Dados salvos neste navegador · sem conta ou envio ao servidor. Mantenha os arquivos JSON originais como backup.</footer>
   </main>;
 }
-createRoot(document.getElementById('root')!, { onCaughtError }).render(<React.StrictMode><ErrorBoundary scope="forja"><App /></ErrorBoundary></React.StrictMode>);
+
+/** Stable hooks: only the hash lives here. The forge and the Human L0 entry each keep their own hook list. */
+export function Root() {
+  const hash = useLocationHash();
+  if (isHumanL0Route(hash)) {
+    return <main><ErrorBoundary scope="ficha" onReset={resetHumanL0FixtureCharacter}><HumanL0FixturePreview onLeave={() => { window.location.hash = ''; }} /></ErrorBoundary></main>;
+  }
+  return <ForgeApp />;
+}
+
+const mount = document.getElementById('root');
+if (mount) createRoot(mount, { onCaughtError }).render(<React.StrictMode><ErrorBoundary scope="forja"><Root /></ErrorBoundary></React.StrictMode>);
