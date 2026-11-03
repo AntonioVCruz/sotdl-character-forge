@@ -38,6 +38,13 @@ export const HUMAN_L0_STEPS = [
 ] as const;
 export type HumanL0StepId = (typeof HUMAN_L0_STEPS)[number]['id'];
 
+/** Step encoded in `#/human-l0/<step>`. Unknown suffixes stay on the entry without changing the step. */
+export function humanL0HashStep(hash: string): HumanL0StepId | null {
+  const match = /^#\/?human-l0\/([a-z0-9-]+)$/.exec(hash);
+  const id = match?.[1];
+  return HUMAN_L0_STEPS.some(step => step.id === id) ? id as HumanL0StepId : null;
+}
+
 export type HumanL0SlotView = {
   slotId: string;
   step: HumanL0StepId;

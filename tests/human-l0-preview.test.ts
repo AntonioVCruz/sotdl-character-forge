@@ -65,6 +65,7 @@ describe('Human L0 UI contract', () => {
     expect(HUMAN_L0_FIXTURE_PREVIEW_ENABLED).toBe(true);
     expect(isHumanL0Route('#/human-l0')).toBe(true);
     expect(isHumanL0Route('#human-l0')).toBe(true);
+    expect(isHumanL0Route('#/human-l0/reserved')).toBe(true);
     expect(isHumanL0Route('')).toBe(false);
     for (const path of ['apps/web/human-l0-preview.ts', 'apps/web/HumanL0FixturePreview.tsx', 'apps/web/main.tsx']) {
       const source = readFileSync(path, 'utf8');

@@ -11,6 +11,7 @@ let host: HTMLDivElement;
 let root: Root;
 
 beforeEach(() => {
+  window.location.hash = '';
   (globalThis as { IS_REACT_ACT_ENVIRONMENT?: boolean }).IS_REACT_ACT_ENVIRONMENT = true;
   vi.stubGlobal('indexedDB', new IDBFactory());
   host = document.createElement('div');
@@ -43,6 +44,13 @@ describe('Human L0 route', () => {
     });
     await flush();
     expect(host.textContent).toContain('Prévia local Human L0');
+    expect(host.textContent).not.toContain('Não foi possível mostrar');
+    await act(async () => {
+      window.location.hash = '#/human-l0/reserved';
+      window.dispatchEvent(new HashChangeEvent('hashchange'));
+    });
+    await flush();
+    expect(host.querySelector('.wizard-step h3')?.textContent).toBe('Passos reservados');
     expect(host.textContent).not.toContain('Não foi possível mostrar');
     await act(async () => {
       window.location.hash = '';
@@ -125,7 +133,19 @@ describe('Human L0 fixture shell', () => {
     expect(host.querySelectorAll('[data-field="power"]')).toHaveLength(1);
     expect(host.textContent).toContain('Somente fala.');
     expect(host.querySelector('summary')?.textContent).toContain('Composição do motor');
-    expect([...host.querySelectorAll('button')].some(button => button.textContent === 'Ir para o passo')).toBe(true);
+    const grantLink = host.querySelector('a[href="#/human-l0/reserved"]');
+    expect(grantLink?.textContent).toBe('Ir para o passo');
+    await act(async () => {
+      window.location.hash = '#/human-l0/reserved';
+      window.dispatchEvent(new HashChangeEvent('hashchange'));
+    });
+    expect(host.querySelector('.wizard-step h3')?.textContent).toBe('Passos reservados');
+    expect(host.querySelector('[data-slot="professions"]')).toBeTruthy();
+    expect(host.querySelector('[data-field="strength"] dd')?.textContent).toBe(strength);
+    await act(async () => {
+      window.location.hash = '#/human-l0/ancestry';
+      window.dispatchEvent(new HashChangeEvent('hashchange'));
+    });
     const size = host.querySelector('[data-slot="size"]') as HTMLElement;
     click('Escolher manualmente', size);
     const other = [...size.querySelectorAll('[role="radio"]')].find(node => node.getAttribute('aria-checked') !== 'true') as HTMLElement;

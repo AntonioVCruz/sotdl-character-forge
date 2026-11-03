@@ -25,6 +25,7 @@ import {
 } from './human-l0-preview';
 import {
   HUMAN_L0_STEPS,
+  humanL0HashStep,
   humanL0StepLabel,
   projectHumanL0Slots,
   proposeHumanL0Slot,
@@ -42,7 +43,7 @@ function fieldText(field: HumanL0Field): string {
 
 export function HumanL0FixturePreview({ onLeave }: { onLeave: () => void }) {
   const packs = useMemo(() => humanL0FixturePacks(), []);
-  const [step, setStep] = useState<HumanL0StepId>('source');
+  const [step, setStep] = useState<HumanL0StepId>(() => humanL0HashStep(window.location.hash) ?? 'source');
   const [baseline, setBaseline] = useState<HumanL0Character | null>(null);
   const [sheet, setSheet] = useState<HumanL0SheetModel | null>(null);
   const [preview, setPreview] = useState<HumanL0Preview | null>(null);
@@ -89,6 +90,14 @@ export function HumanL0FixturePreview({ onLeave }: { onLeave: () => void }) {
   }, [packs]);
 
   useEffect(() => { if (preview) statusRef.current?.focus(); }, [preview]);
+  useEffect(() => {
+    const sync = () => {
+      const next = humanL0HashStep(window.location.hash);
+      if (next) setStep(next);
+    };
+    window.addEventListener('hashchange', sync);
+    return () => window.removeEventListener('hashchange', sync);
+  }, []);
 
   const slots = projectHumanL0Slots(packs, { baseline, preview, previewSlotId, refusal, locks, seed });
   const stepIndex = HUMAN_L0_STEPS.findIndex(item => item.id === step);
@@ -266,7 +275,7 @@ export function HumanL0FixturePreview({ onLeave }: { onLeave: () => void }) {
         {sheet ? <dl>{sheet.fields.map(field => <div key={field.key} data-field={field.key} data-status={field.status}><dt>{field.label}</dt><dd>{fieldText(field)}</dd></div>)}</dl> : <p>Características: indisponível.</p>}
         <ul aria-label="Pendências do motor">{sheet?.issues.map(issue => <li key={issue.code} data-issue={issue.code}>{issue.message}</li>)}</ul>
         <ul aria-label="Idiomas">{sheet?.languages.length ? sheet.languages.map(language => <li key={language.languageId}>{language.languageId}: {language.note}</li>) : <li>Nenhum idioma calculado.</li>}</ul>
-        <ul aria-label="Direitos e resultados pendentes">{sheet?.grants.length ? sheet.grants.map(grant => <li key={grant.kind}><span className="badge">{grant.message}</span> <button type="button" onClick={() => setStep('reserved')}>Ir para o passo</button></li>) : <li>Nenhum direito calculado.</li>}</ul>
+        <ul aria-label="Direitos e resultados pendentes">{sheet?.grants.length ? sheet.grants.map(grant => <li key={grant.kind}><span className="badge">{grant.message}</span> <a href={`#/human-l0/${grant.step}`}>Ir para o passo</a></li>) : <li>Nenhum direito calculado.</li>}</ul>
         <details>
           <summary>Composição do motor</summary>
           {sheet?.breakdown.length ? <ul>{sheet.breakdown.map((row, index) => <li key={`${row.phase}-${row.target}-${index}`}>{row.phase}: {row.target} {row.value}</li>)}</ul> : <p>Nenhuma composição disponível.</p>}

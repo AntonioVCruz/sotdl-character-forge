@@ -67,7 +67,7 @@ export type HumanL0SheetModel = {
   persistenceKey: string;
   fields: HumanL0Field[];
   issues: { code: string; message: string }[];
-  grants: { kind: string; count?: number; status: 'pending'; message: string }[];
+  grants: { kind: string; count?: number; status: 'pending'; message: string; step: 'reserved' }[];
   languages: { languageId: string; abilities: string; note: string }[];
   breakdown: HumanL0View['breakdown'];
 };
@@ -181,7 +181,7 @@ export function humanL0Block(code: string): HumanL0Block {
 }
 
 export function isHumanL0Route(hash: string): boolean {
-  return HUMAN_L0_FIXTURE_PREVIEW_ENABLED && (hash === '#/human-l0' || hash === '#human-l0');
+  return HUMAN_L0_FIXTURE_PREVIEW_ENABLED && /^#\/?human-l0(?:\/[a-z0-9-]+)?$/.test(hash);
 }
 
 export function humanL0PersistenceKey(id: string): string {
@@ -224,13 +224,14 @@ function unresolvedReason(view: HumanL0View): string {
 }
 
 function describeGrant(grant: HumanL0View['grants'][number]): HumanL0SheetModel['grants'][number] {
+  const step = 'reserved' as const;
   if (grant.kind === 'starting-profession-choices') {
-    return { kind: grant.kind, count: grant.count, status: 'pending', message: `Direito de escolha de profissão inicial: ${grant.count ?? 0}. Nenhuma profissão foi gerada.` };
+    return { kind: grant.kind, count: grant.count, status: 'pending', step, message: `Direito de escolha de profissão inicial: ${grant.count ?? 0}. Nenhuma profissão foi gerada.` };
   }
   if (grant.kind === 'pending-random-profession') {
-    return { kind: grant.kind, count: grant.count, status: 'pending', message: 'Profissão aleatória pendente. Nenhum resultado foi gerado.' };
+    return { kind: grant.kind, count: grant.count, status: 'pending', step, message: 'Profissão aleatória pendente. Nenhum resultado foi gerado.' };
   }
-  return { kind: grant.kind, count: grant.count, status: 'pending', message: `Pendência do motor: ${grant.kind}.` };
+  return { kind: grant.kind, count: grant.count, status: 'pending', step, message: `Pendência do motor: ${grant.kind}.` };
 }
 
 export const HUMAN_L0_SHEET_BANNER = [
