@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "projection": "human-l0-consumable",
+  "scope": "synthetic-contract",
+  "bundleId": "human-l0-consumable-fixture",
+  "version": "1.0.0",
+  "input": {
+    "path": "curation/examples/human-l0-consumable.synthetic.json",
+    "sha256": "904c56b2c1693d8dbcac3691dda3eebbc405640f05ae26a91d0a0b518dd5ae58"
+  }
+}

@@ -33,33 +33,17 @@ async function render(node: ReactNode) {
 }
 
 describe('Human L0 route', () => {
-  it('switches hash both ways without crashing the forge boundary', async () => {
-    window.location.hash = '';
-    await render(<AppRoot />);
-    expect(host.textContent).toContain('Forja de personagens');
-    expect(host.textContent).not.toContain('Não foi possível mostrar');
-    await act(async () => {
-      window.location.hash = '#/human-l0';
-      window.dispatchEvent(new HashChangeEvent('hashchange'));
-    });
-    await flush();
-    expect(host.textContent).toContain('Prévia local Human L0');
-    expect(host.textContent).not.toContain('Não foi possível mostrar');
-    await act(async () => {
-      window.location.hash = '#/human-l0/reserved';
-      window.dispatchEvent(new HashChangeEvent('hashchange'));
-    });
-    await flush();
-    expect(host.querySelector('.wizard-step h3')?.textContent).toBe('Passos reservados');
-    expect(host.textContent).not.toContain('Não foi possível mostrar');
-    await act(async () => {
-      window.location.hash = '';
-      window.dispatchEvent(new HashChangeEvent('hashchange'));
-    });
-    await flush();
-    expect(host.textContent).toContain('Forja de personagens');
-    expect(host.textContent).toContain('Abrir prévia local Human L0 (fixture)');
-    expect(host.textContent).not.toContain('Não foi possível mostrar');
+  it('opens only the real Core entry even at legacy hashes and fails closed without sources', async () => {
+    vi.stubGlobal('fetch',vi.fn().mockResolvedValue({ok:false}));
+    for(const hash of ['', '#/human-l0', '#/human-l0/reserved']) {
+      window.location.hash=hash;
+      await render(<AppRoot />);await flush();
+      expect(host.textContent).toContain('Humano · Livro básico · Nível 0');
+      expect(host.textContent).not.toContain('Carregar exemplos fictícios');
+      expect(host.textContent).not.toContain('Prévia local Human L0');
+      expect(host.querySelector('fieldset')?.disabled).toBe(true);
+      expect(host.textContent).not.toContain('Não foi possível mostrar');
+    }
   });
 });
 

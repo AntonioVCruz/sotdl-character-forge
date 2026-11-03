@@ -1,12 +1,12 @@
 # Roadmap da #34 — tabelas e equipamentos Human L0
 
-Integração em 2026-11-03: #44 (`06e6270`) e #47 (`b6a298a`) já mesclados, incorporados ao #46 antes de sua própria integração. As correções dos três P2 permanecem no código; as atividades 3–8 continuam abertas para aceite completo dos lotes reais/compilador/handlers.
+Decisão operacional posterior: [perfil oficial local Humano Core L0 habilitado](ativacao-oficial-local-core.md), com dados reais exclusivos na entrada principal e rascunhos que exibem consequências pendentes. A ativação solicitada não fecha o aceite completo das atividades 3–8, não promove fontes ou autoriza exportação. Os itens históricos abaixo de “geração desabilitada” descrevem os artefatos e etapas anteriores.
 
-Integração em 2026-11-03: #44 mesclado em `06e6270`; #47 sincronizado com esse resultado antes de sua própria integração. #46 depende dessa sequência. Os lotes permanecem sintéticos e o aceite das atividades 3–5 continua separado do merge.
+Integração em 2026-11-03: #44 (`06e6270`), #47 (`b6a298a`) e #46 (`bf847e5`) mesclados nessa ordem, com CI verde e atualização dos dependentes antes de cada merge. Os três P2 estão corrigidos na main. As atividades 3–8 continuam abertas para aceite completo dos lotes reais/compilador/handlers; merge das fixtures sintéticas não habilita geração oficial.
 
 Plano de 2026-11-02 para a [issue #34](https://github.com/AntonioVCruz/sotdl-character-forge/issues/34). **As oito atividades abaixo foram planejadas por este documento; a execução é registrada à parte.** A ordem define dependências técnicas, sem atribuir prazos, sprint ou responsáveis.
 
-A matriz da atividade 1 está em [matriz-lacunas-issue34-atividade1.md](matriz-lacunas-issue34-atividade1.md), preservada como snapshot histórico. A atividade foi [fechada localmente no #49](fechamento-issue34-atividade1.md). A atividade 2 está aceita: contrato `sotdl.human-l0.consumable@1.0.0` na main via #42/#43. Atividades 3–8 permanecem abertas. Esta branch contém o lote sintético Core do PR #44 / atividade 3, com seu P2 corrigido; isso não concede aceite dos dados reais.
+A matriz da atividade 1 está em [matriz-lacunas-issue34-atividade1.md](matriz-lacunas-issue34-atividade1.md), preservada como snapshot histórico. A atividade foi [fechada localmente no #49](fechamento-issue34-atividade1.md). A atividade 2 está aceita: contrato `sotdl.human-l0.consumable@1.0.0` na main via #42/#43. Atividades 3–8 permanecem abertas; [compilação e handlers têm avanço incremental sobre a fixture aceita](entrega-compilacao-handlers-consumiveis-human-l0.md), sem aceite dos lotes reais.
 
 ## Objetivo e fronteiras
 
@@ -136,13 +136,15 @@ Preferir entregas revisáveis por atividade ou lote, referenciando **#34 / ativi
 
 O checklist de execução permanece aberto:
 
+PRs #44 → #47 → #46 mesclados em 2026-11-03, com CI aprovada após cada atualização dos dependentes; main final `bf847e5` também verde. Os conflitos foram resolvidos preservando a atividade 1 fechada. [Hashes, diagnóstico e execuções](revisao-pr44-pr47-pr46.md). Os lotes reais continuam sujeitos a aceite próprio.
+
 - [x] 1. Auditar o recorte e as lacunas. [Fechamento local](fechamento-issue34-atividade1.md): 301 hashes, 1.060 referências, oito pins e seis geradores conferidos; 12 derivados reconciliados somente em metadados. `act1-local-hash-check` encerrado. Matriz estrutural preservada como snapshot, vinculada ao comprovante atual.
 - [x] 2. Definir o contrato consumível. Contrato `sotdl.human-l0.consumable@1.0.0` em [contrato consumível](contrato-consumivel-tabelas-human-l0.md), na main via [#42](https://github.com/AntonioVCruz/sotdl-character-forge/pull/42) (`5d729d4`).
-- [ ] 3. Projetar o lote de tabelas Core.
-- [ ] 4. Projetar Only Human e Oddities.
-- [ ] 5. Projetar kits, itens e equipamentos.
-- [ ] 6. Estender compilador e validação.
-- [ ] 7. Integrar resolvedores e handlers.
+- [ ] 3. Projetar o lote de tabelas Core. #44 integrado e [projeção real local `1.1.0` conferida](entrega-core-real-issue34-atividade3.md): 22 tabelas, 23 fluxos, 339 resultados, 102 profissões e 157 intervalos de evidência; as 36 opções agrupadas foram individualizadas a partir dos pilotos locais. Aceite semântico integral/aplicação ainda pendentes, com 188 vínculos de obrigação explícita; geração não habilitada.
+- [ ] 4. Projetar Only Human e Oddities. #47 mesclado em `b6a298a` após #44, com regras de modificadores validadas integralmente e cinco testes novos. Lote real sem aceite. [Parecer e CI](revisao-pr44-pr47-pr46.md).
+- [ ] 5. Projetar kits, itens e equipamentos. #46 mesclado em `bf847e5` após #47, com lookups alinhados ao produtor, três regressões novas e schema combinado das atividades 4/5. Lote real sem aceite. [Parecer e CI](revisao-pr44-pr47-pr46.md).
+- [ ] 6. Estender compilador e validação. [Infraestrutura incremental](entrega-compilacao-handlers-consumiveis-human-l0.md): bundle/índices/relatório determinísticos, entrada fixada, check por reprojeção e publicação local imutável. Aceite completo aguarda os três lotes reais revisados.
+- [ ] 7. Integrar resolvedores e handlers. [Replay incremental integrado ao motor](entrega-compilacao-handlers-consumiveis-human-l0.md): concessões por origem, consultas e equipamento em fases. Aceite completo aguarda lotes reais, capacidades adicionais e side rolls.
 - [ ] 8. Auditar o conjunto e entregar aos consumidores.
 
 As atividades **1 e 2 estão concluídas** no escopo registrado. Atividades **3–8 permanecem abertas** e exigem revisão/aceite próprios. As categorias e identidades agrupadas no snapshot público, as ambiguidades e restrições de aplicação continuam preservadas; fechar hashes não inventa pesos nem aprova projeção semântica. Este roadmap não habilita ruleset, não promove revisão e não executa os lotes 3–8.

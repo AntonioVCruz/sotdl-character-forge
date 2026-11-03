@@ -145,7 +145,9 @@ export type HumanL0View={stats:HumanL0Stats|null;states:z.infer<typeof states>|n
   breakdown:{phase:string;target:string;value:number;origin:string}[]};
 
 /** Pure replay of recorded decisions: no RNG, cached totals or demo equipment policy. */
-export async function calculateHumanL0Character(input:unknown,packInput:unknown):Promise<HumanL0View> {
+export async function calculateHumanL0Character(input:unknown,packInput:unknown,
+  publishedEquipment: {base:'agility'|'fixed';value:number;origin:string;speedDelta?:number}[] = [],
+  publishedModifiers: {origin:string;defenseDelta:number;speedDelta:number}[] = []):Promise<HumanL0View> {
   const c=parseHumanL0Character(input),first=c.events[0] as Extract<Event,{type:'create'}>,selected=currentSelection(c);
   const suspended:HumanL0View={stats:null,states:null,languages:[],grants:[],issues:['source-or-selection-unavailable'],baseResolved:false,fullyResolved:false,officialGenerationEnabled:false,breakdown:[]};
   let packs:HumanL0MechanicalPack[],selection:HumanL0Selection;
@@ -181,9 +183,22 @@ export async function calculateHumanL0Character(input:unknown,packInput:unknown)
   const values={health:a.strength,defense:a.agility,perception:a.intellect,speed:m.characteristics.speed.value,power:m.characteristics.power.value};
   const armor=effects.filter(([,v])=>v.effect.equipment?.defense!==null&&v.effect.equipment?.defense!==undefined);
   if(armor.length>1)return {...suspended,issues:['conflicting-manual-equipment']};
+  if(armor.length+publishedEquipment.length>1)return {...suspended,issues:['conflicting-equipment']};
+  if(publishedModifiers.length>1)return {...suspended,issues:['conflicting-equipment']};
+  if(publishedEquipment.length) {
+    const e=z.object({base:z.enum(['agility','fixed']),value:z.number().int().min(0).max(100),origin:z.string().min(1),speedDelta:bounded.optional()}).strict().parse(publishedEquipment[0]);
+    values.defense=(e.base==='agility'?a.agility:0)+e.value;
+    values.speed+=e.speedDelta??0;
+    breakdown.push({phase:'equipment-defense-replacement',target:'defense',value:values.defense,origin:e.origin});
+  }
   if(armor.length) {
     values.defense=armor[0][1].effect.equipment!.defense!;
     breakdown.push({phase:'equipment-defense-replacement',target:'defense',value:values.defense,origin:armor[0][0]});
+  }
+  for(const raw of publishedModifiers) {
+    const e=z.object({origin:z.string().min(1),defenseDelta:bounded,speedDelta:bounded}).strict().parse(raw);
+    values.defense+=e.defenseDelta;values.speed+=e.speedDelta;
+    breakdown.push({phase:'equipment',target:'defense',value:e.defenseDelta,origin:e.origin});
   }
   for(const [id,{effect}] of effects) {
     if(effect.equipment) {values.speed+=effect.equipment.speedDelta;breakdown.push({phase:'equipment',target:'speed',value:effect.equipment.speedDelta,origin:id});}

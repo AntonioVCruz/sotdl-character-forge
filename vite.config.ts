@@ -1,6 +1,7 @@
 import { existsSync } from 'node:fs';
 import react from '@vitejs/plugin-react';
 import { configDefaults, defineConfig } from 'vitest/config';
+import {officialLocalPlugin} from './tools/official-local-plugin';
 
 // Quatro compêndios locais, ignorados em /rules/. Sem eles, os arquivos de teste
 // que abrem esses paths não entram no `vitest run` (o CI do GitHub não os tem).
@@ -34,7 +35,8 @@ const corpusTests = [
 ];
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(),officialLocalPlugin()],
+  server: {host:'127.0.0.1',cors:false,fs:{deny:['**/.env','**/.env.*','**/*.{crt,pem}','**/.git/**','**/rules/**','**/tmp/**','**/curation/{pilot,reports,entries,segments,normalized,normalization,corrections,history}/**']}},
   test: {
     include: ['tests/**/*.test.ts', 'tests/**/*.test.tsx'],
     exclude: [...configDefaults.exclude, ...(rulesCorpusPresent ? [] : corpusTests)],
