@@ -71,13 +71,15 @@ function fail(code: string, pointer = '/'): never {
 const id = z.string().regex(/^[a-z0-9][a-z0-9:_./#*+@-]{0,199}$/);
 const label = z.string().regex(/^[a-z0-9-]{1,80}$/);
 const currency = z.enum(['bits', 'cp', 'ss', 'gc']);
-const pendingReason = z.enum([
+/** Retained pending reasons. Gate refusals stay separate fail() codes and are not renamed into this list. */
+export const HUMAN_L0_CONSUMABLE_PENDING_REASONS = [
   'manual-procedure', 'manual-composition', 'conditional-manual', 'manual-category-choice', 'bounded-recursion',
   'conditional-branch', 'choice-required', 'open-category-language', 'no-extra-life-rolls', 'player-fields',
   'partial-literacy', 'range-starts-not-reextracted', 'catalog-group-not-individual', 'possession-is-not-use',
   'unknown-price', 'generic-profile', 'disabled-source', 'external-branch', 'open-tail-domain',
   'weapon-no-defense', 'defense-bonus-not-substitution',
-]);
+] as const;
+const pendingReason = z.enum(HUMAN_L0_CONSUMABLE_PENDING_REASONS);
 const link = z.discriminatedUnion('kind', [
   z.object({ kind: z.literal('not-an-item') }).strict(),
   z.object({ kind: z.literal('none') }).strict(),

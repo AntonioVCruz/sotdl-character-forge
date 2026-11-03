@@ -3,6 +3,7 @@ import { calculateHumanL0Character, exportHumanL0Character, importHumanL0Charact
 import type { Snapshot } from '../catalog';
 
 export * from './human-l0';
+export * from './human-l0-procedure';
 export type GeneratedCharacter = Character | HumanL0Character;
 const isHuman = (value:unknown) => !!value&&typeof value==='object'&&'kind' in value&&value.kind==='sotdl-human-l0-character';
 /** Explicit dispatch keeps the Human contract separate from the demo's v1/v2 migrations. */
