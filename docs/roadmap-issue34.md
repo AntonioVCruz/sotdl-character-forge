@@ -2,7 +2,7 @@
 
 Plano de 2026-11-02 para a [issue #34](https://github.com/AntonioVCruz/sotdl-character-forge/issues/34). **As oito atividades abaixo foram planejadas por este documento; a execução é registrada à parte.** A ordem define dependências técnicas, sem atribuir prazos, sprint ou responsáveis.
 
-A matriz da atividade 1 está em [matriz-lacunas-issue34-atividade1.md](matriz-lacunas-issue34-atividade1.md). O fechamento dessa atividade continua pendente em `act1-local-hash-check`: os hashes declarados ainda não foram recomputados com os livros. Atividades 2–8 continuam por executar. A atividade 2 pode avançar com fixtures sintéticas em paralelo.
+A matriz da atividade 1 está em [matriz-lacunas-issue34-atividade1.md](matriz-lacunas-issue34-atividade1.md). O fechamento dessa atividade continua pendente em `act1-local-hash-check`: os hashes declarados ainda não foram recomputados com os livros. A atividade 2 tem o contrato `sotdl.human-l0.consumable@1.0.0` em revisão; o checklist dela permanece aberto até o aceite. Atividades 3–8 continuam por executar.
 
 ## Objetivo e fronteiras
 
@@ -132,8 +132,8 @@ Preferir entregas revisáveis por atividade ou lote, referenciando **#34 / ativi
 
 O checklist de execução permanece aberto:
 
-- [ ] 1. Auditar o recorte e as lacunas. Matriz publicada em [matriz](matriz-lacunas-issue34-atividade1.md). Fechamento pendente: `act1-local-hash-check` (hashes declarados, não recomputados).
-- [ ] 2. Definir o contrato consumível.
+- [ ] 1. Auditar o recorte e as lacunas. Matriz publicada em [matriz](matriz-lacunas-issue34-atividade1.md). Fechamento pendente: `act1-local-hash-check` (hashes declarados, não recomputados). Não bloqueia a fixture sintética da atividade 2.
+- [ ] 2. Definir o contrato consumível. Rascunho `sotdl.human-l0.consumable@1.0.0` em [contrato consumível](contrato-consumivel-tabelas-human-l0.md). Checklist aberto até o aceite.
 - [ ] 3. Projetar o lote de tabelas Core.
 - [ ] 4. Projetar Only Human e Oddities.
 - [ ] 5. Projetar kits, itens e equipamentos.
@@ -141,4 +141,4 @@ O checklist de execução permanece aberto:
 - [ ] 7. Integrar resolvedores e handlers.
 - [ ] 8. Auditar o conjunto e entregar aos consumidores.
 
-Próxima atividade executável em paralelo, com fixtures sintéticas: **2 — definir o contrato consumível**. A atividade 1 permanece aberta até `act1-local-hash-check`. Este roadmap não altera código de runtime, artefatos reais, versões, estados de revisão ou flags de habilitação; não cria novas subissues nem executa as atividades 2–8.
+Atividades **3–8 permanecem abertas**. A atividade 1 permanece aberta até `act1-local-hash-check`. As três categorias Core agrupadas (martial, religious, wilderness) continuam pendência sem peso inventado. Este roadmap não habilita ruleset, não promove revisão e não executa os lotes 3–8.

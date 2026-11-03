@@ -1,0 +1,1529 @@
+{
+  "contract": "sotdl.human-l0.consumable",
+  "contractVersion": "1.0.0",
+  "distribution": "public-synthetic",
+  "fictionalData": true,
+  "reviewStatus": "needs-review",
+  "rulesetEnabled": false,
+  "importablePack": false,
+  "promotesReview": false,
+  "compatibility": {
+    "frozenCurationContract": "1.0.0",
+    "frozenFileCount": 16,
+    "mechanicsContract": "sotdl.human-l0.mechanics",
+    "mechanicsContractVersion": "1.0.0",
+    "mechanicsProjection": "0.2.0",
+    "semanticsUnchanged": true
+  },
+  "matrix": {
+    "activity": 1,
+    "closure": "pending-act1-local-hash-check",
+    "sourceVersion": null,
+    "path": "docs/matriz-lacunas-issue34-atividade1.json"
+  },
+  "blockers": [
+    {
+      "id": "act1-local-hash-check",
+      "count": 258,
+      "blocksSyntheticFixtures": false,
+      "evidenceStatus": "declared-hash-not-recomputed",
+      "activities": [
+        1
+      ]
+    },
+    {
+      "id": "act3-act5-grouped-local-only",
+      "count": 350,
+      "linkedDefinition": "local-only",
+      "individualEvidence": false,
+      "coreProfessionOptions": 36,
+      "catalogRecords": 314,
+      "activities": [
+        3,
+        5
+      ],
+      "members": [
+        {
+          "id": "pilot-profession:core:martial:*",
+          "count": 12,
+          "activity": 3,
+          "reason": "range-starts-not-reextracted"
+        },
+        {
+          "id": "pilot-profession:core:religious:*",
+          "count": 7,
+          "activity": 3,
+          "reason": "range-starts-not-reextracted"
+        },
+        {
+          "id": "pilot-profession:core:wilderness:*",
+          "count": 17,
+          "activity": 3,
+          "reason": "range-starts-not-reextracted"
+        },
+        {
+          "id": "class:source-grant-only",
+          "count": 57,
+          "activity": 5,
+          "reason": "catalog-group-not-individual"
+        },
+        {
+          "id": "class:exact-definition-refs",
+          "count": 182,
+          "activity": 5,
+          "reason": "catalog-group-not-individual"
+        },
+        {
+          "id": "class:generic-editable-refs",
+          "count": 75,
+          "activity": 5,
+          "reason": "catalog-group-not-individual"
+        }
+      ]
+    }
+  ],
+  "recursion": {
+    "maxDepth": 4,
+    "onLimit": "pending",
+    "pendingReason": "bounded-recursion",
+    "silentReroll": false,
+    "discardOutcome": false
+  },
+  "unprojectedPublishedCycles": [
+    {
+      "id": "only-human:character-fate",
+      "projected": false
+    },
+    {
+      "id": "only-human:piety",
+      "projected": false
+    },
+    {
+      "id": "only-human:siblings",
+      "projected": false
+    },
+    {
+      "id": "only-human:strange",
+      "projected": false
+    }
+  ],
+  "choices": [
+    {
+      "id": "fixture:band-option",
+      "options": ["fixture-option-a", "fixture-option-b"]
+    }
+  ],
+  "producedQueries": [
+    {
+      "id": "fixture:band-result",
+      "producedBy": {
+        "tableId": "fixture:bands",
+        "columnId": "main"
+      }
+    }
+  ],
+  "tables": [
+    {
+      "id": "fixture:bands",
+      "kind": "weighted-table",
+      "publishedCycle": false,
+      "columns": [
+        {
+          "id": "main",
+          "rollId": "fixture:bands#main",
+          "dice": {
+            "count": 1,
+            "sides": 6
+          },
+          "modifierDomain": {
+            "kind": "none"
+          },
+          "rows": [
+            {
+              "id": "fixture:bands:low",
+              "min": 1,
+              "max": 2,
+              "tail": "none",
+              "publishedWeight": {
+                "ways": "2",
+                "denominator": "6",
+                "basis": "natural-dice-faces"
+              },
+              "consequence": {
+                "kind": "effect",
+                "effect": {
+                  "op": "grant-item",
+                  "itemId": "fixture-token",
+                  "quantity": 1,
+                  "unit": "count",
+                  "possession": "carried",
+                  "usageApplied": false,
+                  "timing": "creation"
+                },
+                "pending": null
+              }
+            },
+            {
+              "id": "fixture:bands:mid",
+              "min": 3,
+              "max": 4,
+              "tail": "none",
+              "publishedWeight": {
+                "ways": "2",
+                "denominator": "6",
+                "basis": "natural-dice-faces"
+              },
+              "consequence": {
+                "kind": "effect",
+                "effect": {
+                  "op": "narrative-marker",
+                  "code": "fixture-band-mid",
+                  "timing": "narrative",
+                  "mutatesMechanics": false
+                },
+                "pending": null
+              }
+            },
+            {
+              "id": "fixture:bands:high",
+              "min": 5,
+              "max": 6,
+              "tail": "none",
+              "publishedWeight": {
+                "ways": "2",
+                "denominator": "6",
+                "basis": "natural-dice-faces"
+              },
+              "consequence": {
+                "kind": "effect",
+                "effect": {
+                  "op": "follow-subtable",
+                  "tableId": "fixture:child",
+                  "timing": "creation"
+                },
+                "pending": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fixture:child",
+      "kind": "weighted-table",
+      "publishedCycle": false,
+      "columns": [
+        {
+          "id": "main",
+          "rollId": "fixture:child#main",
+          "dice": {
+            "count": 1,
+            "sides": 2
+          },
+          "modifierDomain": {
+            "kind": "none"
+          },
+          "rows": [
+            {
+              "id": "fixture:child:1",
+              "min": 1,
+              "max": 1,
+              "tail": "none",
+              "publishedWeight": {
+                "ways": "1",
+                "denominator": "2",
+                "basis": "natural-dice-faces"
+              },
+              "consequence": {
+                "kind": "effect",
+                "effect": {
+                  "op": "narrative-marker",
+                  "code": "fixture-child-one",
+                  "timing": "narrative",
+                  "mutatesMechanics": false
+                },
+                "pending": null
+              }
+            },
+            {
+              "id": "fixture:child:2",
+              "min": 2,
+              "max": 2,
+              "tail": "none",
+              "publishedWeight": {
+                "ways": "1",
+                "denominator": "2",
+                "basis": "natural-dice-faces"
+              },
+              "consequence": {
+                "kind": "effect",
+                "effect": {
+                  "op": "narrative-marker",
+                  "code": "fixture-child-two",
+                  "timing": "narrative",
+                  "mutatesMechanics": false
+                },
+                "pending": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fixture:columns",
+      "kind": "weighted-table",
+      "publishedCycle": false,
+      "columns": [
+        {
+          "id": "positive",
+          "rollId": "fixture:columns#positive",
+          "dice": {
+            "count": 1,
+            "sides": 2
+          },
+          "modifierDomain": {
+            "kind": "none"
+          },
+          "rows": [
+            {
+              "id": "fixture:positive:1",
+              "min": 1,
+              "max": 1,
+              "tail": "none",
+              "publishedWeight": {
+                "ways": "1",
+                "denominator": "2",
+                "basis": "natural-dice-faces"
+              },
+              "consequence": {
+                "kind": "effect",
+                "effect": {
+                  "op": "narrative-marker",
+                  "code": "fixture-positive-one",
+                  "timing": "narrative",
+                  "mutatesMechanics": false
+                },
+                "pending": null
+              }
+            },
+            {
+              "id": "fixture:positive:2",
+              "min": 2,
+              "max": 2,
+              "tail": "none",
+              "publishedWeight": {
+                "ways": "1",
+                "denominator": "2",
+                "basis": "natural-dice-faces"
+              },
+              "consequence": {
+                "kind": "effect",
+                "effect": {
+                  "op": "narrative-marker",
+                  "code": "fixture-positive-two",
+                  "timing": "narrative",
+                  "mutatesMechanics": false
+                },
+                "pending": null
+              }
+            }
+          ]
+        },
+        {
+          "id": "negative",
+          "rollId": "fixture:columns#negative",
+          "dice": {
+            "count": 1,
+            "sides": 2
+          },
+          "modifierDomain": {
+            "kind": "none"
+          },
+          "rows": [
+            {
+              "id": "fixture:negative:1",
+              "min": 1,
+              "max": 1,
+              "tail": "none",
+              "publishedWeight": {
+                "ways": "1",
+                "denominator": "2",
+                "basis": "natural-dice-faces"
+              },
+              "consequence": {
+                "kind": "effect",
+                "effect": {
+                  "op": "narrative-marker",
+                  "code": "fixture-negative-one",
+                  "timing": "narrative",
+                  "mutatesMechanics": false
+                },
+                "pending": null
+              }
+            },
+            {
+              "id": "fixture:negative:2",
+              "min": 2,
+              "max": 2,
+              "tail": "none",
+              "publishedWeight": {
+                "ways": "1",
+                "denominator": "2",
+                "basis": "natural-dice-faces"
+              },
+              "consequence": {
+                "kind": "effect",
+                "effect": {
+                  "op": "narrative-marker",
+                  "code": "fixture-negative-two",
+                  "timing": "narrative",
+                  "mutatesMechanics": false
+                },
+                "pending": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fixture:open",
+      "kind": "weighted-table",
+      "publishedCycle": false,
+      "columns": [
+        {
+          "id": "main",
+          "rollId": "fixture:open#main",
+          "dice": {
+            "count": 1,
+            "sides": 6
+          },
+          "modifierDomain": {
+            "kind": "authorized",
+            "values": [
+              -1,
+              0,
+              1
+            ]
+          },
+          "rows": [
+            {
+              "id": "fixture:open:low",
+              "min": null,
+              "max": 2,
+              "tail": "open-low",
+              "publishedWeight": {
+                "ways": "2",
+                "denominator": "6",
+                "basis": "natural-dice-faces"
+              },
+              "consequence": {
+                "kind": "effect",
+                "effect": {
+                  "op": "narrative-marker",
+                  "code": "fixture-open-low",
+                  "timing": "narrative",
+                  "mutatesMechanics": false
+                },
+                "pending": null
+              }
+            },
+            {
+              "id": "fixture:open:mid",
+              "min": 3,
+              "max": 4,
+              "tail": "none",
+              "publishedWeight": {
+                "ways": "2",
+                "denominator": "6",
+                "basis": "natural-dice-faces"
+              },
+              "consequence": {
+                "kind": "effect",
+                "effect": {
+                  "op": "narrative-marker",
+                  "code": "fixture-open-mid",
+                  "timing": "narrative",
+                  "mutatesMechanics": false
+                },
+                "pending": null
+              }
+            },
+            {
+              "id": "fixture:open:high",
+              "min": 5,
+              "max": null,
+              "tail": "open-high",
+              "publishedWeight": {
+                "ways": "2",
+                "denominator": "6",
+                "basis": "natural-dice-faces"
+              },
+              "consequence": {
+                "kind": "effect",
+                "effect": {
+                  "op": "narrative-marker",
+                  "code": "fixture-open-high",
+                  "timing": "narrative",
+                  "mutatesMechanics": false
+                },
+                "pending": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fixture:cycle-a",
+      "kind": "weighted-table",
+      "publishedCycle": true,
+      "columns": [
+        {
+          "id": "main",
+          "rollId": "fixture:cycle-a#main",
+          "dice": {
+            "count": 1,
+            "sides": 2
+          },
+          "modifierDomain": {
+            "kind": "none"
+          },
+          "rows": [
+            {
+              "id": "fixture:cycle-a:1",
+              "min": 1,
+              "max": 1,
+              "tail": "none",
+              "publishedWeight": {
+                "ways": "1",
+                "denominator": "2",
+                "basis": "natural-dice-faces"
+              },
+              "consequence": {
+                "kind": "effect",
+                "effect": {
+                  "op": "follow-subtable",
+                  "tableId": "fixture:cycle-b",
+                  "timing": "creation"
+                },
+                "pending": null
+              }
+            },
+            {
+              "id": "fixture:cycle-a:2",
+              "min": 2,
+              "max": 2,
+              "tail": "none",
+              "publishedWeight": {
+                "ways": "1",
+                "denominator": "2",
+                "basis": "natural-dice-faces"
+              },
+              "consequence": {
+                "kind": "effect",
+                "effect": {
+                  "op": "narrative-marker",
+                  "code": "fixture-cycle-a",
+                  "timing": "narrative",
+                  "mutatesMechanics": false
+                },
+                "pending": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fixture:cycle-b",
+      "kind": "weighted-table",
+      "publishedCycle": true,
+      "columns": [
+        {
+          "id": "main",
+          "rollId": "fixture:cycle-b#main",
+          "dice": {
+            "count": 1,
+            "sides": 2
+          },
+          "modifierDomain": {
+            "kind": "none"
+          },
+          "rows": [
+            {
+              "id": "fixture:cycle-b:1",
+              "min": 1,
+              "max": 1,
+              "tail": "none",
+              "publishedWeight": {
+                "ways": "1",
+                "denominator": "2",
+                "basis": "natural-dice-faces"
+              },
+              "consequence": {
+                "kind": "effect",
+                "effect": {
+                  "op": "follow-subtable",
+                  "tableId": "fixture:cycle-a",
+                  "timing": "creation"
+                },
+                "pending": null
+              }
+            },
+            {
+              "id": "fixture:cycle-b:2",
+              "min": 2,
+              "max": 2,
+              "tail": "none",
+              "publishedWeight": {
+                "ways": "1",
+                "denominator": "2",
+                "basis": "natural-dice-faces"
+              },
+              "consequence": {
+                "kind": "effect",
+                "effect": {
+                  "op": "narrative-marker",
+                  "code": "fixture-cycle-b",
+                  "timing": "narrative",
+                  "mutatesMechanics": false
+                },
+                "pending": null
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "lookups": [
+    {
+      "id": "fixture:gear-by-band",
+      "kind": "lookup",
+      "dice": null,
+      "reads": {
+        "queryId": "fixture:band-result",
+        "component": "result"
+      },
+      "keys": [
+        {
+          "key": "fixture:bands:low",
+          "consequence": {
+            "kind": "effect",
+            "effect": {
+              "op": "narrative-marker",
+              "code": "fixture-lookup-low",
+              "timing": "narrative",
+              "mutatesMechanics": false
+            },
+            "pending": null
+          }
+        },
+        {
+          "key": "fixture:bands:mid",
+          "consequence": {
+            "kind": "pending",
+            "effect": null,
+            "pending": {
+              "reason": "disabled-source",
+              "retainsConsequence": true,
+              "matrixSelection": null,
+              "linkedDefinition": {
+                "kind": "none"
+              }
+            }
+          }
+        },
+        {
+          "key": "fixture:bands:high",
+          "consequence": {
+            "kind": "pending",
+            "effect": null,
+            "pending": {
+              "reason": "disabled-source",
+              "retainsConsequence": true,
+              "matrixSelection": null,
+              "linkedDefinition": {
+                "kind": "none"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "sideRolls": [
+    {
+      "id": "fixture:side:creation",
+      "parent": {
+        "tableId": "fixture:bands",
+        "columnId": "main",
+        "rowId": "fixture:bands:low"
+      },
+      "phase": "creation",
+      "dice": {
+        "count": 1,
+        "sides": 6
+      },
+      "rollId": "fixture:side:creation",
+      "subject": "character",
+      "frequency": "once-per-origin",
+      "appliesOnPossession": false,
+      "when": {
+        "optionId": null
+      },
+      "consequence": {
+        "kind": "effect",
+        "effect": {
+          "op": "grant-currency",
+          "amount": "1",
+          "denomination": "ss",
+          "bits": "100",
+          "timing": "creation"
+        },
+        "pending": null
+      }
+    },
+    {
+      "id": "fixture:side:equip",
+      "parent": {
+        "tableId": "fixture:bands",
+        "columnId": "main",
+        "rowId": "fixture:bands:low"
+      },
+      "phase": "equip",
+      "dice": {
+        "count": 1,
+        "sides": 6
+      },
+      "rollId": "fixture:side:equip",
+      "subject": "character",
+      "frequency": "once-per-origin",
+      "appliesOnPossession": false,
+      "when": {
+        "optionId": null
+      },
+      "consequence": {
+        "kind": "effect",
+        "effect": {
+          "op": "substitute-defense",
+          "when": "equipped",
+          "mode": "substitute",
+          "base": "agility",
+          "value": 1,
+          "timing": "on-equip",
+          "possessionApplies": false
+        },
+        "pending": null
+      }
+    },
+    {
+      "id": "fixture:side:use",
+      "parent": {
+        "tableId": "fixture:bands",
+        "columnId": "main",
+        "rowId": "fixture:bands:low"
+      },
+      "phase": "use",
+      "dice": {
+        "count": 1,
+        "sides": 6
+      },
+      "rollId": "fixture:side:use",
+      "subject": "item",
+      "frequency": "each-use",
+      "appliesOnPossession": false,
+      "when": {
+        "optionId": "fixture-option-a"
+      },
+      "consequence": {
+        "kind": "effect",
+        "effect": {
+          "op": "substitute-defense",
+          "when": "wielded",
+          "mode": "substitute",
+          "base": "fixed",
+          "value": 1,
+          "timing": "on-use",
+          "possessionApplies": false
+        },
+        "pending": null
+      }
+    },
+    {
+      "id": "fixture:side:relative",
+      "parent": {
+        "tableId": "fixture:bands",
+        "columnId": "main",
+        "rowId": "fixture:bands:low"
+      },
+      "phase": "creation",
+      "dice": {
+        "count": 1,
+        "sides": 6
+      },
+      "rollId": "fixture:side:relative",
+      "subject": "relative",
+      "frequency": "once-per-origin",
+      "appliesOnPossession": false,
+      "when": {
+        "optionId": null
+      },
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "manual-composition",
+          "retainsConsequence": true,
+          "matrixSelection": null,
+          "linkedDefinition": {
+            "kind": "not-an-item"
+          }
+        }
+      }
+    }
+  ],
+  "items": [
+    {
+      "id": "fixture-token",
+      "label": "fixture-token",
+      "price": {
+        "kind": "exact",
+        "amount": "1",
+        "denomination": "ss",
+        "bits": "100"
+      },
+      "priceConsequence": {
+        "kind": "effect",
+        "effect": {
+          "op": "record-price",
+          "priceKind": "exact",
+          "bits": "100",
+          "timing": "narrative",
+          "mutatesMechanics": false
+        },
+        "pending": null
+      },
+      "profile": "none",
+      "possessionAppliesEffects": false,
+      "onPossess": {
+        "kind": "effect",
+        "effect": {
+          "op": "narrative-marker",
+          "code": "fixture-carried",
+          "timing": "narrative",
+          "mutatesMechanics": false
+        },
+        "pending": null
+      },
+      "onEquip": null,
+      "onUse": null
+    },
+    {
+      "id": "fixture-wrap",
+      "label": "fixture-wrap",
+      "price": {
+        "kind": "unknown",
+        "amount": null,
+        "denomination": null,
+        "bits": null
+      },
+      "priceConsequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "unknown-price",
+          "retainsConsequence": true,
+          "matrixSelection": null,
+          "linkedDefinition": {
+            "kind": "none"
+          }
+        }
+      },
+      "profile": "armor",
+      "possessionAppliesEffects": false,
+      "onPossess": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "possession-is-not-use",
+          "retainsConsequence": true,
+          "matrixSelection": null,
+          "linkedDefinition": {
+            "kind": "none"
+          }
+        }
+      },
+      "onEquip": {
+        "kind": "effect",
+        "effect": {
+          "op": "substitute-defense",
+          "when": "equipped",
+          "mode": "substitute",
+          "base": "agility",
+          "value": 1,
+          "timing": "on-equip",
+          "possessionApplies": false
+        },
+        "pending": null
+      },
+      "onUse": null
+    },
+    {
+      "id": "fixture-generic",
+      "label": "fixture-generic",
+      "price": {
+        "kind": "variable",
+        "amount": null,
+        "denomination": null,
+        "bits": null
+      },
+      "priceConsequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "unknown-price",
+          "retainsConsequence": true,
+          "matrixSelection": null,
+          "linkedDefinition": {
+            "kind": "none"
+          }
+        }
+      },
+      "profile": "generic",
+      "possessionAppliesEffects": false,
+      "onPossess": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "generic-profile",
+          "retainsConsequence": true,
+          "matrixSelection": null,
+          "linkedDefinition": {
+            "kind": "none"
+          }
+        }
+      },
+      "onEquip": null,
+      "onUse": null
+    },
+    {
+      "id": "fixture-point",
+      "label": "fixture-point",
+      "price": {
+        "kind": "exact",
+        "amount": "2",
+        "denomination": "bits",
+        "bits": "2"
+      },
+      "priceConsequence": {
+        "kind": "effect",
+        "effect": {
+          "op": "record-price",
+          "priceKind": "exact",
+          "bits": "2",
+          "timing": "narrative",
+          "mutatesMechanics": false
+        },
+        "pending": null
+      },
+      "profile": "weapon",
+      "possessionAppliesEffects": false,
+      "onPossess": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "possession-is-not-use",
+          "retainsConsequence": true,
+          "matrixSelection": null,
+          "linkedDefinition": {
+            "kind": "none"
+          }
+        }
+      },
+      "onEquip": null,
+      "onUse": {
+        "kind": "effect",
+        "effect": {
+          "op": "substitute-defense",
+          "when": "wielded",
+          "mode": "substitute",
+          "base": "fixed",
+          "value": 1,
+          "timing": "on-use",
+          "possessionApplies": false
+        },
+        "pending": null
+      }
+    },
+    {
+      "id": "fixture-blade",
+      "label": "fixture-blade",
+      "price": { "kind": "exact", "amount": "1", "denomination": "bits", "bits": "1" },
+      "priceConsequence": { "kind": "effect", "pending": null, "effect": { "op": "record-price", "priceKind": "exact", "bits": "1", "timing": "narrative", "mutatesMechanics": false } },
+      "profile": "weapon",
+      "possessionAppliesEffects": false,
+      "onPossess": { "kind": "pending", "effect": null, "pending": { "reason": "possession-is-not-use", "retainsConsequence": true, "matrixSelection": null, "linkedDefinition": { "kind": "none" } } },
+      "onEquip": null,
+      "onUse": { "kind": "pending", "effect": null, "pending": { "reason": "weapon-no-defense", "retainsConsequence": true, "matrixSelection": null, "linkedDefinition": { "kind": "none" } } }
+    },
+    {
+      "id": "fixture-shield",
+      "label": "fixture-shield",
+      "price": { "kind": "exact", "amount": "1", "denomination": "cp", "bits": "10" },
+      "priceConsequence": { "kind": "effect", "pending": null, "effect": { "op": "record-price", "priceKind": "exact", "bits": "10", "timing": "narrative", "mutatesMechanics": false } },
+      "profile": "armor",
+      "possessionAppliesEffects": false,
+      "onPossess": { "kind": "pending", "effect": null, "pending": { "reason": "possession-is-not-use", "retainsConsequence": true, "matrixSelection": null, "linkedDefinition": { "kind": "none" } } },
+      "onEquip": { "kind": "pending", "effect": null, "pending": { "reason": "defense-bonus-not-substitution", "retainsConsequence": true, "matrixSelection": null, "linkedDefinition": { "kind": "none" } } },
+      "onUse": null
+    }
+  ],
+  "grants": [
+    {
+      "id": "fixture:grant:token",
+      "origin": {
+        "publicationId": "fixture-publication",
+        "version": null,
+        "entityId": "fixture:bands",
+        "resultId": "fixture:bands:low",
+        "componentId": "grant"
+      },
+      "subject": "character",
+      "precondition": {
+        "kind": "always"
+      },
+      "frequency": "once",
+      "source": "table",
+      "consequence": {
+        "kind": "effect",
+        "effect": {
+          "op": "grant-item",
+          "itemId": "fixture-token",
+          "quantity": 1,
+          "unit": "count",
+          "possession": "carried",
+          "usageApplied": false,
+          "timing": "creation"
+        },
+        "pending": null
+      }
+    },
+    {
+      "id": "fixture:grant:choice",
+      "origin": {
+        "publicationId": "fixture-publication",
+        "version": null,
+        "entityId": "fixture:bands",
+        "resultId": "fixture:bands:high",
+        "componentId": "choice"
+      },
+      "subject": "character",
+      "precondition": { "kind": "choice-selected", "optionId": "fixture-option-a" },
+      "frequency": "once",
+      "source": "table",
+      "consequence": {
+        "kind": "effect",
+        "pending": null,
+        "effect": { "op": "narrative-marker", "code": "fixture-choice", "timing": "narrative", "mutatesMechanics": false }
+      }
+    }
+  ],
+  "events": [
+    {
+      "id": "fixture:event:token",
+      "originKey": "fixture-publication@null/fixture:bands/fixture:bands:low/grant",
+      "origin": {
+        "publicationId": "fixture-publication",
+        "version": null,
+        "entityId": "fixture:bands",
+        "resultId": "fixture:bands:low",
+        "componentId": "grant"
+      },
+      "subject": "character",
+      "phase": "creation",
+      "consequence": {
+        "kind": "effect",
+        "effect": {
+          "op": "grant-item",
+          "itemId": "fixture-token",
+          "quantity": 1,
+          "unit": "count",
+          "possession": "carried",
+          "usageApplied": false,
+          "timing": "creation"
+        },
+        "pending": null
+      }
+    },
+    {
+      "id": "fixture:event:note",
+      "originKey": "fixture-publication@null/fixture:bands/fixture:bands:mid/note",
+      "origin": {
+        "publicationId": "fixture-publication",
+        "version": null,
+        "entityId": "fixture:bands",
+        "resultId": "fixture:bands:mid",
+        "componentId": "note"
+      },
+      "subject": "character",
+      "phase": "narrative",
+      "consequence": {
+        "kind": "effect",
+        "effect": {
+          "op": "narrative-marker",
+          "code": "fixture-band-mid",
+          "timing": "narrative",
+          "mutatesMechanics": false
+        },
+        "pending": null
+      }
+    }
+  ],
+  "groupedPendings": [
+    {
+      "id": "pilot-profession:core:martial:*",
+      "blockerId": "act3-act5-grouped-local-only",
+      "activity": 3,
+      "represents": 12,
+      "linkedDefinition": {
+        "kind": "local-only",
+        "individualEvidence": false
+      },
+      "evidence": {
+        "kind": "local-only-group",
+        "individualEvidence": false,
+        "recomputedHash": null
+      },
+      "weights": null,
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "range-starts-not-reextracted",
+          "retainsConsequence": true,
+          "matrixSelection": "agrupado",
+          "linkedDefinition": {
+            "kind": "local-only",
+            "individualEvidence": false
+          }
+        }
+      }
+    },
+    {
+      "id": "pilot-profession:core:religious:*",
+      "blockerId": "act3-act5-grouped-local-only",
+      "activity": 3,
+      "represents": 7,
+      "linkedDefinition": {
+        "kind": "local-only",
+        "individualEvidence": false
+      },
+      "evidence": {
+        "kind": "local-only-group",
+        "individualEvidence": false,
+        "recomputedHash": null
+      },
+      "weights": null,
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "range-starts-not-reextracted",
+          "retainsConsequence": true,
+          "matrixSelection": "agrupado",
+          "linkedDefinition": {
+            "kind": "local-only",
+            "individualEvidence": false
+          }
+        }
+      }
+    },
+    {
+      "id": "pilot-profession:core:wilderness:*",
+      "blockerId": "act3-act5-grouped-local-only",
+      "activity": 3,
+      "represents": 17,
+      "linkedDefinition": {
+        "kind": "local-only",
+        "individualEvidence": false
+      },
+      "evidence": {
+        "kind": "local-only-group",
+        "individualEvidence": false,
+        "recomputedHash": null
+      },
+      "weights": null,
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "range-starts-not-reextracted",
+          "retainsConsequence": true,
+          "matrixSelection": "agrupado",
+          "linkedDefinition": {
+            "kind": "local-only",
+            "individualEvidence": false
+          }
+        }
+      }
+    },
+    {
+      "id": "class:source-grant-only",
+      "blockerId": "act3-act5-grouped-local-only",
+      "activity": 5,
+      "represents": 57,
+      "linkedDefinition": {
+        "kind": "local-only",
+        "individualEvidence": false
+      },
+      "evidence": {
+        "kind": "local-only-group",
+        "individualEvidence": false,
+        "recomputedHash": null
+      },
+      "weights": null,
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "catalog-group-not-individual",
+          "retainsConsequence": true,
+          "matrixSelection": "agrupado",
+          "linkedDefinition": {
+            "kind": "local-only",
+            "individualEvidence": false
+          }
+        }
+      }
+    },
+    {
+      "id": "class:exact-definition-refs",
+      "blockerId": "act3-act5-grouped-local-only",
+      "activity": 5,
+      "represents": 182,
+      "linkedDefinition": {
+        "kind": "local-only",
+        "individualEvidence": false
+      },
+      "evidence": {
+        "kind": "local-only-group",
+        "individualEvidence": false,
+        "recomputedHash": null
+      },
+      "weights": null,
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "catalog-group-not-individual",
+          "retainsConsequence": true,
+          "matrixSelection": "agrupado",
+          "linkedDefinition": {
+            "kind": "local-only",
+            "individualEvidence": false
+          }
+        }
+      }
+    },
+    {
+      "id": "class:generic-editable-refs",
+      "blockerId": "act3-act5-grouped-local-only",
+      "activity": 5,
+      "represents": 75,
+      "linkedDefinition": {
+        "kind": "local-only",
+        "individualEvidence": false
+      },
+      "evidence": {
+        "kind": "local-only-group",
+        "individualEvidence": false,
+        "recomputedHash": null
+      },
+      "weights": null,
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "catalog-group-not-individual",
+          "retainsConsequence": true,
+          "matrixSelection": "agrupado",
+          "linkedDefinition": {
+            "kind": "local-only",
+            "individualEvidence": false
+          }
+        }
+      }
+    }
+  ],
+  "manualResolutions": [
+    {
+      "matrixId": "finding:death-multiplicity",
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "manual-procedure",
+          "retainsConsequence": true,
+          "matrixSelection": "selecionado-manual",
+          "linkedDefinition": {
+            "kind": "not-an-item"
+          }
+        }
+      }
+    },
+    {
+      "matrixId": "finding:dimension-order",
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "manual-composition",
+          "retainsConsequence": true,
+          "matrixSelection": "selecionado-manual",
+          "linkedDefinition": {
+            "kind": "not-an-item"
+          }
+        }
+      }
+    },
+    {
+      "matrixId": "finding:external-dependencies",
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "conditional-manual",
+          "retainsConsequence": true,
+          "matrixSelection": "selecionado-manual",
+          "linkedDefinition": {
+            "kind": "not-an-item"
+          }
+        }
+      }
+    },
+    {
+      "matrixId": "finding:outer-category-choice",
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "manual-category-choice",
+          "retainsConsequence": true,
+          "matrixSelection": "selecionado-manual",
+          "linkedDefinition": {
+            "kind": "not-an-item"
+          }
+        }
+      }
+    },
+    {
+      "matrixId": "finding:recursion",
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "bounded-recursion",
+          "retainsConsequence": true,
+          "matrixSelection": "selecionado-manual",
+          "linkedDefinition": {
+            "kind": "not-an-item"
+          }
+        }
+      }
+    },
+    {
+      "matrixId": "extra:major-windfall-1-fallback",
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "conditional-branch",
+          "retainsConsequence": true,
+          "matrixSelection": "selecionado-manual",
+          "linkedDefinition": {
+            "kind": "local-only",
+            "individualEvidence": false
+          }
+        }
+      }
+    },
+    {
+      "matrixId": "item-ref:grant:core:kit:wealthy/grant/special/shield/shield",
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "choice-required",
+          "retainsConsequence": true,
+          "matrixSelection": "selecionado-manual",
+          "linkedDefinition": {
+            "kind": "choice",
+            "candidates": [
+              "pilot-item:core:large-shield",
+              "pilot-item:core:small-shield"
+            ],
+            "resolvedItemId": null
+          }
+        }
+      }
+    },
+    {
+      "matrixId": "item-ref:grant:profession:pilot-profession:only-human:common:r11/grant/entertainer-clothing/costume/costume",
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "choice-required",
+          "retainsConsequence": true,
+          "matrixSelection": "selecionado-manual",
+          "linkedDefinition": {
+            "kind": "choice",
+            "candidates": [
+              "pilot-item:core:elaborate-costume",
+              "pilot-item:core:simple-costume"
+            ],
+            "resolvedItemId": null
+          }
+        }
+      }
+    },
+    {
+      "matrixId": "item-ref:grant:profession:pilot-profession:only-human:common:r11/grant/entertainer-clothing/dress/dress",
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "choice-required",
+          "retainsConsequence": true,
+          "matrixSelection": "selecionado-manual",
+          "linkedDefinition": {
+            "kind": "choice",
+            "candidates": [
+              "pilot-item:core:basic-dress",
+              "pilot-item:core:fancy-dress"
+            ],
+            "resolvedItemId": null
+          }
+        }
+      }
+    },
+    {
+      "matrixId": "item-ref:grant:profession:pilot-profession:only-human:military:r03/grant/spear",
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "choice-required",
+          "retainsConsequence": true,
+          "matrixSelection": "selecionado-manual",
+          "linkedDefinition": {
+            "kind": "choice",
+            "candidates": [
+              "pilot-item:core:basic-spear",
+              "pilot-item:core:military-spear"
+            ],
+            "resolvedItemId": null
+          }
+        }
+      }
+    },
+    {
+      "matrixId": "item-ref:grant:profession:pilot-profession:only-human:wilderness:r17/grant/spear",
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "choice-required",
+          "retainsConsequence": true,
+          "matrixSelection": "selecionado-manual",
+          "linkedDefinition": {
+            "kind": "choice",
+            "candidates": [
+              "pilot-item:core:basic-spear",
+              "pilot-item:core:military-spear"
+            ],
+            "resolvedItemId": null
+          }
+        }
+      }
+    },
+    {
+      "matrixId": "language:dead-languages",
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "open-category-language",
+          "retainsConsequence": true,
+          "matrixSelection": "selecionado-manual",
+          "linkedDefinition": {
+            "kind": "not-an-item"
+          }
+        }
+      }
+    },
+    {
+      "matrixId": "language:secret-language",
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "open-category-language",
+          "retainsConsequence": true,
+          "matrixSelection": "selecionado-manual",
+          "linkedDefinition": {
+            "kind": "not-an-item"
+          }
+        }
+      }
+    },
+    {
+      "matrixId": "procedure:dimension-composition",
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "no-extra-life-rolls",
+          "retainsConsequence": true,
+          "matrixSelection": "selecionado-manual",
+          "linkedDefinition": {
+            "kind": "not-an-item"
+          }
+        }
+      }
+    },
+    {
+      "matrixId": "procedure:expanded-free-appearance",
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "player-fields",
+          "retainsConsequence": true,
+          "matrixSelection": "selecionado-manual",
+          "linkedDefinition": {
+            "kind": "not-an-item"
+          }
+        }
+      }
+    },
+    {
+      "matrixId": "procedure:partial-literacy",
+      "consequence": {
+        "kind": "pending",
+        "effect": null,
+        "pending": {
+          "reason": "partial-literacy",
+          "retainsConsequence": true,
+          "matrixSelection": "selecionado-manual",
+          "linkedDefinition": {
+            "kind": "not-an-item"
+          }
+        }
+      }
+    }
+  ]
+}
