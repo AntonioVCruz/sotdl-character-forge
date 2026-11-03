@@ -124,6 +124,8 @@ Consultas emitidas: `query:starting-lifestyle:only-human`, `query:profession-fac
 
 Os seis `lifestyle-modifier:*` entram no domínio da cauda aberta, depois do dado. O peso da coluna conta só os totais naturais. As cinco consultas `query:only-human:clothing|weapons|personal-gear|special-gear|money` e os 66 programas `profession:…`, mais `only-human:kit:<lifestyle>`, ficam em `act5Slots` com `body: null`. Corpo de lookup ou de programa é `act5-body-present`. Profissão de parente não concede equipamento ao personagem (`family-grants-gear`).
 
+Correção P2 em 2026-11-03: o gate compara a regra completa `id/tableId/results/delta/afterDice` com a lista autorizada compartilhada pelo builder; preservar o ID não autoriza outro bônus, evento ou resultado. Regressões adulteram delta, resultados e tabela em todas as seis regras, recusam aplicação antes do dado e conferem todos os gatilhos contra o resolvedor de lifestyle existente. A fixture e os pesos permanecem iguais.
+
 Há 61 ligações com `automaticExecution: false`. Sete side rolls de Only Human e treze de Oddities têm `appliesOnPossession: false`. Os de irmãos usam sujeito `relative`. Os treze de Oddities são topologia sintética (`fixture:oddity-side:*`), sem id de face publicado. O ciclo de duas tabelas `siblings` / `character-fate`, e os ciclos de `piety` e `strange`, param em `bounded-recursion`.
 
 Human Development é o procedimento projetado. O procedimento Core de ancestralidade fica registrado como alternativa da atividade 3, sem tabelas Core neste documento.

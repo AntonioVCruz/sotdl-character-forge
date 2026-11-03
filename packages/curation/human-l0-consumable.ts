@@ -52,10 +52,16 @@ export const ACTIVITY4_DEFERRED_TABLES = [
   'oddities:ingredients', 'oddities:minor-magic', 'oddities:personal', 'oddities:pets',
 ] as const;
 
-export const ACTIVITY4_LIFESTYLE_MODIFIER_IDS = [
-  'lifestyle-modifier:life', 'lifestyle-modifier:major-setback:5-8', 'lifestyle-modifier:major-setback:10',
-  'lifestyle-modifier:minor-setback', 'lifestyle-modifier:minor-windfall', 'lifestyle-modifier:major-windfall',
+/** Complete authorized rules, shared by projection and gate; an id alone is not an authorization. */
+export const ACTIVITY4_LIFESTYLE_MODIFIERS = [
+  { id: 'lifestyle-modifier:life', delta: 1, results: [9, 10, 11, 12], tableId: 'only-human:life', afterDice: true },
+  { id: 'lifestyle-modifier:major-setback:5-8', delta: -3, results: [5, 8], tableId: 'only-human:major-setback', afterDice: true },
+  { id: 'lifestyle-modifier:major-setback:10', delta: -1, results: [10], tableId: 'only-human:major-setback', afterDice: true },
+  { id: 'lifestyle-modifier:minor-setback', delta: -1, results: [4, 10, 19], tableId: 'only-human:minor-setback', afterDice: true },
+  { id: 'lifestyle-modifier:minor-windfall', delta: 1, results: [2, 7], tableId: 'only-human:minor-windfall', afterDice: true },
+  { id: 'lifestyle-modifier:major-windfall', delta: 3, results: [4, 13], tableId: 'only-human:major-windfall', afterDice: true },
 ] as const;
+export const ACTIVITY4_LIFESTYLE_MODIFIER_IDS = ACTIVITY4_LIFESTYLE_MODIFIERS.map(rule => rule.id);
 
 export const ACTIVITY4_ACT5_LOOKUPS = [
   'query:only-human:clothing', 'query:only-human:weapons', 'query:only-human:personal-gear',
@@ -537,7 +543,7 @@ function assertActivity4(doc: HumanL0ConsumableDocument) {
     fail('text-reference-is-generator', `${pointer}/textReference/consequence`);
   if (lot.links.length !== ACTIVITY4_LOT_COUNTS.links) fail('link-count', `${pointer}/links`);
   for (const [index, link] of lot.links.entries()) if (link.automaticExecution) fail('link-executes', `${pointer}/links/${index}`);
-  if (!same(lot.lifestyleModifiers.map(row => row.id), [...ACTIVITY4_LIFESTYLE_MODIFIER_IDS])) fail('modifier-domain', `${pointer}/lifestyleModifiers`);
+  if (!same(lot.lifestyleModifiers, ACTIVITY4_LIFESTYLE_MODIFIERS)) fail('modifier-domain', `${pointer}/lifestyleModifiers`);
   const lifestyle = doc.tables.find(tableValue => tableValue.id === 'only-human:lifestyle');
   const childhood = doc.tables.find(tableValue => tableValue.id === 'only-human:childhood');
   if (!lifestyle || lifestyle.columns[0].modifierDomain.kind !== 'authorized-rules' || !same(lifestyle.columns[0].modifierDomain.rules, [...ACTIVITY4_LIFESTYLE_MODIFIER_IDS]))

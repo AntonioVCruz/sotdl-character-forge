@@ -1,5 +1,5 @@
 import {
-  ACTIVITY4_ACT5_LOOKUPS, ACTIVITY4_DEFERRED_TABLES, ACTIVITY4_LIFESTYLE_MODIFIER_IDS, ACTIVITY4_LIFESTYLE_QUERY,
+  ACTIVITY4_ACT5_LOOKUPS, ACTIVITY4_DEFERRED_TABLES, ACTIVITY4_LIFESTYLE_MODIFIERS, ACTIVITY4_LIFESTYLE_MODIFIER_IDS, ACTIVITY4_LIFESTYLE_QUERY,
   ACTIVITY4_LOT_COUNTS, ACTIVITY4_MANUAL_IDS, ACTIVITY4_ODDITY_SIDE_HOST, ACTIVITY4_ODDITY_SIDE_TOPOLOGY,
   ACTIVITY4_OH_SIDE_ROLLS, GROUPED_LOCAL_ONLY_MEMBERS, HASH_CHECK_BLOCKER, HUMAN_L0_CONSUMABLE_COMPATIBILITY,
   HUMAN_L0_CONSUMABLE_CONTRACT, HUMAN_L0_CONSUMABLE_CONTRACT_VERSION, MANUAL_RESOLUTION_SLOTS, PUBLISHED_CYCLE_IDS,
@@ -275,14 +275,7 @@ export function buildHumanL0Activity4Lot(matrix: { records: Activity4MatrixRow[]
         professionFaces: { id: 'query:profession-faces:only-human' as const, selector: 'only-human:profession-router' as const, religiousChild: '1d6' as const, otherChildren: '1d20' as const, uniform: false as const },
         familyCategory: { id: 'query:family-category' as const, dice: null, uniformDie: false as const, missingContext: 'pending' as const },
       },
-      lifestyleModifiers: [
-        { id: 'lifestyle-modifier:life', delta: 1, results: [9, 10, 11, 12], tableId: 'only-human:life', afterDice: true as const },
-        { id: 'lifestyle-modifier:major-setback:5-8', delta: -3, results: [5, 8], tableId: 'only-human:major-setback', afterDice: true as const },
-        { id: 'lifestyle-modifier:major-setback:10', delta: -1, results: [10], tableId: 'only-human:major-setback', afterDice: true as const },
-        { id: 'lifestyle-modifier:minor-setback', delta: -1, results: [4, 10, 19], tableId: 'only-human:minor-setback', afterDice: true as const },
-        { id: 'lifestyle-modifier:minor-windfall', delta: 1, results: [2, 7], tableId: 'only-human:minor-windfall', afterDice: true as const },
-        { id: 'lifestyle-modifier:major-windfall', delta: 3, results: [4, 13], tableId: 'only-human:major-windfall', afterDice: true as const },
-      ],
+      lifestyleModifiers: ACTIVITY4_LIFESTYLE_MODIFIERS.map(rule => ({ ...rule, results: [...rule.results] })),
       act5Slots,
       links: links.map(row => ({ id: row.id, from: capability(row, 'from:'), to: capability(row, 'to:'), kind: capability(row, 'link:'), automaticExecution: false })),
       professionOptions,

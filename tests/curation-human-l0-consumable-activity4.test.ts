@@ -121,6 +121,31 @@ describe('Human L0 activity 4 lot on consumable 1.0.0', () => {
     expect(lifestyle?.columns[0].rows.at(-1)?.publishedWeight.ways).toBe('1');
   });
 
+  it.each(['delta', 'results', 'tableId'] as const)('rejects tampered %s for each authorized lifestyle modifier', field => {
+    for (let index = 0; index < document.activity4.lifestyleModifiers.length; index += 1) {
+      const next = fresh();
+      const modifier = next.activity4.lifestyleModifiers[index];
+      if (field === 'delta') modifier.delta = 20;
+      else if (field === 'results') modifier.results = [3];
+      else modifier.tableId = 'only-human:age';
+      rejects(next, 'modifier-domain');
+    }
+  });
+
+  it('rejects moving lifestyle modifiers before the dice', () => {
+    const next = fresh();
+    next.activity4.lifestyleModifiers[0].afterDice = false;
+    rejects(next, 'schema-invalid');
+  });
+
+  it('checks every authorized trigger and delta against the existing lifestyle resolver', () => {
+    for (const modifier of document.activity4.lifestyleModifiers) for (const result of modifier.results) {
+      const resolved = resolveStartingLifestyle({ procedure: 'only-human', faces: [3, 3, 3],
+        events: [{ id: 'fixture-event', tableId: modifier.tableId, result }] });
+      expect(resolved.total).toBe(9 + modifier.delta);
+    }
+  });
+
   it('composes the d6 to d20 selector and the unequal d20 router without a uniform row weight', () => {
     const parsed = parseHumanL0Consumable(fresh());
     const router = parsed.tables.find(table => table.id === 'only-human:profession-router');
