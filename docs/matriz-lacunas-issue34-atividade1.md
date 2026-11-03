@@ -1,6 +1,16 @@
 # Matriz de lacunas — #34 / atividade 1
 
-Auditoria de 2026-11-02 do recorte CUR-016–021 para a [issue #34](https://github.com/AntonioVCruz/sotdl-character-forge/issues/34), revista em 2026-11-03. A matriz da atividade 1 está publicada. O fechamento da atividade continua pendente em `act1-local-hash-check`: os hashes declarados não foram recomputados. Atividades 2–8 permanecem por fazer. A atividade 2 pode usar fixtures sintéticas em paralelo.
+Registro estrutural do recorte CUR-016–021 para a [issue #34](https://github.com/AntonioVCruz/sotdl-character-forge/issues/34), emitido originalmente sem corpus. Os estados `pending-act1-local-hash-check` e `hash-declarado-nao-refeito` do JSON são o snapshot dessa emissão; não são o estado atual do fechamento local.
+
+## Fechamento local posterior — atividade 1 concluída
+
+A [reconciliação e conferência local](fechamento-issue34-atividade1.md) encerrou `act1-local-hash-check`: 301 hashes de bytes, 1.060 referências, 233 referências de saída, oito pins de fonte e os 258 registros correspondentes foram conferidos. Os seis geradores CUR-016–021 passaram em `--check`. O [comprovante](../curation/reviews/issue34-activity1-local-verification.json) vincula o hash canônico desta matriz estrutural e a prova de reconciliação dos metadados, sem reclassificar seus registros ou promover conteúdo.
+
+Reprodução no ambiente autorizado: `npm run curation:verify:activity1`. Esta emissão estrutural continua reproduzível sem livros; o comando local exige os bytes pinados e não atualiza hashes automaticamente. Atividade 2 já aceita; atividades 3–8 e as restrições de fonte/paginação/handlers conservam seus próprios gates.
+
+## Snapshot da auditoria sem corpus
+
+As seções seguintes descrevem a disponibilidade e os bloqueios no ambiente da emissão estrutural original. O fechamento atual é o registro local vinculado acima.
 
 A lista normativa por identidade é [`matriz-lacunas-issue34-atividade1.json`](matriz-lacunas-issue34-atividade1.json). Cada registro tem `sourceVersion`, `sourceVersionReason`, `review`, `consumers`, `consequenceTypes`, `linkedDefinition` e `evidenceRef`. `sourceVersion` é `null` em todos: `sources.json` deixa `revision` nula e `editionStatus` unconfirmed. Nenhum dos dois arquivos contém excerto de livro.
 
@@ -222,6 +232,6 @@ O contrato consumível pode começar com fixtures sintéticas. Ele ainda depende
 | `act2-pending-effects` | engenheiro |  |  | O handler devolve efeito tipado ou pendência. Ramos externos, gerador desabilitado, escolha ambígua e perfil genérico permanecem pendências. |
 | `act2-no-promotion` | curador |  |  | Manter needs-review, fictionalData false e ruleset desabilitado. Paginação de PDF não foi inspecionada nesta auditoria. |
 
-A matriz publica o recorte. A atividade 1 só fecha quando `act1-local-hash-check` recomputar os hashes com os livros presentes. Nenhuma consequência obrigatória foi removida por estar adiada ou bloqueada.
+A matriz publica o recorte e conserva os bloqueios daquela emissão sem corpus. O fechamento posterior de `act1-local-hash-check` está no comprovante e no relatório locais vinculados no início. Nenhuma consequência obrigatória foi removida por estar adiada ou bloqueada.
 
-Conferência local ainda necessária: `node tools/curation/creation-tables.mjs --check`, `professions-languages.mjs --check`, `wealth-equipment.mjs --check`, `interesting-things.mjs --check`, `pilot-items.mjs --check` e `pilot-tables.mjs --check`.
+Conferência local exigida para reproduzir o fechamento: `node tools/curation/creation-tables.mjs --check`, `professions-languages.mjs --check`, `wealth-equipment.mjs --check`, `interesting-things.mjs --check`, `pilot-items.mjs --check` e `pilot-tables.mjs --check`; todos aprovados no fechamento registrado.

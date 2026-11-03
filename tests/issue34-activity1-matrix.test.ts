@@ -7,6 +7,9 @@ import { buildActivity1Matrix, renderActivity1Markdown } from '../tools/curation
 
 const jsonPath = 'docs/matriz-lacunas-issue34-atividade1.json';
 const markdownPath = 'docs/matriz-lacunas-issue34-atividade1.md';
+// Checkout EOLs may vary. The generated content, including whitespace and final LF,
+// must still match; source/evidence byte hashes are never normalized here.
+export const generatedTextMatches = (actual:string, expected:string) => actual.replace(/\r\n?/g,'\n')===expected;
 
 describe('issue 34 activity 1 matrix', () => {
   const matrix = buildActivity1Matrix();
@@ -18,8 +21,17 @@ describe('issue 34 activity 1 matrix', () => {
       writeFileSync(jsonPath, json);
       writeFileSync(markdownPath, markdown);
     }
-    expect(readFileSync(jsonPath, 'utf8')).toBe(json);
-    expect(readFileSync(markdownPath, 'utf8')).toBe(markdown);
+    expect(generatedTextMatches(readFileSync(jsonPath, 'utf8'),json), 'Structural matrix JSON differs beyond checkout line endings.').toBe(true);
+    expect(generatedTextMatches(readFileSync(markdownPath, 'utf8'),markdown), 'Structural matrix Markdown differs beyond checkout line endings.').toBe(true);
+  });
+
+  it('accepts LF/CRLF checkout text but still rejects changed content and missing final newline',()=>{
+    const expected='one\ntwo\n';
+    expect(generatedTextMatches(expected,expected)).toBe(true);
+    expect(generatedTextMatches('one\r\ntwo\r\n',expected)).toBe(true);
+    expect(generatedTextMatches('one\r\nother\r\n',expected)).toBe(false);
+    expect(generatedTextMatches('one\ntwo',expected)).toBe(false);
+    expect(generatedTextMatches('one \ntwo\n',expected)).toBe(false);
   });
 
   it('accounts for the CUR-016–021 universe without source prose', () => {
