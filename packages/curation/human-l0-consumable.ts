@@ -34,6 +34,70 @@ export const PUBLISHED_CYCLE_IDS = [
   'only-human:character-fate', 'only-human:piety', 'only-human:siblings', 'only-human:strange',
 ] as const;
 
+/** Activity 4 stays on consumable@1.0.0. Counts are the activity-1 matrix lots, not a new contract. */
+export const ACTIVITY4_LOT_COUNTS = {
+  ids: 506, onlyHuman: 227, oddities: 279, onlyHumanTables: 34, odditiesTables: 13,
+  onlyHumanManuals: 8, onlyHumanSideRolls: 7, odditiesSideRolls: 13, links: 61,
+  hashLines: 130, professionOptions: 67, professionProgramsDeferred: 66, developmentTemplates: 17,
+} as const;
+
+export const ACTIVITY4_MANUAL_IDS = [
+  'finding:death-multiplicity', 'finding:dimension-order', 'finding:external-dependencies',
+  'finding:outer-category-choice', 'finding:recursion', 'procedure:dimension-composition',
+  'procedure:expanded-free-appearance', 'procedure:partial-literacy',
+] as const;
+
+export const ACTIVITY4_DEFERRED_TABLES = [
+  'only-human:fears', 'only-human:desires', 'oddities:art', 'oddities:books',
+  'oddities:ingredients', 'oddities:minor-magic', 'oddities:personal', 'oddities:pets',
+] as const;
+
+/** Complete authorized rules, shared by projection and gate; an id alone is not an authorization. */
+export const ACTIVITY4_LIFESTYLE_MODIFIERS = [
+  { id: 'lifestyle-modifier:life', delta: 1, results: [9, 10, 11, 12], tableId: 'only-human:life', afterDice: true },
+  { id: 'lifestyle-modifier:major-setback:5-8', delta: -3, results: [5, 8], tableId: 'only-human:major-setback', afterDice: true },
+  { id: 'lifestyle-modifier:major-setback:10', delta: -1, results: [10], tableId: 'only-human:major-setback', afterDice: true },
+  { id: 'lifestyle-modifier:minor-setback', delta: -1, results: [4, 10, 19], tableId: 'only-human:minor-setback', afterDice: true },
+  { id: 'lifestyle-modifier:minor-windfall', delta: 1, results: [2, 7], tableId: 'only-human:minor-windfall', afterDice: true },
+  { id: 'lifestyle-modifier:major-windfall', delta: 3, results: [4, 13], tableId: 'only-human:major-windfall', afterDice: true },
+] as const;
+export const ACTIVITY4_LIFESTYLE_MODIFIER_IDS = ACTIVITY4_LIFESTYLE_MODIFIERS.map(rule => rule.id);
+
+export const ACTIVITY4_ACT5_LOOKUPS = [
+  'query:only-human:clothing', 'query:only-human:weapons', 'query:only-human:personal-gear',
+  'query:only-human:special-gear', 'query:only-human:money',
+] as const;
+
+export const ACTIVITY4_LIFESTYLE_QUERY = 'query:starting-lifestyle:only-human' as const;
+export const ACTIVITY4_ODDITY_SIDE_HOST = 'fixture:oddity-side-host' as const;
+
+export const ACTIVITY4_OH_SIDE_ROLLS = [
+  { id: 'side-roll:only-human:siblings:9-12', phase: 'creation', count: 1, sides: 3, modifier: 1, subject: 'relative', reading: 'total', parentRow: 'only-human:siblings:9-12' },
+  { id: 'side-roll:only-human:siblings:13-16', phase: 'creation', count: 1, sides: 6, modifier: 2, subject: 'relative', reading: 'total', parentRow: 'only-human:siblings:13-16' },
+  { id: 'side-roll:only-human:siblings:17-20', phase: 'creation', count: 2, sides: 6, modifier: 0, subject: 'relative', reading: 'total', parentRow: 'only-human:siblings:17-20' },
+  { id: 'side-roll:only-human:minor-setback:13', phase: 'creation', count: 1, sides: 6, modifier: 0, subject: 'character', reading: 'parity', parentRow: 'only-human:minor-setback:13-13' },
+  { id: 'side-roll:only-human:major-windfall:11', phase: 'use', count: 1, sides: 6, modifier: 0, subject: 'character', reading: 'total', parentRow: 'only-human:major-windfall:11-11' },
+  { id: 'side-roll:only-human:strange:6', phase: 'creation', count: 1, sides: 6, modifier: 0, subject: 'character', reading: 'branch', parentRow: 'only-human:strange:6-6' },
+  { id: 'side-roll:only-human:strange:16', phase: 'creation', count: 1, sides: 6, modifier: 0, subject: 'character', reading: 'branch', parentRow: 'only-human:strange:16-16' },
+] as const;
+
+/** Numeric topology of the 13 Oddities side rolls. Synthetic ids only; no published face ids. */
+export const ACTIVITY4_ODDITY_SIDE_TOPOLOGY = [
+  { phase: 'use', count: 1, sides: 20, modifier: 0 },
+  { phase: 'creation', count: 1, sides: 20, modifier: 0 },
+  { phase: 'creation', count: 1, sides: 20, modifier: 0 },
+  { phase: 'use', count: 1, sides: 20, modifier: 0 },
+  { phase: 'use', count: 1, sides: 6, modifier: 0 },
+  { phase: 'use', count: 5, sides: 20, modifier: 0 },
+  { phase: 'creation', count: 2, sides: 20, modifier: 0 },
+  { phase: 'use', count: 1, sides: 6, modifier: 0 },
+  { phase: 'use', count: 1, sides: 6, modifier: 0 },
+  { phase: 'use', count: 1, sides: 20, modifier: 0 },
+  { phase: 'creation', count: 1, sides: 6, modifier: 1 },
+  { phase: 'creation', count: 1, sides: 20, modifier: 0 },
+  { phase: 'use', count: 1, sides: 6, modifier: 0 },
+] as const;
+
 const choice = (candidates: readonly string[]) => ({ kind: 'choice' as const, candidates, resolvedItemId: null as null });
 const notItem = { kind: 'not-an-item' as const };
 const localOnly = { kind: 'local-only' as const, individualEvidence: false as const };
@@ -76,7 +140,8 @@ const pendingReason = z.enum([
   'conditional-branch', 'choice-required', 'open-category-language', 'no-extra-life-rolls', 'player-fields',
   'partial-literacy', 'range-starts-not-reextracted', 'catalog-group-not-individual', 'possession-is-not-use',
   'unknown-price', 'generic-profile', 'disabled-source', 'external-branch', 'open-tail-domain',
-  'weapon-no-defense', 'defense-bonus-not-substitution',
+  'weapon-no-defense', 'defense-bonus-not-substitution', 'manual-adjudication', 'activity-5-body',
+  'declared-hash-not-recomputed', 'text-reference', 'unprojected-alternative',
 ]);
 const link = z.discriminatedUnion('kind', [
   z.object({ kind: z.literal('not-an-item') }).strict(),
@@ -106,6 +171,7 @@ const reference = z.object({
   publicationId: id, version: z.null(), entityId: id, resultId: id.nullable(), componentId: id.nullable(),
 }).strict();
 const dice = z.object({ count: z.number().int().min(1).max(4), sides: z.number().int().min(2).max(20) }).strict();
+const sideDice = z.object({ count: z.number().int().min(1).max(10), sides: z.number().int().min(2).max(20) }).strict();
 const weight = z.object({
   ways: z.string().regex(/^[1-9]\d*$/), denominator: z.string().regex(/^[1-9]\d*$/),
   basis: z.enum(['natural-dice-faces', 'uniform-per-row', 'invented']),
@@ -117,6 +183,7 @@ const row = z.object({
 const modifierDomain = z.discriminatedUnion('kind', [
   z.object({ kind: z.literal('none') }).strict(),
   z.object({ kind: z.literal('authorized'), values: z.array(z.number().int().min(-100).max(100)).min(1).max(20) }).strict(),
+  z.object({ kind: z.literal('authorized-rules'), rules: z.array(id).min(1).max(8) }).strict(),
   z.object({ kind: z.literal('pending'), reason: z.literal('open-tail-domain') }).strict(),
 ]);
 const column = z.object({ id, rollId: id, dice, modifierDomain, rows: z.array(row).min(1).max(100) }).strict();
@@ -128,9 +195,11 @@ const lookup = z.object({
 }).strict();
 const sideRoll = z.object({
   id, parent: z.object({ tableId: id, columnId: id, rowId: id }).strict(),
-  phase: z.enum(['creation', 'equip', 'use']), dice, rollId: id,
+  phase: z.enum(['creation', 'equip', 'use']), dice: sideDice, rollId: id,
   subject: z.enum(['character', 'relative', 'item']), frequency: z.enum(['once-per-origin', 'each-use']),
   appliesOnPossession: z.boolean(), when: z.object({ optionId: id.nullable() }).strict(), consequence: HumanL0ConsequenceSchema,
+  modifier: z.number().int().min(-20).max(20).optional(),
+  reading: z.enum(['total', 'parity', 'branch']).optional(),
 }).strict();
 const price = z.object({
   kind: z.enum(['exact', 'minimum', 'variable', 'unknown']),
@@ -177,6 +246,101 @@ const groupedBlocker = z.object({
   }).strict()).max(20),
 }).strict();
 
+const activity4Schema = z.object({
+  lots: z.tuple([z.literal('lote-only-human'), z.literal('lote-oddities')]),
+  counts: z.object({
+    ids: z.literal(ACTIVITY4_LOT_COUNTS.ids),
+    onlyHuman: z.literal(ACTIVITY4_LOT_COUNTS.onlyHuman),
+    oddities: z.literal(ACTIVITY4_LOT_COUNTS.oddities),
+    onlyHumanTables: z.literal(ACTIVITY4_LOT_COUNTS.onlyHumanTables),
+    odditiesTables: z.literal(ACTIVITY4_LOT_COUNTS.odditiesTables),
+    onlyHumanManuals: z.literal(ACTIVITY4_LOT_COUNTS.onlyHumanManuals),
+    onlyHumanSideRolls: z.literal(ACTIVITY4_LOT_COUNTS.onlyHumanSideRolls),
+    odditiesSideRolls: z.literal(ACTIVITY4_LOT_COUNTS.odditiesSideRolls),
+    links: z.literal(ACTIVITY4_LOT_COUNTS.links),
+    hashLines: z.literal(ACTIVITY4_LOT_COUNTS.hashLines),
+    hashLinesMaterialized: z.literal(0),
+    professionOptions: z.literal(ACTIVITY4_LOT_COUNTS.professionOptions),
+    professionProgramsDeferred: z.literal(ACTIVITY4_LOT_COUNTS.professionProgramsDeferred),
+    developmentTemplates: z.literal(ACTIVITY4_LOT_COUNTS.developmentTemplates),
+  }).strict(),
+  hashLines: z.object({
+    count: z.literal(ACTIVITY4_LOT_COUNTS.hashLines),
+    materialized: z.number().int().nonnegative(),
+    weights: z.union([z.null(), z.record(z.string(), z.unknown())]),
+    reason: z.literal('declared-hash-not-recomputed'),
+  }).strict(),
+  ancestryProcedures: z.tuple([
+    z.object({ id: z.literal('human-development'), role: z.literal('default'), sourceId: z.literal('sotdl:only-human'), projected: z.literal(true), activity: z.literal(4) }).strict(),
+    z.object({ id: z.literal('core-alternative'), role: z.literal('alternative'), sourceId: z.literal('sotdl:shadow-of-the-demon-lord-core'), projected: z.literal(false), activity: z.literal(3) }).strict(),
+  ]),
+  interestingThings: z.object({
+    id: z.literal('selected:interesting-things-router'),
+    defaultVariant: z.literal('oddities'),
+    alternativeVariant: z.literal('core'),
+    alternativeProjected: z.literal(false),
+    alternativeActivity: z.literal(3),
+    silentFallback: z.boolean(),
+    disabledSource: z.literal('pending'),
+  }).strict(),
+  queries: z.object({
+    startingLifestyle: z.object({
+      id: z.literal(ACTIVITY4_LIFESTYLE_QUERY),
+      producedBy: z.object({ tableId: z.literal('only-human:lifestyle'), columnId: z.literal('main') }).strict(),
+      openTail: z.literal(true),
+      modifiersAfterDice: z.literal(true),
+    }).strict(),
+    professionFaces: z.object({
+      id: z.literal('query:profession-faces:only-human'),
+      selector: z.literal('only-human:profession-router'),
+      religiousChild: z.literal('1d6'),
+      otherChildren: z.literal('1d20'),
+      uniform: z.literal(false),
+    }).strict(),
+    familyCategory: z.object({
+      id: z.literal('query:family-category'),
+      dice: z.union([z.null(), dice]),
+      uniformDie: z.literal(false),
+      missingContext: z.literal('pending'),
+    }).strict(),
+  }).strict(),
+  lifestyleModifiers: z.array(z.object({
+    id, delta: z.number().int().min(-20).max(20), results: z.array(z.number().int().min(1).max(20)).min(1).max(8),
+    tableId: id, afterDice: z.literal(true),
+  }).strict()).length(6),
+  act5Slots: z.array(z.object({
+    id, kind: z.enum(['lifestyle-lookup', 'kit-program', 'profession-program']),
+    readsQueryId: z.literal(ACTIVITY4_LIFESTYLE_QUERY).nullable(),
+    body: z.union([z.null(), z.object({ present: z.literal(true) }).strict()]),
+    activity: z.literal(5),
+    familyGrantsGear: z.boolean(),
+  }).strict()).max(120),
+  links: z.array(z.object({
+    id, from: id, to: id, kind: id, automaticExecution: z.boolean(),
+  }).strict()).max(80),
+  professionOptions: z.array(z.object({
+    id, programId: id.nullable(), familyGrantsGear: z.boolean(), inRandomPool: z.boolean(),
+  }).strict()).max(80),
+  developmentTemplates: z.array(z.object({ id, tableId: id, pending: z.literal(true) }).strict()).max(30),
+  interestingGrants: z.array(z.object({
+    id, additional: z.boolean(), bindsSelector: z.literal(true), projected: z.boolean(),
+    activity: z.union([z.literal(3), z.literal(4)]),
+  }).strict()).max(8),
+  textReference: z.object({
+    id: z.literal('oddities:books:20'),
+    kind: z.literal('text-reference'),
+    hook: z.object({ id: z.literal('dark-passages-books-and-passages'), enabled: z.boolean() }).strict(),
+    consequence: HumanL0ConsequenceSchema,
+  }).strict(),
+  deferredTables: z.array(z.object({ id, weights: z.null(), materializedLines: z.literal(0) }).strict()).max(12),
+  cycleWalk: z.array(z.object({
+    from: z.object({ tableId: id, rowId: id }).strict(), to: id,
+  }).strict()).length(4),
+  odditySideRolls: z.object({
+    topology: z.literal('synthetic'), realFaceIds: z.literal(false), count: z.literal(13), host: z.literal(ACTIVITY4_ODDITY_SIDE_HOST),
+  }).strict(),
+}).strict();
+
 export const HumanL0ConsumableDocumentSchema = z.object({
   contract: z.literal(HUMAN_L0_CONSUMABLE_CONTRACT),
   contractVersion: z.literal(HUMAN_L0_CONSUMABLE_CONTRACT_VERSION),
@@ -203,14 +367,16 @@ export const HumanL0ConsumableDocumentSchema = z.object({
   unprojectedPublishedCycles: z.array(z.object({ id, projected: z.boolean() }).strict()).max(8),
   choices: z.array(z.object({ id, options: z.array(id).min(2).max(8) }).strict()).max(20),
   producedQueries: z.array(z.object({ id, producedBy: z.object({ tableId: id, columnId: id }).strict() }).strict()).max(20),
-  tables: z.array(table).min(1).max(40),
+  tables: z.array(table).min(1).max(48),
   lookups: z.array(lookup).max(20),
-  sideRolls: z.array(sideRoll).max(40),
+  sideRolls: z.array(sideRoll).max(48),
   items: z.array(item).max(40),
   grants: z.array(grant).max(40),
   events: z.array(event).max(40),
   groupedPendings: z.array(groupedPending).max(20),
   manualResolutions: z.array(z.object({ matrixId: id, consequence: HumanL0ConsequenceSchema }).strict()).max(40),
+  activityLot: z.literal(4).optional(),
+  activity4: activity4Schema.optional(),
 }).strict();
 export type HumanL0ConsumableDocument = z.infer<typeof HumanL0ConsumableDocumentSchema>;
 
@@ -315,6 +481,8 @@ function checkColumn(columnValue: HumanL0ConsumableDocument['tables'][number]['c
   if (!open && columnValue.modifierDomain.kind !== 'none') fail('modifier-domain', `${pointer}/modifierDomain`);
   if (columnValue.modifierDomain.kind === 'authorized' && new Set(columnValue.modifierDomain.values).size !== columnValue.modifierDomain.values.length)
     fail('modifier-domain', `${pointer}/modifierDomain`);
+  if (columnValue.modifierDomain.kind === 'authorized-rules' && new Set(columnValue.modifierDomain.rules).size !== columnValue.modifierDomain.rules.length)
+    fail('modifier-domain', `${pointer}/modifierDomain`);
   let openLow = 0, openHigh = 0;
   for (const [index, rowValue] of columnValue.rows.entries()) {
     const rowPointer = `${pointer}/rows/${index}`;
@@ -354,6 +522,114 @@ function checkColumn(columnValue: HumanL0ConsumableDocument['tables'][number]['c
     if (rowValue.publishedWeight.ways !== natural.toString()) fail(rowValue.tail === 'none' ? 'weight-mismatch' : 'open-tail-weight-invented', rowPointer);
     assertConsequence(rowValue.consequence, 'row', `${pointer}/rows/${index}/consequence`, 'character');
   }
+}
+
+function assertActivity4(doc: HumanL0ConsumableDocument) {
+  const lot = doc.activity4;
+  if (!lot) return fail('activity4-incomplete', '/activity4');
+  const pointer = '/activity4';
+  if (lot.hashLines.materialized !== 0 || lot.hashLines.weights !== null) fail('hash-line-materialized', `${pointer}/hashLines`);
+  if (!same(lot.deferredTables.map(row => row.id), [...ACTIVITY4_DEFERRED_TABLES])) fail('hash-line-materialized', `${pointer}/deferredTables`);
+  const tableIds = new Set(doc.tables.map(tableValue => tableValue.id));
+  for (const deferredId of ACTIVITY4_DEFERRED_TABLES) if (tableIds.has(deferredId)) fail('hash-line-materialized', '/tables');
+  for (const tableValue of doc.tables) for (const columnValue of tableValue.columns) for (const rowValue of columnValue.rows) {
+    if (rowValue.id === 'oddities:books:20' || ACTIVITY4_DEFERRED_TABLES.some(deferredId => rowValue.id.startsWith(`${deferredId}:`) || rowValue.id.startsWith(`${deferredId}#`)))
+      fail('hash-line-materialized', '/tables');
+  }
+  if (lot.interestingThings.silentFallback) fail('silent-core-fallback', `${pointer}/interestingThings`);
+  if (lot.queries.familyCategory.dice !== null) fail('family-uniform-die', `${pointer}/queries/familyCategory`);
+  if (lot.textReference.hook.enabled) fail('hook-enabled', `${pointer}/textReference/hook`);
+  if (lot.textReference.consequence.kind !== 'pending' || lot.textReference.consequence.pending.reason !== 'text-reference')
+    fail('text-reference-is-generator', `${pointer}/textReference/consequence`);
+  if (lot.links.length !== ACTIVITY4_LOT_COUNTS.links) fail('link-count', `${pointer}/links`);
+  for (const [index, link] of lot.links.entries()) if (link.automaticExecution) fail('link-executes', `${pointer}/links/${index}`);
+  if (!same(lot.lifestyleModifiers, ACTIVITY4_LIFESTYLE_MODIFIERS)) fail('modifier-domain', `${pointer}/lifestyleModifiers`);
+  const lifestyle = doc.tables.find(tableValue => tableValue.id === 'only-human:lifestyle');
+  const childhood = doc.tables.find(tableValue => tableValue.id === 'only-human:childhood');
+  if (!lifestyle || lifestyle.columns[0].modifierDomain.kind !== 'authorized-rules' || !same(lifestyle.columns[0].modifierDomain.rules, [...ACTIVITY4_LIFESTYLE_MODIFIER_IDS]))
+    fail('modifier-domain', '/tables');
+  if (!childhood || childhood.columns[0].modifierDomain.kind !== 'authorized' || !same(childhood.columns[0].modifierDomain.values, [-6, -3, -1, 0, 1, 3, 6]))
+    fail('modifier-domain', '/tables');
+  if (!doc.producedQueries.some(query => query.id === ACTIVITY4_LIFESTYLE_QUERY && query.producedBy.tableId === 'only-human:lifestyle' && query.producedBy.columnId === 'main'))
+    fail('lookup-missing-prior', '/producedQueries');
+  if (doc.lookups.some(lookup => (ACTIVITY4_ACT5_LOOKUPS as readonly string[]).includes(lookup.id))) fail('act5-body-present', '/lookups');
+  const lookupSlots = lot.act5Slots.filter(slot => slot.kind === 'lifestyle-lookup').map(slot => slot.id);
+  const kitSlots = lot.act5Slots.filter(slot => slot.kind === 'kit-program').map(slot => slot.id);
+  const kits = ['destitute', 'poor', 'getting-by', 'comfortable', 'wealthy', 'rich'].map(name => `only-human:kit:${name}`);
+  if (!same(lookupSlots, [...ACTIVITY4_ACT5_LOOKUPS]) || !same(kitSlots, kits)) fail('act5-body-present', `${pointer}/act5Slots`);
+  for (const slot of lot.act5Slots) {
+    if (slot.body !== null) fail('act5-body-present', `${pointer}/act5Slots`);
+    if (slot.familyGrantsGear) fail('family-grants-gear', `${pointer}/act5Slots`);
+    if (slot.kind === 'profession-program' ? slot.readsQueryId !== null : slot.readsQueryId !== ACTIVITY4_LIFESTYLE_QUERY)
+      fail('lookup-missing-prior', `${pointer}/act5Slots`);
+  }
+  if (lot.professionOptions.length !== ACTIVITY4_LOT_COUNTS.professionOptions) fail('activity4-incomplete', `${pointer}/professionOptions`);
+  const programs = lot.professionOptions.filter(option => option.programId !== null);
+  if (programs.length !== ACTIVITY4_LOT_COUNTS.professionProgramsDeferred) fail('activity4-incomplete', `${pointer}/professionOptions`);
+  for (const option of lot.professionOptions) {
+    if (option.familyGrantsGear) fail('family-grants-gear', `${pointer}/professionOptions`);
+    if (option.programId === null) {
+      if (option.id !== 'pilot-profession:only-human:direct:occult' || option.inRandomPool) fail('activity4-incomplete', `${pointer}/professionOptions`);
+    } else if (option.programId !== `profession:${option.id}` || !option.inRandomPool) fail('activity4-incomplete', `${pointer}/professionOptions`);
+  }
+  const programSlots = new Set(lot.act5Slots.filter(slot => slot.kind === 'profession-program').map(slot => slot.id));
+  if (programSlots.size !== programs.length || programs.some(option => option.programId === null || !programSlots.has(option.programId)))
+    fail('act5-body-present', `${pointer}/act5Slots`);
+  if (lot.developmentTemplates.length !== ACTIVITY4_LOT_COUNTS.developmentTemplates || lot.developmentTemplates.some(row => !row.pending))
+    fail('activity4-incomplete', `${pointer}/developmentTemplates`);
+  for (const manualId of ACTIVITY4_MANUAL_IDS) {
+    const row = doc.manualResolutions.find(item => item.matrixId === manualId);
+    if (!row || row.consequence.kind !== 'pending') fail('manual-resolution-mismatch', '/manualResolutions');
+  }
+  const router = doc.tables.find(tableValue => tableValue.id === 'oddities:thing-router');
+  const routeWays = router?.columns[0].rows.map(row => row.publishedWeight.ways) ?? [];
+  if (!router || router.columns[0].dice.count !== 1 || router.columns[0].dice.sides !== 20 || new Set(routeWays).size < 2)
+    fail('selector-weight-uniform', '/tables');
+  const religious = doc.tables.find(tableValue => tableValue.id === 'only-human:religious');
+  const common = doc.tables.find(tableValue => tableValue.id === 'only-human:common');
+  const selector = doc.tables.find(tableValue => tableValue.id === 'only-human:profession-router');
+  if (!religious || religious.columns[0].dice.count !== 1 || religious.columns[0].dice.sides !== 6) fail('activity4-incomplete', '/tables');
+  if (!common || common.columns[0].dice.count !== 1 || common.columns[0].dice.sides !== 20) fail('activity4-incomplete', '/tables');
+  if (!selector || selector.columns[0].dice.count !== 1 || selector.columns[0].dice.sides !== 6) fail('activity4-incomplete', '/tables');
+  const humanRolls = doc.sideRolls.filter(roll => roll.id.startsWith('side-roll:only-human:'));
+  if (humanRolls.length !== ACTIVITY4_OH_SIDE_ROLLS.length) fail('side-roll-shape', '/sideRolls');
+  for (const [index, expected] of ACTIVITY4_OH_SIDE_ROLLS.entries()) {
+    const roll = humanRolls[index];
+    if (!roll || roll.id !== expected.id || roll.phase !== expected.phase || roll.subject !== expected.subject ||
+        roll.dice.count !== expected.count || roll.dice.sides !== expected.sides || roll.modifier !== expected.modifier ||
+        roll.reading !== expected.reading || roll.parent.rowId !== expected.parentRow || roll.parent.tableId !== expected.parentRow.slice(0, expected.parentRow.lastIndexOf(':')) ||
+        roll.appliesOnPossession || roll.when.optionId !== null)
+      fail('side-roll-shape', `/sideRolls/${index}`);
+  }
+  const oddRolls = doc.sideRolls.filter(roll => roll.id.startsWith('fixture:oddity-side:'));
+  if (oddRolls.length !== ACTIVITY4_ODDITY_SIDE_TOPOLOGY.length) fail('side-roll-shape', '/sideRolls');
+  for (const [index, expected] of ACTIVITY4_ODDITY_SIDE_TOPOLOGY.entries()) {
+    const roll = oddRolls[index];
+    if (!roll || roll.phase !== expected.phase || roll.dice.count !== expected.count || roll.dice.sides !== expected.sides ||
+        roll.modifier !== expected.modifier || roll.subject !== 'item' || roll.when.optionId !== null || roll.appliesOnPossession ||
+        roll.parent.tableId !== ACTIVITY4_ODDITY_SIDE_HOST)
+      fail('side-roll-shape', `/sideRolls/${index}`);
+  }
+  if (doc.sideRolls.some(roll => roll.id.startsWith('oddities:'))) fail('side-roll-shape', '/sideRolls');
+  for (const [index, edge] of lot.cycleWalk.entries()) {
+    const tableValue = doc.tables.find(item => item.id === edge.from.tableId);
+    const row = tableValue?.columns.flatMap(columnValue => columnValue.rows).find(item => item.id === edge.from.rowId);
+    if (!tableValue?.publishedCycle || row?.consequence.kind !== 'effect' || row.consequence.effect.op !== 'follow-subtable' || row.consequence.effect.tableId !== edge.to)
+      fail('cycle-not-projected', `${pointer}/cycleWalk/${index}`);
+  }
+  const projectedHuman = doc.tables.filter(tableValue => tableValue.id.startsWith('only-human:')).length;
+  const projectedOddities = doc.tables.filter(tableValue => tableValue.id.startsWith('oddities:')).length;
+  const deferredOddities = ACTIVITY4_DEFERRED_TABLES.filter(deferredId => deferredId.startsWith('oddities:')).length;
+  if (projectedHuman !== ACTIVITY4_LOT_COUNTS.onlyHumanTables - 2) fail('activity4-incomplete', '/tables');
+  if (projectedOddities !== ACTIVITY4_LOT_COUNTS.odditiesTables - deferredOddities) fail('activity4-incomplete', '/tables');
+  if (!tableIds.has(ACTIVITY4_ODDITY_SIDE_HOST)) fail('activity4-incomplete', '/tables');
+  const grants = lot.interestingGrants;
+  if (!grants.some(grant => grant.id === 'only-human-initial-thing' && grant.projected && grant.additional === false && grant.activity === 4))
+    fail('activity4-incomplete', `${pointer}/interestingGrants`);
+  if (!grants.some(grant => grant.id === 'only-human-minor-windfall-10' && grant.projected && grant.additional && grant.activity === 4))
+    fail('activity4-incomplete', `${pointer}/interestingGrants`);
+  if (!grants.some(grant => grant.id === 'core-initial-thing' && grant.projected === false && grant.activity === 3))
+    fail('activity4-incomplete', `${pointer}/interestingGrants`);
 }
 
 /** Validates one public synthetic consumable document. It does not roll dice or enable a ruleset. */
@@ -414,8 +690,13 @@ export function parseHumanL0Consumable(input: unknown): HumanL0ConsumableDocumen
     assertConsequence(rowValue.consequence, 'manual', `${pointer}/consequence`, null);
   }
 
+  const lot = doc.activityLot === 4;
+  if ((doc.activityLot === 4) !== (doc.activity4 !== undefined)) fail('activity4-incomplete', '/activity4');
   if (!same(doc.unprojectedPublishedCycles.map(cycle => cycle.id), [...PUBLISHED_CYCLE_IDS])) fail('cycle-list-mismatch', '/unprojectedPublishedCycles');
-  for (const [index, cycle] of doc.unprojectedPublishedCycles.entries()) if (cycle.projected) fail('cycle-projected-without-lot', `/unprojectedPublishedCycles/${index}`);
+  for (const [index, cycle] of doc.unprojectedPublishedCycles.entries()) {
+    if (lot) { if (!cycle.projected) fail('cycle-not-projected', `/unprojectedPublishedCycles/${index}`); }
+    else if (cycle.projected) fail('cycle-projected-without-lot', `/unprojectedPublishedCycles/${index}`);
+  }
 
   const tableIds = doc.tables.map(tableValue => tableValue.id);
   assertUnique(tableIds, 'duplicate-id', '/tables');
@@ -423,8 +704,11 @@ export function parseHumanL0Consumable(input: unknown): HumanL0ConsumableDocumen
   const rollIds: string[] = [];
   for (const [tableIndex, tableValue] of doc.tables.entries()) {
     const publishedCycleIds: readonly string[] = PUBLISHED_CYCLE_IDS;
-    if (groupedIds.has(tableValue.id) || publishedCycleIds.includes(tableValue.id))
-      fail(publishedCycleIds.includes(tableValue.id) ? 'cycle-projected-without-lot' : 'grouped-as-individual-evidence', `/tables/${tableIndex}`);
+    if (groupedIds.has(tableValue.id)) fail('grouped-as-individual-evidence', `/tables/${tableIndex}`);
+    if (publishedCycleIds.includes(tableValue.id)) {
+      if (!lot) fail('cycle-projected-without-lot', `/tables/${tableIndex}`);
+      if (!tableValue.publishedCycle) fail('cycle-not-projected', `/tables/${tableIndex}`);
+    } else if (lot && tableValue.publishedCycle) fail('cycle-flag-mismatch', `/tables/${tableIndex}`);
     assertUnique(tableValue.columns.map(columnValue => columnValue.id), 'duplicate-id', `/tables/${tableIndex}/columns`);
     for (const [columnIndex, columnValue] of tableValue.columns.entries()) {
       rollIds.push(columnValue.rollId);
@@ -559,6 +843,7 @@ export function parseHumanL0Consumable(input: unknown): HumanL0ConsumableDocumen
     visited.add(tableId);
   };
   for (const tableId of tables.keys()) visit(tableId, []);
+  if (lot && doc.activity4) assertActivity4(doc);
   return doc;
 }
 
@@ -577,4 +862,36 @@ export function parseHumanL0ConsumableResolution(input: unknown): HumanL0Consuma
     assertConsequence(entry.consequence, placeForPhase(entry.phase), `${pointer}/consequence`, entry.subject === 'item' ? 'item' : entry.subject);
   }
   return resolution;
+}
+
+/** Walks a published follow-subtable cycle and stops at the document bound. It does not reroll or discard. */
+export function reviewHumanL0ConsumableCycle(doc: HumanL0ConsumableDocument, start: { tableId: string; rowId: string }, maxDepth = doc.recursion.maxDepth) {
+  if (doc.recursion.onLimit !== 'pending' || doc.recursion.silentReroll || doc.recursion.discardOutcome) fail('recursion-policy-invalid', '/recursion');
+  let tableId = start.tableId;
+  let rowId = start.rowId;
+  for (let step = 0; step < maxDepth; step += 1) {
+    const tableValue = doc.tables.find(item => item.id === tableId);
+    const row = tableValue?.columns.flatMap(columnValue => columnValue.rows).find(item => item.id === rowId);
+    if (!tableValue || !row) fail('subtable-missing', '/tables');
+    if (row.consequence.kind !== 'effect' || row.consequence.effect.op !== 'follow-subtable')
+      return { resolved: true, pending: null, steps: step, rerolled: false as const, discarded: false as const };
+    const nextTable = row.consequence.effect.tableId;
+    const entry = doc.activity4?.cycleWalk.find(item => item.from.tableId === nextTable);
+    if (!entry) return { resolved: true, pending: null, steps: step + 1, rerolled: false as const, discarded: false as const };
+    tableId = entry.from.tableId;
+    rowId = entry.from.rowId;
+  }
+  return { resolved: false, pending: { reason: 'bounded-recursion' as const, retainsConsequence: true as const }, steps: maxDepth, rerolled: false as const, discarded: false as const };
+}
+
+/** Selected Interesting Things source. A disabled source stays pending and does not switch procedure. */
+export function reviewHumanL0InterestingThingsSource(doc: HumanL0ConsumableDocument, input: { variant: 'oddities' | 'core'; activeSourceIds: readonly string[] }) {
+  const binding = doc.activity4?.interestingThings;
+  if (!binding || binding.silentFallback) fail('silent-core-fallback', '/activity4/interestingThings');
+  const sourceId = input.variant === 'oddities' ? 'sotdl:oddities-artifacts-and-esoterica' : 'sotdl:shadow-of-the-demon-lord-core';
+  if (!input.activeSourceIds.includes(sourceId))
+    return { variant: input.variant, outcome: null, fallback: null, pending: { reason: 'disabled-source' as const, retainsConsequence: true as const } };
+  if (input.variant === 'core')
+    return { variant: 'core' as const, outcome: null, fallback: null, pending: { reason: 'unprojected-alternative' as const, retainsConsequence: true as const } };
+  return { variant: 'oddities' as const, outcome: { routerId: 'oddities:thing-router' }, fallback: null, pending: null };
 }
