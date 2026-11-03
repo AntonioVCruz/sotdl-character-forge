@@ -12,11 +12,25 @@ import { clearCharacter } from '../../packages/character-generator/storage';
 import { CharacterBuilder } from './CharacterBuilder';
 import { ErrorBoundary, onCaughtError } from './ErrorBoundary';
 import { HumanL0FixturePreview } from './HumanL0FixturePreview';
-import { HUMAN_L0_FIXTURE_PREVIEW_ENABLED } from './human-l0-preview';
+import { HUMAN_L0_FIXTURE_PREVIEW_ENABLED, isHumanL0Route } from './human-l0-preview';
 import { errorMessage } from './errors';
 import './style.css';
 
+function useLocationHash() {
+  const [hash, setHash] = useState(() => window.location.hash);
+  useEffect(() => {
+    const sync = () => setHash(window.location.hash);
+    window.addEventListener('hashchange', sync);
+    return () => window.removeEventListener('hashchange', sync);
+  }, []);
+  return hash;
+}
+
 function App() {
+  const hash = useLocationHash();
+  if (isHumanL0Route(hash)) {
+    return <main><ErrorBoundary scope="ficha"><HumanL0FixturePreview onLeave={() => { window.location.hash = ''; }} /></ErrorBoundary></main>;
+  }
   const [snapshot, setSnapshot] = useState<Snapshot>(emptySnapshot);
   const [ready, setReady] = useState(false);
   const [busy, setBusy] = useState(false);
@@ -41,7 +55,9 @@ function App() {
   const entries = [...registry(snapshot).values()].filter(({ entity, pack }) =>
     (kind === 'all' || entity.kind === kind) && `${entity.name} ${entity.id} ${pack.source.title}`.toLocaleLowerCase().includes(query.toLocaleLowerCase()));
   return <main>
-    <header><p className="eyebrow">SHADOW OF THE DEMON LORD · CHARACTER FORGE</p><h1>Forja de personagens</h1><p>Crie um personagem demonstrativo e consulte a origem de cada escolha.</p></header>
+    <header><p className="eyebrow">SHADOW OF THE DEMON LORD · CHARACTER FORGE</p><h1>Forja de personagens</h1><p>Crie um personagem demonstrativo e consulte a origem de cada escolha.</p>
+      {HUMAN_L0_FIXTURE_PREVIEW_ENABLED && <p><a href="#/human-l0">Abrir prévia local Human L0 (fixture)</a></p>}
+    </header>
     <aside className="notice">Demonstração dos níveis 0 e 1, com dois caminhos fictícios e catálogo local. Os exemplos não representam regras oficiais. Níveis 2–10 e conteúdo oficial ainda não estão disponíveis.</aside>
     {error && <div role="alert" className="error"><strong>Operação não concluída</strong><pre>{error}</pre></div>}
     <p role="status" aria-live="polite">{busy ? 'Salvando…' : message || (!ready && !error ? 'Abrindo catálogo…' : '')}</p>
@@ -54,7 +70,6 @@ function App() {
       for (const pack of next.packs.filter(p => [tables.packId, levelZero.packId, levelOne.packId, magic.packId, spellSession.packId].includes(p.packId))) next = setEnabled(next, pack, true);
       return next;
     }, 'Fontes da demonstração prontas.')} /></ErrorBoundary>
-    {HUMAN_L0_FIXTURE_PREVIEW_ENABLED && <ErrorBoundary scope="ficha"><HumanL0FixturePreview /></ErrorBoundary>}
     <section aria-labelledby="sources-title"><h2 id="sources-title">Biblioteca de fontes</h2><p>Importar adiciona à biblioteca. Habilite uma fonte para usá-la no catálogo da campanha.</p>
       <div className="actions"><button disabled={!ready || busy} onClick={() => change(() => {
         let next = importPack(snapshot, demo).snapshot;

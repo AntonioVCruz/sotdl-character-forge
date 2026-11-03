@@ -6,10 +6,12 @@ import { calculateHumanL0Character, exportHumanL0Character, newHumanL0Character 
 import { loadCharacter, loadHumanL0Character, saveCharacter } from '../packages/character-generator/storage';
 import { parseHumanL0MechanicalPacks } from '../packages/curation/human-l0-mechanics';
 import * as random from '../packages/random-tables';
+import { parseChoiceSlotProps } from '../apps/web/choice-slot-contract';
+import { projectHumanL0Slots, proposeHumanL0Slot } from '../apps/web/human-l0-slots';
 import {
   HUMAN_L0_FIXTURE_CHARACTER_ID,
   HUMAN_L0_FIXTURE_PREVIEW_ENABLED,
-  HUMAN_L0_WITHHELD_REASON,
+  isHumanL0Route,
   blocksForOpenedFixture,
   buildFixtureSelection,
   classifyHumanL0Surface,
@@ -24,8 +26,6 @@ import {
   stageHumanL0Import,
   type HumanL0Preview,
 } from '../apps/web/human-l0-preview';
-
-const withheld = ['health', 'defense', 'speed'];
 
 function packs() {
   return humanL0FixturePacks();
@@ -61,6 +61,9 @@ describe('Human L0 UI contract', () => {
     expect(official).toMatchObject({ data: null, mode: null, officialGenerationEnabled: false });
     expect(official.blocks[0]?.code).toBe('official-generation-disabled');
     expect(HUMAN_L0_FIXTURE_PREVIEW_ENABLED).toBe(true);
+    expect(isHumanL0Route('#/human-l0')).toBe(true);
+    expect(isHumanL0Route('#human-l0')).toBe(true);
+    expect(isHumanL0Route('')).toBe(false);
     for (const path of ['apps/web/human-l0-preview.ts', 'apps/web/HumanL0FixturePreview.tsx', 'apps/web/main.tsx']) {
       const source = readFileSync(path, 'utf8');
       expect(source).not.toMatch(/MAGIC_PATH|demoSlot|demoLevel/);
@@ -98,10 +101,9 @@ describe('Human L0 UI contract', () => {
     const health = preview.model.fields.find(field => field.key === 'health');
     const defense = preview.model.fields.find(field => field.key === 'defense');
     const speed = preview.model.fields.find(field => field.key === 'speed');
-    expect(health).toEqual({ key: 'health', label: 'Health', status: 'indisponível', reason: HUMAN_L0_WITHHELD_REASON });
-    expect(defense?.status).toBe('indisponível');
-    expect(speed?.status).toBe('indisponível');
-    for (const field of [health, defense, speed]) expect(field).not.toHaveProperty('value');
+    expect(health).toMatchObject({ status: 'value', value: preview.view.stats?.health });
+    expect(defense).toMatchObject({ status: 'value', value: preview.view.stats?.defense });
+    expect(speed).toMatchObject({ status: 'value', value: preview.view.stats?.speed });
     expect(preview.model.fields.find(field => field.key === 'strength')).toMatchObject({ status: 'value', value: preview.view.stats?.strength });
     expect(preview.model.fields.find(field => field.key === 'professions')).toMatchObject({ status: 'pending' });
     expect(preview.model.fields.find(field => field.key === 'print')).toMatchObject({ status: 'indisponível' });
@@ -109,7 +111,7 @@ describe('Human L0 UI contract', () => {
     expect(preview.model.issues.map(issue => issue.code)).toEqual(expect.arrayContaining([
       'local-preview-only', 'procedure-outcomes-pending', 'equipment-and-table-catalog-pending', 'source-and-distribution-review-pending',
     ]));
-    expect(preview.model.breakdown.some(row => withheld.includes(row.target))).toBe(false);
+    expect(preview.model.breakdown.some(row => row.target === 'health')).toBe(true);
     expect(preview.model.languages.every(language => language.note === 'Somente fala.')).toBe(true);
     expect(preview.model.grants.some(grant => /profissão foi gerada|Nenhuma profissão foi gerada/.test(grant.message))).toBe(true);
     expect(preview.model.persistenceKey).toBe('human-l0/fixture-preview');
@@ -230,5 +232,34 @@ describe('Human L0 UI contract', () => {
     expect(suspended.fields.find(field => field.key === 'strength')).not.toHaveProperty('value');
     expect(suspended.fields.find(field => field.key === 'health')).not.toHaveProperty('value');
     expect(await loadHumanL0Character(HUMAN_L0_FIXTURE_CHARACTER_ID)).toEqual(confirmed.character);
+  });
+
+  it('maps the engine selection onto ChoiceSlot props and leaves later steps pending', async () => {
+    const empty = projectHumanL0Slots(packs(), { baseline: null, preview: null, previewSlotId: null, refusal: null, locks: [], seed: '' });
+    for (const slot of empty) expect(() => parseChoiceSlotProps(slot)).not.toThrow();
+    expect(empty.find(slot => slot.slotId === 'source')?.options.find(option => option.id === 'official')).toMatchObject({ eligible: false });
+    for (const id of ['professions', 'languages', 'wealth', 'kit', 'interesting-thing', 'equipment']) {
+      const slot = empty.find(item => item.slotId === id);
+      expect(slot).toMatchObject({ uiState: 'pending', strategy: 'pending', options: [] });
+      expect(slot?.contextLine).toContain('#34/#35');
+    }
+    const ancestry = empty.find(slot => slot.slotId === 'ancestry');
+    const proposal = await proposeHumanL0Slot(null, packs(), 'ancestry', [ancestry?.options[0]?.id ?? ''], '');
+    expect(proposal.ok).toBe(true);
+    expect(await loadHumanL0Character(HUMAN_L0_FIXTURE_CHARACTER_ID)).toBeNull();
+    const reserved = await proposeHumanL0Slot(null, packs(), 'professions', ['invented'], '');
+    expect(reserved.ok).toBe(false);
+    if (reserved.ok) return;
+    expect(reserved.blocks[0]?.code).toBe('awaiting-later-issue');
+    const randomPick = await proposeHumanL0Slot(null, packs(), 'attribute-mode', ['random'], '');
+    expect(randomPick.ok).toBe(false);
+    if (randomPick.ok) return;
+    expect(randomPick.blocks[0]?.code).toBe('use-roll-attributes');
+    const saved = await confirmHumanL0Preview(null, packs(), await openedPreview());
+    if (!saved.ok) throw new Error('confirm failed');
+    const filled = projectHumanL0Slots(packs(), { baseline: saved.character, preview: null, previewSlotId: null, refusal: null, locks: [], seed: 'fixture-seed' });
+    for (const slot of filled) expect(() => parseChoiceSlotProps(slot)).not.toThrow();
+    expect(filled.find(slot => slot.slotId === 'ancestry')?.uiState).toBe('confirmed');
+    expect(filled.find(slot => slot.slotId === 'attribute-roll')?.sortReason).toBeUndefined();
   });
 });

@@ -1,111 +1,79 @@
 # Contrato de UI da prévia Human L0
 
-Registro da fatia de [#36](https://github.com/AntonioVCruz/sotdl-character-forge/issues/36). A ordem de aceite continua **#34 → #35 → #36 → #37**. Este documento e o protótipo em `apps/web/human-l0-preview.ts` não encerram a #36, não executam os handlers da #34 nem a orquestração da #35, e não habilitam ruleset.
+Registro da fatia de [#36](https://github.com/AntonioVCruz/sotdl-character-forge/issues/36), alinhado ao esboço de tela do Designer STD (seções 1–8). A ordem de aceite continua **#34 → #35 → #36 → #37**. Este contrato não encerra a #36 e não habilita ruleset.
 
-A API usada é a do [motor Human L0](entrega-motor-human-l0.md): `newHumanL0Character`, `performHumanL0Command`, `calculateHumanL0Character`, `importHumanL0Character` e `exportHumanL0Character`, com persistência `saveHumanL0Character` / `loadHumanL0Character`. O wizard de `apps/web/l0-demo.ts` permanece no adapter fictício (`fictionalData: true` no recorte demonstrativo, `MAGIC_PATH` / `demoSlot` / `demoLevel` só nesse fluxo).
+A API continua a do [motor Human L0](entrega-motor-human-l0.md): `newHumanL0Character`, `performHumanL0Command`, `calculateHumanL0Character`, import/export e IndexedDB. O adapter de tela está em `apps/web/human-l0-slots.ts`. Ele traduz `HumanL0View` e `HumanL0Command` para props do `ChoiceSlot` já existente (`SlotUiState`, opções, prévia, bloqueio com texto). O componente não lê mecânica de pack nem calcula característica.
 
-## Três rótulos
+O wizard de `apps/web/l0-demo.ts` permanece na forja demonstrativa. Esta entrada é a rota `#/human-l0`, com `kind: sotdl-human-l0-character` e `mode: local-preview`. Ela não lê nem grava a chave `character` da ficha demo.
 
-| Rótulo | Significado nesta fatia |
+## 1. Três modos de sessão
+
+| Modo de UI | Origem | Badge |
+|---|---|---|
+| Fixture de teste | packs públicos de `curation/examples/human-l0-mechanics.synthetic.json`, `fictionalData: true` | `fixture` |
+| Prévia local | ficha `mode: local-preview` | `prévia local` |
+| Ruleset habilitado | gates da #37 | fora desta entrada |
+
+Os dois badges ficam visíveis no topo. `officialGenerationEnabled` permanece `false`. Pedir o canal `official` ou o canal `local-preview` como outra superfície é recusado: o segundo nome é o modo da ficha, não um carregador de packs reais. Trocar de modo não preenche lacuna com `demoStats` nem com o adapter fictício do wizard S1.
+
+A flag `HUMAN_L0_FIXTURE_PREVIEW_ENABLED` só publica o link e a rota. Desligá-la não altera a flag oficial.
+
+## 2. Shell
+
+Três colunas, no mesmo desenho do S1: stepper, passo ativo, mini-ficha sticky. Slots editáveis usam `ChoiceSlot`. A rota fica em `ErrorBoundary`. A mini-ficha não usa o `Stats` do demo: aquele componente trata lacunas da ficha demonstrativa como permanentes. Aqui o número só aparece se `HumanL0View` o devolveu.
+
+## 3. Comando do motor e superfície
+
+| Comando | Superfície |
 |---|---|
-| **fixture** | Única entrada aberta no protótipo. Packs públicos de `curation/examples/human-l0-mechanics.synthetic.json`, todos com `fictionalData: true`. Não é texto de livro nem resultado de tabela publicada. |
-| **local-preview** | `mode` da ficha `sotdl-human-l0-character` e do cálculo do motor. A ficha de fixture também nasce nesse modo. Pedir o canal `local-preview` à entrada do protótipo não carrega packs reais e não abre outra superfície: a função recusa, com geração oficial ainda falsa. |
-| **official** | Desligado. `officialGenerationEnabled` permanece `false`. Não há controle, flag de ruleset nem pack habilitado que o ligue. A #37 é quem pode tratar habilitação, depois do aceite das fatias anteriores. |
+| `select` | Confirmar ancestry, modo fixo, aumento, Size, procedimento, coreBenefit ou transferência, depois da prévia |
+| `roll-attributes` | Sortear no slot de atributos aleatórios, com seed explícita. É o único RNG de atributo. Escolher a opção "aleatório" não sorteia |
+| `state` | Passo avançado: damage, insanity ou corruption, com motivo |
+| `manual-effect` / `effect-active` | Passo avançado, autoridade `user`. Não é tabela da #34 |
 
-`classifyHumanL0Surface` materializa essa distinção. `fixture` com os packs públicos devolve `data: fixture`, `mode: local-preview` e `officialGenerationEnabled: false`. `official` e `local-preview` como pedido de canal devolvem bloqueio e a flag oficial falsa. Um pack com `fictionalData` diferente de `true` não passa nesta entrada, mesmo que o schema mecânico o aceite.
+Profissão, riqueza, kit, Interesting Thing e equipamento não têm comando nesta fatia.
 
-A flag `HUMAN_L0_FIXTURE_PREVIEW_ENABLED` só monta a seção “Prévia local · fixture” em `apps/web/main.tsx`. Desligá-la esconde o protótipo. Ela não altera `officialGenerationEnabled`.
+## 4. Estados do ChoiceSlot
 
-## Prévia e confirmação
-
-A prévia chama o motor e devolve outra ficha em memória. Ela não grava IndexedDB.
-
-- Sem ficha confirmada, a prévia é `newHumanL0Character` (`create`) no id `fixture-preview`.
-- Com ficha confirmada, a prévia de escolha é o comando `select`.
-- Rolar atributos é o comando `roll-attributes`, a única fronteira de sorteio. Exige ficha já confirmada, seed informada pelo usuário e ancestry da fixture que ofereça modo aleatório. O protótipo não inventa seed. Repetir o cálculo, importar ou reabrir não sorteia de novo.
-- Confirmar repete o mesmo intent contra a ficha base. Se o resultado divergir, a confirmação é recusada (`preview-stale`) e a ficha gravada permanece. Se o cálculo não fecha (`baseResolved: false`), a confirmação da escolha também é recusada.
-- Descartar a prévia só limpa o rascunho na tela.
-- A gravação usa compare-and-swap. Conflito de outra aba não sobrescreve o registro.
-
-Importar JSON passa por `importHumanL0Character`. O arquivo precisa ser o personagem `fixture-preview`; outro id, inclusive a ficha demo e o id padrão `local-human-l0` dos testes do motor, é recusado. A importação só grava ao confirmar. Um arquivo cuja fonte não fecha continua legível: o cálculo fica suspenso, com o motivo do motor, e os eventos não são reescritos.
-
-Exportar usa `exportHumanL0Character` da ficha confirmada. O JSON não embute packs, evidência nem totais em cache. Impressão, PDF e HTML autônomo desta ficha ficam indisponíveis; os controles do demo não passam a imprimir a ficha Human.
-
-## Elegibilidade e bloqueios
-
-Antes da prévia, `buildFixtureSelection` monta o envelope e o valida com `parseHumanL0Selection`. Opção inelegível permanece visível com motivo; a prévia não é aplicada. A confirmação repete essa validação no contexto atual (fonte, versão, benefício, Size, atributos distintos na transferência).
-
-Motivos expostos ao usuário saem do código do contrato ou do motor (`HumanL0ContractError` ou `Human L0: <código>.`). A interface não substitui esse código por uma regra paralela nem por texto de livro. Códigos sem frase cadastrada aparecem como `Pendência do motor: <código>.` ou `Motivo do motor: <código>.`.
-
-Bloqueios estáveis desta entrada, além dos códigos do motor:
-
-| Código | Quando |
+| Estado | Uso nesta entrada |
 |---|---|
-| `official-generation-disabled` | Canal `official`, ou flag oficial diferente de falsa. |
-| `local-preview-channel-closed` | Pedido do canal `local-preview` a esta entrada. |
-| `fixture-required` | Algum pack sem `fictionalData: true`. |
-| `seed-required` | Rolagem sem seed, ou seed fora do limite do comando. |
-| `nothing-to-update` | Comando sobre ficha ainda não confirmada. |
-| `already-confirmed` | `create` quando já há ficha. |
-| `preview-stale` | A base mudou desde a prévia. |
-| `unexpected-character-id` | Id diferente de `fixture-preview`. |
-| `concurrent-change` | O compare-and-swap recusou a gravação. |
+| `empty` | Ainda sem valor confirmado |
+| `preview` | Proposta na memória. A ficha gravada não muda até Confirmar, que repete o comando |
+| `confirmed` | Opção elegível aplicada |
+| `locked` | Trava de sessão. Não sorteia e não substitui Gerar tudo. Não entra no JSON do motor |
+| `needs-review` | A proposta foi recusada; a última ficha válida permanece, com o motivo em texto |
+| `suspended` | Aumento fixo enquanto o modo é aleatório |
+| `pending` | Passos reservados, sem opções inventadas |
 
-## Pendências estruturadas e lacunas
+Bloqueio de ação usa texto visível, não só `aria-disabled`: fonte oficial desligada, seed ausente, modo aleatório indisponível, benefício inelegível, slot travado, handler da #34/#35 ausente. Opção inelegível continua na lista com `disabledReason`.
 
-`calculateHumanL0Character` continua dono dos números. A ficha da prévia mostra, quando `baseResolved` é verdadeiro, os valores devolvidos para Strength, Agility, Intellect, Will, Size, Perception, Power, Healing Rate, modificadores e os estados Damage, Insanity e Corruption. A composição visível omite alvos `health`, `defense` e `speed`.
+## 5. Mini-ficha e `HumanL0View`
 
-Health, Defense e Speed ficam sempre `indisponível`. A interface não copia esses campos de `view.stats` e não aplica fórmula de CUR-015 para preenchê-los. Isso vale mesmo quando o motor calculou um número interno na fixture.
+A ficha confirmada mostra `stats` e `states` quando o view os devolve. Se `stats` é `null`, cada característica fica `indisponível`. A interface não calcula CUR-015 para preencher o buraco. `languages`, `grants` e `breakdown` vêm do view; o breakdown fica sob demanda no fluxo do slot quando há rastro, e os direitos `starting-profession-choices` e `pending-random-profession` aparecem como pendência, sem profissão gerada.
 
-Campos sem handler nesta fatia ficam explícitos, sem resultado inventado:
+Banner permanente: prévia local com geração oficial desligada, resultados de procedimento pendentes, catálogo de equipamento e tabelas pendente. `fullyResolved` continua falso. Anotar a revisão não habilita o ruleset.
 
-| Campo | Estado |
-|---|---|
-| Profissões geradas | `pendente`. Direito `starting-profession-choices` ou `pending-random-profession` é contagem/pendência do motor, não uma profissão. |
-| Alfabetização | `indisponível`. Idioma do motor, quando há, é só fala. |
-| Wealth, kit, inventário, equipamento publicado | `pendente`. |
-| Tabelas narrativas e Interesting Thing | `pendente`. |
-| Impressão, PDF e HTML autônomo | `indisponível`. |
+## 6. Stepper provisório
 
-`fullyResolved` permanece falso. A tela não diz que a ficha está completa. Issues conhecidas do motor, quando vêm no `view`, são listadas com o código:
+1. Ruleset e fonte — pins da fixture, versão, badges. A opção de ruleset habilitado é inelegível.
+2. Ancestry e Size.
+3. Atributos — modo fixo, aumento, `roll-attributes` com seed, transferência opcional.
+4. Procedimento — `core` ou `human-development`, e coreBenefit só no par em que o contrato exige. `random-profession` é direito pendente.
+5. Reservado — profissões, idiomas além da fala, wealth, kit, Interesting Thing, equipamento. Estado `pending`, copy "Aguarda #34/#35". Nenhuma alternativa é inventada.
+6. Nome. Notas: indisponível, porque o tipo não tem esse campo. O nome grava na ficha já criada sem novo evento mecânico; antes da primeira confirmação, entra no `create`.
+7. Avançado — `state`, `manual-effect`, `effect-active`.
+8. Revisão — pendências do motor e da UI, import/export do tipo Human.
 
-- `local-preview-only`
-- `procedure-outcomes-pending`
-- `equipment-and-table-catalog-pending`
-- `source-and-distribution-review-pending`
-- `source-or-selection-unavailable`
-- `conflicting-manual-equipment`
+O passo 5 só vira escolha real quando a #35 publicar a sequência.
 
-Fonte ausente ou versão alterada não apaga o JSON. O modelo marca os números como `indisponível` e conserva o issue de suspensão.
+## 7. Persistência e export
 
-## Persistência
+Chave `human-l0/fixture-preview`, separada da ficha demo e do id `local-human-l0` dos testes do motor. Importar exige `sotdl-human-l0-character` com esse id; JSON demo é recusado e não sobrescreve ninguém. Exportar não embute pack. Impressão, PDF e HTML autônomo: indisponível nesta fatia.
 
-O tipo é `human-l0/<id>`, a mesma chave de `packages/character-generator/human-l0-storage.ts`. O protótipo grava só `human-l0/fixture-preview`, no banco `sotdl-character`, objeto `state`, separado da chave `character` da ficha demo. Reabrir a página relê esse id. A entrada não chama `saveCharacter` nem `clearCharacter`.
+## 8. Acessibilidade
 
-## Acessibilidade
-
-- A seção tem nome acessível “Prévia local Human L0, fixture”.
-- Controles são `button`, `select`, `input` e `checkbox` nativos, alcançáveis por teclado, com o foco visível já definido em `apps/web/style.css`.
-- O botão de prévia fica no tab order quando a escolha é inelegível (`aria-disabled` e `aria-describedby` na lista de motivos). Clique nesse estado não chama o motor.
-- O status de prévia, confirmação, descarte e falha vai para uma região `aria-live="polite"`. Falha de ação também abre `role="alert"` com os motivos.
-- Ao surgir a prévia ou a importação, o foco vai para o título desse painel (`tabIndex={-1}`).
-- Cada número ou lacuna da ficha é um par `dt`/`dd`. Listas de pendências, bloqueios, idiomas e direitos têm nome acessível.
-- A ficha confirmada e a prévia são regiões com nomes diferentes das regiões do criador demonstrativo, para não misturar os fluxos.
+O `ChoiceSlot` do S1 cobre foco no painel manual, Esc devolvendo ao botão que abriu, Space/Enter na opção e opção inelegível focável sem selecionar. Botão bloqueado não dispara a ação. A mini-ficha e o status da prévia usam `aria-live`. Alt+seta troca o passo. O motivo do bloqueio é texto associado ao controle.
 
 ## O que a #36 ainda exige
 
-Critérios da issue e o que esta fatia cobre:
-
-| Critério | Esta fatia |
-|---|---|
-| Fluxo consome comandos e pendências do motor, sem preencher lacuna real com mock | Parcial: `create`, `select`, `roll-attributes`, cálculo e issues. Sem procedimentos da #35. |
-| Prévia só altera a ficha ao confirmar, com nova validação | Coberto no protótipo de fixture. |
-| Fonte ausente, versão alterada, handler sem suporte e escolhas pendentes têm motivo; dados preservados | Coberto para o cálculo suspenso e para os campos sem handler listados acima. |
-| Modos, locks, rerolls e passos do procedimento completo | Fora. Depende da #35. A rolagem de atributos é só o comando já existente no motor. |
-| Ficha e inventário coerentes com o motor, inclusive equipamento | Parcial: números que o contrato acima permite, mais lacunas explícitas. Sem inventário. |
-| Salvar, recarregar, importar e exportar sem RNG implícito e sem sobrescrever a ficha demo | Coberto para `human-l0/fixture-preview`. |
-| Impressão, PDF e HTML com paridade | Formato indisponível, sem botão neste protótipo. |
-| E2E da criação real, troca de fonte, equipamento e teclado de ponta a ponta | Fora. Há testes do adapter e do componente. O wizard demo e o E2E já existente continuam no fluxo antigo. |
-| Distinção entre fixture, prévia local e fatia oficial | Coberto. Oficial permanece desligado. |
-
-Nada aqui é geração oficial, freeze ou autorização de distribuição. Packs reais continuam fora do Git, como em [politica-distribuicao-conteudo.md](politica-distribuicao-conteudo.md).
+Procedimentos da #35, dados da #34, E2E da criação real, inventário e paridade de impressão continuam fora. A habilitação oficial continua na #37.
