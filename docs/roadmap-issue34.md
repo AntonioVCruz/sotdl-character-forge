@@ -135,10 +135,10 @@ O checklist de execução permanece aberto:
 - [ ] 1. Auditar o recorte e as lacunas. Matriz publicada em [matriz](matriz-lacunas-issue34-atividade1.md). Fechamento pendente: `act1-local-hash-check` (hashes declarados, não recomputados). Não bloqueia a fixture sintética da atividade 2.
 - [x] 2. Definir o contrato consumível. Contrato `sotdl.human-l0.consumable@1.0.0` em [contrato consumível](contrato-consumivel-tabelas-human-l0.md), na main via [#42](https://github.com/AntonioVCruz/sotdl-character-forge/pull/42) (`5d729d4`).
 - [ ] 3. Projetar o lote de tabelas Core.
-- [ ] 4. Projetar Only Human e Oddities.
+- [ ] 4. Projetar Only Human e Oddities. Lote sintético em `sotdl.human-l0.consumable@1.0.0` (`activityLot: 4`); lookups de equipamento continuam na atividade 5. Aceite deste item ainda não está registrado.
 - [ ] 5. Projetar kits, itens e equipamentos.
 - [ ] 6. Estender compilador e validação.
 - [ ] 7. Integrar resolvedores e handlers.
 - [ ] 8. Auditar o conjunto e entregar aos consumidores.
 
-A atividade 2 está na main ([#42](https://github.com/AntonioVCruz/sotdl-character-forge/pull/42)). Atividades **3–8 permanecem abertas**. A atividade 1 permanece aberta até `act1-local-hash-check`. As três categorias Core agrupadas (martial, religious, wilderness) continuam pendência sem peso inventado. Este roadmap não habilita ruleset, não promove revisão e não executa os lotes 3–8.
+A atividade 2 está na main ([#42](https://github.com/AntonioVCruz/sotdl-character-forge/pull/42)). A atividade 4 tem lote sintético no mesmo contrato, ainda sem aceite deste checklist. Atividades **3 e 5–8 permanecem abertas**. A atividade 1 permanece aberta até `act1-local-hash-check`. As três categorias Core agrupadas (martial, religious, wilderness) continuam pendência sem peso inventado. Este roadmap não habilita ruleset, não promove revisão e não executa o lote Core, o corpo de kits ou os handlers.

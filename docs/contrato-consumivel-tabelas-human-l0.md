@@ -2,7 +2,7 @@
 
 Entrega da atividade 2 da [#34](https://github.com/AntonioVCruz/sotdl-character-forge/issues/34). Identificador: `sotdl.human-l0.consumable`. Versão: `1.0.0`. Implementação: `packages/curation/human-l0-consumable.ts`.
 
-Este contrato é novo. Não edita os 16 arquivos do congelamento de curadoria `1.0.0`, não altera a semântica de `sotdl.human-l0.mechanics@1.0.0` e não reescreve a projeção mecânica local `0.2.0`. Não promove revisão, não marca pack real como fictício e não habilita ruleset. Atividades 3–8 permanecem abertas: não há lote Core, Only Human, Oddities ou catálogo, nem compilador, handler de runtime ou UI.
+Este contrato é novo. Não edita os 16 arquivos do congelamento de curadoria `1.0.0`, não altera a semântica de `sotdl.human-l0.mechanics@1.0.0` e não reescreve a projeção mecânica local `0.2.0`. Não promove revisão, não marca pack real como fictício e não habilita ruleset. A atividade 4 acrescenta um documento sintético no mesmo `1.0.0`. Atividades 3 e 5–8 permanecem abertas: não há lote Core nem catálogo, nem compilador, handler de runtime ou UI.
 
 A matriz da atividade 1 ([`matriz-lacunas-issue34-atividade1.json`](matriz-lacunas-issue34-atividade1.json)) é dependência de leitura. `sourceVersion` continua `null`. O fechamento `act1-local-hash-check` continua aberto e não bloqueia esta fixture sintética.
 
@@ -52,7 +52,7 @@ A chave de origem é `publicationId@null/entityId/resultId/componentId`. Eventos
 | Subtabela | Efeito `follow-subtable` só em linha de tabela. Alvo ausente é `subtable-missing`. Ciclo só passa se cada tabela do ciclo tiver `publishedCycle: true`. No limite, `onLimit` é `pending` com razão `bounded-recursion`. Rerrolagem ou descarte são `recursion-reroll-forbidden` e `recursion-discard-forbidden`. |
 | Side roll | Fase `creation`, `equip` ou `use`, dado e `rollId` distintos da coluna. `appliesOnPossession: true` é `side-roll-on-possession`. Sujeito `relative` com efeito de personagem é `relative-is-not-character`. Fase trocada é `side-roll-phase-mismatch`. `when.optionId` e `choice-selected.optionId`, quando presentes, apontam para uma opção de `choices`. Id ausente é `unknown-option`. |
 
-Os quatro ciclos publicados `only-human:character-fate`, `only-human:piety`, `only-human:siblings` e `only-human:strange` ficam em `unprojectedPublishedCycles` com `projected: false`. Projetá-los aqui seria a atividade 4.
+Os quatro ciclos publicados `only-human:character-fate`, `only-human:piety`, `only-human:siblings` e `only-human:strange` ficam em `unprojectedPublishedCycles`. No documento da atividade 2, `projected` é `false` e esses ids não entram em `tables` (`cycle-projected-without-lot`). O lote da atividade 4, no mesmo `1.0.0`, marca `activityLot: 4`, põe `projected: true` e exige as quatro tabelas com `publishedCycle: true`. O limite continua `onLimit: pending` / `bounded-recursion`. Rerrolagem e descarte seguem proibidos.
 
 ## Efeito ou pendência
 
@@ -114,8 +114,22 @@ Os testes em `tests/curation-human-l0-consumable.test.ts` cruzam as contagens 25
 
 `1.0.0` só aceita `distribution: public-synthetic` e `fictionalData: true`. Lote real não entra por conversão silenciosa. A evolução prevista é `1.1.0`, com `distribution: local` e `fictionalData: false`, mantendo `reviewStatus: needs-review` e `rulesetEnabled: false`. Essa versão continua sem promover `curated` e sem habilitar ruleset.
 
+## Lote da atividade 4, ainda em 1.0.0
+
+`buildHumanL0Activity4Lot` em `packages/curation/human-l0-activity4-lot.ts` monta o documento sintético `curation/examples/human-l0-consumable.activity4.synthetic.json`. Não há pack `1.1.0`. O gate continua `parseHumanL0Consumable`. `fictionalData: true` vale só para essa fixture. O stub real e a projeção mecânica `0.2.0` não mudam. `act1-local-hash-check` continua aberto.
+
+O documento cobre os 506 ids de `lote-only-human` (227, dos quais 8 manuais) e `lote-oddities` (279). Pesos saem só de `natural-dice-faces`. As 130 linhas `hash-declarado-nao-refeito` não são materializadas: `hashLines.materialized` é 0 e `weights` é null. A exceção nomeada é `oddities:books:20`, referência textual com o gancho `dark-passages-books-and-passages` desligado (`text-reference`). Ligar o gancho é `hook-enabled`.
+
+Consultas emitidas: `query:starting-lifestyle:only-human`, `query:profession-faces:only-human`, `query:family-category` e `selected:interesting-things-router`. O seletor de Interesting Things tem Oddities como padrão e Core como alternativa não projetada (atividade 3). Fonte desligada devolve `disabled-source` e `fallback: null` (`silent-core-fallback` recusa o outro procedimento). `query:family-category` não recebe dado (`family-uniform-die`).
+
+Os seis `lifestyle-modifier:*` entram no domínio da cauda aberta, depois do dado. O peso da coluna conta só os totais naturais. As cinco consultas `query:only-human:clothing|weapons|personal-gear|special-gear|money` e os 66 programas `profession:…`, mais `only-human:kit:<lifestyle>`, ficam em `act5Slots` com `body: null`. Corpo de lookup ou de programa é `act5-body-present`. Profissão de parente não concede equipamento ao personagem (`family-grants-gear`).
+
+Há 61 ligações com `automaticExecution: false`. Sete side rolls de Only Human e treze de Oddities têm `appliesOnPossession: false`. Os de irmãos usam sujeito `relative`. Os treze de Oddities são topologia sintética (`fixture:oddity-side:*`), sem id de face publicado. O ciclo de duas tabelas `siblings` / `character-fate`, e os ciclos de `piety` e `strange`, param em `bounded-recursion`.
+
+Human Development é o procedimento projetado. O procedimento Core de ancestralidade fica registrado como alternativa da atividade 3, sem tabelas Core neste documento.
+
 ## Fora desta versão
 
 - Atividade 1 segue aberta até recomputar os hashes locais.
-- Atividades 3, 4 e 5 projetam os lotes. Atividades 6, 7 e 8 compilam, integram handlers e fazem o aceite.
+- A atividade 3 projeta o lote Core. A atividade 5 projeta o corpo dos kits, lookups de lifestyle e programas de profissão. Atividades 6, 7 e 8 compilam, integram handlers e fazem o aceite.
 - Não há promoção `needs-review` → `curated`, `fictionalData: true` em pack real, nem `rulesetEnabled: true`.
