@@ -1,0 +1,591 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "issue34-activity1-provenance-2026-11-02",
+  "reviewDate": "2026-11-02",
+  "reviewer": "Codex",
+  "scope": "metadata-only-reconciliation",
+  "producerChange": {
+    "path": "tools/curation/creation-table-inventory.ts",
+    "previousSha256": "db1304f0b6b450e8c9faa1e7fd75f9e7f3b2452c9dd381348bc43d7e2f431a54",
+    "currentSha256": "4d94d5e64f337fe76361306eb94eab848a9a882886b2edd543a368c66b8e130d",
+    "change": "exports-only"
+  },
+  "transitions": [
+    {
+      "path": "curation/pilot/creation-table-inventory.json",
+      "previousSha256": "a1d24715f28b505607979153c359d1eee3c1fd39df1a81bf50e407dd81a2188a",
+      "currentSha256": "3f25e389c2c1b1346c4240e575cfc8a5f7c65bed651954158e8e7ed8377075ff",
+      "metadataBefore": {
+        "inputRefs": [
+          {
+            "path": "curation/pilot/human-ancestry.json",
+            "sha256": "24fec52b8c05c0cfc349d10ef369d9d93457b3177b2a237e9187320c50489437"
+          },
+          {
+            "path": "curation/reports/human-ancestry.json",
+            "sha256": "4be4113220bc33fe7a510450602eaeff8f56e08b1faf5bcff1a0641f632fa40b"
+          },
+          {
+            "path": "curation/pilot/core-level-zero.json",
+            "sha256": "e65855746b30c4219449be21de93bf10e5db9e8b5d21cc95b87eec22e0cee263"
+          },
+          {
+            "path": "rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md",
+            "sha256": "020d9d62d9046475552dbaf9f989f07e69b87b7a386cadc1af3e82f930502baf"
+          },
+          {
+            "path": "tools/curation/creation-table-inventory.ts",
+            "sha256": "db1304f0b6b450e8c9faa1e7fd75f9e7f3b2452c9dd381348bc43d7e2f431a54"
+          },
+          {
+            "path": "tools/curation/creation-tables.mjs",
+            "sha256": "4e6df8549b949f6b5c2e1dacae352f5859943d5b8e857099f8c9120fcadf72a4"
+          }
+        ]
+      }
+    },
+    {
+      "path": "curation/pilot/professions-languages.json",
+      "previousSha256": "69127d05ec80db91b824b509b1cde7c9711932f1c7d5182d5ec7696075a01e02",
+      "currentSha256": "87883469050c5663a1f114b69d922c417e8e78682a06109c283b75c789639c64",
+      "metadataBefore": {
+        "inputRefs": [
+          {
+            "path": "curation/pilot/creation-table-inventory.json",
+            "sha256": "a1d24715f28b505607979153c359d1eee3c1fd39df1a81bf50e407dd81a2188a"
+          },
+          {
+            "path": "curation/reports/creation-table-inventory.json",
+            "sha256": "baeb75497c75be26ba2380a7bbc8887a62e407f00e5776bbe88a6f3402b1f1c1"
+          },
+          {
+            "path": "curation/pilot/core-level-zero.json",
+            "sha256": "e65855746b30c4219449be21de93bf10e5db9e8b5d21cc95b87eec22e0cee263"
+          },
+          {
+            "path": "tools/curation/professions-languages-formalizer.ts",
+            "sha256": "5986d1c793fa625aba6151e6469716fb9a98bd09f8c710796352c93e7f057f6a"
+          },
+          {
+            "path": "tools/curation/professions-languages.mjs",
+            "sha256": "4c22564c301b8cd1519bb1b8d4a51452bac97ee8e20121db1da6fe201b8c9e9b"
+          },
+          {
+            "path": "packages/curation/profession-language-model.ts",
+            "sha256": "e91d5168faa24c830d8a5d7d8d90b486a2cd7e69019607680bdca34a422f30f9"
+          }
+        ]
+      }
+    },
+    {
+      "path": "curation/pilot/wealth-equipment.json",
+      "previousSha256": "ba112d62d722b42b65a2dd5186da61681e38564ffbc5871ab19039fc8a88be0e",
+      "currentSha256": "50d9df43117f2f78fbbc25b851020b5a218c10cb1779511e251f12a31672b275",
+      "metadataBefore": {
+        "inputRefs": [
+          {
+            "path": "curation/pilot/professions-languages.json",
+            "sha256": "69127d05ec80db91b824b509b1cde7c9711932f1c7d5182d5ec7696075a01e02"
+          },
+          {
+            "path": "curation/reports/professions-languages.json",
+            "sha256": "6e257369a26e839f9a5433db1aac3705383d467738cfecf4498cc848387d1444"
+          },
+          {
+            "path": "curation/pilot/creation-table-inventory.json",
+            "sha256": "a1d24715f28b505607979153c359d1eee3c1fd39df1a81bf50e407dd81a2188a"
+          },
+          {
+            "path": "curation/pilot/core-level-zero.json",
+            "sha256": "e65855746b30c4219449be21de93bf10e5db9e8b5d21cc95b87eec22e0cee263"
+          },
+          {
+            "path": "tools/curation/wealth-equipment-formalizer.ts",
+            "sha256": "e614fd1ba73259ba62588b76cc3e89e9fd7c580d73bb33983f025ed6b34799c2"
+          },
+          {
+            "path": "tools/curation/wealth-equipment.mjs",
+            "sha256": "5594223e6ad48378454123a77befff2b4daabe07fdb89549edd51b52027e937a"
+          },
+          {
+            "path": "packages/curation/starting-equipment-model.ts",
+            "sha256": "5fc051cb7d927f51674371507cc9b8640f53108a4cd9bde66332e0f6712dd119"
+          }
+        ]
+      }
+    },
+    {
+      "path": "curation/pilot/interesting-things.json",
+      "previousSha256": "abe3c102dd63f5d51498a35cd697a7b009ef59ee816cff3aecd3caa14d4e1a10",
+      "currentSha256": "dd77d600e96108fafa500a45cdff164a9138fe7ca3471cf2409f671b95fc0055",
+      "metadataBefore": {
+        "inputRefs": [
+          {
+            "path": "curation/pilot/wealth-equipment.json",
+            "sha256": "ba112d62d722b42b65a2dd5186da61681e38564ffbc5871ab19039fc8a88be0e"
+          },
+          {
+            "path": "curation/reports/wealth-equipment.json",
+            "sha256": "45de5ad066d46d549b543b0ddb128eb183d39d6dce8dc3b318dd65a808ee5b1d"
+          },
+          {
+            "path": "curation/pilot/creation-table-inventory.json",
+            "sha256": "a1d24715f28b505607979153c359d1eee3c1fd39df1a81bf50e407dd81a2188a"
+          },
+          {
+            "path": "curation/sources.json",
+            "sha256": "c66b832ebf34cc047fdf7c18f97bc9965b4cf3e632f7fa29876972f372e15608"
+          },
+          {
+            "path": "curation/input-manifest.json",
+            "sha256": "e0fa4d9dae830c0cfc000955855da800a1d75f0af06f7cbfaf3d56631463679e"
+          },
+          {
+            "path": "rules/SotDL_Compendio_Regras_Equipamentos_Monstros_v4_All_Project_Sources.md",
+            "sha256": "af5b377d003c96910c5c7d4c4909a66d381513cbda93de22b5d83a6ca5474ece"
+          },
+          {
+            "path": "rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md",
+            "sha256": "020d9d62d9046475552dbaf9f989f07e69b87b7a386cadc1af3e82f930502baf"
+          },
+          {
+            "path": "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+            "sha256": "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61"
+          },
+          {
+            "path": "curation/corrections/oddities-tables-2026-10-27/tables.txt",
+            "sha256": "d3431ac28254cc4ee5910197b64dbae14744838eaf8bb983b73d4bb3a765620a"
+          },
+          {
+            "path": "curation/corrections/oddities-tables-2026-10-27/manifest.json",
+            "sha256": "406b3e91fb2a9d43dabf8499dd639e3c86613f89b93f00efc719147612972b9d"
+          },
+          {
+            "path": "tools/curation/interesting-things-map.ts",
+            "sha256": "9dcec875138c3e58b7b153e948670cb5646948a79d666a0000517132feefa237"
+          },
+          {
+            "path": "tools/curation/interesting-things-details.ts",
+            "sha256": "0a9d81d9343609470f173c4278caff2c2abbab6597bfd903c75527e248e610bc"
+          },
+          {
+            "path": "tools/curation/interesting-things-formalizer.ts",
+            "sha256": "d5b3a4fc8e8f04f08b2bf0a2b1dc3f290a6c5ac70959d356a5afffdbe2d10aa8"
+          },
+          {
+            "path": "tools/curation/interesting-things.mjs",
+            "sha256": "9a323dc85279738039df5bce835ff953e91c84b1d155aed8c0237059c6c908d2"
+          },
+          {
+            "path": "packages/curation/interesting-things-model.ts",
+            "sha256": "eae6dde147450230cfcdd954d868708ba8105547535e15868fff6f779269bcb2"
+          }
+        ]
+      }
+    },
+    {
+      "path": "curation/pilot/items.json",
+      "previousSha256": "b1662e8bfc208a6b3a8b706d0aa2bb58ac702b44520a1f4cbb78d0120d5dcb03",
+      "currentSha256": "d39fdf70c5494781196cc4a0985654c9bd6373b71f412cda24f70b82a06267a2",
+      "metadataBefore": {
+        "inputRefs": [
+          {
+            "path": "curation/pilot/interesting-things.json",
+            "sha256": "abe3c102dd63f5d51498a35cd697a7b009ef59ee816cff3aecd3caa14d4e1a10"
+          },
+          {
+            "path": "curation/reports/interesting-things.json",
+            "sha256": "9a9f720cf9b85326de7fe06edffe4e1fc60e61e57bdeb313f7adbf1dc8ff0f26"
+          },
+          {
+            "path": "curation/pilot/wealth-equipment.json",
+            "sha256": "ba112d62d722b42b65a2dd5186da61681e38564ffbc5871ab19039fc8a88be0e"
+          },
+          {
+            "path": "rules/SotDL_Compendio_Regras_Equipamentos_Monstros_v4_All_Project_Sources.md",
+            "sha256": "af5b377d003c96910c5c7d4c4909a66d381513cbda93de22b5d83a6ca5474ece"
+          },
+          {
+            "path": "tools/curation/pilot-items-formalizer.ts",
+            "sha256": "22740792568a732e504f2d60b9b711e7e22bee200875c92499cf48c23e60c09b"
+          },
+          {
+            "path": "tools/curation/pilot-item-definitions.ts",
+            "sha256": "e7fd660b99170455e337a33c176fd6cd44fa04630896b5ee2a76b77aa4b01aef"
+          },
+          {
+            "path": "tools/curation/pilot-items.mjs",
+            "sha256": "293ac573ac622fb33108b8cbf45423397a68286caa665065cc50151123f160cb"
+          },
+          {
+            "path": "packages/curation/pilot-item-model.ts",
+            "sha256": "e892cd65a8f382e57edac5f1d81d8b43275e23674d0172f131c63437c905b5f0"
+          }
+        ]
+      }
+    },
+    {
+      "path": "curation/pilot/table-closure.json",
+      "previousSha256": "b93f6e9843fedc2fd7a7f71154438172c723ec826efbe431af0f9ba69f51be41",
+      "currentSha256": "1bbcd46e9251b8a855adcbea3aa674035f9d3adf71baebb5234c0430d069a13e",
+      "metadataBefore": {
+        "inputRefs": [
+          {
+            "path": "curation/pilot/items.json",
+            "sha256": "b1662e8bfc208a6b3a8b706d0aa2bb58ac702b44520a1f4cbb78d0120d5dcb03"
+          },
+          {
+            "path": "curation/reports/pilot-items.json",
+            "sha256": "93372d72305b3e1ab965c7ba73d6d921aad19cc7d2ec2d3abca74c6ab03ae1fe"
+          },
+          {
+            "path": "curation/pilot/creation-table-inventory.json",
+            "sha256": "a1d24715f28b505607979153c359d1eee3c1fd39df1a81bf50e407dd81a2188a"
+          },
+          {
+            "path": "curation/pilot/professions-languages.json",
+            "sha256": "69127d05ec80db91b824b509b1cde7c9711932f1c7d5182d5ec7696075a01e02"
+          },
+          {
+            "path": "curation/pilot/wealth-equipment.json",
+            "sha256": "ba112d62d722b42b65a2dd5186da61681e38564ffbc5871ab19039fc8a88be0e"
+          },
+          {
+            "path": "curation/pilot/interesting-things.json",
+            "sha256": "abe3c102dd63f5d51498a35cd697a7b009ef59ee816cff3aecd3caa14d4e1a10"
+          },
+          {
+            "path": "curation/corrections/only-human-fears-desires-2026-10-27/tables.txt",
+            "sha256": "1623f63a467016cb940701c088bf4647fa43a9eb730b6817d905e9586113184f"
+          },
+          {
+            "path": "curation/corrections/only-human-fears-desires-2026-10-27/manifest.json",
+            "sha256": "4e12bd11fa50ef900969b888d84b991955bbc1d4d668e84715b1f01713b2c1cd"
+          },
+          {
+            "path": "tools/curation/pilot-table-closure.ts",
+            "sha256": "e28e34f73de1e2c09102dc39b8aa68105efa8b69a644b6a95afc7c59c534d9cd"
+          },
+          {
+            "path": "tools/curation/pilot-table-ranges.ts",
+            "sha256": "c24d078dcbfa9868ce7659b5f6e03f0bc9b8eec69eb96dda67d307e2ad0560dc"
+          },
+          {
+            "path": "tools/curation/pilot-tables.mjs",
+            "sha256": "1dd3013247f2c54df1f10767f46bb1d0f97614f678f34c32e3e8f7f2b5026658"
+          },
+          {
+            "path": "packages/curation/pilot-table-model.ts",
+            "sha256": "df731b704eb1646105d3c3242da282d9d5b82adcc353a72feeaafe1757dc62b5"
+          }
+        ]
+      }
+    },
+    {
+      "path": "curation/reports/creation-table-inventory.json",
+      "previousSha256": "baeb75497c75be26ba2380a7bbc8887a62e407f00e5776bbe88a6f3402b1f1c1",
+      "currentSha256": "040ab17907798c0967e88d2e6377cd876a7675e458a4e6111506201013c42ee3",
+      "metadataBefore": {
+        "inputRefs": [
+          {
+            "path": "curation/pilot/human-ancestry.json",
+            "sha256": "24fec52b8c05c0cfc349d10ef369d9d93457b3177b2a237e9187320c50489437"
+          },
+          {
+            "path": "curation/reports/human-ancestry.json",
+            "sha256": "4be4113220bc33fe7a510450602eaeff8f56e08b1faf5bcff1a0641f632fa40b"
+          },
+          {
+            "path": "curation/pilot/core-level-zero.json",
+            "sha256": "e65855746b30c4219449be21de93bf10e5db9e8b5d21cc95b87eec22e0cee263"
+          },
+          {
+            "path": "rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md",
+            "sha256": "020d9d62d9046475552dbaf9f989f07e69b87b7a386cadc1af3e82f930502baf"
+          },
+          {
+            "path": "tools/curation/creation-table-inventory.ts",
+            "sha256": "db1304f0b6b450e8c9faa1e7fd75f9e7f3b2452c9dd381348bc43d7e2f431a54"
+          },
+          {
+            "path": "tools/curation/creation-tables.mjs",
+            "sha256": "4e6df8549b949f6b5c2e1dacae352f5859943d5b8e857099f8c9120fcadf72a4"
+          }
+        ],
+        "outputs": [
+          {
+            "path": "curation/pilot/creation-table-inventory.json",
+            "sha256": "a1d24715f28b505607979153c359d1eee3c1fd39df1a81bf50e407dd81a2188a"
+          }
+        ]
+      }
+    },
+    {
+      "path": "curation/reports/professions-languages.json",
+      "previousSha256": "6e257369a26e839f9a5433db1aac3705383d467738cfecf4498cc848387d1444",
+      "currentSha256": "b9445566a02f20607b794598b47e6fb4a612945316fa3604b7ce38e7085b294b",
+      "metadataBefore": {
+        "inputRefs": [
+          {
+            "path": "curation/pilot/creation-table-inventory.json",
+            "sha256": "a1d24715f28b505607979153c359d1eee3c1fd39df1a81bf50e407dd81a2188a"
+          },
+          {
+            "path": "curation/reports/creation-table-inventory.json",
+            "sha256": "baeb75497c75be26ba2380a7bbc8887a62e407f00e5776bbe88a6f3402b1f1c1"
+          },
+          {
+            "path": "curation/pilot/core-level-zero.json",
+            "sha256": "e65855746b30c4219449be21de93bf10e5db9e8b5d21cc95b87eec22e0cee263"
+          },
+          {
+            "path": "tools/curation/professions-languages-formalizer.ts",
+            "sha256": "5986d1c793fa625aba6151e6469716fb9a98bd09f8c710796352c93e7f057f6a"
+          },
+          {
+            "path": "tools/curation/professions-languages.mjs",
+            "sha256": "4c22564c301b8cd1519bb1b8d4a51452bac97ee8e20121db1da6fe201b8c9e9b"
+          },
+          {
+            "path": "packages/curation/profession-language-model.ts",
+            "sha256": "e91d5168faa24c830d8a5d7d8d90b486a2cd7e69019607680bdca34a422f30f9"
+          }
+        ],
+        "outputs": [
+          {
+            "path": "curation/pilot/professions-languages.json",
+            "sha256": "69127d05ec80db91b824b509b1cde7c9711932f1c7d5182d5ec7696075a01e02"
+          }
+        ]
+      }
+    },
+    {
+      "path": "curation/reports/wealth-equipment.json",
+      "previousSha256": "45de5ad066d46d549b543b0ddb128eb183d39d6dce8dc3b318dd65a808ee5b1d",
+      "currentSha256": "699ff980318e6050165b6dd2221de35f733f9bb8c5587707aef1161e6153b5d1",
+      "metadataBefore": {
+        "inputRefs": [
+          {
+            "path": "curation/pilot/professions-languages.json",
+            "sha256": "69127d05ec80db91b824b509b1cde7c9711932f1c7d5182d5ec7696075a01e02"
+          },
+          {
+            "path": "curation/reports/professions-languages.json",
+            "sha256": "6e257369a26e839f9a5433db1aac3705383d467738cfecf4498cc848387d1444"
+          },
+          {
+            "path": "curation/pilot/creation-table-inventory.json",
+            "sha256": "a1d24715f28b505607979153c359d1eee3c1fd39df1a81bf50e407dd81a2188a"
+          },
+          {
+            "path": "curation/pilot/core-level-zero.json",
+            "sha256": "e65855746b30c4219449be21de93bf10e5db9e8b5d21cc95b87eec22e0cee263"
+          },
+          {
+            "path": "tools/curation/wealth-equipment-formalizer.ts",
+            "sha256": "e614fd1ba73259ba62588b76cc3e89e9fd7c580d73bb33983f025ed6b34799c2"
+          },
+          {
+            "path": "tools/curation/wealth-equipment.mjs",
+            "sha256": "5594223e6ad48378454123a77befff2b4daabe07fdb89549edd51b52027e937a"
+          },
+          {
+            "path": "packages/curation/starting-equipment-model.ts",
+            "sha256": "5fc051cb7d927f51674371507cc9b8640f53108a4cd9bde66332e0f6712dd119"
+          }
+        ],
+        "outputs": [
+          {
+            "path": "curation/pilot/wealth-equipment.json",
+            "sha256": "ba112d62d722b42b65a2dd5186da61681e38564ffbc5871ab19039fc8a88be0e"
+          }
+        ]
+      }
+    },
+    {
+      "path": "curation/reports/interesting-things.json",
+      "previousSha256": "9a9f720cf9b85326de7fe06edffe4e1fc60e61e57bdeb313f7adbf1dc8ff0f26",
+      "currentSha256": "0d15b5a60a999e220020055bd231206ac1811836f288b9479c1dfd9e0b5a84ba",
+      "metadataBefore": {
+        "inputRefs": [
+          {
+            "path": "curation/pilot/wealth-equipment.json",
+            "sha256": "ba112d62d722b42b65a2dd5186da61681e38564ffbc5871ab19039fc8a88be0e"
+          },
+          {
+            "path": "curation/reports/wealth-equipment.json",
+            "sha256": "45de5ad066d46d549b543b0ddb128eb183d39d6dce8dc3b318dd65a808ee5b1d"
+          },
+          {
+            "path": "curation/pilot/creation-table-inventory.json",
+            "sha256": "a1d24715f28b505607979153c359d1eee3c1fd39df1a81bf50e407dd81a2188a"
+          },
+          {
+            "path": "curation/sources.json",
+            "sha256": "c66b832ebf34cc047fdf7c18f97bc9965b4cf3e632f7fa29876972f372e15608"
+          },
+          {
+            "path": "curation/input-manifest.json",
+            "sha256": "e0fa4d9dae830c0cfc000955855da800a1d75f0af06f7cbfaf3d56631463679e"
+          },
+          {
+            "path": "rules/SotDL_Compendio_Regras_Equipamentos_Monstros_v4_All_Project_Sources.md",
+            "sha256": "af5b377d003c96910c5c7d4c4909a66d381513cbda93de22b5d83a6ca5474ece"
+          },
+          {
+            "path": "rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md",
+            "sha256": "020d9d62d9046475552dbaf9f989f07e69b87b7a386cadc1af3e82f930502baf"
+          },
+          {
+            "path": "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+            "sha256": "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61"
+          },
+          {
+            "path": "curation/corrections/oddities-tables-2026-10-27/tables.txt",
+            "sha256": "d3431ac28254cc4ee5910197b64dbae14744838eaf8bb983b73d4bb3a765620a"
+          },
+          {
+            "path": "curation/corrections/oddities-tables-2026-10-27/manifest.json",
+            "sha256": "406b3e91fb2a9d43dabf8499dd639e3c86613f89b93f00efc719147612972b9d"
+          },
+          {
+            "path": "tools/curation/interesting-things-map.ts",
+            "sha256": "9dcec875138c3e58b7b153e948670cb5646948a79d666a0000517132feefa237"
+          },
+          {
+            "path": "tools/curation/interesting-things-details.ts",
+            "sha256": "0a9d81d9343609470f173c4278caff2c2abbab6597bfd903c75527e248e610bc"
+          },
+          {
+            "path": "tools/curation/interesting-things-formalizer.ts",
+            "sha256": "d5b3a4fc8e8f04f08b2bf0a2b1dc3f290a6c5ac70959d356a5afffdbe2d10aa8"
+          },
+          {
+            "path": "tools/curation/interesting-things.mjs",
+            "sha256": "9a323dc85279738039df5bce835ff953e91c84b1d155aed8c0237059c6c908d2"
+          },
+          {
+            "path": "packages/curation/interesting-things-model.ts",
+            "sha256": "eae6dde147450230cfcdd954d868708ba8105547535e15868fff6f779269bcb2"
+          }
+        ],
+        "outputs": [
+          {
+            "path": "curation/pilot/interesting-things.json",
+            "sha256": "abe3c102dd63f5d51498a35cd697a7b009ef59ee816cff3aecd3caa14d4e1a10"
+          }
+        ]
+      }
+    },
+    {
+      "path": "curation/reports/pilot-items.json",
+      "previousSha256": "93372d72305b3e1ab965c7ba73d6d921aad19cc7d2ec2d3abca74c6ab03ae1fe",
+      "currentSha256": "871ae6530aac01c1cdb4a3201cc7a44d6e3e6cd6e5da7f08f86e040b40523fd3",
+      "metadataBefore": {
+        "inputRefs": [
+          {
+            "path": "curation/pilot/interesting-things.json",
+            "sha256": "abe3c102dd63f5d51498a35cd697a7b009ef59ee816cff3aecd3caa14d4e1a10"
+          },
+          {
+            "path": "curation/reports/interesting-things.json",
+            "sha256": "9a9f720cf9b85326de7fe06edffe4e1fc60e61e57bdeb313f7adbf1dc8ff0f26"
+          },
+          {
+            "path": "curation/pilot/wealth-equipment.json",
+            "sha256": "ba112d62d722b42b65a2dd5186da61681e38564ffbc5871ab19039fc8a88be0e"
+          },
+          {
+            "path": "rules/SotDL_Compendio_Regras_Equipamentos_Monstros_v4_All_Project_Sources.md",
+            "sha256": "af5b377d003c96910c5c7d4c4909a66d381513cbda93de22b5d83a6ca5474ece"
+          },
+          {
+            "path": "tools/curation/pilot-items-formalizer.ts",
+            "sha256": "22740792568a732e504f2d60b9b711e7e22bee200875c92499cf48c23e60c09b"
+          },
+          {
+            "path": "tools/curation/pilot-item-definitions.ts",
+            "sha256": "e7fd660b99170455e337a33c176fd6cd44fa04630896b5ee2a76b77aa4b01aef"
+          },
+          {
+            "path": "tools/curation/pilot-items.mjs",
+            "sha256": "293ac573ac622fb33108b8cbf45423397a68286caa665065cc50151123f160cb"
+          },
+          {
+            "path": "packages/curation/pilot-item-model.ts",
+            "sha256": "e892cd65a8f382e57edac5f1d81d8b43275e23674d0172f131c63437c905b5f0"
+          }
+        ],
+        "outputs": [
+          {
+            "path": "curation/pilot/items.json",
+            "sha256": "b1662e8bfc208a6b3a8b706d0aa2bb58ac702b44520a1f4cbb78d0120d5dcb03"
+          }
+        ]
+      }
+    },
+    {
+      "path": "curation/reports/table-closure.json",
+      "previousSha256": "b614baea395305d81fdd72c1704cf5abb6b9c704568ac37a76526517bd2f4fc1",
+      "currentSha256": "a71516df2a883f7d644be953d69cb2fc61ffd48ba6a4554ed9280d6ca0607a69",
+      "metadataBefore": {
+        "inputRefs": [
+          {
+            "path": "curation/pilot/items.json",
+            "sha256": "b1662e8bfc208a6b3a8b706d0aa2bb58ac702b44520a1f4cbb78d0120d5dcb03"
+          },
+          {
+            "path": "curation/reports/pilot-items.json",
+            "sha256": "93372d72305b3e1ab965c7ba73d6d921aad19cc7d2ec2d3abca74c6ab03ae1fe"
+          },
+          {
+            "path": "curation/pilot/creation-table-inventory.json",
+            "sha256": "a1d24715f28b505607979153c359d1eee3c1fd39df1a81bf50e407dd81a2188a"
+          },
+          {
+            "path": "curation/pilot/professions-languages.json",
+            "sha256": "69127d05ec80db91b824b509b1cde7c9711932f1c7d5182d5ec7696075a01e02"
+          },
+          {
+            "path": "curation/pilot/wealth-equipment.json",
+            "sha256": "ba112d62d722b42b65a2dd5186da61681e38564ffbc5871ab19039fc8a88be0e"
+          },
+          {
+            "path": "curation/pilot/interesting-things.json",
+            "sha256": "abe3c102dd63f5d51498a35cd697a7b009ef59ee816cff3aecd3caa14d4e1a10"
+          },
+          {
+            "path": "curation/corrections/only-human-fears-desires-2026-10-27/tables.txt",
+            "sha256": "1623f63a467016cb940701c088bf4647fa43a9eb730b6817d905e9586113184f"
+          },
+          {
+            "path": "curation/corrections/only-human-fears-desires-2026-10-27/manifest.json",
+            "sha256": "4e12bd11fa50ef900969b888d84b991955bbc1d4d668e84715b1f01713b2c1cd"
+          },
+          {
+            "path": "tools/curation/pilot-table-closure.ts",
+            "sha256": "e28e34f73de1e2c09102dc39b8aa68105efa8b69a644b6a95afc7c59c534d9cd"
+          },
+          {
+            "path": "tools/curation/pilot-table-ranges.ts",
+            "sha256": "c24d078dcbfa9868ce7659b5f6e03f0bc9b8eec69eb96dda67d307e2ad0560dc"
+          },
+          {
+            "path": "tools/curation/pilot-tables.mjs",
+            "sha256": "1dd3013247f2c54df1f10767f46bb1d0f97614f678f34c32e3e8f7f2b5026658"
+          },
+          {
+            "path": "packages/curation/pilot-table-model.ts",
+            "sha256": "df731b704eb1646105d3c3242da282d9d5b82adcc353a72feeaafe1757dc62b5"
+          }
+        ],
+        "outputs": [
+          {
+            "path": "curation/pilot/table-closure.json",
+            "sha256": "b93f6e9843fedc2fd7a7f71154438172c723ec826efbe431af0f9ba69f51be41"
+          }
+        ]
+      }
+    }
+  ]
+}
