@@ -52,6 +52,15 @@ describe('Human L0 consumable contract v1', () => {
     expect(parsed.matrix.sourceVersion).toBeNull();
     expect(JSON.stringify(input)).toBe(before);
     expect(parsed.lookups[0].dice).toBeNull();
+    expect(parsed.lookups[0].keys.map(key => key.key)).toEqual(['fixture:bands:low', 'fixture:bands:mid', 'fixture:bands:high']);
+    const blade = parsed.items.find(item => item.id === 'fixture-blade');
+    const shield = parsed.items.find(item => item.id === 'fixture-shield');
+    expect(blade?.onUse?.kind === 'pending' && blade.onUse.pending.reason).toBe('weapon-no-defense');
+    expect(shield?.onEquip?.kind === 'pending' && shield.onEquip.pending.reason).toBe('defense-bonus-not-substitution');
+    expect(blade?.onUse?.kind === 'effect').toBe(false);
+    const withoutDefense = fresh();
+    withoutDefense.items.find((item: { id: string }) => item.id === 'fixture-blade').onUse = null;
+    expect(parseHumanL0Consumable(withoutDefense).items.find(item => item.id === 'fixture-blade')?.onUse).toBeNull();
     expect(parsed.tables.find(table => table.id === 'fixture:columns')?.columns.map(column => column.rollId))
       .toEqual(['fixture:columns#positive', 'fixture:columns#negative']);
     const open = parsed.tables.find(table => table.id === 'fixture:open');
@@ -112,17 +121,27 @@ describe('Human L0 consumable contract v1', () => {
     const parsed = parseHumanL0Consumable(fresh());
     const effect = parsed.tables[0].columns[0].rows[0].consequence;
     const pending = parsed.manualResolutions[0].consequence;
+    const entry = (componentId: string, phase: 'creation' | 'on-equip' | 'on-use' | 'narrative', consequence: unknown) => ({
+      originKey: `fixture-publication@null/fixture:bands/fixture:bands:low/${componentId}`,
+      origin: { publicationId: 'fixture-publication', version: null, entityId: 'fixture:bands', resultId: 'fixture:bands:low', componentId },
+      subject: 'character', phase, consequence,
+    });
     const resolution = {
       contract: HUMAN_L0_CONSUMABLE_CONTRACT, contractVersion: HUMAN_L0_CONSUMABLE_CONTRACT_VERSION,
       rolled: false, rulesetEnabled: false, input: { contextId: 'fixture-context', resultId: 'fixture:bands:low' },
-      consequences: [effect, pending],
+      consequences: [entry('grant', 'creation', effect), entry('note', 'narrative', pending)],
     };
-    expect(parseHumanL0ConsumableResolution(resolution).consequences.map(row => row.kind)).toEqual(['effect', 'pending']);
-    expect(parseHumanL0ConsumableResolution({ ...resolution, consequences: [effect] }).consequences).toHaveLength(1);
-    expect(parseHumanL0ConsumableResolution({ ...resolution, consequences: [pending] }).consequences[0].kind).toBe('pending');
+    const accepted = parseHumanL0ConsumableResolution(resolution);
+    expect(accepted.consequences.map(row => row.consequence.kind)).toEqual(['effect', 'pending']);
+    expect(accepted.consequences[0].originKey).toBe('fixture-publication@null/fixture:bands/fixture:bands:low/grant');
+    expect(parseHumanL0ConsumableResolution({ ...resolution, consequences: [entry('grant', 'creation', effect)] }).consequences).toHaveLength(1);
     expect(() => parseHumanL0ConsumableResolution({ ...resolution, rolled: true })).toThrow(HumanL0ConsumableError);
     expect(() => parseHumanL0ConsumableResolution({ ...resolution, consequences: [] })).toThrow(/missing-consequence/);
     expect(() => parseHumanL0ConsumableResolution({ ...resolution, rulesetEnabled: true })).toThrow(/ruleset-enablement-forbidden/);
+    const defense = parsed.items.find(item => item.id === 'fixture-wrap')?.onEquip;
+    const equipped = entry('defense', 'on-equip', defense);
+    expect(parseHumanL0ConsumableResolution({ ...resolution, consequences: [equipped] }).consequences[0].phase).toBe('on-equip');
+    expect(() => parseHumanL0ConsumableResolution({ ...resolution, consequences: [{ ...equipped, phase: 'creation' }] })).toThrow(/defense-on-possession/);
   });
 
   it('still accepts an open tail whose modifier domain is pending rather than weighted', () => {

@@ -20,7 +20,7 @@ A matriz da atividade 1 ([`matriz-lacunas-issue34-atividade1.json`](matriz-lacun
 - Defense só por substituição, e só ao equipar ou empunhar;
 - consequência que é um efeito tipado ou uma pendência tipada.
 
-O gate específico é `parseHumanL0Consumable`. `parseHumanL0ConsumableResolution` só confere o formato de consumo: contexto, resultado e uma lista de efeitos ou pendências. Os dois recusam `rolled: true` no caso da resolução, `rulesetEnabled: true` e revisão `curated`. Nenhum dos dois rola dado, aplica efeito ou importa pack.
+O gate específico é `parseHumanL0Consumable`. `parseHumanL0ConsumableResolution` confere o formato de consumo. Cada entrada traz `origin`, `originKey`, `subject`, `phase` e a consequência. A fase `on-equip` / `on-use` autoriza `substitute-defense`; `creation` é posse e recusa esse efeito com `defense-on-possession`. O gate recusa `rolled: true`, `rulesetEnabled: true` e revisão `curated`. Não rola dado, não aplica efeito e não importa pack.
 
 A versão `1.0.0` só aceita documento `distribution: public-synthetic` com `fictionalData: true`, `reviewStatus: needs-review`, `importablePack: false` e `promotesReview: false`. Um lote real futuro precisa de versão nova ou evolução explícita. Não entra por este gate.
 
@@ -45,12 +45,12 @@ A chave de origem é `publicationId@null/entityId/resultId/componentId`. Eventos
 
 | Forma | Regra do gate |
 |---|---|
-| Faixa com peso | `publishedWeight.basis` é `natural-dice-faces`. `ways` / `denominator` repetem a enumeração do dado da coluna. Outra base é `uniform-row-weight`. Divergência em faixa fechada é `weight-mismatch`. |
+| Faixa com peso | `publishedWeight.basis` é `natural-dice-faces`. `ways` / `denominator` repetem a enumeração do dado da coluna. Outra base é `uniform-row-weight`. Divergência em faixa fechada é `weight-mismatch`. Faixa fechada fora do intervalo natural do dado é `range-outside-die`. |
 | Colunas independentes | Cada coluna tem `rollId` próprio. Repetir o id é `shared-column-roll`. Não há campo de face compartilhada. |
 | Cauda aberta | `open-low` tem `min: null`; `open-high` tem `max: null`. O peso conta só os totais naturais. Acrescentar peso de modificador é `open-tail-weight-invented`. A coluna declara domínio `authorized` ou `pending` / `open-tail-domain`. O domínio não entra na conta. |
-| Consulta | `kind: lookup`, `dice: null`, `reads.queryId` aponta para `producedQueries`. Dado na consulta é `lookup-has-dice`. Consulta sem resultado anterior é `lookup-missing-prior`. |
+| Consulta | `kind: lookup`, `dice: null`, `reads.queryId` aponta para `producedQueries`. Cada `key` é o id de uma linha da coluna `producedBy`, e toda linha dessa coluna aparece. Chave estranha é `lookup-unknown-key`. Linha omitida é `lookup-coverage`; a omissão não vira pendência implícita. Dado na consulta é `lookup-has-dice`. Consulta sem resultado anterior é `lookup-missing-prior`. |
 | Subtabela | Efeito `follow-subtable` só em linha de tabela. Alvo ausente é `subtable-missing`. Ciclo só passa se cada tabela do ciclo tiver `publishedCycle: true`. No limite, `onLimit` é `pending` com razão `bounded-recursion`. Rerrolagem ou descarte são `recursion-reroll-forbidden` e `recursion-discard-forbidden`. |
-| Side roll | Fase `creation`, `equip` ou `use`, dado e `rollId` distintos da coluna. `appliesOnPossession: true` é `side-roll-on-possession`. Sujeito `relative` com efeito de personagem é `relative-is-not-character`. Fase trocada é `side-roll-phase-mismatch`. |
+| Side roll | Fase `creation`, `equip` ou `use`, dado e `rollId` distintos da coluna. `appliesOnPossession: true` é `side-roll-on-possession`. Sujeito `relative` com efeito de personagem é `relative-is-not-character`. Fase trocada é `side-roll-phase-mismatch`. `when.optionId` e `choice-selected.optionId`, quando presentes, apontam para uma opção de `choices`. Id ausente é `unknown-option`. |
 
 Os quatro ciclos publicados `only-human:character-fate`, `only-human:piety`, `only-human:siblings` e `only-human:strange` ficam em `unprojectedPublishedCycles` com `projected: false`. Projetá-los aqui seria a atividade 4.
 
@@ -62,7 +62,7 @@ Efeitos fechados: `grant-language`, `grant-profession`, `grant-item`, `grant-cur
 
 `grant-item` carrega `possession: carried` e `usageApplied: false`. `usageApplied: true` é `possession-applies-use`. `grant-currency` exige bits iguais a `moneyToBits`.
 
-`substitute-defense` só com `mode: substitute`. `add` ou `stack` é `defense-not-substitution`. A fase é `on-equip` quando `when` é `equipped`, ou `on-use` quando `when` é `wielded`. No perfil do item, a posse não recebe esse efeito (`defense-on-possession`). Armadura declara o efeito em `onEquip` e a posse fica pendente `possession-is-not-use`. Arma faz o mesmo em `onUse`. Perfil `generic` não ganha estatística (`generic-profile-has-stats`).
+`substitute-defense` só com `mode: substitute`. `add` ou `stack` é `defense-not-substitution`. A fase é `on-equip` quando `when` é `equipped`, ou `on-use` quando `when` é `wielded`. No perfil do item, a posse não recebe esse efeito (`defense-on-possession`). Arma e armadura podem deixar `onEquip` / `onUse` nulos ou pendentes. A substituição só é exigida quando o efeito existe. Pendência nesse slot usa `weapon-no-defense` ou `defense-bonus-not-substitution`. Outra razão é `profile-mismatch`. Um efeito que não substitui Defense é `defense-not-substitution`. Perfil `generic` não ganha estatística (`generic-profile-has-stats`).
 
 Preço `exact` ou `minimum` guarda amount, denominação e bits conferidos. Preço `unknown` ou `variable` deixa amount, denominação e bits nulos e a consequência do preço é pendência `unknown-price`. Qualquer zero ou valor nesse preço é `unknown-price-not-zero`.
 
@@ -109,6 +109,10 @@ Os ids longos de escolha estão por extenso na fixture e em `MANUAL_RESOLUTION_S
 `curation/examples/human-l0-consumable.synthetic.json` é o documento válido: fontes, rótulos e valores inventados. `curation/examples/human-l0-consumable.rejections.json` aplica remendos que o gate recusa. Nenhum dos dois é pack importável nem texto de livro.
 
 Os testes em `tests/curation-human-l0-consumable.test.ts` cruzam as contagens 258, 350, 36, 314 e os 16 ids com a matriz. Também revalidam a fixture mecânica sintética e o stub real `0.1.0` (`fictionalData: false`, `needs-review`).
+
+## Evolução
+
+`1.0.0` só aceita `distribution: public-synthetic` e `fictionalData: true`. Lote real não entra por conversão silenciosa. A evolução prevista é `1.1.0`, com `distribution: local` e `fictionalData: false`, mantendo `reviewStatus: needs-review` e `rulesetEnabled: false`. Essa versão continua sem promover `curated` e sem habilitar ruleset.
 
 ## Fora desta versão
 

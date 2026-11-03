@@ -76,6 +76,7 @@ const pendingReason = z.enum([
   'conditional-branch', 'choice-required', 'open-category-language', 'no-extra-life-rolls', 'player-fields',
   'partial-literacy', 'range-starts-not-reextracted', 'catalog-group-not-individual', 'possession-is-not-use',
   'unknown-price', 'generic-profile', 'disabled-source', 'external-branch', 'open-tail-domain',
+  'weapon-no-defense', 'defense-bonus-not-substitution',
 ]);
 const link = z.discriminatedUnion('kind', [
   z.object({ kind: z.literal('not-an-item') }).strict(),
@@ -200,6 +201,7 @@ export const HumanL0ConsumableDocumentSchema = z.object({
     pendingReason: z.literal('bounded-recursion'), silentReroll: z.boolean(), discardOutcome: z.boolean(),
   }).strict(),
   unprojectedPublishedCycles: z.array(z.object({ id, projected: z.boolean() }).strict()).max(8),
+  choices: z.array(z.object({ id, options: z.array(id).min(2).max(8) }).strict()).max(20),
   producedQueries: z.array(z.object({ id, producedBy: z.object({ tableId: id, columnId: id }).strict() }).strict()).max(20),
   tables: z.array(table).min(1).max(40),
   lookups: z.array(lookup).max(20),
@@ -212,12 +214,16 @@ export const HumanL0ConsumableDocumentSchema = z.object({
 }).strict();
 export type HumanL0ConsumableDocument = z.infer<typeof HumanL0ConsumableDocumentSchema>;
 
+const resolutionEntry = z.object({
+  originKey: id, origin: reference, subject: z.enum(['character', 'relative', 'item']),
+  phase: z.enum(['creation', 'on-equip', 'on-use', 'narrative']), consequence: HumanL0ConsequenceSchema,
+}).strict();
 export const HumanL0ConsumableResolutionSchema = z.object({
   contract: z.literal(HUMAN_L0_CONSUMABLE_CONTRACT),
   contractVersion: z.literal(HUMAN_L0_CONSUMABLE_CONTRACT_VERSION),
   rolled: z.boolean(), rulesetEnabled: z.boolean(),
   input: z.object({ contextId: id, resultId: id }).strict(),
-  consequences: z.array(HumanL0ConsequenceSchema).max(100),
+  consequences: z.array(resolutionEntry).max(100),
 }).strict();
 export type HumanL0ConsumableResolution = z.infer<typeof HumanL0ConsumableResolutionSchema>;
 
@@ -232,6 +238,14 @@ const stable = (value: unknown): string => {
 const same = (a: unknown, b: unknown) => stable(a) === stable(b);
 const originKeyOf = (origin: { publicationId: string; entityId: string; resultId: string | null; componentId: string | null }) =>
   `${origin.publicationId}@null/${origin.entityId}/${origin.resultId ?? 'null'}/${origin.componentId ?? 'null'}`;
+const defenseSlotReasons = new Set(['weapon-no-defense', 'defense-bonus-not-substitution']);
+
+function placeForPhase(phase: 'creation' | 'on-equip' | 'on-use' | 'narrative') {
+  if (phase === 'on-equip') return 'equip';
+  if (phase === 'on-use') return 'use';
+  if (phase === 'creation') return 'possess';
+  return 'lookup';
+}
 
 function enumerateDice(diceValue: { count: number; sides: number }) {
   let counts = new Map<number, bigint>([[0, 1n]]);
@@ -272,7 +286,8 @@ function assertConsequence(consequence: Consequence, place: string, pointer: str
   if (place === 'side-equip' && value.op !== 'narrative-marker' && !(value.op === 'substitute-defense' && value.timing === 'on-equip')) fail('side-roll-phase-mismatch', pointer);
   if (place === 'side-use' && value.op !== 'narrative-marker' && !(value.op === 'substitute-defense' && value.timing === 'on-use')) fail('side-roll-phase-mismatch', pointer);
   if (value.op === 'substitute-defense') {
-    if (value.possessionApplies) fail('defense-on-possession', pointer);
+    if (value.possessionApplies || place === 'possess' || place === 'row' || place === 'grant' || place === 'lookup' || place === 'price' || place === 'side-creation')
+      fail('defense-on-possession', pointer);
     if (value.mode !== 'substitute') fail('defense-not-substitution', pointer);
     const equipped = value.when === 'equipped' && value.timing === 'on-equip' && (place === 'equip' || place === 'side-equip');
     const wielded = value.when === 'wielded' && value.timing === 'on-use' && (place === 'use' || place === 'side-use');
@@ -280,6 +295,18 @@ function assertConsequence(consequence: Consequence, place: string, pointer: str
   }
   if (value.op === 'record-price' && place !== 'price') fail('price-consequence', pointer);
   if (value.op === 'follow-subtable' && place !== 'row') fail('subtable-placement', pointer);
+}
+
+function assertDefenseSlot(slot: Consequence | null, when: 'equipped' | 'wielded', pointer: string) {
+  if (!slot) return;
+  const place = when === 'equipped' ? 'equip' : 'use';
+  if (slot.kind === 'pending') {
+    if (!defenseSlotReasons.has(slot.pending.reason)) fail('profile-mismatch', pointer);
+    assertConsequence(slot, place, pointer, 'character');
+    return;
+  }
+  assertConsequence(slot, place, pointer, 'character');
+  if (slot.effect.op !== 'substitute-defense' || slot.effect.when !== when) fail('defense-not-substitution', pointer);
 }
 
 function checkColumn(columnValue: HumanL0ConsumableDocument['tables'][number]['columns'][number], pointer: string, groupedIds: Set<string>) {
@@ -295,6 +322,11 @@ function checkColumn(columnValue: HumanL0ConsumableDocument['tables'][number]['c
     if (rowValue.tail === 'open-low') { openLow++; if (rowValue.min !== null || rowValue.max === null) fail('open-tail-shape', rowPointer); }
     else if (rowValue.tail === 'open-high') { openHigh++; if (rowValue.max !== null || rowValue.min === null) fail('open-tail-shape', rowPointer); }
     else if (rowValue.min === null || rowValue.max === null || rowValue.min > rowValue.max) fail('open-tail-shape', rowPointer);
+    const naturalMin = columnValue.dice.count, naturalMax = columnValue.dice.count * columnValue.dice.sides;
+    const finite = rowValue.tail === 'open-low' ? rowValue.max : rowValue.tail === 'open-high' ? rowValue.min : rowValue.min;
+    const finiteMax = rowValue.tail === 'none' ? rowValue.max : finite;
+    if (finite === null || finite < naturalMin || finite > naturalMax || (rowValue.tail === 'none' && (finiteMax === null || finiteMax > naturalMax)))
+      fail('range-outside-die', rowPointer);
     if (rowValue.publishedWeight.basis !== 'natural-dice-faces') fail('uniform-row-weight', `${rowPointer}/publishedWeight`);
   }
   if (openLow > 1 || openHigh > 1) fail('open-tail-shape', pointer);
@@ -412,10 +444,26 @@ export function parseHumanL0Consumable(input: unknown): HumanL0ConsumableDocumen
   for (const [index, query] of doc.lookups.entries()) {
     const pointer = `/lookups/${index}`;
     if (query.dice !== null) fail('lookup-has-dice', `${pointer}/dice`);
-    if (!produced.has(query.reads.queryId)) fail('lookup-missing-prior', `${pointer}/reads`);
+    const source = produced.get(query.reads.queryId);
+    if (!source) fail('lookup-missing-prior', `${pointer}/reads`);
+    const sourceColumn = tables.get(source.producedBy.tableId)?.columns.find(columnValue => columnValue.id === source.producedBy.columnId);
+    if (!sourceColumn) fail('unknown-query', `${pointer}/reads`);
+    const rowIds = sourceColumn.rows.map(rowValue => rowValue.id);
     assertUnique(query.keys.map(key => key.key), 'duplicate-lookup-key', `${pointer}/keys`);
-    for (const [keyIndex, key] of query.keys.entries()) assertConsequence(key.consequence, 'lookup', `${pointer}/keys/${keyIndex}/consequence`, 'character');
+    for (const [keyIndex, key] of query.keys.entries()) {
+      if (!rowIds.includes(key.key)) fail('lookup-unknown-key', `${pointer}/keys/${keyIndex}`);
+      assertConsequence(key.consequence, 'lookup', `${pointer}/keys/${keyIndex}/consequence`, 'character');
+    }
+    if (rowIds.some(rowId => !query.keys.some(key => key.key === rowId))) fail('lookup-coverage', pointer);
   }
+
+  const optionIds = doc.choices.flatMap(choice => choice.options);
+  assertUnique(doc.choices.map(choice => choice.id), 'duplicate-id', '/choices');
+  assertUnique(optionIds, 'duplicate-id', '/choices');
+  const knownOptions = new Set(optionIds);
+  const assertOption = (optionId: string | null, pointer: string) => {
+    if (optionId !== null && !knownOptions.has(optionId)) fail('unknown-option', pointer);
+  };
 
   assertUnique(doc.sideRolls.map(roll => roll.id), 'duplicate-id', '/sideRolls');
   for (const [index, roll] of doc.sideRolls.entries()) {
@@ -425,6 +473,7 @@ export function parseHumanL0Consumable(input: unknown): HumanL0ConsumableDocumen
     if (!parentColumn?.rows.some(rowValue => rowValue.id === roll.parent.rowId)) fail('unknown-side-roll-parent', `${pointer}/parent`);
     if (rollIds.includes(roll.rollId) || doc.sideRolls.filter(other => other.rollId === roll.rollId).length !== 1) fail('duplicate-roll', `${pointer}/rollId`);
     if (roll.appliesOnPossession) fail('side-roll-on-possession', pointer);
+    assertOption(roll.when.optionId, `${pointer}/when`);
     if (roll.phase === 'creation' && roll.frequency !== 'once-per-origin') fail('side-roll-phase-mismatch', pointer);
     if (roll.phase === 'equip' && roll.frequency !== 'once-per-origin') fail('side-roll-phase-mismatch', pointer);
     if (roll.phase === 'use' && roll.frequency !== 'once-per-origin' && roll.frequency !== 'each-use') fail('side-roll-phase-mismatch', pointer);
@@ -459,16 +508,10 @@ export function parseHumanL0Consumable(input: unknown): HumanL0ConsumableDocumen
     } else if (itemValue.profile === 'generic') {
       if (itemValue.onEquip || itemValue.onUse || itemValue.onPossess.kind !== 'pending' || itemValue.onPossess.pending.reason !== 'generic-profile')
         fail('generic-profile-has-stats', pointer);
-    } else if (itemValue.profile === 'armor') {
-      if (itemValue.onUse || itemValue.onPossess.kind !== 'pending' || itemValue.onPossess.pending.reason !== 'possession-is-not-use') fail('possession-applies-use', pointer);
-      assertConsequence(itemValue.onEquip ?? fail('defense-not-substitution', `${pointer}/onEquip`), 'equip', `${pointer}/onEquip`, 'character');
-      if (itemValue.onEquip?.kind !== 'effect' || itemValue.onEquip.effect.op !== 'substitute-defense' || itemValue.onEquip.effect.when !== 'equipped')
-        fail('defense-not-substitution', `${pointer}/onEquip`);
     } else {
-      if (itemValue.onEquip || itemValue.onPossess.kind !== 'pending' || itemValue.onPossess.pending.reason !== 'possession-is-not-use') fail('possession-applies-use', pointer);
-      assertConsequence(itemValue.onUse ?? fail('defense-not-substitution', `${pointer}/onUse`), 'use', `${pointer}/onUse`, 'character');
-      if (itemValue.onUse?.kind !== 'effect' || itemValue.onUse.effect.op !== 'substitute-defense' || itemValue.onUse.effect.when !== 'wielded')
-        fail('defense-not-substitution', `${pointer}/onUse`);
+      if (itemValue.onPossess.kind !== 'pending' || itemValue.onPossess.pending.reason !== 'possession-is-not-use') fail('possession-applies-use', pointer);
+      assertDefenseSlot(itemValue.onEquip, 'equipped', `${pointer}/onEquip`);
+      assertDefenseSlot(itemValue.onUse, 'wielded', `${pointer}/onUse`);
     }
     assertConsequence(itemValue.onPossess, 'possess', `${pointer}/onPossess`, 'character');
   }
@@ -479,6 +522,7 @@ export function parseHumanL0Consumable(input: unknown): HumanL0ConsumableDocumen
     if (grantValue.consequence.kind === 'effect' && grantValue.consequence.effect.op === 'grant-item' && !items.has(grantValue.consequence.effect.itemId))
       fail('dangling-item', pointer);
     if (grantValue.precondition.kind === 'prior-result' && !produced.has(grantValue.precondition.queryId)) fail('lookup-missing-prior', pointer);
+    if (grantValue.precondition.kind === 'choice-selected') assertOption(grantValue.precondition.optionId, `${pointer}/precondition`);
     assertConsequence(grantValue.consequence, 'grant', `${pointer}/consequence`, grantValue.subject);
   }
 
@@ -487,8 +531,7 @@ export function parseHumanL0Consumable(input: unknown): HumanL0ConsumableDocumen
   for (const [index, eventValue] of doc.events.entries()) {
     const pointer = `/events/${index}`;
     if (eventValue.originKey !== originKeyOf(eventValue.origin)) fail('origin-key-mismatch', pointer);
-    const eventPlace = eventValue.phase === 'on-equip' ? 'equip' : eventValue.phase === 'on-use' ? 'use' : eventValue.phase === 'creation' ? 'row' : 'lookup';
-    assertConsequence(eventValue.consequence, eventPlace, `${pointer}/consequence`, eventValue.subject === 'item' ? 'item' : eventValue.subject);
+    assertConsequence(eventValue.consequence, placeForPhase(eventValue.phase), `${pointer}/consequence`, eventValue.subject === 'item' ? 'item' : eventValue.subject);
   }
 
   const adjacency = new Map<string, string[]>();
@@ -527,6 +570,11 @@ export function parseHumanL0ConsumableResolution(input: unknown): HumanL0Consuma
   if (resolution.rolled) fail('resolution-does-not-roll', '/rolled');
   if (resolution.rulesetEnabled) fail('ruleset-enablement-forbidden', '/rulesetEnabled');
   if (!resolution.consequences.length) fail('missing-consequence', '/consequences');
-  for (const [index, consequence] of resolution.consequences.entries()) assertConsequence(consequence, 'event', `/consequences/${index}`, null);
+  assertUnique(resolution.consequences.map(entry => `${entry.originKey}|${entry.subject}|${entry.phase}`), 'duplicate-origin', '/consequences');
+  for (const [index, entry] of resolution.consequences.entries()) {
+    const pointer = `/consequences/${index}`;
+    if (entry.originKey !== originKeyOf(entry.origin)) fail('origin-key-mismatch', pointer);
+    assertConsequence(entry.consequence, placeForPhase(entry.phase), `${pointer}/consequence`, entry.subject === 'item' ? 'item' : entry.subject);
+  }
   return resolution;
 }

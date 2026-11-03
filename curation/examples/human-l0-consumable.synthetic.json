@@ -107,6 +107,12 @@
       "projected": false
     }
   ],
+  "choices": [
+    {
+      "id": "fixture:band-option",
+      "options": ["fixture-option-a", "fixture-option-b"]
+    }
+  ],
   "producedQueries": [
     {
       "id": "fixture:band-result",
@@ -603,7 +609,7 @@
       },
       "keys": [
         {
-          "key": "low",
+          "key": "fixture:bands:low",
           "consequence": {
             "kind": "effect",
             "effect": {
@@ -616,7 +622,22 @@
           }
         },
         {
-          "key": "high",
+          "key": "fixture:bands:mid",
+          "consequence": {
+            "kind": "pending",
+            "effect": null,
+            "pending": {
+              "reason": "disabled-source",
+              "retainsConsequence": true,
+              "matrixSelection": null,
+              "linkedDefinition": {
+                "kind": "none"
+              }
+            }
+          }
+        },
+        {
+          "key": "fixture:bands:high",
           "consequence": {
             "kind": "pending",
             "effect": null,
@@ -715,7 +736,7 @@
       "frequency": "each-use",
       "appliesOnPossession": false,
       "when": {
-        "optionId": null
+        "optionId": "fixture-option-a"
       },
       "consequence": {
         "kind": "effect",
@@ -936,6 +957,28 @@
         },
         "pending": null
       }
+    },
+    {
+      "id": "fixture-blade",
+      "label": "fixture-blade",
+      "price": { "kind": "exact", "amount": "1", "denomination": "bits", "bits": "1" },
+      "priceConsequence": { "kind": "effect", "pending": null, "effect": { "op": "record-price", "priceKind": "exact", "bits": "1", "timing": "narrative", "mutatesMechanics": false } },
+      "profile": "weapon",
+      "possessionAppliesEffects": false,
+      "onPossess": { "kind": "pending", "effect": null, "pending": { "reason": "possession-is-not-use", "retainsConsequence": true, "matrixSelection": null, "linkedDefinition": { "kind": "none" } } },
+      "onEquip": null,
+      "onUse": { "kind": "pending", "effect": null, "pending": { "reason": "weapon-no-defense", "retainsConsequence": true, "matrixSelection": null, "linkedDefinition": { "kind": "none" } } }
+    },
+    {
+      "id": "fixture-shield",
+      "label": "fixture-shield",
+      "price": { "kind": "exact", "amount": "1", "denomination": "cp", "bits": "10" },
+      "priceConsequence": { "kind": "effect", "pending": null, "effect": { "op": "record-price", "priceKind": "exact", "bits": "10", "timing": "narrative", "mutatesMechanics": false } },
+      "profile": "armor",
+      "possessionAppliesEffects": false,
+      "onPossess": { "kind": "pending", "effect": null, "pending": { "reason": "possession-is-not-use", "retainsConsequence": true, "matrixSelection": null, "linkedDefinition": { "kind": "none" } } },
+      "onEquip": { "kind": "pending", "effect": null, "pending": { "reason": "defense-bonus-not-substitution", "retainsConsequence": true, "matrixSelection": null, "linkedDefinition": { "kind": "none" } } },
+      "onUse": null
     }
   ],
   "grants": [
@@ -966,6 +1009,25 @@
           "timing": "creation"
         },
         "pending": null
+      }
+    },
+    {
+      "id": "fixture:grant:choice",
+      "origin": {
+        "publicationId": "fixture-publication",
+        "version": null,
+        "entityId": "fixture:bands",
+        "resultId": "fixture:bands:high",
+        "componentId": "choice"
+      },
+      "subject": "character",
+      "precondition": { "kind": "choice-selected", "optionId": "fixture-option-a" },
+      "frequency": "once",
+      "source": "table",
+      "consequence": {
+        "kind": "effect",
+        "pending": null,
+        "effect": { "op": "narrative-marker", "code": "fixture-choice", "timing": "narrative", "mutatesMechanics": false }
       }
     }
   ],
