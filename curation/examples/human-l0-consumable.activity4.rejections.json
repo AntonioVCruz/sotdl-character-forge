@@ -1,0 +1,25 @@
+{
+  "contract": "sotdl.human-l0.consumable",
+  "contractVersion": "1.0.0",
+  "note": "Patches against the activity 4 synthetic lot. Each case must be rejected. No book text.",
+  "cases": [
+    { "id": "open-tail-weight-invented", "code": "open-tail-weight-invented", "collection": "tables", "itemId": "only-human:lifestyle", "sets": [{ "path": "columns/0/rows/0/publishedWeight/ways", "value": "9" }] },
+    { "id": "relative-is-not-character", "code": "relative-is-not-character", "collection": "sideRolls", "itemId": "side-roll:only-human:siblings:9-12", "sets": [{ "path": "consequence", "value": { "kind": "effect", "pending": null, "effect": { "op": "grant-profession", "professionId": "fixture-role", "subject": "character", "timing": "creation" } } }] },
+    { "id": "side-roll-on-possession", "code": "side-roll-on-possession", "collection": "sideRolls", "itemId": "side-roll:only-human:major-windfall:11", "sets": [{ "path": "appliesOnPossession", "value": true }] },
+    { "id": "recursion-reroll-forbidden", "code": "recursion-reroll-forbidden", "sets": [{ "path": "recursion/onLimit", "value": "reroll" }] },
+    { "id": "recursion-discard-forbidden", "code": "recursion-discard-forbidden", "sets": [{ "path": "recursion/discardOutcome", "value": true }] },
+    { "id": "silent-core-fallback", "code": "silent-core-fallback", "sets": [{ "path": "activity4/interestingThings/silentFallback", "value": true }] },
+    { "id": "family-uniform-die", "code": "family-uniform-die", "sets": [{ "path": "activity4/queries/familyCategory/dice", "value": { "count": 1, "sides": 6 } }] },
+    { "id": "hook-enabled", "code": "hook-enabled", "sets": [{ "path": "activity4/textReference/hook/enabled", "value": true }] },
+    { "id": "text-reference-is-generator", "code": "text-reference-is-generator", "sets": [{ "path": "activity4/textReference/consequence", "value": { "kind": "effect", "pending": null, "effect": { "op": "follow-subtable", "tableId": "only-human:age", "timing": "creation" } } }] },
+    { "id": "hash-line-materialized", "code": "hash-line-materialized", "sets": [{ "path": "activity4/hashLines/weights", "value": { "ways": "1" } }] },
+    { "id": "hash-lines-counted-as-real", "code": "hash-line-materialized", "sets": [{ "path": "activity4/hashLines/materialized", "value": 130 }] },
+    { "id": "link-executes", "code": "link-executes", "sets": [{ "path": "activity4/links/0/automaticExecution", "value": true }] },
+    { "id": "act5-body-present", "code": "act5-body-present", "sets": [{ "path": "activity4/act5Slots/0/body", "value": { "present": true } }] },
+    { "id": "family-grants-gear", "code": "family-grants-gear", "sets": [{ "path": "activity4/professionOptions/0/familyGrantsGear", "value": true }] },
+    { "id": "cycle-not-projected", "code": "cycle-not-projected", "collection": "tables", "itemId": "only-human:piety", "sets": [{ "path": "publishedCycle", "value": false }] },
+    { "id": "ruleset-enablement-forbidden", "code": "ruleset-enablement-forbidden", "sets": [{ "path": "rulesetEnabled", "value": true }] },
+    { "id": "review-promotion-forbidden", "code": "review-promotion-forbidden", "sets": [{ "path": "reviewStatus", "value": "curated" }] },
+    { "id": "fictional-data-required", "code": "fictional-data-required", "sets": [{ "path": "fictionalData", "value": false }] }
+  ]
+}
