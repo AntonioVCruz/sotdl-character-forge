@@ -1,0 +1,2610 @@
+{
+    "schemaVersion":  1,
+    "date":  "2026-11-03",
+    "reviewer":  "Codex",
+    "scope":  "human-core-l0-interesting-things-creation",
+    "sourceReview":  "local-structured-results-and-verified-evidence",
+    "pdfInspected":  false,
+    "distributionCertified":  false,
+    "sourceStatus":  "needs-review",
+    "tablesReviewed":  6,
+    "rowsReviewed":  120,
+    "policy":  {
+                   "authority":  "explicit-user-request",
+                   "path":  "curation/interesting-things-local-policy.json",
+                   "sha256":  "b6153720a3afff3cd3321005509875724c9131d3bf036c78c1a5c38c5e00a5ee"
+               },
+    "records":  [
+                    {
+                        "id":  "core:1:1",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:1:1"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:1:2",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:1:2"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:1:3",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:1:3"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:1:4",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:1:4"
+                                        ],
+                        "kind":  "narrative",
+                        "choiceCount":  1,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:1:5",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:1:5"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:1:6",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:1:6"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:1:7",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:1:7"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  1,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:1:8",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:1:8"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  1,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:1:9",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:1:9"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:1:10",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:1:10"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:1:11",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:1:11"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:1:12",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:1:12"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:1:13",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:1:13"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:1:14",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:1:14"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  1,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:1:15",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:1:15"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  1,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:1:16",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:1:16"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:1:17",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:1:17"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:1:18",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:1:18"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:1:19",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:1:19"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:1:20",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:1:20"
+                                        ],
+                        "kind":  "narrative",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:2:1",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:2:1"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  1,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:2:2",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:2:2"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:2:3",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:2:3"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:2:4",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:2:4"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:2:5",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:2:5"
+                                        ],
+                        "kind":  "companion",
+                        "choiceCount":  1,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:2:6",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:2:6"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  1,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:2:7",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:2:7"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:2:8",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:2:8"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:2:9",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:2:9"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:2:10",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:2:10"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:2:11",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:2:11"
+                                        ],
+                        "kind":  "narrative",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:2:12",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:2:12"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:2:13",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:2:13"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  1,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:2:14",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:2:14"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  1,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:2:15",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:2:15"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:2:16",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:2:16"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  1,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:2:17",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:2:17"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  1,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:2:18",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:2:18"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:2:19",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:2:19"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:2:20",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:2:20"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  1,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:3:1",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:3:1"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  1,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:3:2",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:3:2"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:3:3",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:3:3"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  1,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:3:4",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:3:4"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:3:5",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:3:5"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  1,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:3:6",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:3:6"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  1,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:3:7",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:3:7"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  1,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:3:8",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:3:8"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  true
+                    },
+                    {
+                        "id":  "core:3:9",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:3:9"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  1,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:3:10",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:3:10"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:3:11",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:3:11"
+                                        ],
+                        "kind":  "companion",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:3:12",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:3:12"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  1,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:3:13",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:3:13"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  1,
+                        "creationRollCount":  1,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:3:14",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:3:14"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:3:15",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:3:15"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:3:16",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:3:16"
+                                        ],
+                        "kind":  "mixed",
+                        "choiceCount":  1,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:3:17",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:3:17"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  1,
+                        "creationRollCount":  3,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:3:18",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:3:18"
+                                        ],
+                        "kind":  "companion",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:3:19",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:3:19"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:3:20",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:3:20"
+                                        ],
+                        "kind":  "companion",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:4:1",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:4:1"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:4:2",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:4:2"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  1,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:4:3",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:4:3"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:4:4",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:4:4"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:4:5",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:4:5"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  1,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:4:6",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:4:6"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:4:7",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:4:7"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:4:8",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:4:8"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:4:9",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:4:9"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  1,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:4:10",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:4:10"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:4:11",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:4:11"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:4:12",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:4:12"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:4:13",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:4:13"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:4:14",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:4:14"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:4:15",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:4:15"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:4:16",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:4:16"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:4:17",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:4:17"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:4:18",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:4:18"
+                                        ],
+                        "kind":  "mixed",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:4:19",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:4:19"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:4:20",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:4:20"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:5:1",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:5:1"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  1,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:5:2",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:5:2"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:5:3",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:5:3"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  1,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:5:4",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:5:4"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:5:5",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:5:5"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:5:6",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:5:6"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:5:7",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:5:7"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:5:8",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:5:8"
+                                        ],
+                        "kind":  "narrative",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:5:9",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:5:9"
+                                        ],
+                        "kind":  "mixed",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:5:10",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:5:10"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  true
+                    },
+                    {
+                        "id":  "core:5:11",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:5:11"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  1,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:5:12",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:5:12"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:5:13",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:5:13"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:5:14",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:5:14"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  1,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:5:15",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:5:15"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:5:16",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:5:16"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:5:17",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:5:17"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:5:18",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:5:18"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:5:19",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:5:19"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:5:20",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:5:20"
+                                        ],
+                        "kind":  "narrative",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:6:1",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:6:1"
+                                        ],
+                        "kind":  "narrative",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:6:2",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:6:2"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:6:3",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:6:3"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:6:4",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:6:4"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:6:5",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:6:5"
+                                        ],
+                        "kind":  "companion",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:6:6",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:6:6"
+                                        ],
+                        "kind":  "narrative",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:6:7",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:6:7"
+                                        ],
+                        "kind":  "narrative",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:6:8",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:6:8"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:6:9",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:6:9"
+                                        ],
+                        "kind":  "mixed",
+                        "choiceCount":  1,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:6:10",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:6:10"
+                                        ],
+                        "kind":  "companion",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:6:11",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:6:11"
+                                        ],
+                        "kind":  "narrative",
+                        "choiceCount":  1,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:6:12",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:6:12"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:6:13",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:6:13"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:6:14",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:6:14"
+                                        ],
+                        "kind":  "narrative",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:6:15",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:6:15"
+                                        ],
+                        "kind":  "narrative",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:6:16",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:6:16"
+                                        ],
+                        "kind":  "narrative",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:6:17",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:6:17"
+                                        ],
+                        "kind":  "object",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:6:18",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:6:18"
+                                        ],
+                        "kind":  "narrative",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:6:19",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:6:19"
+                                        ],
+                        "kind":  "companion",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    },
+                    {
+                        "id":  "core:6:20",
+                        "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                        "evidenceIds":  [
+                                            "thing:core:6:20"
+                                        ],
+                        "kind":  "narrative",
+                        "choiceCount":  0,
+                        "creationRollCount":  0,
+                        "useRollCount":  0,
+                        "gmChoice":  false
+                    }
+                ],
+    "evidence":  [
+                     {
+                         "id":  "thing:core:1:1",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  11,
+                         "endLine":  11,
+                         "excerptSha256":  "21f8a99f4f847332d53980877b976c6591489e77f43b4a9354ed4078474197ce"
+                     },
+                     {
+                         "id":  "thing:core:1:2",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  12,
+                         "endLine":  12,
+                         "excerptSha256":  "6318fc61c5ca37b2ca2fe879ddff29620d34c4a061303fd163e5e146ee82efe8"
+                     },
+                     {
+                         "id":  "thing:core:1:3",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  13,
+                         "endLine":  13,
+                         "excerptSha256":  "aef9a6ecd4ab62ba63790384288c9183e7ca004996061c834e5c376b2d11c09b"
+                     },
+                     {
+                         "id":  "thing:core:1:4",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  14,
+                         "endLine":  14,
+                         "excerptSha256":  "009d9d3714c09418b798653ba9bfec68a1a5ae6b38ebd5a3e4f96ee1669b9af9"
+                     },
+                     {
+                         "id":  "thing:core:1:5",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  15,
+                         "endLine":  15,
+                         "excerptSha256":  "673fb8e5ad0b7fb3bd9b9ef39bbd9e915297572e880992d7fc29d295c17afb5c"
+                     },
+                     {
+                         "id":  "thing:core:1:6",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  16,
+                         "endLine":  16,
+                         "excerptSha256":  "0f462e97d6a210832c4f0524547da1e3d52004312966a42da4560d46a5d2b05f"
+                     },
+                     {
+                         "id":  "thing:core:1:7",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  17,
+                         "endLine":  17,
+                         "excerptSha256":  "97121bfe696bc14499b49cd6ae10104fcf07e7645df2cd6f5a54153bf3e1042b"
+                     },
+                     {
+                         "id":  "thing:core:1:8",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  18,
+                         "endLine":  18,
+                         "excerptSha256":  "a0fed4f37567e5218f29f9f6e8c165af8d016ac008e9009fa6be0664fe13b705"
+                     },
+                     {
+                         "id":  "thing:core:1:9",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  19,
+                         "endLine":  19,
+                         "excerptSha256":  "6525ace1117160bae99434de18a8c7114bfa0936df795fc4a595e6767540c2d0"
+                     },
+                     {
+                         "id":  "thing:core:1:10",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  20,
+                         "endLine":  20,
+                         "excerptSha256":  "696c171ab275dacc1bc3f4355141e564e7de5d256a754b5f8710d7faaaf76786"
+                     },
+                     {
+                         "id":  "thing:core:1:11",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  21,
+                         "endLine":  21,
+                         "excerptSha256":  "3545ed29e99ba2747856ba76fb8b14fd74c800a9d2581234bf127552dd083712"
+                     },
+                     {
+                         "id":  "thing:core:1:12",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  22,
+                         "endLine":  22,
+                         "excerptSha256":  "9bf14f02221a3f8c0373762bd4e4d229f13ab3c9083ecc8b7c63ee74fd5f4af4"
+                     },
+                     {
+                         "id":  "thing:core:1:13",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  23,
+                         "endLine":  23,
+                         "excerptSha256":  "844169b90178370b98c04875c8a2bbe9fc8d445e18f88ed9ba42ca8b78929e42"
+                     },
+                     {
+                         "id":  "thing:core:1:14",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  24,
+                         "endLine":  24,
+                         "excerptSha256":  "2db1e793048e8c65657c692b781c415fb341ddd2ee2acafc4e389942b472c9dd"
+                     },
+                     {
+                         "id":  "thing:core:1:15",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  25,
+                         "endLine":  25,
+                         "excerptSha256":  "412f84bf9ba46537c4d2db275278a49532fc83ce64eca5aff8912009829fdeff"
+                     },
+                     {
+                         "id":  "thing:core:1:16",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  26,
+                         "endLine":  26,
+                         "excerptSha256":  "44ac8b7169811876d3f4f6cb112d9f379c6d5b29a21cf759e8ed32dc9a47853b"
+                     },
+                     {
+                         "id":  "thing:core:1:17",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  27,
+                         "endLine":  27,
+                         "excerptSha256":  "8fd73d27b8f66290adfc00c7612ace82449aa5dfdabf6a8db44f0b5a2455e58b"
+                     },
+                     {
+                         "id":  "thing:core:1:18",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  28,
+                         "endLine":  28,
+                         "excerptSha256":  "42ec3b65300b6a12e80a2fdcd5722d720322e02173f8a6d07f52e4def28476ef"
+                     },
+                     {
+                         "id":  "thing:core:1:19",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  29,
+                         "endLine":  29,
+                         "excerptSha256":  "9c8eee5961dd97f5269331f0d91d129a123f1fa6c62c47511086fb23e4025e30"
+                     },
+                     {
+                         "id":  "thing:core:1:20",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  30,
+                         "endLine":  30,
+                         "excerptSha256":  "eec269c8014c04c753cafd14c141f011e5088a22a69fe3c8947570a181df33ee"
+                     },
+                     {
+                         "id":  "table:core:thing-1",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  9,
+                         "endLine":  30,
+                         "excerptSha256":  "c58855f3dfe727a1e886675ae88604c77eef25d3bead66dcd44ec7b06b822d2a"
+                     },
+                     {
+                         "id":  "thing:core:2:1",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  34,
+                         "endLine":  34,
+                         "excerptSha256":  "ed9e676617b33ae87b2bb56c3d1ba4887c4fd3a97750f1fae6e45b914cec098c"
+                     },
+                     {
+                         "id":  "thing:core:2:2",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  35,
+                         "endLine":  35,
+                         "excerptSha256":  "0fc3ff54c17551502f43346c3ca56a8f94ccdaeeeb4c78a6e37aa33ae951d8af"
+                     },
+                     {
+                         "id":  "thing:core:2:3",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  36,
+                         "endLine":  36,
+                         "excerptSha256":  "ab39ca2ae9332aa615116753af08761897f40c6741ede3f91b29f4c36eac6224"
+                     },
+                     {
+                         "id":  "thing:core:2:4",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  37,
+                         "endLine":  37,
+                         "excerptSha256":  "d21fbeae34aee711c9293d676e59e2b3a953018668c237c780700a8d89477ec5"
+                     },
+                     {
+                         "id":  "thing:core:2:5",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  38,
+                         "endLine":  38,
+                         "excerptSha256":  "6dc11707fe40af2adc23a500a03dff53ad9dee19a60199f021f405f13fb760a8"
+                     },
+                     {
+                         "id":  "thing:core:2:6",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  39,
+                         "endLine":  39,
+                         "excerptSha256":  "483cdbaacf7e2021c936fad902a981afcc9912af0c78ac79b5f1322ef42a9c50"
+                     },
+                     {
+                         "id":  "thing:core:2:7",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  40,
+                         "endLine":  40,
+                         "excerptSha256":  "7bbef6e43daf4e8871dbc8455fbf5e51d64a5b16f7e38eb3cd76a1a2eb656129"
+                     },
+                     {
+                         "id":  "thing:core:2:8",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  41,
+                         "endLine":  41,
+                         "excerptSha256":  "8bb4b34659cbc9621bd1d0d86f54b81ca5b44c521947cb73315678087f4eaf35"
+                     },
+                     {
+                         "id":  "thing:core:2:9",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  42,
+                         "endLine":  42,
+                         "excerptSha256":  "001c2b38ce61dad8ea1b9abd2e9fb3e9713671f84b82ef0d95790bd6b209c74d"
+                     },
+                     {
+                         "id":  "thing:core:2:10",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  43,
+                         "endLine":  43,
+                         "excerptSha256":  "977ae49ac9b3b898d4bdbf0e2ddbdcbb7c8e6014fae00d83bbab7bd1ee62c8bc"
+                     },
+                     {
+                         "id":  "thing:core:2:11",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  44,
+                         "endLine":  44,
+                         "excerptSha256":  "47365c924a3433f970713994df0be990a1c01a0d7ab654411c23b683cd65f5f0"
+                     },
+                     {
+                         "id":  "thing:core:2:12",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  45,
+                         "endLine":  45,
+                         "excerptSha256":  "c10102bfa9e70711e830ae0636df55e96018cfc2fe94b45414db5ea05d0f3779"
+                     },
+                     {
+                         "id":  "thing:core:2:13",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  46,
+                         "endLine":  46,
+                         "excerptSha256":  "715ddc23558f786a7ac0cfa0ee975bf31db03c5d2d5bf738aa1524d7e900c981"
+                     },
+                     {
+                         "id":  "thing:core:2:14",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  47,
+                         "endLine":  47,
+                         "excerptSha256":  "0ddfc80e81a7fce83f2095366235568646a4e26eb00ec91bee3954a986fa9a41"
+                     },
+                     {
+                         "id":  "thing:core:2:15",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  48,
+                         "endLine":  48,
+                         "excerptSha256":  "84511c1579ef25607cf04d389e2cdc871f2e21c2029ee84eaafc90d8dbdacfc8"
+                     },
+                     {
+                         "id":  "thing:core:2:16",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  49,
+                         "endLine":  49,
+                         "excerptSha256":  "15e8e180e468bb28d71d84f1a1d11ad556e9e24c929c271da5b5252b9f0c8692"
+                     },
+                     {
+                         "id":  "thing:core:2:17",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  50,
+                         "endLine":  50,
+                         "excerptSha256":  "80c4e22dc9dd67c9966105b137ebbcf17f290245e467751688b88071db366b5a"
+                     },
+                     {
+                         "id":  "thing:core:2:18",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  51,
+                         "endLine":  51,
+                         "excerptSha256":  "ada40381bb95c751784bc2e46ecbbc19a51308160d79bf779e7668664b34828e"
+                     },
+                     {
+                         "id":  "thing:core:2:19",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  52,
+                         "endLine":  52,
+                         "excerptSha256":  "f6ecbdadb9792381ac7a71973e8b2f4a7885b43f4406b952196891ad5363630b"
+                     },
+                     {
+                         "id":  "thing:core:2:20",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  53,
+                         "endLine":  53,
+                         "excerptSha256":  "c8da7927c17ec3eaa5b7d2dea9b76527f74fb823ae84293065ed86588cdfa64d"
+                     },
+                     {
+                         "id":  "table:core:thing-2",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  32,
+                         "endLine":  53,
+                         "excerptSha256":  "8ed82f03f8d684c043d836992de0ea9d188e5c823b3da8d406d12e5733023f06"
+                     },
+                     {
+                         "id":  "thing:core:3:1",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  57,
+                         "endLine":  57,
+                         "excerptSha256":  "c52284f9a806202224b364139c463cf5fd32e99cd9b84744db63060a9bd80f73"
+                     },
+                     {
+                         "id":  "thing:core:3:2",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  58,
+                         "endLine":  58,
+                         "excerptSha256":  "12be3d255e6387f59ff702758adcf191a4143fd722ffbe78ee35cf46edbba922"
+                     },
+                     {
+                         "id":  "thing:core:3:3",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  59,
+                         "endLine":  59,
+                         "excerptSha256":  "8aeb7c62c66a26a9235d5c56c134c4a43d7f109f9655ce4ef467d4b36f2dbeea"
+                     },
+                     {
+                         "id":  "thing:core:3:4",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  60,
+                         "endLine":  60,
+                         "excerptSha256":  "f511568a4b69734123356329bfe9eafe99905d833f6d8ff5cfef7ff60741407d"
+                     },
+                     {
+                         "id":  "thing:core:3:5",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  61,
+                         "endLine":  61,
+                         "excerptSha256":  "3aed21ec2f60787bdaf6b3994f574aa741c0d7c181f48c95b90215849805e577"
+                     },
+                     {
+                         "id":  "thing:core:3:6",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  62,
+                         "endLine":  62,
+                         "excerptSha256":  "8407e3abf5d42d560e7b508dc4d4a448b78a51fc6d81215f70fa3ca3f04e4228"
+                     },
+                     {
+                         "id":  "thing:core:3:7",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  63,
+                         "endLine":  64,
+                         "excerptSha256":  "a35f46237e74f8d08b6d1c41ea9196f45ffed21810e926184cd893fe4b8407da"
+                     },
+                     {
+                         "id":  "thing:core:3:8",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  65,
+                         "endLine":  65,
+                         "excerptSha256":  "f65404979f5003fdf3866d3ad5b74c536603598b9ce96b081e1eebd5ea53756c"
+                     },
+                     {
+                         "id":  "thing:core:3:9",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  66,
+                         "endLine":  66,
+                         "excerptSha256":  "a8f76119c9a01da8fffe1952ff27996990599eff59adaeac23c735160f268018"
+                     },
+                     {
+                         "id":  "thing:core:3:10",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  67,
+                         "endLine":  67,
+                         "excerptSha256":  "ad10e30e48e2eec16a657a173a844d889a3889b470850adefa07e918e2ca9c5e"
+                     },
+                     {
+                         "id":  "thing:core:3:11",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  68,
+                         "endLine":  68,
+                         "excerptSha256":  "b2976af2810ba4489ab0ce304cfc91d8c7754557ff71047dbf5d097cd4259cc8"
+                     },
+                     {
+                         "id":  "thing:core:3:12",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  69,
+                         "endLine":  69,
+                         "excerptSha256":  "f4436735c20019af80a24bf6eb270477dd587b3467900979832a7cc3cc9d75b4"
+                     },
+                     {
+                         "id":  "thing:core:3:13",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  70,
+                         "endLine":  70,
+                         "excerptSha256":  "caba472397baeb5ef69bdab71b17e1c8177fbfd0c0339b8fe2ee6be6378f317b"
+                     },
+                     {
+                         "id":  "thing:core:3:14",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  71,
+                         "endLine":  71,
+                         "excerptSha256":  "411a1b47a19126c7de5b92eb56b001d2f0dbed8bb260955db0e89f09cf034107"
+                     },
+                     {
+                         "id":  "thing:core:3:15",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  72,
+                         "endLine":  72,
+                         "excerptSha256":  "a768cd6f29dcf868d8eafefb83ef30bbdecb83df6a24780259f19f29380621d9"
+                     },
+                     {
+                         "id":  "thing:core:3:16",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  73,
+                         "endLine":  73,
+                         "excerptSha256":  "049608c0d609f9c5462aba2dd4448174580adb0b796491c109154ada5e6d6353"
+                     },
+                     {
+                         "id":  "thing:core:3:17",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  74,
+                         "endLine":  75,
+                         "excerptSha256":  "173de3d735f92e73fbcebf331996f8d0870b0320062fd0853f9151e85605c755"
+                     },
+                     {
+                         "id":  "thing:core:3:18",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  76,
+                         "endLine":  76,
+                         "excerptSha256":  "34705fd4e5101104b28fb499374824c1b7f84a04d7e6e31d4d3502c0ca207c99"
+                     },
+                     {
+                         "id":  "thing:core:3:19",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  77,
+                         "endLine":  77,
+                         "excerptSha256":  "265f0de0503ac518bbca4398c9b17a1a276477a974fe4f1593bd0f965dc27a4f"
+                     },
+                     {
+                         "id":  "thing:core:3:20",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  78,
+                         "endLine":  78,
+                         "excerptSha256":  "e90d60df09d86f847321153496656e3883e46d476b207b169c2544be0cbf501f"
+                     },
+                     {
+                         "id":  "table:core:thing-3",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  55,
+                         "endLine":  78,
+                         "excerptSha256":  "956d748cd7e59601e5ee752e085843f93511d1916a92528035ce270c10433981"
+                     },
+                     {
+                         "id":  "thing:core:4:1",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  82,
+                         "endLine":  82,
+                         "excerptSha256":  "6f4158b8dfa1963cef5c1a5a6616b654d9b034ab402e183ae864504122c7d722"
+                     },
+                     {
+                         "id":  "thing:core:4:2",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  83,
+                         "endLine":  83,
+                         "excerptSha256":  "6a555f01713a99b65dbc64a5c7443a92e39f997fbee1a18f9b836e0584720129"
+                     },
+                     {
+                         "id":  "thing:core:4:3",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  84,
+                         "endLine":  84,
+                         "excerptSha256":  "05bf4b64413b4a2816e4a02371544a14cce26bb347dbf88d5a60dd7ff5174bf4"
+                     },
+                     {
+                         "id":  "thing:core:4:4",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  85,
+                         "endLine":  85,
+                         "excerptSha256":  "aa65dd334765476f9828cd67e0726514ad9204f6ccc9d6fd85eea64036f20103"
+                     },
+                     {
+                         "id":  "thing:core:4:5",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  86,
+                         "endLine":  86,
+                         "excerptSha256":  "79bc7662133ff5402fb9f625282d64a67f2d14ecc0a2c9cf3dcdbf29af826596"
+                     },
+                     {
+                         "id":  "thing:core:4:6",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  87,
+                         "endLine":  87,
+                         "excerptSha256":  "fc05f84538658660e58ffbe444cbe85309196a7a65c17f8f325f2db32f60a7b9"
+                     },
+                     {
+                         "id":  "thing:core:4:7",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  88,
+                         "endLine":  88,
+                         "excerptSha256":  "471112087b2dcfd3e657128a37cec3f83f295c9517bcbf5f2dfaeaedf60849b0"
+                     },
+                     {
+                         "id":  "thing:core:4:8",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  89,
+                         "endLine":  89,
+                         "excerptSha256":  "836bcfaabf354d46e6dca6b072c631b43186d419d6a1b0d6b01cdaa78c776224"
+                     },
+                     {
+                         "id":  "thing:core:4:9",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  90,
+                         "endLine":  90,
+                         "excerptSha256":  "a259a6b0f6f55ba271833ff53ba0c3b895e88adfb7982e01741e699c1ba43501"
+                     },
+                     {
+                         "id":  "thing:core:4:10",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  91,
+                         "endLine":  91,
+                         "excerptSha256":  "c3da53af656f0ffb854be9ed4bf2574426107553d1f15e1442c66580f4c19b59"
+                     },
+                     {
+                         "id":  "thing:core:4:11",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  92,
+                         "endLine":  92,
+                         "excerptSha256":  "fd875d4c80dc13125e3a4352c68b1e1de01eab35c34e9c28adaeccb2663fc26b"
+                     },
+                     {
+                         "id":  "thing:core:4:12",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  93,
+                         "endLine":  93,
+                         "excerptSha256":  "c5e61b80f8f5b6e5ee5de14f47073c88d6abb5dffbefadd65e9b9d0bde6134a2"
+                     },
+                     {
+                         "id":  "thing:core:4:13",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  94,
+                         "endLine":  94,
+                         "excerptSha256":  "29370682e1d2f00f3875f2509eca64c5cac5e4bbd9704cbcf6829498e66785a1"
+                     },
+                     {
+                         "id":  "thing:core:4:14",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  95,
+                         "endLine":  95,
+                         "excerptSha256":  "5adc662b168497986ccf9896895439b6159c3b9a3a0dcaa3af5865a5da94a2b2"
+                     },
+                     {
+                         "id":  "thing:core:4:15",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  96,
+                         "endLine":  96,
+                         "excerptSha256":  "a3430d448a5f063fd23f851cb9c51bf39fc00af1cd8d81f7cb4dd3a7dc488ca5"
+                     },
+                     {
+                         "id":  "thing:core:4:16",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  97,
+                         "endLine":  97,
+                         "excerptSha256":  "cb20e37624ea60333679a705754f5a0bda895e471058214c06e3cb3a992b34ba"
+                     },
+                     {
+                         "id":  "thing:core:4:17",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  98,
+                         "endLine":  98,
+                         "excerptSha256":  "726c4fa1626fe74fa19bdc8185b918ec625fac8117028a2aa90fa03a534c0e6a"
+                     },
+                     {
+                         "id":  "thing:core:4:18",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  99,
+                         "endLine":  99,
+                         "excerptSha256":  "514d4dd74f72d1b83edf1062215fbdfe0081d54804848e6e6179568203e5669d"
+                     },
+                     {
+                         "id":  "thing:core:4:19",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  100,
+                         "endLine":  100,
+                         "excerptSha256":  "072faa1721c8d16f99d1f914e4d39529e94227d08dfe359621547f283fc0c752"
+                     },
+                     {
+                         "id":  "thing:core:4:20",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  101,
+                         "endLine":  101,
+                         "excerptSha256":  "e7aabf2aec570b0cc1088a8933842d5caccd9773468bd1aeaa9ac59cf51934f3"
+                     },
+                     {
+                         "id":  "table:core:thing-4",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  80,
+                         "endLine":  101,
+                         "excerptSha256":  "c7928665bd114356b0f770333f42b261e9e1f6228748f8c7c90d38baf6bf0ce2"
+                     },
+                     {
+                         "id":  "thing:core:5:1",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  105,
+                         "endLine":  105,
+                         "excerptSha256":  "fd3be412f02f900c051e7c968d9d258f9aae10500de2fc35e9de8dd5bb805756"
+                     },
+                     {
+                         "id":  "thing:core:5:2",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  106,
+                         "endLine":  106,
+                         "excerptSha256":  "c67f82c0910e3c88e5a1a27f8d7323513a12a0053d66b505fadf6386f461adf9"
+                     },
+                     {
+                         "id":  "thing:core:5:3",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  107,
+                         "endLine":  107,
+                         "excerptSha256":  "ee6cbd4ba6e4cea5b8e10213751cd0b75555eefdd9954607f0469254a0186e31"
+                     },
+                     {
+                         "id":  "thing:core:5:4",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  108,
+                         "endLine":  108,
+                         "excerptSha256":  "f2373b06859ac42709273d8d09af6cbe8c2de4d4dcdf4e1b17ae1345d2c659bb"
+                     },
+                     {
+                         "id":  "thing:core:5:5",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  109,
+                         "endLine":  109,
+                         "excerptSha256":  "9ad36255d41e69d54efc510bff5e4ef742bd291518937d1993e93023a8e6c185"
+                     },
+                     {
+                         "id":  "thing:core:5:6",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  110,
+                         "endLine":  110,
+                         "excerptSha256":  "fc9e5a8764e44206dcf85b6816c256c25880a9789223e0b8afaebddd2d743afd"
+                     },
+                     {
+                         "id":  "thing:core:5:7",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  111,
+                         "endLine":  111,
+                         "excerptSha256":  "741746c2af4400ff064485c0c75a9fe293db5495aff4559ab871515f88cb4baf"
+                     },
+                     {
+                         "id":  "thing:core:5:8",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  112,
+                         "endLine":  112,
+                         "excerptSha256":  "ab76b6083f8621607a55af0579c6734e962c89c5daf2b0f990838ef09d0ed051"
+                     },
+                     {
+                         "id":  "thing:core:5:9",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  113,
+                         "endLine":  113,
+                         "excerptSha256":  "25645a31a2044eba01b8e7244e22b949036e7e860ac70f2b42d3de4ce5ad5e80"
+                     },
+                     {
+                         "id":  "thing:core:5:10",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  114,
+                         "endLine":  114,
+                         "excerptSha256":  "af597fef1622dd11054ec0f5b709d161253062330dfab6d24cf5849b965c90cd"
+                     },
+                     {
+                         "id":  "thing:core:5:11",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  115,
+                         "endLine":  116,
+                         "excerptSha256":  "fd1155998f311bf47a782de496864292a1d966cc8b240dac4df8017571679dac"
+                     },
+                     {
+                         "id":  "thing:core:5:12",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  117,
+                         "endLine":  117,
+                         "excerptSha256":  "7918e92ed0e003319ade35f77b572f701954a59b23b31df0c3ff986822e4ae13"
+                     },
+                     {
+                         "id":  "thing:core:5:13",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  118,
+                         "endLine":  118,
+                         "excerptSha256":  "8c8e0257f0d9ca23882d8adbba5bbd223d505cad98fcce6ed0efe94692c004af"
+                     },
+                     {
+                         "id":  "thing:core:5:14",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  119,
+                         "endLine":  119,
+                         "excerptSha256":  "28ea65e6347fa79e03b216acd9a9d4661b35006b7bc3428441e38f31f4b38f04"
+                     },
+                     {
+                         "id":  "thing:core:5:15",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  120,
+                         "endLine":  120,
+                         "excerptSha256":  "8627c71b0eb52fdb66cafe753c66d084d92be16b301ec28439e63fd68a5b37f6"
+                     },
+                     {
+                         "id":  "thing:core:5:16",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  121,
+                         "endLine":  121,
+                         "excerptSha256":  "dd452fa809c4a91a16fcb3336144d61ac193f815aa7867b246d971478d2183f3"
+                     },
+                     {
+                         "id":  "thing:core:5:17",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  122,
+                         "endLine":  122,
+                         "excerptSha256":  "502302f6d646923b60c20ddf24f89358c5a9050581f9c2f07672a2216799610b"
+                     },
+                     {
+                         "id":  "thing:core:5:18",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  123,
+                         "endLine":  123,
+                         "excerptSha256":  "3d9134db266674f5264ec294a2e499dcf00601938e3ce9cd34357fe2fb39956d"
+                     },
+                     {
+                         "id":  "thing:core:5:19",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  124,
+                         "endLine":  124,
+                         "excerptSha256":  "455680291b46a127e5f527c85e08d060faf581d9aa57438a2245b31b3005113c"
+                     },
+                     {
+                         "id":  "thing:core:5:20",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  125,
+                         "endLine":  125,
+                         "excerptSha256":  "3f8f1d45e7f05accf81b9b45d410b0bf91a5755efb66514eddd4f893a518c776"
+                     },
+                     {
+                         "id":  "table:core:thing-5",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  103,
+                         "endLine":  125,
+                         "excerptSha256":  "9d9439063cbd1bed29d272572eac43292dd12b44eb5ed0f263198881823e43b3"
+                     },
+                     {
+                         "id":  "thing:core:6:1",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  129,
+                         "endLine":  129,
+                         "excerptSha256":  "24e85ade5ea8667cea4bf5c8c95e5e956973bee8165e080f84d962f81f7254e5"
+                     },
+                     {
+                         "id":  "thing:core:6:2",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  130,
+                         "endLine":  130,
+                         "excerptSha256":  "318b3b48c763353949e0547c1024c1f279a38da8c59d39c6fd46de92090ce34a"
+                     },
+                     {
+                         "id":  "thing:core:6:3",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  131,
+                         "endLine":  132,
+                         "excerptSha256":  "53b94e277a87bac7f20e31ada2d13fd8b2749b26fffd6082ad56dfb2424ca681"
+                     },
+                     {
+                         "id":  "thing:core:6:4",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  133,
+                         "endLine":  133,
+                         "excerptSha256":  "a045bbef4e6afc1e44d88809fe6f802972ef034ca4f87f44fa2756f846a6dc4f"
+                     },
+                     {
+                         "id":  "thing:core:6:5",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  134,
+                         "endLine":  134,
+                         "excerptSha256":  "43c15cf6e053be4e2940d61bbdd2c160c8ff6972e5a1146f7fe0e48f45b245c3"
+                     },
+                     {
+                         "id":  "thing:core:6:6",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  135,
+                         "endLine":  135,
+                         "excerptSha256":  "b7795e2c1b4455064b3e69aea5d962d4d43833b718505e40f2b37ebd981968a6"
+                     },
+                     {
+                         "id":  "thing:core:6:7",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  136,
+                         "endLine":  136,
+                         "excerptSha256":  "8b40e7b5c8261c5dd2def79c50dc846e0949f7efa01b312d0d8ff4dac921c668"
+                     },
+                     {
+                         "id":  "thing:core:6:8",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  137,
+                         "endLine":  137,
+                         "excerptSha256":  "566b0dfc4e3a1f5b9e0c021148e7a57fc05f9ba9c0ef84db77b60881a6c09c28"
+                     },
+                     {
+                         "id":  "thing:core:6:9",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  138,
+                         "endLine":  138,
+                         "excerptSha256":  "8911a58c1c79da47b351c15dfddfe65539f171362b1c90916c9eb70a839fe9d4"
+                     },
+                     {
+                         "id":  "thing:core:6:10",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  139,
+                         "endLine":  139,
+                         "excerptSha256":  "0621c87fe3ff25567fea5bf48572ecf96aa567aff85ee1f468245441157331bc"
+                     },
+                     {
+                         "id":  "thing:core:6:11",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  140,
+                         "endLine":  140,
+                         "excerptSha256":  "b2557417d436d864fb3b401b730692bf5703e829783572e52c9c1a8c30d39a0f"
+                     },
+                     {
+                         "id":  "thing:core:6:12",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  141,
+                         "endLine":  141,
+                         "excerptSha256":  "4c8804dfd80a6e10eb26f5f38b346d75ebb4187d0d4676c234c736c599a2de50"
+                     },
+                     {
+                         "id":  "thing:core:6:13",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  142,
+                         "endLine":  142,
+                         "excerptSha256":  "9e188af751c2af3766e70aa3f53cdf9b5d0e58729f34aaa9ba20c61f6dcf6403"
+                     },
+                     {
+                         "id":  "thing:core:6:14",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  143,
+                         "endLine":  143,
+                         "excerptSha256":  "e93aff25cb1ee671d2371b3a58612488df8d2f5e61793af18c444bdf2b20314d"
+                     },
+                     {
+                         "id":  "thing:core:6:15",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  144,
+                         "endLine":  144,
+                         "excerptSha256":  "b7dc43e2115723b12fc79b72f1b69dfea33a1233dbe04f705a8e136cd2649ccd"
+                     },
+                     {
+                         "id":  "thing:core:6:16",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  145,
+                         "endLine":  145,
+                         "excerptSha256":  "963b5975ddc55466990fe0b5e3dbbc1bfafb98d89dbe306f3be56eb60dd519a9"
+                     },
+                     {
+                         "id":  "thing:core:6:17",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  146,
+                         "endLine":  147,
+                         "excerptSha256":  "7c771f1c5ca71d20f6c879e4ccc362283f9909cd9d3c88a868d08e362de94422"
+                     },
+                     {
+                         "id":  "thing:core:6:18",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  148,
+                         "endLine":  148,
+                         "excerptSha256":  "ddbd8473ccb71df9e456b4afb43a978783d282c0a717da38acc52f71d7c6d65a"
+                     },
+                     {
+                         "id":  "thing:core:6:19",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  149,
+                         "endLine":  149,
+                         "excerptSha256":  "7e52cd30fd69208636340c86894a6b70fcd784a6bd94019433f94399e838136b"
+                     },
+                     {
+                         "id":  "thing:core:6:20",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  150,
+                         "endLine":  150,
+                         "excerptSha256":  "dfde7f5e5cc5b192e966936c811afbcbc83b68f5e54600ae7c61290b17aac7b8"
+                     },
+                     {
+                         "id":  "table:core:thing-6",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  127,
+                         "endLine":  150,
+                         "excerptSha256":  "1359f2d0465e2bdfcf04ff959d640372e2b544144a147178dc23911ec36538f0"
+                     },
+                     {
+                         "id":  "instructions:core",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-interesting-things-2026-10-27/interesting-things.txt",
+                         "inputSha256":  "836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61",
+                         "startLine":  1,
+                         "endLine":  7,
+                         "excerptSha256":  "a04cb311c9709608c4efc0752f877bfded883c60b63d64c65a5a670ae39c5c34"
+                     }
+                 ],
+    "limitations":  [
+                        "Creation application is separate from scene and use-effect automation",
+                        "No PDF inspection or distribution approval",
+                        "Special armor uses an explicit user ruling; published facts remain unchanged",
+                        "Sources remain needs-review; exports remain disabled"
+                    ]
+}

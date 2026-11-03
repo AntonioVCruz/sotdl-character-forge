@@ -1,4 +1,5 @@
 import {useEffect,useRef,useState} from 'react';
+import {InterestingThingPanel} from './InterestingThingPanel';
 import {calculateOfficialCore,chooseOfficialCore,equipOfficialCore,generateOfficialCore,selectOfficialBackground,parseOfficialCoreContext,parseOfficialCoreDraft,type OfficialCoreContext,type OfficialCoreDraft} from '../../packages/character-generator/official-core';
 const STORAGE='sotdl-official-core-draft@1';
 type View=Awaited<ReturnType<typeof calculateOfficialCore>>;
@@ -50,7 +51,7 @@ export function OfficialCoreGenerator() {
       <ul>{view.inventory.map(i=><li key={i.key}>{i.quantity??'Quantidade pendente'} {i.unit} · {i.sourceLabel} · {i.recordKind}
         {i.itemId&&i.recordKind==='item'&&i.profile!=='none'&&i.quantity!==null&&i.quantity>0&&<label><input type="checkbox" checked={i.equipped} disabled={busy} onChange={e=>{const checked=e.target.checked;void change(()=>equipOfficialCore(draft,context!,i.key,checked));}}/>{i.profile==='armor'?'Vestir':'Empunhar'}</label>}</li>)}</ul>
       {view.equipmentNotes.map(n=><p key={n}>{n}</p>)}
-      <h3>Interesting Thing</h3><p>{view.interestingThing.text}</p>
+      <InterestingThingPanel key={view.interestingThing.id} draft={draft} context={context!} view={view} busy={busy} change={change}/>
       <h3>Background opcional</h3>
       <p>Você pode manter esta etapa sem resultado, sortear ou escolher uma linha publicada. Trocar a linha substitui suas consequências; os sorteios anteriores são preservados.</p>
       <button type="button" disabled={busy||draft.choices['background/mode']==='random'} onClick={()=>void change(()=>selectOfficialBackground(draft,context!,'random'))}>{draft.rolls['background/result']?'Restaurar sorteio de Background':'Sortear Background'}</button>
@@ -63,7 +64,7 @@ export function OfficialCoreGenerator() {
         {view.background.appearance&&<p>Marca física escolhida: {{finger:'Dedo perdido',teeth:'Dentes perdidos',ear:'Orelha perdida',scar:'Cicatriz'}[view.background.appearance]}</p>}
         <p>Fonte: {view.background.sourceId} · Resultado {view.background.rowId.split(':').at(-1)}</p></>}
       {!!view.narrative.length&&<><h3>Descrição opcional</h3>{view.narrative.map(n=><p key={n.tableId}>{n.text}</p>)}</>}
-      <h3>Pendências e escolhas</h3><ul>{view.pending.map(p=><li key={p.key}>{p.label}
+      <h3>Pendências e escolhas</h3><ul>{view.pending.filter(p=>!p.key.startsWith('interesting/')||!p.options).map(p=><li key={p.key}>{p.label}
         {p.options?<select aria-label={p.label} value={draft.choices[p.key]??''} disabled={busy} onChange={e=>choose(p.key,e.target.value)}><option value="">Selecione</option>{p.options.map(o=><option key={o.id} value={o.id}>{o.label}</option>)}</select>
           :p.key.endsWith('/specialization')?<input aria-label={p.label} disabled={busy} defaultValue={draft.choices[p.key]??''} onBlur={e=>{if(e.target.value.trim())choose(p.key,e.target.value.trim());}}/>:null}</li>)}</ul>
       <details><summary>Sorteios registrados</summary><p>Seed: {draft.config.seed} · Algoritmo: {draft.prngVersion}</p><ul>{Object.entries(draft.rolls).map(([key,faces])=><li key={key}>{key}: {faces.join(', ')}</li>)}</ul></details>

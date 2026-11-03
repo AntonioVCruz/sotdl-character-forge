@@ -7,27 +7,36 @@ import {createSubstream,PRNG_VERSION} from '../random-tables';
 import {consumableDigest} from '../curation/human-l0-consumable-bundle';
 import {newHumanL0Character,parseHumanL0Character,calculateHumanL0Character,type HumanL0Character} from './human-l0';
 import {BackgroundPlanSchema,backgroundRolls,backgroundValues,type BackgroundPlan} from './core-background';
+import {ThingApplicationPlanSchema,ThingAdjudicationSchema,applyInterestingThing,thingChoiceKey,thingRollKey,type ThingApplicationPlan} from './core-interesting-things';
 
 const CORE='sotdl:shadow-of-the-demon-lord-core';
 const fail=(code:string):never=>{throw new Error(`Official Core: ${code}.`);};
 export type OfficialCoreContext={schemaVersion:1;fictionalData:false;scope:'human-core-l0';officialGenerationEnabled:true;exportEnabled:false;
-  implementationSha256:string;core:CoreLocalDocument;backgroundPlans:BackgroundPlan[];mechanicalPacks:HumanL0MechanicalPack[];itemDefinitions:z.infer<typeof PilotItemSchema>[]};
+  implementationSha256:string;core:CoreLocalDocument;backgroundPlans:BackgroundPlan[];interestingPlans:ThingApplicationPlan[];mechanicalPacks:HumanL0MechanicalPack[];itemDefinitions:z.infer<typeof PilotItemSchema>[]};
 /** This activation is local and scoped; it does not reclassify needs-review sources as curated. */
 export function parseOfficialCoreContext(input:unknown):OfficialCoreContext {
-  const envelope=z.object({schemaVersion:z.literal(1),fictionalData:z.literal(false),scope:z.literal('human-core-l0'),officialGenerationEnabled:z.literal(true),exportEnabled:z.literal(false),implementationSha256:z.string().regex(/^[a-f0-9]{64}$/),core:z.unknown(),backgroundPlans:z.array(BackgroundPlanSchema),mechanicalPacks:z.array(z.unknown()),itemDefinitions:z.array(PilotItemSchema)}).strict().safeParse(input);
+  const envelope=z.object({schemaVersion:z.literal(1),fictionalData:z.literal(false),scope:z.literal('human-core-l0'),officialGenerationEnabled:z.literal(true),exportEnabled:z.literal(false),implementationSha256:z.string().regex(/^[a-f0-9]{64}$/),core:z.unknown(),backgroundPlans:z.array(BackgroundPlanSchema),interestingPlans:z.array(ThingApplicationPlanSchema),mechanicalPacks:z.array(z.unknown()),itemDefinitions:z.array(PilotItemSchema)}).strict().safeParse(input);
   if(!envelope.success)return fail('real-local-context-required');
   const core=parseCoreLocalDocument(envelope.data.core),packs=parseHumanL0MechanicalPacks(envelope.data.mechanicalPacks);
   if(core.sourceId!==CORE||packs.length!==1||packs[0].fictionalData||packs[0].source.id!==CORE||packs[0].entities[0].mechanics.variant!=='core')return fail('core-real-sources-required');
   if(envelope.data.itemDefinitions.some(i=>i.sourceId!==CORE))return fail('item-source-mismatch');
   const rows=core.tables.find(t=>t.id==='core:human-background')?.columns[0].rows??[];
   if(envelope.data.backgroundPlans.length!==rows.length||new Set(envelope.data.backgroundPlans.map(p=>p.rowId)).size!==rows.length||envelope.data.backgroundPlans.some(p=>p.sourceId!==CORE||!rows.some(r=>r.id===p.rowId&&JSON.stringify(r.evidenceIds)===JSON.stringify(p.evidenceIds))||p.templateId&&!core.templates.some(t=>t.id===p.templateId)||p.programId&&!core.programs.some(t=>t.id===p.programId)))return fail('background-plan-invalid');
+  const plans=envelope.data.interestingPlans;
+  if(plans.length!==core.things.length||new Set(plans.map(p=>p.outcomeId)).size!==core.things.length||plans.some(p=>!core.things.some(t=>t.id===p.outcomeId&&t.sourceId===p.sourceId&&JSON.stringify(t.evidenceIds)===JSON.stringify(p.evidenceIds))||!core.materialReferences.some(r=>r.id===p.referenceId&&r.originId===p.outcomeId)||p.specialArmor&&!envelope.data.itemDefinitions.some(i=>i.id===p.specialArmor!.itemId&&i.armor?.classification==='light'&&i.armor.requiredStrength===null)))return fail('interesting-plan-invalid');
   return {...envelope.data,core,mechanicalPacks:packs};
 }
 const configSchema=z.object({name:z.string().max(200),seed:z.string().trim().min(1).max(200),increase:z.enum(['strength','agility','intellect','will']),
   benefit:z.enum(['random-profession','speak-language']),languageId:z.string(),interestingVariant:z.literal('core'),optionalTables:z.boolean()}).strict();
 export type OfficialCoreConfig=z.infer<typeof configSchema>;
 export const OfficialCoreDraftSchema=z.object({schemaVersion:z.literal(1),kind:z.literal('sotdl-official-core-draft'),contextSha256:z.string().regex(/^[a-f0-9]{64}$/),prngVersion:z.literal(PRNG_VERSION),config:configSchema,
-  character:z.unknown(),rolls:z.record(z.string(),z.array(z.number().int().positive()).min(1).max(10)),choices:z.record(z.string(),z.string()),equipped:z.array(z.string())}).strict();
+  character:z.unknown(),rolls:z.record(z.string(),z.array(z.number().int().positive()).min(1).max(10)),choices:z.record(z.string(),z.string()),equipped:z.array(z.string()),
+  adjudications:z.record(z.string(),ThingAdjudicationSchema).default({}),
+  interestingHistory:z.array(z.discriminatedUnion('type',[
+    z.object({type:z.literal('select'),outcomeId:z.string(),mode:z.enum(['manual','random'])}).strict(),
+    z.object({type:z.literal('choose'),outcomeId:z.string(),key:z.string(),value:z.string()}).strict(),
+    z.object({type:z.literal('adjudicate'),decision:ThingAdjudicationSchema}).strict(),
+  ])).default([])}).strict();
 export type OfficialCoreDraft=Omit<z.infer<typeof OfficialCoreDraftSchema>,'character'>&{character:HumanL0Character};
 export function parseOfficialCoreDraft(input:unknown):OfficialCoreDraft {
   const p=OfficialCoreDraftSchema.safeParse(input);if(!p.success)return fail('draft-invalid');
@@ -41,6 +50,7 @@ export function parseOfficialCoreDraft(input:unknown):OfficialCoreDraft {
 }
 type Row=CoreLocalDocument['tables'][number]['columns'][number]['rows'][number];
 export type OfficialPending={key:string;label:string;options?:{id:string;label:string}[]};
+export type OfficialInventoryRecord={key:string;programId:string;sourceLabel:string;recordKind:string;quantity:number|null;unit:string;itemId:string|null;profile:'armor'|'weapon'|'none';equipped:boolean;weight?:number|null};
 function backgroundSelection(d:OfficialCoreDraft,c:OfficialCoreContext) {
   const mode=d.choices['background/mode']??'none';
   if(!['none','manual','random'].includes(mode))return fail('background-mode-invalid');
@@ -71,7 +81,7 @@ function wealthAndThing(d:OfficialCoreDraft,c:OfficialCoreContext) {
   if(!kit)return fail('starting-kit-missing');
   const parent=selectedRow(d,c,'core:thing-router','interesting/category'),target=parent.bindings.find(b=>b.kind==='subtable')?.refId;
   if(!target)return fail('interesting-category-missing');
-  const row=selectedRow(d,c,target,'interesting/detail'),thing=c.core.things.find(t=>t.id===row.id);
+  const row=selectedRow(d,c,target,'interesting/detail'),thing=c.core.things.find(t=>t.id===(d.choices['interesting/result']??row.id));
   if(!thing)return fail('interesting-result-missing');
   return {wealth,kit,thing};
 }
@@ -101,8 +111,8 @@ function fillRolls(d:OfficialCoreDraft,c:OfficialCoreContext,create=true) {
     else {if(n.quantity.kind==='dice')draw(`${key}/quantity`,n.quantity.count,n.quantity.sides);if(n.worth?.amount.kind==='dice')draw(`${key}/worth`,n.worth.amount.count,n.worth.amount.sides);}
   }};visit(program.grants,program.id);
   if(background?.plan.programId){const extra=c.core.programs.find(p=>p.id===background.plan.programId);if(!extra)return fail('background-program-missing');visit(extra.grants,`background/${background.row.id}/${extra.id}`);}
-  const selectedThingOptions=new Set(thing.details.choices.map(choice=>d.choices[`interesting/${choice.id}`]).filter(Boolean));
-  for(const roll of thing.details.sideRolls)if(roll.phase==='creation'&&(roll.optionId===null||selectedThingOptions.has(roll.optionId)))draw(`interesting/${thing.id}/${roll.id}`,roll.count,roll.sides);
+  const selectedThingOptions=new Set(thing.details.choices.map(choice=>d.choices[thingChoiceKey(thing.id,choice.id)]).filter(Boolean));
+  for(const roll of thing.details.sideRolls)if(roll.phase==='creation'&&(roll.optionId===null||selectedThingOptions.has(roll.optionId)))draw(thingRollKey(thing.id,roll.id),roll.count,roll.sides);
   if(d.config.optionalTables)for(const id of ['core:human-age','core:human-build','core:human-personality','core:human-appearance','core:human-religion'])table(id,`optional/${id}`);
 }
 export async function generateOfficialCore(context:unknown,configInput:unknown):Promise<OfficialCoreDraft> {
@@ -110,13 +120,39 @@ export async function generateOfficialCore(context:unknown,configInput:unknown):
   if(config.benefit==='speak-language'&&!c.core.languageOptions.some(l=>l.id===`language:${config.languageId}`))return fail('language-choice-required');
   const character=await newHumanL0Character({schemaVersion:1,contract:'sotdl.human-l0.mechanics',contractVersion:'1.0.0',ancestry:ref,attributes:{mode:'fixed',increase:config.increase},adjustment:null,size:p.entities[0].mechanics.size.choices[0],procedure:{ref,kind:'core'},
     coreBenefit:config.benefit==='random-profession'?{kind:'random-profession',rollEventId:`profession/${c.core.startingRights.professionChoices+1}`}:{kind:'speak-language',languageId:config.languageId}},c.mechanicalPacks,{id:'official-core-current',name:config.name});
-  const d:OfficialCoreDraft={schemaVersion:1,kind:'sotdl-official-core-draft',contextSha256:await consumableDigest(c),prngVersion:PRNG_VERSION,config,character,rolls:{},choices:{},equipped:[]};
+  const d:OfficialCoreDraft={schemaVersion:1,kind:'sotdl-official-core-draft',contextSha256:await consumableDigest(c),prngVersion:PRNG_VERSION,config,character,rolls:{},choices:{},equipped:[],adjudications:{},interestingHistory:[]};
   fillRolls(d,c);return parseOfficialCoreDraft(d);
 }
 export async function chooseOfficialCore(input:unknown,context:unknown,key:string,value:string):Promise<OfficialCoreDraft> {
   const d=structuredClone(parseOfficialCoreDraft(input)),c=parseOfficialCoreContext(context);
   if(await consumableDigest(c)!==d.contextSha256)return fail('source-context-changed');
+  if(key==='interesting/result')return fail('use-interesting-result-command');
+  if(key.startsWith('interesting/')){
+    const {thing}=wealthAndThing(d,c);
+    if(!thing.details.choices.some(ch=>thingChoiceKey(thing.id,ch.id)===key&&ch.options.some(o=>o.id===value)))return fail('interesting-choice-invalid');
+    if(d.choices[key]!==value)d.equipped=d.equipped.filter(k=>!k.startsWith(`interesting/${thing.id}/`));
+    d.interestingHistory.push({type:'choose',outcomeId:thing.id,key,value});
+  }
   d.choices[key]=value;fillRolls(d,c);await calculateOfficialCore(d,c);return d;
+}
+export async function selectOfficialThing(input:unknown,context:unknown,outcomeId?:string):Promise<OfficialCoreDraft> {
+  const d=structuredClone(parseOfficialCoreDraft(input)),c=parseOfficialCoreContext(context);
+  if(await consumableDigest(c)!==d.contextSha256)return fail('source-context-changed');
+  if(outcomeId&&!c.core.things.some(t=>t.id===outcomeId))return fail('interesting-result-invalid');
+  const previous=wealthAndThing(d,c).thing.id;
+  if(outcomeId)d.choices['interesting/result']=outcomeId;else delete d.choices['interesting/result'];
+  if(previous!==wealthAndThing(d,c).thing.id)d.equipped=d.equipped.filter(k=>!k.startsWith('interesting/'));
+  d.interestingHistory.push({type:'select',outcomeId:wealthAndThing(d,c).thing.id,mode:outcomeId?'manual':'random'});
+  fillRolls(d,c);await calculateOfficialCore(d,c);return d;
+}
+export async function adjudicateOfficialThing(input:unknown,context:unknown,decisionInput:unknown):Promise<OfficialCoreDraft> {
+  const d=structuredClone(parseOfficialCoreDraft(input)),c=parseOfficialCoreContext(context),decision=ThingAdjudicationSchema.parse(decisionInput);
+  if(await consumableDigest(c)!==d.contextSha256)return fail('source-context-changed');
+  const {thing}=wealthAndThing(d,c);
+  if(!thing.details.gmChoice||thing.id!==decision.outcomeId)return fail('interesting-adjudication-invalid');
+  if(decision.definition.kind==='published'&&!c.itemDefinitions.some(i=>i.id===(decision.definition as {itemId:string}).itemId&&i.definitionStatus==='published-core'&&i.category==='weapon'))return fail('interesting-weapon-definition-invalid');
+  d.equipped=d.equipped.filter(k=>!k.startsWith(`interesting/${thing.id}/`));
+  d.adjudications[thing.id]=decision;d.interestingHistory.push({type:'adjudicate',decision});await calculateOfficialCore(d,c);return d;
 }
 /** Change the optional result atomically. Existing faces remain available for audit/replay. */
 export async function selectOfficialBackground(input:unknown,context:unknown,mode:'none'|'manual'|'random',rowId?:string):Promise<OfficialCoreDraft> {
@@ -173,11 +209,19 @@ export async function calculateOfficialCore(input:unknown,context:unknown) {
     return {key,id:option.id,label:option.sourceText,specialization};
   });
   const {wealth,kit,thing}=wealthAndThing(d,c);
+  const thingPlan=c.interestingPlans.find(p=>p.outcomeId===thing.id);if(!thingPlan)return fail('interesting-handler-missing');
+  const adjudication=d.adjudications[thing.id];
+  if(adjudication?.definition.kind==='published'){
+    const definitionId=adjudication.definition.itemId;
+    if(!c.itemDefinitions.some(i=>i.id===definitionId&&i.definitionStatus==='published-core'&&i.category==='weapon'))return fail('interesting-weapon-definition-invalid');
+  }
+  const interestingApplication=applyInterestingThing(thingPlan,thing,d.choices,d.rolls,adjudication);
+  pending.push(...interestingApplication.pending);
   const material=previewStartingGrants(c.core.programs,{instances:[{eventId:kit,programId:kit,subject:'pc'},...(background?.plan.programId?[{eventId:`background/${background.row.id}/${background.plan.programId}`,programId:background.plan.programId,subject:'pc'}]:[])],choices:d.choices,rolls:d.rolls});
   type RecordGrant={key:string;programId:string;sourceLabel:string;recordKind:string;quantity:number|null;unit:string};
   type Unresolved={kind:string;key:string;options?:{id:string;label:string}[]};
   for(const u of material.unresolved as Unresolved[])pending.push({key:u.key,label:u.kind==='choice'?'Escolher alternativa do kit':'Resolver quantidade do kit',options:u.options});
-  const inventory=(material.records as RecordGrant[]).map(r=>{
+  const inventory:OfficialInventoryRecord[]=(material.records as RecordGrant[]).map(r=>{
     const path=`grant/${r.key.slice(r.programId.length+1)}`,ref=c.core.materialReferences.find(ref=>ref.originId===r.programId&&ref.path===path);
     let itemId=ref?.itemId??null;
     if(ref?.resolution==='choice-required') {
@@ -190,6 +234,12 @@ export async function calculateOfficialCore(input:unknown,context:unknown) {
     if(itemId&&!item)pending.push({key:`definition/${r.key}`,label:'Definição de item indisponível'});
     return {...r,itemId,profile:item?.armor?'armor':item?.weapon?'weapon':'none',equipped:d.equipped.includes(r.key)};
   });
+  for(const grant of interestingApplication.grants.filter(g=>g.kind==='item'||g.kind==='vehicle')){
+    const definition=grant.definitionId?c.itemDefinitions.find(i=>i.id===grant.definitionId):undefined;
+    if(grant.definitionId&&!definition)return fail('interesting-definition-unavailable');
+    inventory.push({key:grant.key,programId:thing.id,sourceLabel:definition?.name??grant.label,recordKind:grant.kind,quantity:grant.count,unit:grant.unit,
+      itemId:grant.definitionId,profile:definition?.armor?'armor':definition?.weapon?'weapon':'none',equipped:d.equipped.includes(grant.key),weight:grant.weight});
+  }
   if(background?.plan.keepsake)inventory.push({key:`background/${background.row.id}/keepsake`,programId:background.row.id,sourceLabel:background.row.text,recordKind:'item',quantity:1,unit:'unidade',itemId:null,profile:'none',equipped:false});
   if(background?.plan.appearanceChoice){const key=`background/${background.row.id}/appearance`,options=[{id:'finger',label:'Dedo perdido'},{id:'teeth',label:'Dentes perdidos'},{id:'ear',label:'Orelha perdida'},{id:'scar',label:'Cicatriz'}];
     if(!d.choices[key])pending.push({key,label:'Escolher marca física de Background',options});
@@ -208,13 +258,11 @@ export async function calculateOfficialCore(input:unknown,context:unknown) {
   if(armors.length||modifiers.length)base=await calculateHumanL0Character(d.character,c.mechanicalPacks,armors,modifiers);
   if(background?.plan.state&&backgroundResult?.state!==null&&backgroundResult?.state!==undefined&&base.states)base={...base,states:{...base.states,[background.plan.state.target]:base.states[background.plan.state.target]+backgroundResult.state}};
   if(!base.baseResolved)pending.push({key:'equipment/conflict',label:'Resolver conflito de equipamento'});
-  for(const choice of thing.details.choices)if(!d.choices[`interesting/${choice.id}`])pending.push({key:`interesting/${choice.id}`,label:'Escolher alternativa de Interesting Thing',options:choice.options.map(o=>({id:o.id,label:o.text}))});
-  for(const choice of thing.details.choices){const selected=d.choices[`interesting/${choice.id}`];if(selected&&!choice.options.some(o=>o.id===selected))return fail('interesting-choice-invalid');}
-  pending.push({key:`interesting/application/${thing.id}`,label:'Conferir e aplicar integralmente este resultado de Interesting Thing; não contabilizado automaticamente no inventário'});
   const narrative=d.config.optionalTables?['core:human-age','core:human-build','core:human-personality','core:human-appearance','core:human-religion'].map(id=>({tableId:id,text:selectedRow(d,c,id,`optional/${id}`).text})):[];
   if(d.config.optionalTables)pending.push({key:'optional/build',label:'Registrar dimensões de Build e conferir a descrição escolhida'});
   return {officialGenerationEnabled:true as const,dataMode:'official-local' as const,scope:'human-core-l0' as const,fullyResolved:false as const,exportEnabled:false as const,
-    base,professions,languages:[...languages.values()],wealth:wealth.text,inventory,moneyBits:material.knownCashBits,interestingThing:thing,narrative,pending,equipmentNotes,
+    base,professions,languages:[...languages.values()],wealth:wealth.text,inventory,moneyBits:material.knownCashBits,interestingThing:thing,
+    interestingApplication:{...interestingApplication,contextSha256:d.contextSha256},narrative,pending,equipmentNotes,
     background:background?{rowId:background.row.id,text:background.row.text,sourceId:background.plan.sourceId,evidenceIds:background.plan.evidenceIds,contextSha256:d.contextSha256,
       values:backgroundResult,keepsake:background.plan.keepsake,appearanceChoice:background.plan.appearanceChoice,appearance:d.choices[`background/${background.row.id}/appearance`]??null,
       events:[...(background.plan.state?[{type:'background-state' as const,target:background.plan.state.target,amount:backgroundResult!.state}]:[]),
