@@ -132,7 +132,7 @@ Preferir entregas revisáveis por atividade ou lote, referenciando **#34 / ativi
 
 O checklist de execução permanece aberto:
 
-- [ ] 1. Auditar o recorte e as lacunas. Matriz publicada em [matriz](matriz-lacunas-issue34-atividade1.md). Fechamento pendente: `act1-local-hash-check` (hashes declarados, não recomputados). Não bloqueia a fixture sintética da atividade 2.
+- [x] 1. Auditar o recorte e as lacunas. [Fechamento local](fechamento-issue34-atividade1.md): 301 hashes, 1.060 referências, oito pins e seis geradores conferidos; 12 derivados reconciliados somente em metadados. `act1-local-hash-check` encerrado. Matriz estrutural preservada como snapshot, vinculada ao comprovante atual.
 - [x] 2. Definir o contrato consumível. Contrato `sotdl.human-l0.consumable@1.0.0` em [contrato consumível](contrato-consumivel-tabelas-human-l0.md), na main via [#42](https://github.com/AntonioVCruz/sotdl-character-forge/pull/42) (`5d729d4`).
 - [ ] 3. Projetar o lote de tabelas Core.
 - [ ] 4. Projetar Only Human e Oddities.
@@ -141,4 +141,4 @@ O checklist de execução permanece aberto:
 - [ ] 7. Integrar resolvedores e handlers.
 - [ ] 8. Auditar o conjunto e entregar aos consumidores.
 
-A atividade 2 está na main ([#42](https://github.com/AntonioVCruz/sotdl-character-forge/pull/42)). Atividades **3–8 permanecem abertas**. A atividade 1 permanece aberta até `act1-local-hash-check`. As três categorias Core agrupadas (martial, religious, wilderness) continuam pendência sem peso inventado. Este roadmap não habilita ruleset, não promove revisão e não executa os lotes 3–8.
+As atividades **1 e 2 estão concluídas** no escopo registrado. Atividades **3–8 permanecem abertas** e exigem revisão/aceite próprios. As categorias e identidades agrupadas no snapshot público, as ambiguidades e restrições de aplicação continuam preservadas; fechar hashes não inventa pesos nem aprova projeção semântica. Este roadmap não habilita ruleset, não promove revisão e não executa os lotes 3–8.
