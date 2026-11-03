@@ -136,9 +136,9 @@ O checklist de execução permanece aberto:
 - [x] 2. Definir o contrato consumível. Contrato `sotdl.human-l0.consumable@1.0.0` em [contrato consumível](contrato-consumivel-tabelas-human-l0.md), na main via [#42](https://github.com/AntonioVCruz/sotdl-character-forge/pull/42) (`5d729d4`).
 - [ ] 3. Projetar o lote de tabelas Core.
 - [ ] 4. Projetar Only Human e Oddities.
-- [ ] 5. Projetar kits, itens e equipamentos.
+- [x] 5. Projetar kits, itens e equipamentos. Lote público em [kits, itens e equipamentos](lote-kits-itens-human-l0.md), no contrato `sotdl.human-l0.consumable@1.0.0`. Os 314 registros de catálogo continuam agrupados.
 - [ ] 6. Estender compilador e validação.
 - [ ] 7. Integrar resolvedores e handlers.
 - [ ] 8. Auditar o conjunto e entregar aos consumidores.
 
-A atividade 2 está na main ([#42](https://github.com/AntonioVCruz/sotdl-character-forge/pull/42)). Atividades **3–8 permanecem abertas**. A atividade 1 permanece aberta até `act1-local-hash-check`. As três categorias Core agrupadas (martial, religious, wilderness) continuam pendência sem peso inventado. Este roadmap não habilita ruleset, não promove revisão e não executa os lotes 3–8.
+A atividade 2 está na main ([#42](https://github.com/AntonioVCruz/sotdl-character-forge/pull/42)). A atividade 5 projeta o lote público de kits no mesmo `sotdl.human-l0.consumable@1.0.0`; não publica `1.1.0`. Atividades **3, 4, 6, 7 e 8 permanecem abertas**. A atividade 1 permanece aberta até `act1-local-hash-check`. As três categorias Core agrupadas (martial, religious, wilderness) e os 314 registros de catálogo continuam pendência sem folha inventada. Este roadmap não habilita ruleset e não promove revisão.

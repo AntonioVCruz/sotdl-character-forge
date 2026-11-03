@@ -1,0 +1,23 @@
+{
+  "contract": "sotdl.human-l0.consumable",
+  "contractVersion": "1.0.0",
+  "note": "Patches against human-l0-kits.synthetic.json. Each case must be rejected. No book text.",
+  "cases": [
+    { "id": "lookup-has-dice", "code": "lookup-has-dice", "collection": "lookups", "itemId": "only-human:clothing", "sets": [{ "path": "dice", "value": { "count": 1, "sides": 6 } }] },
+    { "id": "lookup-missing-prior", "code": "lookup-missing-prior", "collection": "lookups", "itemId": "only-human:money", "sets": [{ "path": "reads/queryId", "value": "query:missing-lifestyle" }] },
+    { "id": "unknown-price-not-zero", "code": "unknown-price-not-zero", "collection": "items", "itemId": "kit-fixture-armor", "sets": [{ "path": "price/bits", "value": "0" }] },
+    { "id": "possession-applies-use", "code": "possession-applies-use", "collection": "items", "itemId": "kit-fixture-armor", "sets": [{ "path": "possessionAppliesEffects", "value": true }] },
+    { "id": "defense-not-substitution", "code": "defense-not-substitution", "collection": "items", "itemId": "kit-fixture-armor", "sets": [{ "path": "onEquip/effect/mode", "value": "add" }] },
+    { "id": "defense-on-possession", "code": "defense-on-possession", "collection": "items", "itemId": "kit-fixture-armor", "sets": [{ "path": "onPossess", "value": { "kind": "effect", "pending": null, "effect": { "op": "substitute-defense", "when": "equipped", "mode": "substitute", "base": "agility", "value": 1, "timing": "on-equip", "possessionApplies": false } } }] },
+    { "id": "weapon-effect-not-substitution", "code": "defense-not-substitution", "collection": "items", "itemId": "kit-fixture-blade", "sets": [{ "path": "onUse", "value": { "kind": "effect", "pending": null, "effect": { "op": "narrative-marker", "code": "kit-fixture-blade", "timing": "narrative", "mutatesMechanics": false } } }] },
+    { "id": "shield-pending-not-defense", "code": "profile-mismatch", "collection": "items", "itemId": "kit-fixture-shield", "sets": [{ "path": "onEquip/pending/reason", "value": "manual-procedure" }] },
+    { "id": "generic-profile-has-stats", "code": "generic-profile-has-stats", "collection": "items", "itemId": "kit-fixture-generic", "sets": [{ "path": "onEquip", "value": { "kind": "effect", "pending": null, "effect": { "op": "substitute-defense", "when": "equipped", "mode": "substitute", "base": "agility", "value": 1, "timing": "on-equip", "possessionApplies": false } } }] },
+    { "id": "currency-not-exact", "code": "currency-not-exact", "collection": "grants", "itemId": "kit-fixture:grant:currency", "sets": [{ "path": "consequence/effect/bits", "value": "0" }] },
+    { "id": "choice-resolved-early", "code": "choice-resolved-early", "sets": [{ "path": "manualResolutions/6/consequence/pending/linkedDefinition/resolvedItemId", "value": "pilot-item:core:large-shield" }] },
+    { "id": "fictional-data-required", "code": "fictional-data-required", "sets": [{ "path": "fictionalData", "value": false }] },
+    { "id": "review-promotion-forbidden", "code": "review-promotion-forbidden", "sets": [{ "path": "reviewStatus", "value": "curated" }] },
+    { "id": "ruleset-enablement-forbidden", "code": "ruleset-enablement-forbidden", "sets": [{ "path": "rulesetEnabled", "value": true }] },
+    { "id": "grouped-as-individual-evidence", "code": "grouped-as-individual-evidence", "sets": [{ "path": "blockers/1/individualEvidence", "value": true }] },
+    { "id": "hash-check-blocks-synthetic", "code": "hash-check-blocks-synthetic", "sets": [{ "path": "blockers/0/blocksSyntheticFixtures", "value": true }] }
+  ]
+}

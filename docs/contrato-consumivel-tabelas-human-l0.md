@@ -68,6 +68,8 @@ Preço `exact` ou `minimum` guarda amount, denominação e bits conferidos. Pre�
 
 Pendência guarda `retainsConsequence: true`. A consequência manual não é apagada.
 
+A atividade 5 acrescenta duas razões, ainda em `1.0.0`: `grant-program-local-only` (programa selecionado cujas folhas continuam locais) e `not-carried` (criatura, relação, serviço ou propriedade não vira item carregado). Não há `1.1.0`.
+
 ## Bloqueios que o documento tem de repetir
 
 | Id | Contagem | Efeito neste contrato |
@@ -117,5 +119,5 @@ Os testes em `tests/curation-human-l0-consumable.test.ts` cruzam as contagens 25
 ## Fora desta versão
 
 - Atividade 1 segue aberta até recomputar os hashes locais.
-- Atividades 3, 4 e 5 projetam os lotes. Atividades 6, 7 e 8 compilam, integram handlers e fazem o aceite.
-- Não há promoção `needs-review` → `curated`, `fictionalData: true` em pack real, nem `rulesetEnabled: true`.
+- A atividade 5 projeta o lote público de kits neste mesmo `1.0.0` ([lote](lote-kits-itens-human-l0.md)). Atividades 3, 4, 6, 7 e 8 continuam abertas.
+- Não há promoção `needs-review` → `curated`, `fictionalData: true` em pack real, nem `rulesetEnabled: true`. Um lote real continua a exigir versão nova; esta entrega não publica `1.1.0`.

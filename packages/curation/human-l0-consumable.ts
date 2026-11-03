@@ -76,7 +76,7 @@ const pendingReason = z.enum([
   'conditional-branch', 'choice-required', 'open-category-language', 'no-extra-life-rolls', 'player-fields',
   'partial-literacy', 'range-starts-not-reextracted', 'catalog-group-not-individual', 'possession-is-not-use',
   'unknown-price', 'generic-profile', 'disabled-source', 'external-branch', 'open-tail-domain',
-  'weapon-no-defense', 'defense-bonus-not-substitution',
+  'weapon-no-defense', 'defense-bonus-not-substitution', 'grant-program-local-only', 'not-carried',
 ]);
 const link = z.discriminatedUnion('kind', [
   z.object({ kind: z.literal('not-an-item') }).strict(),
