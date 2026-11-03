@@ -2,7 +2,7 @@
 
 Plano de 2026-11-02 para a [issue #34](https://github.com/AntonioVCruz/sotdl-character-forge/issues/34). **As oito atividades abaixo foram planejadas por este documento; a execução é registrada à parte.** A ordem define dependências técnicas, sem atribuir prazos, sprint ou responsáveis.
 
-A matriz da atividade 1 está em [matriz-lacunas-issue34-atividade1.md](matriz-lacunas-issue34-atividade1.md). O fechamento dessa atividade continua pendente em `act1-local-hash-check`: os hashes declarados ainda não foram recomputados com os livros. A atividade 2 está aceita: o contrato `sotdl.human-l0.consumable@1.0.0` está na main via [#42](https://github.com/AntonioVCruz/sotdl-character-forge/pull/42) (`5d729d4`). Atividades 3–8 continuam por executar.
+A matriz da atividade 1 está em [matriz-lacunas-issue34-atividade1.md](matriz-lacunas-issue34-atividade1.md), preservada como snapshot histórico. A atividade foi [fechada localmente no #49](fechamento-issue34-atividade1.md). A atividade 2 está aceita: contrato `sotdl.human-l0.consumable@1.0.0` na main via #42/#43. Atividades 3–8 permanecem abertas. Esta branch contém o lote sintético Core do PR #44 / atividade 3, com seu P2 corrigido; isso não concede aceite dos dados reais.
 
 ## Objetivo e fronteiras
 

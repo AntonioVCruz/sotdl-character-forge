@@ -1,5 +1,7 @@
 # Estado das issues
 
+Atualização de integração em 2026-11-03: a branch do PR #44 (Core, atividade 3 da #34) foi sincronizada com a main para resolver os conflitos que impediam a CI de `pull_request`. A correção P2 desta branch foi preservada. Atividades 1/2 continuam concluídas; 3–8 continuam abertas, sem aceite semântico dos lotes reais ou habilitação. Referências ao hash-check aberto nas fixtures antigas descrevem o snapshot histórico, não reabrem a atividade 1 fechada no #49.
+
 Conferência em 2026-10-30, a partir da `main`, dos arquivos efetivos e das discussões no GitHub. Política do [PR #12](https://github.com/AntonioVCruz/sotdl-character-forge/pull/12) consolidada em [politica-distribuicao-conteudo.md](politica-distribuicao-conteudo.md).
 
 Atualização da #7 em 2026-11-02: metadados e as quatro atividades da base mecânica concluídos — revisão local, contrato, projeção/validação e handlers com aceite de escolhas/salvamento/reabertura. As pendências ampliadas foram [transferidas para as #34–#37](transferencia-escopo-issue7.md), com critérios e dependências próprios.
