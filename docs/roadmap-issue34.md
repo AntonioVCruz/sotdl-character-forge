@@ -2,7 +2,7 @@
 
 Plano de 2026-11-02 para a [issue #34](https://github.com/AntonioVCruz/sotdl-character-forge/issues/34). **As oito atividades abaixo foram planejadas por este documento; a execução é registrada à parte.** A ordem define dependências técnicas, sem atribuir prazos, sprint ou responsáveis.
 
-Atividade 1 registrada em [matriz-lacunas-issue34-atividade1.md](matriz-lacunas-issue34-atividade1.md). Atividades 2–8 continuam por executar.
+A matriz da atividade 1 está em [matriz-lacunas-issue34-atividade1.md](matriz-lacunas-issue34-atividade1.md). O fechamento dessa atividade continua pendente em `act1-local-hash-check`: os hashes declarados ainda não foram recomputados com os livros. Atividades 2–8 continuam por executar. A atividade 2 pode avançar com fixtures sintéticas em paralelo.
 
 ## Objetivo e fronteiras
 
@@ -132,7 +132,7 @@ Preferir entregas revisáveis por atividade ou lote, referenciando **#34 / ativi
 
 O checklist de execução permanece aberto:
 
-- [x] 1. Auditar o recorte e as lacunas. Registro: [matriz](matriz-lacunas-issue34-atividade1.md).
+- [ ] 1. Auditar o recorte e as lacunas. Matriz publicada em [matriz](matriz-lacunas-issue34-atividade1.md). Fechamento pendente: `act1-local-hash-check` (hashes declarados, não recomputados).
 - [ ] 2. Definir o contrato consumível.
 - [ ] 3. Projetar o lote de tabelas Core.
 - [ ] 4. Projetar Only Human e Oddities.
@@ -141,4 +141,4 @@ O checklist de execução permanece aberto:
 - [ ] 7. Integrar resolvedores e handlers.
 - [ ] 8. Auditar o conjunto e entregar aos consumidores.
 
-Próxima atividade executável: **2 — definir o contrato consumível**. A atividade 1 está registrada na matriz ligada acima. Este roadmap não altera código de runtime, artefatos reais, versões, estados de revisão ou flags de habilitação; não cria novas subissues nem executa as atividades 2–8.
+Próxima atividade executável em paralelo, com fixtures sintéticas: **2 — definir o contrato consumível**. A atividade 1 permanece aberta até `act1-local-hash-check`. Este roadmap não altera código de runtime, artefatos reais, versões, estados de revisão ou flags de habilitação; não cria novas subissues nem executa as atividades 2–8.

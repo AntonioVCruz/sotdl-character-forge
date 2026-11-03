@@ -1,4 +1,5 @@
 import { readFileSync } from 'node:fs';
+import { edges, expanded } from './creation-table-inventory';
 import { explicitRanges, findingDispositions, numericOnlyIds } from './pilot-table-ranges';
 import { odditiesTables, uncertainPairings } from './interesting-things-map';
 import { details } from './interesting-things-details';
@@ -20,6 +21,13 @@ export type MatrixRecord = {
   kind: string;
   cur: string;
   sourceId: string;
+  sourceVersion: null;
+  sourceVersionReason: string;
+  review: string;
+  consumers: string[];
+  consequenceTypes: string[];
+  linkedDefinition: string;
+  evidenceRef: string;
   selection: MatrixSelection;
   evidence: MatrixEvidence;
   capabilities: string[];
@@ -28,7 +36,15 @@ export type MatrixRecord = {
   notes?: string;
 };
 
-export type MatrixBlocker = { id: string; owner: 'curador' | 'engenheiro' | 'ambiente'; summary: string };
+export type MatrixBlocker = {
+  id: string;
+  owner: 'curador' | 'engenheiro' | 'ambiente';
+  summary: string;
+  count?: number;
+  activities?: number[];
+  lots?: string[];
+  members?: { id: string; count: number }[];
+};
 
 export type Activity1Matrix = {
   schemaVersion: 1;
@@ -37,6 +53,7 @@ export type Activity1Matrix = {
   issue: 34;
   activity: 1;
   policy: 'ids-hashes-counts-dispositions-only';
+  closure: 'pending-act1-local-hash-check';
   records: MatrixRecord[];
   blockers: MatrixBlocker[];
   counts: Record<string, number>;
@@ -52,24 +69,6 @@ const sideRollToken = (roll: { phase: string; count: number; sides: number; modi
 
 function sourceText(name: string) {
   return readFileSync(new URL(`./${name}`, import.meta.url), 'utf8');
-}
-
-function loadExpanded() {
-  const text = sourceText('creation-table-inventory.ts');
-  const start = text.indexOf('const expanded');
-  const end = text.indexOf('type Link');
-  const block = text.slice(start, end).replace(/const expanded:[^=]*=/, 'expanded =');
-  return Function(`${block}; return expanded;`)() as [string, string, number, number, [number, number] | null, string, string][];
-}
-
-function loadEdges() {
-  const text = sourceText('creation-table-inventory.ts');
-  const start = text.indexOf('const edges');
-  const end = text.indexOf('export function validateInventoryGraph');
-  const block = text.slice(start, end)
-    .replace(/as \[string,string,string,string,number,number\]/g, '')
-    .replace(/const edges:[^=]*=/, 'edges =');
-  return Function(`${block}; return edges;`)() as [string, string, string, string, number, number][];
 }
 
 function wealthRangeMins(varName: string) {
@@ -93,8 +92,112 @@ function cyclicIds(ids: string[], links: { from: string; to: string }[]) {
   });
 }
 
-function rec(partial: Omit<MatrixRecord, 'represents'> & { represents?: number }): MatrixRecord {
-  return { represents: 1, ...partial, capabilities: [...partial.capabilities].sort() };
+const SOURCE_VERSION_REASON = 'sources.json revision is null and editionStatus is unconfirmed; pdf is not-provided-in-rules';
+
+function consumersFor(row: { id: string; kind: string; disposition: MatrixDisposition; selection: MatrixSelection }): string[] {
+  const lot = row.disposition === 'lote-core' ? '#34-act3'
+    : row.disposition === 'lote-only-human' || row.disposition === 'lote-oddities' ? '#34-act4'
+      : row.disposition === 'lote-kits-itens' ? '#34-act5'
+        : row.disposition === 'adiado' ? '#35'
+          : row.disposition === 'bloqueado' ? '#34-act1'
+            : '#34-act8';
+  const consumers = new Set<string>([lot]);
+  if (['table', 'flow', 'query', 'link', 'interesting-outcome', 'interesting-grant', 'profession-option', 'side-roll', 'development-template', 'language-option', 'lifestyle-modifier'].includes(row.kind)) consumers.add('#35');
+  if (row.disposition === 'lote-kits-itens' || row.kind === 'item-definition' || row.kind === 'item-reference') consumers.add('#36');
+  if (['side-roll', 'interesting-outcome', 'grant-program', 'development-template', 'lifestyle-modifier'].includes(row.kind)) consumers.add('#34-act7');
+  if (row.kind === 'query' || row.kind === 'link') consumers.add('#34-act2');
+  if (row.selection === 'adiado' && row.id === 'procedure:roleplaying-questions') consumers.add('#36');
+  return [...consumers].sort();
+}
+
+function evidenceRefFor(row: { id: string; kind: string; sourceId: string; evidence: MatrixEvidence }): string {
+  if (row.kind === 'evidence-gap') return row.id;
+  if (row.id === 'only-human:fears' || row.id === 'only-human:desires' || row.id.startsWith('only-human:fears#') || row.id.startsWith('only-human:desires#')) return 'evidence:correction-fears-desires';
+  if (row.kind === 'interesting-outcome' && row.id.startsWith('core:')) return 'evidence:correction-core-interesting-things';
+  if (row.kind === 'language-option') return 'evidence:correction-core-languages';
+  if (row.id === 'core-initial-thing' || row.id.startsWith('core:thing')) return 'evidence:correction-core-interesting-things';
+  if (row.sourceId === ODD || row.id.startsWith('oddities:')) return row.evidence === 'code-anchor' && !row.id.startsWith('oddities:books') && !['art', 'books', 'minor-magic', 'pets', 'personal', 'ingredients'].some(table => row.id.startsWith(`oddities:${table}`))
+    ? 'evidence:rules-compendium-md'
+    : 'evidence:correction-oddities-tables';
+  if (row.evidence === 'local-only' && (row.kind === 'profession-option' || row.id.startsWith('core:profession-'))) return 'evidence:correction-core-professions';
+  if (row.evidence === 'local-only' && row.id.startsWith('class:')) return 'evidence:pilot-items';
+  if (row.evidence === 'needs-recheck') return 'n/a:pdf-not-inspected';
+  if (row.id.startsWith('pilot-profession:core:') || row.id.startsWith('core:profession') || row.id.startsWith('query:profession-faces:core')) return 'evidence:correction-core-professions';
+  if (row.sourceId === ONLY) return 'evidence:rules-ancestry-md';
+  if (row.id.startsWith('core:human-') || row.id.startsWith('query:starting-lifestyle:core') || row.id === 'core:wealth' || row.id.startsWith('core:role-traits') || row.id.startsWith('core:kit:') || row.id.startsWith('extra:core-background')) return 'evidence:rules-ancestry-md';
+  return 'evidence:rules-compendium-md';
+}
+
+function reviewFor(row: { id: string; kind: string; evidence: MatrixEvidence }): string {
+  if (row.kind === 'finding' && (row.id.endsWith('fears-desires-columns') || row.id.endsWith('profession-selector-stray-prose'))) return 'resolved-2026-10-27';
+  if (row.evidence === 'hash-declarado-nao-refeito') return 'declared-2026-10-27-hash-not-recomputed';
+  if (row.evidence === 'local-only') return 'needs-individualization';
+  if (row.evidence === 'needs-recheck') return 'pdf-not-inspected';
+  if (row.evidence === 'entailed-coverage') return 'coverage-entailed-bytes-not-reread';
+  return 'code-anchor-2026-10-27';
+}
+
+function consequenceTypesFor(row: { id: string; kind: string; capabilities: string[]; disposition: MatrixDisposition }): string[] {
+  const caps = new Set(row.capabilities);
+  if (row.kind === 'item-reference' && caps.has('resolution:currency-preserved')) return ['currency', 'carried-by-grant-program'];
+  if (row.kind === 'item-reference' && caps.has('resolution:non-inventory')) return ['narrative', 'carried-by-interesting-outcome'];
+  if (row.kind === 'item-reference' && caps.has('resolution:choice-required')) return ['item', 'choice'];
+  if (row.kind === 'item-reference') return ['item'];
+  if (row.kind === 'item-definition') return caps.has('definition:source-grant-only') ? ['item', 'generic-editable'] : ['item'];
+  if (row.kind === 'interesting-outcome') {
+    const kind = row.capabilities.find(cap => cap.startsWith('kind:'))?.slice(5) ?? 'object';
+    return [kind, 'manual-adjudication'];
+  }
+  if (row.kind === 'profession-option' || row.kind === 'development-template') return ['profession', 'language'];
+  if (row.kind === 'language-option') return ['language'];
+  if (row.kind === 'grant-program') return ['grant'];
+  if (row.kind === 'lifestyle-modifier') return ['lifestyle-modifier'];
+  if (row.kind === 'side-roll') return ['side-roll'];
+  if (row.kind === 'query' && caps.has('lookup-by-lifestyle')) return ['lookup'];
+  if (row.kind === 'query' || row.kind === 'table' && row.capabilities.some(cap => cap.startsWith('role:selector') || cap === 'default-variant')) return ['selector'];
+  if (row.kind === 'table' && row.capabilities.some(cap => cap.startsWith('lookup:'))) return ['lookup'];
+  if (row.kind === 'table' || row.kind === 'flow') return ['table-result'];
+  if (row.kind === 'link') return ['link'];
+  if (row.kind === 'finding') return row.disposition === 'referencia' ? ['review-note', 'carried-by-table'] : ['review-note', 'manual-pending'];
+  if (row.kind === 'rule-block') return ['rule-reference'];
+  if (row.kind === 'evidence-gap') return ['evidence-pin'];
+  if (row.kind === 'gap') return ['blocked-or-deferred-branch'];
+  if (row.kind === 'procedure') return ['procedure'];
+  if (row.kind === 'interesting-grant') return ['interesting-thing-grant'];
+  return ['n/a:unclassified'];
+}
+
+function linkedDefinitionFor(row: { id: string; kind: string; capabilities: string[] }): string {
+  if (row.kind === 'item-definition') return row.id.startsWith('class:') ? 'local-only' : row.id;
+  if (row.kind === 'item-reference' && row.capabilities.includes('resolution:currency-preserved')) return 'n/a:currency-preserved-on-grant';
+  if (row.kind === 'item-reference' && row.capabilities.includes('resolution:non-inventory')) return 'n/a:non-inventory';
+  if (row.kind === 'item-reference' && row.capabilities.includes('resolution:choice-required')) {
+    const candidates = row.capabilities.filter(cap => cap.startsWith('candidate:')).map(cap => cap.slice('candidate:'.length));
+    return `choice:${candidates.join('|')}`;
+  }
+  if (row.kind === 'item-reference' && row.id.startsWith('item-ref:thing:')) return `pilot-item:thing:${row.id.slice('item-ref:thing:'.length)}`;
+  if (row.kind === 'item-reference' && row.id.startsWith('class:')) return 'local-only';
+  if (row.kind === 'profession-option' && row.id.endsWith(':*')) return 'local-only';
+  if (row.kind === 'profession-option' && row.id.startsWith('pilot-profession:only-human:') && !row.id.endsWith(':occult')) return `profession:${row.id}`;
+  if (row.kind === 'profession-option') return 'n/a:no-copied-gear';
+  if (row.kind === 'grant-program') return 'local-only';
+  if (row.kind === 'finding' && row.id.endsWith('fears-desires-columns')) return 'n/a:carried-by-only-human:fears-and-desires';
+  if (row.kind === 'finding' && row.id.endsWith('profession-selector-stray-prose')) return 'n/a:carried-by-only-human:profession-router';
+  return 'n/a:not-an-item-definition';
+}
+
+function rec(partial: Omit<MatrixRecord, 'represents' | 'sourceVersion' | 'sourceVersionReason' | 'review' | 'consumers' | 'consequenceTypes' | 'linkedDefinition' | 'evidenceRef'> & { represents?: number }): MatrixRecord {
+  const base = { represents: 1, ...partial, capabilities: [...partial.capabilities].sort() };
+  return {
+    ...base,
+    sourceVersion: null,
+    sourceVersionReason: SOURCE_VERSION_REASON,
+    review: reviewFor(base),
+    consumers: consumersFor(base),
+    consequenceTypes: consequenceTypesFor(base),
+    linkedDefinition: linkedDefinitionFor(base),
+    evidenceRef: evidenceRefFor(base),
+  };
 }
 
 function padFace(n: number) {
@@ -103,8 +206,6 @@ function padFace(n: number) {
 
 export function buildActivity1Matrix(): Activity1Matrix {
   const records: MatrixRecord[] = [];
-  const expanded = loadExpanded();
-  const edges = loadEdges();
   const coreTables: [string, string, string, string][] = [
     ['human-background', '1d20', 'optional-ancestry-inspiration', 'ancestry-narrative'],
     ['human-personality', '3d6', 'optional-ancestry-inspiration', 'ancestry-narrative'],
@@ -371,12 +472,14 @@ export function buildActivity1Matrix(): Activity1Matrix {
   const previouslyUncertain = new Set([...Object.keys(uncertainPairings), 'personal:1', 'personal:2', 'personal:3', 'personal:4']);
   let specialItems = 0;
   let nonInventory = 0;
+  let outcomeSideRolls = 0;
   for (let n = 1; n <= 6; n += 1) {
     for (let face = 1; face <= 20; face += 1) {
       const id = `core:${n}:${face}`;
       const info = details(id);
       const nonItem = ['narrative', 'relationship', 'text-reference', 'dependency'].includes(info.kind);
       if (nonItem) nonInventory += 1; else specialItems += 1;
+      outcomeSideRolls += info.sideRolls.length;
       records.push(rec({
         id, kind: 'interesting-outcome', cur: 'CUR-019', sourceId: CORE, selection: 'selecionado', evidence: 'hash-declarado-nao-refeito',
         capabilities: [`kind:${info.kind}`, `table:core:thing-${n}`, `face:${face}`, 'manual-adjudication', `choices:${info.choices.length}`, `side-rolls:${info.sideRolls.length}`, ...info.mechanismTags, ...info.sideRolls.map(sideRollToken), ...(info.gmChoice ? ['gm-choice'] : []), ...(info.declaredWorth ? ['worth-not-spendable'] : [])],
@@ -399,6 +502,7 @@ export function buildActivity1Matrix(): Activity1Matrix {
       const info = details(id);
       const nonItem = ['narrative', 'relationship', 'text-reference', 'dependency'].includes(info.kind);
       if (nonItem) nonInventory += 1; else specialItems += 1;
+      outcomeSideRolls += info.sideRolls.length;
       const caps = [`kind:${info.kind}`, `table:oddities:${table.id}`, `face:${face}`, 'manual-adjudication', `choices:${info.choices.length}`, `side-rolls:${info.sideRolls.length}`, ...info.mechanismTags, ...info.sideRolls.map(sideRollToken), ...(info.gmChoice ? ['gm-choice'] : []), ...(info.declaredWorth ? ['worth-not-spendable'] : [])];
       if (previouslyUncertain.has(`${table.id}:${face}`)) caps.push('association-was-needs-review');
       if (id === 'oddities:books:20') caps.push('future-generator:disabled', 'dependency:sotdl:dark-passages');
@@ -419,6 +523,7 @@ export function buildActivity1Matrix(): Activity1Matrix {
     }
   }
   if (specialItems !== 285 || nonInventory !== 75) throw new Error(`Interesting item split drifted: special ${specialItems}, non-inventory ${nonInventory}`);
+  if (outcomeSideRolls !== 23) throw new Error(`Outcome side rolls drifted: ${outcomeSideRolls}`);
 
   const published = [
     ...gearRows.map(([key]) => key),
@@ -556,28 +661,28 @@ export function buildActivity1Matrix(): Activity1Matrix {
   ];
   records.push(...gaps);
 
-  const evidenceGaps: [string, string, MatrixEvidence][] = [
-    ['evidence:rules-ancestry-md', 'sha256:020d9d62d9046475552dbaf9f989f07e69b87b7a386cadc1af3e82f930502baf', 'hash-declarado-nao-refeito'],
-    ['evidence:rules-compendium-md', 'sha256:af5b377d003c96910c5c7d4c4909a66d381513cbda93de22b5d83a6ca5474ece', 'hash-declarado-nao-refeito'],
-    ['evidence:correction-core-professions', 'sha256:4609a3f4a51c5bc1fa77af9db00a757adc381d78301c2adb85661a53f421c150', 'hash-declarado-nao-refeito'],
-    ['evidence:correction-core-interesting-things', 'sha256:836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61', 'hash-declarado-nao-refeito'],
-    ['evidence:correction-core-introduction', 'sha256:51524877da4e81c6146392d35f4fdca222e6e0b4ff9b7507b0e93c6bcb43f9ef', 'hash-declarado-nao-refeito'],
-    ['evidence:correction-core-languages', 'sha256:18695a183fdf83e51b3816b0bc06f2c2121c1787cb2468aeff68d16a6e041de0', 'hash-declarado-nao-refeito'],
-    ['evidence:correction-oddities-tables', 'sha256:d3431ac28254cc4ee5910197b64dbae14744838eaf8bb983b73d4bb3a765620a', 'hash-declarado-nao-refeito'],
-    ['evidence:correction-fears-desires', 'sha256:1623f63a467016cb940701c088bf4647fa43a9eb730b6817d905e9586113184f', 'hash-declarado-nao-refeito'],
-    ['evidence:pilot-creation-table-inventory', 'output-hash-unpinned', 'local-only'],
-    ['evidence:pilot-professions-languages', 'output-hash-unpinned', 'local-only'],
-    ['evidence:pilot-wealth-equipment', 'output-hash-unpinned', 'local-only'],
-    ['evidence:pilot-interesting-things', 'output-hash-unpinned', 'local-only'],
-    ['evidence:pilot-items', 'output-hash-unpinned', 'local-only'],
-    ['evidence:pilot-table-closure', 'output-hash-unpinned', 'local-only'],
-    ['evidence:pilot-core-level-zero', 'output-hash-unpinned', 'local-only'],
-    ['evidence:pilot-human-ancestry', 'output-hash-unpinned', 'local-only'],
-    ['evidence:pilot-creation-decisions', 'output-hash-unpinned', 'local-only'],
+  const evidenceGaps: [string, string, MatrixEvidence, string][] = [
+    ['evidence:rules-ancestry-md', 'sha256:020d9d62d9046475552dbaf9f989f07e69b87b7a386cadc1af3e82f930502baf', 'hash-declarado-nao-refeito', ONLY],
+    ['evidence:rules-compendium-md', 'sha256:af5b377d003c96910c5c7d4c4909a66d381513cbda93de22b5d83a6ca5474ece', 'hash-declarado-nao-refeito', CORE],
+    ['evidence:correction-core-professions', 'sha256:4609a3f4a51c5bc1fa77af9db00a757adc381d78301c2adb85661a53f421c150', 'hash-declarado-nao-refeito', CORE],
+    ['evidence:correction-core-interesting-things', 'sha256:836006ebb1021f9af6075d5d19d8665e429bd6ac9062b79b1dcd3a691934ef61', 'hash-declarado-nao-refeito', CORE],
+    ['evidence:correction-core-introduction', 'sha256:51524877da4e81c6146392d35f4fdca222e6e0b4ff9b7507b0e93c6bcb43f9ef', 'hash-declarado-nao-refeito', CORE],
+    ['evidence:correction-core-languages', 'sha256:18695a183fdf83e51b3816b0bc06f2c2121c1787cb2468aeff68d16a6e041de0', 'hash-declarado-nao-refeito', CORE],
+    ['evidence:correction-oddities-tables', 'sha256:d3431ac28254cc4ee5910197b64dbae14744838eaf8bb983b73d4bb3a765620a', 'hash-declarado-nao-refeito', ODD],
+    ['evidence:correction-fears-desires', 'sha256:1623f63a467016cb940701c088bf4647fa43a9eb730b6817d905e9586113184f', 'hash-declarado-nao-refeito', ONLY],
+    ['evidence:pilot-creation-table-inventory', 'output-hash-unpinned', 'local-only', ONLY],
+    ['evidence:pilot-professions-languages', 'output-hash-unpinned', 'local-only', ONLY],
+    ['evidence:pilot-wealth-equipment', 'output-hash-unpinned', 'local-only', ONLY],
+    ['evidence:pilot-interesting-things', 'output-hash-unpinned', 'local-only', ODD],
+    ['evidence:pilot-items', 'output-hash-unpinned', 'local-only', CORE],
+    ['evidence:pilot-table-closure', 'output-hash-unpinned', 'local-only', ONLY],
+    ['evidence:pilot-core-level-zero', 'output-hash-unpinned', 'local-only', CORE],
+    ['evidence:pilot-human-ancestry', 'output-hash-unpinned', 'local-only', ONLY],
+    ['evidence:pilot-creation-decisions', 'output-hash-unpinned', 'local-only', CORE],
   ];
-  for (const [id, hash, evidence] of evidenceGaps) {
+  for (const [id, hash, evidence, sourceId] of evidenceGaps) {
     records.push(rec({
-      id, kind: 'evidence-gap', cur: 'CUR-016/021', sourceId: CORE, selection: 'bloqueado', evidence,
+      id, kind: 'evidence-gap', cur: 'CUR-016/021', sourceId, selection: 'bloqueado', evidence,
       capabilities: [hash], disposition: 'bloqueado', notes: 'bytes-ausentes-neste-checkout',
     }));
   }
@@ -591,12 +696,37 @@ export function buildActivity1Matrix(): Activity1Matrix {
   if (records.filter(row => row.kind === 'query' && row.capabilities.includes('lookup-by-lifestyle')).length !== 5) throw new Error('Lookup query count drifted');
   const flowRows = records.filter(row => row.kind === 'flow').reduce((total, row) => total + Number(row.capabilities.find(cap => cap.startsWith('rows:'))!.slice(5)), 0);
   if (flowRows !== 901) throw new Error(`Declared range rows rederived ${flowRows}, CUR-021 states 901`);
+  const evidenceIds = new Set(records.filter(row => row.kind === 'evidence-gap').map(row => row.id));
+  const hashRows = records.filter(row => row.evidence === 'hash-declarado-nao-refeito');
+  if (hashRows.length !== 258) throw new Error(`Hash-declared rows drifted: ${hashRows.length}`);
+  for (const row of hashRows) {
+    if (!row.evidenceRef.startsWith('evidence:') || !evidenceIds.has(row.evidenceRef)) throw new Error(`Hash row ${row.id} missing evidenceRef ${row.evidenceRef}`);
+  }
+  const groupedLocalOnly: [string, number][] = [
+    ['pilot-profession:core:martial:*', 12],
+    ['pilot-profession:core:religious:*', 7],
+    ['pilot-profession:core:wilderness:*', 17],
+    ['class:source-grant-only', 57],
+    ['class:exact-definition-refs', 182],
+    ['class:generic-editable-refs', 75],
+  ];
+  for (const [id, count] of groupedLocalOnly) {
+    const row = records.find(item => item.id === id);
+    if (!row || row.represents !== count || row.evidence !== 'local-only' || row.linkedDefinition !== 'local-only') throw new Error(`Grouped local-only row drifted: ${id}`);
+  }
+  if (groupedLocalOnly.reduce((total, [, count]) => total + count, 0) !== 350) throw new Error('Grouped local-only total drifted');
+  for (const row of records) {
+    if (row.sourceVersion !== null || !row.sourceVersionReason || !row.review || row.consumers.length === 0 || row.consequenceTypes.length === 0 || !row.linkedDefinition || !row.evidenceRef) throw new Error(`Acceptance column missing on ${row.id}`);
+  }
+  if (records.find(row => row.id === 'evidence:correction-oddities-tables')?.sourceId !== ODD) throw new Error('Oddities correction source drifted');
 
   records.sort((a, b) => a.kind.localeCompare(b.kind) || a.id.localeCompare(b.id));
   const countBy = (key: 'selection' | 'disposition' | 'evidence' | 'kind') => Object.fromEntries(
     [...records.reduce((map, row) => map.set(row[key], (map.get(row[key]) ?? 0) + row.represents), new Map<string, number>())].sort(([a], [b]) => a.localeCompare(b)),
   );
   const blockers: MatrixBlocker[] = [
+    { id: 'act1-local-hash-check', owner: 'ambiente', count: 258, activities: [1], summary: 'A atividade 1 permanece aberta. rules/, curation/pilot/ e curation/corrections/ estão ausentes, então os seis formalizadores não rodaram --check. 258 registros ficam hash-declarado-nao-refeito e apontam evidenceRef para um hash declarado, não recomputado.' },
+    { id: 'act3-act5-grouped-local-only', owner: 'curador', count: 350, activities: [3, 5], lots: ['lote-core', 'lote-kits-itens'], members: groupedLocalOnly.map(([id, count]) => ({ id, count })), summary: '350 identidades seguem agrupadas com evidência local-only: 36 opções de profissão Core (atividade 3) e 314 registros de catálogo (atividade 5: 57 definições sem perfil, 182 referências exatas, 75 referências genéricas). O grupo não é evidência individual.' },
     { id: 'act2-curator-accepts-matrix', owner: 'curador', summary: 'Aceitar o recorte: ambos os procedimentos e ambas as fontes de Interesting Things permanecem selecionados. Pendência manual continua como resultado selecionado.' },
     { id: 'act2-contract-version', owner: 'engenheiro', summary: 'Definir contrato novo ou evolução versionada, preservando os 16 arquivos congelados e a projeção mecânica 0.2.0.' },
     { id: 'act2-synthetic-fixtures-only', owner: 'ambiente', summary: 'Bytes de piloto, correções e MDs estão ausentes. A atividade 2 usa fixtures sintéticas. Hash conferido dos insumos reais fica para a conferência local, antes do lote.' },
@@ -611,6 +741,7 @@ export function buildActivity1Matrix(): Activity1Matrix {
     issue: 34,
     activity: 1,
     policy: 'ids-hashes-counts-dispositions-only',
+    closure: 'pending-act1-local-hash-check',
     records,
     blockers,
     counts: {
@@ -627,6 +758,12 @@ export function buildActivity1Matrix(): Activity1Matrix {
       itemDefinitions: sum('item-definition'),
       itemReferences: sum('item-reference'),
       rangeRowsRederived: flowRows,
+      hashDeclaredNotRecomputed: hashRows.length,
+      groupedLocalOnlyIdentities: 350,
+      outcomeSideRolls,
+      reviewedSideRolls: 8,
+      contextualDiceMentionsDeclared: 77,
+      selectionAndReference: records.filter(row => row.selection === 'selecionado' && row.disposition === 'referencia').reduce((total, row) => total + row.represents, 0),
       ...Object.fromEntries(Object.entries(countBy('selection')).map(([key, value]) => [`selection:${key}`, value])),
       ...Object.fromEntries(Object.entries(countBy('disposition')).map(([key, value]) => [`disposition:${key}`, value])),
     },
@@ -639,16 +776,16 @@ function tally(records: MatrixRecord[], kind: string) {
 
 export function renderActivity1Markdown(matrix: Activity1Matrix) {
   const tables = matrix.records.filter(row => row.kind === 'table');
-  const tableRows = tables.map(row => `| \`${row.id}\` | \`${row.sourceId}\` | ${row.cur} | ${row.selection} | ${row.evidence} | ${row.disposition} | ${row.capabilities.filter(cap => cap.startsWith('dice:') || cap.startsWith('lookup:') || cap.startsWith('activation:')).join(', ')} |`).join('\n');
+  const tableRows = tables.map(row => `| \`${row.id}\` | null | ${row.review} | ${row.consumers.join(' ')} | ${row.consequenceTypes.join(' ')} | \`${row.linkedDefinition}\` | \`${row.evidenceRef}\` | ${row.selection} | ${row.evidence} | ${row.disposition} |`).join('\n');
   const findings = matrix.records.filter(row => row.kind === 'finding')
     .map(row => `| \`${row.id}\` | ${row.selection} | ${row.capabilities.find(cap => cap.startsWith('status:'))} | ${row.notes ?? ''} |`).join('\n');
-  const blockers = matrix.blockers.map(row => `| \`${row.id}\` | ${row.owner} | ${row.summary} |`).join('\n');
+  const blockers = matrix.blockers.map(row => `| \`${row.id}\` | ${row.owner} | ${row.count ?? ''} | ${(row.activities ?? []).join(', ')} | ${row.summary} |`).join('\n');
   const counts = matrix.counts;
   return `# Matriz de lacunas — #34 / atividade 1
 
-Auditoria de 2026-11-02 do recorte CUR-016–021 para a [issue #34](https://github.com/AntonioVCruz/sotdl-character-forge/issues/34). Esta entrega executa somente a atividade 1 do [roadmap](roadmap-issue34.md). Atividades 2–8 permanecem por fazer.
+Auditoria de 2026-11-02 do recorte CUR-016–021 para a [issue #34](https://github.com/AntonioVCruz/sotdl-character-forge/issues/34), revista em 2026-11-03. A matriz da atividade 1 está publicada. O fechamento da atividade continua pendente em \`act1-local-hash-check\`: os hashes declarados não foram recomputados. Atividades 2–8 permanecem por fazer. A atividade 2 pode usar fixtures sintéticas em paralelo.
 
-A lista normativa por identidade é [\`matriz-lacunas-issue34-atividade1.json\`](matriz-lacunas-issue34-atividade1.json). Este Markdown fixa o método, as contagens, a matriz de tabelas e as disposições que um revisor precisa ler. Nenhum dos dois arquivos contém excerto de livro.
+A lista normativa por identidade é [\`matriz-lacunas-issue34-atividade1.json\`](matriz-lacunas-issue34-atividade1.json). Cada registro tem \`sourceVersion\`, \`sourceVersionReason\`, \`review\`, \`consumers\`, \`consequenceTypes\`, \`linkedDefinition\` e \`evidenceRef\`. \`sourceVersion\` é \`null\` em todos: \`sources.json\` deixa \`revision\` nula e \`editionStatus\` unconfirmed. Nenhum dos dois arquivos contém excerto de livro.
 
 ## Método e evidência disponível
 
@@ -676,7 +813,9 @@ Hashes declarados e não recomputados, porque os bytes não estão no checkout:
 
 Os relatórios \`curation/reports/*.json\` prometem hashes de saída. Esses arquivos estão ausentes, e o Git não guarda o digest da saída. O manifesto de kits Core (\`curation/corrections/core-starting-equipment-2026-10-27/\`) também está ausente; o digest dele não foi copiado para esta matriz.
 
-A rederivação estrutural fecha as contagens publicadas de CUR-021: **74 tabelas, 70 fluxos, 901 linhas/faixas, 73 vínculos, 285 definições especiais e 75 referências fora do inventário**. Isso confere o modelo versionado. Não substitui \`--check\` com os bytes locais.
+A rederivação estrutural fecha as contagens publicadas de CUR-021: **74 tabelas, 70 fluxos, 901 linhas/faixas, 73 vínculos, 285 definições especiais e 75 referências fora do inventário**. Isso confere o modelo versionado. Não substitui \`--check\` com os bytes locais. O bloqueio \`act1-local-hash-check\` cobre os ${counts.hashDeclaredNotRecomputed} registros \`hash-declarado-nao-refeito\`.
+
+CUR-021 conta **77 menções contextuais a dados** no texto auditado. Essas menções não são 77 comandos de criação. O código versionado individualiza dois subconjuntos dessas menções: **${counts.reviewedSideRolls} regras revistas** (\`kind: side-roll\`) e **${counts.outcomeSideRolls} \`sideRolls\` de Interesting Things** anexados aos resultados. O fechamento também conserva menções de anos narrativos, dados de uso e quantidades que não viraram comando. Recontar as 77 exige \`curation/pilot/table-closure.json\`, ausente neste checkout.
 
 ## Contagens
 
@@ -699,6 +838,8 @@ Seleção contábil: selecionado ${counts['selection:selecionado']}; selecionado
 
 Disposição contábil: lote Core ${counts['disposition:lote-core']}; lote Only Human ${counts['disposition:lote-only-human']}; lote Oddities ${counts['disposition:lote-oddities']}; lote kits/itens ${counts['disposition:lote-kits-itens']}; adiado ${counts['disposition:adiado']}; bloqueado ${counts['disposition:bloqueado']}; referência ${counts['disposition:referencia']}.
 
+Seleção e disposição são eixos diferentes. **${counts.selectionAndReference} registros são \`selecionado\` e \`referencia\` ao mesmo tempo.** A consequência não é um segundo ganho: 19 referências de moeda apontam para o programa de concessão, 75 referências fora do inventário apontam para o resultado de Interesting Things, e 2 achados resolvidos apontam para as tabelas que já carregam o resultado. Somar seleção com disposição conta a mesma identidade duas vezes.
+
 Uma identidade bloqueada aqui é um ramo externo, uma página não conferida ou um hash sem bytes. A consequência publicada correspondente permanece na matriz como pendência. Adiar o gerador de Dark Passages não remove \`oddities:books:20\`.
 
 ## Recorte selecionado
@@ -716,8 +857,10 @@ Lotes que a atividade 2 precisa conseguir nomear:
 
 ## Matriz das 74 tabelas
 
-| ID | Fonte | CUR | Seleção | Evidência | Disposição | Dado / consulta |
-|---|---|---|---|---|---|---|
+\`sourceVersion\` é null em todas as linhas, pelo motivo acima. As outras colunas de aceite estão no JSON para os demais registros.
+
+| ID | Versão | Revisão | Consumidores | Consequências | Definição vinculada | Evidência | Seleção | Estado da evidência | Disposição |
+|---|---|---|---|---|---|---|---|---|---|
 ${tableRows}
 
 As cinco consultas \`only-human:clothing|weapons|personal-gear|special-gear|money\` leem o lifestyle já obtido. Personality Traits (\`core:role-traits\`) é uma tabela com dois fluxos independentes, \`#positive\` e \`#negative\`.
@@ -728,7 +871,7 @@ Quatro tabelas fecham ciclo no grafo versionado: \`only-human:character-fate\`, 
 
 Cada tabela com dado tem um fluxo \`#main\`, exceto \`core:role-traits\`, que tem dois. A soma das linhas é 901, igual à auditoria CUR-021. Os testes daquele fechamento exigem cobertura 70/70; este checkout não reexecutou a enumeração de dados contra o texto.
 
-Profissões: 168 opções de tabela + \`pilot-profession:only-human:direct:occult\` = 169. Categorias com uma faixa por face, ou com pares contíguos que cobrem o dado inteiro, foram expandidas. Permanecem agrupadas, à espera do anexo local:
+Profissões: 168 opções de tabela + \`pilot-profession:only-human:direct:occult\` = 169. Categorias com uma faixa por face, ou com pares contíguos que cobrem o dado inteiro, foram expandidas. O bloqueio \`act3-act5-grouped-local-only\` cobre **350 identidades** que continuam agrupadas: as 36 abaixo e mais 314 registros de catálogo (57 \`class:source-grant-only\`, 182 \`class:exact-definition-refs\`, 75 \`class:generic-editable-refs\`). \`linkedDefinition\` desses grupos é \`local-only\`. A atividade 3 individualiza as profissões; a atividade 5 individualiza o catálogo.
 
 | Grupo | Faixas | Ids individuais já fixados | Restante local-only |
 |---|---:|---|---:|
@@ -772,12 +915,12 @@ ${findings}
 
 O contrato consumível pode começar com fixtures sintéticas. Ele ainda depende das decisões abaixo. Sem elas, o schema arriscaria tratar lacuna como aprovação ou pendência como linha descartada.
 
-| Bloqueio | Dono | Efeito |
-|---|---|---|
+| Bloqueio | Dono | Contagem | Atividades | Efeito |
+|---|---|---:|---|---|
 ${blockers}
 
-Critério de saída desta atividade: cada tabela, fluxo, consulta, opção contábil, programa, resultado e referência está selecionado ou tem disposição e evidência próprias no JSON. Nenhuma consequência obrigatória foi removida por estar adiada ou bloqueada.
+A matriz publica o recorte. A atividade 1 só fecha quando \`act1-local-hash-check\` recomputar os hashes com os livros presentes. Nenhuma consequência obrigatória foi removida por estar adiada ou bloqueada.
 
-Conferência local ainda necessária, com corpus presente: \`node tools/curation/creation-tables.mjs --check\` e os \`--check\` de profissões, riqueza, Interesting Things, itens e fechamento. Essa conferência promove a evidência; não faz parte deste PR.
+Conferência local ainda necessária: \`node tools/curation/creation-tables.mjs --check\`, \`professions-languages.mjs --check\`, \`wealth-equipment.mjs --check\`, \`interesting-things.mjs --check\`, \`pilot-items.mjs --check\` e \`pilot-tables.mjs --check\`.
 `;
 }

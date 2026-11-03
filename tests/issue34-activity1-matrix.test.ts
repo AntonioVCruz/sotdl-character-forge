@@ -24,6 +24,22 @@ describe('issue 34 activity 1 matrix', () => {
 
   it('accounts for the CUR-016–021 universe without source prose', () => {
     expect(matrix.activity).toBe(1);
+    expect(matrix.closure).toBe('pending-act1-local-hash-check');
+    expect(matrix.counts).toMatchObject({ hashDeclaredNotRecomputed: 258, groupedLocalOnlyIdentities: 350, outcomeSideRolls: 23, reviewedSideRolls: 8, contextualDiceMentionsDeclared: 77, selectionAndReference: 96 });
+    expect(matrix.blockers.find(row => row.id === 'act1-local-hash-check')).toMatchObject({ count: 258, activities: [1] });
+    expect(matrix.blockers.find(row => row.id === 'act3-act5-grouped-local-only')).toMatchObject({ count: 350, activities: [3, 5] });
+    expect(matrix.records.find(row => row.id === 'evidence:correction-oddities-tables')?.sourceId).toBe('sotdl:oddities-artifacts-and-esoterica');
+    for (const row of matrix.records) {
+      expect(row.sourceVersion).toBeNull();
+      expect(row.sourceVersionReason.length).toBeGreaterThan(0);
+      expect(row.review.length).toBeGreaterThan(0);
+      expect(row.consumers.length).toBeGreaterThan(0);
+      expect(row.consequenceTypes.length).toBeGreaterThan(0);
+      expect(row.linkedDefinition.length).toBeGreaterThan(0);
+      expect(row.evidenceRef.length).toBeGreaterThan(0);
+    }
+    const evidenceIds = new Set(matrix.records.filter(row => row.kind === 'evidence-gap').map(row => row.id));
+    for (const row of matrix.records.filter(item => item.evidence === 'hash-declarado-nao-refeito')) expect(evidenceIds.has(row.evidenceRef)).toBe(true);
     expect(matrix.counts).toMatchObject({
       tables: 74,
       numericFlows: 70,
@@ -51,6 +67,7 @@ describe('issue 34 activity 1 matrix', () => {
     expect(hasBuyerData(visited)).toBe(false);
     expect(visited.includes('"excerpt"')).toBe(false);
     expect(visited.includes('sourceText')).toBe(false);
+    expect(visited.includes('Function(')).toBe(false);
     for (const value of visited.match(/"[^"\\]{180,}"/g) ?? []) expect(value.length).toBeLessThan(400);
   });
 });

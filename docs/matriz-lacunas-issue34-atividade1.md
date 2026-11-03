@@ -1,8 +1,8 @@
 # Matriz de lacunas — #34 / atividade 1
 
-Auditoria de 2026-11-02 do recorte CUR-016–021 para a [issue #34](https://github.com/AntonioVCruz/sotdl-character-forge/issues/34). Esta entrega executa somente a atividade 1 do [roadmap](roadmap-issue34.md). Atividades 2–8 permanecem por fazer.
+Auditoria de 2026-11-02 do recorte CUR-016–021 para a [issue #34](https://github.com/AntonioVCruz/sotdl-character-forge/issues/34), revista em 2026-11-03. A matriz da atividade 1 está publicada. O fechamento da atividade continua pendente em `act1-local-hash-check`: os hashes declarados não foram recomputados. Atividades 2–8 permanecem por fazer. A atividade 2 pode usar fixtures sintéticas em paralelo.
 
-A lista normativa por identidade é [`matriz-lacunas-issue34-atividade1.json`](matriz-lacunas-issue34-atividade1.json). Este Markdown fixa o método, as contagens, a matriz de tabelas e as disposições que um revisor precisa ler. Nenhum dos dois arquivos contém excerto de livro.
+A lista normativa por identidade é [`matriz-lacunas-issue34-atividade1.json`](matriz-lacunas-issue34-atividade1.json). Cada registro tem `sourceVersion`, `sourceVersionReason`, `review`, `consumers`, `consequenceTypes`, `linkedDefinition` e `evidenceRef`. `sourceVersion` é `null` em todos: `sources.json` deixa `revision` nula e `editionStatus` unconfirmed. Nenhum dos dois arquivos contém excerto de livro.
 
 ## Método e evidência disponível
 
@@ -30,7 +30,9 @@ Hashes declarados e não recomputados, porque os bytes não estão no checkout:
 
 Os relatórios `curation/reports/*.json` prometem hashes de saída. Esses arquivos estão ausentes, e o Git não guarda o digest da saída. O manifesto de kits Core (`curation/corrections/core-starting-equipment-2026-10-27/`) também está ausente; o digest dele não foi copiado para esta matriz.
 
-A rederivação estrutural fecha as contagens publicadas de CUR-021: **74 tabelas, 70 fluxos, 901 linhas/faixas, 73 vínculos, 285 definições especiais e 75 referências fora do inventário**. Isso confere o modelo versionado. Não substitui `--check` com os bytes locais.
+A rederivação estrutural fecha as contagens publicadas de CUR-021: **74 tabelas, 70 fluxos, 901 linhas/faixas, 73 vínculos, 285 definições especiais e 75 referências fora do inventário**. Isso confere o modelo versionado. Não substitui `--check` com os bytes locais. O bloqueio `act1-local-hash-check` cobre os 258 registros `hash-declarado-nao-refeito`.
+
+CUR-021 conta **77 menções contextuais a dados** no texto auditado. Essas menções não são 77 comandos de criação. O código versionado individualiza dois subconjuntos dessas menções: **8 regras revistas** (`kind: side-roll`) e **23 `sideRolls` de Interesting Things** anexados aos resultados. O fechamento também conserva menções de anos narrativos, dados de uso e quantidades que não viraram comando. Recontar as 77 exige `curation/pilot/table-closure.json`, ausente neste checkout.
 
 ## Contagens
 
@@ -53,6 +55,8 @@ Seleção contábil: selecionado 1942; selecionado com resolução manual 16; ad
 
 Disposição contábil: lote Core 293; lote Only Human 227; lote Oddities 279; lote kits/itens 1063; adiado 6; bloqueado 24; referência 125.
 
+Seleção e disposição são eixos diferentes. **96 registros são `selecionado` e `referencia` ao mesmo tempo.** A consequência não é um segundo ganho: 19 referências de moeda apontam para o programa de concessão, 75 referências fora do inventário apontam para o resultado de Interesting Things, e 2 achados resolvidos apontam para as tabelas que já carregam o resultado. Somar seleção com disposição conta a mesma identidade duas vezes.
+
 Uma identidade bloqueada aqui é um ramo externo, uma página não conferida ou um hash sem bytes. A consequência publicada correspondente permanece na matriz como pendência. Adiar o gerador de Dark Passages não remove `oddities:books:20`.
 
 ## Recorte selecionado
@@ -70,82 +74,84 @@ Lotes que a atividade 2 precisa conseguir nomear:
 
 ## Matriz das 74 tabelas
 
-| ID | Fonte | CUR | Seleção | Evidência | Disposição | Dado / consulta |
-|---|---|---|---|---|---|---|
-| `core:human-age` | `sotdl:shadow-of-the-demon-lord-core` | CUR-016/021 | selecionado | code-anchor | lote-core | activation:optional-ancestry-inspiration, dice:3d6 |
-| `core:human-appearance` | `sotdl:shadow-of-the-demon-lord-core` | CUR-016/021 | selecionado | code-anchor | lote-core | activation:optional-ancestry-inspiration, dice:3d6 |
-| `core:human-background` | `sotdl:shadow-of-the-demon-lord-core` | CUR-016/021 | selecionado | code-anchor | lote-core | activation:optional-ancestry-inspiration, dice:1d20 |
-| `core:human-build` | `sotdl:shadow-of-the-demon-lord-core` | CUR-016/021 | selecionado | code-anchor | lote-core | activation:optional-ancestry-inspiration, dice:3d6 |
-| `core:human-personality` | `sotdl:shadow-of-the-demon-lord-core` | CUR-016/021 | selecionado | code-anchor | lote-core | activation:optional-ancestry-inspiration, dice:3d6 |
-| `core:human-religion` | `sotdl:shadow-of-the-demon-lord-core` | CUR-016/021 | selecionado | code-anchor | lote-core | activation:optional-ancestry-inspiration, dice:3d6 |
-| `core:profession-academic` | `sotdl:shadow-of-the-demon-lord-core` | CUR-016/021 | selecionado | code-anchor | lote-core | activation:conditional-profession, dice:1d20 |
-| `core:profession-common` | `sotdl:shadow-of-the-demon-lord-core` | CUR-016/021 | selecionado | code-anchor | lote-core | activation:conditional-profession, dice:1d20 |
-| `core:profession-criminal` | `sotdl:shadow-of-the-demon-lord-core` | CUR-016/021 | selecionado | code-anchor | lote-core | activation:conditional-profession, dice:1d20 |
-| `core:profession-martial` | `sotdl:shadow-of-the-demon-lord-core` | CUR-016/021 | selecionado | code-anchor | lote-core | activation:conditional-profession, dice:1d20 |
-| `core:profession-religious` | `sotdl:shadow-of-the-demon-lord-core` | CUR-016/021 | selecionado | code-anchor | lote-core | activation:conditional-profession, dice:1d20 |
-| `core:profession-router` | `sotdl:shadow-of-the-demon-lord-core` | CUR-016/021 | selecionado | code-anchor | lote-core | activation:per-random-profession, dice:1d6 |
-| `core:profession-wilderness` | `sotdl:shadow-of-the-demon-lord-core` | CUR-016/021 | selecionado | code-anchor | lote-core | activation:conditional-profession, dice:1d20 |
-| `core:role-traits` | `sotdl:shadow-of-the-demon-lord-core` | CUR-016/021 | selecionado | code-anchor | lote-core | activation:optional-inspiration-two-positive-at-least-one-negative, dice:1d20 |
-| `core:thing-1` | `sotdl:shadow-of-the-demon-lord-core` | CUR-016/021 | selecionado | code-anchor | lote-core | activation:selector-child, dice:1d20 |
-| `core:thing-2` | `sotdl:shadow-of-the-demon-lord-core` | CUR-016/021 | selecionado | code-anchor | lote-core | activation:selector-child, dice:1d20 |
-| `core:thing-3` | `sotdl:shadow-of-the-demon-lord-core` | CUR-016/021 | selecionado | code-anchor | lote-core | activation:selector-child, dice:1d20 |
-| `core:thing-4` | `sotdl:shadow-of-the-demon-lord-core` | CUR-016/021 | selecionado | code-anchor | lote-core | activation:selector-child, dice:1d20 |
-| `core:thing-5` | `sotdl:shadow-of-the-demon-lord-core` | CUR-016/021 | selecionado | code-anchor | lote-core | activation:selector-child, dice:1d20 |
-| `core:thing-6` | `sotdl:shadow-of-the-demon-lord-core` | CUR-016/021 | selecionado | code-anchor | lote-core | activation:selector-child, dice:1d20 |
-| `core:thing-router` | `sotdl:shadow-of-the-demon-lord-core` | CUR-016/021 | selecionado | code-anchor | lote-core | activation:one-initial-plus-explicit-extra-results, dice:1d6 |
-| `core:wealth` | `sotdl:shadow-of-the-demon-lord-core` | CUR-016/021 | selecionado | code-anchor | lote-core | activation:core-wealth-once, dice:3d6 |
-| `oddities:art` | `sotdl:oddities-artifacts-and-esoterica` | CUR-019/021 | selecionado | hash-declarado-nao-refeito | lote-oddities | dice:1d20 |
-| `oddities:books` | `sotdl:oddities-artifacts-and-esoterica` | CUR-019/021 | selecionado | hash-declarado-nao-refeito | lote-oddities | dice:1d20 |
-| `oddities:clothing` | `sotdl:oddities-artifacts-and-esoterica` | CUR-019/021 | selecionado | code-anchor | lote-oddities | dice:1d20 |
-| `oddities:consumables` | `sotdl:oddities-artifacts-and-esoterica` | CUR-019/021 | selecionado | code-anchor | lote-oddities | dice:1d20 |
-| `oddities:ingredients` | `sotdl:oddities-artifacts-and-esoterica` | CUR-019/021 | selecionado | hash-declarado-nao-refeito | lote-oddities | dice:1d20 |
-| `oddities:minor-magic` | `sotdl:oddities-artifacts-and-esoterica` | CUR-019/021 | selecionado | hash-declarado-nao-refeito | lote-oddities | dice:1d20 |
-| `oddities:people` | `sotdl:oddities-artifacts-and-esoterica` | CUR-019/021 | selecionado | code-anchor | lote-oddities | dice:1d20 |
-| `oddities:personal` | `sotdl:oddities-artifacts-and-esoterica` | CUR-019/021 | selecionado | hash-declarado-nao-refeito | lote-oddities | dice:1d20 |
-| `oddities:pets` | `sotdl:oddities-artifacts-and-esoterica` | CUR-019/021 | selecionado | hash-declarado-nao-refeito | lote-oddities | dice:1d20 |
-| `oddities:qualities` | `sotdl:oddities-artifacts-and-esoterica` | CUR-019/021 | selecionado | code-anchor | lote-oddities | dice:1d20 |
-| `oddities:thing-router` | `sotdl:oddities-artifacts-and-esoterica` | CUR-019/021 | selecionado | code-anchor | lote-oddities | dice:1d20 |
-| `oddities:tools` | `sotdl:oddities-artifacts-and-esoterica` | CUR-019/021 | selecionado | code-anchor | lote-oddities | dice:1d20 |
-| `oddities:weird` | `sotdl:oddities-artifacts-and-esoterica` | CUR-019/021 | selecionado | code-anchor | lote-oddities | dice:1d20 |
-| `only-human:age` | `sotdl:only-human` | CUR-016/021 | selecionado | code-anchor | lote-only-human | activation:root-once, dice:3d6 |
-| `only-human:ancestors` | `sotdl:only-human` | CUR-016/021 | selecionado | code-anchor | lote-only-human | activation:root-once, dice:3d6 |
-| `only-human:appearance` | `sotdl:only-human` | CUR-016/021 | selecionado | code-anchor | lote-only-human | activation:root-once, dice:3d6 |
-| `only-human:build` | `sotdl:only-human` | CUR-016/021 | selecionado | code-anchor | lote-only-human | activation:root-once, dice:3d6 |
-| `only-human:character-fate` | `sotdl:only-human` | CUR-016/021 | selecionado | code-anchor | lote-only-human | activation:per-related-character, dice:3d6 |
-| `only-human:childhood` | `sotdl:only-human` | CUR-016/021 | selecionado | code-anchor | lote-only-human | activation:once-from-age, dice:3d6 |
-| `only-human:clothing` | `sotdl:only-human` | CUR-016/021 | selecionado | code-anchor | lote-kits-itens | activation:lookup-by-lifestyle, lookup:selected-starting-lifestyle |
-| `only-human:common` | `sotdl:only-human` | CUR-016/021 | selecionado | code-anchor | lote-only-human | activation:conditional-profession, dice:1d20 |
-| `only-human:criminal` | `sotdl:only-human` | CUR-016/021 | selecionado | code-anchor | lote-only-human | activation:conditional-profession, dice:1d20 |
-| `only-human:death` | `sotdl:only-human` | CUR-016/021 | selecionado | code-anchor | lote-only-human | activation:conditional-death, dice:3d6 |
-| `only-human:desires` | `sotdl:only-human` | CUR-016/021 | selecionado | hash-declarado-nao-refeito | lote-only-human | activation:root-once, dice:1d6 |
-| `only-human:family-circumstances` | `sotdl:only-human` | CUR-016/021 | selecionado | code-anchor | lote-only-human | activation:root-once, dice:3d6 |
-| `only-human:fears` | `sotdl:only-human` | CUR-016/021 | selecionado | hash-declarado-nao-refeito | lote-only-human | activation:root-once, dice:1d6 |
-| `only-human:life` | `sotdl:only-human` | CUR-016/021 | selecionado | code-anchor | lote-only-human | activation:repeat-from-age, dice:3d6 |
-| `only-human:lifestyle` | `sotdl:only-human` | CUR-016/021 | selecionado | code-anchor | lote-only-human | activation:after-all-life-events, dice:3d6 |
-| `only-human:major-setback` | `sotdl:only-human` | CUR-016/021 | selecionado | code-anchor | lote-only-human | activation:conditional-life, dice:1d20 |
-| `only-human:major-windfall` | `sotdl:only-human` | CUR-016/021 | selecionado | code-anchor | lote-only-human | activation:conditional-life, dice:1d20 |
-| `only-human:military` | `sotdl:only-human` | CUR-016/021 | selecionado | code-anchor | lote-only-human | activation:conditional-profession, dice:1d20 |
-| `only-human:minor-setback` | `sotdl:only-human` | CUR-016/021 | selecionado | code-anchor | lote-only-human | activation:conditional-life, dice:1d20 |
-| `only-human:minor-windfall` | `sotdl:only-human` | CUR-016/021 | selecionado | code-anchor | lote-only-human | activation:conditional-life, dice:1d20 |
-| `only-human:money` | `sotdl:only-human` | CUR-016/021 | selecionado | code-anchor | lote-kits-itens | activation:lookup-by-lifestyle, lookup:selected-starting-lifestyle |
-| `only-human:morality` | `sotdl:only-human` | CUR-016/021 | selecionado | code-anchor | lote-only-human | activation:root-once, dice:3d6 |
-| `only-human:obligations` | `sotdl:only-human` | CUR-016/021 | selecionado | code-anchor | lote-only-human | activation:root-once, dice:3d6 |
-| `only-human:parents` | `sotdl:only-human` | CUR-016/021 | selecionado | code-anchor | lote-only-human | activation:root-once, dice:3d6 |
-| `only-human:personal-gear` | `sotdl:only-human` | CUR-016/021 | selecionado | code-anchor | lote-kits-itens | activation:lookup-by-lifestyle, lookup:selected-starting-lifestyle |
-| `only-human:personality` | `sotdl:only-human` | CUR-016/021 | selecionado | code-anchor | lote-only-human | activation:root-once, dice:3d6 |
-| `only-human:piety` | `sotdl:only-human` | CUR-016/021 | selecionado | code-anchor | lote-only-human | activation:root-once-with-published-recursion, dice:3d6 |
-| `only-human:profession-router` | `sotdl:only-human` | CUR-016/021 | selecionado | code-anchor | lote-only-human | activation:when-profession-directed, dice:1d6 |
-| `only-human:relationships` | `sotdl:only-human` | CUR-016/021 | selecionado | code-anchor | lote-only-human | activation:root-once, dice:3d6 |
-| `only-human:religion` | `sotdl:only-human` | CUR-016/021 | selecionado | code-anchor | lote-only-human | activation:root-once-and-piety-reroll, dice:3d6 |
-| `only-human:religious` | `sotdl:only-human` | CUR-016/021 | selecionado | code-anchor | lote-only-human | activation:conditional-profession, dice:1d6 |
-| `only-human:scholarship` | `sotdl:only-human` | CUR-016/021 | selecionado | code-anchor | lote-only-human | activation:conditional-profession-or-education, dice:1d20 |
-| `only-human:sibling-age` | `sotdl:only-human` | CUR-016/021 | selecionado | code-anchor | lote-only-human | activation:per-sibling, dice:4d6 |
-| `only-human:sibling-gender` | `sotdl:only-human` | CUR-016/021 | selecionado | code-anchor | lote-only-human | activation:per-sibling, dice:1d6 |
-| `only-human:siblings` | `sotdl:only-human` | CUR-016/021 | selecionado | code-anchor | lote-only-human | activation:root-once, dice:1d20 |
-| `only-human:special-gear` | `sotdl:only-human` | CUR-016/021 | selecionado | code-anchor | lote-kits-itens | activation:lookup-by-lifestyle, lookup:selected-starting-lifestyle |
-| `only-human:strange` | `sotdl:only-human` | CUR-016/021 | selecionado | code-anchor | lote-only-human | activation:conditional-life, dice:1d20 |
-| `only-human:weapons` | `sotdl:only-human` | CUR-016/021 | selecionado | code-anchor | lote-kits-itens | activation:lookup-by-lifestyle, lookup:selected-starting-lifestyle |
-| `only-human:wilderness` | `sotdl:only-human` | CUR-016/021 | selecionado | code-anchor | lote-only-human | activation:conditional-profession, dice:1d20 |
+`sourceVersion` é null em todas as linhas, pelo motivo acima. As outras colunas de aceite estão no JSON para os demais registros.
+
+| ID | Versão | Revisão | Consumidores | Consequências | Definição vinculada | Evidência | Seleção | Estado da evidência | Disposição |
+|---|---|---|---|---|---|---|---|---|---|
+| `core:human-age` | null | code-anchor-2026-10-27 | #34-act3 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-core |
+| `core:human-appearance` | null | code-anchor-2026-10-27 | #34-act3 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-core |
+| `core:human-background` | null | code-anchor-2026-10-27 | #34-act3 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-core |
+| `core:human-build` | null | code-anchor-2026-10-27 | #34-act3 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-core |
+| `core:human-personality` | null | code-anchor-2026-10-27 | #34-act3 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-core |
+| `core:human-religion` | null | code-anchor-2026-10-27 | #34-act3 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-core |
+| `core:profession-academic` | null | code-anchor-2026-10-27 | #34-act3 #35 | table-result | `n/a:not-an-item-definition` | `evidence:correction-core-professions` | selecionado | code-anchor | lote-core |
+| `core:profession-common` | null | code-anchor-2026-10-27 | #34-act3 #35 | table-result | `n/a:not-an-item-definition` | `evidence:correction-core-professions` | selecionado | code-anchor | lote-core |
+| `core:profession-criminal` | null | code-anchor-2026-10-27 | #34-act3 #35 | table-result | `n/a:not-an-item-definition` | `evidence:correction-core-professions` | selecionado | code-anchor | lote-core |
+| `core:profession-martial` | null | code-anchor-2026-10-27 | #34-act3 #35 | table-result | `n/a:not-an-item-definition` | `evidence:correction-core-professions` | selecionado | code-anchor | lote-core |
+| `core:profession-religious` | null | code-anchor-2026-10-27 | #34-act3 #35 | table-result | `n/a:not-an-item-definition` | `evidence:correction-core-professions` | selecionado | code-anchor | lote-core |
+| `core:profession-router` | null | code-anchor-2026-10-27 | #34-act3 #35 | selector | `n/a:not-an-item-definition` | `evidence:correction-core-professions` | selecionado | code-anchor | lote-core |
+| `core:profession-wilderness` | null | code-anchor-2026-10-27 | #34-act3 #35 | table-result | `n/a:not-an-item-definition` | `evidence:correction-core-professions` | selecionado | code-anchor | lote-core |
+| `core:role-traits` | null | code-anchor-2026-10-27 | #34-act3 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-core |
+| `core:thing-1` | null | code-anchor-2026-10-27 | #34-act3 #35 | table-result | `n/a:not-an-item-definition` | `evidence:correction-core-interesting-things` | selecionado | code-anchor | lote-core |
+| `core:thing-2` | null | code-anchor-2026-10-27 | #34-act3 #35 | table-result | `n/a:not-an-item-definition` | `evidence:correction-core-interesting-things` | selecionado | code-anchor | lote-core |
+| `core:thing-3` | null | code-anchor-2026-10-27 | #34-act3 #35 | table-result | `n/a:not-an-item-definition` | `evidence:correction-core-interesting-things` | selecionado | code-anchor | lote-core |
+| `core:thing-4` | null | code-anchor-2026-10-27 | #34-act3 #35 | table-result | `n/a:not-an-item-definition` | `evidence:correction-core-interesting-things` | selecionado | code-anchor | lote-core |
+| `core:thing-5` | null | code-anchor-2026-10-27 | #34-act3 #35 | table-result | `n/a:not-an-item-definition` | `evidence:correction-core-interesting-things` | selecionado | code-anchor | lote-core |
+| `core:thing-6` | null | code-anchor-2026-10-27 | #34-act3 #35 | table-result | `n/a:not-an-item-definition` | `evidence:correction-core-interesting-things` | selecionado | code-anchor | lote-core |
+| `core:thing-router` | null | code-anchor-2026-10-27 | #34-act3 #35 | selector | `n/a:not-an-item-definition` | `evidence:correction-core-interesting-things` | selecionado | code-anchor | lote-core |
+| `core:wealth` | null | code-anchor-2026-10-27 | #34-act3 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-core |
+| `oddities:art` | null | declared-2026-10-27-hash-not-recomputed | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:correction-oddities-tables` | selecionado | hash-declarado-nao-refeito | lote-oddities |
+| `oddities:books` | null | declared-2026-10-27-hash-not-recomputed | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:correction-oddities-tables` | selecionado | hash-declarado-nao-refeito | lote-oddities |
+| `oddities:clothing` | null | code-anchor-2026-10-27 | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-compendium-md` | selecionado | code-anchor | lote-oddities |
+| `oddities:consumables` | null | code-anchor-2026-10-27 | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-compendium-md` | selecionado | code-anchor | lote-oddities |
+| `oddities:ingredients` | null | declared-2026-10-27-hash-not-recomputed | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:correction-oddities-tables` | selecionado | hash-declarado-nao-refeito | lote-oddities |
+| `oddities:minor-magic` | null | declared-2026-10-27-hash-not-recomputed | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:correction-oddities-tables` | selecionado | hash-declarado-nao-refeito | lote-oddities |
+| `oddities:people` | null | code-anchor-2026-10-27 | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-compendium-md` | selecionado | code-anchor | lote-oddities |
+| `oddities:personal` | null | declared-2026-10-27-hash-not-recomputed | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:correction-oddities-tables` | selecionado | hash-declarado-nao-refeito | lote-oddities |
+| `oddities:pets` | null | declared-2026-10-27-hash-not-recomputed | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:correction-oddities-tables` | selecionado | hash-declarado-nao-refeito | lote-oddities |
+| `oddities:qualities` | null | code-anchor-2026-10-27 | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-compendium-md` | selecionado | code-anchor | lote-oddities |
+| `oddities:thing-router` | null | code-anchor-2026-10-27 | #34-act4 #35 | selector | `n/a:not-an-item-definition` | `evidence:rules-compendium-md` | selecionado | code-anchor | lote-oddities |
+| `oddities:tools` | null | code-anchor-2026-10-27 | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-compendium-md` | selecionado | code-anchor | lote-oddities |
+| `oddities:weird` | null | code-anchor-2026-10-27 | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-compendium-md` | selecionado | code-anchor | lote-oddities |
+| `only-human:age` | null | code-anchor-2026-10-27 | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-only-human |
+| `only-human:ancestors` | null | code-anchor-2026-10-27 | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-only-human |
+| `only-human:appearance` | null | code-anchor-2026-10-27 | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-only-human |
+| `only-human:build` | null | code-anchor-2026-10-27 | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-only-human |
+| `only-human:character-fate` | null | code-anchor-2026-10-27 | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-only-human |
+| `only-human:childhood` | null | code-anchor-2026-10-27 | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-only-human |
+| `only-human:clothing` | null | code-anchor-2026-10-27 | #34-act5 #35 #36 | lookup | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-kits-itens |
+| `only-human:common` | null | code-anchor-2026-10-27 | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-only-human |
+| `only-human:criminal` | null | code-anchor-2026-10-27 | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-only-human |
+| `only-human:death` | null | code-anchor-2026-10-27 | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-only-human |
+| `only-human:desires` | null | declared-2026-10-27-hash-not-recomputed | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:correction-fears-desires` | selecionado | hash-declarado-nao-refeito | lote-only-human |
+| `only-human:family-circumstances` | null | code-anchor-2026-10-27 | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-only-human |
+| `only-human:fears` | null | declared-2026-10-27-hash-not-recomputed | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:correction-fears-desires` | selecionado | hash-declarado-nao-refeito | lote-only-human |
+| `only-human:life` | null | code-anchor-2026-10-27 | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-only-human |
+| `only-human:lifestyle` | null | code-anchor-2026-10-27 | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-only-human |
+| `only-human:major-setback` | null | code-anchor-2026-10-27 | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-only-human |
+| `only-human:major-windfall` | null | code-anchor-2026-10-27 | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-only-human |
+| `only-human:military` | null | code-anchor-2026-10-27 | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-only-human |
+| `only-human:minor-setback` | null | code-anchor-2026-10-27 | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-only-human |
+| `only-human:minor-windfall` | null | code-anchor-2026-10-27 | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-only-human |
+| `only-human:money` | null | code-anchor-2026-10-27 | #34-act5 #35 #36 | lookup | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-kits-itens |
+| `only-human:morality` | null | code-anchor-2026-10-27 | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-only-human |
+| `only-human:obligations` | null | code-anchor-2026-10-27 | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-only-human |
+| `only-human:parents` | null | code-anchor-2026-10-27 | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-only-human |
+| `only-human:personal-gear` | null | code-anchor-2026-10-27 | #34-act5 #35 #36 | lookup | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-kits-itens |
+| `only-human:personality` | null | code-anchor-2026-10-27 | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-only-human |
+| `only-human:piety` | null | code-anchor-2026-10-27 | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-only-human |
+| `only-human:profession-router` | null | code-anchor-2026-10-27 | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-only-human |
+| `only-human:relationships` | null | code-anchor-2026-10-27 | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-only-human |
+| `only-human:religion` | null | code-anchor-2026-10-27 | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-only-human |
+| `only-human:religious` | null | code-anchor-2026-10-27 | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-only-human |
+| `only-human:scholarship` | null | code-anchor-2026-10-27 | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-only-human |
+| `only-human:sibling-age` | null | code-anchor-2026-10-27 | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-only-human |
+| `only-human:sibling-gender` | null | code-anchor-2026-10-27 | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-only-human |
+| `only-human:siblings` | null | code-anchor-2026-10-27 | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-only-human |
+| `only-human:special-gear` | null | code-anchor-2026-10-27 | #34-act5 #35 #36 | lookup | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-kits-itens |
+| `only-human:strange` | null | code-anchor-2026-10-27 | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-only-human |
+| `only-human:weapons` | null | code-anchor-2026-10-27 | #34-act5 #35 #36 | lookup | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-kits-itens |
+| `only-human:wilderness` | null | code-anchor-2026-10-27 | #34-act4 #35 | table-result | `n/a:not-an-item-definition` | `evidence:rules-ancestry-md` | selecionado | code-anchor | lote-only-human |
 
 As cinco consultas `only-human:clothing|weapons|personal-gear|special-gear|money` leem o lifestyle já obtido. Personality Traits (`core:role-traits`) é uma tabela com dois fluxos independentes, `#positive` e `#negative`.
 
@@ -155,7 +161,7 @@ Quatro tabelas fecham ciclo no grafo versionado: `only-human:character-fate`, `o
 
 Cada tabela com dado tem um fluxo `#main`, exceto `core:role-traits`, que tem dois. A soma das linhas é 901, igual à auditoria CUR-021. Os testes daquele fechamento exigem cobertura 70/70; este checkout não reexecutou a enumeração de dados contra o texto.
 
-Profissões: 168 opções de tabela + `pilot-profession:only-human:direct:occult` = 169. Categorias com uma faixa por face, ou com pares contíguos que cobrem o dado inteiro, foram expandidas. Permanecem agrupadas, à espera do anexo local:
+Profissões: 168 opções de tabela + `pilot-profession:only-human:direct:occult` = 169. Categorias com uma faixa por face, ou com pares contíguos que cobrem o dado inteiro, foram expandidas. O bloqueio `act3-act5-grouped-local-only` cobre **350 identidades** que continuam agrupadas: as 36 abaixo e mais 314 registros de catálogo (57 `class:source-grant-only`, 182 `class:exact-definition-refs`, 75 `class:generic-editable-refs`). `linkedDefinition` desses grupos é `local-only`. A atividade 3 individualiza as profissões; a atividade 5 individualiza o catálogo.
 
 | Grupo | Faixas | Ids individuais já fixados | Restante local-only |
 |---|---:|---|---:|
@@ -205,15 +211,17 @@ Catálogo contábil 409 = 67 definições `pilot-item:core:*` + 285 `pilot-item:
 
 O contrato consumível pode começar com fixtures sintéticas. Ele ainda depende das decisões abaixo. Sem elas, o schema arriscaria tratar lacuna como aprovação ou pendência como linha descartada.
 
-| Bloqueio | Dono | Efeito |
-|---|---|---|
-| `act2-curator-accepts-matrix` | curador | Aceitar o recorte: ambos os procedimentos e ambas as fontes de Interesting Things permanecem selecionados. Pendência manual continua como resultado selecionado. |
-| `act2-contract-version` | engenheiro | Definir contrato novo ou evolução versionada, preservando os 16 arquivos congelados e a projeção mecânica 0.2.0. |
-| `act2-synthetic-fixtures-only` | ambiente | Bytes de piloto, correções e MDs estão ausentes. A atividade 2 usa fixtures sintéticas. Hash conferido dos insumos reais fica para a conferência local, antes do lote. |
-| `act2-weighted-ranges` | engenheiro | O contrato precisa de faixas com peso, colunas independentes, caudas abertas, consultas sem dado extra e side rolls com fase. Três categorias Core agregadas ainda aguardam a reextração de todos os inícios de faixa. |
-| `act2-pending-effects` | engenheiro | O handler devolve efeito tipado ou pendência. Ramos externos, gerador desabilitado, escolha ambígua e perfil genérico permanecem pendências. |
-| `act2-no-promotion` | curador | Manter needs-review, fictionalData false e ruleset desabilitado. Paginação de PDF não foi inspecionada nesta auditoria. |
+| Bloqueio | Dono | Contagem | Atividades | Efeito |
+|---|---|---:|---|---|
+| `act1-local-hash-check` | ambiente | 258 | 1 | A atividade 1 permanece aberta. rules/, curation/pilot/ e curation/corrections/ estão ausentes, então os seis formalizadores não rodaram --check. 258 registros ficam hash-declarado-nao-refeito e apontam evidenceRef para um hash declarado, não recomputado. |
+| `act3-act5-grouped-local-only` | curador | 350 | 3, 5 | 350 identidades seguem agrupadas com evidência local-only: 36 opções de profissão Core (atividade 3) e 314 registros de catálogo (atividade 5: 57 definições sem perfil, 182 referências exatas, 75 referências genéricas). O grupo não é evidência individual. |
+| `act2-curator-accepts-matrix` | curador |  |  | Aceitar o recorte: ambos os procedimentos e ambas as fontes de Interesting Things permanecem selecionados. Pendência manual continua como resultado selecionado. |
+| `act2-contract-version` | engenheiro |  |  | Definir contrato novo ou evolução versionada, preservando os 16 arquivos congelados e a projeção mecânica 0.2.0. |
+| `act2-synthetic-fixtures-only` | ambiente |  |  | Bytes de piloto, correções e MDs estão ausentes. A atividade 2 usa fixtures sintéticas. Hash conferido dos insumos reais fica para a conferência local, antes do lote. |
+| `act2-weighted-ranges` | engenheiro |  |  | O contrato precisa de faixas com peso, colunas independentes, caudas abertas, consultas sem dado extra e side rolls com fase. Três categorias Core agregadas ainda aguardam a reextração de todos os inícios de faixa. |
+| `act2-pending-effects` | engenheiro |  |  | O handler devolve efeito tipado ou pendência. Ramos externos, gerador desabilitado, escolha ambígua e perfil genérico permanecem pendências. |
+| `act2-no-promotion` | curador |  |  | Manter needs-review, fictionalData false e ruleset desabilitado. Paginação de PDF não foi inspecionada nesta auditoria. |
 
-Critério de saída desta atividade: cada tabela, fluxo, consulta, opção contábil, programa, resultado e referência está selecionado ou tem disposição e evidência próprias no JSON. Nenhuma consequência obrigatória foi removida por estar adiada ou bloqueada.
+A matriz publica o recorte. A atividade 1 só fecha quando `act1-local-hash-check` recomputar os hashes com os livros presentes. Nenhuma consequência obrigatória foi removida por estar adiada ou bloqueada.
 
-Conferência local ainda necessária, com corpus presente: `node tools/curation/creation-tables.mjs --check` e os `--check` de profissões, riqueza, Interesting Things, itens e fechamento. Essa conferência promove a evidência; não faz parte deste PR.
+Conferência local ainda necessária: `node tools/curation/creation-tables.mjs --check`, `professions-languages.mjs --check`, `wealth-equipment.mjs --check`, `interesting-things.mjs --check`, `pilot-items.mjs --check` e `pilot-tables.mjs --check`.
