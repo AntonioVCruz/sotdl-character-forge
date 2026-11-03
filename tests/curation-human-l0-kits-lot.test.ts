@@ -22,6 +22,11 @@ const compilation = JSON.parse(readFileSync('curation/human-l0-mechanical-compil
 const coreStub = JSON.parse(readFileSync('content-packs/sotdl%3Ashadow-of-the-demon-lord-core/0.1.0/pack.json', 'utf8'));
 const contractFixture = JSON.parse(readFileSync('curation/examples/human-l0-consumable.synthetic.json', 'utf8'));
 const lot = projectHumanL0KitsLot(matrix);
+// Public identity-only extract from the actual #47 producer, pinned to its reviewed correction.
+const activity4Prior = JSON.parse(readFileSync('curation/examples/human-l0-lifestyle-prior.activity4.synthetic.json', 'utf8')) as {
+  query: { id: string; producedBy: { tableId: string; columnId: string } };
+  rows: { id: string; min: number | null; max: number | null }[];
+};
 
 function rejects(input: unknown, code: string) {
   let error: unknown;
@@ -132,6 +137,29 @@ describe('Human L0 kits lot on consumable 1.0.0', () => {
     expect(money?.keys.every(key => key.consequence.kind === 'pending' && key.consequence.pending.linkedDefinition.kind === 'not-an-item')).toBe(true);
     const clothing = parsed.lookups.find(lookup => lookup.id === 'only-human:clothing');
     expect(clothing?.keys.every(key => key.consequence.kind === 'pending' && key.consequence.pending.linkedDefinition.kind === 'local-only' && key.consequence.pending.linkedDefinition.individualEvidence === false)).toBe(true);
+  });
+
+  it('binds all five lookups to the six exact result ids emitted by activity 4', () => {
+    const parsed = parseHumanL0KitsDocument();
+    expect(parsed.producedQueries).toEqual([activity4Prior.query]);
+    for (const lookup of parsed.lookups) {
+      expect(lookup.reads.queryId).toBe(activity4Prior.query.id);
+      expect(lookup.keys.map(key => key.key)).toEqual(activity4Prior.rows.map(row => row.id));
+      for (const row of activity4Prior.rows) expect(lookup.keys.find(key => key.key === row.id)?.consequence.kind).toBe('pending');
+    }
+  });
+
+  it('accepts the upstream producer ids without rewriting the lookup results', () => {
+    const input = humanL0KitsDocumentInput();
+    input.tables[0].columns[0].rows.forEach((row, index) => { row.id = activity4Prior.rows[index].id; });
+    expect(() => parseHumanL0KitsDocument(input)).not.toThrow();
+  });
+
+  it('rejects the obsolete named lifestyle keys against the upstream producer', () => {
+    const input = humanL0KitsDocumentInput();
+    input.tables[0].columns[0].rows.forEach((row, index) => { row.id = activity4Prior.rows[index].id; });
+    input.lookups[0].keys[0].key = 'only-human:lifestyle:destitute';
+    expect(() => parseHumanL0KitsDocument(input)).toThrow(/lookup-unknown-key/);
   });
 
   it('separates price, currency, choice, defense and non-carried grants', () => {

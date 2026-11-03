@@ -144,7 +144,7 @@
           },
           "rows": [
             {
-              "id": "only-human:lifestyle:destitute",
+              "id": "only-human:lifestyle:open-3",
               "min": null,
               "max": 3,
               "tail": "open-low",
@@ -165,7 +165,7 @@
               }
             },
             {
-              "id": "only-human:lifestyle:poor",
+              "id": "only-human:lifestyle:4-5",
               "min": 4,
               "max": 5,
               "tail": "none",
@@ -186,7 +186,7 @@
               }
             },
             {
-              "id": "only-human:lifestyle:getting-by",
+              "id": "only-human:lifestyle:6-12",
               "min": 6,
               "max": 12,
               "tail": "none",
@@ -207,7 +207,7 @@
               }
             },
             {
-              "id": "only-human:lifestyle:comfortable",
+              "id": "only-human:lifestyle:13-15",
               "min": 13,
               "max": 15,
               "tail": "none",
@@ -228,7 +228,7 @@
               }
             },
             {
-              "id": "only-human:lifestyle:wealthy",
+              "id": "only-human:lifestyle:16-17",
               "min": 16,
               "max": 17,
               "tail": "none",
@@ -249,7 +249,7 @@
               }
             },
             {
-              "id": "only-human:lifestyle:rich",
+              "id": "only-human:lifestyle:18-open",
               "min": 18,
               "max": null,
               "tail": "open-high",
@@ -285,7 +285,7 @@
       },
       "keys": [
         {
-          "key": "only-human:lifestyle:destitute",
+          "key": "only-human:lifestyle:open-3",
           "consequence": {
             "kind": "pending",
             "effect": null,
@@ -301,7 +301,7 @@
           }
         },
         {
-          "key": "only-human:lifestyle:poor",
+          "key": "only-human:lifestyle:4-5",
           "consequence": {
             "kind": "pending",
             "effect": null,
@@ -317,7 +317,7 @@
           }
         },
         {
-          "key": "only-human:lifestyle:getting-by",
+          "key": "only-human:lifestyle:6-12",
           "consequence": {
             "kind": "pending",
             "effect": null,
@@ -333,7 +333,7 @@
           }
         },
         {
-          "key": "only-human:lifestyle:comfortable",
+          "key": "only-human:lifestyle:13-15",
           "consequence": {
             "kind": "pending",
             "effect": null,
@@ -349,7 +349,7 @@
           }
         },
         {
-          "key": "only-human:lifestyle:wealthy",
+          "key": "only-human:lifestyle:16-17",
           "consequence": {
             "kind": "pending",
             "effect": null,
@@ -365,7 +365,7 @@
           }
         },
         {
-          "key": "only-human:lifestyle:rich",
+          "key": "only-human:lifestyle:18-open",
           "consequence": {
             "kind": "pending",
             "effect": null,
@@ -392,7 +392,7 @@
       },
       "keys": [
         {
-          "key": "only-human:lifestyle:destitute",
+          "key": "only-human:lifestyle:open-3",
           "consequence": {
             "kind": "pending",
             "effect": null,
@@ -408,7 +408,7 @@
           }
         },
         {
-          "key": "only-human:lifestyle:poor",
+          "key": "only-human:lifestyle:4-5",
           "consequence": {
             "kind": "pending",
             "effect": null,
@@ -424,7 +424,7 @@
           }
         },
         {
-          "key": "only-human:lifestyle:getting-by",
+          "key": "only-human:lifestyle:6-12",
           "consequence": {
             "kind": "pending",
             "effect": null,
@@ -440,7 +440,7 @@
           }
         },
         {
-          "key": "only-human:lifestyle:comfortable",
+          "key": "only-human:lifestyle:13-15",
           "consequence": {
             "kind": "pending",
             "effect": null,
@@ -456,7 +456,7 @@
           }
         },
         {
-          "key": "only-human:lifestyle:wealthy",
+          "key": "only-human:lifestyle:16-17",
           "consequence": {
             "kind": "pending",
             "effect": null,
@@ -472,7 +472,7 @@
           }
         },
         {
-          "key": "only-human:lifestyle:rich",
+          "key": "only-human:lifestyle:18-open",
           "consequence": {
             "kind": "pending",
             "effect": null,
@@ -499,7 +499,7 @@
       },
       "keys": [
         {
-          "key": "only-human:lifestyle:destitute",
+          "key": "only-human:lifestyle:open-3",
           "consequence": {
             "kind": "pending",
             "effect": null,
@@ -515,7 +515,7 @@
           }
         },
         {
-          "key": "only-human:lifestyle:poor",
+          "key": "only-human:lifestyle:4-5",
           "consequence": {
             "kind": "pending",
             "effect": null,
@@ -531,7 +531,7 @@
           }
         },
         {
-          "key": "only-human:lifestyle:getting-by",
+          "key": "only-human:lifestyle:6-12",
           "consequence": {
             "kind": "pending",
             "effect": null,
@@ -547,7 +547,7 @@
           }
         },
         {
-          "key": "only-human:lifestyle:comfortable",
+          "key": "only-human:lifestyle:13-15",
           "consequence": {
             "kind": "pending",
             "effect": null,
@@ -563,7 +563,7 @@
           }
         },
         {
-          "key": "only-human:lifestyle:wealthy",
+          "key": "only-human:lifestyle:16-17",
           "consequence": {
             "kind": "pending",
             "effect": null,
@@ -579,7 +579,7 @@
           }
         },
         {
-          "key": "only-human:lifestyle:rich",
+          "key": "only-human:lifestyle:18-open",
           "consequence": {
             "kind": "pending",
             "effect": null,
@@ -606,7 +606,7 @@
       },
       "keys": [
         {
-          "key": "only-human:lifestyle:destitute",
+          "key": "only-human:lifestyle:open-3",
           "consequence": {
             "kind": "pending",
             "effect": null,
@@ -622,7 +622,7 @@
           }
         },
         {
-          "key": "only-human:lifestyle:poor",
+          "key": "only-human:lifestyle:4-5",
           "consequence": {
             "kind": "pending",
             "effect": null,
@@ -638,7 +638,7 @@
           }
         },
         {
-          "key": "only-human:lifestyle:getting-by",
+          "key": "only-human:lifestyle:6-12",
           "consequence": {
             "kind": "pending",
             "effect": null,
@@ -654,7 +654,7 @@
           }
         },
         {
-          "key": "only-human:lifestyle:comfortable",
+          "key": "only-human:lifestyle:13-15",
           "consequence": {
             "kind": "pending",
             "effect": null,
@@ -670,7 +670,7 @@
           }
         },
         {
-          "key": "only-human:lifestyle:wealthy",
+          "key": "only-human:lifestyle:16-17",
           "consequence": {
             "kind": "pending",
             "effect": null,
@@ -686,7 +686,7 @@
           }
         },
         {
-          "key": "only-human:lifestyle:rich",
+          "key": "only-human:lifestyle:18-open",
           "consequence": {
             "kind": "pending",
             "effect": null,
@@ -713,7 +713,7 @@
       },
       "keys": [
         {
-          "key": "only-human:lifestyle:destitute",
+          "key": "only-human:lifestyle:open-3",
           "consequence": {
             "kind": "pending",
             "effect": null,
@@ -728,7 +728,7 @@
           }
         },
         {
-          "key": "only-human:lifestyle:poor",
+          "key": "only-human:lifestyle:4-5",
           "consequence": {
             "kind": "pending",
             "effect": null,
@@ -743,7 +743,7 @@
           }
         },
         {
-          "key": "only-human:lifestyle:getting-by",
+          "key": "only-human:lifestyle:6-12",
           "consequence": {
             "kind": "pending",
             "effect": null,
@@ -758,7 +758,7 @@
           }
         },
         {
-          "key": "only-human:lifestyle:comfortable",
+          "key": "only-human:lifestyle:13-15",
           "consequence": {
             "kind": "pending",
             "effect": null,
@@ -773,7 +773,7 @@
           }
         },
         {
-          "key": "only-human:lifestyle:wealthy",
+          "key": "only-human:lifestyle:16-17",
           "consequence": {
             "kind": "pending",
             "effect": null,
@@ -788,7 +788,7 @@
           }
         },
         {
-          "key": "only-human:lifestyle:rich",
+          "key": "only-human:lifestyle:18-open",
           "consequence": {
             "kind": "pending",
             "effect": null,

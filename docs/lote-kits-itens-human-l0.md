@@ -23,6 +23,8 @@ Fora do inventário, e fora das 1063: **94** referências (`75` non-inventory + 
 
 ## O que a fixture pública mostra
 
+Correção P2 em 2026-11-03: as seis linhas de lifestyle e as chaves dos cinco lookups usam os IDs de resultado emitidos pelo #47 (`open-3`, `4-5`, `6-12`, `13-15`, `16-17`, `18-open`), sem redefini-los pelos nomes dos kits. O extrato público `human-l0-lifestyle-prior.activity4.synthetic.json`, obtido da fixture do #47 em `102c580`, fixa somente query, IDs e limites para a regressão standalone. A composição local também confere o extrato contra o builder/fixture efetivos do #47 e aceita sua coluna como produtora anterior. Os nomes de lifestyle dos programas e todas as consequências pendentes permanecem iguais.
+
 `curation/examples/human-l0-kits.synthetic.json` passa em `parseHumanL0Consumable`. `human-l0-kits.rejections.json` cobre as recusas do gate.
 
 - A atividade 4 emite a consulta `query:starting-lifestyle:only-human`. Este lote só a lê. A coluna `only-human:lifestyle#main` está no documento porque o gate `1.0.0` exige o produtor da consulta no mesmo documento. As faixas são as de `resolveStartingLifestyle` para `only-human`. O domínio do modificador fica pendente (`open-tail-domain`): os eventos de vida não são projetados aqui.

@@ -18,9 +18,6 @@ export const ONLY_HUMAN_LIFESTYLE_ROLL_ID = 'only-human:lifestyle#main';
 export const LIFESTYLES = ['destitute', 'poor', 'getting-by', 'comfortable', 'wealthy', 'rich'] as const;
 export type LifestyleName = typeof LIFESTYLES[number];
 
-/** Row ids already used by the pilot closure for this table. */
-export const lifestyleRowId = (lifestyle: LifestyleName) => `${ONLY_HUMAN_LIFESTYLE_TABLE_ID}:${lifestyle}`;
-
 export const LOOKUP_IDS = [
   'only-human:clothing', 'only-human:weapons', 'only-human:personal-gear', 'only-human:special-gear', 'only-human:money',
 ] as const;
@@ -39,6 +36,13 @@ export const ONLY_HUMAN_LIFESTYLE_RANGES: { lifestyle: LifestyleName; tail: 'ope
   { lifestyle: 'wealthy', tail: 'none', min: 16, max: 17 },
   { lifestyle: 'rich', tail: 'open-high', min: 18, max: null },
 ];
+
+/** Exact result ids emitted by the activity-4 producer; names remain kit/program labels only. */
+export function lifestyleRowId(lifestyle: LifestyleName) {
+  const range = ONLY_HUMAN_LIFESTYLE_RANGES.find(row => row.lifestyle === lifestyle);
+  if (!range) throw new Error('Unknown lifestyle result.');
+  return `${ONLY_HUMAN_LIFESTYLE_TABLE_ID}:${range.min ?? 'open'}-${range.max ?? 'open'}`;
+}
 
 export const KITS_LOT_COUNTS = {
   matrixRows: 752,

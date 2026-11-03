@@ -1,0 +1,21 @@
+{
+  "producer": {
+    "pullRequest": 47,
+    "commit": "102c5809d70850eed718b05eb28fe65016b1770f",
+    "fixture": "curation/examples/human-l0-consumable.activity4.synthetic.json"
+  },
+  "distribution": "public-synthetic",
+  "fictionalData": true,
+  "query": {
+    "id": "query:starting-lifestyle:only-human",
+    "producedBy": { "tableId": "only-human:lifestyle", "columnId": "main" }
+  },
+  "rows": [
+    { "id": "only-human:lifestyle:open-3", "min": null, "max": 3 },
+    { "id": "only-human:lifestyle:4-5", "min": 4, "max": 5 },
+    { "id": "only-human:lifestyle:6-12", "min": 6, "max": 12 },
+    { "id": "only-human:lifestyle:13-15", "min": 13, "max": 15 },
+    { "id": "only-human:lifestyle:16-17", "min": 16, "max": 17 },
+    { "id": "only-human:lifestyle:18-open", "min": 18, "max": null }
+  ]
+}
