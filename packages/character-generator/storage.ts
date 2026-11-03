@@ -1,6 +1,6 @@
 import { newCharacter, parseCharacter, type Character } from './index';
 
-export { loadHumanL0Character, saveHumanL0Character } from './human-l0-storage';
+export { clearHumanL0Character, loadHumanL0Character, saveHumanL0Character } from './human-l0-storage';
 
 function open(): Promise<IDBDatabase> {
   return new Promise((resolve, reject) => {

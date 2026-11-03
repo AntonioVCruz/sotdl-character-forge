@@ -24,7 +24,6 @@ const ATTRIBUTES: HumanAttribute[] = ['strength', 'agility', 'intellect', 'will'
 const ATTRIBUTE_LABEL: Record<HumanAttribute, string> = {
   strength: 'Strength', agility: 'Agility', intellect: 'Intellect', will: 'Will',
 };
-const PENDING_COPY = 'Aguarda #34/#35. Esta fatia não inventa opções.';
 const LOCK_REASON = 'Slot travado. Destrave para alterar. Travar não sorteia.';
 
 export const HUMAN_L0_STEPS = [
@@ -54,6 +53,8 @@ export type HumanL0SlotView = {
   confirmReason?: string;
   consequences?: { status: 'applied' | 'needs-review'; items: string[] };
   rollTrace?: RollTrace;
+  /** Blocks “Usar esta opção” with this text. Pending slots use awaiting-later-issue. */
+  useReason?: string;
   locked: boolean;
   canReroll: boolean;
   sortReason?: string;
@@ -75,10 +76,11 @@ function option(id: string, label: string, eligible: boolean, disabledReason?: s
 }
 
 function pendingSlot(slotId: string, title: string): HumanL0SlotView {
+  const reason = humanL0Block('awaiting-later-issue').message;
   return {
-    slotId, step: 'reserved', level: 0, title, contextLine: PENDING_COPY, strategy: 'pending', uiState: 'pending',
+    slotId, step: 'reserved', level: 0, title, contextLine: reason, strategy: 'pending', uiState: 'pending',
     options: [], cardinality: { min: 0, max: 0 }, selectedIds: [], locked: false, canReroll: false,
-    sortReason: PENDING_COPY,
+    sortReason: reason, useReason: reason,
   };
 }
 
@@ -231,7 +233,10 @@ function selectionSlots(selection: HumanL0Selection | null, catalog: Catalog, re
   return slots;
 }
 
+const RESERVED_SLOTS = new Set(['professions', 'languages', 'wealth', 'kit', 'interesting-thing', 'equipment']);
+
 function proposedSelection(packs: unknown, baseline: HumanL0Character | null, slotId: string, ids: string[]): HumanL0Selection | HumanL0Refusal {
+  if (RESERVED_SLOTS.has(slotId)) return { ok: false, blocks: [humanL0Block('awaiting-later-issue')] };
   if (ids.length !== 1) return { ok: false, blocks: [humanL0Block('selection-schema-invalid')] };
   const catalog = describeFixtureCatalog(packs);
   if (catalog.surface.blocks.length) return { ok: false, blocks: catalog.surface.blocks };
@@ -355,11 +360,12 @@ function rollSortReason(input: HumanL0ProjectionInput, packs: unknown): string |
   return block?.message;
 }
 
+/** Step text for AC-H5: vazio, parcial, completo, or pendente. Navigation must not confirm a slot. */
 export function humanL0StepLabel(slots: readonly HumanL0SlotView[], step: HumanL0StepId): string {
   const mine = slots.filter(slot => slot.step === step);
-  if (!mine.length) return step === 'reserved' ? 'reservado' : 'opcional';
-  if (mine.some(slot => slot.uiState === 'preview' || slot.uiState === 'needs-review')) return 'prévia';
-  if (mine.every(slot => slot.uiState === 'pending')) return 'reservado';
-  if (mine.some(slot => slot.uiState === 'empty' || slot.uiState === 'suspended')) return 'pendente';
-  return 'confirmado';
+  if (!mine.length) return 'vazio';
+  if (mine.every(slot => slot.uiState === 'pending')) return 'pendente';
+  if (mine.every(slot => slot.uiState === 'confirmed' || slot.uiState === 'locked')) return 'completo';
+  if (mine.every(slot => slot.uiState === 'empty' || slot.uiState === 'suspended')) return 'vazio';
+  return 'parcial';
 }

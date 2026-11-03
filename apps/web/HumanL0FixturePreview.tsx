@@ -8,6 +8,7 @@ import {
   humanL0EffectToggles,
   humanL0FixturePacks,
   HUMAN_L0_FIXTURE_CHARACTER_ID,
+  HUMAN_L0_SHEET_BANNER,
   loadHumanL0FixtureCharacter,
   proposeHumanL0EffectActive,
   proposeHumanL0ManualEffect,
@@ -53,6 +54,7 @@ export function HumanL0FixturePreview({ onLeave }: { onLeave: () => void }) {
   const [ready, setReady] = useState(false);
   const [busy, setBusy] = useState(false);
   const [announce, setAnnounce] = useState('Abrindo a prévia local da fixture.');
+  const [sheetAnnounce, setSheetAnnounce] = useState('Ficha ainda sem confirmação.');
   const [actionBlocks, setActionBlocks] = useState<HumanL0Block[]>([]);
   const [reviewNoted, setReviewNoted] = useState(false);
   const [stateTarget, setStateTarget] = useState<(typeof STATES)[number]>('damage');
@@ -89,6 +91,7 @@ export function HumanL0FixturePreview({ onLeave }: { onLeave: () => void }) {
   useEffect(() => { if (preview) statusRef.current?.focus(); }, [preview]);
 
   const slots = projectHumanL0Slots(packs, { baseline, preview, previewSlotId, refusal, locks, seed });
+  const stepIndex = HUMAN_L0_STEPS.findIndex(item => item.id === step);
   const visible = slots.filter(slot => slot.step === step);
   const effects = baseline ? humanL0EffectToggles(baseline) : [];
 
@@ -143,6 +146,7 @@ export function HumanL0FixturePreview({ onLeave }: { onLeave: () => void }) {
     setPreview(null);
     setPreviewSlotId(null);
     setRefusal(null);
+    setSheetAnnounce('Ficha atualizada pela confirmação.');
     setAnnounce('Prévia confirmada. A ficha demo não foi alterada. Geração oficial continua desligada.');
   }
 
@@ -151,7 +155,12 @@ export function HumanL0FixturePreview({ onLeave }: { onLeave: () => void }) {
     setPreviewSlotId(null);
     setRefusal(null);
     setActionBlocks([]);
+    setSheetAnnounce('Prévia descartada. A ficha confirmada foi preservada.');
     setAnnounce('Prévia descartada. A ficha confirmada foi preservada.');
+  }
+
+  function goStep(next: HumanL0StepId | undefined) {
+    if (next) setStep(next);
   }
 
   async function saveName() {
@@ -237,6 +246,10 @@ export function HumanL0FixturePreview({ onLeave }: { onLeave: () => void }) {
           onToggle={(id, active) => void run('effect-active', () => proposeHumanL0EffectActive(baseline, packs, id, active))}
         />}
         {step === 'review' && <Review sheet={sheet} slots={slots} noted={reviewNoted} onNote={() => { setReviewNoted(true); setAnnounce('Revisão anotada nesta sessão. Isso não habilita geração oficial.'); }} onImport={file => void importFile(file)} onExport={() => baseline && download(exportConfirmedHumanL0(baseline))} exportDisabled={!baseline || busy || !!preview} />}
+        <div className="actions">
+          <button type="button" disabled={stepIndex <= 0} onClick={() => goStep(HUMAN_L0_STEPS[stepIndex - 1]?.id)}>Anterior</button>
+          <button type="button" disabled={stepIndex >= HUMAN_L0_STEPS.length - 1} onClick={() => goStep(HUMAN_L0_STEPS[stepIndex + 1]?.id)}>Próximo</button>
+        </div>
         {preview && (previewSlotId === 'state' || previewSlotId === 'manual-effect' || previewSlotId === 'effect-active') && <div className="choice-preview">
           <p>Prévia do comando avançado, ainda não aplicada.</p>
           <div className="actions">
@@ -245,14 +258,20 @@ export function HumanL0FixturePreview({ onLeave }: { onLeave: () => void }) {
           </div>
         </div>}
       </div>
-      <aside className="mini-ficha" aria-label="Ficha da prévia local" aria-live="polite">
+      <aside className="mini-ficha" aria-label="Ficha da prévia local">
         <h3>Ficha confirmada</h3>
+        <p aria-live="polite">{sheetAnnounce}</p>
         <p>{baseline ? `${baseline.name || 'Sem nome'} · ${baseline.kind}` : 'Nenhuma ficha Human L0 confirmada.'}</p>
-        <ul aria-label="Avisos da fatia">{(sheet?.banner ?? ['Cálculo em prévia local. Geração oficial permanece desligada.']).map(line => <li key={line}>{line}</li>)}</ul>
+        <ul aria-label="Avisos da fatia">{(sheet?.banner ?? HUMAN_L0_SHEET_BANNER).map(line => <li key={line}>{line}</li>)}</ul>
         {sheet ? <dl>{sheet.fields.map(field => <div key={field.key} data-field={field.key} data-status={field.status}><dt>{field.label}</dt><dd>{fieldText(field)}</dd></div>)}</dl> : <p>Características: indisponível.</p>}
         <ul aria-label="Pendências do motor">{sheet?.issues.map(issue => <li key={issue.code} data-issue={issue.code}>{issue.message}</li>)}</ul>
-        <ul aria-label="Direitos e resultados pendentes">{sheet?.grants.map(grant => <li key={grant.kind}>{grant.message}</li>)}</ul>
-        <p>Persistência: human-l0/{HUMAN_L0_FIXTURE_CHARACTER_ID}. Impressão, PDF e HTML: indisponível.</p>
+        <ul aria-label="Idiomas">{sheet?.languages.length ? sheet.languages.map(language => <li key={language.languageId}>{language.languageId}: {language.note}</li>) : <li>Nenhum idioma calculado.</li>}</ul>
+        <ul aria-label="Direitos e resultados pendentes">{sheet?.grants.length ? sheet.grants.map(grant => <li key={grant.kind}><span className="badge">{grant.message}</span> <button type="button" onClick={() => setStep('reserved')}>Ir para o passo</button></li>) : <li>Nenhum direito calculado.</li>}</ul>
+        <details>
+          <summary>Composição do motor</summary>
+          {sheet?.breakdown.length ? <ul>{sheet.breakdown.map((row, index) => <li key={`${row.phase}-${row.target}-${index}`}>{row.phase}: {row.target} {row.value}</li>)}</ul> : <p>Nenhuma composição disponível.</p>}
+        </details>
+        <p>Persistência: human-l0/{HUMAN_L0_FIXTURE_CHARACTER_ID}. Impressão, PDF e HTML: indisponível nesta fatia.</p>
       </aside>
     </div>
   </section>;

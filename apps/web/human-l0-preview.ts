@@ -12,7 +12,7 @@ import {
   type HumanL0Stats,
   type HumanL0View,
 } from '../../packages/character-generator/runtime';
-import { loadHumanL0Character, saveHumanL0Character } from '../../packages/character-generator/storage';
+import { clearHumanL0Character, loadHumanL0Character, saveHumanL0Character } from '../../packages/character-generator/storage';
 import {
   HUMAN_L0_CONTRACT,
   HUMAN_L0_CONTRACT_VERSION,
@@ -140,8 +140,6 @@ const PRESENTED: { key: keyof HumanL0Stats; label: string }[] = [
   { key: 'speed', label: 'Speed' },
   { key: 'power', label: 'Power' },
   { key: 'size', label: 'Size' },
-  { key: 'perception', label: 'Perception' },
-  { key: 'power', label: 'Power' },
   { key: 'healingRate', label: 'Healing Rate' },
   { key: 'strengthModifier', label: 'Strength modifier' },
   { key: 'agilityModifier', label: 'Agility modifier' },
@@ -235,7 +233,7 @@ function describeGrant(grant: HumanL0View['grants'][number]): HumanL0SheetModel[
   return { kind: grant.kind, count: grant.count, status: 'pending', message: `Pendência do motor: ${grant.kind}.` };
 }
 
-const SHEET_BANNER = [
+export const HUMAN_L0_SHEET_BANNER = [
   'Cálculo em prévia local. Geração oficial permanece desligada.',
   'Resultados de procedimento ainda pendentes.',
   'Catálogo de equipamento e tabelas ainda pendente.',
@@ -264,7 +262,7 @@ export function humanL0SheetModel(view: HumanL0View, characterId: string): Human
     officialGenerationEnabled: false,
     fullyResolved: false,
     baseResolved: resolved,
-    banner: SHEET_BANNER,
+    banner: HUMAN_L0_SHEET_BANNER,
     persistenceType: HUMAN_L0_PERSISTENCE_TYPE,
     persistenceKey: humanL0PersistenceKey(characterId),
     fields,
@@ -493,14 +491,19 @@ export async function readHumanL0Fixture(packs: unknown, character: HumanL0Chara
   model: HumanL0SheetModel | null;
   blocks: HumanL0Block[];
 }> {
-  const surface = classifyHumanL0Surface('fixture', packs);
-  if (surface.blocks.length) return { character: null, view: null, model: null, blocks: surface.blocks };
-  if (!character) return { character: null, view: null, model: null, blocks: [] };
-  if (character.id !== HUMAN_L0_FIXTURE_CHARACTER_ID) return { character, view: null, model: null, blocks: [block('unexpected-character-id')] };
+  if (character && character.id !== HUMAN_L0_FIXTURE_CHARACTER_ID) return { character, view: null, model: null, blocks: [block('unexpected-character-id')] };
+  if (!character) {
+    const surface = classifyHumanL0Surface('fixture', packs);
+    if (surface.blocks.length) return { character: null, view: null, model: null, blocks: surface.blocks };
+    return { character: null, view: null, model: null, blocks: [] };
+  }
   const view = await calculateHumanL0Character(character, packs);
   const official = guardsOfficial(view);
-  if (official) return { character, view: null, model: null, blocks: official.blocks };
-  return { character, view, model: humanL0SheetModel(view, character.id), blocks: [] };
+  return { character, view, model: humanL0SheetModel(view, character.id), blocks: official?.blocks ?? [] };
+}
+
+export async function resetHumanL0FixtureCharacter(): Promise<void> {
+  await clearHumanL0Character(HUMAN_L0_FIXTURE_CHARACTER_ID);
 }
 
 export async function loadHumanL0FixtureCharacter(): Promise<HumanL0Character | null> {

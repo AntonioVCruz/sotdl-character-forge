@@ -12,7 +12,7 @@ import { clearCharacter } from '../../packages/character-generator/storage';
 import { CharacterBuilder } from './CharacterBuilder';
 import { ErrorBoundary, onCaughtError } from './ErrorBoundary';
 import { HumanL0FixturePreview } from './HumanL0FixturePreview';
-import { HUMAN_L0_FIXTURE_PREVIEW_ENABLED, isHumanL0Route } from './human-l0-preview';
+import { HUMAN_L0_FIXTURE_PREVIEW_ENABLED, isHumanL0Route, resetHumanL0FixtureCharacter } from './human-l0-preview';
 import { errorMessage } from './errors';
 import './style.css';
 
@@ -26,11 +26,7 @@ function useLocationHash() {
   return hash;
 }
 
-function App() {
-  const hash = useLocationHash();
-  if (isHumanL0Route(hash)) {
-    return <main><ErrorBoundary scope="ficha"><HumanL0FixturePreview onLeave={() => { window.location.hash = ''; }} /></ErrorBoundary></main>;
-  }
+function ForgeApp() {
   const [snapshot, setSnapshot] = useState<Snapshot>(emptySnapshot);
   const [ready, setReady] = useState(false);
   const [busy, setBusy] = useState(false);
@@ -111,4 +107,15 @@ function App() {
     </section><footer>Dados salvos neste navegador · sem conta ou envio ao servidor. Mantenha os arquivos JSON originais como backup.</footer>
   </main>;
 }
-createRoot(document.getElementById('root')!, { onCaughtError }).render(<React.StrictMode><ErrorBoundary scope="forja"><App /></ErrorBoundary></React.StrictMode>);
+
+/** Stable hooks: only the hash lives here. The forge and the Human L0 entry each keep their own hook list. */
+export function Root() {
+  const hash = useLocationHash();
+  if (isHumanL0Route(hash)) {
+    return <main><ErrorBoundary scope="ficha" onReset={resetHumanL0FixtureCharacter}><HumanL0FixturePreview onLeave={() => { window.location.hash = ''; }} /></ErrorBoundary></main>;
+  }
+  return <ForgeApp />;
+}
+
+const mount = document.getElementById('root');
+if (mount) createRoot(mount, { onCaughtError }).render(<React.StrictMode><ErrorBoundary scope="forja"><Root /></ErrorBoundary></React.StrictMode>);

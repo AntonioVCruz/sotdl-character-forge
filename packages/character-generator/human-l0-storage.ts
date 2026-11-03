@@ -22,6 +22,19 @@ export async function loadHumanL0Character(id='local-human-l0'):Promise<HumanL0C
     return c;
   } finally{db.close();}
 }
+/** Deletes only `human-l0/<id>`. The demo key `character` is not touched. */
+export async function clearHumanL0Character(id='local-human-l0'):Promise<void> {
+  const db=await open();
+  try {
+    await new Promise<void>((resolve,reject)=>{
+      const tx=db.transaction('state','readwrite');
+      tx.objectStore('state').delete(key(id));
+      tx.oncomplete=()=>resolve();
+      tx.onabort=()=>reject(tx.error??new Error('Gravação cancelada.'));
+      tx.onerror=()=>reject(tx.error);
+    });
+  } finally{db.close();}
+}
 /** Compare and swap, isolated by character ID; never overwrites the demo key. */
 export async function saveHumanL0Character(input:unknown,expectedInput:HumanL0Character|null):Promise<void> {
   const c=parseHumanL0Character(input),expected=expectedInput===null?null:parseHumanL0Character(expectedInput);

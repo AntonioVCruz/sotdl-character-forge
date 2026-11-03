@@ -7,7 +7,7 @@ import { loadCharacter, loadHumanL0Character, saveCharacter } from '../packages/
 import { parseHumanL0MechanicalPacks } from '../packages/curation/human-l0-mechanics';
 import * as random from '../packages/random-tables';
 import { parseChoiceSlotProps } from '../apps/web/choice-slot-contract';
-import { projectHumanL0Slots, proposeHumanL0Slot } from '../apps/web/human-l0-slots';
+import { humanL0StepLabel, projectHumanL0Slots, proposeHumanL0Slot } from '../apps/web/human-l0-slots';
 import {
   HUMAN_L0_FIXTURE_CHARACTER_ID,
   HUMAN_L0_FIXTURE_PREVIEW_ENABLED,
@@ -23,6 +23,8 @@ import {
   humanL0PersistenceKey,
   humanL0SheetModel,
   previewHumanL0,
+  readHumanL0Fixture,
+  resetHumanL0FixtureCharacter,
   stageHumanL0Import,
   type HumanL0Preview,
 } from '../apps/web/human-l0-preview';
@@ -247,10 +249,14 @@ describe('Human L0 UI contract', () => {
     const proposal = await proposeHumanL0Slot(null, packs(), 'ancestry', [ancestry?.options[0]?.id ?? ''], '');
     expect(proposal.ok).toBe(true);
     expect(await loadHumanL0Character(HUMAN_L0_FIXTURE_CHARACTER_ID)).toBeNull();
-    const reserved = await proposeHumanL0Slot(null, packs(), 'professions', ['invented'], '');
+    const reserved = await proposeHumanL0Slot(null, packs(), 'professions', [], '');
     expect(reserved.ok).toBe(false);
     if (reserved.ok) return;
     expect(reserved.blocks[0]?.code).toBe('awaiting-later-issue');
+    const professions = empty.find(slot => slot.slotId === 'professions');
+    expect(professions?.useReason).toBe(reserved.blocks[0]?.message);
+    const keys = (await openedPreview()).model.fields.map(field => field.key);
+    expect(new Set(keys).size).toBe(keys.length);
     const randomPick = await proposeHumanL0Slot(null, packs(), 'attribute-mode', ['random'], '');
     expect(randomPick.ok).toBe(false);
     if (randomPick.ok) return;
@@ -261,5 +267,24 @@ describe('Human L0 UI contract', () => {
     for (const slot of filled) expect(() => parseChoiceSlotProps(slot)).not.toThrow();
     expect(filled.find(slot => slot.slotId === 'ancestry')?.uiState).toBe('confirmed');
     expect(filled.find(slot => slot.slotId === 'attribute-roll')?.sortReason).toBeUndefined();
+    expect(humanL0StepLabel(empty, 'reserved')).toBe('pendente');
+    expect(humanL0StepLabel(empty, 'ancestry')).toBe('vazio');
+    expect(humanL0StepLabel(filled, 'ancestry')).toBe('completo');
+  });
+
+  it('keeps a saved Human L0 history when packs are missing and does not clear the demo sheet', async () => {
+    const demo = newCharacter();
+    await saveCharacter(demo, demo);
+    const saved = await confirmHumanL0Preview(null, packs(), await openedPreview());
+    if (!saved.ok) throw new Error('confirm failed');
+    const opened = await readHumanL0Fixture([], saved.character);
+    expect(opened.character?.events).toEqual(saved.character.events);
+    expect(opened.model?.baseResolved).toBe(false);
+    expect(opened.model?.issues.some(issue => issue.code === 'source-or-selection-unavailable')).toBe(true);
+    expect(opened.model?.fields.find(field => field.key === 'health')).toMatchObject({ status: 'indisponível' });
+    expect(opened.model?.officialGenerationEnabled).toBe(false);
+    await resetHumanL0FixtureCharacter();
+    expect(await loadHumanL0Character(HUMAN_L0_FIXTURE_CHARACTER_ID)).toBeNull();
+    expect(await loadCharacter()).toEqual(demo);
   });
 });

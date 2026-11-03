@@ -74,6 +74,22 @@ Chave `human-l0/fixture-preview`, separada da ficha demo e do id `local-human-l0
 
 O `ChoiceSlot` do S1 cobre foco no painel manual, Esc devolvendo ao botão que abriu, Space/Enter na opção e opção inelegível focável sem selecionar. Botão bloqueado não dispara a ação. A mini-ficha e o status da prévia usam `aria-live`. Alt+seta troca o passo. O motivo do bloqueio é texto associado ao controle.
 
+## Aceite do esqueleto (AC-H1–H9)
+
+O brief do Designer STD pede este esqueleto, não o aceite funcional completo da #36.
+
+| ID | Onde se vê |
+|---|---|
+| AC-H1 | Prévia no `ChoiceSlot` não grava nem troca a mini-ficha. Confirmar repete o comando. Descartar preserva o confirmado. |
+| AC-H2 | Opção inelegível continua na lista, com `tabIndex` 0 e `disabledReason`. Botão bloqueado não chama o comando. |
+| AC-H3 | A tela só pede `select`, `roll-attributes` com seed, `state`, `manual-effect` e `effect-active`. Renderizar não sorteia. |
+| AC-H4 | A mini-ficha lê `HumanL0View`. Banner fixo: `local-preview-only`, `procedure-outcomes-pending`, `equipment-and-table-catalog-pending`. Direito pendente tem "Ir para o passo". Anotar a revisão não liga o ruleset. |
+| AC-H5 | O passo diz vazio, parcial, completo ou pendente. O passo reservado fica pendente, com "Aguarda #34/#35". Anterior, Próximo e o stepper só mudam o passo. |
+| AC-H6 | O painel do `ChoiceSlot` toma foco, Esc devolve, Space/Enter não seleciona inelegível, Alt+seta troca o passo, e a mini-ficha anuncia a confirmação. |
+| AC-H7 | Persistência `human-l0/fixture-preview`, tipo `sotdl-human-l0-character`. JSON demo é recusado. Impressão, PDF e HTML: indisponível nesta fatia. |
+| AC-H8 | `WizardL0` e os testes S1 não mudam de comportamento. A fixture não é pack oficial. |
+| AC-H9 | `ErrorBoundary` na rota, com Tentar de novo e Recomeçar. Recomeçar apaga só `human-l0/fixture-preview`. Sem os packs, a ficha abre com `baseResolved: false`, o motivo e o histórico. |
+
 ## O que a #36 ainda exige
 
 Procedimentos da #35, dados da #34, E2E da criação real, inventário e paridade de impressão continuam fora. A habilitação oficial continua na #37.
