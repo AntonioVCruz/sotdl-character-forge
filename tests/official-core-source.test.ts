@@ -11,7 +11,7 @@ const available=existsSync(resolve(sourceRoot,'curation/pilot/table-closure.json
 const config={name:'Personagem de teste',seed:'official-core-test',increase:'strength',benefit:'random-profession',languageId:'',interestingVariant:'core',optionalTables:false} as const;
 describe.skipIf(!available)('official Core generation from verified local sources',()=>{
   let context:OfficialCoreContext;
-  beforeAll(async()=>{context=await buildOfficialLocalContext(sourceRoot);},30000);
+  beforeAll(async()=>{context=await buildOfficialLocalContext(sourceRoot,process.cwd());},30000);
   it('covers every verified Background result, replaces consequences and reopens without drawing',async()=>{
     const original=await generateOfficialCore(context,config),plain=await calculateOfficialCore(original,context);
     expect(plain.background).toBeNull();expect(context.backgroundPlans).toHaveLength(20);

@@ -9,6 +9,7 @@ import {newHumanL0Character,parseHumanL0Character,calculateHumanL0Character,type
 import {BackgroundPlanSchema,backgroundRolls,backgroundValues,type BackgroundPlan} from './core-background';
 import {ThingApplicationPlanSchema,ThingAdjudicationSchema,applyInterestingThing,thingChoiceKey,thingRollKey,type ThingApplicationPlan} from './core-interesting-things';
 import {EquipmentRulesSchema,EquipmentPlacementSchema,EquipmentUseContextSchema,emptyEquipmentContext,legacyEquipmentLoadout,composeCoreEquipment,placementsConflict,isNeutralClothing,type EquipmentRules,type EquipmentPlacement} from './core-equipment';
+import {FinalizationReceiptSchema,evaluateCharacterCompletion,receiptForCompletion,invalidateFinalization} from './character-finalization';
 
 const CORE='sotdl:shadow-of-the-demon-lord-core';
 const fail=(code:string):never=>{throw new Error(`Official Core: ${code}.`);};
@@ -42,7 +43,7 @@ export const OfficialCoreDraftSchema=z.object({schemaVersion:z.literal(1),kind:z
   equipmentHistory:z.array(z.discriminatedUnion('type',[
     z.object({type:z.literal('loadout'),reason:z.string().min(1),before:z.array(EquipmentPlacementSchema),after:z.array(EquipmentPlacementSchema)}).strict(),
     z.object({type:z.literal('use-context'),context:EquipmentUseContextSchema}).strict(),
-  ])).default([])}).strict();
+  ])).default([]),finalization:FinalizationReceiptSchema.nullable().default(null)}).strict();
 export type OfficialCoreDraft=Omit<z.infer<typeof OfficialCoreDraftSchema>,'character'>&{character:HumanL0Character};
 export function parseOfficialCoreDraft(input:unknown):OfficialCoreDraft {
   const p=OfficialCoreDraftSchema.safeParse(input);if(!p.success)return fail('draft-invalid');
@@ -57,7 +58,7 @@ export function parseOfficialCoreDraft(input:unknown):OfficialCoreDraft {
   return {...p.data,character};
 }
 type Row=CoreLocalDocument['tables'][number]['columns'][number]['rows'][number];
-export type OfficialPending={key:string;label:string;options?:{id:string;label:string}[]};
+export type OfficialPending={key:string;label:string;scope?:'creation'|'use';options?:{id:string;label:string}[]};
 export type OfficialInventoryRecord={key:string;programId:string;sourceLabel:string;recordKind:string;quantity:number|null;unit:string;itemId:string|null;profile:'armor'|'weapon'|'none';equipped:boolean;weight?:number|null};
 function saveLoadout(d:OfficialCoreDraft,before:EquipmentPlacement[],after:EquipmentPlacement[],reason:string) {
   d.equipmentLoadout=after;d.equipped=[...new Set(after.map(p=>p.key))];d.equipmentHistory.push({type:'loadout',before,after:structuredClone(after),reason});
@@ -135,7 +136,7 @@ export async function generateOfficialCore(context:unknown,configInput:unknown):
   if(config.benefit==='speak-language'&&!c.core.languageOptions.some(l=>l.id===`language:${config.languageId}`))return fail('language-choice-required');
   const character=await newHumanL0Character({schemaVersion:1,contract:'sotdl.human-l0.mechanics',contractVersion:'1.0.0',ancestry:ref,attributes:{mode:'fixed',increase:config.increase},adjustment:null,size:p.entities[0].mechanics.size.choices[0],procedure:{ref,kind:'core'},
     coreBenefit:config.benefit==='random-profession'?{kind:'random-profession',rollEventId:`profession/${c.core.startingRights.professionChoices+1}`}:{kind:'speak-language',languageId:config.languageId}},c.mechanicalPacks,{id:'official-core-current',name:config.name});
-  const d:OfficialCoreDraft={schemaVersion:1,kind:'sotdl-official-core-draft',contextSha256:await consumableDigest(c),prngVersion:PRNG_VERSION,config,character,rolls:{},choices:{},equipped:[],adjudications:{},interestingHistory:[],equipmentLoadout:[],equipmentUseContext:emptyEquipmentContext(),equipmentHistory:[]};
+  const d:OfficialCoreDraft={schemaVersion:1,kind:'sotdl-official-core-draft',contextSha256:await consumableDigest(c),prngVersion:PRNG_VERSION,config,character,rolls:{},choices:{},equipped:[],adjudications:{},interestingHistory:[],equipmentLoadout:[],equipmentUseContext:emptyEquipmentContext(),equipmentHistory:[],finalization:null};
   fillRolls(d,c);return parseOfficialCoreDraft(d);
 }
 export async function chooseOfficialCore(input:unknown,context:unknown,key:string,value:string):Promise<OfficialCoreDraft> {
@@ -143,6 +144,7 @@ export async function chooseOfficialCore(input:unknown,context:unknown,key:strin
   if(await consumableDigest(c)!==d.contextSha256)return fail('source-context-changed');
   const equippedBefore=d.equipped.length?(await calculateOfficialCore(d,c)).inventory:[];
   if(key==='interesting/result')return fail('use-interesting-result-command');
+  if(d.choices[key]!==value)d.finalization=invalidateFinalization(d.finalization);
   if(key.startsWith('interesting/')){
     const {thing}=wealthAndThing(d,c);
     if(!thing.details.choices.some(ch=>thingChoiceKey(thing.id,ch.id)===key&&ch.options.some(o=>o.id===value)))return fail('interesting-choice-invalid');
@@ -159,6 +161,7 @@ export async function selectOfficialThing(input:unknown,context:unknown,outcomeI
   if(await consumableDigest(c)!==d.contextSha256)return fail('source-context-changed');
   if(outcomeId&&!c.core.things.some(t=>t.id===outcomeId))return fail('interesting-result-invalid');
   const previous=wealthAndThing(d,c).thing.id;
+  d.finalization=invalidateFinalization(d.finalization);
   if(outcomeId)d.choices['interesting/result']=outcomeId;else delete d.choices['interesting/result'];
   if(previous!==wealthAndThing(d,c).thing.id)suspendEquipment(d,k=>k.startsWith('interesting/'),'Troca de resultado de Interesting Thing');
   d.interestingHistory.push({type:'select',outcomeId:wealthAndThing(d,c).thing.id,mode:outcomeId?'manual':'random'});
@@ -169,6 +172,7 @@ export async function adjudicateOfficialThing(input:unknown,context:unknown,deci
   if(await consumableDigest(c)!==d.contextSha256)return fail('source-context-changed');
   const {thing}=wealthAndThing(d,c);
   if(!thing.details.gmChoice||thing.id!==decision.outcomeId)return fail('interesting-adjudication-invalid');
+  d.finalization=invalidateFinalization(d.finalization);
   if(decision.definition.kind==='published'&&!c.itemDefinitions.some(i=>i.id===(decision.definition as {itemId:string}).itemId&&i.definitionStatus==='published-core'&&i.category==='weapon'))return fail('interesting-weapon-definition-invalid');
   suspendEquipment(d,k=>k.startsWith(`interesting/${thing.id}/`),'Nova definição da arma escolhida pelo mestre');
   d.adjudications[thing.id]=decision;d.interestingHistory.push({type:'adjudicate',decision});await calculateOfficialCore(d,c);return d;
@@ -178,6 +182,7 @@ export async function selectOfficialBackground(input:unknown,context:unknown,mod
   const d=structuredClone(parseOfficialCoreDraft(input)),c=parseOfficialCoreContext(context);
   if(await consumableDigest(c)!==d.contextSha256)return fail('source-context-changed');
   const previous=backgroundSelection(d,c);
+  d.finalization=invalidateFinalization(d.finalization);
   d.choices['background/mode']=mode;
   if(mode==='manual')d.choices['background/row']=rowId??'';
   fillRolls(d,c);
@@ -195,6 +200,7 @@ export async function configureOfficialEquipment(input:unknown,context:unknown,c
   const d=structuredClone(parseOfficialCoreDraft(input)),c=parseOfficialCoreContext(context),cmd=equipmentCommandSchema.parse(commandInput),view=await calculateOfficialCore(d,c);
   if(cmd.slot!=='carried'&&!view.inventory.some(r=>r.key===cmd.key&&r.itemId&&r.recordKind==='item'&&r.quantity!==null&&r.quantity>=cmd.instance))return fail('owned-item-required');
   const before=view.equipment.loadout;
+  d.finalization=invalidateFinalization(d.finalization);
   let after=before.filter(p=>p.key!==cmd.key||p.instance!==cmd.instance);
   if(cmd.slot!=='carried'){
     const placement:EquipmentPlacement={key:cmd.key,instance:cmd.instance,slot:cmd.slot};
@@ -212,7 +218,7 @@ export async function configureOfficialEquipment(input:unknown,context:unknown,c
 export async function equipOfficialCore(input:unknown,context:unknown,key:string,equipped:boolean):Promise<OfficialCoreDraft> {
   const d=structuredClone(parseOfficialCoreDraft(input)),c=parseOfficialCoreContext(context),view=await calculateOfficialCore(d,c),owned=view.inventory.find(r=>r.key===key),item=c.itemDefinitions.find(i=>i.id===owned?.itemId);
   if(equipped&&view.equipment.loadout.some(p=>p.key===key))return d;
-  if(!equipped){saveLoadout(d,view.equipment.loadout,view.equipment.loadout.filter(p=>p.key!==key),'Guardar todas as unidades desta origem');await calculateOfficialCore(d,c);return d;}
+  if(!equipped){d.finalization=invalidateFinalization(d.finalization);saveLoadout(d,view.equipment.loadout,view.equipment.loadout.filter(p=>p.key!==key),'Guardar todas as unidades desta origem');await calculateOfficialCore(d,c);return d;}
   const occupied=view.equipment.loadout.some(p=>p.slot==='main'||p.slot==='both');
   return configureOfficialEquipment(d,c,{key,slot:item?.armor?'worn':item?.weapon?.hands==='two'?'both':item?.weapon?.hands==='off'&&occupied?'off':'main'});
 }
@@ -223,6 +229,7 @@ export async function useOfficialEquipment(input:unknown,context:unknown,command
     z.object({type:z.literal('end-round')}).strict(),
   ]).parse(commandInput);
   const d=structuredClone(parseOfficialCoreDraft(input)),c=parseOfficialCoreContext(context),view=await calculateOfficialCore(d,c);
+  d.finalization=invalidateFinalization(d.finalization);
   if(cmd.type==='mounted')d.equipmentUseContext.mounted=cmd.value;
   else if(cmd.type==='end-round')d.equipmentUseContext={...d.equipmentUseContext,dualAttack:'none',suppressedDefensive:[]};
   else {
@@ -235,7 +242,8 @@ export async function useOfficialEquipment(input:unknown,context:unknown,command
 }
 export async function calculateOfficialCore(input:unknown,context:unknown) {
   const d=parseOfficialCoreDraft(input),c=parseOfficialCoreContext(context);
-  if(await consumableDigest(c)!==d.contextSha256)return fail('source-context-changed');
+  const contextSha256=await consumableDigest(c);
+  if(contextSha256!==d.contextSha256)return fail('source-context-changed');
   fillRolls(d,c,false);
   let base=await calculateHumanL0Character(d.character,c.mechanicalPacks);
   if(!base.baseResolved||!base.stats)return fail('mechanical-context-unresolved');
@@ -254,7 +262,7 @@ export async function calculateOfficialCore(input:unknown,context:unknown) {
       for(const ability of grant.abilities)language[ability]=true;}
   }
   const professions=professionRows(d,c).map(({key,option})=>{
-    const specialization=d.choices[`${key}/specialization`]??'';
+    const specialization=(d.choices[`${key}/specialization`]??'').trim();
     if(option.specialization!=='none') {
       if(!specialization)pending.push({key:`${key}/specialization`,label:'Escolher especialização',...(option.subchoices.length?{options:option.subchoices.map(s=>({id:s.id,label:s.label}))}:{})});
       else if(option.subchoices.length&&!option.subchoices.some(s=>s.id===specialization))return fail('profession-specialization-invalid');
@@ -311,7 +319,11 @@ export async function calculateOfficialCore(input:unknown,context:unknown) {
   if(!base.baseResolved)pending.push({key:'equipment/conflict',label:'Resolver conflito de equipamento'});
   const narrative=d.config.optionalTables?['core:human-age','core:human-build','core:human-personality','core:human-appearance','core:human-religion'].map(id=>({tableId:id,text:selectedRow(d,c,id,`optional/${id}`).text})):[];
   if(d.config.optionalTables)pending.push({key:'optional/build',label:'Registrar dimensões de Build e conferir a descrição escolhida'});
-  return {officialGenerationEnabled:true as const,dataMode:'official-local' as const,scope:'human-core-l0' as const,fullyResolved:false as const,exportEnabled:false as const,
+  const {finalization:_receipt,...savedState}=d;
+  if(d.config.benefit==='speak-language'&&d.config.languageId===c.mechanicalPacks[0].entities[0].mechanics.baseLanguage.languageId)pending.push({key:'core-benefit/language',label:'O benefício humano exige um idioma diferente do idioma-base.'});
+  const optionalOmissions=[...(!d.config.optionalTables?[{key:'core-optional',label:'Tabelas narrativas Core opcionais não escolhidas.'}]:[]),...(!background?[{key:'background',label:'Background opcional não escolhido.'}]:[])];
+  const completion=await evaluateCharacterCompletion({contextSha256,savedContextSha256:d.contextSha256,sourceReady:true,mechanicalReady:base.baseResolved&&!!base.stats,materialReady:material.materialComplete&&material.cashComplete,state:savedState,pending,receipt:d.finalization,optionalOmissions});
+  return {officialGenerationEnabled:true as const,dataMode:'official-local' as const,scope:'human-core-l0' as const,completion,fullyResolved:completion.fullyResolved,exportEnabled:false as const,
     base,professions,languages:[...languages.values()],wealth:wealth.text,inventory,moneyBits:material.knownCashBits,interestingThing:thing,
     interestingApplication:{...interestingApplication,contextSha256:d.contextSha256},narrative,pending,equipmentNotes,equipment,
     background:background?{rowId:background.row.id,text:background.row.text,sourceId:background.plan.sourceId,evidenceIds:background.plan.evidenceIds,contextSha256:d.contextSha256,
@@ -320,4 +332,10 @@ export async function calculateOfficialCore(input:unknown,context:unknown) {
         ...(background.plan.detail?[{type:'background-narrative-quantity' as const,target:background.plan.detail.key,amount:backgroundResult!.detail}]:[]),
         ...(background.plan.programId?[{type:'background-material-program' as const,programId:background.plan.programId}]:[]),
         ...(background.plan.templateId?[{type:'background-language-template' as const,templateId:background.plan.templateId}]:[])]}:null};
+}
+
+/** Finalization is an explicit, source-bound action and never draws missing dice. */
+export async function finalizeOfficialCore(input:unknown,context:unknown):Promise<OfficialCoreDraft>{
+  const d=structuredClone(parseOfficialCoreDraft(input)),view=await calculateOfficialCore(d,context);
+  d.finalization=receiptForCompletion(view.completion);return parseOfficialCoreDraft(d);
 }

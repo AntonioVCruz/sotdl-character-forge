@@ -44,7 +44,7 @@ export class ProcedureGraph {
           }
         }else if(n.kind==='choice'){
           const eligible=n.options?.some(o=>o.id===result.value&&o.eligible!==false);
-          if(!eligible&&!(n.freeText&&typeof result.value==='string'&&result.value.startsWith('custom:')&&result.value.length>7))throw new Error('choice ineligible');n.value=result.value;
+          if(!eligible&&!(n.freeText&&typeof result.value==='string'&&result.value.startsWith('custom:')&&result.value.slice(7).trim().length>0))throw new Error('choice ineligible');n.value=result.value;
         }else if(n.kind==='number'){
           if(typeof result.value!=='number'||!Number.isFinite(result.value)||result.value<(n.minimum??0)||n.maximum!==null&&n.maximum!==undefined&&result.value>n.maximum)throw new Error('number out of range');n.value=result.value;
         }else throw new Error('recorded dice required');

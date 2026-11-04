@@ -1,27 +1,30 @@
 import {useEffect,useRef,useState} from 'react';
 import {InterestingThingPanel} from './InterestingThingPanel';
 import {OfficialEquipmentPanel} from './OfficialEquipmentPanel';
-import {calculateOfficialCore,chooseOfficialCore,equipOfficialCore,generateOfficialCore,selectOfficialBackground,parseOfficialCoreContext,parseOfficialCoreDraft,type OfficialCoreContext,type OfficialCoreDraft} from '../../packages/character-generator/official-core';
+import {CharacterCompletionPanel} from './CharacterCompletionPanel';
+import {calculateOfficialCore,chooseOfficialCore,finalizeOfficialCore,generateOfficialCore,selectOfficialBackground,parseOfficialCoreContext,parseOfficialCoreDraft,type OfficialCoreContext,type OfficialCoreDraft} from '../../packages/character-generator/official-core';
 const STORAGE='sotdl-official-core-draft@1';
 type View=Awaited<ReturnType<typeof calculateOfficialCore>>;
 export function OfficialCoreGenerator() {
   const [context,setContext]=useState<OfficialCoreContext>(),[draft,setDraft]=useState<OfficialCoreDraft>(),[view,setView]=useState<View>();
+  const [suspended,setSuspended]=useState(false);
   const [error,setError]=useState(''),[loading,setLoading]=useState(true),[busy,setBusy]=useState(false),lock=useRef(false);
   const [name,setName]=useState(''),[seed,setSeed]=useState(''),[increase,setIncrease]=useState<'strength'|'agility'|'intellect'|'will'>('strength');
   const [benefit,setBenefit]=useState<'random-profession'|'speak-language'>('random-profession'),[languageId,setLanguage]=useState(''),[variant,setVariant]=useState(''),[optional,setOptional]=useState(false);
   useEffect(()=>{let live=true;(async()=>{
-    try {
+    let existingSave:string|null=null;try {
+      existingSave=localStorage.getItem(STORAGE);
       const r=await fetch('/api/official/core',{cache:'no-store'});
       if(!r.ok||!r.headers.get('content-type')?.includes('application/json'))throw new Error('Fontes reais indisponíveis ou fora da revisão. Execute os checks locais de curadoria.');
       const c=parseOfficialCoreContext(await r.json());if(!live)return;setContext(c);
-      const text=localStorage.getItem(STORAGE);
+      const text=existingSave;
       if(text){if(text.length>1_000_000)throw new Error('Rascunho salvo excede o limite; os dados foram preservados.');const d=parseOfficialCoreDraft(JSON.parse(text)),v=await calculateOfficialCore(d,c);
         if(live){setDraft(d);setView(v);setName(d.config.name);setSeed(d.config.seed);setIncrease(d.config.increase);setBenefit(d.config.benefit);setLanguage(d.config.languageId);setVariant(d.config.interestingVariant);setOptional(d.config.optionalTables);}}
-    }catch(e){if(live)setError(e instanceof Error?e.message:'Não foi possível abrir as fontes locais.');}finally{if(live)setLoading(false);}
+    }catch(e){if(live){setError(e instanceof Error?e.message:'Não foi possível abrir as fontes locais.');setSuspended(!!existingSave);}}finally{if(live)setLoading(false);}
   })();return()=>{live=false;};},[]);
   async function change(action:()=>Promise<OfficialCoreDraft>) {
     if(lock.current||!context)return;lock.current=true;setBusy(true);setError('');
-    try{const d=await action(),v=await calculateOfficialCore(d,context);localStorage.setItem(STORAGE,JSON.stringify(d));setDraft(d);setView(v);}
+    try{const d=await action(),v=await calculateOfficialCore(d,context);localStorage.setItem(STORAGE,JSON.stringify(d));setDraft(d);setView(v);setSuspended(false);}
     catch(e){setError(e instanceof Error?e.message:'Operação não concluída.');}finally{lock.current=false;setBusy(false);}
   }
   const choose=(key:string,value:string)=>{if(draft&&context)void change(()=>chooseOfficialCore(draft,context,key,value));};
@@ -29,6 +32,7 @@ export function OfficialCoreGenerator() {
     <header><p className="eyebrow">SHADOW OF THE DEMON LORD · CHARACTER FORGE</p><h1>Forja de personagens</h1><h2>Humano · Livro básico · Nível 0</h2><p>Geração local com regras publicadas e fontes verificadas.</p></header>
     <p role="status" aria-live="polite">{loading?'Conferindo fontes reais locais…':busy?'Aplicando e salvando…':context?'Fontes reais carregadas. Geração oficial local habilitada.':'Aguardando fontes reais verificadas.'}</p>
     {error&&<p role="alert" className="error">{error}</p>}
+    {suspended&&<p>Rascunho suspenso. O contexto ou o conteúdo salvo exige revisão; os dados anteriores foram preservados e a finalização está bloqueada.</p>}
     <form onSubmit={e=>{e.preventDefault();if(context&&variant==='core')void change(()=>generateOfficialCore(context,{name,seed,increase,benefit,languageId,interestingVariant:'core',optionalTables:optional}));}}>
       <fieldset disabled={!context||busy||loading}><legend>Personagem Core</legend>
         <label>Nome<input value={name} maxLength={200} onChange={e=>setName(e.target.value)}/></label>
@@ -43,7 +47,8 @@ export function OfficialCoreGenerator() {
       </fieldset>
     </form>
     {draft&&view&&<section aria-label="Ficha Core" data-official="true">
-      <h2>{draft.config.name||'Personagem sem nome'}</h2><p className="notice">Rascunho com regras reais · {view.pending.length} pendência(s). A ficha ainda não está concluída.</p>
+      <h2>{draft.config.name||'Personagem sem nome'}</h2>
+      <CharacterCompletionPanel completion={view.completion} busy={busy} finalize={()=>void change(()=>finalizeOfficialCore(draft,context!))} target={key=>key.startsWith('interesting/')?'#official-interesting':key.startsWith('equipment/')||key==='mechanics'?'#official-equipment':view.pending.some(p=>p.key===key)?`#${encodeURIComponent(`core-pending-${key}`)}`:'#core-pending'}/>
       <h3>Atributos e características</h3>{view.base.stats?<dl>{Object.entries(view.base.stats).map(([key,value])=><div key={key}><dt>{key}</dt><dd>{value}</dd></div>)}</dl>:<p role="alert">Resolver conflito de equipamento para calcular.</p>}
       <h3>Estados iniciais</h3><dl>{Object.entries(view.base.states??{}).map(([key,value])=><div key={key}><dt>{key}</dt><dd>{value}</dd></div>)}</dl>
       <h3>Profissões</h3><ul>{view.professions.map(p=><li key={p.key}>{p.label}{p.specialization&&` · ${p.specialization}`}</li>)}</ul>
@@ -64,7 +69,7 @@ export function OfficialCoreGenerator() {
         {view.background.appearance&&<p>Marca física escolhida: {{finger:'Dedo perdido',teeth:'Dentes perdidos',ear:'Orelha perdida',scar:'Cicatriz'}[view.background.appearance]}</p>}
         <p>Fonte: {view.background.sourceId} · Resultado {view.background.rowId.split(':').at(-1)}</p></>}
       {!!view.narrative.length&&<><h3>Descrição opcional</h3>{view.narrative.map(n=><p key={n.tableId}>{n.text}</p>)}</>}
-      <h3>Pendências e escolhas</h3><ul>{view.pending.filter(p=>!p.key.startsWith('interesting/')||!p.options).map(p=><li key={p.key}>{p.label}
+      <h3 id="core-pending">Pendências e escolhas</h3><ul>{view.pending.filter(p=>!p.key.startsWith('interesting/')||!p.options).map(p=><li id={`core-pending-${p.key}`} key={p.key}>{p.label}
         {p.options?<select aria-label={p.label} value={draft.choices[p.key]??''} disabled={busy} onChange={e=>choose(p.key,e.target.value)}><option value="">Selecione</option>{p.options.map(o=><option key={o.id} value={o.id}>{o.label}</option>)}</select>
           :p.key.endsWith('/specialization')?<input aria-label={p.label} disabled={busy} defaultValue={draft.choices[p.key]??''} onBlur={e=>{if(e.target.value.trim())choose(p.key,e.target.value.trim());}}/>:null}</li>)}</ul>
       <details><summary>Sorteios registrados</summary><p>Seed: {draft.config.seed} · Algoritmo: {draft.prngVersion}</p><ul>{Object.entries(draft.rolls).map(([key,faces])=><li key={key}>{key}: {faces.join(', ')}</li>)}</ul></details>
