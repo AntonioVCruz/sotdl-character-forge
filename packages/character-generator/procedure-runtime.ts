@@ -140,7 +140,10 @@ export async function calculateProcedure(context:ProcedureContext,input:unknown)
     if(base.stats){
       equipment=composeCoreEquipment({owned:inventory.filter(i=>i.quantity!==null),definitions:context.itemDefinitions,loadout:state.equipmentLoadout,context:state.equipmentUseContext,rules:context.equipmentRules,actor:base.stats});
       if(equipment.resolved)base=await calculateHumanL0Character(character,packs,equipment.armor?[equipment.armor]:[],equipment.defenseBonus?[{origin:'creation-equipment',defenseDelta:equipment.defenseBonus,speedDelta:0}]:[]);
-      else for(const d of equipment.diagnostics)pending.push({key:`equipment/${d.code}`,code:d.code,label:d.label,scope:'creation',subject:graph.root});
+      else {
+        base={...base,stats:null,baseResolved:false,issues:[...base.issues,...equipment.diagnostics.map(d=>d.code)]};
+        for(const d of equipment.diagnostics)pending.push({key:`equipment/${d.code}`,code:d.code,label:d.label,scope:'creation',subject:graph.root});
+      }
     }
     if(base.states)for(const grant of graph.states.filter(s=>s.subject===graph.root))base.states[grant.target]+=grant.amount;
   }

@@ -1,17 +1,40 @@
 import {describe,it,expect,vi} from 'vitest';
-import fixture from '../curation/examples/human-l0-mechanics.synthetic.json';
-import {ProcedureContextSchema,defaultProcedureConfig} from '../packages/character-generator/procedure-model';
-import {createProcedureSession,performProcedureCommand,deriveProcedure,reopenProcedure,advanceProcedure} from '../packages/character-generator/procedure-runtime';
+import {defaultProcedureConfig,replayProcedureSession} from '../packages/character-generator/procedure-model';
+import {createProcedureSession,performProcedureCommand,deriveProcedure,reopenProcedure,advanceProcedure,calculateProcedure} from '../packages/character-generator/procedure-runtime';
 import * as random from '../packages/random-tables';
+import {inventedProcedureContext as context} from './helpers/procedure-context';
 
-// Invented dice and content. No licensed catalog is necessary for these history invariants.
-function context(){return ProcedureContextSchema.parse({contract:'sotdl.human-creation',contractVersion:'1.0.0',fictionalData:true,
-  policy:{enabled:true,authority:'fictional-test',deadParents:'independent-cause-per-parent',dimensions:'build-then-age-scale',lifeCount:'initial-age-roll',maxNodes:40,maxCycleSteps:2,maxRelativeDepth:0},
-  sources:{core:'fictional:core',onlyHuman:'fictional:expanded',oddities:'fictional:objects'},implementationSha256:'a'.repeat(64),mechanicalPacks:fixture.packs,
-  tables:[{id:'core:wealth',sourceId:'fictional:core',evidenceIds:['fictional:evidence'],kind:'random',activation:'invented',manualMode:'invented',dice:{count:2,sides:4},streams:[{id:'main',association:'verified-transcription',rows:[{id:'invented:low',min:2,max:5,text:'Invented low result',evidenceIds:['fictional:evidence']},{id:'invented:high',min:6,max:8,text:'Invented high result',evidenceIds:['fictional:evidence']}]}],lookupKeys:[],modifierPolicy:'none',application:'reference-only-manual-effects',automaticGeneration:false,reviewNotes:[]}],
-  lookups:[],professions:[],templates:[],programs:[],lifestylePrograms:[],professionPrograms:[],extraPrograms:[],languageOptions:[],thingTables:[],thingVariants:[],thingPlans:[],backgroundPlans:[],itemDefinitions:[],itemReferences:[],
-  equipmentRules:{contract:'sotdl.equipment-context',contractVersion:'1.0.0',sourceId:'fictional:core',defensiveStacking:'pending',stackingAuthority:'unresolved',shieldItemIds:[],dualAttack:{oneTargetBanes:0,twoTargetBanes:0},evidence:[{id:'fictional:evidence',sourceId:'fictional:core',path:'fictional/input',inputSha256:'b'.repeat(64),startLine:1,endLine:1,excerptSha256:'c'.repeat(64)}]},evidence:[],inputs:[]});}
+
 describe('creation commands with invented source data',()=>{
+  it('suspends conflicting equipment stats through replay and allows removing an unavailable origin',async()=>{
+    const c=context(),initial=await createProcedureSession(c,'equipment');
+    const before=await calculateProcedure(c,initial);
+    expect(before.base?.stats).not.toBeNull();
+    const equipped=performProcedureCommand(c,initial,{type:'equipment',loadout:[{key:'fictional:unavailable',instance:1,slot:'main'}]});
+    const conflict=await calculateProcedure(c,equipped);
+    expect(conflict.equipment?.resolved).toBe(false);
+    expect(conflict.base).toMatchObject({stats:null,baseResolved:false});
+    expect(conflict.pending.some(p=>p.code==='owned-item-required')).toBe(true);
+    const reopened=await reopenProcedure(c,JSON.parse(JSON.stringify(equipped)));
+    expect((await calculateProcedure(c,reopened.session)).base?.stats).toBeNull();
+    const stored=performProcedureCommand(c,reopened.session,{type:'equipment',loadout:[]});
+    expect((await calculateProcedure(c,stored)).base?.stats).toEqual(before.base?.stats);
+    expect(stored.events.slice(0,-1)).toEqual(equipped.events);
+  });
+  it('starts a new attempt without active equipment from the previous attempt and preserves history',async()=>{
+    const c=context(),initial=await createProcedureSession(c,'restart-equipment');
+    const equipped=performProcedureCommand(c,initial,{type:'equipment',loadout:[{key:'pc/0/invented-item',instance:1,slot:'main'}]});
+    const prior=equipped.events[0];
+    if(prior.type!=='equipment')throw new Error('Expected an equipment event');
+    prior.useContext={mounted:true,dualAttack:'one-target',suppressedDefensive:[{key:'pc/0/invented-item',instance:1,itemId:'fictional:item'}]};
+    const restarted={...equipped,events:[...equipped.events,{type:'restart',id:'creation-2',seq:2}]};
+    const {session,state}=replayProcedureSession(restarted);
+    expect(state.attempt).toBe(1);expect(state.equipmentLoadout).toEqual([]);
+    expect(state.equipmentUseContext).toEqual({mounted:false,dualAttack:'none',suppressedDefensive:[]});
+    expect(session.events[0]).toEqual(prior);
+    const restored=await reopenProcedure(c,JSON.parse(JSON.stringify(session)));
+    expect(restored.graph.root).toBe('pc/1');expect(restored.graph.state.equipmentLoadout).toEqual([]);
+  });
   it('records exact source faces, rejects invalid faces and respects locks',async()=>{
     const c=context();let s=await createProcedureSession(c,'test');
     expect(()=>performProcedureCommand(c,s,{type:'record-faces',key:'pc/0/core/wealth',faces:[5,1]})).toThrow();

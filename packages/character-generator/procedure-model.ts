@@ -91,7 +91,7 @@ export function replayProcedureSession(input:unknown):{session:ProcedureSession;
     if(event.type==='result')state.latest.set(event.key,event);
     if(event.type==='lock')state.locks.set(event.key,event.locked);
     if(event.type==='config')state.config=event.config;
-    if(event.type==='restart')state.attempt++;
+    if(event.type==='restart'){state.attempt++;state.equipmentLoadout=[];state.equipmentUseContext=emptyEquipmentContext();}
     if(event.type==='equipment'){state.equipmentLoadout=event.loadout;state.equipmentUseContext=event.useContext;}
   }
   return {session,state};
