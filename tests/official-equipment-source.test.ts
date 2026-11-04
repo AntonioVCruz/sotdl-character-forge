@@ -1,4 +1,5 @@
 import {existsSync} from 'node:fs';
+import {resolve} from 'node:path';
 import {beforeAll,describe,it,expect,vi} from 'vitest';
 import {buildOfficialLocalContext} from '../tools/curation/official-local-context';
 import {generateOfficialCore,calculateOfficialCore,configureOfficialEquipment,equipOfficialCore,useOfficialEquipment,selectOfficialThing,adjudicateOfficialThing,chooseOfficialCore,parseOfficialCoreDraft,type OfficialCoreContext,type OfficialCoreDraft} from '../packages/character-generator/official-core';
@@ -6,11 +7,12 @@ import {composeCoreEquipment,emptyEquipmentContext} from '../packages/character-
 import {consumableDigest} from '../packages/curation/human-l0-consumable-bundle';
 import * as random from '../packages/random-tables';
 
-const available=existsSync('curation/pilot/items.json')&&existsSync('curation/pilot/table-closure.json')&&existsSync('rules/SotDL_Compendio_Regras_Equipamentos_Monstros_v4_All_Project_Sources.md');
+const sourceRoot=process.env.SOTDL_LOCAL_SOURCE_ROOT??process.cwd();
+const available=['curation/pilot/items.json','curation/pilot/table-closure.json','rules/SotDL_Compendio_Regras_Equipamentos_Monstros_v4_All_Project_Sources.md'].every(p=>existsSync(resolve(sourceRoot,p)));
 describe.skipIf(!available)('official equipment source acceptance',()=>{
   let context:OfficialCoreContext,original:OfficialCoreDraft;
   beforeAll(async()=>{
-    context=await buildOfficialLocalContext();
+    context=await buildOfficialLocalContext(sourceRoot);
     original=await generateOfficialCore(context,{name:'Teste local',seed:'equipment-source-test',increase:'strength',benefit:'random-profession',languageId:'',interestingVariant:'core',optionalTables:false});
   },30000);
   it('checks every selected exact armor/weapon profile with its source requirements and legal hand',()=>{

@@ -1,13 +1,17 @@
 import {existsSync} from 'node:fs';
+import {resolve} from 'node:path';
 import {beforeAll,describe,it,expect,vi} from 'vitest';
 import {buildOfficialLocalContext} from '../tools/curation/official-local-context';
 import {generateOfficialCore,calculateOfficialCore,chooseOfficialCore,equipOfficialCore,selectOfficialBackground,parseOfficialCoreDraft,type OfficialCoreContext} from '../packages/character-generator/official-core';
 import * as random from '../packages/random-tables';
-const available=existsSync('curation/pilot/table-closure.json')&&existsSync('rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md');
+import {previewArmorDefinition} from '../packages/curation/pilot-item-model';
+import {consumableDigest} from '../packages/curation/human-l0-consumable-bundle';
+const sourceRoot=process.env.SOTDL_LOCAL_SOURCE_ROOT??process.cwd();
+const available=existsSync(resolve(sourceRoot,'curation/pilot/table-closure.json'))&&existsSync(resolve(sourceRoot,'rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md'));
 const config={name:'Personagem de teste',seed:'official-core-test',increase:'strength',benefit:'random-profession',languageId:'',interestingVariant:'core',optionalTables:false} as const;
 describe.skipIf(!available)('official Core generation from verified local sources',()=>{
   let context:OfficialCoreContext;
-  beforeAll(async()=>{context=await buildOfficialLocalContext();},30000);
+  beforeAll(async()=>{context=await buildOfficialLocalContext(sourceRoot);},30000);
   it('covers every verified Background result, replaces consequences and reopens without drawing',async()=>{
     const original=await generateOfficialCore(context,config),plain=await calculateOfficialCore(original,context);
     expect(plain.background).toBeNull();expect(context.backgroundPlans).toHaveLength(20);
@@ -85,11 +89,27 @@ describe.skipIf(!available)('official Core generation from verified local source
     const definition=context.itemDefinitions.find(i=>i.id===owned!.itemId)!;
     const baseDefense=definition.armor?(definition.armor.defense.base==='agility'?v.base.stats!.agility:0)+definition.armor.defense.value:v.base.stats!.defense+definition.weapon!.defensive;
     expect(wearing.base.stats!.defense).toBe(Math.min(baseDefense,context.mechanicalPacks[0].entities[0].mechanics.finalLimits.defense.value));
+    const speedDelta=definition.armor?previewArmorDefinition(definition,{agility:v.base.stats!.agility,strength:v.base.stats!.strength,worn:true}).speedPenalty:0;
+    expect(wearing.base.stats!.speed).toBe(v.base.stats!.speed+speedDelta);
     expect(wearing.moneyBits).toBe(v.moneyBits);expect(equipped.rolls).toEqual(d.rolls);
     const stored=await equipOfficialCore(equipped,context,owned!.key,false);
     expect((await calculateOfficialCore(stored,context)).base.stats).toEqual(v.base.stats);
     await expect(equipOfficialCore(d,context,'not-owned',true)).rejects.toThrow('owned-item-required');
     expect(v.pending.some(p=>p.key.startsWith('interesting/application/'))).toBe(false);
+  });
+  it('keeps a negative armor penalty negative through equip, replay and removal',async()=>{
+    let d=await generateOfficialCore(context,config);
+    for(let i=0;i<12;i++){const p=(await calculateOfficialCore(d,context)).pending.find(p=>p.options?.length);if(!p)break;d=await chooseOfficialCore(d,context,p.key,p.options![0].id);}
+    const owned=(await calculateOfficialCore(d,context)).inventory.find(i=>i.itemId&&i.quantity&&i.recordKind==='item')!;
+    // Invented heavy profile isolates the sign regression from whichever kit the seed selected.
+    const c=structuredClone(context),item=c.itemDefinitions.find(i=>i.id===owned.itemId)!;
+    item.armor={classification:'heavy',defense:{base:'fixed',value:14},requiredStrength:100};item.weapon=null;item.category='armor';
+    d.contextSha256=await consumableDigest(c);
+    const before=await calculateOfficialCore(d,c),equipped=await equipOfficialCore(d,c,owned.key,true),after=await calculateOfficialCore(equipped,c);
+    expect(after.base.stats!.speed).toBe(before.base.stats!.speed-4);
+    expect((await calculateOfficialCore(parseOfficialCoreDraft(JSON.parse(JSON.stringify(equipped))),c)).base.stats).toEqual(after.base.stats);
+    expect((await calculateOfficialCore(await equipOfficialCore(equipped,c,owned.key,false),c)).base.stats).toEqual(before.base.stats);
+    expect(equipped.rolls).toEqual(d.rolls);
   });
   it('refuses stale sources, fictional packs and an implicit Interesting Things fallback',async()=>{
     const d=await generateOfficialCore(context,config),changed=structuredClone(context);changed.core.tables[0].columns[0].rows[0].text='Changed local source';
