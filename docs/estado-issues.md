@@ -37,6 +37,8 @@ PRs #8 (CI), #11 (stubs), #12 (política), #13 (inventário), #14 (ErrorBoundary
 
 ## Próximas entregas
 
+Atualização local da #53 em 2026-11-03: procedimentos Core/Human Development implementados e verificados, com Only Human/Oddities ativados nos recortes locais autorizados e pendências explícitas. [Entrega, decisões e validação](entrega-procedimentos-issue53.md). Publicação e integração pendentes; não encerra as frentes #34–#37 ou o gate de personagem concluído da #54.
+
 1. Prosseguir com L0→1 na #21. A fatia S1 das #9/#10 recebeu contrato runtime, correções e [aceite identificado](aceite-s1-issues9-10.md); os dois P2 da revisão anterior permanecem cobertos.
 2. Executar as frentes Human L0 transferidas: #34 (dados/efeitos), #35 (procedimentos), #36 (interface real) e #37 (revisão/freeze/habilitação). A ordem de aceite é essa; planejamento e testes com fixtures podem avançar em paralelo. A #7 conserva o escopo original aceito, sem carregar a execução dessas frentes.
 3. Concluir o tratamento residual da #16: GitHub Support e destinação dos backups. A CI remota e a limpeza local passaram; isso não certifica expurgo de todas as cópias.

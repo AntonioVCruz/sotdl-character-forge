@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-03",
+  "authority": "explicit-user-request",
+  "scope": "human-l0-procedures",
+  "enabled": true,
+  "sources": ["sotdl:shadow-of-the-demon-lord-core", "sotdl:only-human", "sotdl:oddities-artifacts-and-esoterica"],
+  "realDataRequired": true,
+  "distribution": "local",
+  "exportEnabled": false,
+  "deadParents": "independent-cause-per-parent",
+  "dimensions": "build-then-age-scale",
+  "lifeCount": "initial-age-roll",
+  "maxNodes": 300,
+  "maxCycleSteps": 16,
+  "maxRelativeDepth": 3
+}
