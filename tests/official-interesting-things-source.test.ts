@@ -1,4 +1,5 @@
 import {existsSync,readFileSync} from 'node:fs';
+import {resolve} from 'node:path';
 import {beforeAll,describe,it,expect,vi} from 'vitest';
 import {buildOfficialLocalContext} from '../tools/curation/official-local-context';
 import {generateOfficialCore,calculateOfficialCore,chooseOfficialCore,selectOfficialThing,adjudicateOfficialThing,equipOfficialCore,parseOfficialCoreDraft,parseOfficialCoreContext,type OfficialCoreContext,type OfficialCoreDraft} from '../packages/character-generator/official-core';
@@ -7,13 +8,14 @@ import {consumableDigest} from '../packages/curation/human-l0-consumable-bundle'
 import {calculateHumanL0Character} from '../packages/character-generator/human-l0';
 import * as random from '../packages/random-tables';
 
-const available=existsSync('curation/pilot/interesting-things.json')&&existsSync('curation/pilot/items.json')&&existsSync('curation/pilot/table-closure.json')&&existsSync('rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md');
+const sourceRoot=process.env.SOTDL_LOCAL_SOURCE_ROOT??process.cwd();
+const available=['curation/pilot/interesting-things.json','curation/pilot/items.json','curation/pilot/table-closure.json','rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md'].every(p=>existsSync(resolve(sourceRoot,p)));
 // Parameter names contain identities only. Licensed source text stays local and is not emitted in assertions.
-const ids:string[]=available?JSON.parse(readFileSync('curation/pilot/interesting-things.json','utf8')).catalog.tables.filter((t:{id:string})=>t.id.startsWith('core:')).flatMap((t:{outcomes:{id:string}[]})=>t.outcomes.map(o=>o.id)):[];
+const ids:string[]=available?JSON.parse(readFileSync(resolve(sourceRoot,'curation/pilot/interesting-things.json'),'utf8')).catalog.tables.filter((t:{id:string})=>t.id.startsWith('core:')).flatMap((t:{outcomes:{id:string}[]})=>t.outcomes.map(o=>o.id)):[];
 describe.skipIf(!available)('Interesting Things Core local source acceptance',()=>{
   let context:OfficialCoreContext,original:OfficialCoreDraft;
   beforeAll(async()=>{
-    context=await buildOfficialLocalContext();
+    context=await buildOfficialLocalContext(sourceRoot);
     original=await generateOfficialCore(context,{name:'Teste local',seed:'interesting-application-test',increase:'strength',benefit:'random-profession',languageId:'',interestingVariant:'core',optionalTables:false});
   },30000);
   it.each(ids)('applies and replays source result %s with only active branches',async id=>{
