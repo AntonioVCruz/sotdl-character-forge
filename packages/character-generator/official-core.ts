@@ -200,7 +200,7 @@ export async function calculateOfficialCore(input:unknown,context:unknown) {
     const owned=inventory.find(r=>r.key===key);if(!owned?.itemId)return fail('equipped-item-unavailable');
     const item=c.itemDefinitions.find(i=>i.id===owned.itemId)!;
     if(item.armor){const r=previewArmorDefinition(item,{agility:base.stats.agility,strength:base.stats.strength,worn:true});
-      armors.push({...item.armor.defense,origin:key,speedDelta:-r.speedPenalty});
+      armors.push({...item.armor.defense,origin:key,speedDelta:r.speedPenalty});
       if(r.strengthAgilityBanes||r.swimArmorBanes)equipmentNotes.push(`${item.name}: ${r.strengthAgilityBanes} bane(s) de Strength/Agility; ${r.swimArmorBanes} ao nadar.`);
     } else if(item.weapon){const r=previewWeaponDefinition(item,{strength:base.stats.strength,agility:base.stats.agility,wielded:true});modifiers.push({origin:key,defenseDelta:r.defenseBonus,speedDelta:0});if(r.attackBanes)equipmentNotes.push(`${item.name}: ${r.attackBanes} bane(s) de ataque.`);}
     else pending.push({key:`equip/${key}`,label:'Efeito de uso sem handler; nenhum bônus inventado'});
