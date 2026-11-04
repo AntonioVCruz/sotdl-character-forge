@@ -1,0 +1,7 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-03",
+  "scope": "human-core-l0-equipment",
+  "defensiveStacking": "highest",
+  "authority": "explicit-user-request"
+}

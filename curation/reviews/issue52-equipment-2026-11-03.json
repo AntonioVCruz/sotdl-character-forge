@@ -1,0 +1,123 @@
+{
+    "schemaVersion":  1,
+    "date":  "2026-11-03",
+    "reviewer":  "Codex",
+    "scope":  "human-core-l0-equipment-context",
+    "sourceStatus":  "needs-review",
+    "pdfInspected":  false,
+    "distributionCertified":  false,
+    "reviewedPublishedProfiles":  25,
+    "profileIds":  [
+                       "pilot-item:core:basic-clothing",
+                       "pilot-item:core:courtier-clothing",
+                       "pilot-item:core:noble-clothing",
+                       "pilot-item:core:uniform",
+                       "pilot-item:core:clothing",
+                       "pilot-item:core:soft-leather",
+                       "pilot-item:core:hard-leather",
+                       "pilot-item:core:brigandine",
+                       "pilot-item:core:mail",
+                       "pilot-item:core:scale",
+                       "pilot-item:core:plate-and-mail",
+                       "pilot-item:core:full-plate",
+                       "pilot-item:core:axe",
+                       "pilot-item:core:club",
+                       "pilot-item:core:dagger",
+                       "pilot-item:core:basic-spear",
+                       "pilot-item:core:staff",
+                       "pilot-item:core:bow",
+                       "pilot-item:core:sling",
+                       "pilot-item:core:small-shield",
+                       "pilot-item:core:large-shield",
+                       "pilot-item:core:military-sword-pick",
+                       "pilot-item:core:mace",
+                       "pilot-item:core:military-spear",
+                       "pilot-item:core:swift-small-sword"
+                   ],
+    "evidence":  [
+                     {
+                         "id":  "item-definition:rule:armor",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "rules/SotDL_Compendio_Regras_Equipamentos_Monstros_v4_All_Project_Sources.md",
+                         "inputSha256":  "af5b377d003c96910c5c7d4c4909a66d381513cbda93de22b5d83a6ca5474ece",
+                         "startLine":  2982,
+                         "endLine":  3004,
+                         "excerptSha256":  "e25574a11e49e11a6a4967f662adcd69906b1a3eae2eb00e6acc28f0d86906f7"
+                     },
+                     {
+                         "id":  "item-definition:rule:armor-table",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "rules/SotDL_Compendio_Regras_Equipamentos_Monstros_v4_All_Project_Sources.md",
+                         "inputSha256":  "af5b377d003c96910c5c7d4c4909a66d381513cbda93de22b5d83a6ca5474ece",
+                         "startLine":  3059,
+                         "endLine":  3072,
+                         "excerptSha256":  "3547009bde2bef314b38f77531bf95f5cc98eb617635a8159c200e909ef022c1"
+                     },
+                     {
+                         "id":  "item-definition:rule:weapon-table",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "rules/SotDL_Compendio_Regras_Equipamentos_Monstros_v4_All_Project_Sources.md",
+                         "inputSha256":  "af5b377d003c96910c5c7d4c4909a66d381513cbda93de22b5d83a6ca5474ece",
+                         "startLine":  3172,
+                         "endLine":  3220,
+                         "excerptSha256":  "b4d0a42a0ee8985d3a5e6e1729add72456cd561dadfa98d316b25c5a2429e6f2"
+                     },
+                     {
+                         "id":  "item-definition:rule:weapon-requirements",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "rules/SotDL_Compendio_Regras_Equipamentos_Monstros_v4_All_Project_Sources.md",
+                         "inputSha256":  "af5b377d003c96910c5c7d4c4909a66d381513cbda93de22b5d83a6ca5474ece",
+                         "startLine":  3079,
+                         "endLine":  3106,
+                         "excerptSha256":  "7a8ddfe5380ab11420684e7c30bcde5b7a2a75cc8fbdbe9fb97a0341d7d109b2"
+                     },
+                     {
+                         "id":  "item-definition:rule:weapon-properties",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "rules/SotDL_Compendio_Regras_Equipamentos_Monstros_v4_All_Project_Sources.md",
+                         "inputSha256":  "af5b377d003c96910c5c7d4c4909a66d381513cbda93de22b5d83a6ca5474ece",
+                         "startLine":  3107,
+                         "endLine":  3128,
+                         "excerptSha256":  "11ca0fe9718abd35acd6f85525ca1b38f38df3d6aa7a49950b3040a074862847"
+                     },
+                     {
+                         "id":  "core-equipment:dual-attack",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "rules/SotDL_Compendio_Regras_Equipamentos_Monstros_v4_All_Project_Sources.md",
+                         "inputSha256":  "af5b377d003c96910c5c7d4c4909a66d381513cbda93de22b5d83a6ca5474ece",
+                         "startLine":  2697,
+                         "endLine":  2712,
+                         "excerptSha256":  "9c86d3cee07c9263fcbe7d4b124e49cb2816ccd44efd3e642a6e08f405c4046f"
+                     }
+                 ],
+    "policies":  [
+                     {
+                         "authority":  "explicit-user-request",
+                         "path":  "curation/equipment-local-policy.json",
+                         "sha256":  "99f9c061571d1b3144a8e7b57d31776fc96169fe38ab0cfe82ac73678b5c2098"
+                     },
+                     {
+                         "authority":  "explicit-user-request",
+                         "path":  "curation/interesting-things-local-policy.json",
+                         "sha256":  "b6153720a3afff3cd3321005509875724c9131d3bf036c78c1a5c38c5e00a5ee"
+                     }
+                 ],
+    "supported":  [
+                      "Human Size 0.5 and 1",
+                      "Neutral clothing with one defensive armor",
+                      "Main/off/both hand placement with physical copies",
+                      "Armor and weapon requirements with contextual banes",
+                      "Highest active shield bonus under user interpretation",
+                      "Explicit shield suppression for two-weapon use until recorded round end",
+                      "Source-declared mounted hand exception"
+                  ],
+    "deferred":  [
+                     "Other equipment sizes",
+                     "Full attack and damage resolution",
+                     "Ammunition and reload consumption",
+                     "Misfire and special material resolution",
+                     "Purchases and carrying capacity",
+                     "Donning time and turn scheduling",
+                     "Exports and distribution approval"
+                 ]
+}

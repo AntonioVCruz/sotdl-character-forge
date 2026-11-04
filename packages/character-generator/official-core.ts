@@ -1,25 +1,27 @@
 import {z} from 'zod';
 import {parseCoreLocalDocument,type CoreLocalDocument} from '../curation/human-l0-core-local';
 import {parseHumanL0MechanicalPacks,type HumanL0MechanicalPack} from '../curation/human-l0-mechanics';
-import {PilotItemSchema,previewArmorDefinition,previewWeaponDefinition} from '../curation/pilot-item-model';
+import {PilotItemSchema} from '../curation/pilot-item-model';
 import {previewStartingGrants,type GrantNode} from '../curation/starting-equipment-model';
 import {createSubstream,PRNG_VERSION} from '../random-tables';
 import {consumableDigest} from '../curation/human-l0-consumable-bundle';
 import {newHumanL0Character,parseHumanL0Character,calculateHumanL0Character,type HumanL0Character} from './human-l0';
 import {BackgroundPlanSchema,backgroundRolls,backgroundValues,type BackgroundPlan} from './core-background';
 import {ThingApplicationPlanSchema,ThingAdjudicationSchema,applyInterestingThing,thingChoiceKey,thingRollKey,type ThingApplicationPlan} from './core-interesting-things';
+import {EquipmentRulesSchema,EquipmentPlacementSchema,EquipmentUseContextSchema,emptyEquipmentContext,legacyEquipmentLoadout,composeCoreEquipment,placementsConflict,isNeutralClothing,type EquipmentRules,type EquipmentPlacement} from './core-equipment';
 
 const CORE='sotdl:shadow-of-the-demon-lord-core';
 const fail=(code:string):never=>{throw new Error(`Official Core: ${code}.`);};
 export type OfficialCoreContext={schemaVersion:1;fictionalData:false;scope:'human-core-l0';officialGenerationEnabled:true;exportEnabled:false;
-  implementationSha256:string;core:CoreLocalDocument;backgroundPlans:BackgroundPlan[];interestingPlans:ThingApplicationPlan[];mechanicalPacks:HumanL0MechanicalPack[];itemDefinitions:z.infer<typeof PilotItemSchema>[]};
+  implementationSha256:string;core:CoreLocalDocument;equipmentRules:EquipmentRules;backgroundPlans:BackgroundPlan[];interestingPlans:ThingApplicationPlan[];mechanicalPacks:HumanL0MechanicalPack[];itemDefinitions:z.infer<typeof PilotItemSchema>[]};
 /** This activation is local and scoped; it does not reclassify needs-review sources as curated. */
 export function parseOfficialCoreContext(input:unknown):OfficialCoreContext {
-  const envelope=z.object({schemaVersion:z.literal(1),fictionalData:z.literal(false),scope:z.literal('human-core-l0'),officialGenerationEnabled:z.literal(true),exportEnabled:z.literal(false),implementationSha256:z.string().regex(/^[a-f0-9]{64}$/),core:z.unknown(),backgroundPlans:z.array(BackgroundPlanSchema),interestingPlans:z.array(ThingApplicationPlanSchema),mechanicalPacks:z.array(z.unknown()),itemDefinitions:z.array(PilotItemSchema)}).strict().safeParse(input);
+  const envelope=z.object({schemaVersion:z.literal(1),fictionalData:z.literal(false),scope:z.literal('human-core-l0'),officialGenerationEnabled:z.literal(true),exportEnabled:z.literal(false),implementationSha256:z.string().regex(/^[a-f0-9]{64}$/),core:z.unknown(),equipmentRules:EquipmentRulesSchema,backgroundPlans:z.array(BackgroundPlanSchema),interestingPlans:z.array(ThingApplicationPlanSchema),mechanicalPacks:z.array(z.unknown()),itemDefinitions:z.array(PilotItemSchema)}).strict().safeParse(input);
   if(!envelope.success)return fail('real-local-context-required');
   const core=parseCoreLocalDocument(envelope.data.core),packs=parseHumanL0MechanicalPacks(envelope.data.mechanicalPacks);
   if(core.sourceId!==CORE||packs.length!==1||packs[0].fictionalData||packs[0].source.id!==CORE||packs[0].entities[0].mechanics.variant!=='core')return fail('core-real-sources-required');
   if(envelope.data.itemDefinitions.some(i=>i.sourceId!==CORE))return fail('item-source-mismatch');
+  if(new Set(envelope.data.itemDefinitions.map(i=>i.id)).size!==envelope.data.itemDefinitions.length||envelope.data.equipmentRules.sourceId!==CORE||envelope.data.equipmentRules.evidence.some(e=>e.sourceId!==CORE)||envelope.data.equipmentRules.shieldItemIds.some(id=>!envelope.data.itemDefinitions.some(i=>i.id===id&&i.weapon)))return fail('equipment-rule-context-invalid');
   const rows=core.tables.find(t=>t.id==='core:human-background')?.columns[0].rows??[];
   if(envelope.data.backgroundPlans.length!==rows.length||new Set(envelope.data.backgroundPlans.map(p=>p.rowId)).size!==rows.length||envelope.data.backgroundPlans.some(p=>p.sourceId!==CORE||!rows.some(r=>r.id===p.rowId&&JSON.stringify(r.evidenceIds)===JSON.stringify(p.evidenceIds))||p.templateId&&!core.templates.some(t=>t.id===p.templateId)||p.programId&&!core.programs.some(t=>t.id===p.programId)))return fail('background-plan-invalid');
   const plans=envelope.data.interestingPlans;
@@ -36,10 +38,16 @@ export const OfficialCoreDraftSchema=z.object({schemaVersion:z.literal(1),kind:z
     z.object({type:z.literal('select'),outcomeId:z.string(),mode:z.enum(['manual','random'])}).strict(),
     z.object({type:z.literal('choose'),outcomeId:z.string(),key:z.string(),value:z.string()}).strict(),
     z.object({type:z.literal('adjudicate'),decision:ThingAdjudicationSchema}).strict(),
+  ])).default([]),equipmentLoadout:z.array(EquipmentPlacementSchema).nullable().default(null),equipmentUseContext:EquipmentUseContextSchema.default(emptyEquipmentContext),
+  equipmentHistory:z.array(z.discriminatedUnion('type',[
+    z.object({type:z.literal('loadout'),reason:z.string().min(1),before:z.array(EquipmentPlacementSchema),after:z.array(EquipmentPlacementSchema)}).strict(),
+    z.object({type:z.literal('use-context'),context:EquipmentUseContextSchema}).strict(),
   ])).default([])}).strict();
 export type OfficialCoreDraft=Omit<z.infer<typeof OfficialCoreDraftSchema>,'character'>&{character:HumanL0Character};
 export function parseOfficialCoreDraft(input:unknown):OfficialCoreDraft {
   const p=OfficialCoreDraftSchema.safeParse(input);if(!p.success)return fail('draft-invalid');
+  if(new Set(p.data.equipped).size!==p.data.equipped.length)return fail('duplicate-equipped-origin');
+  if(p.data.equipmentLoadout!==null){const keys=[...new Set(p.data.equipmentLoadout.map(p=>p.key))].sort();if(JSON.stringify(keys)!==JSON.stringify([...p.data.equipped].sort()))return fail('equipment-projection-mismatch');}
   const character=parseHumanL0Character(p.data.character);
   if(character.id!=='official-core-current')return fail('draft-identity-mismatch');
   const created=character.events[0];
@@ -51,6 +59,13 @@ export function parseOfficialCoreDraft(input:unknown):OfficialCoreDraft {
 type Row=CoreLocalDocument['tables'][number]['columns'][number]['rows'][number];
 export type OfficialPending={key:string;label:string;options?:{id:string;label:string}[]};
 export type OfficialInventoryRecord={key:string;programId:string;sourceLabel:string;recordKind:string;quantity:number|null;unit:string;itemId:string|null;profile:'armor'|'weapon'|'none';equipped:boolean;weight?:number|null};
+function saveLoadout(d:OfficialCoreDraft,before:EquipmentPlacement[],after:EquipmentPlacement[],reason:string) {
+  d.equipmentLoadout=after;d.equipped=[...new Set(after.map(p=>p.key))];d.equipmentHistory.push({type:'loadout',before,after:structuredClone(after),reason});
+}
+function suspendEquipment(d:OfficialCoreDraft,predicate:(key:string)=>boolean,reason:string) {
+  if(d.equipmentLoadout!==null){const before=d.equipmentLoadout,after=before.filter(p=>!predicate(p.key));if(after.length!==before.length)saveLoadout(d,before,after,reason);}
+  else d.equipped=d.equipped.filter(k=>!predicate(k));
+}
 function backgroundSelection(d:OfficialCoreDraft,c:OfficialCoreContext) {
   const mode=d.choices['background/mode']??'none';
   if(!['none','manual','random'].includes(mode))return fail('background-mode-invalid');
@@ -120,20 +135,24 @@ export async function generateOfficialCore(context:unknown,configInput:unknown):
   if(config.benefit==='speak-language'&&!c.core.languageOptions.some(l=>l.id===`language:${config.languageId}`))return fail('language-choice-required');
   const character=await newHumanL0Character({schemaVersion:1,contract:'sotdl.human-l0.mechanics',contractVersion:'1.0.0',ancestry:ref,attributes:{mode:'fixed',increase:config.increase},adjustment:null,size:p.entities[0].mechanics.size.choices[0],procedure:{ref,kind:'core'},
     coreBenefit:config.benefit==='random-profession'?{kind:'random-profession',rollEventId:`profession/${c.core.startingRights.professionChoices+1}`}:{kind:'speak-language',languageId:config.languageId}},c.mechanicalPacks,{id:'official-core-current',name:config.name});
-  const d:OfficialCoreDraft={schemaVersion:1,kind:'sotdl-official-core-draft',contextSha256:await consumableDigest(c),prngVersion:PRNG_VERSION,config,character,rolls:{},choices:{},equipped:[],adjudications:{},interestingHistory:[]};
+  const d:OfficialCoreDraft={schemaVersion:1,kind:'sotdl-official-core-draft',contextSha256:await consumableDigest(c),prngVersion:PRNG_VERSION,config,character,rolls:{},choices:{},equipped:[],adjudications:{},interestingHistory:[],equipmentLoadout:[],equipmentUseContext:emptyEquipmentContext(),equipmentHistory:[]};
   fillRolls(d,c);return parseOfficialCoreDraft(d);
 }
 export async function chooseOfficialCore(input:unknown,context:unknown,key:string,value:string):Promise<OfficialCoreDraft> {
   const d=structuredClone(parseOfficialCoreDraft(input)),c=parseOfficialCoreContext(context);
   if(await consumableDigest(c)!==d.contextSha256)return fail('source-context-changed');
+  const equippedBefore=d.equipped.length?(await calculateOfficialCore(d,c)).inventory:[];
   if(key==='interesting/result')return fail('use-interesting-result-command');
   if(key.startsWith('interesting/')){
     const {thing}=wealthAndThing(d,c);
     if(!thing.details.choices.some(ch=>thingChoiceKey(thing.id,ch.id)===key&&ch.options.some(o=>o.id===value)))return fail('interesting-choice-invalid');
-    if(d.choices[key]!==value)d.equipped=d.equipped.filter(k=>!k.startsWith(`interesting/${thing.id}/`));
+    if(d.choices[key]!==value)suspendEquipment(d,k=>k.startsWith(`interesting/${thing.id}/`),'Troca de alternativa de Interesting Thing');
     d.interestingHistory.push({type:'choose',outcomeId:thing.id,key,value});
   }
-  d.choices[key]=value;fillRolls(d,c);await calculateOfficialCore(d,c);return d;
+  d.choices[key]=value;fillRolls(d,c);
+  const after=await calculateOfficialCore(d,c);
+  if(equippedBefore.length)suspendEquipment(d,key=>equippedBefore.find(i=>i.key===key)?.itemId!==after.inventory.find(i=>i.key===key)?.itemId,'Origem ou definição de equipamento alterada');
+  await calculateOfficialCore(d,c);return d;
 }
 export async function selectOfficialThing(input:unknown,context:unknown,outcomeId?:string):Promise<OfficialCoreDraft> {
   const d=structuredClone(parseOfficialCoreDraft(input)),c=parseOfficialCoreContext(context);
@@ -141,7 +160,7 @@ export async function selectOfficialThing(input:unknown,context:unknown,outcomeI
   if(outcomeId&&!c.core.things.some(t=>t.id===outcomeId))return fail('interesting-result-invalid');
   const previous=wealthAndThing(d,c).thing.id;
   if(outcomeId)d.choices['interesting/result']=outcomeId;else delete d.choices['interesting/result'];
-  if(previous!==wealthAndThing(d,c).thing.id)d.equipped=d.equipped.filter(k=>!k.startsWith('interesting/'));
+  if(previous!==wealthAndThing(d,c).thing.id)suspendEquipment(d,k=>k.startsWith('interesting/'),'Troca de resultado de Interesting Thing');
   d.interestingHistory.push({type:'select',outcomeId:wealthAndThing(d,c).thing.id,mode:outcomeId?'manual':'random'});
   fillRolls(d,c);await calculateOfficialCore(d,c);return d;
 }
@@ -151,7 +170,7 @@ export async function adjudicateOfficialThing(input:unknown,context:unknown,deci
   const {thing}=wealthAndThing(d,c);
   if(!thing.details.gmChoice||thing.id!==decision.outcomeId)return fail('interesting-adjudication-invalid');
   if(decision.definition.kind==='published'&&!c.itemDefinitions.some(i=>i.id===(decision.definition as {itemId:string}).itemId&&i.definitionStatus==='published-core'&&i.category==='weapon'))return fail('interesting-weapon-definition-invalid');
-  d.equipped=d.equipped.filter(k=>!k.startsWith(`interesting/${thing.id}/`));
+  suspendEquipment(d,k=>k.startsWith(`interesting/${thing.id}/`),'Nova definição da arma escolhida pelo mestre');
   d.adjudications[thing.id]=decision;d.interestingHistory.push({type:'adjudicate',decision});await calculateOfficialCore(d,c);return d;
 }
 /** Change the optional result atomically. Existing faces remain available for audit/replay. */
@@ -171,10 +190,48 @@ export async function selectOfficialBackground(input:unknown,context:unknown,mod
   }
   await calculateOfficialCore(d,c);return d;
 }
+const equipmentCommandSchema=z.object({key:z.string().min(1),instance:z.number().int().positive().default(1),slot:z.enum(['carried','worn','main','off','both']),replaceConflicts:z.boolean().default(false)}).strict();
+export async function configureOfficialEquipment(input:unknown,context:unknown,commandInput:unknown):Promise<OfficialCoreDraft> {
+  const d=structuredClone(parseOfficialCoreDraft(input)),c=parseOfficialCoreContext(context),cmd=equipmentCommandSchema.parse(commandInput),view=await calculateOfficialCore(d,c);
+  if(cmd.slot!=='carried'&&!view.inventory.some(r=>r.key===cmd.key&&r.itemId&&r.recordKind==='item'&&r.quantity!==null&&r.quantity>=cmd.instance))return fail('owned-item-required');
+  const before=view.equipment.loadout;
+  let after=before.filter(p=>p.key!==cmd.key||p.instance!==cmd.instance);
+  if(cmd.slot!=='carried'){
+    const placement:EquipmentPlacement={key:cmd.key,instance:cmd.instance,slot:cmd.slot};
+    if(cmd.replaceConflicts){
+      const actor=(await calculateHumanL0Character(d.character,c.mechanicalPacks)).stats!;
+      if(!composeCoreEquipment({owned:view.inventory,definitions:c.itemDefinitions,loadout:[placement],context:d.equipmentUseContext,rules:c.equipmentRules,actor}).resolved)return fail('equipment-replacement-invalid');
+      const neutralKeys=new Set(view.inventory.filter(i=>isNeutralClothing(c.itemDefinitions.find(d=>d.id===i.itemId))).map(i=>i.key));
+      after=after.filter(p=>!placementsConflict(p,placement,neutralKeys));
+    }
+    after.push(placement);
+  }
+  saveLoadout(d,before,after,cmd.replaceConflicts?'Substituição explícita dos equipamentos em conflito':'Posição de equipamento escolhida');
+  await calculateOfficialCore(d,c);return d;
+}
 export async function equipOfficialCore(input:unknown,context:unknown,key:string,equipped:boolean):Promise<OfficialCoreDraft> {
-  const d=structuredClone(parseOfficialCoreDraft(input)),view=await calculateOfficialCore(d,context);
-  if(!view.inventory.some(r=>r.key===key&&r.itemId&&r.recordKind==='item'&&r.quantity!==null&&r.quantity>0))return fail('owned-item-required');
-  d.equipped=d.equipped.filter(k=>k!==key);if(equipped)d.equipped.push(key);await calculateOfficialCore(d,context);return d;
+  const d=structuredClone(parseOfficialCoreDraft(input)),c=parseOfficialCoreContext(context),view=await calculateOfficialCore(d,c),owned=view.inventory.find(r=>r.key===key),item=c.itemDefinitions.find(i=>i.id===owned?.itemId);
+  if(equipped&&view.equipment.loadout.some(p=>p.key===key))return d;
+  if(!equipped){saveLoadout(d,view.equipment.loadout,view.equipment.loadout.filter(p=>p.key!==key),'Guardar todas as unidades desta origem');await calculateOfficialCore(d,c);return d;}
+  const occupied=view.equipment.loadout.some(p=>p.slot==='main'||p.slot==='both');
+  return configureOfficialEquipment(d,c,{key,slot:item?.armor?'worn':item?.weapon?.hands==='two'?'both':item?.weapon?.hands==='off'&&occupied?'off':'main'});
+}
+export async function useOfficialEquipment(input:unknown,context:unknown,commandInput:unknown):Promise<OfficialCoreDraft> {
+  const cmd=z.discriminatedUnion('type',[
+    z.object({type:z.literal('mounted'),value:z.boolean()}).strict(),
+    z.object({type:z.literal('dual-attack'),targets:z.enum(['one-target','two-targets'])}).strict(),
+    z.object({type:z.literal('end-round')}).strict(),
+  ]).parse(commandInput);
+  const d=structuredClone(parseOfficialCoreDraft(input)),c=parseOfficialCoreContext(context),view=await calculateOfficialCore(d,c);
+  if(cmd.type==='mounted')d.equipmentUseContext.mounted=cmd.value;
+  else if(cmd.type==='end-round')d.equipmentUseContext={...d.equipmentUseContext,dualAttack:'none',suppressedDefensive:[]};
+  else {
+    if(!view.equipment.dualAttack.eligible)return fail('dual-attack-context-invalid');
+    d.equipmentUseContext.dualAttack=cmd.targets;
+    for(const weapon of view.equipment.weapons.filter(w=>w.shield))if(!d.equipmentUseContext.suppressedDefensive.some(s=>s.key===weapon.key&&s.instance===weapon.instance&&s.itemId===weapon.itemId))d.equipmentUseContext.suppressedDefensive.push({key:weapon.key,instance:weapon.instance,itemId:weapon.itemId});
+  }
+  d.equipmentHistory.push({type:'use-context',context:structuredClone(d.equipmentUseContext)});
+  await calculateOfficialCore(d,c);return d;
 }
 export async function calculateOfficialCore(input:unknown,context:unknown) {
   const d=parseOfficialCoreDraft(input),c=parseOfficialCoreContext(context);
@@ -244,25 +301,19 @@ export async function calculateOfficialCore(input:unknown,context:unknown) {
   if(background?.plan.appearanceChoice){const key=`background/${background.row.id}/appearance`,options=[{id:'finger',label:'Dedo perdido'},{id:'teeth',label:'Dentes perdidos'},{id:'ear',label:'Orelha perdida'},{id:'scar',label:'Cicatriz'}];
     if(!d.choices[key])pending.push({key,label:'Escolher marca física de Background',options});
     else if(!options.some(o=>o.id===d.choices[key]))return fail('background-appearance-invalid');}
-  const armors:{base:'agility'|'fixed';value:number;origin:string;speedDelta:number}[]=[],modifiers:{origin:string;defenseDelta:number;speedDelta:number}[]=[];
-  const equipmentNotes:string[]=[];
-  for(const key of d.equipped) {
-    const owned=inventory.find(r=>r.key===key);if(!owned?.itemId)return fail('equipped-item-unavailable');
-    const item=c.itemDefinitions.find(i=>i.id===owned.itemId)!;
-    if(item.armor){const r=previewArmorDefinition(item,{agility:base.stats.agility,strength:base.stats.strength,worn:true});
-      armors.push({...item.armor.defense,origin:key,speedDelta:r.speedPenalty});
-      if(r.strengthAgilityBanes||r.swimArmorBanes)equipmentNotes.push(`${item.name}: ${r.strengthAgilityBanes} bane(s) de Strength/Agility; ${r.swimArmorBanes} ao nadar.`);
-    } else if(item.weapon){const r=previewWeaponDefinition(item,{strength:base.stats.strength,agility:base.stats.agility,wielded:true});modifiers.push({origin:key,defenseDelta:r.defenseBonus,speedDelta:0});if(r.attackBanes)equipmentNotes.push(`${item.name}: ${r.attackBanes} bane(s) de ataque.`);}
-    else pending.push({key:`equip/${key}`,label:'Efeito de uso sem handler; nenhum bônus inventado'});
-  }
-  if(armors.length||modifiers.length)base=await calculateHumanL0Character(d.character,c.mechanicalPacks,armors,modifiers);
+  const loadout=d.equipmentLoadout??legacyEquipmentLoadout(d.equipped,inventory,c.itemDefinitions);
+  const equipment=composeCoreEquipment({owned:inventory,definitions:c.itemDefinitions,loadout,context:d.equipmentUseContext,rules:c.equipmentRules,actor:base.stats});
+  const equipmentNotes=equipment.restrictions.map(r=>`${r.context}: ${r.banes} bane(s) · ${r.origin}`);
+  if(equipment.resolved)base=await calculateHumanL0Character(d.character,c.mechanicalPacks,equipment.armor?[equipment.armor]:[],equipment.defenseBonus?[{origin:'validated-equipment-loadout',defenseDelta:equipment.defenseBonus,speedDelta:0}]:[]);
+  else base={...base,stats:null,baseResolved:false,issues:[...base.issues,...equipment.diagnostics.map(d=>d.code)]};
+  for(const [i,diagnostic] of equipment.diagnostics.entries())pending.push({key:`equipment/${i}/${diagnostic.code}`,label:diagnostic.label});
   if(background?.plan.state&&backgroundResult?.state!==null&&backgroundResult?.state!==undefined&&base.states)base={...base,states:{...base.states,[background.plan.state.target]:base.states[background.plan.state.target]+backgroundResult.state}};
   if(!base.baseResolved)pending.push({key:'equipment/conflict',label:'Resolver conflito de equipamento'});
   const narrative=d.config.optionalTables?['core:human-age','core:human-build','core:human-personality','core:human-appearance','core:human-religion'].map(id=>({tableId:id,text:selectedRow(d,c,id,`optional/${id}`).text})):[];
   if(d.config.optionalTables)pending.push({key:'optional/build',label:'Registrar dimensões de Build e conferir a descrição escolhida'});
   return {officialGenerationEnabled:true as const,dataMode:'official-local' as const,scope:'human-core-l0' as const,fullyResolved:false as const,exportEnabled:false as const,
     base,professions,languages:[...languages.values()],wealth:wealth.text,inventory,moneyBits:material.knownCashBits,interestingThing:thing,
-    interestingApplication:{...interestingApplication,contextSha256:d.contextSha256},narrative,pending,equipmentNotes,
+    interestingApplication:{...interestingApplication,contextSha256:d.contextSha256},narrative,pending,equipmentNotes,equipment,
     background:background?{rowId:background.row.id,text:background.row.text,sourceId:background.plan.sourceId,evidenceIds:background.plan.evidenceIds,contextSha256:d.contextSha256,
       values:backgroundResult,keepsake:background.plan.keepsake,appearanceChoice:background.plan.appearanceChoice,appearance:d.choices[`background/${background.row.id}/appearance`]??null,
       events:[...(background.plan.state?[{type:'background-state' as const,target:background.plan.state.target,amount:backgroundResult!.state}]:[]),
