@@ -1,6 +1,6 @@
 # SotDL Character Forge — geração oficial local
 
-**Estado atual:** entrada principal somente com dados reais verificados, no recorte **Humano Core, nível 0**. Geração oficial local ativada por solicitação explícita do usuário. Sorteios, profissões, riqueza, ganhos e equipamento usam as formalizações reais. Escolhas e consequências ainda sem aplicação completa ficam como pendências de um rascunho; não há exportação/habilitação de ficha completa por conveniência. [Escopo e limites](docs/ativacao-oficial-local-core.md).
+**Estado atual:** entrada principal somente com dados reais verificados, no recorte **Humano Core, nível 0**, e fluxo separado de procedimentos Core / Only Human. Geração oficial local ativada por solicitação explícita do usuário. Escolhas e consequências obrigatórias não resolvidas mantêm a ficha em rascunho. A [entrega local da #54](docs/entrega-finalizacao-issue54.md) permite finalizar após revalidação, conservando efeitos de uso explícitos e exportação desabilitada. [Escopo e limites](docs/ativacao-oficial-local-core.md).
 **Idioma das especificações:** português. **Identificadores mecânicos oficiais:** inglês.
 
 **Estado operacional em 2026-10-30:** [política consolidada](docs/politica-distribuicao-conteudo.md) e [issues conferidas](docs/estado-issues.md). Higiene da ponta e política entregues; stubs Human e wizard L0 demonstrativo integrados. Compilador/índices, consumo oficial e aceite final de UX continuam pendentes; histórico antigo na #16. As seções de entregas abaixo conservam suas datas.

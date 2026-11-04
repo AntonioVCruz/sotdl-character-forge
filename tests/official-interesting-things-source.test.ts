@@ -15,7 +15,7 @@ const ids:string[]=available?JSON.parse(readFileSync(resolve(sourceRoot,'curatio
 describe.skipIf(!available)('Interesting Things Core local source acceptance',()=>{
   let context:OfficialCoreContext,original:OfficialCoreDraft;
   beforeAll(async()=>{
-    context=await buildOfficialLocalContext(sourceRoot);
+    context=await buildOfficialLocalContext(sourceRoot,process.cwd());
     original=await generateOfficialCore(context,{name:'Teste local',seed:'interesting-application-test',increase:'strength',benefit:'random-profession',languageId:'',interestingVariant:'core',optionalTables:false});
   },30000);
   it.each(ids)('applies and replays source result %s with only active branches',async id=>{

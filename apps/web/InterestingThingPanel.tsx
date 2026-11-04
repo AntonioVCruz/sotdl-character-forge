@@ -7,7 +7,7 @@ export function InterestingThingPanel({draft,context,view,busy,change}:Props) {
   const app=view.interestingApplication,thing=view.interestingThing;
   const [author,setAuthor]=useState(''),[reason,setReason]=useState(''),[definition,setDefinition]=useState(''),[name,setName]=useState('');
   const quantityRoles={contents:'Conteúdo',length:'Comprimento',weight:'Peso',capacity:'Capacidade',resource:'Recurso inicial',count:'Quantidade'};
-  return <section aria-label="Resultado de Interesting Things">
+  return <section id="official-interesting" aria-label="Resultado de Interesting Things">
     <h3>Interesting Thing</h3><p>{thing.text}</p>
     <label>Escolher Interesting Thing<select aria-label="Escolher Interesting Thing" disabled={busy} value={thing.id} onChange={e=>void change(()=>selectOfficialThing(draft,context,e.target.value))}>
       {context.core.things.map(t=><option key={t.id} value={t.id}>{t.id.replace(/^core:/,'')} · {t.text}</option>)}

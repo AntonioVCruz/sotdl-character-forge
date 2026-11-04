@@ -20,7 +20,7 @@ function EquipmentRow({item,draft,context,view,busy,change}:Shared&{item:Officia
 }
 export function OfficialEquipmentPanel(props:Shared) {
   const {draft,context,view,busy,change}=props,e=view.equipment;
-  return <section aria-label="Composição de equipamento"><h3>Equipamento e mãos</h3>
+  return <section id="official-equipment" aria-label="Composição de equipamento"><h3>Equipamento e mãos</h3>
     <p>Possuir um item não aplica seus efeitos. Escolha a unidade, a posição e a empunhadura; conflitos preservam a seleção e suspendem os números até serem resolvidos.</p>
     {context.equipmentRules.defensiveStacking==='highest'&&<p>Interpretação do projeto: aplica-se somente o maior bônus defensivo dos escudos em uso.</p>}
     {view.inventory.filter(i=>i.itemId&&i.recordKind==='item'&&i.profile!=='none'&&i.quantity!==null&&i.quantity>0).map(item=><EquipmentRow key={`${item.key}/${item.itemId}`} {...props} item={item}/>)}

@@ -5,6 +5,7 @@ import {newHumanL0Character,calculateHumanL0Character} from './human-l0';
 import {composeCoreEquipment,type EquipmentPlacement} from './core-equipment';
 import {consumableDigest} from '../curation/human-l0-consumable-bundle';
 import {buildProcedureGraph} from './procedure-graph';
+import {evaluateCharacterCompletion,receiptForCompletion,invalidateFinalization} from './character-finalization';
 import {ProcedureContextSchema,ProcedureConfigSchema,ProcedureSessionSchema,ProcedureEventSchema,replayProcedureSession,defaultProcedureConfig,type ProcedureContext,type ProcedureSession,type ProcedureConfig,type ProcedureEvent,type ProcedureNode,type ProcedureAdjudication} from './procedure-model';
 
 /** The context is local source data. A saved session contains decisions and identifiers only. */
@@ -56,6 +57,7 @@ function rollFaces(context:ProcedureContext,node:ProcedureNode,rng:ReturnType<ty
 export function performProcedureCommand(context:ProcedureContext,input:unknown,command:ProcedureCommand):ProcedureSession{
   const {session,state}=replayProcedureSession(input),graph=buildProcedureGraph(context,session,state);
   if(!context.policy.enabled)throw new Error('Procedimento local desativado.');
+  if(command.type!=='lock')session.finalization=invalidateFinalization(session.finalization);
   if(command.type==='config')return append(session,{type:'config',config:ProcedureConfigSchema.parse(command.config)});
   if(command.type==='equipment')return append(session,{type:'equipment',loadout:command.loadout,useContext:state.equipmentUseContext});
   if(command.type==='restart'){
@@ -106,7 +108,11 @@ export function advanceProcedure(context:ProcedureContext,input:unknown){
 }
 
 export async function calculateProcedure(context:ProcedureContext,input:unknown){
-  const {session,state}=replayProcedureSession(input),graph=deriveProcedure(context,session),config=state.config;
+  const {session,state}=replayProcedureSession(input),config=state.config;
+  context=ProcedureContextSchema.parse(context);
+  const contextSha256=await consumableDigest(context);
+  if(contextSha256!==session.contextSha256||!context.policy.enabled)throw new Error('Fontes ou implementação mudaram; preserve a sessão para revisão.');
+  const graph=buildProcedureGraph(context,session,state);
   const choices:Record<string,string>={},rolls:Record<string,number[]>={};
   for(const n of graph.nodes)if(n.status==='resolved'){if(n.kind==='choice')choices[n.key]=String(n.value);if(n.faces.length)rolls[n.key]=n.faces;}
   const material=previewStartingGrants(context.programs,{instances:graph.programs,choices,rolls});
@@ -123,15 +129,18 @@ export async function calculateProcedure(context:ProcedureContext,input:unknown)
     inventory.push({key:`${thing.key}/${grant.key}`,recordKind:grant.kind,quantity:grant.count,sourceLabel:grant.label,sourceId:grant.sourceId,itemId:grant.definitionId??(ref?.resolution==='exact-definition'?ref.itemId:null),label:grant.label});
   }
   const pending=[...graph.pending];
+  for(const unresolved of material.unresolved as {key:string;kind:string}[])if(!pending.some(p=>p.key===unresolved.key))pending.push({key:unresolved.key,code:'material-input-required',label:'Resolver alternativa ou quantidade de ganho inicial.',scope:'creation',subject:graph.root});
   for(const item of inventory)if(item.itemId&&!context.itemDefinitions.some(d=>d.id===item.itemId))pending.push({key:item.key,code:'invalid-item-definition',label:'Definição de equipamento indisponível; revisar a decisão.',scope:'creation',subject:graph.root});
-  const packs=parseHumanL0MechanicalPacks(context.mechanicalPacks),ancestry=packs.find(p=>p.entities[0].mechanics.variant===config.variant)!,procedure=packs.find(p=>p.entities[0].mechanics.procedure.kind===config.procedure)!;
-  const ref=(p:typeof ancestry)=>({packId:p.packId,version:p.version,entityId:p.entities[0].id});
+  const packs=parseHumanL0MechanicalPacks(context.mechanicalPacks),ancestry=packs.find(p=>p.entities[0].mechanics.variant===config.variant),procedure=packs.find(p=>p.entities[0].mechanics.procedure.kind===config.procedure);
+  if(!ancestry||!procedure)pending.push({key:'mechanics/source',code:'mechanical-source-required',label:'Base mecânica ou procedimento indisponível nas fontes verificadas.',scope:'creation',subject:graph.root});
+  const ref=(p:NonNullable<typeof ancestry>)=>({packId:p.packId,version:p.version,entityId:p.entities[0].id});
   const attributes=['strength','agility','intellect','will'] as const;
   const randomReady=attributes.every(a=>graph.byKey.get(`${graph.root}/attribute/${a}`)?.status==='resolved');
   let base:Awaited<ReturnType<typeof calculateHumanL0Character>>|null=null;
   let equipment:ReturnType<typeof composeCoreEquipment>|null=null;
   const benefitLanguage=graph.nodes.find(n=>n.key===`${graph.root}/core-benefit/language`&&n.status==='resolved');
-  if((config.attributeMode==='fixed'||randomReady)&&(config.coreBenefit!=='speak-language'||benefitLanguage)){
+  if(benefitLanguage&&String(benefitLanguage.value).replace(/^custom:/,'')===ancestry?.entities[0].mechanics.baseLanguage.languageId)pending.push({key:benefitLanguage.key,code:'additional-language-required',label:'Escolha um idioma diferente do idioma-base para o benefício humano.',scope:'creation',subject:graph.root});
+  if(ancestry&&procedure&&(config.attributeMode==='fixed'||randomReady)&&(config.coreBenefit!=='speak-language'||benefitLanguage)){
     const character=await newHumanL0Character({schemaVersion:1,contract:'sotdl.human-l0.mechanics',contractVersion:'1.0.0',ancestry:ref(ancestry),
       attributes:config.attributeMode==='fixed'?{mode:'fixed',increase:config.increase}:{mode:'random',seed:session.seed,prngVersion:PRNG_VERSION,rolls:attributes.map(attribute=>{const n=graph.byKey.get(`${graph.root}/attribute/${attribute}`)!;return {attribute,eventId:n.record!.id,face:n.faces[0]};})},
       adjustment:config.adjustment,size:graph.finalSize??config.size,procedure:{ref:ref(procedure),kind:config.procedure},
@@ -147,5 +156,15 @@ export async function calculateProcedure(context:ProcedureContext,input:unknown)
     }
     if(base.states)for(const grant of graph.states.filter(s=>s.subject===graph.root))base.states[grant.target]+=grant.amount;
   }
-  return {session,graph,base,equipment,inventory,material,pending,creationResolved:pending.every(p=>p.scope!=='creation'),fullyResolved:false as const,exportEnabled:false as const};
+  const {finalization:_receipt,events,...savedState}=session;
+  const optionalOmissions=config.procedure==='core'?[...['age','build','appearance','personality','religion','background'].map(id=>({key:`core:human-${id}`,label:`Tabela Core opcional não escolhida: ${id}.`})),{key:'core:role-traits',label:'Traços Core opcionais não escolhidos.'}].filter(o=>!config.optionalCoreTables.includes(o.key)):[];
+  const completion=await evaluateCharacterCompletion({contextSha256,savedContextSha256:session.contextSha256,sourceReady:!context.fictionalData&&context.policy.authority==='explicit-user-request'&&packs.every(p=>!p.fictionalData)&&ancestry?.source.id===(config.variant==='core'?context.sources.core:context.sources.onlyHuman)&&procedure?.source.id===(config.procedure==='core'?context.sources.core:context.sources.onlyHuman),
+    mechanicalReady:!!base?.baseResolved&&!!base.stats&&!!equipment?.resolved,materialReady:material.materialComplete&&material.cashComplete,
+    state:{...savedState,events:events.filter(e=>e.type!=='lock')},pending,receipt:session.finalization,optionalOmissions});
+  return {session,graph,base,equipment,inventory,material,pending,completion,creationResolved:completion.canFinalize,fullyResolved:completion.fullyResolved,exportEnabled:false as const};
+}
+
+export async function finalizeProcedure(context:ProcedureContext,input:unknown):Promise<ProcedureSession>{
+  const view=await calculateProcedure(context,input),session=structuredClone(view.session);
+  session.finalization=receiptForCompletion(view.completion);return ProcedureSessionSchema.parse(session);
 }

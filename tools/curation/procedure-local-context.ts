@@ -11,8 +11,8 @@ import {ThingApplicationPlanSchema} from '../../packages/character-generator/cor
 
 const sha=(bytes:Uint8Array|string)=>createHash('sha256').update(bytes).digest('hex');
 /** Server only. The existing verified Core closure pins all five original pilot files. */
-export async function buildProcedureLocalContext(root=process.cwd()){
-  const core=await buildOfficialLocalContext(root),mechanics=await buildMechanicalArtifacts(root);
+export async function buildProcedureLocalContext(root=process.cwd(),implementationRoot=root){
+  const core=await buildOfficialLocalContext(root,implementationRoot),mechanics=await buildMechanicalArtifacts(root);
   const read=async(name:string)=>{
     const path=`curation/pilot/${name}.json`,bytes=await readFile(resolve(root,path));
     if(sha(bytes)!==core.core.inputs.find(i=>i.path===path)?.sha256)throw new Error(`Procedure source changed: ${path}`);
@@ -40,7 +40,7 @@ export async function buildProcedureLocalContext(root=process.cwd()){
       specialProfilePending:false,specialArmor:null});
   }));
   const implementation=[];
-  for(const path of ['packages/character-generator/procedure-model.ts','packages/character-generator/procedure-graph.ts','packages/character-generator/procedure-runtime.ts','tools/curation/procedure-local-context.ts','curation/procedure-local-policy.json'])implementation.push({path,sha256:sha(await readFile(resolve(root,path)))});
+  for(const path of ['packages/character-generator/procedure-model.ts','packages/character-generator/procedure-graph.ts','packages/character-generator/procedure-runtime.ts','tools/curation/procedure-local-context.ts','curation/procedure-local-policy.json'])implementation.push({path,sha256:sha(await readFile(resolve(implementationRoot,path)))});
   const evidence=new Map<string,unknown>();
   for(const doc of [closure,professions,wealth,things])for(const e of doc.evidence)evidence.set(e.id,{id:e.id,sourceId:e.sourceId,path:e.path,inputSha256:e.inputSha256,startLine:e.startLine,endLine:e.endLine,excerptSha256:e.excerptSha256});
   return ProcedureContextSchema.parse({contract:'sotdl.human-creation',contractVersion:'1.0.0',fictionalData:false,

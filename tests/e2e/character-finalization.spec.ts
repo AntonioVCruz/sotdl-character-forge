@@ -1,0 +1,57 @@
+import {test,expect} from '@playwright/test';
+import {existsSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {buildOfficialLocalContext} from '../../tools/curation/official-local-context';
+import {buildProcedureLocalContext} from '../../tools/curation/procedure-local-context';
+import {completeCore,completeProcedure} from '../helpers/finalization-paths';
+
+const sourceRoot=process.env.SOTDL_LOCAL_SOURCE_ROOT??process.cwd();
+test.skip(!existsSync(resolve(sourceRoot,'curation/pilot/table-closure.json')),'Requires ignored verified local sources.');
+test.setTimeout(120000);
+
+test('finalizes Core with deferred use, reopens and invalidates a newly incomplete optional step',async({page})=>{
+  const context=await buildOfficialLocalContext(sourceRoot,process.cwd()),draft=await completeCore(context);
+  await page.route('**/api/official/core',route=>route.fulfill({json:context}));
+  await page.addInitScript(d=>{if(!localStorage.getItem('sotdl-official-core-draft@1'))localStorage.setItem('sotdl-official-core-draft@1',JSON.stringify(d));},draft);
+  await page.goto('/');await expect(page.getByRole('heading',{name:'Rascunho pronto para finalizar',exact:true})).toBeVisible();
+  await expect(page.getByText(/Efeitos reservados ao uso em jogo/)).toBeVisible();
+  await page.getByRole('button',{name:'Finalizar personagem',exact:true}).click();
+  await expect(page.getByRole('heading',{name:'Personagem finalizado',exact:true})).toBeVisible();
+  const finalized=await page.evaluate(()=>localStorage.getItem('sotdl-official-core-draft@1'));
+  expect(JSON.parse(finalized!).rolls).toEqual(draft.rolls);
+  await page.reload();await expect(page.getByRole('heading',{name:'Personagem finalizado',exact:true})).toBeVisible();
+  expect(await page.evaluate(()=>localStorage.getItem('sotdl-official-core-draft@1'))).toBe(finalized);
+  await page.getByRole('combobox',{name:'Escolher Background',exact:true}).selectOption(context.backgroundPlans.find(p=>p.appearanceChoice)!.rowId);
+  await expect(page.getByRole('heading',{name:'Rascunho com pendências de criação',exact:true})).toBeVisible();
+  await expect(page.getByRole('button',{name:'Finalizar personagem',exact:true})).toBeDisabled();
+  await page.getByRole('link',{name:'Escolher marca física de Background',exact:true}).click();
+  expect(await page.evaluate(()=>!!document.getElementById(decodeURIComponent(location.hash.slice(1)))?.querySelector('select'))).toBe(true);
+  await expect(page.getByRole('button',{name:/Exportar|Imprimir/})).toHaveCount(0);
+});
+
+test('finalizes procedures, reopens, returns to draft after an edit and preserves a stale source save',async({page})=>{
+  const context=await buildProcedureLocalContext(sourceRoot,process.cwd()),session=await completeProcedure(context);
+  await page.route('**/api/official/procedures',route=>route.fulfill({json:context}));
+  await page.addInitScript(s=>{if(!localStorage.getItem('sotdl-human-creation-session@1'))localStorage.setItem('sotdl-human-creation-session@1',JSON.stringify(s));},session);
+  await page.goto('/');await page.getByRole('button',{name:'Procedimentos Core / Only Human',exact:true}).click();
+  await expect(page.getByRole('heading',{name:'Rascunho pronto para finalizar',exact:true})).toBeVisible();
+  await page.getByRole('button',{name:'Finalizar personagem',exact:true}).click();
+  await expect(page.getByRole('heading',{name:'Personagem finalizado',exact:true})).toBeVisible();
+  const finalized=await page.evaluate(()=>localStorage.getItem('sotdl-human-creation-session@1'));
+  expect(JSON.parse(finalized!).events).toEqual(session.events);
+  await page.reload();await page.getByRole('button',{name:'Procedimentos Core / Only Human',exact:true}).click();
+  await expect(page.getByRole('heading',{name:'Personagem finalizado',exact:true})).toBeVisible();
+  expect(await page.evaluate(()=>localStorage.getItem('sotdl-human-creation-session@1'))).toBe(finalized);
+  await page.getByLabel('Nome',{exact:true}).fill('Edited after finalization');
+  await page.getByRole('button',{name:'Aplicar alterações à sessão atual',exact:true}).click();
+  await expect(page.getByRole('heading',{name:'Rascunho pronto para finalizar',exact:true})).toBeVisible();
+  await page.getByRole('button',{name:'Finalizar personagem',exact:true}).click();
+  await expect(page.getByRole('heading',{name:'Personagem finalizado',exact:true})).toBeVisible();
+  const saved=await page.evaluate(()=>localStorage.getItem('sotdl-human-creation-session@1'));
+  await page.unroute('**/api/official/procedures');
+  await page.route('**/api/official/procedures',route=>route.fulfill({json:{...context,implementationSha256:'f'.repeat(64)}}));
+  await page.reload();await page.getByRole('button',{name:'Procedimentos Core / Only Human',exact:true}).click();
+  await expect(page.getByText('Rascunho suspenso.',{exact:false})).toBeVisible();
+  expect(await page.evaluate(()=>localStorage.getItem('sotdl-human-creation-session@1'))).toBe(saved);
+  await expect(page.getByRole('heading',{name:'Personagem finalizado',exact:true})).toHaveCount(0);
+});

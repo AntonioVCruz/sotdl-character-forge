@@ -1,11 +1,12 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "scope": "human-core-l0",
   "enabled": true,
   "authority": "explicit-user-request",
-  "date": "2026-11-03",
+  "date": "2026-11-04",
   "realDataRequired": true,
   "distribution": "local",
   "exportEnabled": false,
-  "completedCharacterRequiresNoPendingConsequences": true
+  "completedCharacterRequiresNoPendingCreationConsequences": true,
+  "deferredUseBlocksFinalization": false
 }

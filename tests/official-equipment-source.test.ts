@@ -12,7 +12,7 @@ const available=['curation/pilot/items.json','curation/pilot/table-closure.json'
 describe.skipIf(!available)('official equipment source acceptance',()=>{
   let context:OfficialCoreContext,original:OfficialCoreDraft;
   beforeAll(async()=>{
-    context=await buildOfficialLocalContext(sourceRoot);
+    context=await buildOfficialLocalContext(sourceRoot,process.cwd());
     original=await generateOfficialCore(context,{name:'Teste local',seed:'equipment-source-test',increase:'strength',benefit:'random-profession',languageId:'',interestingVariant:'core',optionalTables:false});
   },30000);
   it('checks every selected exact armor/weapon profile with its source requirements and legal hand',()=>{

@@ -8,7 +8,7 @@ import {defaultProcedureConfig,type ProcedureContext} from '../packages/characte
 const sourceRoot=process.env.SOTDL_LOCAL_SOURCE_ROOT??process.cwd();
 describe.skipIf(!existsSync(resolve(sourceRoot,'curation/pilot/table-closure.json')))('reviewed local creation procedures',()=>{
   let context:ProcedureContext;
-  beforeAll(async()=>{context=await buildProcedureLocalContext(sourceRoot);},60000);
+  beforeAll(async()=>{context=await buildProcedureLocalContext(sourceRoot,process.cwd());},60000);
   it('projects all source tables, directed templates and distinct Interesting Things sources',()=>{
     expect(context.tables).toHaveLength(74);expect(context.templates).toHaveLength(19);
     expect(context.thingPlans).toHaveLength(360);expect(context.lookups).toHaveLength(5);

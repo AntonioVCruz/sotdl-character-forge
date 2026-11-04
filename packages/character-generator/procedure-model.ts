@@ -8,6 +8,7 @@ import {BackgroundPlanSchema} from './core-background';
 import {ThingApplicationPlanSchema} from './core-interesting-things';
 import {EquipmentPlacementSchema,EquipmentUseContextSchema,EquipmentRulesSchema,emptyEquipmentContext} from './core-equipment';
 import {PRNG_VERSION} from '../random-tables';
+import {FinalizationReceiptSchema} from './character-finalization';
 
 const id=z.string().min(1),hash=z.string().regex(/^[a-f0-9]{64}$/),ability=z.enum(['speak','read','write']);
 export const ProcedureDiceSchema=z.object({count:z.number().int().min(1).max(10),sides:z.number().int().min(2).max(100),modifier:z.number().int().default(0),minimum:z.number().int().nullable().default(null)}).strict();
@@ -71,7 +72,7 @@ export const ProcedureEventSchema=z.discriminatedUnion('type',[
 export type ProcedureEvent=z.infer<typeof ProcedureEventSchema>;
 export type ProcedureResultEvent=Extract<ProcedureEvent,{type:'result'}>;
 export const ProcedureSessionSchema=z.object({schemaVersion:z.literal(1),kind:z.literal('sotdl-human-creation-session'),id,seed:z.string().trim().min(1).max(200),prngVersion:z.literal(PRNG_VERSION),contextSha256:hash,
-  initialConfig:ProcedureConfigSchema,events:z.array(ProcedureEventSchema).max(10000)}).strict();
+  initialConfig:ProcedureConfigSchema,events:z.array(ProcedureEventSchema).max(10000),finalization:FinalizationReceiptSchema.nullable().default(null)}).strict();
 export type ProcedureSession=z.infer<typeof ProcedureSessionSchema>;
 export type ProcedureNode={key:string;label:string;subject:string;parents:string[];kind:'table'|'profession'|'dice'|'choice'|'number'|'adjudication'|'lookup'|'config';
   sourceId:string;tableId?:string;streamId?:string;dice?:z.infer<typeof ProcedureDiceSchema>;modifier?:number;manualAllowed?:boolean;
