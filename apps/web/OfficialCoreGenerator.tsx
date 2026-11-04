@@ -1,5 +1,6 @@
 import {useEffect,useRef,useState} from 'react';
 import {InterestingThingPanel} from './InterestingThingPanel';
+import {OfficialEquipmentPanel} from './OfficialEquipmentPanel';
 import {calculateOfficialCore,chooseOfficialCore,equipOfficialCore,generateOfficialCore,selectOfficialBackground,parseOfficialCoreContext,parseOfficialCoreDraft,type OfficialCoreContext,type OfficialCoreDraft} from '../../packages/character-generator/official-core';
 const STORAGE='sotdl-official-core-draft@1';
 type View=Awaited<ReturnType<typeof calculateOfficialCore>>;
@@ -48,9 +49,8 @@ export function OfficialCoreGenerator() {
       <h3>Profissões</h3><ul>{view.professions.map(p=><li key={p.key}>{p.label}{p.specialization&&` · ${p.specialization}`}</li>)}</ul>
       <h3>Idiomas</h3><ul>{view.languages.map(l=><li key={l.id}>{context?.core.languageOptions.find(option=>option.id===`language:${l.id}`)?.label??l.id} · {[l.speak?'fala':'',l.read?'leitura':'',l.write?'escrita':''].filter(Boolean).join(', ')}</li>)}</ul>
       <h3>Riqueza e ganhos</h3><p>{view.wealth} · Dinheiro disponível: {view.moneyBits} bits</p>
-      <ul>{view.inventory.map(i=><li key={i.key}>{i.quantity??'Quantidade pendente'} {i.unit} · {i.sourceLabel} · {i.recordKind}
-        {i.itemId&&i.recordKind==='item'&&i.profile!=='none'&&i.quantity!==null&&i.quantity>0&&<label><input type="checkbox" checked={i.equipped} disabled={busy} onChange={e=>{const checked=e.target.checked;void change(()=>equipOfficialCore(draft,context!,i.key,checked));}}/>{i.profile==='armor'?'Vestir':'Empunhar'}</label>}</li>)}</ul>
-      {view.equipmentNotes.map(n=><p key={n}>{n}</p>)}
+      <ul>{view.inventory.map(i=><li key={i.key}>{i.quantity??'Quantidade pendente'} {i.unit} · {i.sourceLabel} · {i.recordKind}</li>)}</ul>
+      <OfficialEquipmentPanel draft={draft} context={context!} view={view} busy={busy} change={change}/>
       <InterestingThingPanel key={view.interestingThing.id} draft={draft} context={context!} view={view} busy={busy} change={change}/>
       <h3>Background opcional</h3>
       <p>Você pode manter esta etapa sem resultado, sortear ou escolher uma linha publicada. Trocar a linha substitui suas consequências; os sorteios anteriores são preservados.</p>

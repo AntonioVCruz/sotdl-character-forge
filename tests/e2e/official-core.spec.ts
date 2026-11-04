@@ -67,6 +67,26 @@ test('generates and reopens a real Core draft without rerolling or exporting sou
   await expect(page.getByText('Decisão registrada por Mestre de teste:',{exact:false})).toBeVisible();
   await page.reload();
   await expect(page.getByText('Decisão registrada por Mestre de teste:',{exact:false})).toBeVisible({timeout:45000});
+  const equipment=page.locator('fieldset[data-equipment-key^="interesting/"]');
+  const position=equipment.getByRole('combobox');
+  await position.selectOption(weapon.weapon.hands==='two'?'both':weapon.weapon.hands==='one'?'both':'main');
+  await expect(page.getByRole('status')).toContainText('Fontes reais carregadas');
+  const equippedSave=JSON.parse((await page.evaluate(()=>localStorage.getItem('sotdl-official-core-draft@1')))!);
+  expect(equippedSave.equipmentLoadout.some((p:{key:string})=>p.key.startsWith('interesting/'))).toBe(true);
+  const kitWeapon=page.locator('fieldset[data-equipment-key]:not([data-equipment-key^="interesting/"])').getByRole('checkbox',{name:'Empunhar',exact:true});
+  if(await kitWeapon.count()){
+    await kitWeapon.first().check();
+    await expect(page.getByRole('alert').filter({hasText:'mesma mão'})).toBeVisible();
+    await equipment.getByRole('button',{name:'Usar esta posição substituindo conflitos',exact:true}).click();
+    await expect(page.getByRole('alert').filter({hasText:'mesma mão'})).toHaveCount(0);
+  }
+  await page.reload();
+  await expect(page.locator('fieldset[data-equipment-key^="interesting/"]').getByRole('combobox')).toHaveValue(weapon.weapon.hands==='off'?'main':'both',{timeout:45000});
+  await page.locator('fieldset[data-equipment-key^="interesting/"]').getByRole('checkbox',{name:'Empunhar',exact:true}).uncheck();
+  await expect(page.getByRole('status')).toContainText('Fontes reais carregadas');
+  const storedSave=JSON.parse((await page.evaluate(()=>localStorage.getItem('sotdl-official-core-draft@1')))!);
+  expect(storedSave.equipmentLoadout.some((p:{key:string})=>p.key.startsWith('interesting/'))).toBe(false);
+  expect(storedSave.rolls).toEqual(equippedSave.rolls);
   await expect(page.getByRole('checkbox',{name:/Conferir.*Interesting|Aprovar/})).toHaveCount(0);
   await expect(page.getByRole('button',{name:/Exportar|Imprimir/})).toHaveCount(0);
 });
