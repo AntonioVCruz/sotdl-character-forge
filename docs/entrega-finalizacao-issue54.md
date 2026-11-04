@@ -38,4 +38,6 @@ Uma tentativa da regressão real atingiu o timeout de cinco segundos no teste qu
 
 Finalização representa a conclusão da criação no recorte local suportado. Não promove fontes `needs-review`, certifica paginação/distribuição ou habilita exportação. `exportEnabled` permanece falso. A revisão de distribuição/freeze da fatia real e os formatos de exportação continuam nas #55/#56.
 
-Não foram publicados corpus, pilotos ou excertos licenciados. O workspace original com 421 arquivos acumulados permanece preservado. Código e testes estão na branch local `codex/issue54-finalization`, em `output/html/issue54-work`. Nenhum PR, deploy ou merge foi executado para esta entrega.
+Corpus, pilotos e excertos licenciados permanecem locais. O workspace original com 421 arquivos acumulados permanece preservado. Código e testes estão na branch `codex/issue54-finalization`, em `output/html/issue54-work`.
+
+Publicação da branch e integração no repositório autorizadas posteriormente pelo usuário. O PR da #54 registra o resultado da CI e do merge. Não há autorização de deploy, promoção de fonte ou liberação de exportação.

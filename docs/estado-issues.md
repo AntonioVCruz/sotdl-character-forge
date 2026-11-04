@@ -37,7 +37,7 @@ PRs #8 (CI), #11 (stubs), #12 (política), #13 (inventário), #14 (ErrorBoundary
 
 ## Próximas entregas
 
-Atualização local da #54 em 2026-11-04: finalização explícita dos fluxos Core e Procedimentos implementada com revalidação, invalidação após edição e preservação de saves suspensos. [Atividades, decisão e validação](entrega-finalizacao-issue54.md). As #50–#53 foram integradas pelos PRs #57 → #58 → #59 → #60; a main integrada é `2e94ddd`. A entrega da #54 permanece local, sem publicação ou merge; #55/#56 conservam revisão de distribuição e exports.
+Atualização da #54 em 2026-11-04: finalização explícita dos fluxos Core e Procedimentos implementada com revalidação, invalidação após edição e preservação de saves suspensos. [Atividades, decisão e validação](entrega-finalizacao-issue54.md). As #50–#53 foram integradas pelos PRs #57 → #58 → #59 → #60, na main `2e94ddd`. Publicação e integração da #54 autorizadas pelo usuário, com resultado acompanhado no PR correspondente; #55/#56 conservam revisão de distribuição e exports.
 
 Atualização da #53: procedimentos Core/Human Development implementados e verificados, com Only Human/Oddities ativados nos recortes locais autorizados e pendências explícitas. [Entrega, decisões e validação](entrega-procedimentos-issue53.md). Integrada pelo PR #60; não encerra as frentes #34–#37. O gate de personagem concluído é a entrega local da #54 descrita acima.
 
