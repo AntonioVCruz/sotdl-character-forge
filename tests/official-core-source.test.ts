@@ -66,7 +66,8 @@ describe.skipIf(!available)('official Core generation from verified local source
     expect(v.professions.every(p=>context.core.professions.some(known=>known.id===p.id))).toBe(true);
     expect(v.moneyBits).toMatch(/^\d+$/);expect(v.inventory.every(i=>!i.equipped)).toBe(true);
     expect(v).toMatchObject({officialGenerationEnabled:true,dataMode:'official-local',fullyResolved:false,exportEnabled:false});
-    expect(v.pending.some(p=>p.key.startsWith('interesting/application/'))).toBe(true);
+    expect(v.pending.some(p=>p.key.startsWith('interesting/application/'))).toBe(false);
+    expect(v.interestingApplication.origin.outcomeId).toBe(v.interestingThing.id);
   });
   it('is deterministic and reopens decisions without drawing or embedding sources',async()=>{
     const a=await generateOfficialCore(context,config),b=await generateOfficialCore(context,config);
@@ -94,7 +95,7 @@ describe.skipIf(!available)('official Core generation from verified local source
     const stored=await equipOfficialCore(equipped,context,owned!.key,false);
     expect((await calculateOfficialCore(stored,context)).base.stats).toEqual(v.base.stats);
     await expect(equipOfficialCore(d,context,'not-owned',true)).rejects.toThrow('owned-item-required');
-    expect(v.pending.some(p=>p.key.startsWith('interesting/application/'))).toBe(true);
+    expect(v.pending.some(p=>p.key.startsWith('interesting/application/'))).toBe(false);
   });
   it('keeps a negative armor penalty negative through equip, replay and removal',async()=>{
     let d=await generateOfficialCore(context,config);

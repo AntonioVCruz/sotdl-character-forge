@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "authority": "explicit-user-request",
+  "date": "2026-11-03",
+  "scope": "human-core-l0-interesting-things",
+  "specialArmor": {
+    "outcomeId": "core:6:17",
+    "baseItemId": "pilot-item:core:mail",
+    "classification": "light",
+    "weight": 0,
+    "requiredStrength": null,
+    "stacksWithArmor": false
+  }
+}
