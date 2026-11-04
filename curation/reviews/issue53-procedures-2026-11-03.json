@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "issue": 53,
+  "date": "2026-11-03",
+  "author": "Codex",
+  "status": "local-technical-acceptance",
+  "authority": "explicit-user-request",
+  "scope": "human-l0-procedures",
+  "decisions": {
+    "deadParents": "independent-cause-per-parent",
+    "dimensions": "build-then-age-scale",
+    "lifeCount": "initial-age-roll"
+  },
+  "activation": "local-verified-slices-with-explicit-pending",
+  "sourcePromotion": false,
+  "exportEnabled": false,
+  "publicationPending": true,
+  "integrationPending": true,
+  "evidence": [
+    "docs/matriz-procedimentos-issue53.md",
+    "docs/entrega-procedimentos-issue53.md",
+    "tests/procedure-runtime.test.ts",
+    "tests/procedure-source.test.ts",
+    "tests/e2e/official-procedures.spec.ts"
+  ]
+}
