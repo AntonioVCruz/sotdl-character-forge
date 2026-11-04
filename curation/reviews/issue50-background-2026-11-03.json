@@ -1,0 +1,67 @@
+{
+    "schemaVersion":  1,
+    "date":  "2026-11-03",
+    "reviewer":  "Codex",
+    "scope":  "human-core-l0-background",
+    "sourceReview":  "local-structured-results-and-evidence",
+    "pdfInspected":  false,
+    "distributionCertified":  false,
+    "sourceStatus":  "needs-review",
+    "rowsReviewed":  20,
+    "rowIds":  [
+                   "core:human-background:r1",
+                   "core:human-background:r2",
+                   "core:human-background:r3",
+                   "core:human-background:r4",
+                   "core:human-background:r5",
+                   "core:human-background:r6",
+                   "core:human-background:r7",
+                   "core:human-background:r8",
+                   "core:human-background:r9",
+                   "core:human-background:r10",
+                   "core:human-background:r11",
+                   "core:human-background:r12",
+                   "core:human-background:r13",
+                   "core:human-background:r14",
+                   "core:human-background:r15",
+                   "core:human-background:r16",
+                   "core:human-background:r17",
+                   "core:human-background:r18",
+                   "core:human-background:r19",
+                   "core:human-background:r20"
+               ],
+    "evidence":  [
+                     {
+                         "id":  "human-background",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "rules/SotDL_All_Ancestries_Compendium_Expanded_All_Project_Sources_v2.md",
+                         "inputSha256":  "020d9d62d9046475552dbaf9f989f07e69b87b7a386cadc1af3e82f930502baf",
+                         "startLine":  14776,
+                         "endLine":  14822,
+                         "excerptSha256":  "8c2bfd0347943eb22de4d72634f822ad1697d3b1dfd196e4711c5ca1d18631d3"
+                     },
+                     {
+                         "id":  "ancestry-table-options",
+                         "sourceId":  "sotdl:shadow-of-the-demon-lord-core",
+                         "path":  "curation/corrections/core-character-creation-2026-10-27/introduction.txt",
+                         "inputSha256":  "51524877da4e81c6146392d35f4fdca222e6e0b4ff9b7507b0e93c6bcb43f9ef",
+                         "startLine":  32,
+                         "endLine":  33,
+                         "excerptSha256":  "574da41b330eb1432e3c3913d683fd1d2d28d6c3021151430319ef3cdaf79794"
+                     }
+                 ],
+    "consequences":  [
+                         "state",
+                         "narrative-quantity",
+                         "language-template",
+                         "material-program",
+                         "generic-keepsake",
+                         "appearance-choice",
+                         "narrative-only"
+                     ],
+    "limitations":  [
+                        "No PDF inspection or distribution approval",
+                        "Existing source context pins continue to apply",
+                        "Interesting Things and export gates remain separate"
+                    ]
+}

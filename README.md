@@ -1,13 +1,13 @@
-# SotDL Character Forge — Kit SDD revisado v0.2 · Aleatoriedade
+# SotDL Character Forge — geração oficial local
 
-**Estado:** catálogo e criador demonstrativo de níveis 0–1 implementados, com dois caminhos, duas tradições e quatro magias fictícias, modos manual/híbrido/aleatório, equipamento ativável, conjuração e efeitos de sessão, ficha, histórico, JSON, impressão A4/PDF e HTML editável offline. Níveis 2–10 e conteúdo oficial ainda não implementados.
+**Estado atual:** entrada principal somente com dados reais verificados, no recorte **Humano Core, nível 0**. Geração oficial local ativada por solicitação explícita do usuário. Sorteios, profissões, riqueza, ganhos e equipamento usam as formalizações reais. Escolhas e consequências ainda sem aplicação completa ficam como pendências de um rascunho; não há exportação/habilitação de ficha completa por conveniência. [Escopo e limites](docs/ativacao-oficial-local-core.md).
 **Idioma das especificações:** português. **Identificadores mecânicos oficiais:** inglês.
 
 **Estado operacional em 2026-10-30:** [política consolidada](docs/politica-distribuicao-conteudo.md) e [issues conferidas](docs/estado-issues.md). Higiene da ponta e política entregues; stubs Human e wizard L0 demonstrativo integrados. Compilador/índices, consumo oficial e aceite final de UX continuam pendentes; histórico antigo na #16. As seções de entregas abaixo conservam suas datas.
 
 Os quatro compêndios MD de regras estão em `rules/`. A lista de tarefas para analisá-los, gerar packs JSON por publicação e integrar regras reais ao criador está em [tarefas-curadoria-compendios.md](docs/tarefas-curadoria-compendios.md).
 
-## Executar o catálogo e o criador demonstrativo
+## Executar a geração oficial local
 
 Requer Node.js 22.15+ (ou versão compatível com as dependências) e npm.
 
@@ -16,7 +16,14 @@ npm ci
 npm run dev
 ```
 
-Abra a URL indicada pelo Vite. Clique em **Carregar exemplos fictícios** e habilite as fontes desejadas. Também é possível importar packs JSON de até 5 MB. Importar não habilita automaticamente; alterações são salvas em IndexedDB antes de aparecerem como concluídas.
+Abra a URL local indicada pelo Vite. Aguarde a conferência das fontes reais, informe nome/seed e escolha o benefício de humano. Selecione explicitamente a alternativa Core de Interesting Things e clique em **Gerar com regras reais**. Complete as escolhas de profissão/idioma/kit apresentadas. A ficha é salva e reaberta sem novos sorteios.
+
+O ambiente precisa dos pilotos e fontes licenciadas ignorados. Se faltarem ou divergirem dos hashes revisados, o gerador fica bloqueado; não carrega demonstração. O endpoint funciona somente em loopback, sem incorporar os livros ao build estático. Fixture e demo ficaram restritos aos testes legados.
+
+<details>
+<summary>Histórico da demonstração — fora da aplicação atual</summary>
+
+As instruções abaixo documentam a implementação anterior e não descrevem a entrada principal atual.
 
 Para criar um personagem demonstrativo:
 1. Clique em **Preparar fontes da demonstração**.
@@ -80,6 +87,8 @@ Esta entrega inclui validação de packs/tabelas, proveniência, fontes habilita
 Os testes de PDF requerem Python com `pypdf`; a aplicação usa apenas o navegador. Exemplos gerados pelos E2E ficam em `output/pdf/` (não versionados).
 
 O runtime offline é gerado automaticamente antes de `npm run dev` e `npm run build`. Se alterar o motor/componentes durante o desenvolvimento, reinicie o servidor ou execute `npm run build:standalone` para atualizar a exportação. Os HTMLs demonstrativos dos testes ficam em `output/html/` (não versionados).
+
+</details>
 
 ## Gate de CI (testes e build)
 
@@ -201,6 +210,10 @@ Atualização posterior: **CUR-018 concluída** como [formalização de riqueza 
 **CUR-021 concluída como auditoria com restrições:** [fechamento das tabelas](docs/entrega-fechamento-tabelas-piloto.md), com 74 identidades, 70 fluxos numéricos completos, probabilidades compostas e guardas de referência para Piety/Strange. Fears/Desires foram confirmados pelo usuário, sem associações pendentes; efeitos, escolhas de GM e orquestração preservam seus gates. `npm run curation:pilot-tables` reproduz auditoria/relatório e integra `curation:check`. Geração oficial permanece desabilitada. Validação: 145 testes de curadoria, 219 completos e build aprovados. Próximo passo para o piloto: **CUR-031 — compilador por publicação**, seguido de CUR-032; CUR-022 permanece a trilha de progressão.
 
 ## Higiene de conteúdo e ambiente local
+
+Lote real Core, somente local: `npm run curation:core:local` projeta os pilotos verificados em `tmp/curation/core-real/1.1.0/`; `npm run curation:core:local:check` recompõe e confere a saída. Exige os insumos licenciados locais. [Cobertura, evidência e pendências](docs/entrega-core-real-issue34-atividade3.md). Não habilita geração oficial ou exportação.
+
+Compilação consumível e handlers Human L0 (avanço incremental da #34): `npm run curation:compile:consumable` gera a fixture aceita em `tmp/curation/compiled-consumables/`; `npm run curation:validate:consumable` confere os artefatos contra a entrada fixada. [Entrega, APIs e limites](docs/entrega-compilacao-handlers-consumiveis-human-l0.md). Lotes reais e procedimento completo continuam pendentes. A ampliação do offline vem após integrar o fluxo real e verificar os gates de exportação.
 
 A correção S0 da issue #1 está em [entrega-higiene-pii-s0.md](docs/entrega-higiene-pii-s0.md). Os diretórios de evidências, transcrições, snapshots e formalizações com excertos são locais e ignorados; continuam disponíveis neste ambiente, mas não acompanham novos clones. `rules/` e complementos de curadoria devem ser obtidos sob licença própria. Os comandos de curadoria sobre livros exigem esse ambiente completo; a suíte pública usa contratos e fixtures redistribuíveis.
 

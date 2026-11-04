@@ -124,6 +124,10 @@ export async function mainMechanical(args: string[], root = process.cwd()) {
   return runCompilation(args, root, async () => (await import('./human-l0-mechanical-compiler')).buildMechanicalArtifacts(root), true);
 }
 
+export async function mainConsumable(args: string[], root = process.cwd()) {
+  return (await import('./human-l0-consumable-compiler')).mainConsumable(args, root);
+}
+
 async function runCompilation<T extends { artifacts: Map<string,string>; hashes: {path:string;sha256:string}[];
   sha256: string; validation: {status:string;packs:number;entities:number} }>(args: string[], root: string, build: () => Promise<T>, mechanical: boolean) {
   if (!['--write', '--check'].includes(args[0]) || ![1, 3].includes(args.length) || args.length === 3 && args[1] !== '--output')
