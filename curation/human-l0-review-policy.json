@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "human-l0-issue55@1.0.0",
+  "reviewDate": "2026-11-04",
+  "author": "Codex",
+  "scope": "local-human-level-zero",
+  "sourceStatus": "needs-review",
+  "semanticReview": "scoped-with-explicit-exclusions",
+  "activation": "retain-existing-local-activation",
+  "exportEnabled": false,
+  "distributionApproved": false,
+  "userDecisions": [
+    "independent-cause-per-dead-parent",
+    "build-before-age-scale",
+    "life-count-from-initial-age",
+    "deferred-use-does-not-block-finalization"
+  ],
+  "sources": [
+    {
+      "id": "sotdl:shadow-of-the-demon-lord-core",
+      "pdfKey": "core",
+      "edition": "Revised Edition (cover)",
+      "copyrightYear": 2015,
+      "printing": null,
+      "sha256": "5e2c35730ef91f757b9919f37fb7cf81d85afcd2149aa500109213f8aea01455",
+      "physicalPages": 274,
+      "reviewedPrintedPages": [
+        11,
+        12,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29
+      ],
+      "physicalPageOffset": 1
+    },
+    {
+      "id": "sotdl:only-human",
+      "pdfKey": "human",
+      "edition": "Only Human; numbered edition not stated",
+      "copyrightYear": 2016,
+      "printing": null,
+      "sha256": "f7723c5a145138b38d243021086cb83471c2d1d351a54c5f4e651b398c33a16f",
+      "physicalPages": 14,
+      "reviewedPrintedPages": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "physicalPageOffset": 0
+    },
+    {
+      "id": "sotdl:oddities-artifacts-and-esoterica",
+      "pdfKey": "oddities",
+      "edition": "Oddities, Artifacts, and Esoterica; numbered edition not stated",
+      "copyrightYear": 2019,
+      "printing": null,
+      "sha256": "13834c13fc13e72a0b06da71efbdb556d8dc0b3cd3f8450261e3dab9828c6ad0",
+      "physicalPages": 7,
+      "reviewedPrintedPages": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "physicalPageOffset": 0
+    }
+  ],
+  "exclusions": [
+    "No registry-wide source promotion or review of other books/editions",
+    "No copyright license or redistribution approval inferred from access",
+    "Contextual effects and mixed item profiles require review at use",
+    "Supplement outcomes without a handler retain creation blockers",
+    "Execution bounds retain explicit pending states",
+    "JSON/PDF/HTML export implementation belongs to issue56",
+    "PDF text concordance does not certify full-book semantic equivalence",
+    "Printed page mapping applies to the reviewed slice, not all pages"
+  ]
+}
