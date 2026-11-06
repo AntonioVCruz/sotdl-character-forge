@@ -1,0 +1,2111 @@
+{
+  "activation": "retain-existing-local-activation",
+  "author": "Codex",
+  "context": {
+    "core": "ec221f6f905cc66063a99cc92137336a1bf98d8779ca0955a685d3a808974f16",
+    "procedure": "b90fdaf64dcaeb5677bbdc2d2d30fd99fc7cced77d9435968f62d62b87674077"
+  },
+  "coverage": [
+    {
+      "entities": 1168,
+      "evidence": 769,
+      "handler": "packages/character-generator/procedure-graph.ts",
+      "lot": "table-closure",
+      "reviewId": "human-l0-issue55@1.0.0",
+      "test": "tests/procedure-source.test.ts"
+    },
+    {
+      "entities": 194,
+      "evidence": 35,
+      "handler": "packages/character-generator/human-l0.ts",
+      "lot": "professions-languages",
+      "reviewId": "human-l0-issue55@1.0.0",
+      "test": "tests/official-core-source.test.ts"
+    },
+    {
+      "entities": 97,
+      "evidence": 114,
+      "handler": "packages/character-generator/core-equipment.ts",
+      "lot": "wealth-equipment",
+      "reviewId": "human-l0-issue55@1.0.0",
+      "test": "tests/official-equipment-source.test.ts"
+    },
+    {
+      "entities": 378,
+      "evidence": 501,
+      "handler": "packages/character-generator/core-interesting-things.ts",
+      "lot": "interesting-things",
+      "reviewId": "human-l0-issue55@1.0.0",
+      "test": "tests/official-interesting-things-source.test.ts"
+    },
+    {
+      "entities": 1050,
+      "evidence": 710,
+      "handler": "packages/character-generator/core-equipment.ts",
+      "lot": "items",
+      "reviewId": "human-l0-issue55@1.0.0",
+      "test": "tests/official-equipment-source.test.ts"
+    },
+    {
+      "entities": 28,
+      "evidence": 77,
+      "handler": "packages/character-generator/official-core.ts",
+      "lot": "core-level-zero",
+      "reviewId": "human-l0-issue55@1.0.0",
+      "test": "tests/finalization-source.test.ts"
+    },
+    {
+      "entities": 17,
+      "evidence": 11,
+      "handler": "packages/character-generator/human-l0.ts",
+      "lot": "human-ancestry",
+      "reviewId": "human-l0-issue55@1.0.0",
+      "test": "tests/finalization-source.test.ts"
+    }
+  ],
+  "distributionApproved": false,
+  "exclusions": [
+    "No registry-wide source promotion or review of other books/editions",
+    "No copyright license or redistribution approval inferred from access",
+    "Contextual effects and mixed item profiles require review at use",
+    "Supplement outcomes without a handler retain creation blockers",
+    "Execution bounds retain explicit pending states",
+    "JSON/PDF/HTML export implementation belongs to issue56",
+    "PDF text concordance does not certify full-book semantic equivalence",
+    "Printed page mapping applies to the reviewed slice, not all pages"
+  ],
+  "exportEnabled": false,
+  "inputs": [
+    {
+      "path": ".gitattributes",
+      "scope": "implementation",
+      "sha256": "45cc66c932c00505f3fb3f163972984f9f56db89097f72f3a760a81b36c5f531"
+    },
+    {
+      "path": ".gitignore",
+      "scope": "implementation",
+      "sha256": "b6d82d95d4eff7440fde17784aa3354415a9fc3db63741b2fa22dd557236761b"
+    },
+    {
+      "path": "apps/standalone/main.tsx",
+      "scope": "implementation",
+      "sha256": "bba5834e50ab8a156500a2b764cb73a891b5361bb55ee34d47a1ff4e1ef7ba78"
+    },
+    {
+      "path": "apps/standalone/security.ts",
+      "scope": "implementation",
+      "sha256": "6cbb82ff5510515bb22fb7f9314e0d330401e395b7ec97add86f7723ba4df759"
+    },
+    {
+      "path": "apps/web/CharacterBuilder.tsx",
+      "scope": "implementation",
+      "sha256": "5353474d08f714e202f3990576000ceac212e92ba55e35113573ed3d9cc01adc"
+    },
+    {
+      "path": "apps/web/CharacterCompletionPanel.tsx",
+      "scope": "implementation",
+      "sha256": "da754311ae0f713a6aa8947a97283e93cad768f6415f2c0d4efdfcbab0139df0"
+    },
+    {
+      "path": "apps/web/CharacterSheet.tsx",
+      "scope": "implementation",
+      "sha256": "81920d052eabdb9aabb2542285619dadacdeb1b09fae443983954d89dfa55ecc"
+    },
+    {
+      "path": "apps/web/ChoiceSlot.tsx",
+      "scope": "implementation",
+      "sha256": "02201b137e634067a2945691b0f2c4b39e3855176a4bf4c42a093b36da060774"
+    },
+    {
+      "path": "apps/web/CreationProcedures.tsx",
+      "scope": "implementation",
+      "sha256": "a9e01db2453a6615ea736f704f9c5e55b3ed0d0a90179cd4a1954f34faca0538"
+    },
+    {
+      "path": "apps/web/EquipmentPanel.tsx",
+      "scope": "implementation",
+      "sha256": "4ac0b652c613d454b58c1468d35d713e2ad6af843f032802daf6c87e212e848d"
+    },
+    {
+      "path": "apps/web/ErrorBoundary.tsx",
+      "scope": "implementation",
+      "sha256": "2012de6d77018a83a648fb60490e7aa2ec6451e3a45474b7fc29170d8fda00ff"
+    },
+    {
+      "path": "apps/web/HumanL0FixturePreview.tsx",
+      "scope": "implementation",
+      "sha256": "a00a74486f2a50f238d646361de8bf265d91c60859732d4654ac0c8cc318614a"
+    },
+    {
+      "path": "apps/web/InterestingThingPanel.tsx",
+      "scope": "implementation",
+      "sha256": "1638804e24e018b0771808bcfcb40f0edd1a8ca8e771de86dec67ff665b23099"
+    },
+    {
+      "path": "apps/web/OfficialCoreGenerator.tsx",
+      "scope": "implementation",
+      "sha256": "9d59136ff85978fb4d5c080efc683587f46c4de255e1500effd22cc4c3353bf3"
+    },
+    {
+      "path": "apps/web/OfficialEquipmentPanel.tsx",
+      "scope": "implementation",
+      "sha256": "cb7616b6700dcc8689e52cdf5840e7df2508563e658620efd13f350657e1213b"
+    },
+    {
+      "path": "apps/web/PrintSheet.tsx",
+      "scope": "implementation",
+      "sha256": "d48df1bb6f03479c16603bb6fe580a64bf9df618039f5d9fdce3e7f09a015f1c"
+    },
+    {
+      "path": "apps/web/SessionPanel.tsx",
+      "scope": "implementation",
+      "sha256": "414cca8cd7d126f589a62e787b1337a926914adc316c69d54fdd549eccc8b8c4"
+    },
+    {
+      "path": "apps/web/Stats.tsx",
+      "scope": "implementation",
+      "sha256": "3264fc100c10eae91736136b718fd0683c6bf116b05e2c914eb95a298eb2d7d3"
+    },
+    {
+      "path": "apps/web/WizardL0.tsx",
+      "scope": "implementation",
+      "sha256": "8a9146b952bc1a5dab946b9d11b26a858ea911edf711fb42ea432e742d856a9d"
+    },
+    {
+      "path": "apps/web/choice-slot-contract.ts",
+      "scope": "implementation",
+      "sha256": "9c309617d74b53c39f761baa69a3359f943d4d6d0afc6ee0445d2953e35c75a2"
+    },
+    {
+      "path": "apps/web/choice-slot.ts",
+      "scope": "implementation",
+      "sha256": "ae31ba8ef5d255623bdc7d5099725a14ae15a2468183061d6d75e6b1af37c969"
+    },
+    {
+      "path": "apps/web/errors.ts",
+      "scope": "implementation",
+      "sha256": "df46927ac4693809c9eb4d50532342ce74df55a85275727b0964938b7c751467"
+    },
+    {
+      "path": "apps/web/human-l0-preview.ts",
+      "scope": "implementation",
+      "sha256": "dce40a6d4761ca7dbcc6bf14b0583a53dcb497918a74f75523be4eaa269bf5a6"
+    },
+    {
+      "path": "apps/web/human-l0-slots.ts",
+      "scope": "implementation",
+      "sha256": "abc112f7d4f384cb90d069efc6e8e695ac1a2603a7b8dee8257ec28fa8afe75f"
+    },
+    {
+      "path": "apps/web/l0-demo.ts",
+      "scope": "implementation",
+      "sha256": "f058c9f6d7ae8cbfe5f9a471d62f0cad9ca518fb595e10cd2f98191b5723f4f8"
+    },
+    {
+      "path": "apps/web/main.tsx",
+      "scope": "implementation",
+      "sha256": "c1cd44a96044a1bc94ef8681f44b8f5d017595ff0416391ec5b0e9c565120da8"
+    },
+    {
+      "path": "apps/web/pack-stubs.ts",
+      "scope": "implementation",
+      "sha256": "cfbd52d1b77111091e42d4b6075324557ff955ba5007c94ce0a4ce4e336abde6"
+    },
+    {
+      "path": "apps/web/print.css",
+      "scope": "implementation",
+      "sha256": "f3edc349cbc246724df714d73570c1c71503555eb7cd9fa6942a8fa00adbaf6b"
+    },
+    {
+      "path": "apps/web/slot-labels.ts",
+      "scope": "implementation",
+      "sha256": "07b60eb7514cc75cd9c0f2615f69126152b794033ec7460db2f754781c8433dd"
+    },
+    {
+      "path": "apps/web/standalone-export.ts",
+      "scope": "implementation",
+      "sha256": "bf865373022460a73b809ea249256e2dcd64f32ed6683376b097a068a3540d7f"
+    },
+    {
+      "path": "apps/web/style.css",
+      "scope": "implementation",
+      "sha256": "544713186bebc9b62ca0756014caad4a96fb717b05ac74534dec413fae9c695a"
+    },
+    {
+      "path": "apps/web/vite-env.d.ts",
+      "scope": "implementation",
+      "sha256": "424faf9241dd699dda995b367ed36665732da1e6ec1f33b2fd40394488ecac92"
+    },
+    {
+      "path": "curation/ancestry-ledger.json",
+      "scope": "implementation",
+      "sha256": "edda9922a99309313b20121c69775bc50dfe9e7cc336059d564bec77c3f65739"
+    },
+    {
+      "path": "curation/contracts.json",
+      "scope": "implementation",
+      "sha256": "be92a2cae5ad84ea65c308b049a599fbce9dc8ae72ecdd758b93cd482766a84e"
+    },
+    {
+      "path": "curation/equipment-local-policy.json",
+      "scope": "implementation",
+      "sha256": "622aeaa8bb742e772c799a0097fc74635fb17df05d8387bb3009fb4c4f7f11f5"
+    },
+    {
+      "path": "curation/human-l0-compilation.json",
+      "scope": "implementation",
+      "sha256": "09d4312d3ac193173ff0f5dd11148257a033d8470f3cd2c4157a87f6d0e98f4e"
+    },
+    {
+      "path": "curation/human-l0-consumable-compilation.json",
+      "scope": "implementation",
+      "sha256": "590fa8a52daee12e1dcfadd4098167206196c5c2bf39fb76b3e8abc687f5741d"
+    },
+    {
+      "path": "curation/human-l0-mechanical-compilation.json",
+      "scope": "implementation",
+      "sha256": "fcb1bf5fce9f4272115b056816cdac4dc60b227aaf85e70829f0ffaa46646b86"
+    },
+    {
+      "path": "curation/human-l0-review-policy.json",
+      "scope": "implementation",
+      "sha256": "c160cbdde7c31653f7917cc00c0434a08ebebcd6d6de919caf301a94da80ebc8"
+    },
+    {
+      "path": "curation/input-manifest.json",
+      "scope": "implementation",
+      "sha256": "26f43a48d868d480288746717c9c4ccfc388133229b2e025b74c0eac87e03bc6"
+    },
+    {
+      "path": "curation/interesting-things-local-policy.json",
+      "scope": "implementation",
+      "sha256": "6207cf5f2d113f54cb650ffce5b76fb2554688c1c0d981ea33c419f85f43e407"
+    },
+    {
+      "path": "curation/mechanics-decisions.json",
+      "scope": "implementation",
+      "sha256": "b90ddf45f33f4dd917015ea02edc1d1af91d12f38f5685644b579baed3092be3"
+    },
+    {
+      "path": "curation/mechanics-ledger.json",
+      "scope": "implementation",
+      "sha256": "619c8b0f6e652f7bcf8d391d4d206ed3c6beec390b15212df5a3f8275d0b99e1"
+    },
+    {
+      "path": "curation/official-local-policy.json",
+      "scope": "implementation",
+      "sha256": "896aa5116cc8db85bb0d7cf54f161dc2cccd4b71ff4966df9f0f52dcce321db9"
+    },
+    {
+      "path": "curation/path-ledger.json",
+      "scope": "implementation",
+      "sha256": "e342eba8646dcedaeb8cd065dfb3b2a5013989907601408bc730996124a223cf"
+    },
+    {
+      "path": "curation/procedure-local-policy.json",
+      "scope": "implementation",
+      "sha256": "47484a43f02cd8564ae5cae3d46335cce86d5880ee9696e399b15d41c3ca04ec"
+    },
+    {
+      "path": "curation/review-example.json",
+      "scope": "implementation",
+      "sha256": "42b220baf66b5be7400922b6f634182e8cab5178202d6bd9be6c1aad28fa4c4b"
+    },
+    {
+      "path": "curation/source-aliases.json",
+      "scope": "implementation",
+      "sha256": "912daea6b3a66e562e64c54652515a04fbd42e515f780fa56459e14cbba26d90"
+    },
+    {
+      "path": "curation/source-policy.json",
+      "scope": "implementation",
+      "sha256": "1b99598f6d50e9bd04c05721f019fea363b61812901f66a60060ead4da87c40c"
+    },
+    {
+      "path": "curation/sources.json",
+      "scope": "implementation",
+      "sha256": "da67fd66ba4d993caace8fb1aa60f3f1d37262137a316576a6647bb09ddde334"
+    },
+    {
+      "path": "curation/spell-ledger.json",
+      "scope": "implementation",
+      "sha256": "cbc944d83957a9bc3b9210e30039e3b45cca363465a85699fa50319eb93a91e8"
+    },
+    {
+      "path": "curation/spell-origins.json",
+      "scope": "implementation",
+      "sha256": "e1a10e53b565b66b83e7990cd8fddd9e88a01114addee62e73aeb1df37c0f459"
+    },
+    {
+      "path": "docs/aceite-criterios-originais-issue7.md",
+      "scope": "implementation",
+      "sha256": "4027ca28dc46ba0ac42fee7986f66166ca5d2b429c1aae12614c5beaafaf01b4"
+    },
+    {
+      "path": "docs/aceite-integrado-human-l0.md",
+      "scope": "implementation",
+      "sha256": "97a1e070e1ca7b3b5e02c12c7aa0ee5308a5af9d8948cef4358d47773e67f697"
+    },
+    {
+      "path": "docs/aceite-s1-issues9-10.md",
+      "scope": "implementation",
+      "sha256": "78380c03e30e9fa44a6b3d7f067a701d0118d2d7390a627c5c638da2441a0075"
+    },
+    {
+      "path": "docs/arquitetura.md",
+      "scope": "implementation",
+      "sha256": "6cbebd1574748d365f93a88f74f94a6b17ebdd2c024daea059b8e37dc35cf338"
+    },
+    {
+      "path": "docs/ativacao-oficial-local-core.md",
+      "scope": "implementation",
+      "sha256": "7ad763a86eaa0a99f27dd18d5cd79a65b0b29bb10415d03312a415c8914eba7b"
+    },
+    {
+      "path": "docs/casos-de-teste-aleatoriedade.md",
+      "scope": "implementation",
+      "sha256": "6653c8e26e067db94a347042954527a3ac9b1caea9c13b7730f4ce38aab1e280"
+    },
+    {
+      "path": "docs/checklist-review.md",
+      "scope": "implementation",
+      "sha256": "12691e39b661a826e97e5b849818ba0abfd258fe2abc4302858c31fb672f82ce"
+    },
+    {
+      "path": "docs/choice-slot-l0.md",
+      "scope": "implementation",
+      "sha256": "be14c87c86537362586a28af8a1deb1c5b47a0bf3c185352c08b2d9719fc3cdc"
+    },
+    {
+      "path": "docs/contrato-consumivel-tabelas-human-l0.md",
+      "scope": "implementation",
+      "sha256": "f2035ba2007e76d4d00f91cf2219bf0c50e22fad272754906cbe2d5797d56394"
+    },
+    {
+      "path": "docs/contrato-mecanico-human-l0.md",
+      "scope": "implementation",
+      "sha256": "6e208cbaff0dfdc6eeb761cb57d50b0f4119208f1fa2a8f128bcc6ef0ccbc704"
+    },
+    {
+      "path": "docs/contrato-ui-human-l0.md",
+      "scope": "implementation",
+      "sha256": "1a0e1f550bef5e92a7c98ecd4d625e33d11761ecd931b2914e2ea5464d95198c"
+    },
+    {
+      "path": "docs/contratos-curadoria.md",
+      "scope": "implementation",
+      "sha256": "9b7b95698b843e315c8643f900e733d4055eee010f75e3ddf37ca46f2bff83ea"
+    },
+    {
+      "path": "docs/curadoria-evidencia.md",
+      "scope": "implementation",
+      "sha256": "d583ede97a6a322d6d38eac10e2ba0d8bac07839b6406a2357a3e0a1627ebf57"
+    },
+    {
+      "path": "docs/curadoria-fontes-erratas.md",
+      "scope": "implementation",
+      "sha256": "4838125a857100f44804b1f4759931eab43014f16be2e2040f17c6aa0f2dfee9"
+    },
+    {
+      "path": "docs/curadoria-identidade.md",
+      "scope": "implementation",
+      "sha256": "a79a179997bf99370bdf92dc28f5de4c99d7922b8aaa812f2b7b20b01e797c16"
+    },
+    {
+      "path": "docs/decisoes-pendentes.md",
+      "scope": "implementation",
+      "sha256": "27120efed1fe2ea0eddf39b041e4a44a1039e88c7f3a172f602dddea7add5e82"
+    },
+    {
+      "path": "docs/decisoes-piloto-size-wealth-roleplaying.md",
+      "scope": "implementation",
+      "sha256": "1394cb0020cd065f67d8d14729df4fb4667f7188972b4f0e861eca19589cc7d9"
+    },
+    {
+      "path": "docs/destinos-permissoes-issue55.md",
+      "scope": "implementation",
+      "sha256": "c2f481ca4ef4384cf4502adbbf39cedce5b3f6b925dcc3aba1de1abb9dcdf944"
+    },
+    {
+      "path": "docs/ensaio-historico-git.md",
+      "scope": "implementation",
+      "sha256": "85ebab0d560aa82760723a45f18ecc43cfe7db7e63fc91383da7cf39d6c6e6f7"
+    },
+    {
+      "path": "docs/entradas-bloqueadas-curadoria.md",
+      "scope": "implementation",
+      "sha256": "785e17738954ce1057fca21e69d2afa20586c83eee7f6e9c648529a2755097f2"
+    },
+    {
+      "path": "docs/entrega-ancestries-staging.md",
+      "scope": "implementation",
+      "sha256": "a7da3c486962fe1542162e414549cd2033557f43df3052f95532b53773ad4a27"
+    },
+    {
+      "path": "docs/entrega-background-issue50.md",
+      "scope": "implementation",
+      "sha256": "a4fc3901c8a67e279dffa956471934fbb2f3a58a4bb5ba5ddeec59f318fdd58e"
+    },
+    {
+      "path": "docs/entrega-catalogo-itens-piloto.md",
+      "scope": "implementation",
+      "sha256": "a80257021a1674abffb419dee05376cb9df47c44eb1ba9f66f5380efc8b1f88b"
+    },
+    {
+      "path": "docs/entrega-catalogo.md",
+      "scope": "implementation",
+      "sha256": "6605715fd222dc7ac1dc67ada37af7b3b3b12da3d4414c4dc333c23b06874702"
+    },
+    {
+      "path": "docs/entrega-compilacao-deterministica-human-l0.md",
+      "scope": "implementation",
+      "sha256": "7f9ce69819efa3e6eba2cc667f641d8a7ea68bddddca33e90fb34283d5875784"
+    },
+    {
+      "path": "docs/entrega-compilacao-handlers-consumiveis-human-l0.md",
+      "scope": "implementation",
+      "sha256": "0a1c57b6f305e95800e8079e672128f1243c7e37eb50b600a6d1aab287f16b81"
+    },
+    {
+      "path": "docs/entrega-complemento-criacao-core.md",
+      "scope": "implementation",
+      "sha256": "a183068a7eeb0bf6ce9c2166ab16af2397a686f6e6e4b3c33b426a87aafddb98"
+    },
+    {
+      "path": "docs/entrega-complemento-interesting-things-core.md",
+      "scope": "implementation",
+      "sha256": "41e934792c252d741e08c04d46e39494cfc122f6ef8c289a65751926f8756737"
+    },
+    {
+      "path": "docs/entrega-complemento-profissoes-core.md",
+      "scope": "implementation",
+      "sha256": "ceaf9c973a0bae72e7a240504605d3f38fbdf3d00db297b6ae8d5f0799019f0a"
+    },
+    {
+      "path": "docs/entrega-core-real-issue34-atividade3.md",
+      "scope": "implementation",
+      "sha256": "08059e93c1dcf1c332fcd88972b9326a56efd1c7fd5d3c019560af5c574760ce"
+    },
+    {
+      "path": "docs/entrega-equipamento-demo.md",
+      "scope": "implementation",
+      "sha256": "4e0fe7f18a6b67d889cbab93b42cb09b8ca5c5b50aa45f2345deacf2a779f0e9"
+    },
+    {
+      "path": "docs/entrega-equipamento-issue52.md",
+      "scope": "implementation",
+      "sha256": "cce91dd264306a68854fc8ee9a8662f013bec86e38c6c130a4cd6fe3a06309c5"
+    },
+    {
+      "path": "docs/entrega-fechamento-tabelas-piloto.md",
+      "scope": "implementation",
+      "sha256": "e0a28e0e49293f3dcec5b058d7ebaf3e59e7c465c0061d88b133368657114355"
+    },
+    {
+      "path": "docs/entrega-finalizacao-issue54.md",
+      "scope": "implementation",
+      "sha256": "cd97f5927772db0dad77548bd2a461a6d5292e357e15196f0098038d5972ca92"
+    },
+    {
+      "path": "docs/entrega-higiene-pii-s0.md",
+      "scope": "implementation",
+      "sha256": "45f82322d40617d6ac3b1ef00887c4e671671f84da62e08dbce5894c34ca0053"
+    },
+    {
+      "path": "docs/entrega-html-autonomo.md",
+      "scope": "implementation",
+      "sha256": "079be55d25d89bcc67641da7aaaf0d4a2ca5b51662cc4d93c6ea3f48ee3cde87"
+    },
+    {
+      "path": "docs/entrega-human-ancestry.md",
+      "scope": "implementation",
+      "sha256": "d909b74abe00f3b2308841b4b043ad5810f73529f1517079fedc1bc12c6fa1f4"
+    },
+    {
+      "path": "docs/entrega-impressao-a4.md",
+      "scope": "implementation",
+      "sha256": "b88ffb162c2f06905004a7b72a2cab7c4bc3ff209560d17745142298df051160"
+    },
+    {
+      "path": "docs/entrega-indices-human-l0.md",
+      "scope": "implementation",
+      "sha256": "9b97d38982f1a0cca636753e95ffc6765c086040703073aae455662c86fa492b"
+    },
+    {
+      "path": "docs/entrega-interesting-things-issue51.md",
+      "scope": "implementation",
+      "sha256": "f245dd7166dbedccc544034a3d8b12df174f58943d6af08924393870987bfc6b"
+    },
+    {
+      "path": "docs/entrega-interesting-things.md",
+      "scope": "implementation",
+      "sha256": "06347d10b50b01a02e3804c21afe7ce3459dc8986c020c523726730d99296ac3"
+    },
+    {
+      "path": "docs/entrega-inventario-tabelas-criacao.md",
+      "scope": "implementation",
+      "sha256": "a0308a744bb50be5f7deb3bcc2eacce755237238b652c14e1bd4c4fc307806da"
+    },
+    {
+      "path": "docs/entrega-lote-core-issue34-atividade3.md",
+      "scope": "implementation",
+      "sha256": "aa7fbbf2b39bb4d36df91aa9288a9a541f3b96636692bf9167a1c9284bf7d09d"
+    },
+    {
+      "path": "docs/entrega-magias-demo.md",
+      "scope": "implementation",
+      "sha256": "968b86511fea67202bff629f5ffb70db6980de9f0a587141b76370d9e99a90dc"
+    },
+    {
+      "path": "docs/entrega-mecanicas-staging.md",
+      "scope": "implementation",
+      "sha256": "ed3659943f0e031b25fc2ac31fcb6c381fe9f1dd386820d4989416bb2903b83a"
+    },
+    {
+      "path": "docs/entrega-motor-human-l0.md",
+      "scope": "implementation",
+      "sha256": "917e348f218720b0526ffe763025f811e8d20a8c62f14a4e70ee83115f937f99"
+    },
+    {
+      "path": "docs/entrega-nivel-um.md",
+      "scope": "implementation",
+      "sha256": "d0b49f3310e16bdec1df23c770661aca3941ab531d40a9b74b514e1b628aeb3c"
+    },
+    {
+      "path": "docs/entrega-nivel-zero.md",
+      "scope": "implementation",
+      "sha256": "694881a35fa4c50791869f76f6d18c13c9c0d1f59b93390086d9a944e9d86df1"
+    },
+    {
+      "path": "docs/entrega-normalizacao-editorial.md",
+      "scope": "implementation",
+      "sha256": "ef1d40b4b43fc04edb2617951571c94fcd31c5ab700fd7308422d07bc5547f6d"
+    },
+    {
+      "path": "docs/entrega-paths-staging.md",
+      "scope": "implementation",
+      "sha256": "efb48160e37ebccdbdf7307a0f55355943bd1fd01331204f72c186f916b1436f"
+    },
+    {
+      "path": "docs/entrega-piloto-core-nivel-zero.md",
+      "scope": "implementation",
+      "sha256": "28deff3e228f3746d6fa7d51f02797af45fb7fdef254d9c5a90708971a6ab4e7"
+    },
+    {
+      "path": "docs/entrega-procedimentos-issue53.md",
+      "scope": "implementation",
+      "sha256": "e89f425bff3de921225f10d2758f7cbe82e90ac26590ca77fc90b425598097bf"
+    },
+    {
+      "path": "docs/entrega-profissoes-idiomas.md",
+      "scope": "implementation",
+      "sha256": "2fc51519784f644b752ba10e701c9a34cdb1c7e67af396fccfb20379ef6f0f0d"
+    },
+    {
+      "path": "docs/entrega-projecao-mecanica-human-l0.md",
+      "scope": "implementation",
+      "sha256": "af086bc581d7badf5c9bcd9f55b408b13bf7d937700072b8f7eb12c3ea2850b3"
+    },
+    {
+      "path": "docs/entrega-reconciliacao-corpus.md",
+      "scope": "implementation",
+      "sha256": "e9badc5be84c5e068f0da55e1a7fb21743035caa0c9daa19ef4f91e83b0625c5"
+    },
+    {
+      "path": "docs/entrega-relatorio-compilacao-human-l0.md",
+      "scope": "implementation",
+      "sha256": "e505d62cb163ce74ad47dde09bec454bbc182eec8afa17820c0910aefa64e40e"
+    },
+    {
+      "path": "docs/entrega-revisao-freeze-issue55.md",
+      "scope": "implementation",
+      "sha256": "10a27b6a1c204d16aab61466b1a16030fdade2ade636871b143b312d43e26752"
+    },
+    {
+      "path": "docs/entrega-riqueza-equipamento.md",
+      "scope": "implementation",
+      "sha256": "d4a4d1c91f3fb56e753b930dacf2583c33cd5d8e821e91f2380724b141afacbc"
+    },
+    {
+      "path": "docs/entrega-sessao-demo.md",
+      "scope": "implementation",
+      "sha256": "295e537cf2932fbfea98e204421aae5f0b86eba40408ca021c1e7397faa88f12"
+    },
+    {
+      "path": "docs/entrega-spells-staging.md",
+      "scope": "implementation",
+      "sha256": "ced33c90c77b4748fde9102c45d136911dd89e5b15f4c94ee625f20cbc725026"
+    },
+    {
+      "path": "docs/estado-issues.md",
+      "scope": "implementation",
+      "sha256": "8c0491fe4b54bbbdc5888ef2c1d5afd2fbca91ad797eb03dae298d3d5b444b7c"
+    },
+    {
+      "path": "docs/fechamento-issue34-atividade1.md",
+      "scope": "implementation",
+      "sha256": "aeb892babd4b8148903a01b66fc387f0fc7c3f2014db7633749b55df9c1117f9"
+    },
+    {
+      "path": "docs/fluxo-aleatoriedade.md",
+      "scope": "implementation",
+      "sha256": "b4ae840ed10c195fe7c55b019d4588c0c81b09c6f95b06c4bf8a888ea63e7745"
+    },
+    {
+      "path": "docs/guia-primeira-fatia.md",
+      "scope": "implementation",
+      "sha256": "353216b1b12788d964a0104c0969faf52a77b6a460a4077c80e09307818d5d52"
+    },
+    {
+      "path": "docs/higiene-historico-git.md",
+      "scope": "implementation",
+      "sha256": "9d73330239c8960b5ce47942fe7c9bb49887291713fe8dcdd24b517390ab32a6"
+    },
+    {
+      "path": "docs/higiene-pii-inventario-s0.md",
+      "scope": "implementation",
+      "sha256": "15a449a61bbd6ed059072fc627b2894d0cc715544fe8d47db949d5572cb5c7af"
+    },
+    {
+      "path": "docs/lote-kits-itens-human-l0.md",
+      "scope": "implementation",
+      "sha256": "6b519e8f1a9a6f69ec9f07026e96989bb2eeadc620878cf6cdf2c81be1780e7a"
+    },
+    {
+      "path": "docs/matriz-finalizacao-issue54.md",
+      "scope": "implementation",
+      "sha256": "919db103966add611b5390f57a86b0778b90ebb25eea2fc0c3156d93e0873696"
+    },
+    {
+      "path": "docs/matriz-lacunas-issue34-atividade1.json",
+      "scope": "implementation",
+      "sha256": "8743e75be4472fe25e90ec5f64f9b5c4af56a253cc85ec2b15f794904e1f9625"
+    },
+    {
+      "path": "docs/matriz-lacunas-issue34-atividade1.md",
+      "scope": "implementation",
+      "sha256": "597b0b4c8add6147bad2b16833dc3f0464cab39b786ddfe7abf9595bd3320094"
+    },
+    {
+      "path": "docs/matriz-procedimentos-issue53.md",
+      "scope": "implementation",
+      "sha256": "916bd9d983f05fb429f81cbe8dcf67163a2f6f877e95ff5b97a8bb07873d3f54"
+    },
+    {
+      "path": "docs/matriz-revisao-freeze-issue55.md",
+      "scope": "implementation",
+      "sha256": "227293b4d61e034b7279ab01c097d5827c936631b126e46f5097f17a48c25822"
+    },
+    {
+      "path": "docs/modelo-de-dados.md",
+      "scope": "implementation",
+      "sha256": "aa5703361c9ffbcdba43bd5043762547f1f86657de5de47fb970a4905b14f974"
+    },
+    {
+      "path": "docs/plano-background-issue50.md",
+      "scope": "implementation",
+      "sha256": "569a65f5a33e517ec8d7d14c93280c6d357eea74a6bcf3e0453a32fb225d5e4a"
+    },
+    {
+      "path": "docs/plano-catalogo-itens-piloto.md",
+      "scope": "implementation",
+      "sha256": "55b4307ba24ce5849910c43f0af167a6175d308285075950b752dd9a81d1176a"
+    },
+    {
+      "path": "docs/plano-equipamento-demo.md",
+      "scope": "implementation",
+      "sha256": "7e19c8295de4d4fb5928139cde3884395967a5ac9b7110d3832ca5c8d8ba97ef"
+    },
+    {
+      "path": "docs/plano-equipamento-issue52.md",
+      "scope": "implementation",
+      "sha256": "5f465a709a27f1737329b9ff788f22625b64a4f396e6b0e7fa263a969fc91ddd"
+    },
+    {
+      "path": "docs/plano-extracao-ancestries.md",
+      "scope": "implementation",
+      "sha256": "4907102930d837960b2bf0e5d34fcc4abf5ca5cfe827ef8b7a79d50f260a0c3a"
+    },
+    {
+      "path": "docs/plano-extracao-paths.md",
+      "scope": "implementation",
+      "sha256": "4c8c0502569557858f65d5e590153514b1152fe1c50fa9b0be12a064d68ab2b3"
+    },
+    {
+      "path": "docs/plano-extracao-spells.md",
+      "scope": "implementation",
+      "sha256": "6af22ede1bf5edff93bd2aa6709f6a95fef884bde2dd6191331f94e7540daf56"
+    },
+    {
+      "path": "docs/plano-fechamento-tabelas-piloto.md",
+      "scope": "implementation",
+      "sha256": "72858e82079fadefb73c12dcb50b4e76c437e6ca18fa738e0e52ee2c13b9e51c"
+    },
+    {
+      "path": "docs/plano-finalizacao-issue54.md",
+      "scope": "implementation",
+      "sha256": "d6439ccb0cc28353c705458c63a60575335f52015143b56c20a905ede591a810"
+    },
+    {
+      "path": "docs/plano-html-autonomo.md",
+      "scope": "implementation",
+      "sha256": "98e8f1b812a2959a1e4560a53202e64caebc56bc1bd673ac8fd946a11cca4ded"
+    },
+    {
+      "path": "docs/plano-human-ancestry.md",
+      "scope": "implementation",
+      "sha256": "5f58ebd311727ed5fd5c108873dc80b4fc3a2026e6dcf654049ff33d62a1a5a6"
+    },
+    {
+      "path": "docs/plano-impressao-a4.md",
+      "scope": "implementation",
+      "sha256": "956baeafd392c70b6a45d7936ee80c173125cf3c60caa50d3d9c14b6fb9d589d"
+    },
+    {
+      "path": "docs/plano-interesting-things-issue51.md",
+      "scope": "implementation",
+      "sha256": "4252148cd9001803ae5184d76c094b28e0203a1527670ed4538452fd212aa4db"
+    },
+    {
+      "path": "docs/plano-interesting-things.md",
+      "scope": "implementation",
+      "sha256": "6c27620ebd611f5c56654abfb2aaea8e91b0f951a51e4e2ec72ab32ab4694b92"
+    },
+    {
+      "path": "docs/plano-inventario-tabelas-criacao.md",
+      "scope": "implementation",
+      "sha256": "c205a5373dd22458ecf315e491053343ed1dfbea246f847a4297cf3983067e0e"
+    },
+    {
+      "path": "docs/plano-magias-demo.md",
+      "scope": "implementation",
+      "sha256": "8e75fbefa1c06de76d47800de8306a2922266f97288ee042926ef743c2784c8d"
+    },
+    {
+      "path": "docs/plano-nivel-um.md",
+      "scope": "implementation",
+      "sha256": "48a083d52dab54ff245cad7009d06c4b7e59877b83af6095988e0af21b025376"
+    },
+    {
+      "path": "docs/plano-nivel-zero.md",
+      "scope": "implementation",
+      "sha256": "27f1ec0c8175c361b6b08e527506d8a8bf06a98ee3003b5130871ca346bb8cc5"
+    },
+    {
+      "path": "docs/plano-normalizacao-editorial.md",
+      "scope": "implementation",
+      "sha256": "4d8dd40161a6be0eecb0e023459af782dd612f8bc8f39b5d8efd2c49948d2032"
+    },
+    {
+      "path": "docs/plano-piloto-core-nivel-zero.md",
+      "scope": "implementation",
+      "sha256": "dc701e54ac7b5592833a235a968bd76308abde03ac761646d742c6dfaccf01ea"
+    },
+    {
+      "path": "docs/plano-procedimentos-issue53.md",
+      "scope": "implementation",
+      "sha256": "0e180c183db0e890f18fccf8c7a4f308d7c47dfd735e7d8ba9581abbfb180913"
+    },
+    {
+      "path": "docs/plano-profissoes-idiomas.md",
+      "scope": "implementation",
+      "sha256": "67d29ad91d2ab0bd7e9c1e352becae84e0a2a6f67a0dea3c698b546946564931"
+    },
+    {
+      "path": "docs/plano-reconciliacao-corpus.md",
+      "scope": "implementation",
+      "sha256": "8f5a2a09f365cafabb5ece3595648abb6a3c635b7f7af7ad1bc13d0bef00c330"
+    },
+    {
+      "path": "docs/plano-revisao-freeze-issue55.md",
+      "scope": "implementation",
+      "sha256": "9e9773dc2c3cd4517237c122f177a1baa799a061ee93a6d8b25ae3cbec7cdddb"
+    },
+    {
+      "path": "docs/plano-riqueza-equipamento.md",
+      "scope": "implementation",
+      "sha256": "cc5cca5807aabf5c846fd0cb45713710c194703fae31b6c859f312f248caca77"
+    },
+    {
+      "path": "docs/plano-segmentacao-mecanicas.md",
+      "scope": "implementation",
+      "sha256": "bc8106f1b727e763ed1f05c26e626ea2bf1902f28db1aefbf77670b0361a740f"
+    },
+    {
+      "path": "docs/plano-sessao-demo.md",
+      "scope": "implementation",
+      "sha256": "dd9d02282de1bf558c449bd692d37fb863376f9e87ccd1029895eba3247305f5"
+    },
+    {
+      "path": "docs/politica-distribuicao-conteudo.md",
+      "scope": "implementation",
+      "sha256": "737057cef6779a44c26c29200a37f654a498aee8d2657bd31bb3775612b754c0"
+    },
+    {
+      "path": "docs/politica-expansoes-ancestries.md",
+      "scope": "implementation",
+      "sha256": "38b19d99ca31ffc48adff60e0a051bfbf679c2a695154f0a7e5bd156bfc27a47"
+    },
+    {
+      "path": "docs/prompt-wireframe-claude-design.md",
+      "scope": "implementation",
+      "sha256": "5c7a22fe260fd60db81ef033dc6fb31df09c45c1646855c3fed59dfec53a500d"
+    },
+    {
+      "path": "docs/publicacao-historico-git.md",
+      "scope": "implementation",
+      "sha256": "5c8bdb865d3498cddfadc61cb5abb13b21e65f83584028cbb501502a1c553ee0"
+    },
+    {
+      "path": "docs/qualidade-e-testes.md",
+      "scope": "implementation",
+      "sha256": "100b6511a3cd5151c5d22a24488adbb70da3151e17aa63e9cc92a135fd93368b"
+    },
+    {
+      "path": "docs/revisao-conteudo-human-l0.md",
+      "scope": "implementation",
+      "sha256": "44d494a7ea407cc4e5bcf9e5af8d97c92ba3b7b840e697f16267e22072cedf64"
+    },
+    {
+      "path": "docs/revisao-pr14-pr15.md",
+      "scope": "implementation",
+      "sha256": "3de7790a24699e40f2b5deb5cc12bc1c064876d7ffd16d893649a77e059b386f"
+    },
+    {
+      "path": "docs/revisao-pr44-pr47-pr46.md",
+      "scope": "implementation",
+      "sha256": "407aa1a7f0e9d17715f14cd03b2cccb9a9941c2fb1a7c288a5f4c48b21d161fc"
+    },
+    {
+      "path": "docs/revisao-pr57.md",
+      "scope": "implementation",
+      "sha256": "8b9810b38af1d400c89105dad81afcb3e1c4da1798fb9aa5272309a352fe1900"
+    },
+    {
+      "path": "docs/revisao-pr58.md",
+      "scope": "implementation",
+      "sha256": "99dcd63a3faf6f01ca8b57ba0a89db88c80fde96143e476611a4aba941e5a472"
+    },
+    {
+      "path": "docs/revisao-pr59.md",
+      "scope": "implementation",
+      "sha256": "737e9aa1d73e29d3bb82adcb695b36a55e5da8ce861f314f0d8942989c1480ab"
+    },
+    {
+      "path": "docs/revisao-pr60.md",
+      "scope": "implementation",
+      "sha256": "16df2907ccf2a9b2a1446c9f072454448746dea44e4aaa0a09ee6807ebf3994c"
+    },
+    {
+      "path": "docs/revisao-semantica-issue55.md",
+      "scope": "implementation",
+      "sha256": "19895a3db731ce69dba88bd698ade7c7a902070cbc00486071373ec6d62b6657"
+    },
+    {
+      "path": "docs/roadmap-issue34.md",
+      "scope": "implementation",
+      "sha256": "12d8cec96f57a45f8baf305362bb215924f07616f5e55d2ca8439d591ac74abf"
+    },
+    {
+      "path": "docs/tabelas-aleatorias-e-curadoria.md",
+      "scope": "implementation",
+      "sha256": "60e8557940f45a687b60b98b3ea5aba8c87552d2ee1eababf2fe0f2f75486c50"
+    },
+    {
+      "path": "docs/tarefas-curadoria-compendios.md",
+      "scope": "implementation",
+      "sha256": "cdfd46417f86ed7ca98db172270f97ac61e67330b19b737d5312e28105340079"
+    },
+    {
+      "path": "docs/transferencia-escopo-issue7.md",
+      "scope": "implementation",
+      "sha256": "1f583c3e8c4169b8157c3383c8c32f1095b9129eb2086f0fb6cc20ef3fa25ddc"
+    },
+    {
+      "path": "docs/visao-produto.md",
+      "scope": "implementation",
+      "sha256": "9bdff8a1a31af7a33dfa77c7854115100781bc44852dd6d4268639341e7eeca3"
+    },
+    {
+      "path": "package-lock.json",
+      "scope": "implementation",
+      "sha256": "6a08cb5bf9d73dad79f397800283851306b77c67ac2748529bc6773fe196c37a"
+    },
+    {
+      "path": "package.json",
+      "scope": "implementation",
+      "sha256": "08d2b6ebc1c071c873f465822ca56964ef431912eeb3dd35df143aca3d1e6093"
+    },
+    {
+      "path": "packages/catalog/index.ts",
+      "scope": "implementation",
+      "sha256": "fe64a8dc7dbbdae9ca726bfa685877085c6133e995f45a213472a00f94626c6c"
+    },
+    {
+      "path": "packages/catalog/storage.ts",
+      "scope": "implementation",
+      "sha256": "b10e4dc9ba417404b5bc5e23aa2a7809d96427cd341f54ff5832c60d2369c6aa"
+    },
+    {
+      "path": "packages/character-generator/character-finalization.ts",
+      "scope": "implementation",
+      "sha256": "b8e9a0a6534f7d4f27acb511a90c53f26cb5f82175e041062f270c82e1c4d6b4"
+    },
+    {
+      "path": "packages/character-generator/core-background.ts",
+      "scope": "implementation",
+      "sha256": "647dce1d2cf6cd34a5d833d0af7a174323a87cd623420b1f9f6566d45cdebea8"
+    },
+    {
+      "path": "packages/character-generator/core-equipment.ts",
+      "scope": "implementation",
+      "sha256": "beb0d50440e5c26587e0736707b7a7dfca2dc9b1a7fec1be96422ed9b444c5a6"
+    },
+    {
+      "path": "packages/character-generator/core-interesting-things.ts",
+      "scope": "implementation",
+      "sha256": "d4e4e6446a5b1acedf8ed0a9706b685ba12dc3d11509a325b9334d4e732c8baa"
+    },
+    {
+      "path": "packages/character-generator/human-l0-consumables.ts",
+      "scope": "implementation",
+      "sha256": "04df04510cb6ed9afba5434470f0628a59579831a8acdc3b43fb62dfb4100dfd"
+    },
+    {
+      "path": "packages/character-generator/human-l0-storage.ts",
+      "scope": "implementation",
+      "sha256": "d5138ed6dd8adb8e2fc979675cf74c70691885121dd48cc47063acbe006669db"
+    },
+    {
+      "path": "packages/character-generator/human-l0.ts",
+      "scope": "implementation",
+      "sha256": "b65188a1699b295dfc2a5045eb10ed6434a18b2aa25172e6c54b67dae4ae17fe"
+    },
+    {
+      "path": "packages/character-generator/index.ts",
+      "scope": "implementation",
+      "sha256": "8189229bbe6760de78db9e095f03fecbf21a50f18533c5db1fe4b8074826da3c"
+    },
+    {
+      "path": "packages/character-generator/level.ts",
+      "scope": "implementation",
+      "sha256": "d12a10e705c4491ed1285859100bc82144f3a8b9f5bee8d8dffa6d8b80f936e9"
+    },
+    {
+      "path": "packages/character-generator/official-core.ts",
+      "scope": "implementation",
+      "sha256": "5b16e8d040731e95c397e30d895fa0ae761a4e709db1ab0ae13b329857f2e549"
+    },
+    {
+      "path": "packages/character-generator/procedure-graph.ts",
+      "scope": "implementation",
+      "sha256": "141b9d14b59d845fb53ef8e192947c37f29604a47483c37cb755d854630b2187"
+    },
+    {
+      "path": "packages/character-generator/procedure-model.ts",
+      "scope": "implementation",
+      "sha256": "1209700ff4218a5751dff819f4b30c99281d207c3ef070461708909fec77ce1b"
+    },
+    {
+      "path": "packages/character-generator/procedure-runtime.ts",
+      "scope": "implementation",
+      "sha256": "92ec7bba9e2c0caff77c1eb48fe772f7a569ca1b2ec8988b335f32318f5444d8"
+    },
+    {
+      "path": "packages/character-generator/runtime.ts",
+      "scope": "implementation",
+      "sha256": "36041d9b132dd3220fc9a755e05727e64a6f64d8714451df3441683ca66cff90"
+    },
+    {
+      "path": "packages/character-generator/storage.ts",
+      "scope": "implementation",
+      "sha256": "70a6e686b72844ba570cee9eb401047225ebb2bfd1948edeee10b2c6a20bb1b2"
+    },
+    {
+      "path": "packages/curation/ancestry-base-model.ts",
+      "scope": "implementation",
+      "sha256": "375f38c359ff0d8b9d85f2307452e9c427b31875b9a42634cca48473e4bd5837"
+    },
+    {
+      "path": "packages/curation/contracts.ts",
+      "scope": "implementation",
+      "sha256": "369c738c559bcf823e3135acdf6f7a4f2cf1ab870f0db1f954e981658b5fa6df"
+    },
+    {
+      "path": "packages/curation/evidence.ts",
+      "scope": "implementation",
+      "sha256": "4793e8b6447ca5618d9a2b59014e3308570282f8ae0464d8ce1e710e6d005e77"
+    },
+    {
+      "path": "packages/curation/human-l0-activity4-lot.ts",
+      "scope": "implementation",
+      "sha256": "cbbaa7c360d75afce656e7560f4288125ee449d572ddce21cbe0ff11a6a36b10"
+    },
+    {
+      "path": "packages/curation/human-l0-consumable-bundle.ts",
+      "scope": "implementation",
+      "sha256": "5ee7774a05a0b4ba5f504a7a5119ba78537669e0f623caccebb8435c325c705c"
+    },
+    {
+      "path": "packages/curation/human-l0-consumable.ts",
+      "scope": "implementation",
+      "sha256": "0cf6456ea33879b090d57452353f41edad17d54fc7aed3831f224f0fe453e2ed"
+    },
+    {
+      "path": "packages/curation/human-l0-core-local.ts",
+      "scope": "implementation",
+      "sha256": "491b82d22b71cb0d0decda27e22c3e1a6ab545aaac31dad40c706edd091fce02"
+    },
+    {
+      "path": "packages/curation/human-l0-core-lot.ts",
+      "scope": "implementation",
+      "sha256": "4f29790f7cd9a118920629258e9d6be1f8193833aa4a4177ef5cd22c02898b52"
+    },
+    {
+      "path": "packages/curation/human-l0-kits-lot.ts",
+      "scope": "implementation",
+      "sha256": "71595aabaa68c8491985dc8cb1cdef01970582fca789edf6ac6655a94642d128"
+    },
+    {
+      "path": "packages/curation/human-l0-mechanics.ts",
+      "scope": "implementation",
+      "sha256": "dd3b5ee4328984214226f753fd9fe818cea47f4e3ecbe44f13057f5712b62408"
+    },
+    {
+      "path": "packages/curation/identity.ts",
+      "scope": "implementation",
+      "sha256": "6a2e46ee73c2efcbc63e6f017f38903127ae1399e550fd0d8de838db8a19ed1f"
+    },
+    {
+      "path": "packages/curation/interesting-things-model.ts",
+      "scope": "implementation",
+      "sha256": "ce608f751e761d725646a6882dd9c8d164afa23e9627e499d15828102da79820"
+    },
+    {
+      "path": "packages/curation/pilot-item-model.ts",
+      "scope": "implementation",
+      "sha256": "a5ef0d508706266217df2e4e25afe0c7943f59bdc5217968444dc44220210906"
+    },
+    {
+      "path": "packages/curation/pilot-table-model.ts",
+      "scope": "implementation",
+      "sha256": "dd0a84eeb210d087779139bcfd448038e5029d2ae026f6da0a22aca0257ab489"
+    },
+    {
+      "path": "packages/curation/profession-language-model.ts",
+      "scope": "implementation",
+      "sha256": "67528258f02c7a2f6caf34c4be01dae093c4ee54c613b1ebd7363c72e368fac1"
+    },
+    {
+      "path": "packages/curation/registries.ts",
+      "scope": "implementation",
+      "sha256": "bff9f45665113dbae0a7f5e4f3eda81bd7678e253774188a5ea02f0eb662e298"
+    },
+    {
+      "path": "packages/curation/source-policy.ts",
+      "scope": "implementation",
+      "sha256": "6724ccee854df638a5af24cc17986ca8aae02dcfd20cc019901e80f27fed94e6"
+    },
+    {
+      "path": "packages/curation/starting-equipment-model.ts",
+      "scope": "implementation",
+      "sha256": "df669928e7344d10e4224c39bbca88e9c646660e43b76da0f0044b5661625f11"
+    },
+    {
+      "path": "packages/equipment/index.ts",
+      "scope": "implementation",
+      "sha256": "b9cda519985cf2646fcad9c80754732f0445b4880c85ca3e3980438e4235a656"
+    },
+    {
+      "path": "packages/random-tables/index.ts",
+      "scope": "implementation",
+      "sha256": "cd3134c478a222c9cc690a1a6b873a40a05873e53a8aa519044c4c61ca53a434"
+    },
+    {
+      "path": "packages/session/index.ts",
+      "scope": "implementation",
+      "sha256": "b10c0fcd6d9befa7d4804fb762b33d54911d789ca5852b5d8ee80a100ff51fd6"
+    },
+    {
+      "path": "packages/session/model.ts",
+      "scope": "implementation",
+      "sha256": "75e7e564db86787b7415bc49c9a67f82cb9291d58837434fb647e94b0547021e"
+    },
+    {
+      "path": "packages/standalone/index.ts",
+      "scope": "implementation",
+      "sha256": "b9d552d6532f47efd332a6057ec8d004b24a9f406923447d6add9799309df5cd"
+    },
+    {
+      "path": "playwright.config.ts",
+      "scope": "implementation",
+      "sha256": "a75af85365b4b9b8af5daa639ebed1c142c9819533b55e57935a75bdde60a97d"
+    },
+    {
+      "path": "tests/activity1-provenance.test.ts",
+      "scope": "implementation",
+      "sha256": "12567131ae43e795cff32232e2ca6ccb24cbe1a4d4b125fb5f95b3ef2c0ca563"
+    },
+    {
+      "path": "tests/catalog.test.ts",
+      "scope": "implementation",
+      "sha256": "03195baf359bcbd9192769d7f9dabc86c2ce53af60b7e3b90bf8cf19c667460f"
+    },
+    {
+      "path": "tests/character-finalization.test.ts",
+      "scope": "implementation",
+      "sha256": "4e2032cd84817fed1e91a2ea56ebc9ae3d6242845c7de307ac900153496aa4b4"
+    },
+    {
+      "path": "tests/choice-slot-contract.test.ts",
+      "scope": "implementation",
+      "sha256": "ed0a6029f76940d198924e4a3d6daffd32d415d70edc7f9073487635845859a6"
+    },
+    {
+      "path": "tests/choice-slot.test.tsx",
+      "scope": "implementation",
+      "sha256": "5ce778824f1d6b481bfb915671ee4cd2941afacc6fd2e368aba72d7d17568f26"
+    },
+    {
+      "path": "tests/core-background.test.ts",
+      "scope": "implementation",
+      "sha256": "49ebe6b9aa186b1955bed84ac5e497558118f5342f619faf7a6705acaf9fad72"
+    },
+    {
+      "path": "tests/core-equipment.test.ts",
+      "scope": "implementation",
+      "sha256": "39a7bae8884da46a8b1129e0cb37a6b54d182327ac00b2bcb77ac138db999d52"
+    },
+    {
+      "path": "tests/core-interesting-things.test.ts",
+      "scope": "implementation",
+      "sha256": "af5cb8a4a43f9cde3c0da615c0428a7c547b8587e84a2477b6156397358139ce"
+    },
+    {
+      "path": "tests/creation-procedures-ui.test.tsx",
+      "scope": "implementation",
+      "sha256": "dfcd7f8b6dba77c4b87b612ea238353f72e6411d1cd5f3da3ef90591f2995eeb"
+    },
+    {
+      "path": "tests/curation-ancestries.test.ts",
+      "scope": "implementation",
+      "sha256": "e62056dcae28c5a27838bd83138a7dcc5eac4138785c44774443b69e0a649796"
+    },
+    {
+      "path": "tests/curation-compilation-report.test.ts",
+      "scope": "implementation",
+      "sha256": "2e0a5f3e17758777b7ee330a528f2a8440b2cb175a4d6ba6e42e4e41ac9600a0"
+    },
+    {
+      "path": "tests/curation-contracts.test.ts",
+      "scope": "implementation",
+      "sha256": "66483917c532bce9868eb0112cc4a12d940d68562f689aa56f871d8ce2112ddc"
+    },
+    {
+      "path": "tests/curation-core-local-source.test.ts",
+      "scope": "implementation",
+      "sha256": "fae1078e6b3d352dffe8ab93054bdc4ba4c0c340eb4c72d4122e0d12b63fb7b8"
+    },
+    {
+      "path": "tests/curation-core-local.test.ts",
+      "scope": "implementation",
+      "sha256": "7c48e707d1871501d60f1b5b832f6912fb2b8293cb8e81ac74ec99e46a6ce96c"
+    },
+    {
+      "path": "tests/curation-core-pilot.test.ts",
+      "scope": "implementation",
+      "sha256": "f1a8ab66cf8f12091183abc2c02f38056d0d23afc4f5679b6bfd07e54fd17e85"
+    },
+    {
+      "path": "tests/curation-creation-tables.test.ts",
+      "scope": "implementation",
+      "sha256": "810eff22a0079b01869d02a9fb170f14d83fde257b6f1fe2341034432bfc1d84"
+    },
+    {
+      "path": "tests/curation-evidence.test.ts",
+      "scope": "implementation",
+      "sha256": "d4edc3483861420ca3685951fdbf52be10ab1c47f8cf20945447efbbd2c9eaea"
+    },
+    {
+      "path": "tests/curation-human-ancestry.test.ts",
+      "scope": "implementation",
+      "sha256": "05aa543e8f6638835b2a7fd92c1a420e988a4904595b942b968edd9cd3677bf1"
+    },
+    {
+      "path": "tests/curation-human-l0-consumable-activity4.test.ts",
+      "scope": "implementation",
+      "sha256": "fea32582397e89cf04d6d0e6b6edc526ad20b8556c9f098200b8f55cd9be6e50"
+    },
+    {
+      "path": "tests/curation-human-l0-consumable-compiler.test.ts",
+      "scope": "implementation",
+      "sha256": "d3879400cda48dcfa474f83f71ab733af89fd76883719c04d171426f2d6621d4"
+    },
+    {
+      "path": "tests/curation-human-l0-consumable.test.ts",
+      "scope": "implementation",
+      "sha256": "e97184df5c8125dfc428696e92d24ae7d040cc715deed55ba181c810db98c7e6"
+    },
+    {
+      "path": "tests/curation-human-l0-core-lot.test.ts",
+      "scope": "implementation",
+      "sha256": "704ebcb043a865f821652450cebe92d04b625073ad0a7b936d3a2221faf2f58d"
+    },
+    {
+      "path": "tests/curation-human-l0-kits-lot.test.ts",
+      "scope": "implementation",
+      "sha256": "354f81280774161acb75dd323b114c1b9f249d40aae3c72c043ca657555ff805"
+    },
+    {
+      "path": "tests/curation-human-l0-mechanical-compiler.test.ts",
+      "scope": "implementation",
+      "sha256": "68ba3e1c2db1c9ea426277bd114725b89166a01a1d5d46c7e4d420d44d6922f0"
+    },
+    {
+      "path": "tests/curation-human-l0-mechanics.test.ts",
+      "scope": "implementation",
+      "sha256": "7f07b2426a63b533557abf868a414c1b141ef0c80989942422a8b310583974cc"
+    },
+    {
+      "path": "tests/curation-human-l0-pack-stubs.test.ts",
+      "scope": "implementation",
+      "sha256": "0d5aeb7e3426ab93b2a27bf265308e6af0bdf26a76e9b531b6097ea8d30cd154"
+    },
+    {
+      "path": "tests/curation-human-l0-validation.test.ts",
+      "scope": "implementation",
+      "sha256": "3a544b4909281b89616dbe33db42be323148851013dbc5ded87731a68e5666f0"
+    },
+    {
+      "path": "tests/curation-identity.test.ts",
+      "scope": "implementation",
+      "sha256": "a9a9748f8333451a580900d8d7067e5aef97e4fb85f9fe39c102dff3b6574d15"
+    },
+    {
+      "path": "tests/curation-inputs.test.ts",
+      "scope": "implementation",
+      "sha256": "f16e9675a7fa5679abd4c90ec3ee9e73ffaff27dd250885bb0c88aaf49f80dcc"
+    },
+    {
+      "path": "tests/curation-interesting-things.test.ts",
+      "scope": "implementation",
+      "sha256": "6071697ce58727cd71554aedb458ed21ad427f8fdb8ed01ff8b194ebb1274d3a"
+    },
+    {
+      "path": "tests/curation-mechanics.test.ts",
+      "scope": "implementation",
+      "sha256": "2661dc6e0fe0bdbfb2bce4604a11c97dac6330d4b8e4e581e7853682d4f3ebc7"
+    },
+    {
+      "path": "tests/curation-normalization.test.ts",
+      "scope": "implementation",
+      "sha256": "e6f5c3b5555b448bd9c90dd18500e424dc8b6e9e3f182000740047a0dba4f42e"
+    },
+    {
+      "path": "tests/curation-pack-compiler.test.ts",
+      "scope": "implementation",
+      "sha256": "d915345d199c8c4685365ac747f67306eecf0940fcc26afd20e5ad4616358759"
+    },
+    {
+      "path": "tests/curation-paths.test.ts",
+      "scope": "implementation",
+      "sha256": "e9b5410e3cd953d684d26bb61e6ffe81c1e4fe2a92c31432874a44e722eb63ac"
+    },
+    {
+      "path": "tests/curation-pilot-items.test.ts",
+      "scope": "implementation",
+      "sha256": "de5151ea3a806390375b07bba839cafb92937513f0ce9076017539365c662e20"
+    },
+    {
+      "path": "tests/curation-pilot-tables.test.ts",
+      "scope": "implementation",
+      "sha256": "d8159411bb65f8e433624dc5b590ddf01ed9a85fa5c9419e5ccae674edeb9209"
+    },
+    {
+      "path": "tests/curation-privacy.test.ts",
+      "scope": "implementation",
+      "sha256": "9c1d29e9697876d2bcdb04188466b1cbb9c3adf3a16c3e7ce9e2e512b7e61817"
+    },
+    {
+      "path": "tests/curation-professions-languages.test.ts",
+      "scope": "implementation",
+      "sha256": "1891d0b67a077f813a543d1f5ec28fb41929e273888e89e4b9879f2a7b734063"
+    },
+    {
+      "path": "tests/curation-reconciliation.test.ts",
+      "scope": "implementation",
+      "sha256": "104b166c075b4c4bd0e16a90833cc8b451aa198036157e3401b2a9e25dc16e4d"
+    },
+    {
+      "path": "tests/curation-source-policy.test.ts",
+      "scope": "implementation",
+      "sha256": "933395c0cb2b37e8bfb3e13d1f430901ec55fa52d3660d6e7c3b11bb99014251"
+    },
+    {
+      "path": "tests/curation-sources.test.ts",
+      "scope": "implementation",
+      "sha256": "1a38a4ebee4bb0db799e378303924c835adc72ed9265127ebbf77d9b19e125ee"
+    },
+    {
+      "path": "tests/curation-spells.test.ts",
+      "scope": "implementation",
+      "sha256": "2b13a9d2e27c06d448aa68c667935eb26e0986ef2e7ac7be5f83c51e4f7c7847"
+    },
+    {
+      "path": "tests/curation-thematic-indexes.test.ts",
+      "scope": "implementation",
+      "sha256": "18fea8a6fc44ef214709b6d137be13b5f371cf2bbb842fa47761fc0a7b7b5de8"
+    },
+    {
+      "path": "tests/curation-wealth-equipment.test.ts",
+      "scope": "implementation",
+      "sha256": "1ce897049ad8af087433b74924a50416f641e37d9647658740b7151d8fca97f5"
+    },
+    {
+      "path": "tests/e2e/catalog.spec.ts",
+      "scope": "implementation",
+      "sha256": "51745b57284a29f6c28d7bd9b4259fb3c543b148611f0281630b5737c5db848b"
+    },
+    {
+      "path": "tests/e2e/character-finalization.spec.ts",
+      "scope": "implementation",
+      "sha256": "168663e134ecb3dbcfc16c08af83432ee9524312c2181bc38bbed944aa2a4493"
+    },
+    {
+      "path": "tests/e2e/equipment.spec.ts",
+      "scope": "implementation",
+      "sha256": "f74aa5aad6c5f121d1d9e5f71a1a7b54c4e605320132c0bc3fd5d057eae0124a"
+    },
+    {
+      "path": "tests/e2e/generation.spec.ts",
+      "scope": "implementation",
+      "sha256": "1fa03befa29052961556bb75d4ab407399ed78133dc7229a7b3caff9dbf30b00"
+    },
+    {
+      "path": "tests/e2e/human-l0-runtime.spec.ts",
+      "scope": "implementation",
+      "sha256": "c82e7c8d57fda620626d2e7cce82d7cbd565f1f9fa6b4274ea1f72931b35ea63"
+    },
+    {
+      "path": "tests/e2e/magic.spec.ts",
+      "scope": "implementation",
+      "sha256": "f6fd43a5c0f89166eb9a2dcdfb9e34e05e6c6e04246172aebaf6517ebf4b6ba9"
+    },
+    {
+      "path": "tests/e2e/official-core.spec.ts",
+      "scope": "implementation",
+      "sha256": "eb4e7c39971e7f88ca30bf66f3a7e6a953a275b983ab91fc70574f9a73a8eb7b"
+    },
+    {
+      "path": "tests/e2e/official-procedures.spec.ts",
+      "scope": "implementation",
+      "sha256": "9b79c248cfa3b7eabb62a52c0c8cb3a6b69dc9c91e98400f98c0a7ebc3eedf30"
+    },
+    {
+      "path": "tests/e2e/print.spec.ts",
+      "scope": "implementation",
+      "sha256": "f82dfa315e5f9c5df3b27e73a6b26cc6c43b88e2eeea80744a95f3038281da44"
+    },
+    {
+      "path": "tests/e2e/progression.spec.ts",
+      "scope": "implementation",
+      "sha256": "84a95f107cbd0282eb8d05af8645b5ab669036d243d61478f36ec43f9a94c110"
+    },
+    {
+      "path": "tests/e2e/session.spec.ts",
+      "scope": "implementation",
+      "sha256": "591a6cc0b2df3049f90094c324cabeb870031e8b90edda587eca582fbcd82c4b"
+    },
+    {
+      "path": "tests/e2e/standalone.spec.ts",
+      "scope": "implementation",
+      "sha256": "d4f6153d7c233949eb84ee315654f4c005829971f25602cf881e77f957d5a285"
+    },
+    {
+      "path": "tests/e2e/wizard-l0.spec.ts",
+      "scope": "implementation",
+      "sha256": "20d74fe74bb251add91b307ab765d5f90360aac6252bc64e361845d5cb337744"
+    },
+    {
+      "path": "tests/equipment.test.ts",
+      "scope": "implementation",
+      "sha256": "13c4a30a92dee9543f7eadd25d2273ea0990ccb9434c5307835fa580e745dca4"
+    },
+    {
+      "path": "tests/finalization-source.test.ts",
+      "scope": "implementation",
+      "sha256": "dfdeaa54b2452a3022f010083c5e620b828c30e24f7ffee5555789f2a000a6e7"
+    },
+    {
+      "path": "tests/generation.test.ts",
+      "scope": "implementation",
+      "sha256": "7d19460ec765ea22193693aea25503a888f9ad201304d217bafd81a436f4fdd0"
+    },
+    {
+      "path": "tests/helpers/finalization-paths.ts",
+      "scope": "implementation",
+      "sha256": "db369c74f9427d713c6a44e48b4ea3c67a8172d6d6ac62fc7eb49eea9ebc7c29"
+    },
+    {
+      "path": "tests/helpers/procedure-context.ts",
+      "scope": "implementation",
+      "sha256": "6975a5fe73960f6d14ce46c47bc6ec7391ed17b3f637d21051e8a61a7ba234f2"
+    },
+    {
+      "path": "tests/human-l0-consumables.test.ts",
+      "scope": "implementation",
+      "sha256": "4cc703361a62d6caedea41038af0e453b33820b6e9fb450ca90a4b23cdd4f855"
+    },
+    {
+      "path": "tests/human-l0-preview-ui.test.tsx",
+      "scope": "implementation",
+      "sha256": "9acb0932a47a7faadc8ef0b724c3137d5a0d5002e34b715fdca423931b04dc48"
+    },
+    {
+      "path": "tests/human-l0-preview.test.ts",
+      "scope": "implementation",
+      "sha256": "5e13ed73af99750b7acee20d90f6528d9db4d72ff40292a061b14905f43fa795"
+    },
+    {
+      "path": "tests/human-l0-runtime.test.ts",
+      "scope": "implementation",
+      "sha256": "d418fffd195080520b471cd9612784c28a6c84155e7f72bc5889ab38b49ff64f"
+    },
+    {
+      "path": "tests/issue34-activity1-matrix.test.ts",
+      "scope": "implementation",
+      "sha256": "aad948da3c1264a475203c8fc0708de935d34f68ad6d513afc6af16021104745"
+    },
+    {
+      "path": "tests/l0-demo.test.ts",
+      "scope": "implementation",
+      "sha256": "8a4841d2715f651530ca3afafc11b3525dd5d5ae547307460e38b19fa3b6fedb"
+    },
+    {
+      "path": "tests/magic.test.ts",
+      "scope": "implementation",
+      "sha256": "3de508eac69918118fb5e1ba0b9f37e111d849415191d3a4e825f0b906ab74b7"
+    },
+    {
+      "path": "tests/official-core-source.test.ts",
+      "scope": "implementation",
+      "sha256": "2451d0bf793a5b8f3f1ca066259bca0b74a7aa5e2a1a65b2ee9ca875cccd9435"
+    },
+    {
+      "path": "tests/official-core.test.ts",
+      "scope": "implementation",
+      "sha256": "b2ae2b8867369c20622fab4c6d02a4cb8157eb16ff40390622dd604f3241e0f5"
+    },
+    {
+      "path": "tests/official-equipment-source.test.ts",
+      "scope": "implementation",
+      "sha256": "3da8d437d70116c5cb38a5799b134632cf76827091aa1ad491c4a4e15e3da014"
+    },
+    {
+      "path": "tests/official-interesting-things-source.test.ts",
+      "scope": "implementation",
+      "sha256": "efc1a1013647242802099293146fb93b57ccff543e24fa55fcb374be970a6fc8"
+    },
+    {
+      "path": "tests/procedure-runtime.test.ts",
+      "scope": "implementation",
+      "sha256": "4c34acab46e5e0a0a6499d40c74f6580b782284b2aa8174d15a8e6bb0a0fd18e"
+    },
+    {
+      "path": "tests/procedure-source.test.ts",
+      "scope": "implementation",
+      "sha256": "c465aa1e3d0b1e0cf9beb231f607fc36e5ec15de7d45c37b20a952416ee71b8d"
+    },
+    {
+      "path": "tests/progression.test.ts",
+      "scope": "implementation",
+      "sha256": "5679c6f6e0eaf8fbd0630651e1b09f8a149ed6b8c0401ca6bc33bbf70d8c2f53"
+    },
+    {
+      "path": "tests/review-freeze-source.test.ts",
+      "scope": "implementation",
+      "sha256": "0901390d900550b96af8e2e3e782c840db061c312478ea385c9be8688c1689f9"
+    },
+    {
+      "path": "tests/review-freeze.test.ts",
+      "scope": "implementation",
+      "sha256": "92db0e414a55b9ab537721e23a24014ee10496dfd61b2f79e7f22d4b3ef9f772"
+    },
+    {
+      "path": "tests/rules-corpus.test.ts",
+      "scope": "implementation",
+      "sha256": "f604b94b0837453f4aad53dee9b5fb02db1964afc6616c9b57650561a147b44b"
+    },
+    {
+      "path": "tests/session.test.ts",
+      "scope": "implementation",
+      "sha256": "0be51e70d46d545a6c05d0363085a48d0efe568e106262540c37ef71f6f236cd"
+    },
+    {
+      "path": "tests/standalone.test.ts",
+      "scope": "implementation",
+      "sha256": "6ec3e27bdcb8946700621efd6f5e6353bda3dcce11b19282eab4cf4593704f95"
+    },
+    {
+      "path": "tests/ui-shell.test.tsx",
+      "scope": "implementation",
+      "sha256": "bccadb3d0f7d3902f2843483bc7dfefd47f96221eaedd08831e659370bc8974b"
+    },
+    {
+      "path": "tests/wizard-l0.test.tsx",
+      "scope": "implementation",
+      "sha256": "6d037b222fc72283ab6dbd8727be8826b2a73408c93a5cde8e10d5c73635fd3d"
+    },
+    {
+      "path": "tools/audit-demo-random.mjs",
+      "scope": "implementation",
+      "sha256": "22156f06eb624e26f9820705289544b76d9261e0ee99eace4c0135f081672558"
+    },
+    {
+      "path": "tools/audit-official-entry.mjs",
+      "scope": "implementation",
+      "sha256": "c08beb7a6cbdca96354949b4f0f2f12f8a034494a51d8593f58b78378c1e1b5c"
+    },
+    {
+      "path": "tools/build-standalone.mjs",
+      "scope": "implementation",
+      "sha256": "5a6b380dfe16483a3f0ead2c830d1aa966e3a0a60e9354d6ecec915ee098ad66"
+    },
+    {
+      "path": "tools/curation/accept-human-l0-runtime.mjs",
+      "scope": "implementation",
+      "sha256": "e31920d6b4c0663ef073197a18f5d11e960d86f9aa52a86d66b0122e0d0cdb19"
+    },
+    {
+      "path": "tools/curation/accept-human-l0-runtime.ts",
+      "scope": "implementation",
+      "sha256": "f0df181325a221000bb62c4f7a7ac4fc7a50272ba675cfb2c6d4e297c6d94f37"
+    },
+    {
+      "path": "tools/curation/ancestries.mjs",
+      "scope": "implementation",
+      "sha256": "0830665850b33eb1795110d29d073c8356d838fe12d796ad7dd971689e635cd3"
+    },
+    {
+      "path": "tools/curation/ancestry-extractor.ts",
+      "scope": "implementation",
+      "sha256": "67e8fda86a236c9dfe2773a953a092194713a6ffd19cde78215179d99a597352"
+    },
+    {
+      "path": "tools/curation/canonical-json.ts",
+      "scope": "implementation",
+      "sha256": "de89d851902548798f98e735a364ec9e40f6860f2a01f621f52499f34864eafb"
+    },
+    {
+      "path": "tools/curation/compilation-report.ts",
+      "scope": "implementation",
+      "sha256": "34aa2fb83911724956dab4bbbe260cad40732fa8cb4e06e78af5065ca2079134"
+    },
+    {
+      "path": "tools/curation/compile-packs.mjs",
+      "scope": "implementation",
+      "sha256": "df6c84fd42330590eac061eae817539cab2e69a15125f6859b44739bcfee8e1b"
+    },
+    {
+      "path": "tools/curation/core-background-projector.ts",
+      "scope": "implementation",
+      "sha256": "dbb6699f71a9c23301ec95d028f19677f0c375b88909480f2acd68498a58b542"
+    },
+    {
+      "path": "tools/curation/core-equipment-projector.ts",
+      "scope": "implementation",
+      "sha256": "f147063d86a7c251384d82dcd858c0a3ce3e34193517c9872c3d7a3f87881d95"
+    },
+    {
+      "path": "tools/curation/core-interesting-things-projector.ts",
+      "scope": "implementation",
+      "sha256": "6a6b680f24125784c11189b7fbec74ae0efb30907f7a2ac3133f12c87190bd7a"
+    },
+    {
+      "path": "tools/curation/core-local-projector.ts",
+      "scope": "implementation",
+      "sha256": "f291dbcd0a8791ff0c734d6be75c58313a115dc7a573a72bffa867f643641525"
+    },
+    {
+      "path": "tools/curation/core-local.mjs",
+      "scope": "implementation",
+      "sha256": "ab187f6be1c88f1fd23e7b077590c5ba205e2556666b00af41756563d5ad43d0"
+    },
+    {
+      "path": "tools/curation/core-pilot-matrix.ts",
+      "scope": "implementation",
+      "sha256": "1ba6a3e2119a36aa2a4c1b8c999c986c27989801b79a4cb85bd968c85a9287e1"
+    },
+    {
+      "path": "tools/curation/core-pilot.mjs",
+      "scope": "implementation",
+      "sha256": "a7a7f33633558904a77b4f91074e04c9772f22232374aac72847802cf31ac2e7"
+    },
+    {
+      "path": "tools/curation/creation-table-inventory.ts",
+      "scope": "implementation",
+      "sha256": "4d94d5e64f337fe76361306eb94eab848a9a882886b2edd543a368c66b8e130d"
+    },
+    {
+      "path": "tools/curation/creation-tables.mjs",
+      "scope": "implementation",
+      "sha256": "85d4790c9fd32809e9ee07bc300349ced7885a50b5ae9320061ef79c5306091e"
+    },
+    {
+      "path": "tools/curation/editorial-normalizer.ts",
+      "scope": "implementation",
+      "sha256": "63b8cbc8b8cdf3f4a3cfc255df49e87a156bb23c5d339613c3c77594235cb6dd"
+    },
+    {
+      "path": "tools/curation/examples.mjs",
+      "scope": "implementation",
+      "sha256": "c77561d91a0ba9f3610ee205bb4cb9521ea121a736f618dfa51abff2adeaa0a7"
+    },
+    {
+      "path": "tools/curation/freeze.mjs",
+      "scope": "implementation",
+      "sha256": "7f2084c6515b9ab3a5c41bce41ec3ccb24cbd1310e0141ee61a6337f7c767f1f"
+    },
+    {
+      "path": "tools/curation/history-audit.py",
+      "scope": "implementation",
+      "sha256": "bf6185ad27e7cb3e380601876fc74429d155522674f1bedd8b53415fdd6342f2"
+    },
+    {
+      "path": "tools/curation/human-ancestry-formalizer.ts",
+      "scope": "implementation",
+      "sha256": "41d6e44dccedc70a5770234081fd2de7662772ce30604457f545cbc98392a24d"
+    },
+    {
+      "path": "tools/curation/human-ancestry.mjs",
+      "scope": "implementation",
+      "sha256": "244141c9ecc8c86dea6d0a7a724171bf5a4833d869bbf9f53dd7e24c7178d4cb"
+    },
+    {
+      "path": "tools/curation/human-l0-consumable-compiler.ts",
+      "scope": "implementation",
+      "sha256": "d7ddcbc6c980a333d86c9dd8152a445e122ed77f75ad2b55e3cff0f980f07aee"
+    },
+    {
+      "path": "tools/curation/human-l0-mechanical-compiler.ts",
+      "scope": "implementation",
+      "sha256": "ad6aa2f199dd367cb029f710d6d1af0edad4eb94aebd7a378066d9a1012cbb0c"
+    },
+    {
+      "path": "tools/curation/human-l0-recipe.ts",
+      "scope": "implementation",
+      "sha256": "7a8412a1060500cd67564ce90d904d53ace09f4afb548e0e11b5e43361f17911"
+    },
+    {
+      "path": "tools/curation/human-l0-validation.ts",
+      "scope": "implementation",
+      "sha256": "8cd9b6c1b1f47c565aff5d8d418f51c340783be5c5d119aa7404a455bf396304"
+    },
+    {
+      "path": "tools/curation/inputs.mjs",
+      "scope": "implementation",
+      "sha256": "eb45d83d0bd73afa082947a0a4d5dbbb26a1d915c290f055b03ff7e1ffb4b906"
+    },
+    {
+      "path": "tools/curation/interesting-things-details.ts",
+      "scope": "implementation",
+      "sha256": "0f99fd6702343df081852b5d4a513235708bc2cd3093df7201bceb8344df27db"
+    },
+    {
+      "path": "tools/curation/interesting-things-formalizer.ts",
+      "scope": "implementation",
+      "sha256": "d5b3a4fc8e8f04f08b2bf0a2b1dc3f290a6c5ac70959d356a5afffdbe2d10aa8"
+    },
+    {
+      "path": "tools/curation/interesting-things-map.ts",
+      "scope": "implementation",
+      "sha256": "186129f2b5b610fb4b92d287e09d6fba590063c8656be6d660305f3f613c9aab"
+    },
+    {
+      "path": "tools/curation/interesting-things.mjs",
+      "scope": "implementation",
+      "sha256": "5065b296db57fce6a18e9a7a9420f87e4c453333c63197d69476c1fb1fba9ef4"
+    },
+    {
+      "path": "tools/curation/issue34-activity1-matrix.ts",
+      "scope": "implementation",
+      "sha256": "434684eaf1ba0bb0698d99a988c3b3a8f3a9e29aa8029ca4d70fc3d14d293d70"
+    },
+    {
+      "path": "tools/curation/mechanics-extractor.ts",
+      "scope": "implementation",
+      "sha256": "34770c9b80be13dda02c29da6792f64f813d2ff3bb9882deb28343edab1c675c"
+    },
+    {
+      "path": "tools/curation/mechanics.mjs",
+      "scope": "implementation",
+      "sha256": "558525ae9b3d8bed3c13fa4653903323270a0c859fca752347d0408b74118c9c"
+    },
+    {
+      "path": "tools/curation/normalize.mjs",
+      "scope": "implementation",
+      "sha256": "dded4fba98419be5b9dc9724e351b36259089f109e9132f25e57da9b1f4fb415"
+    },
+    {
+      "path": "tools/curation/official-local-context.ts",
+      "scope": "implementation",
+      "sha256": "0d52ab9b8444b02c1f8dfaab8735d1e833ce0d309eda1ec822a3b649cc39ddcc"
+    },
+    {
+      "path": "tools/curation/pack-compiler.ts",
+      "scope": "implementation",
+      "sha256": "3b46f82f1a6f0ff78dcb799dad51ef697de38bd5d843e5a906229228dab26ff1"
+    },
+    {
+      "path": "tools/curation/path-extractor.ts",
+      "scope": "implementation",
+      "sha256": "708e72a2864e42283ecf8e6cf7aea0d5cde665df4dc5f18fbf54878d4a9b1241"
+    },
+    {
+      "path": "tools/curation/paths.mjs",
+      "scope": "implementation",
+      "sha256": "98f6bd191e18398a5244da611b18da18a7fbeef24a2faa8301f59a6a4b03cd11"
+    },
+    {
+      "path": "tools/curation/pilot-item-definitions.ts",
+      "scope": "implementation",
+      "sha256": "997570928919ad76f153036117ea08c200edda0d833fbe59b72627bbe113f9b7"
+    },
+    {
+      "path": "tools/curation/pilot-items-formalizer.ts",
+      "scope": "implementation",
+      "sha256": "22740792568a732e504f2d60b9b711e7e22bee200875c92499cf48c23e60c09b"
+    },
+    {
+      "path": "tools/curation/pilot-items.mjs",
+      "scope": "implementation",
+      "sha256": "73ab3c2b99fd9aea5e2a700812bd86b42cfe503dbedcec8c6dceecacf3bba9f8"
+    },
+    {
+      "path": "tools/curation/pilot-table-closure.ts",
+      "scope": "implementation",
+      "sha256": "e28e34f73de1e2c09102dc39b8aa68105efa8b69a644b6a95afc7c59c534d9cd"
+    },
+    {
+      "path": "tools/curation/pilot-table-ranges.ts",
+      "scope": "implementation",
+      "sha256": "0e17dcffc75b230b566df9d2e2b1ad1cf2a2e2be927981cb4fc03dfe00ed4288"
+    },
+    {
+      "path": "tools/curation/pilot-tables.mjs",
+      "scope": "implementation",
+      "sha256": "821d716ccce0cc6a2d70f6d43e90093a9b69fc216d8980ecc2afeeba6f89ea0c"
+    },
+    {
+      "path": "tools/curation/policy-evidence.mjs",
+      "scope": "implementation",
+      "sha256": "aea516280f6c1be82ae89c7124bdbdbb4fc2fcbc5679bbf6383a57b497d06953"
+    },
+    {
+      "path": "tools/curation/privacy-check.d.mts",
+      "scope": "implementation",
+      "sha256": "0aff0897f88edca6f61b8ae579c051626c46f52a3d90ec849ec5a454f00c11e3"
+    },
+    {
+      "path": "tools/curation/privacy-check.mjs",
+      "scope": "implementation",
+      "sha256": "7127919c4cd8f63609c9f0ed4575623b60a25e23191f542d39edd34011f813bd"
+    },
+    {
+      "path": "tools/curation/privacy-clean-local.mjs",
+      "scope": "implementation",
+      "sha256": "56b1e2b350b89f53fb76732ec19bbd59281dbb939eb254fee2fb6938e228a142"
+    },
+    {
+      "path": "tools/curation/privacy.d.mts",
+      "scope": "implementation",
+      "sha256": "6810977d2dabca36be3b1e66852ff8f250f6c088b07a602caa29a5d4011e143e"
+    },
+    {
+      "path": "tools/curation/privacy.mjs",
+      "scope": "implementation",
+      "sha256": "cc6f5cd3adeb76abce334a908279db9d1948092c7aaf9928c34fa57f83fdb426"
+    },
+    {
+      "path": "tools/curation/procedure-local-context.ts",
+      "scope": "implementation",
+      "sha256": "5776f67706fc73a27228a561528f41b3464f95d8f92344277a80555a91d1c9d2"
+    },
+    {
+      "path": "tools/curation/professions-languages-formalizer.ts",
+      "scope": "implementation",
+      "sha256": "5986d1c793fa625aba6151e6469716fb9a98bd09f8c710796352c93e7f057f6a"
+    },
+    {
+      "path": "tools/curation/professions-languages.mjs",
+      "scope": "implementation",
+      "sha256": "0dda509a718b37752ec3d8e831f900699e0d8ce4f48a779c9d7e913016d11205"
+    },
+    {
+      "path": "tools/curation/provenance-reconciliation.ts",
+      "scope": "implementation",
+      "sha256": "edd75ad410b9e56cc39f6236cdfabc200bc6516e1e024f665d81595f49841aed"
+    },
+    {
+      "path": "tools/curation/publish-history.py",
+      "scope": "implementation",
+      "sha256": "35ec78537920a8418244c8e480b9fe942e9730fe1b9d7b3cc521feb1658f4c9a"
+    },
+    {
+      "path": "tools/curation/reconcile.mjs",
+      "scope": "implementation",
+      "sha256": "a5cbf04ab851fcfd04e90027859ee776af2f65ec651db53ab9a6340c86afbabb"
+    },
+    {
+      "path": "tools/curation/reconciler.ts",
+      "scope": "implementation",
+      "sha256": "b13b2394285eaf79f829d09aea18b931ee1fc2add989d4906fe1005a07c2050f"
+    },
+    {
+      "path": "tools/curation/review-freeze.ts",
+      "scope": "implementation",
+      "sha256": "1a5c91c2948f17791270e62bb383590440fbe5857a340784bc277c1680f189c7"
+    },
+    {
+      "path": "tools/curation/review-human-l0.mjs",
+      "scope": "implementation",
+      "sha256": "b9bb49210e14a8b9e0226f6cf41da04ff42f684b192f5ca3d0d2a098dd381849"
+    },
+    {
+      "path": "tools/curation/review-human-l0.ts",
+      "scope": "implementation",
+      "sha256": "a69c3f5391487e3fe7a333b9f0d95dff518303f83699f9ef9d0ab2bcb7fb6a99"
+    },
+    {
+      "path": "tools/curation/review-pdf.py",
+      "scope": "implementation",
+      "sha256": "da3a2217efeeb864bd7875224df98f44baa817240c955c556c8793581c563628"
+    },
+    {
+      "path": "tools/curation/sources.mjs",
+      "scope": "implementation",
+      "sha256": "1ce5328bd38383643ed7b798e7b264ca24ee18ccca7f94e6f890eaefddf778a0"
+    },
+    {
+      "path": "tools/curation/spell-extractor.ts",
+      "scope": "implementation",
+      "sha256": "94a79e84942b2fe94ffb3b569b4dbd20efa72c5dc14e6662f88652f7e2f6bd0d"
+    },
+    {
+      "path": "tools/curation/spells.mjs",
+      "scope": "implementation",
+      "sha256": "85218a8c72c7f981145c62dd9946eefa684dba0d99b9d0ac4df74ec2472438cd"
+    },
+    {
+      "path": "tools/curation/test_history_audit.py",
+      "scope": "implementation",
+      "sha256": "d7ec04359640b6ff1b8f3dfe2ddf14ac56835eb1b527075d2226b4e4368103f1"
+    },
+    {
+      "path": "tools/curation/thematic-indexes.ts",
+      "scope": "implementation",
+      "sha256": "2d2a46e6fcaf575f8d3c0a9e9033b074b66eb67ef3a82cfa4e6938661728607d"
+    },
+    {
+      "path": "tools/curation/verify-activity1-provenance.ts",
+      "scope": "implementation",
+      "sha256": "827e88a02fe0a436b1e0aeb0ee41e9bef52abdbb99a924347ce0fb706a919ce1"
+    },
+    {
+      "path": "tools/curation/verify-activity1.mjs",
+      "scope": "implementation",
+      "sha256": "7ad37412808b6d4381184e7d1ddb55b19fcf4056a7d14c7893130f5c0324dab4"
+    },
+    {
+      "path": "tools/curation/wealth-equipment-formalizer.ts",
+      "scope": "implementation",
+      "sha256": "e614fd1ba73259ba62588b76cc3e89e9fd7c580d73bb33983f025ed6b34799c2"
+    },
+    {
+      "path": "tools/curation/wealth-equipment.mjs",
+      "scope": "implementation",
+      "sha256": "2bc6c6a0ec30d5ec9fa0a59e9985405b4ea263dd8d7fc26c4f448a64520ad57e"
+    },
+    {
+      "path": "tools/official-local-plugin.ts",
+      "scope": "implementation",
+      "sha256": "879588dc5d31f96f10e270065ec8a8858d78c0c8cc75c5c364c4dc7afab25ffb"
+    },
+    {
+      "path": "tools/verify-print-pdf.py",
+      "scope": "implementation",
+      "sha256": "620a34c964ef666c28caf636281453d35c614fbeaee58cc2824954e29d428771"
+    },
+    {
+      "path": "tsconfig.json",
+      "scope": "implementation",
+      "sha256": "21e39c40c130a2cf895bac6c9a4818da3df011871807921ad39b7ce673e18f5f"
+    },
+    {
+      "path": "vite.config.ts",
+      "scope": "implementation",
+      "sha256": "2f13c0eac5242bcf9f05e5d53bf8ef2898140533d7709bf79c790e86690718cd"
+    },
+    {
+      "path": "core",
+      "scope": "pdf",
+      "sha256": "5e2c35730ef91f757b9919f37fb7cf81d85afcd2149aa500109213f8aea01455"
+    },
+    {
+      "path": "human",
+      "scope": "pdf",
+      "sha256": "f7723c5a145138b38d243021086cb83471c2d1d351a54c5f4e651b398c33a16f"
+    },
+    {
+      "path": "oddities",
+      "scope": "pdf",
+      "sha256": "13834c13fc13e72a0b06da71efbdb556d8dc0b3cd3f8450261e3dab9828c6ad0"
+    },
+    {
+      "path": "curation/input-manifest.json",
+      "scope": "source",
+      "sha256": "e0fa4d9dae830c0cfc000955855da800a1d75f0af06f7cbfaf3d56631463679e"
+    },
+    {
+      "path": "curation/pilot/core-level-zero.json",
+      "scope": "source",
+      "sha256": "e65855746b30c4219449be21de93bf10e5db9e8b5d21cc95b87eec22e0cee263"
+    },
+    {
+      "path": "curation/pilot/human-ancestry.json",
+      "scope": "source",
+      "sha256": "24fec52b8c05c0cfc349d10ef369d9d93457b3177b2a237e9187320c50489437"
+    },
+    {
+      "path": "curation/pilot/interesting-things.json",
+      "scope": "source",
+      "sha256": "dd77d600e96108fafa500a45cdff164a9138fe7ca3471cf2409f671b95fc0055"
+    },
+    {
+      "path": "curation/pilot/items.json",
+      "scope": "source",
+      "sha256": "d39fdf70c5494781196cc4a0985654c9bd6373b71f412cda24f70b82a06267a2"
+    },
+    {
+      "path": "curation/pilot/professions-languages.json",
+      "scope": "source",
+      "sha256": "87883469050c5663a1f114b69d922c417e8e78682a06109c283b75c789639c64"
+    },
+    {
+      "path": "curation/pilot/table-closure.json",
+      "scope": "source",
+      "sha256": "1bbcd46e9251b8a855adcbea3aa674035f9d3adf71baebb5234c0430d069a13e"
+    },
+    {
+      "path": "curation/pilot/wealth-equipment.json",
+      "scope": "source",
+      "sha256": "50d9df43117f2f78fbbc25b851020b5a218c10cb1779511e251f12a31672b275"
+    },
+    {
+      "path": "curation/sources.json",
+      "scope": "source",
+      "sha256": "c66b832ebf34cc047fdf7c18f97bc9965b4cf3e632f7fa29876972f372e15608"
+    },
+    {
+      "path": "docs/matriz-lacunas-issue34-atividade1.json",
+      "scope": "source",
+      "sha256": "fa7546059f061f8d4ae92a7705f190b63f27de5d8d1fecbc20bb3ac8ec1ec3a1"
+    },
+    {
+      "path": "packages/curation/human-l0-core-local.ts",
+      "scope": "source",
+      "sha256": "7e914e6989d0def07e7ef350c5f4c6ad1fca2b2f977fd23352790d6219bc59c3"
+    },
+    {
+      "path": "tools/curation/core-local-projector.ts",
+      "scope": "source",
+      "sha256": "d5c3499fff152222dd98a377aaa52dec5dde10ddead59e0d8e807b31b4bf8f6e"
+    },
+    {
+      "path": "tools/curation/core-local.mjs",
+      "scope": "source",
+      "sha256": "9ad1a4136e1aeb8df3df52a2f9e03c190bb87aefe3d08f90b14a542af83b941f"
+    },
+    {
+      "path": "tools/curation/human-l0-consumable-compiler.ts",
+      "scope": "source",
+      "sha256": "d7ddcbc6c980a333d86c9dd8152a445e122ed77f75ad2b55e3cff0f980f07aee"
+    }
+  ],
+  "localArtifacts": {
+    "matrixEntities": 2932,
+    "path": "tmp/private/human-l0-review.json",
+    "sha256": "ca1e9d778e37433314ace26b51b17a4ebc970e1dfad398eb59d9efd3ec6d35e8"
+  },
+  "pdfConcordance": {
+    "evidence": 769,
+    "manualEvidence": [
+      "equipment:core:wealthy",
+      "general-boundary",
+      "human-expansion-source",
+      "human-source",
+      "kit-high",
+      "oddities:whole-section",
+      "profession-common",
+      "profession-criminal",
+      "profession-router",
+      "profession-wilderness",
+      "role-questions",
+      "selector:oddities",
+      "supplied-profession-academic",
+      "supplied-profession-criminal",
+      "supplied-starting-equipment",
+      "supplied-wealth-limits",
+      "table:only-human:desires",
+      "table:only-human:fears",
+      "thing-1",
+      "thing-3",
+      "thing-4",
+      "thing-5",
+      "thing-6",
+      "wealth-table"
+    ],
+    "rangePrefixes": 851,
+    "rows": 901,
+    "selectorRows": 30,
+    "textRows": 871,
+    "toolchain": {
+      "pypdf": "6.9.2",
+      "python": "3.13.3",
+      "unicode": "15.1.0"
+    }
+  },
+  "probability": {
+    "lookups": 5,
+    "selectors": 4,
+    "streams": 70,
+    "tables": 74
+  },
+  "reviewDate": "2026-11-04",
+  "reviewId": "human-l0-issue55@1.0.0",
+  "schemaVersion": 1,
+  "semanticReview": "scoped-with-explicit-exclusions",
+  "sourceStatus": "needs-review",
+  "versions": {
+    "core": "1.1.0",
+    "frozenContracts": "1.0.0",
+    "packs": [
+      {
+        "dependencies": [],
+        "packId": "sotdl-core-human-l0",
+        "version": "0.2.0"
+      },
+      {
+        "dependencies": [
+          {
+            "packId": "sotdl-core-human-l0",
+            "version": "0.2.0"
+          }
+        ],
+        "packId": "sotdl-only-human-l0",
+        "version": "0.2.0"
+      }
+    ],
+    "procedure": "1.0.0"
+  }
+}
