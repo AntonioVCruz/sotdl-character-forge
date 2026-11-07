@@ -2,10 +2,13 @@
 import {act} from 'react';
 import {createRoot} from 'react-dom/client';
 import {webcrypto} from 'node:crypto';
-import {it,expect,vi} from 'vitest';
+import {it,expect,vi,beforeEach} from 'vitest';
+import {IDBFactory} from 'fake-indexeddb';
+import {listCharacters} from '../packages/character-generator/character-library';
 import {CreationProcedures} from '../apps/web/CreationProcedures';
 import {createProcedureSession,performProcedureCommand,calculateProcedure} from '../packages/character-generator/procedure-runtime';
 import {inventedProcedureContext} from './helpers/procedure-context';
+beforeEach(()=>{vi.stubGlobal('indexedDB',new IDBFactory());});
 
 it('reopens an unavailable equipped origin and lets the user store it without losing history',async()=>{
   (globalThis as {IS_REACT_ACT_ENVIRONMENT?:boolean}).IS_REACT_ACT_ENVIRONMENT=true;
@@ -28,7 +31,12 @@ it('reopens an unavailable equipped origin and lets the user store it without lo
     expect(host.querySelector('[aria-label="Equipamento em uso"]')).toBeNull();
     expect(host.textContent).not.toContain('Resolva o equipamento em uso');
     expect(host.textContent).toContain('Strength 8');
-    const saved=JSON.parse(localStorage.getItem('sotdl-human-creation-session@1')!);
+    expect(JSON.parse(localStorage.getItem('sotdl-human-creation-session@1')!)).toEqual(session);
+    expect((await listCharacters('procedures'))[0].state).toEqual(session);
+    const confirm=[...host.querySelectorAll('button')].find(b=>b.textContent==='Confirmar e salvar alterações')!;
+    await act(async()=>{confirm.click();});
+    await expect.poll(async()=>((await listCharacters('procedures'))[0].state as typeof session).events.length).toBe(session.events.length+1);
+    const saved=(await listCharacters('procedures'))[0].state as typeof session;
     expect(saved.events.slice(0,-1)).toEqual(session.events);
     expect(saved.events.at(-1)).toMatchObject({type:'equipment',loadout:[]});
   }finally{

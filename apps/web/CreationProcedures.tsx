@@ -1,25 +1,43 @@
 import {useEffect,useRef,useState} from 'react';
-import {ProcedureContextSchema,defaultProcedureConfig,type ProcedureContext,type ProcedureConfig,type ProcedureSession,type ProcedureNode} from '../../packages/character-generator/procedure-model';
+import {ProcedureContextSchema,ProcedureSessionSchema,defaultProcedureConfig,type ProcedureContext,type ProcedureConfig,type ProcedureSession,type ProcedureNode} from '../../packages/character-generator/procedure-model';
 import {createProcedureSession,reopenProcedure,performProcedureCommand,advanceProcedure,calculateProcedure,finalizeProcedure,type ProcedureCommand} from '../../packages/character-generator/procedure-runtime';
 import {CharacterCompletionPanel} from './CharacterCompletionPanel';
+import {CharacterExportPanel} from './CharacterExportPanel';
+import {useCharacterWorkspace} from './useCharacterWorkspace';
+import {CharacterWorkspacePanel} from './CharacterWorkspacePanel';
 
 const STORAGE='sotdl-human-creation-session@1';
 type View=Awaited<ReturnType<typeof calculateProcedure>>;
-export function CreationProcedures(){
+export function CreationProcedures({onDirtyChange}:{onDirtyChange?:(dirty:boolean)=>void}={}){
   const [context,setContext]=useState<ProcedureContext>(),[config,setConfig]=useState(defaultProcedureConfig),[session,setSession]=useState<ProcedureSession>(),[view,setView]=useState<View>();
   const [seed,setSeed]=useState(''),[error,setError]=useState(''),[busy,setBusy]=useState(false),lock=useRef(false);
   const [suspended,setSuspended]=useState(false);
+  const workspace=useCharacterWorkspace('procedures'),[dirty,setDirty]=useState(false);
+  useEffect(()=>{onDirtyChange?.(dirty);return()=>onDirtyChange?.(false);},[dirty,onDirtyChange]);
   useEffect(()=>{let live=true;void(async()=>{let existingSave:string|null=null;try{
     existingSave=localStorage.getItem(STORAGE);
     const response=await fetch('/api/official/procedures',{cache:'no-store'});
     if(!response.ok)throw new Error('Procedimentos indisponíveis. Confira as fontes reais locais.');
     const c=ProcedureContextSchema.parse(await response.json());if(!live)return;setContext(c);
-    const saved=existingSave;if(saved){if(saved.length>2_000_000)throw new Error('Sessão excede o limite de leitura; os dados foram preservados.');const restored=await reopenProcedure(c,JSON.parse(saved)),v=await calculateProcedure(c,restored.session);if(live){setSession(restored.session);setConfig(restored.graph.state.config);setSeed(restored.session.seed);setView(v);}}
+    const saved=await workspace.load(STORAGE,async input=>(await reopenProcedure(c,input)).session,input=>ProcedureSessionSchema.parse(input));if(saved){const restored=await reopenProcedure(c,saved),v=await calculateProcedure(c,restored.session);if(live){setSession(restored.session);setConfig(restored.graph.state.config);setSeed(restored.session.seed);setView(v);}}
   }catch(e){if(live){setError(e instanceof Error?e.message:String(e));setSuspended(!!existingSave);}}})();return()=>{live=false;};},[]);
-  async function change(action:()=>Promise<ProcedureSession>|ProcedureSession){
+  async function change(action:()=>Promise<ProcedureSession>|ProcedureSession,newCharacter=false){
     if(!context||lock.current)return;lock.current=true;setBusy(true);setError('');
-    try{const next=await action(),v=await calculateProcedure(context,next);localStorage.setItem(STORAGE,JSON.stringify(next));setSession(next);setView(v);setConfig(v.graph.state.config);setSuspended(false);}
+    try{const next=await action(),v=await calculateProcedure(context,next);if(newCharacter)workspace.stageNew();setSession(next);setView(v);setConfig(v.graph.state.config);setDirty(true);setSuspended(false);}
     catch(e){setError(e instanceof Error?e.message:String(e));}finally{lock.current=false;setBusy(false);}
+  }
+  async function restore(id?:string){
+    if(!context||lock.current)return;lock.current=true;setBusy(true);setError('');
+    try{const target=id??workspace.record?.id,state=target?await workspace.open(target,async input=>(await reopenProcedure(context,input)).session):undefined;
+      if(state){const next=(await reopenProcedure(context,state)).session,v=await calculateProcedure(context,next);setSession(next);setView(v);setConfig(v.graph.state.config);setSeed(next.seed);}else{setSession(undefined);setView(undefined);}workspace.cancel();setDirty(false);
+    }catch(e){setError(e instanceof Error?e.message:'Não foi possível abrir o personagem.');}finally{lock.current=false;setBusy(false);}
+  }
+  async function confirm(){
+    if(!context||!session||lock.current)return;lock.current=true;setBusy(true);setError('');
+    try{const response=await fetch('/api/official/procedures',{cache:'no-store'});if(!response.ok)throw new Error('Fontes locais indisponíveis.');
+      const fresh=ProcedureContextSchema.parse(await response.json()),v=await calculateProcedure(fresh,session);
+      await workspace.save(session,v.graph.state.config.name);setContext(fresh);setView(v);setDirty(false);setSuspended(false);
+    }catch(e){const message=e instanceof Error?e.message:'Não foi possível salvar; a prévia foi preservada.';setError(message);if(/Fontes.*(?:mudaram|indisponíveis)/.test(message))setSuspended(true);}finally{lock.current=false;setBusy(false);}
   }
   const command=(c:ProcedureCommand)=>{if(context&&session)void change(()=>performProcedureCommand(context,session,c));};
   const update=(patch:Partial<ProcedureConfig>)=>setConfig(c=>{
@@ -29,7 +47,8 @@ export function CreationProcedures(){
     <p>Core e Human Development, com fontes reais verificadas. Decisões e rolagens são salvas neste navegador.</p>
     <p role="status">{busy?'Aplicando e salvando…':context?'Fontes locais verificadas.':'Conferindo fontes locais…'}</p>{error&&<p role="alert">{error}</p>}
     {suspended&&<p>Rascunho suspenso. O contexto ou o conteúdo salvo exige revisão; os dados anteriores foram preservados e a finalização está bloqueada.</p>}
-    <form onSubmit={e=>{e.preventDefault();if(context)void change(async()=>advanceProcedure(context,await createProcedureSession(context,seed,config)));}}><fieldset disabled={!context||busy}><legend>Escolhas de criação</legend>
+    <CharacterWorkspacePanel {...workspace} dirty={dirty} busy={busy} onOpen={id=>void restore(id)} onConfirm={()=>void confirm()} onDiscard={()=>void restore()}/>
+    <form onSubmit={e=>{e.preventDefault();if(context)void change(async()=>advanceProcedure(context,await createProcedureSession(context,seed,config)),true);}}><fieldset disabled={!context||busy}><legend>Escolhas de criação</legend>
       <label>Nome<input value={config.name} maxLength={200} onChange={e=>update({name:e.target.value})}/></label>
       <label>Seed<input value={seed} required maxLength={200} onChange={e=>setSeed(e.target.value)}/></label>
       <label>Variante<select value={config.variant} onChange={e=>update({variant:e.target.value as ProcedureConfig['variant']})}><option value="core">Core</option><option value="only-human">Only Human</option></select></label>
@@ -53,9 +72,11 @@ export function CreationProcedures(){
       {view.equipment&&!view.equipment.resolved&&<p role="alert">Resolva o equipamento em uso para calcular os atributos e características.</p>}
       {view.base?.stats&&<p>Strength {view.base.stats.strength} · Agility {view.base.stats.agility} · Intellect {view.base.stats.intellect} · Will {view.base.stats.will} · Defense {view.base.stats.defense}</p>}
       {view.base?.states&&<p>Insanity {view.base.states.insanity} · Corruption {view.base.states.corruption}</p>}
+      {view.base?.stats&&<dl aria-label="Demais características e modificadores">{Object.entries(view.base.stats).filter(([key])=>!['strength','agility','intellect','will','defense'].includes(key)).map(([key,value])=><div key={key}><dt>{key.replace(/([A-Z])/g,' $1')}</dt><dd> {value}</dd></div>)}</dl>}
+      {view.base?.states&&<p>Damage {view.base.states.damage}</p>}
       {view.graph.dimensions&&<p>Idade {view.graph.dimensions.age} · Altura {view.graph.dimensions.height} in · Peso {view.graph.dimensions.weight} lb · Experiências iniciais {view.graph.initialLifeCount}</p>}
       <p>Build é aplicado antes da escala etária. As experiências seguem a rolagem inicial de idade.</p>
-      <CharacterCompletionPanel completion={view.completion} busy={busy} finalize={()=>context&&void change(()=>finalizeProcedure(context,session))} target={key=>view.graph.byKey.has(key)?`#${encodeURIComponent(`creation-step-${key}`)}`:'#procedure-pending'}/>
+      <CharacterCompletionPanel completion={suspended?{...view.completion,status:'draft',canFinalize:false,fullyResolved:false}:view.completion} busy={busy} finalize={()=>context&&void change(()=>finalizeProcedure(context,session))} target={key=>view.graph.byKey.has(key)?`#${encodeURIComponent(`creation-step-${key}`)}`:'#procedure-pending'}/>
       <button disabled={busy||view.graph.state.config.mode==='manual'} onClick={()=>context&&void change(()=>advanceProcedure(context,session))}>Avançar etapas automáticas</button>
       {view.graph.pending.some(p=>p.code==='restart-required')&&<button disabled={busy} onClick={()=>command({type:'restart'})}>Recomeçar após a morte, preservando o histórico</button>}
     </section>
@@ -67,6 +88,7 @@ export function CreationProcedures(){
     {view.graph.relativeCandidates.map(r=><label key={r.id}><input type="checkbox" checked={view.graph.state.config.relativeDetails.includes(r.id)} onChange={e=>command({type:'config',config:{...view.graph.state.config,relativeDetails:e.target.checked?[...view.graph.state.config.relativeDetails,r.id]:view.graph.state.config.relativeDetails.filter(id=>id!==r.id)}})}/>Detalhar familiar vivo: {r.label}</label>)}
     <section id="procedure-pending" aria-label="Pendências"><h2>Pendências</h2><ul>{view.pending.map((p,i)=><li key={`${p.key}/${i}`}>{p.scope==='use'?'No uso: ':''}{p.label}</li>)}</ul></section>
     <details><summary>Histórico de decisões ({session.events.length})</summary><ol>{session.events.map(e=><li key={e.id}>{e.seq} · {e.type}{e.type==='result'?` · ${e.result.method}${'faces' in e.result?` [${e.result.faces.join(', ')}]`:''}`:''}</li>)}</ol></details></>}
+    {context&&<CharacterExportPanel mode="procedures" current={session} ready={!!view?.fullyResolved&&!suspended&&!dirty&&!workspace.conflict} busy={busy} unavailableReason={workspace.conflict?'Recarregue a versão salva para resolver o conflito antes de emitir arquivos.':dirty?'Confirme ou descarte a prévia antes de emitir arquivos.':undefined} onImport={state=>change(async()=>(await reopenProcedure(context,state)).session,true)}/>}
   </main>;
 }
 function CreationStep({node:n,context,busy,command}:{node:ProcedureNode;context:ProcedureContext;busy:boolean;command:(c:ProcedureCommand)=>void}){

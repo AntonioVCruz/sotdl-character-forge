@@ -1,5 +1,23 @@
 # Roadmap da #34 — tabelas e equipamentos Human L0
 
+## Aceite consolidado local — 2026-11-06
+
+As oito atividades deste roadmap estão aceitas tecnicamente no recorte Human L0 declarado, após #50–#55 e as atividades 1–7 da consolidação, incluindo a #56 local. [Reavaliação por critério e handoff](fechamento-tecnico-human-l0.md), [compilação real](execucao-lacunas-human-l0.md), [aceite vertical](aceite-vertical-consolidado-human-l0.md) e [freeze](freeze-consolidado-human-l0.md). O checklist remoto continua sem alteração e o delta local ainda aguarda publicação/CI/integração.
+
+- [x] 1–2: seleção/proveniência e contrato consumível preservados.
+- [x] 3: Core real e consequências selecionadas; revisão #55 e regressões de criação.
+- [x] 4: Only Human/Oddities, consultas e encadeamentos; 36 cruzamentos dirigidos de motor/persistência.
+- [x] 5: kits/itens/equipamento com quantidades, origens, perfis selecionados e restrições explícitas.
+- [x] 6: compilação real `1.0.1`, bundle/índice/relatório, determinismo e recusa de adulteração; 2.552 identidades indexadas.
+- [x] 7: handlers reais, replay sem RNG/duplicação e equipamento em camadas nos cenários aceitos.
+- [x] 8: critérios reconciliados, aceite técnico Codex, permissões, limites e entrega aos consumidores #35/#36/#37 registrados.
+
+São 22 tabelas Core, 74 de procedimentos, 360 planos de Interesting Things e 410 definições de itens no runtime. Definições não equivalem a perfis mecânicos completos; escolhas contextuais sem suporte conservam bloqueios/adjudicação. A revisão #55 registra cinco ambiguidades e 57 definições não resolvidas. Não há novo adiamento de requisito nem certificação de todas as combinações dos livros. Efeitos de uso, combate amplo e conteúdo externo continuam fora do recorte conforme o escopo; `needs-review` e os gates de distribuição são preservados.
+
+## Plano e acompanhamento históricos
+
+O texto abaixo registra o plano de 2026-11-02 e seu acompanhamento anterior. O checklist histórico aberto não substitui a reavaliação atual acima.
+
 Decisão operacional posterior: [perfil oficial local Humano Core L0 habilitado](ativacao-oficial-local-core.md), com dados reais exclusivos na entrada principal e rascunhos que exibem consequências pendentes. A ativação solicitada não fecha o aceite completo das atividades 3–8, não promove fontes ou autoriza exportação. Os itens históricos abaixo de “geração desabilitada” descrevem os artefatos e etapas anteriores.
 
 Integração em 2026-11-03: #44 (`06e6270`), #47 (`b6a298a`) e #46 (`bf847e5`) mesclados nessa ordem, com CI verde e atualização dos dependentes antes de cada merge. Os três P2 estão corrigidos na main. As atividades 3–8 continuam abertas para aceite completo dos lotes reais/compilador/handlers; merge das fixtures sintéticas não habilita geração oficial.
@@ -134,7 +152,7 @@ Entregar à **#35** a matriz de aplicabilidade/cardinalidades, APIs de resoluç�
 
 Preferir entregas revisáveis por atividade ou lote, referenciando **#34 / atividade N**. Cada entrega registra artefatos, validação relevante, evidência permitida e lacunas remanescentes; não exige repetir toda a suíte para uma alteração documental. Contratos/handlers exigem regressões de comportamento; lotes exigem conferência de origem e probabilidades; compilação exige testes de determinismo/rejeição.
 
-O checklist de execução permanece aberto:
+O checklist histórico de execução, antes da consolidação de 2026-11-06, permanecia aberto:
 
 PRs #44 → #47 → #46 mesclados em 2026-11-03, com CI aprovada após cada atualização dos dependentes; main final `bf847e5` também verde. Os conflitos foram resolvidos preservando a atividade 1 fechada. [Hashes, diagnóstico e execuções](revisao-pr44-pr47-pr46.md). Os lotes reais continuam sujeitos a aceite próprio.
 

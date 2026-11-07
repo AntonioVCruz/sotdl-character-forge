@@ -39,7 +39,12 @@
     "curation:compile:consumable": "node tools/curation/compile-packs.mjs --write --consumable",
     "curation:validate:consumable": "node tools/curation/compile-packs.mjs --check --consumable",
     "curation:core:local": "node tools/curation/core-local.mjs --write",
-    "curation:core:local:check": "node tools/curation/core-local.mjs --check"
+    "curation:core:local:check": "node tools/curation/core-local.mjs --check",
+    "curation:compile:runtime": "node tools/curation/runtime-artifacts.mjs --write --version 1.0.1",
+    "curation:validate:runtime": "node tools/curation/runtime-artifacts.mjs --check --version 1.0.1",
+    "curation:freeze:human": "node tools/curation/consolidated-freeze.mjs --check --version 1.0.1",
+    "curation:freeze:human:public": "node tools/curation/consolidated-freeze.mjs --check-public --version 1.0.1",
+    "curation:freeze:human:restore-eol": "node tools/curation/consolidated-freeze.mjs --restore-line-endings --version 1.0.1"
   },
   "dependencies": {
     "react": "19.2.0",

@@ -1,5 +1,23 @@
 # Estado das issues
 
+## Estado consolidado local — 2026-11-06
+
+As atividades 1–7 de [consolidação Human L0](plano-fechamento-human-l0.md) foram executadas localmente na branch `codex/issue56-exports`, sobre `2c5ef89`. O [fechamento técnico](fechamento-tecnico-human-l0.md) reconcilia os 39 critérios das #34–#37/#56 e seis atividades do roadmap, com limites e resumos prontos para publicação futura. A matriz da atividade 2 permanece histórica; suas lacunas foram tratadas nas atividades posteriores.
+
+| Issue | Situação técnica atual | Ação administrativa restante |
+| --- | --- | --- |
+| #34 | Atividades 1–8 do roadmap aceitas no recorte: dados, consequências suportadas, compilação real e handoff para #35/#36/#37. | Publicar/integrar o delta local, conferir CI do commit integrado e atualizar checklist remoto. |
+| #35 | Procedimentos e 36 cruzamentos dirigidos aceitos, com persistência/migração e concorrência. | Associar a versão integrada e publicar o resumo de encerramento. |
+| #36 | Interface real, prévia, biblioteca, ficha e arquivos mínimos aceitos; revisão final de UX identificada como Codex. | Publicar/integrar as mudanças ainda locais e conferir CI. |
+| #37 | Revisão #55 preservada; aceite vertical, destinos e freeze sucessor consolidados. | Conferir snapshot publicado e relacionar CI/commit, sem promover fontes. |
+| #56 | Gates e JSON privado/HTML/PDF mínimos implementados e aceitos localmente. | Commit, PR, CI, integração e encerramento remoto posteriores. |
+
+Nenhuma dessas issues foi atualizada ou encerrada por esta atividade. Os estados remotos desta lista são os da última consulta registrada na atividade 2; não houve nova consulta. A #54 já entrou via PR #61 e a #55 via PR #62; a CI conhecida em `2c5ef89` não certifica as alterações locais seguintes. [Freeze atual e reprodução](freeze-consolidado-human-l0.md). Próxima etapa: atividade 8, somente quando o usuário solicitar publicação. Depois do fechamento integrado, a #21 é a próxima frente de produto; resíduos da #16 mantêm acompanhamento separado.
+
+## Histórico anterior à consolidação
+
+Os parágrafos e a tabela abaixo conservam o estado das entregas em suas datas. Menções a atividades 3–8 pendentes, rascunho obrigatório e exportação ausente não descrevem o recorte local consolidado acima.
+
 Decisão posterior em 2026-11-03: [geração oficial local ativada para Humano Core nível 0](ativacao-oficial-local-core.md), por solicitação explícita do usuário. A entrada principal usa somente dados reais e recusa demo/fixture; profissões, riqueza, kits, equipamentos e sorteios são vinculados às fontes verificadas. Fichas permanecem rascunhos com pendências explícitas de consequência; exportação e aceite completo continuam separados. Fontes conservam `needs-review`, sem promoção automática.
 
 Lote real Core em 2026-11-03: [projeção e conferência local entregues](entrega-core-real-issue34-atividade3.md), contrato consumível `1.1.0` local, `fictionalData: false`. Foram conferidos 22 tabelas/23 fluxos/339 resultados, 102 profissões (36 antes agrupadas), 120 Interesting Things e 157 intervalos de evidência, com 260 registros Core contabilizados. Dados reais permanecem ignorados. Vínculos de consequência ainda pendentes de aplicação/adjudicação são preservados; não houve aceite semântico integral, promoção ou habilitação.

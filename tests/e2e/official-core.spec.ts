@@ -1,6 +1,8 @@
 import {test,expect} from '@playwright/test';
 import {existsSync} from 'node:fs';
-const corpus=existsSync('curation/pilot/table-closure.json');
+import {resolve} from 'node:path';
+import {confirmPreview,savedCharacter} from '../helpers/library-browser';
+const corpus=existsSync(resolve(process.env.SOTDL_LOCAL_SOURCE_ROOT??process.cwd(),'curation/pilot/table-closure.json'));
 test('official entry never loads demo data and keeps missing sources blocked',async({page})=>{
   await page.route('**/api/official/core',route=>route.fulfill({status:503,contentType:'application/json',body:'{}'}));
   await page.goto('/');
@@ -21,18 +23,20 @@ test('generates and reopens a real Core draft without rerolling or exporting sou
   await page.getByLabel('Fonte de Interesting Things').selectOption('core');
   await page.getByRole('button',{name:'Gerar com regras reais'}).click();
   await expect(page.getByRole('heading',{name:'Teste Core real'})).toBeVisible();
-  await expect(page.getByText('A ficha ainda não está concluída.',{exact:false})).toBeVisible();
+  await expect(page.getByRole('heading',{name:/Rascunho/})).toBeVisible();
   const response=await request.get('/api/official/core');
   const context=await response.json();
   const statePlan=context.backgroundPlans.find((p:{state:unknown})=>p.state);
   await page.getByLabel('Escolher Background',{exact:true}).selectOption(statePlan.rowId);
   await expect(page.getByText('Estado adicional de Background:',{exact:false})).toBeVisible();
   await expect(page.getByRole('status')).toContainText('Fontes reais carregadas');
-  const before=await page.evaluate(()=>localStorage.getItem('sotdl-official-core-draft@1'));
+  await confirmPreview(page);
+  const before=await savedCharacter(page,'core');
   expect(before).not.toMatch(/"sourceText"|"excerpt"|"mechanics"/);
+  if(await page.getByRole('button',{name:'Confirmar e salvar alterações',exact:true}).count())await confirmPreview(page);
   await page.reload();
   await expect(page.getByRole('heading',{name:'Teste Core real'})).toBeVisible({timeout:45000});
-  expect(await page.evaluate(()=>localStorage.getItem('sotdl-official-core-draft@1'))).toBe(before);
+  expect(await savedCharacter(page,'core')).toBe(before);
   await expect(page.getByLabel('Escolher Background',{exact:true})).toHaveValue(statePlan.rowId);
   await page.getByRole('button',{name:'Remover Background',exact:true}).click();
   await expect(page.getByText('Estado adicional de Background:',{exact:false})).toHaveCount(0);
@@ -42,10 +46,12 @@ test('generates and reopens a real Core draft without rerolling or exporting sou
   await expect(page.getByText('Interpretação definida pelo usuário:',{exact:false})).toContainText('peso 0');
   await page.getByRole('checkbox',{name:'Vestir',exact:true}).last().check();
   await expect(page.getByRole('status')).toContainText('Fontes reais carregadas');
-  const specialSaved=await page.evaluate(()=>localStorage.getItem('sotdl-official-core-draft@1'));
+  await confirmPreview(page);
+  const specialSaved=await savedCharacter(page,'core');
+  if(await page.getByRole('button',{name:'Confirmar e salvar alterações',exact:true}).count())await confirmPreview(page);
   await page.reload();
   await expect(page.getByLabel('Escolher Interesting Thing',{exact:true})).toHaveValue(special.outcomeId,{timeout:45000});
-  expect(await page.evaluate(()=>localStorage.getItem('sotdl-official-core-draft@1'))).toBe(specialSaved);
+  expect(await savedCharacter(page,'core')).toBe(specialSaved);
   const mixed=context.interestingPlans.find((p:{branches:{records:{kind:string}[]}[]})=>p.branches.some(b=>b.records.some(r=>r.kind==='item'))&&p.branches.some(b=>b.records.some(r=>r.kind==='narrative')));
   await page.getByLabel('Escolher Interesting Thing',{exact:true}).selectOption(mixed.outcomeId);
   const physical=mixed.branches.find((b:{records:{kind:string}[]})=>b.records.some(r=>r.kind==='item'));
@@ -54,7 +60,8 @@ test('generates and reopens a real Core draft without rerolling or exporting sou
   await expect(page.getByText('Ganhos da criação registrados.',{exact:false})).toBeVisible();
   await page.getByLabel('Alternativa de Interesting Thing',{exact:true}).selectOption(story.optionId);
   await expect(page.getByRole('list',{name:'História e acompanhantes'})).toBeVisible();
-  const saved=JSON.parse((await page.evaluate(()=>localStorage.getItem('sotdl-official-core-draft@1')))!);
+  await confirmPreview(page);
+  const saved=JSON.parse((await savedCharacter(page,'core'))!);
   expect(saved.equipped.some((key:string)=>key.startsWith('interesting/'))).toBe(false);
   const gm=context.core.things.find((t:{details:{gmChoice:boolean}})=>t.details.gmChoice);
   await page.getByLabel('Escolher Interesting Thing',{exact:true}).selectOption(gm.id);
@@ -65,13 +72,15 @@ test('generates and reopens a real Core draft without rerolling or exporting sou
   await page.getByLabel('Definição da arma',{exact:true}).selectOption(weapon.id);
   await page.getByRole('button',{name:'Registrar arma e decisão',exact:true}).click();
   await expect(page.getByText('Decisão registrada por Mestre de teste:',{exact:false})).toBeVisible();
+  if(await page.getByRole('button',{name:'Confirmar e salvar alterações',exact:true}).count())await confirmPreview(page);
   await page.reload();
   await expect(page.getByText('Decisão registrada por Mestre de teste:',{exact:false})).toBeVisible({timeout:45000});
   const equipment=page.locator('fieldset[data-equipment-key^="interesting/"]');
   const position=equipment.getByRole('combobox');
   await position.selectOption(weapon.weapon.hands==='two'?'both':weapon.weapon.hands==='one'?'both':'main');
   await expect(page.getByRole('status')).toContainText('Fontes reais carregadas');
-  const equippedSave=JSON.parse((await page.evaluate(()=>localStorage.getItem('sotdl-official-core-draft@1')))!);
+  await confirmPreview(page);
+  const equippedSave=JSON.parse((await savedCharacter(page,'core'))!);
   expect(equippedSave.equipmentLoadout.some((p:{key:string})=>p.key.startsWith('interesting/'))).toBe(true);
   const kitWeapon=page.locator('fieldset[data-equipment-key]:not([data-equipment-key^="interesting/"])').getByRole('checkbox',{name:'Empunhar',exact:true});
   if(await kitWeapon.count()){
@@ -80,11 +89,13 @@ test('generates and reopens a real Core draft without rerolling or exporting sou
     await equipment.getByRole('button',{name:'Usar esta posição substituindo conflitos',exact:true}).click();
     await expect(page.getByRole('alert').filter({hasText:'mesma mão'})).toHaveCount(0);
   }
+  if(await page.getByRole('button',{name:'Confirmar e salvar alterações',exact:true}).count())await confirmPreview(page);
   await page.reload();
   await expect(page.locator('fieldset[data-equipment-key^="interesting/"]').getByRole('combobox')).toHaveValue(weapon.weapon.hands==='off'?'main':'both',{timeout:45000});
   await page.locator('fieldset[data-equipment-key^="interesting/"]').getByRole('checkbox',{name:'Empunhar',exact:true}).uncheck();
   await expect(page.getByRole('status')).toContainText('Fontes reais carregadas');
-  const storedSave=JSON.parse((await page.evaluate(()=>localStorage.getItem('sotdl-official-core-draft@1')))!);
+  await confirmPreview(page);
+  const storedSave=JSON.parse((await savedCharacter(page,'core'))!);
   expect(storedSave.equipmentLoadout.some((p:{key:string})=>p.key.startsWith('interesting/'))).toBe(false);
   expect(storedSave.rolls).toEqual(equippedSave.rolls);
   await expect(page.getByRole('checkbox',{name:/Conferir.*Interesting|Aprovar/})).toHaveCount(0);
