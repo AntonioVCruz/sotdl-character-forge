@@ -156,6 +156,16 @@ export async function chooseOfficialCore(input:unknown,context:unknown,key:strin
   if(equippedBefore.length)suspendEquipment(d,key=>equippedBefore.find(i=>i.key===key)?.itemId!==after.inventory.find(i=>i.key===key)?.itemId,'Origem ou definição de equipamento alterada');
   await calculateOfficialCore(d,c);return d;
 }
+const dimensionsSchema=z.object({height:z.number().finite().positive(),weight:z.number().finite().positive(),age:z.number().int().nonnegative(),reviewed:z.literal(true)}).strict();
+/** Core's manual-dimension binding records the user's concrete measures; it never borrows HD's formulas. */
+export async function recordOfficialDimensions(input:unknown,context:unknown,measurements:unknown){
+  const d=structuredClone(parseOfficialCoreDraft(input)),c=parseOfficialCoreContext(context),values=dimensionsSchema.parse(measurements);
+  if(await consumableDigest(c)!==d.contextSha256)return fail('source-context-changed');
+  if(!d.config.optionalTables)return fail('optional-dimensions-not-selected');
+  for(const key of ['height','weight','age'] as const)d.choices[`optional/dimensions/${key}`]=String(values[key]);
+  d.choices['optional/dimensions/reviewed']='true';d.finalization=invalidateFinalization(d.finalization);
+  await calculateOfficialCore(d,c);return d;
+}
 export async function selectOfficialThing(input:unknown,context:unknown,outcomeId?:string):Promise<OfficialCoreDraft> {
   const d=structuredClone(parseOfficialCoreDraft(input)),c=parseOfficialCoreContext(context);
   if(await consumableDigest(c)!==d.contextSha256)return fail('source-context-changed');
@@ -318,14 +328,19 @@ export async function calculateOfficialCore(input:unknown,context:unknown) {
   if(background?.plan.state&&backgroundResult?.state!==null&&backgroundResult?.state!==undefined&&base.states)base={...base,states:{...base.states,[background.plan.state.target]:base.states[background.plan.state.target]+backgroundResult.state}};
   if(!base.baseResolved)pending.push({key:'equipment/conflict',label:'Resolver conflito de equipamento'});
   const narrative=d.config.optionalTables?['core:human-age','core:human-build','core:human-personality','core:human-appearance','core:human-religion'].map(id=>({tableId:id,text:selectedRow(d,c,id,`optional/${id}`).text})):[];
-  if(d.config.optionalTables)pending.push({key:'optional/build',label:'Registrar dimensões de Build e conferir a descrição escolhida'});
+  let dimensions:{height:number;weight:number;age:number}|null=null;
+  if(d.config.optionalTables){
+    const parsed=dimensionsSchema.safeParse({height:Number(d.choices['optional/dimensions/height']),weight:Number(d.choices['optional/dimensions/weight']),age:Number(d.choices['optional/dimensions/age']),reviewed:d.choices['optional/dimensions/reviewed']==='true'});
+    if(parsed.success){const {height,weight,age}=parsed.data;dimensions={height,weight,age};}
+    else pending.push({key:'optional/build',label:'Registrar dimensões de Build e conferir a descrição escolhida'});
+  }
   const {finalization:_receipt,...savedState}=d;
   if(d.config.benefit==='speak-language'&&d.config.languageId===c.mechanicalPacks[0].entities[0].mechanics.baseLanguage.languageId)pending.push({key:'core-benefit/language',label:'O benefício humano exige um idioma diferente do idioma-base.'});
   const optionalOmissions=[...(!d.config.optionalTables?[{key:'core-optional',label:'Tabelas narrativas Core opcionais não escolhidas.'}]:[]),...(!background?[{key:'background',label:'Background opcional não escolhido.'}]:[])];
   const completion=await evaluateCharacterCompletion({contextSha256,savedContextSha256:d.contextSha256,sourceReady:true,mechanicalReady:base.baseResolved&&!!base.stats,materialReady:material.materialComplete&&material.cashComplete,state:savedState,pending,receipt:d.finalization,optionalOmissions});
   return {officialGenerationEnabled:true as const,dataMode:'official-local' as const,scope:'human-core-l0' as const,completion,fullyResolved:completion.fullyResolved,exportEnabled:false as const,
     base,professions,languages:[...languages.values()],wealth:wealth.text,inventory,moneyBits:material.knownCashBits,interestingThing:thing,
-    interestingApplication:{...interestingApplication,contextSha256:d.contextSha256},narrative,pending,equipmentNotes,equipment,
+    interestingApplication:{...interestingApplication,contextSha256:d.contextSha256},narrative,dimensions,pending,equipmentNotes,equipment,
     background:background?{rowId:background.row.id,text:background.row.text,sourceId:background.plan.sourceId,evidenceIds:background.plan.evidenceIds,contextSha256:d.contextSha256,
       values:backgroundResult,keepsake:background.plan.keepsake,appearanceChoice:background.plan.appearanceChoice,appearance:d.choices[`background/${background.row.id}/appearance`]??null,
       events:[...(background.plan.state?[{type:'background-state' as const,target:background.plan.state.target,amount:backgroundResult!.state}]:[]),

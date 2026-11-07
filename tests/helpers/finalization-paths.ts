@@ -1,6 +1,6 @@
 import {generateOfficialCore,calculateOfficialCore,chooseOfficialCore,selectOfficialThing,type OfficialCoreContext} from '../../packages/character-generator/official-core';
 import {createProcedureSession,deriveProcedure,performProcedureCommand} from '../../packages/character-generator/procedure-runtime';
-import {defaultProcedureConfig,type ProcedureContext,type ProcedureConfig} from '../../packages/character-generator/procedure-model';
+import {defaultProcedureConfig,type ProcedureContext,type ProcedureConfig,type ProcedureSession} from '../../packages/character-generator/procedure-model';
 
 export async function completeCore(c:OfficialCoreContext){
   let d=await generateOfficialCore(c,{name:'Aceite de finalização',seed:'finalization-core',increase:'strength',benefit:'random-profession',languageId:'',interestingVariant:'core',optionalTables:false});
@@ -14,9 +14,9 @@ export async function completeCore(c:OfficialCoreContext){
   }
   return d;
 }
-export async function completeProcedure(c:ProcedureContext,overrides:Partial<ProcedureConfig>={}){
+export async function completeProcedure(c:ProcedureContext,overrides:Partial<ProcedureConfig>={},initial?:ProcedureSession){
   const config={...defaultProcedureConfig(),interestingVariant:'core' as const,coreBenefit:'speak-language' as const,...overrides};
-  let s=await createProcedureSession(c,`finalization-procedure-${config.procedure}-${config.attributeMode}`,config);
+  let s=initial??await createProcedureSession(c,`finalization-procedure-${config.procedure}-${config.attributeMode}`,config);
   const baseLanguage=c.mechanicalPacks.map(p=>p as {entities:{mechanics:{variant:string;baseLanguage:{languageId:string}}}[]}).find(p=>p.entities[0].mechanics.variant==='core')!.entities[0].mechanics.baseLanguage.languageId;
   for(let i=0;i<100;i++){
     const graph=deriveProcedure(c,s),n=graph.nodes.find(n=>n.kind!=='config'&&n.kind!=='lookup'&&n.status==='pending');if(!n)break;
