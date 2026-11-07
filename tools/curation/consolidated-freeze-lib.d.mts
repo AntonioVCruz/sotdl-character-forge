@@ -1,0 +1,9 @@
+export type Entry={path:string;sha256:string;bytes:number;textSha256?:string;endings?:[string,number][]};
+export function sha(bytes:string|Uint8Array):string;
+export function json(value:unknown):string;
+export function fingerprint(path:string,bytes:Uint8Array):Entry;
+export function restoredBytes(bytes:Buffer,entry:Entry):Buffer;
+export function safePath(root:string,path:string):Promise<string>;
+export function compareInventory(expected:{path:string;sha256:string}[],actual:{path:string;sha256:string}[]):string[];
+export function restoreInventory(root:string,entries:Entry[],paths:string[]):Promise<number>;
+export function immutableWrite(path:string,bytes:string|Uint8Array):Promise<void>;
