@@ -8,6 +8,6 @@ export function CharacterCompletionPanel({completion,busy,finalize,target}:{comp
     {!!completion.blockers.length&&<><p>Resolva estas obrigações antes de finalizar:</p><ul>{completion.blockers.map((p,i)=><li key={`${p.key}/${i}`}><a href={target(p.key)}>{p.label}</a> {p.action}</li>)}</ul></>}
     {!!completion.deferredUse.length&&<details><summary>Efeitos reservados ao uso em jogo ({completion.deferredUse.length})</summary><p>Estes efeitos continuam explícitos e não bloqueiam a finalização da criação.</p><ul>{completion.deferredUse.map((p,i)=><li key={`${p.key}/${i}`}>{p.label}</li>)}</ul></details>}
     {!!completion.optionalOmissions.length&&<details><summary>Etapas facultativas não escolhidas ({completion.optionalOmissions.length})</summary><ul>{completion.optionalOmissions.map(p=><li key={p.key}>{p.label}</li>)}</ul></details>}
-    <p>A finalização vale para o recorte local suportado. A revisão das fontes continua needs-review. Exportação desabilitada.</p>
+    <p>A finalização vale para o recorte local suportado. A revisão das fontes continua needs-review. A emissão da ficha exige uma conferência própria nos controles de arquivos.</p>
   </section>;
 }

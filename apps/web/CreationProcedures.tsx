@@ -2,6 +2,7 @@ import {useEffect,useRef,useState} from 'react';
 import {ProcedureContextSchema,ProcedureSessionSchema,defaultProcedureConfig,type ProcedureContext,type ProcedureConfig,type ProcedureSession,type ProcedureNode} from '../../packages/character-generator/procedure-model';
 import {createProcedureSession,reopenProcedure,performProcedureCommand,advanceProcedure,calculateProcedure,finalizeProcedure,type ProcedureCommand} from '../../packages/character-generator/procedure-runtime';
 import {CharacterCompletionPanel} from './CharacterCompletionPanel';
+import {CharacterExportPanel} from './CharacterExportPanel';
 import {useCharacterWorkspace} from './useCharacterWorkspace';
 import {CharacterWorkspacePanel} from './CharacterWorkspacePanel';
 
@@ -87,6 +88,7 @@ export function CreationProcedures({onDirtyChange}:{onDirtyChange?:(dirty:boolea
     {view.graph.relativeCandidates.map(r=><label key={r.id}><input type="checkbox" checked={view.graph.state.config.relativeDetails.includes(r.id)} onChange={e=>command({type:'config',config:{...view.graph.state.config,relativeDetails:e.target.checked?[...view.graph.state.config.relativeDetails,r.id]:view.graph.state.config.relativeDetails.filter(id=>id!==r.id)}})}/>Detalhar familiar vivo: {r.label}</label>)}
     <section id="procedure-pending" aria-label="Pendências"><h2>Pendências</h2><ul>{view.pending.map((p,i)=><li key={`${p.key}/${i}`}>{p.scope==='use'?'No uso: ':''}{p.label}</li>)}</ul></section>
     <details><summary>Histórico de decisões ({session.events.length})</summary><ol>{session.events.map(e=><li key={e.id}>{e.seq} · {e.type}{e.type==='result'?` · ${e.result.method}${'faces' in e.result?` [${e.result.faces.join(', ')}]`:''}`:''}</li>)}</ol></details></>}
+    {context&&<CharacterExportPanel mode="procedures" current={session} ready={!!view?.fullyResolved&&!suspended&&!dirty&&!workspace.conflict} busy={busy} unavailableReason={workspace.conflict?'Recarregue a versão salva para resolver o conflito antes de emitir arquivos.':dirty?'Confirme ou descarte a prévia antes de emitir arquivos.':undefined} onImport={state=>change(async()=>(await reopenProcedure(context,state)).session,true)}/>}
   </main>;
 }
 function CreationStep({node:n,context,busy,command}:{node:ProcedureNode;context:ProcedureContext;busy:boolean;command:(c:ProcedureCommand)=>void}){

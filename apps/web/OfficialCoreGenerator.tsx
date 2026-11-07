@@ -2,6 +2,7 @@ import {useEffect,useRef,useState} from 'react';
 import {InterestingThingPanel} from './InterestingThingPanel';
 import {OfficialEquipmentPanel} from './OfficialEquipmentPanel';
 import {CharacterCompletionPanel} from './CharacterCompletionPanel';
+import {CharacterExportPanel} from './CharacterExportPanel';
 import {useCharacterWorkspace} from './useCharacterWorkspace';
 import {CharacterWorkspacePanel} from './CharacterWorkspacePanel';
 import {CoreDimensionsPanel} from './CoreDimensionsPanel';
@@ -96,6 +97,7 @@ export function OfficialCoreGenerator({onDirtyChange}:{onDirtyChange?:(dirty:boo
       <details><summary>Sorteios registrados</summary><p>Seed: {draft.config.seed} · Algoritmo: {draft.prngVersion}</p><ul>{Object.entries(draft.rolls).map(([key,faces])=><li key={key}>{key}: {faces.join(', ')}</li>)}</ul></details>
       <p>Revisão de conteúdo permanece needs-review. A emissão da ficha usa uma projeção mínima, sem textos das fontes.</p>
     </section>}
+    {context&&<CharacterExportPanel mode="core" current={draft} ready={!!view?.fullyResolved&&!suspended&&!dirty&&!workspace.conflict} busy={busy} unavailableReason={workspace.conflict?'Recarregue a versão salva para resolver o conflito antes de emitir arquivos.':dirty?'Confirme ou descarte a prévia antes de emitir arquivos.':undefined} onImport={state=>change(async()=>parseOfficialCoreDraft(state),true)}/>}
     <footer>Fontes utilizadas somente neste ambiente local. Rascunho salvo neste navegador, separado dos personagens legados.</footer>
   </main>;
 }
