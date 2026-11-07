@@ -1,0 +1,6225 @@
+{
+  "contract": "sotdl.human-l0.consolidated-freeze",
+  "contractVersion": "1.0.0",
+  "version": "1.0.1",
+  "date": "2026-11-06",
+  "author": "Codex",
+  "delivery": "local-unpublished",
+  "baseCommit": "2c5ef8924e643622132d1c2f6d07ce92009f2dff",
+  "policy": {
+    "sourceStatus": "needs-review",
+    "distributionApproved": false,
+    "exportEnabled": false,
+    "lineEndings": "preserve-current-bytes; explicit-content-matching-restoration"
+  },
+  "prior": {
+    "path": "curation/human-l0-review-freeze.json",
+    "sha256": "4ec87cae291bc7d03690d11d176ac70cd81b68fc9925c3fa3d75b5fb8d440e75",
+    "reviewId": "human-l0-issue55@1.0.0",
+    "preserved": true
+  },
+  "predecessor": {
+    "path": "curation/freezes/human-l0/1.0.0.json",
+    "sha256": "f14e90f5b87055fe717ba7a9c84607f208c32667f81ed179ff6e23f3c6b2f836"
+  },
+  "closureReview": {
+    "path": "curation/reviews/human-l0-closure-activity7-2026-11-06.json",
+    "sha256": "bda13190e8d195394f3c8e7da8220cf087a9c9426d123277337dfa2e25b3752d"
+  },
+  "delta": {
+    "reason": "Issue56 exports; activities1-5 implementation, acceptance and destination policy; activity6 reproducibility; successor may include activity7 closure documentation and review",
+    "changed": [
+      "apps/web/CharacterCompletionPanel.tsx",
+      "apps/web/CreationProcedures.tsx",
+      "apps/web/OfficialCoreGenerator.tsx",
+      "apps/web/main.tsx",
+      "docs/ativacao-oficial-local-core.md",
+      "docs/destinos-permissoes-issue55.md",
+      "docs/entrega-revisao-freeze-issue55.md",
+      "docs/estado-issues.md",
+      "docs/matriz-revisao-freeze-issue55.md",
+      "docs/revisao-semantica-issue55.md",
+      "docs/roadmap-issue34.md",
+      "package.json",
+      "packages/character-generator/official-core.ts",
+      "playwright.config.ts",
+      "tests/creation-procedures-ui.test.tsx",
+      "tests/e2e/character-finalization.spec.ts",
+      "tests/e2e/official-core.spec.ts",
+      "tests/e2e/official-procedures.spec.ts",
+      "tests/helpers/finalization-paths.ts",
+      "tests/official-core.test.ts",
+      "tests/review-freeze-source.test.ts",
+      "tests/review-freeze.test.ts",
+      "tools/curation/official-local-context.ts",
+      "tools/curation/review-freeze.ts",
+      "tools/curation/review-human-l0.mjs",
+      "tools/curation/review-human-l0.ts",
+      "tools/curation/review-pdf.py",
+      "tools/official-local-plugin.ts"
+    ],
+    "removed": [],
+    "added": [
+      ".github/workflows/ci.yml",
+      "CHANGELOG.md",
+      "PROMPT-INICIAL.md",
+      "README.md",
+      "apps/web/CharacterExportPanel.tsx",
+      "apps/web/CharacterWorkspacePanel.tsx",
+      "apps/web/CoreDimensionsPanel.tsx",
+      "apps/web/character-export-html.ts",
+      "apps/web/useCharacterWorkspace.ts",
+      "constitution.md",
+      "content-packs/README.md",
+      "content-packs/sotdl%3Aonly-human/0.1.0/pack.json",
+      "content-packs/sotdl%3Ashadow-of-the-demon-lord-core/0.1.0/pack.json",
+      "curation/examples/fictional.pack.json",
+      "curation/examples/human-l0-consumable.activity4.rejections.json",
+      "curation/examples/human-l0-consumable.activity4.synthetic.json",
+      "curation/examples/human-l0-consumable.rejections.json",
+      "curation/examples/human-l0-consumable.synthetic.json",
+      "curation/examples/human-l0-core-lot.coverage.json",
+      "curation/examples/human-l0-core-lot.synthetic.json",
+      "curation/examples/human-l0-kits.rejections.json",
+      "curation/examples/human-l0-kits.synthetic.json",
+      "curation/examples/human-l0-lifestyle-prior.activity4.synthetic.json",
+      "curation/examples/human-l0-mechanics.synthetic.json",
+      "curation/examples/input.md",
+      "curation/examples/real-empty.pack.json",
+      "curation/examples/rule.index.json",
+      "curation/examples/ruleset.curation.json",
+      "curation/examples/staging.json",
+      "curation/human-l0-review-freeze.json",
+      "curation/reconciliation/coverage.jsonl",
+      "curation/reconciliation/duplicates.jsonl",
+      "curation/reconciliation/findings.jsonl",
+      "curation/reconciliation/inventory.jsonl",
+      "curation/reconciliation/sources.json",
+      "curation/reviews/human-l0-base-2026-11-02.json",
+      "curation/reviews/human-l0-closure-activity2-2026-11-06.json",
+      "curation/reviews/human-l0-closure-activity3-2026-11-06.json",
+      "curation/reviews/human-l0-closure-activity7-2026-11-06.json",
+      "curation/reviews/human-l0-enablement-decision-2026-11-06.json",
+      "curation/reviews/human-l0-vertical-acceptance-2026-11-06.json",
+      "curation/reviews/issue34-activity1-local-verification.json",
+      "curation/reviews/issue34-activity1-provenance-2026-11-02.json",
+      "curation/reviews/issue50-background-2026-11-03.json",
+      "curation/reviews/issue51-interesting-things-2026-11-03.json",
+      "curation/reviews/issue52-equipment-2026-11-03.json",
+      "curation/reviews/issue53-procedures-2026-11-03.json",
+      "docs/aceite-vertical-consolidado-human-l0.md",
+      "docs/entrega-exportacao-issue56.md",
+      "docs/escopo-fechamento-human-l0.md",
+      "docs/execucao-lacunas-human-l0.md",
+      "docs/fechamento-tecnico-human-l0.md",
+      "docs/freeze-consolidado-human-l0.md",
+      "docs/matriz-aceite-fechamento-human-l0.md",
+      "docs/matriz-final-human-l0.md",
+      "docs/permissoes-habilitacao-human-l0.md",
+      "docs/plano-exportacao-issue56.md",
+      "docs/plano-fechamento-human-l0.md",
+      "docs/uso-human-l0.md",
+      "examples/demo-generation-request.json",
+      "examples/demo-level-one.json",
+      "examples/demo-level-zero.json",
+      "examples/demo-magic.json",
+      "examples/demo-pack.json",
+      "examples/demo-random-tables.json",
+      "examples/demo-spell-session.json",
+      "index.html",
+      "packages/character-generator/character-export.ts",
+      "packages/character-generator/character-library.ts",
+      "packages/character-generator/export-content-policy.ts",
+      "specs/001-catalogo-e-proveniencia/implementation.md",
+      "specs/001-catalogo-e-proveniencia/plan.md",
+      "specs/001-catalogo-e-proveniencia/spec.md",
+      "specs/001-catalogo-e-proveniencia/tasks.md",
+      "specs/002-criacao-e-progressao/plan.md",
+      "specs/002-criacao-e-progressao/spec.md",
+      "specs/002-criacao-e-progressao/tasks.md",
+      "specs/003-motor-de-regras/plan.md",
+      "specs/003-motor-de-regras/spec.md",
+      "specs/003-motor-de-regras/tasks.md",
+      "specs/004-magias-e-escolhas/plan.md",
+      "specs/004-magias-e-escolhas/spec.md",
+      "specs/004-magias-e-escolhas/tasks.md",
+      "specs/005-ficha-e-efeitos/plan.md",
+      "specs/005-ficha-e-efeitos/spec.md",
+      "specs/005-ficha-e-efeitos/tasks.md",
+      "specs/006-persistencia-e-exportacao/plan.md",
+      "specs/006-persistencia-e-exportacao/spec.md",
+      "specs/006-persistencia-e-exportacao/tasks.md",
+      "specs/007-html-editavel-autonomo/plan.md",
+      "specs/007-html-editavel-autonomo/spec.md",
+      "specs/007-html-editavel-autonomo/tasks.md",
+      "specs/008-tabelas-aleatorias/plan.md",
+      "specs/008-tabelas-aleatorias/spec.md",
+      "specs/008-tabelas-aleatorias/tasks.md",
+      "specs/009-geracao-aleatoria/plan.md",
+      "specs/009-geracao-aleatoria/spec.md",
+      "specs/009-geracao-aleatoria/tasks.md",
+      "tests/character-export-source.test.ts",
+      "tests/character-export.test.ts",
+      "tests/character-library.test.ts",
+      "tests/closure-coverage-source.test.ts",
+      "tests/consolidated-freeze.test.ts",
+      "tests/e2e/character-export.spec.ts",
+      "tests/e2e/character-workspace.spec.ts",
+      "tests/helpers/library-browser.ts",
+      "tests/runtime-artifacts-source.test.ts",
+      "tools/curation/consolidated-freeze-lib.d.mts",
+      "tools/curation/consolidated-freeze-lib.mjs",
+      "tools/curation/consolidated-freeze.mjs",
+      "tools/curation/consolidated-runtime.ts",
+      "tools/curation/runtime-artifact-compiler.ts",
+      "tools/curation/runtime-artifacts.mjs",
+      "wireframe/Forja Wireframes.dc.html"
+    ]
+  },
+  "inventoryRule": "Git tracked and nonignored untracked public files; excludes private/build/output roots and all curation/freezes/ (independent immutable versions)",
+  "publicInputs": [
+    {
+      "path": ".gitattributes",
+      "sha256": "45cc66c932c00505f3fb3f163972984f9f56db89097f72f3a760a81b36c5f531",
+      "bytes": 145,
+      "textSha256": "90d3825b24c2d902cd9baec6166430f7e1eeea5c020176ea2019e60a32f37bea",
+      "endings": [
+        [
+          "CRLF",
+          2
+        ]
+      ]
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "3943043edc7f0324ac31a58e874e77fa7bd9ded9adcf3cf6b2450e5d04d65b5d",
+      "bytes": 1216,
+      "textSha256": "7ddf59d3414238cf76f46d550432d75df6170ab36b30115ada3437b481832aa7",
+      "endings": [
+        [
+          "CRLF",
+          51
+        ]
+      ]
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "b6d82d95d4eff7440fde17784aa3354415a9fc3db63741b2fa22dd557236761b",
+      "bytes": 462,
+      "textSha256": "23a53e5893e3cd0606efb293a4b8003b89186f3108740b8ac02aa42b7f09e551",
+      "endings": [
+        [
+          "CRLF",
+          22
+        ]
+      ]
+    },
+    {
+      "path": "CHANGELOG.md",
+      "sha256": "b8d99fd70b464ceb438ba1b06f02f520e36cf302a8e8bd8153a121a56ec284ee",
+      "bytes": 5154,
+      "textSha256": "0702d1ac81a5de202dc71fb41d239eee913bcf3442979e540fa06c5c4c53c498",
+      "endings": [
+        [
+          "CRLF",
+          62
+        ]
+      ]
+    },
+    {
+      "path": "PROMPT-INICIAL.md",
+      "sha256": "c6329fd75351588727003c107787267121b37ef09c9a1af086677963181722a1",
+      "bytes": 2817,
+      "textSha256": "478e5932f2fbfb66903c79627e79a17d5a7940ba0e9dde941c3a322901dea1c4",
+      "endings": [
+        [
+          "CRLF",
+          18
+        ]
+      ]
+    },
+    {
+      "path": "README.md",
+      "sha256": "bc6b05ef6c0723929755eac9fe24178bbdf27f8f18ab176e565eb81a5ca3048f",
+      "bytes": 30977,
+      "textSha256": "a5381e6ab9785fe46c393f607183c9f3b839bbbb6a8930878f52ee081a7abf84",
+      "endings": [
+        [
+          "CRLF",
+          232
+        ]
+      ]
+    },
+    {
+      "path": "apps/standalone/main.tsx",
+      "sha256": "bba5834e50ab8a156500a2b764cb73a891b5361bb55ee34d47a1ff4e1ef7ba78",
+      "bytes": 6186,
+      "textSha256": "ab49922ef35d9c3abc5135aa4d1b417fe0a471a4fade3af92143ccf1e37ce996",
+      "endings": [
+        [
+          "CRLF",
+          74
+        ]
+      ]
+    },
+    {
+      "path": "apps/standalone/security.ts",
+      "sha256": "6cbb82ff5510515bb22fb7f9314e0d330401e395b7ec97add86f7723ba4df759",
+      "bytes": 147,
+      "textSha256": "07e340fd30d0ccf2ab66de0307c0c10bf2a0b31d301cf9df8419559a5422b504",
+      "endings": [
+        [
+          "CRLF",
+          3
+        ]
+      ]
+    },
+    {
+      "path": "apps/web/CharacterBuilder.tsx",
+      "sha256": "5353474d08f714e202f3990576000ceac212e92ba55e35113573ed3d9cc01adc",
+      "bytes": 16974,
+      "textSha256": "ee916b215ac5ac630791235c2b165669ab06889d7becc0ae9dede4d7c48bfa01",
+      "endings": [
+        [
+          "CRLF",
+          168
+        ]
+      ]
+    },
+    {
+      "path": "apps/web/CharacterCompletionPanel.tsx",
+      "sha256": "befe842bd6587f6beb4b8e84938a40302956a253b478015f76cec4cbd86bbf94",
+      "bytes": 1719,
+      "textSha256": "655997e3fa0c5a558d7b68297a8615282d9d024cea65bedb5f2575e5ad76b46f",
+      "endings": [
+        [
+          "CRLF",
+          13
+        ]
+      ]
+    },
+    {
+      "path": "apps/web/CharacterExportPanel.tsx",
+      "sha256": "7a79e8ccd211e4b9790754ca5c5127853259645d27cdbbf75e10c0a05d05b303",
+      "bytes": 4708,
+      "textSha256": "7a79e8ccd211e4b9790754ca5c5127853259645d27cdbbf75e10c0a05d05b303",
+      "endings": [
+        [
+          "LF",
+          47
+        ]
+      ]
+    },
+    {
+      "path": "apps/web/CharacterSheet.tsx",
+      "sha256": "81920d052eabdb9aabb2542285619dadacdeb1b09fae443983954d89dfa55ecc",
+      "bytes": 2600,
+      "textSha256": "f9805fea39c280dc98fdf56c9bd05c79b6a92bd4cc4f28c5c2b4684b9270e551",
+      "endings": [
+        [
+          "CRLF",
+          22
+        ]
+      ]
+    },
+    {
+      "path": "apps/web/CharacterWorkspacePanel.tsx",
+      "sha256": "29bf395f433e6ea410a9fdb64977d8747ac552f309b9f3b332e720fbd19a4aaf",
+      "bytes": 2714,
+      "textSha256": "29bf395f433e6ea410a9fdb64977d8747ac552f309b9f3b332e720fbd19a4aaf",
+      "endings": [
+        [
+          "LF",
+          16
+        ]
+      ]
+    },
+    {
+      "path": "apps/web/ChoiceSlot.tsx",
+      "sha256": "02201b137e634067a2945691b0f2c4b39e3855176a4bf4c42a093b36da060774",
+      "bytes": 10540,
+      "textSha256": "55de6e8d50dd576fe465ff8fc088921597d5a42d6fc9438aaa0d3520b078eeac",
+      "endings": [
+        [
+          "CRLF",
+          211
+        ]
+      ]
+    },
+    {
+      "path": "apps/web/CoreDimensionsPanel.tsx",
+      "sha256": "63f716e2c97368bf4645303f867fd07f5d230a3ac678ab45f4bd6b9764335264",
+      "bytes": 1834,
+      "textSha256": "63f716e2c97368bf4645303f867fd07f5d230a3ac678ab45f4bd6b9764335264",
+      "endings": [
+        [
+          "LF",
+          15
+        ]
+      ]
+    },
+    {
+      "path": "apps/web/CreationProcedures.tsx",
+      "sha256": "d7210d019e8ebc0193c88650dcddf86fbb9c7af55f654e6714183c182a71da0b",
+      "bytes": 19955,
+      "textSha256": "3318281186cf18390d586ffbc629ab5a53a86f8229ee74ecc796800000f9a086",
+      "endings": [
+        [
+          "CRLF",
+          108
+        ]
+      ]
+    },
+    {
+      "path": "apps/web/EquipmentPanel.tsx",
+      "sha256": "4ac0b652c613d454b58c1468d35d713e2ad6af843f032802daf6c87e212e848d",
+      "bytes": 1856,
+      "textSha256": "3c3842f7486093191e3e27d7ecd870602ab28356a9188e3d0d48e43dc313b121",
+      "endings": [
+        [
+          "CRLF",
+          20
+        ]
+      ]
+    },
+    {
+      "path": "apps/web/ErrorBoundary.tsx",
+      "sha256": "2012de6d77018a83a648fb60490e7aa2ec6451e3a45474b7fc29170d8fda00ff",
+      "bytes": 3019,
+      "textSha256": "75a8a245772df8a42cb5afa205cc4645f3f068b982a86e4507e165bc9763ed62",
+      "endings": [
+        [
+          "CRLF",
+          68
+        ]
+      ]
+    },
+    {
+      "path": "apps/web/HumanL0FixturePreview.tsx",
+      "sha256": "a00a74486f2a50f238d646361de8bf265d91c60859732d4654ac0c8cc318614a",
+      "bytes": 21094,
+      "textSha256": "142c843f7b50c5cdeeb75a5a4a9db9a3d5b1889929e0adb6bab53116ab7b7a4b",
+      "endings": [
+        [
+          "CRLF",
+          402
+        ]
+      ]
+    },
+    {
+      "path": "apps/web/InterestingThingPanel.tsx",
+      "sha256": "1638804e24e018b0771808bcfcb40f0edd1a8ca8e771de86dec67ff665b23099",
+      "bytes": 5994,
+      "textSha256": "3cc442d54b55bd047437185cc0c9c9a0a9bb3ce455f334a2ae9ec45b12376de0",
+      "endings": [
+        [
+          "CRLF",
+          43
+        ]
+      ]
+    },
+    {
+      "path": "apps/web/OfficialCoreGenerator.tsx",
+      "sha256": "37395458ec014fbca9353be2ee77d8b3778b5b702ada5a400017337c5ec5c5b2",
+      "bytes": 14073,
+      "textSha256": "0b11bcae3bd07ef7ce33e8d1ff8984adccd29cbfce529462225467b30c354fee",
+      "endings": [
+        [
+          "CRLF",
+          103
+        ]
+      ]
+    },
+    {
+      "path": "apps/web/OfficialEquipmentPanel.tsx",
+      "sha256": "cb7616b6700dcc8689e52cdf5840e7df2508563e658620efd13f350657e1213b",
+      "bytes": 6706,
+      "textSha256": "4558789f131ebf1b0dedfcb1688650a721b8774c816b00e5a05d2f799ffcb248",
+      "endings": [
+        [
+          "CRLF",
+          45
+        ]
+      ]
+    },
+    {
+      "path": "apps/web/PrintSheet.tsx",
+      "sha256": "d48df1bb6f03479c16603bb6fe580a64bf9df618039f5d9fdce3e7f09a015f1c",
+      "bytes": 8066,
+      "textSha256": "91abed9f04ec3ac49163d48462928449aec8f53dcbe2717354fbba4eb4ca9081",
+      "endings": [
+        [
+          "CRLF",
+          60
+        ]
+      ]
+    },
+    {
+      "path": "apps/web/SessionPanel.tsx",
+      "sha256": "414cca8cd7d126f589a62e787b1337a926914adc316c69d54fdd549eccc8b8c4",
+      "bytes": 2919,
+      "textSha256": "baf38acdb7d9934b898e19711e3c49954d4003a43bd606c71ba8bb87f5fe764e",
+      "endings": [
+        [
+          "CRLF",
+          29
+        ]
+      ]
+    },
+    {
+      "path": "apps/web/Stats.tsx",
+      "sha256": "3264fc100c10eae91736136b718fd0683c6bf116b05e2c914eb95a298eb2d7d3",
+      "bytes": 1834,
+      "textSha256": "85e0604a18471cc87ae0a8371e5aa666435285f09b47f768a45752e9aa523b1b",
+      "endings": [
+        [
+          "CRLF",
+          41
+        ]
+      ]
+    },
+    {
+      "path": "apps/web/WizardL0.tsx",
+      "sha256": "8a9146b952bc1a5dab946b9d11b26a858ea911edf711fb42ea432e742d856a9d",
+      "bytes": 11302,
+      "textSha256": "092c8042cf015063c29371573bf96cc8b8fe927c865e922d5e45d14504417038",
+      "endings": [
+        [
+          "CRLF",
+          203
+        ]
+      ]
+    },
+    {
+      "path": "apps/web/character-export-html.ts",
+      "sha256": "c3b241c4b0241b8f7a06221f25c3acbcd1b839773f1ad31fdf17efb4281a86d1",
+      "bytes": 4053,
+      "textSha256": "c3b241c4b0241b8f7a06221f25c3acbcd1b839773f1ad31fdf17efb4281a86d1",
+      "endings": [
+        [
+          "LF",
+          19
+        ]
+      ]
+    },
+    {
+      "path": "apps/web/choice-slot-contract.ts",
+      "sha256": "9c309617d74b53c39f761baa69a3359f943d4d6d0afc6ee0445d2953e35c75a2",
+      "bytes": 4013,
+      "textSha256": "cabed0f12fa88913ac4a83ef77accc0897b5852a3447b5261f026b5b79056ae8",
+      "endings": [
+        [
+          "CRLF",
+          55
+        ]
+      ]
+    },
+    {
+      "path": "apps/web/choice-slot.ts",
+      "sha256": "ae31ba8ef5d255623bdc7d5099725a14ae15a2468183061d6d75e6b1af37c969",
+      "bytes": 1850,
+      "textSha256": "041aed886f751690483ae13b191d00d61387fb02e7276240bfe1d3a697ed46f4",
+      "endings": [
+        [
+          "CRLF",
+          48
+        ]
+      ]
+    },
+    {
+      "path": "apps/web/errors.ts",
+      "sha256": "df46927ac4693809c9eb4d50532342ce74df55a85275727b0964938b7c751467",
+      "bytes": 880,
+      "textSha256": "e0a8ac9c313531a39ab85132e26e0f220d362c56fd358c303d01e050c29573a0",
+      "endings": [
+        [
+          "CRLF",
+          18
+        ]
+      ]
+    },
+    {
+      "path": "apps/web/human-l0-preview.ts",
+      "sha256": "dce40a6d4761ca7dbcc6bf14b0583a53dcb497918a74f75523be4eaa269bf5a6",
+      "bytes": 31417,
+      "textSha256": "79d3415d79c04852a278b86c7e8b441d799a861085b131f5761a3bf0a833b95e",
+      "endings": [
+        [
+          "CRLF",
+          649
+        ]
+      ]
+    },
+    {
+      "path": "apps/web/human-l0-slots.ts",
+      "sha256": "abc112f7d4f384cb90d069efc6e8e695ac1a2603a7b8dee8257ec28fa8afe75f",
+      "bytes": 21379,
+      "textSha256": "18711a67636e939601b1b77aa3024fa1bb27271868ef3d070a0c4c9d0c184f1f",
+      "endings": [
+        [
+          "CRLF",
+          378
+        ]
+      ]
+    },
+    {
+      "path": "apps/web/l0-demo.ts",
+      "sha256": "f058c9f6d7ae8cbfe5f9a471d62f0cad9ca518fb595e10cd2f98191b5723f4f8",
+      "bytes": 38965,
+      "textSha256": "a76f76f3ef7044d20ebfece453cf6bb1c83252b58ae3ab3ba0b6b3061c502c08",
+      "endings": [
+        [
+          "CRLF",
+          745
+        ]
+      ]
+    },
+    {
+      "path": "apps/web/main.tsx",
+      "sha256": "be8fbf15b56a2601f66501987f8a2c494387f8b2c8fb7e15472aa1a4777c2a6d",
+      "bytes": 1081,
+      "textSha256": "16cd51db8aac5cf88192733bf176da7fe8fef9a4ecaaea55a55ac3fc5149d91f",
+      "endings": [
+        [
+          "CRLF",
+          11
+        ]
+      ]
+    },
+    {
+      "path": "apps/web/pack-stubs.ts",
+      "sha256": "cfbd52d1b77111091e42d4b6075324557ff955ba5007c94ce0a4ce4e336abde6",
+      "bytes": 317,
+      "textSha256": "a3a6889205bc0820c667e11f1755736c5658e60b7156b5bd3ef99e1cc77647d3",
+      "endings": [
+        [
+          "CRLF",
+          5
+        ]
+      ]
+    },
+    {
+      "path": "apps/web/print.css",
+      "sha256": "f3edc349cbc246724df714d73570c1c71503555eb7cd9fa6942a8fa00adbaf6b",
+      "bytes": 3863,
+      "textSha256": "6da2dd015a0d08ef5b9087dbb3b8dfa378b9f9f4eda42232f4beb862adeb9421",
+      "endings": [
+        [
+          "CRLF",
+          48
+        ]
+      ]
+    },
+    {
+      "path": "apps/web/slot-labels.ts",
+      "sha256": "07b60eb7514cc75cd9c0f2615f69126152b794033ec7460db2f754781c8433dd",
+      "bytes": 455,
+      "textSha256": "6fa339e6b9d4c23f09e430c1cd52491860bbe6dccdcc710bce05fb634c6089a3",
+      "endings": [
+        [
+          "CRLF",
+          8
+        ]
+      ]
+    },
+    {
+      "path": "apps/web/standalone-export.ts",
+      "sha256": "bf865373022460a73b809ea249256e2dcd64f32ed6683376b097a068a3540d7f",
+      "bytes": 843,
+      "textSha256": "bcc896f96c08f4b8f8f3cfce41be2befee4772a8293bb9200a32ecf823c86a7e",
+      "endings": [
+        [
+          "CRLF",
+          14
+        ]
+      ]
+    },
+    {
+      "path": "apps/web/style.css",
+      "sha256": "544713186bebc9b62ca0756014caad4a96fb717b05ac74534dec413fae9c695a",
+      "bytes": 6526,
+      "textSha256": "16c115d5454e4e100c57df194f1b8904b546a4c31eeb844a1e00fc69061237bc",
+      "endings": [
+        [
+          "CRLF",
+          85
+        ]
+      ]
+    },
+    {
+      "path": "apps/web/useCharacterWorkspace.ts",
+      "sha256": "95b60900e4fe2527aef93198157449ffb09ebfe3c78831aa29596ad3c6b7aaa3",
+      "bytes": 3200,
+      "textSha256": "95b60900e4fe2527aef93198157449ffb09ebfe3c78831aa29596ad3c6b7aaa3",
+      "endings": [
+        [
+          "LF",
+          35
+        ]
+      ]
+    },
+    {
+      "path": "apps/web/vite-env.d.ts",
+      "sha256": "424faf9241dd699dda995b367ed36665732da1e6ec1f33b2fd40394488ecac92",
+      "bytes": 39,
+      "textSha256": "65996936fbb042915f7b74a200fcdde7e410f32a669b1ab9597cfaa4b0faddb5",
+      "endings": [
+        [
+          "CRLF",
+          1
+        ]
+      ]
+    },
+    {
+      "path": "constitution.md",
+      "sha256": "2745ce9a79265018faf78e2a564ccfe35c438073a8f5b534224e21efec87e066",
+      "bytes": 3899,
+      "textSha256": "28a3f453e778956aab4b7c2d7a2622ad46fb5e069a96dadff7908b65a862f12a",
+      "endings": [
+        [
+          "CRLF",
+          23
+        ]
+      ]
+    },
+    {
+      "path": "content-packs/README.md",
+      "sha256": "fc44d962b5808a5773df8bbc6c2c8acaed27e0ec04cbdcb30bf175b1f27955bd",
+      "bytes": 2648,
+      "textSha256": "fc8324e441bb5fe2ce5a50ad59ec23aedef717457f1e10f0ce14f7c14bf3ed68",
+      "endings": [
+        [
+          "CRLF",
+          18
+        ]
+      ]
+    },
+    {
+      "path": "content-packs/sotdl%3Aonly-human/0.1.0/pack.json",
+      "sha256": "5a96adcfb4b009f3dab9a54a2cc101004013fec3e97b7469dbf4964bafaf0bac",
+      "bytes": 639,
+      "textSha256": "6a043c93df4923bc2f4262dd9def7ec7e271a96ca3c20497390b938d43c6cacc",
+      "endings": [
+        [
+          "CRLF",
+          27
+        ]
+      ]
+    },
+    {
+      "path": "content-packs/sotdl%3Ashadow-of-the-demon-lord-core/0.1.0/pack.json",
+      "sha256": "4cd6cb2216fecb16d72941fdc03c4bf280bf531b087038688197c6aacf282429",
+      "bytes": 650,
+      "textSha256": "83823a12e1395fc3fd409f992b3e8dd19c7327c8f86f55638528cdb98cd6e6cc",
+      "endings": [
+        [
+          "CRLF",
+          25
+        ]
+      ]
+    },
+    {
+      "path": "curation/ancestry-ledger.json",
+      "sha256": "edda9922a99309313b20121c69775bc50dfe9e7cc336059d564bec77c3f65739",
+      "bytes": 13235,
+      "textSha256": "77eb9e5b548058965d77fdfe41a4cd1fdbeecf708a9a3de28e8c0a22571af55c",
+      "endings": [
+        [
+          "CRLF",
+          420
+        ]
+      ]
+    },
+    {
+      "path": "curation/contracts.json",
+      "sha256": "be92a2cae5ad84ea65c308b049a599fbce9dc8ae72ecdd758b93cd482766a84e",
+      "bytes": 2386,
+      "textSha256": "be92a2cae5ad84ea65c308b049a599fbce9dc8ae72ecdd758b93cd482766a84e",
+      "endings": [
+        [
+          "LF",
+          71
+        ]
+      ]
+    },
+    {
+      "path": "curation/equipment-local-policy.json",
+      "sha256": "622aeaa8bb742e772c799a0097fc74635fb17df05d8387bb3009fb4c4f7f11f5",
+      "bytes": 168,
+      "textSha256": "99f9c061571d1b3144a8e7b57d31776fc96169fe38ab0cfe82ac73678b5c2098",
+      "endings": [
+        [
+          "CRLF",
+          7
+        ]
+      ]
+    },
+    {
+      "path": "curation/examples/fictional.pack.json",
+      "sha256": "e26e54088b1dbaae36d88247548011e26b5edb6a9eaaac8f14a81be93fee74f7",
+      "bytes": 672,
+      "textSha256": "49eccc6a38ae91f2ebadac1289a7d9cbd6fede75bc472f1ff8beb0cff230200e",
+      "endings": [
+        [
+          "CRLF",
+          26
+        ]
+      ]
+    },
+    {
+      "path": "curation/examples/human-l0-consumable.activity4.rejections.json",
+      "sha256": "63acb1f65bea1149eba0afd6c0fecc13bb7dc41c4358d01ebd550f80358f4364",
+      "bytes": 3358,
+      "textSha256": "18c5e1385a199cdb73f018950f5b8506c4c52de03bb19099c8f0b9e30e4df693",
+      "endings": [
+        [
+          "CRLF",
+          25
+        ]
+      ]
+    },
+    {
+      "path": "curation/examples/human-l0-consumable.activity4.synthetic.json",
+      "sha256": "3cfbe3c742b9a6c2faf43749a07170857f83d067f5677a18b98cb9ecfffd9996",
+      "bytes": 432180,
+      "textSha256": "f6bfd5b015f636b6adda1997f4d4b6a3571b82529a664ea64bb97869d2b60506",
+      "endings": [
+        [
+          "CRLF",
+          14011
+        ]
+      ]
+    },
+    {
+      "path": "curation/examples/human-l0-consumable.rejections.json",
+      "sha256": "5b7c82638d1dd4b0817d96b6aa424dd21034798ec66a66c5c0d6c8575e8f12cc",
+      "bytes": 9933,
+      "textSha256": "999075e46ff7f01aa26044e08c218515efe59f96427570a66050c0a2a84aee68",
+      "endings": [
+        [
+          "CRLF",
+          60
+        ]
+      ]
+    },
+    {
+      "path": "curation/examples/human-l0-consumable.synthetic.json",
+      "sha256": "904c56b2c1693d8dbcac3691dda3eebbc405640f05ae26a91d0a0b518dd5ae58",
+      "bytes": 41233,
+      "textSha256": "904c56b2c1693d8dbcac3691dda3eebbc405640f05ae26a91d0a0b518dd5ae58",
+      "endings": [
+        [
+          "LF",
+          1529
+        ]
+      ]
+    },
+    {
+      "path": "curation/examples/human-l0-core-lot.coverage.json",
+      "sha256": "c4a58157168c90348495de6f8ad758b68ff911b1778f584dab4d3496b181184f",
+      "bytes": 43186,
+      "textSha256": "ed0c122199e8fef8d965a1a22bb610c6b1cb5fe6cb2bc600e8347c4f4a392bc5",
+      "endings": [
+        [
+          "CRLF",
+          2143
+        ]
+      ]
+    },
+    {
+      "path": "curation/examples/human-l0-core-lot.synthetic.json",
+      "sha256": "2402063533ddf4376a7fcfda6c009ef1a60280b328e6781e96525738fa60226c",
+      "bytes": 242094,
+      "textSha256": "4df9214c77d9e86fc16a2db6a11701934ac2a911b7de9f43ea5c98d13fd157bd",
+      "endings": [
+        [
+          "CRLF",
+          7781
+        ]
+      ]
+    },
+    {
+      "path": "curation/examples/human-l0-kits.rejections.json",
+      "sha256": "24767fd5b61e25046cf970e51ec13ec5efb5e5b9b57e30b23042ced9a8283a35",
+      "bytes": 3596,
+      "textSha256": "8ab5ec76d6ca6967ec916a56e788cebd44ff043bbb15593bfb08ac747a0b918c",
+      "endings": [
+        [
+          "CRLF",
+          23
+        ]
+      ]
+    },
+    {
+      "path": "curation/examples/human-l0-kits.synthetic.json",
+      "sha256": "c1268ea21ea773cf400ddb8fc71684a8ca6b2c609a534426103018b303ee3162",
+      "bytes": 50674,
+      "textSha256": "887512ebcfad8799a9df2b640a0297e5a742ab4dbfbca36069114060d0c86b22",
+      "endings": [
+        [
+          "CRLF",
+          1812
+        ]
+      ]
+    },
+    {
+      "path": "curation/examples/human-l0-lifestyle-prior.activity4.synthetic.json",
+      "sha256": "ea9d432a600519a0531cc7a68e95719d20d4d8fad9dd71655e5af3b43909460d",
+      "bytes": 824,
+      "textSha256": "ab6f604eef5f6b404ce3d6d5371940f72cc9455546f760cdc55eb60d88de5e0a",
+      "endings": [
+        [
+          "CRLF",
+          21
+        ]
+      ]
+    },
+    {
+      "path": "curation/examples/human-l0-mechanics.synthetic.json",
+      "sha256": "9cf38aa028acbaf58f92498e83aed079c4eaa4d7bb5b42fe0c691a88c2cb1c8b",
+      "bytes": 25716,
+      "textSha256": "1d2870c2bcf315546aa6b6f9468e01f5b0a1c2216c150bdfc437a00b295bdd39",
+      "endings": [
+        [
+          "CRLF",
+          800
+        ]
+      ]
+    },
+    {
+      "path": "curation/examples/input.md",
+      "sha256": "675abc04f57d6d8415ea8aaa8d38219aea6dc3b286348918a3b1a0cab9d878c3",
+      "bytes": 100,
+      "textSha256": "3a566cfff8878c865c85460213446a60dfb27c82da7692650747dd8f8d35b452",
+      "endings": [
+        [
+          "CRLF",
+          3
+        ]
+      ]
+    },
+    {
+      "path": "curation/examples/real-empty.pack.json",
+      "sha256": "3325ef6c62c74e9429a4b0dace30c0c170a73161ddab0aaf7c196d56962a2f41",
+      "bytes": 334,
+      "textSha256": "2649aabaa7550c8994c22b0a642c1ed45e7f3ca0f75da9972ef2e145b429b28d",
+      "endings": [
+        [
+          "CRLF",
+          14
+        ]
+      ]
+    },
+    {
+      "path": "curation/examples/rule.index.json",
+      "sha256": "87421de7fc5b0b3435d3cc5b7645fc1b52401d16bf463229783488e02476d1cf",
+      "bytes": 442,
+      "textSha256": "495ef259c3253df6ad292362c8991383da55689b52bdee24d0b20718a1717cb9",
+      "endings": [
+        [
+          "CRLF",
+          19
+        ]
+      ]
+    },
+    {
+      "path": "curation/examples/ruleset.curation.json",
+      "sha256": "398f28393b23cb21dd069202c784d64650e5503c53e2048d62588f93b1736b90",
+      "bytes": 517,
+      "textSha256": "8e637a880fab282037d4f4f85def7e46e60e3ad180e61dedfbc6f66167c49f17",
+      "endings": [
+        [
+          "CRLF",
+          25
+        ]
+      ]
+    },
+    {
+      "path": "curation/examples/staging.json",
+      "sha256": "61313b737a96f07cc0f4707171b91677f28448484e9125d322268b35c3ed6d4b",
+      "bytes": 2616,
+      "textSha256": "dafcc648ec0161346453f64135a4282455818f95b18346cad2cef6aa15ebb7ec",
+      "endings": [
+        [
+          "CRLF",
+          85
+        ]
+      ]
+    },
+    {
+      "path": "curation/human-l0-compilation.json",
+      "sha256": "09d4312d3ac193173ff0f5dd11148257a033d8470f3cd2c4157a87f6d0e98f4e",
+      "bytes": 608,
+      "textSha256": "25ec8d8046b0380a78b4393ede242dcdfc3049573a359b7e4c6ef3c834141ce4",
+      "endings": [
+        [
+          "CRLF",
+          20
+        ]
+      ]
+    },
+    {
+      "path": "curation/human-l0-consumable-compilation.json",
+      "sha256": "590fa8a52daee12e1dcfadd4098167206196c5c2bf39fb76b3e8abc687f5741d",
+      "bytes": 342,
+      "textSha256": "37d1be74b1ccebcc62b81710d54d5b5524daac1bfa2483f9e6b4bcc1918e5bd4",
+      "endings": [
+        [
+          "CRLF",
+          11
+        ]
+      ]
+    },
+    {
+      "path": "curation/human-l0-mechanical-compilation.json",
+      "sha256": "fcb1bf5fce9f4272115b056816cdac4dc60b227aaf85e70829f0ffaa46646b86",
+      "bytes": 603,
+      "textSha256": "b53a1187867e19af3652c100b4affc0e0fd922c90711fddfe0c91db044018909",
+      "endings": [
+        [
+          "CRLF",
+          20
+        ]
+      ]
+    },
+    {
+      "path": "curation/human-l0-review-freeze.json",
+      "sha256": "4ec87cae291bc7d03690d11d176ac70cd81b68fc9925c3fa3d75b5fb8d440e75",
+      "bytes": 76814,
+      "textSha256": "1cd122bf751d969effb652661476a8da0419b3e2d652baae8c3fa9833e616fba",
+      "endings": [
+        [
+          "CRLF",
+          2111
+        ]
+      ]
+    },
+    {
+      "path": "curation/human-l0-review-policy.json",
+      "sha256": "c160cbdde7c31653f7917cc00c0434a08ebebcd6d6de919caf301a94da80ebc8",
+      "bytes": 2655,
+      "textSha256": "ebd5cf632b3771819e9c0c433f3b878727a4facec99a00b4da7747a4c3d12f6d",
+      "endings": [
+        [
+          "CRLF",
+          91
+        ]
+      ]
+    },
+    {
+      "path": "curation/input-manifest.json",
+      "sha256": "26f43a48d868d480288746717c9c4ccfc388133229b2e025b74c0eac87e03bc6",
+      "bytes": 2540,
+      "textSha256": "e0fa4d9dae830c0cfc000955855da800a1d75f0af06f7cbfaf3d56631463679e",
+      "endings": [
+        [
+          "CRLF",
+          75
+        ]
+      ]
+    },
+    {
+      "path": "curation/interesting-things-local-policy.json",
+      "sha256": "6207cf5f2d113f54cb650ffce5b76fb2554688c1c0d981ea33c419f85f43e407",
+      "bytes": 354,
+      "textSha256": "b6153720a3afff3cd3321005509875724c9131d3bf036c78c1a5c38c5e00a5ee",
+      "endings": [
+        [
+          "CRLF",
+          14
+        ]
+      ]
+    },
+    {
+      "path": "curation/mechanics-decisions.json",
+      "sha256": "b90ddf45f33f4dd917015ea02edc1d1af91d12f38f5685644b579baed3092be3",
+      "bytes": 13769,
+      "textSha256": "8ca079e44e915a2fd5a9bce4598f4bfc9f61580feae5061723ca5eb4d06ac730",
+      "endings": [
+        [
+          "CRLF",
+          155
+        ]
+      ]
+    },
+    {
+      "path": "curation/mechanics-ledger.json",
+      "sha256": "619c8b0f6e652f7bcf8d391d4d206ed3c6beec390b15212df5a3f8275d0b99e1",
+      "bytes": 1574692,
+      "textSha256": "d648c666b8bc4cb1d6acda59faf6899e30bac276f731f90827bd5f1211d3cd47",
+      "endings": [
+        [
+          "CRLF",
+          20875
+        ]
+      ]
+    },
+    {
+      "path": "curation/official-local-policy.json",
+      "sha256": "896aa5116cc8db85bb0d7cf54f161dc2cccd4b71ff4966df9f0f52dcce321db9",
+      "bytes": 338,
+      "textSha256": "e48fd44c96dc96c05b4d1f7a7c895cfc281d1b5ca67c85c9c70e6c0a10bdb8fd",
+      "endings": [
+        [
+          "CRLF",
+          12
+        ]
+      ]
+    },
+    {
+      "path": "curation/path-ledger.json",
+      "sha256": "e342eba8646dcedaeb8cd065dfb3b2a5013989907601408bc730996124a223cf",
+      "bytes": 99877,
+      "textSha256": "7d78ead89ac60c0e4113ed48113b8217a0f5f81ff1bd024737f3f54faa4172b4",
+      "endings": [
+        [
+          "CRLF",
+          3143
+        ]
+      ]
+    },
+    {
+      "path": "curation/procedure-local-policy.json",
+      "sha256": "47484a43f02cd8564ae5cae3d46335cce86d5880ee9696e399b15d41c3ca04ec",
+      "bytes": 547,
+      "textSha256": "0116d1a4fe82545b90595af80361c0a306609117ee2976ce83c99e642627d4f3",
+      "endings": [
+        [
+          "CRLF",
+          17
+        ]
+      ]
+    },
+    {
+      "path": "curation/reconciliation/coverage.jsonl",
+      "sha256": "ef50cddf012ca544a43015d0c7d5446e55314b82323d73d7cecedf3b3291acfc",
+      "bytes": 2843529,
+      "textSha256": "2230b48f630f9e718fa62f417578833ac2dd38dd8c0de321ad64890f3f0d85c0",
+      "endings": [
+        [
+          "CRLF",
+          6170
+        ]
+      ]
+    },
+    {
+      "path": "curation/reconciliation/duplicates.jsonl",
+      "sha256": "1efd22ec0e1d5ab956f06f8905e42147e1f0587d5fe292fda1a98700b365305b",
+      "bytes": 399675,
+      "textSha256": "365a385c801a626efceadd0d2a749b62f06cf1154a34135835262827ebf13be5",
+      "endings": [
+        [
+          "CRLF",
+          509
+        ]
+      ]
+    },
+    {
+      "path": "curation/reconciliation/findings.jsonl",
+      "sha256": "345cc5ac855de55956b3622f851645cc0b303e374e61af74c07a1de75d336d4f",
+      "bytes": 375038,
+      "textSha256": "df627d35ee5d788625efd821319516b9190e45ff4b0037440549db1b3c08b2d2",
+      "endings": [
+        [
+          "CRLF",
+          1566
+        ]
+      ]
+    },
+    {
+      "path": "curation/reconciliation/inventory.jsonl",
+      "sha256": "e8ad0288aeb2038f95ac1bde9a9c7055fd96553075e4aa7fd3b94d83a99bc6a8",
+      "bytes": 5127135,
+      "textSha256": "269065deaeb5afec53364af9a5f314b84e07b4047d2f696c9a07c7e91570991a",
+      "endings": [
+        [
+          "CRLF",
+          5560
+        ]
+      ]
+    },
+    {
+      "path": "curation/reconciliation/sources.json",
+      "sha256": "c5d943f2acf6248355c4c2d6969c2fe578413b210bf8ce6b8ecd4d761f87d118",
+      "bytes": 284957,
+      "textSha256": "400d66fa96f71e970dd7fe28d57f941387bd504e2682436f50e73c1634780043",
+      "endings": [
+        [
+          "CRLF",
+          7747
+        ]
+      ]
+    },
+    {
+      "path": "curation/review-example.json",
+      "sha256": "42b220baf66b5be7400922b6f634182e8cab5178202d6bd9be6c1aad28fa4c4b",
+      "bytes": 1909,
+      "textSha256": "28d69dab05ef4d63e0fb79b1aa66b36247736c03933ce77e92339caf027cd01a",
+      "endings": [
+        [
+          "CRLF",
+          55
+        ]
+      ]
+    },
+    {
+      "path": "curation/reviews/human-l0-base-2026-11-02.json",
+      "sha256": "1f0c220a49b9c470e6895e358bb562b5f35e73e1dc6dd874115dfe9a6fd935d6",
+      "bytes": 15112,
+      "textSha256": "335d25707166afc4f4a524ece593ee3e3fe6a1c44825f01cd431ecf56da4f332",
+      "endings": [
+        [
+          "CRLF",
+          440
+        ]
+      ]
+    },
+    {
+      "path": "curation/reviews/human-l0-closure-activity2-2026-11-06.json",
+      "sha256": "e831389be32fea15f3d20db45f5df232c1393b96c23a517a24efacd17e662e42",
+      "bytes": 39042,
+      "textSha256": "e831389be32fea15f3d20db45f5df232c1393b96c23a517a24efacd17e662e42",
+      "endings": [
+        [
+          "LF",
+          931
+        ]
+      ]
+    },
+    {
+      "path": "curation/reviews/human-l0-closure-activity3-2026-11-06.json",
+      "sha256": "d5e22f01ec7706ecbc52d72636fe2905255aaef267431e95906574936e86082c",
+      "bytes": 3711,
+      "textSha256": "d5e22f01ec7706ecbc52d72636fe2905255aaef267431e95906574936e86082c",
+      "endings": [
+        [
+          "LF",
+          76
+        ]
+      ]
+    },
+    {
+      "path": "curation/reviews/human-l0-closure-activity7-2026-11-06.json",
+      "sha256": "bda13190e8d195394f3c8e7da8220cf087a9c9426d123277337dfa2e25b3752d",
+      "bytes": 46444,
+      "textSha256": "bda13190e8d195394f3c8e7da8220cf087a9c9426d123277337dfa2e25b3752d",
+      "endings": [
+        [
+          "LF",
+          1125
+        ]
+      ]
+    },
+    {
+      "path": "curation/reviews/human-l0-enablement-decision-2026-11-06.json",
+      "sha256": "efded8080fdb06cd844058f6f23fa0cf308de02ff3af04947e2b3a86c5c3d41f",
+      "bytes": 7783,
+      "textSha256": "efded8080fdb06cd844058f6f23fa0cf308de02ff3af04947e2b3a86c5c3d41f",
+      "endings": [
+        [
+          "LF",
+          220
+        ]
+      ]
+    },
+    {
+      "path": "curation/reviews/human-l0-vertical-acceptance-2026-11-06.json",
+      "sha256": "5a05813c03130549ec72ee5e36f2c99cceb76fbd89c1b14a1485c13c0be53b67",
+      "bytes": 57417,
+      "textSha256": "5a05813c03130549ec72ee5e36f2c99cceb76fbd89c1b14a1485c13c0be53b67",
+      "endings": [
+        [
+          "LF",
+          1519
+        ]
+      ]
+    },
+    {
+      "path": "curation/reviews/issue34-activity1-local-verification.json",
+      "sha256": "8cdef4c9ec1ce2a2354771403b225220be5702bfb63cc29a04164036ebb7f643",
+      "bytes": 61978,
+      "textSha256": "7fb7aa75ef98d24cc89989dc2b0222a4d6beefd360088f229906f76248ba5cef",
+      "endings": [
+        [
+          "CRLF",
+          1601
+        ]
+      ]
+    },
+    {
+      "path": "curation/reviews/issue34-activity1-provenance-2026-11-02.json",
+      "sha256": "0be5e125345b41e39c99d74d224ec78c49be82a6169ce584cd191fc5a6045ee2",
+      "bytes": 25752,
+      "textSha256": "c721c0e20025dfae8bfaa6e39fb2b476da8c1a05102c1a6a127102504359b88e",
+      "endings": [
+        [
+          "CRLF",
+          591
+        ]
+      ]
+    },
+    {
+      "path": "curation/reviews/issue50-background-2026-11-03.json",
+      "sha256": "36701827b7b3c68212fe5389e23a4c78ed747fd9d848b03231acab028290f936",
+      "bytes": 3211,
+      "textSha256": "3a89706ff129140184a9dc5d9ae86b84c204c6c8e75e57b1ecec87234a63fc04",
+      "endings": [
+        [
+          "CRLF",
+          67
+        ]
+      ]
+    },
+    {
+      "path": "curation/reviews/issue51-interesting-things-2026-11-03.json",
+      "sha256": "a292d89e1f5e5d35a149e1df28f513363d12eeb4ba5795d8c4fae7799db0cd3f",
+      "bytes": 143230,
+      "textSha256": "88f4f4cee3cfc78ac7049596868c6d93df83a2b722c86d5245b73e364b3c30c2",
+      "endings": [
+        [
+          "CRLF",
+          2610
+        ]
+      ]
+    },
+    {
+      "path": "curation/reviews/issue52-equipment-2026-11-03.json",
+      "sha256": "7e3f51bfee3752531400ef745f35a677e1830187ab757b6b73a0ead5e70ae0e3",
+      "bytes": 7074,
+      "textSha256": "2fd9d8989c0cf1e07b8bcacae78a528fd2e556a188e77261dcf0e12223763c80",
+      "endings": [
+        [
+          "CRLF",
+          123
+        ]
+      ]
+    },
+    {
+      "path": "curation/reviews/issue53-procedures-2026-11-03.json",
+      "sha256": "f407915c9ef92a5fe411528ed480e96206d257ab52c7e2f7d173420b2d0e6198",
+      "bytes": 786,
+      "textSha256": "a9b356ece751c05fc8d8cfaf6861e0285d58abe1cf568edcc55e70fb1f458c87",
+      "endings": [
+        [
+          "CRLF",
+          26
+        ]
+      ]
+    },
+    {
+      "path": "curation/source-aliases.json",
+      "sha256": "912daea6b3a66e562e64c54652515a04fbd42e515f780fa56459e14cbba26d90",
+      "bytes": 1938,
+      "textSha256": "f5b6245406eeba151f7ff188642b54ae14f6eeebd4858c1746c72cb6737fee9f",
+      "endings": [
+        [
+          "CRLF",
+          35
+        ]
+      ]
+    },
+    {
+      "path": "curation/source-policy.json",
+      "sha256": "1b99598f6d50e9bd04c05721f019fea363b61812901f66a60060ead4da87c40c",
+      "bytes": 8829,
+      "textSha256": "16b0063530edd2f67a2c3e0f8819d574395a3a784c2056bfd72012dbb89cc732",
+      "endings": [
+        [
+          "CRLF",
+          161
+        ]
+      ]
+    },
+    {
+      "path": "curation/sources.json",
+      "sha256": "da67fd66ba4d993caace8fb1aa60f3f1d37262137a316576a6647bb09ddde334",
+      "bytes": 1421418,
+      "textSha256": "c66b832ebf34cc047fdf7c18f97bc9965b4cf3e632f7fa29876972f372e15608",
+      "endings": [
+        [
+          "CRLF",
+          35887
+        ]
+      ]
+    },
+    {
+      "path": "curation/spell-ledger.json",
+      "sha256": "cbc944d83957a9bc3b9210e30039e3b45cca363465a85699fa50319eb93a91e8",
+      "bytes": 454811,
+      "textSha256": "d3372505ff41df05a74df1c4876a156b38538ffb77a090c250d03051da7a0999",
+      "endings": [
+        [
+          "CRLF",
+          13687
+        ]
+      ]
+    },
+    {
+      "path": "curation/spell-origins.json",
+      "sha256": "e1a10e53b565b66b83e7990cd8fddd9e88a01114addee62e73aeb1df37c0f459",
+      "bytes": 9698,
+      "textSha256": "8e2c53b72045ad1ed0a1d3bb8058b1fb9c185fc99a8c5206fdda560d62669aac",
+      "endings": [
+        [
+          "CRLF",
+          291
+        ]
+      ]
+    },
+    {
+      "path": "docs/aceite-criterios-originais-issue7.md",
+      "sha256": "4027ca28dc46ba0ac42fee7986f66166ca5d2b429c1aae12614c5beaafaf01b4",
+      "bytes": 10885,
+      "textSha256": "3327d661f0126ca053e38124189c2587bcf67fbdaff14c2a61dcb80305329b57",
+      "endings": [
+        [
+          "CRLF",
+          79
+        ]
+      ]
+    },
+    {
+      "path": "docs/aceite-integrado-human-l0.md",
+      "sha256": "97a1e070e1ca7b3b5e02c12c7aa0ee5308a5af9d8948cef4358d47773e67f697",
+      "bytes": 4934,
+      "textSha256": "8001ca26d918ef65c100bfa788bdefd24a4c5a33c622f8ac85dc6dac3cbece79",
+      "endings": [
+        [
+          "CRLF",
+          53
+        ]
+      ]
+    },
+    {
+      "path": "docs/aceite-s1-issues9-10.md",
+      "sha256": "78380c03e30e9fa44a6b3d7f067a701d0118d2d7390a627c5c638da2441a0075",
+      "bytes": 7144,
+      "textSha256": "286fd505ddb5ae7cb617ccc35331616ec2df78df1a4f28f7d784975c7b8840b0",
+      "endings": [
+        [
+          "CRLF",
+          48
+        ]
+      ]
+    },
+    {
+      "path": "docs/aceite-vertical-consolidado-human-l0.md",
+      "sha256": "ef5f986425b98d44f283dfe44d590f14a96c5ee4fe46cf9b1164e5ff174d4a0e",
+      "bytes": 9374,
+      "textSha256": "ef5f986425b98d44f283dfe44d590f14a96c5ee4fe46cf9b1164e5ff174d4a0e",
+      "endings": [
+        [
+          "LF",
+          81
+        ]
+      ]
+    },
+    {
+      "path": "docs/arquitetura.md",
+      "sha256": "6cbebd1574748d365f93a88f74f94a6b17ebdd2c024daea059b8e37dc35cf338",
+      "bytes": 7934,
+      "textSha256": "a855b1369c621c40ee1a569489f48af19a78ed32b39f13ef779140a1fc85e5d1",
+      "endings": [
+        [
+          "CRLF",
+          126
+        ]
+      ]
+    },
+    {
+      "path": "docs/ativacao-oficial-local-core.md",
+      "sha256": "05ec2df0636a4ffc5f3a76c41234269c4653e6aeb1af8a8b172a8de1ce592fc9",
+      "bytes": 9375,
+      "textSha256": "7cdea0bb0a00dc19b05742e84dbbc821160696849560f69c9308c6165a2ca118",
+      "endings": [
+        [
+          "CRLF",
+          54
+        ]
+      ]
+    },
+    {
+      "path": "docs/casos-de-teste-aleatoriedade.md",
+      "sha256": "6653c8e26e067db94a347042954527a3ac9b1caea9c13b7730f4ce38aab1e280",
+      "bytes": 3485,
+      "textSha256": "4a8a2e48484dea269012dca0b60d7cb74aae02c26f6901259dbcc597d74ca674",
+      "endings": [
+        [
+          "CRLF",
+          29
+        ]
+      ]
+    },
+    {
+      "path": "docs/checklist-review.md",
+      "sha256": "12691e39b661a826e97e5b849818ba0abfd258fe2abc4302858c31fb672f82ce",
+      "bytes": 1435,
+      "textSha256": "3556cd570032e5b3b659d4597f1bdd95b36035687c8a6449acb26a8cf6711fb3",
+      "endings": [
+        [
+          "CRLF",
+          23
+        ]
+      ]
+    },
+    {
+      "path": "docs/choice-slot-l0.md",
+      "sha256": "be14c87c86537362586a28af8a1deb1c5b47a0bf3c185352c08b2d9719fc3cdc",
+      "bytes": 4332,
+      "textSha256": "9e5f17a36cbbc1445c295245c78a3210a1725a83adf8fe9baedf5c94dff40f34",
+      "endings": [
+        [
+          "CRLF",
+          41
+        ]
+      ]
+    },
+    {
+      "path": "docs/contrato-consumivel-tabelas-human-l0.md",
+      "sha256": "f2035ba2007e76d4d00f91cf2219bf0c50e22fad272754906cbe2d5797d56394",
+      "bytes": 14698,
+      "textSha256": "90ce77101461f93fc6324fbe7867b2464d7e1eed3bc449da93b4960ae6def107",
+      "endings": [
+        [
+          "CRLF",
+          139
+        ]
+      ]
+    },
+    {
+      "path": "docs/contrato-mecanico-human-l0.md",
+      "sha256": "6e208cbaff0dfdc6eeb761cb57d50b0f4119208f1fa2a8f128bcc6ef0ccbc704",
+      "bytes": 11012,
+      "textSha256": "889276cd390a09dd03c1d562a33871cd8b4a34689c5b858893fdd83071a4e4a8",
+      "endings": [
+        [
+          "CRLF",
+          99
+        ]
+      ]
+    },
+    {
+      "path": "docs/contrato-ui-human-l0.md",
+      "sha256": "1a0e1f550bef5e92a7c98ecd4d625e33d11761ecd931b2914e2ea5464d95198c",
+      "bytes": 7714,
+      "textSha256": "b48ec7eb950768e2969da3a4dc6517d2317a5a3ca6594df6cd59e834947c4470",
+      "endings": [
+        [
+          "CRLF",
+          95
+        ]
+      ]
+    },
+    {
+      "path": "docs/contratos-curadoria.md",
+      "sha256": "9b7b95698b843e315c8643f900e733d4055eee010f75e3ddf37ca46f2bff83ea",
+      "bytes": 9237,
+      "textSha256": "9b7b95698b843e315c8643f900e733d4055eee010f75e3ddf37ca46f2bff83ea",
+      "endings": [
+        [
+          "LF",
+          60
+        ]
+      ]
+    },
+    {
+      "path": "docs/curadoria-evidencia.md",
+      "sha256": "d583ede97a6a322d6d38eac10e2ba0d8bac07839b6406a2357a3e0a1627ebf57",
+      "bytes": 2787,
+      "textSha256": "d583ede97a6a322d6d38eac10e2ba0d8bac07839b6406a2357a3e0a1627ebf57",
+      "endings": [
+        [
+          "LF",
+          19
+        ]
+      ]
+    },
+    {
+      "path": "docs/curadoria-fontes-erratas.md",
+      "sha256": "4838125a857100f44804b1f4759931eab43014f16be2e2040f17c6aa0f2dfee9",
+      "bytes": 2759,
+      "textSha256": "4838125a857100f44804b1f4759931eab43014f16be2e2040f17c6aa0f2dfee9",
+      "endings": [
+        [
+          "LF",
+          17
+        ]
+      ]
+    },
+    {
+      "path": "docs/curadoria-identidade.md",
+      "sha256": "a79a179997bf99370bdf92dc28f5de4c99d7922b8aaa812f2b7b20b01e797c16",
+      "bytes": 3898,
+      "textSha256": "a79a179997bf99370bdf92dc28f5de4c99d7922b8aaa812f2b7b20b01e797c16",
+      "endings": [
+        [
+          "LF",
+          29
+        ]
+      ]
+    },
+    {
+      "path": "docs/decisoes-pendentes.md",
+      "sha256": "27120efed1fe2ea0eddf39b041e4a44a1039e88c7f3a172f602dddea7add5e82",
+      "bytes": 2613,
+      "textSha256": "763886f12403752a90f65a4a991da50efad0fddf6772956f42b325395691c942",
+      "endings": [
+        [
+          "CRLF",
+          32
+        ]
+      ]
+    },
+    {
+      "path": "docs/decisoes-piloto-size-wealth-roleplaying.md",
+      "sha256": "1394cb0020cd065f67d8d14729df4fb4667f7188972b4f0e861eca19589cc7d9",
+      "bytes": 3587,
+      "textSha256": "dea7893106ae5aa01452e2466fc8e2966e14825b70e993dbaa5d449acb14f089",
+      "endings": [
+        [
+          "CRLF",
+          40
+        ]
+      ]
+    },
+    {
+      "path": "docs/destinos-permissoes-issue55.md",
+      "sha256": "2863da22ec194195ce7b18f7ca6d305f8487732b1cc36bc38d72439f1ca39463",
+      "bytes": 3358,
+      "textSha256": "c2f481ca4ef4384cf4502adbbf39cedce5b3f6b925dcc3aba1de1abb9dcdf944",
+      "endings": [
+        [
+          "CRLF",
+          20
+        ]
+      ]
+    },
+    {
+      "path": "docs/ensaio-historico-git.md",
+      "sha256": "85ebab0d560aa82760723a45f18ecc43cfe7db7e63fc91383da7cf39d6c6e6f7",
+      "bytes": 6433,
+      "textSha256": "7f7b6ef53789167488331a13f0bfe44a2fd48fb7d46900664d1ab473ec5848a4",
+      "endings": [
+        [
+          "CRLF",
+          49
+        ]
+      ]
+    },
+    {
+      "path": "docs/entradas-bloqueadas-curadoria.md",
+      "sha256": "785e17738954ce1057fca21e69d2afa20586c83eee7f6e9c648529a2755097f2",
+      "bytes": 41134,
+      "textSha256": "127a86689e2c0aee8ebd55920ba493fd7760cc2251efe3f698b0b9694f8bd607",
+      "endings": [
+        [
+          "CRLF",
+          271
+        ]
+      ]
+    },
+    {
+      "path": "docs/entrega-ancestries-staging.md",
+      "sha256": "a7da3c486962fe1542162e414549cd2033557f43df3052f95532b53773ad4a27",
+      "bytes": 5970,
+      "textSha256": "aa7cd5c6d4df3269c0c4ce9047b5a1db74b10607b81c8bd3eaba246a68e70c21",
+      "endings": [
+        [
+          "CRLF",
+          52
+        ]
+      ]
+    },
+    {
+      "path": "docs/entrega-background-issue50.md",
+      "sha256": "a4fc3901c8a67e279dffa956471934fbb2f3a58a4bb5ba5ddeec59f318fdd58e",
+      "bytes": 3832,
+      "textSha256": "5c70f59e73e7daff4215762beec0d8a20fae7d1a15f6b595bf4abc2eeb0ff49f",
+      "endings": [
+        [
+          "CRLF",
+          40
+        ]
+      ]
+    },
+    {
+      "path": "docs/entrega-catalogo-itens-piloto.md",
+      "sha256": "a80257021a1674abffb419dee05376cb9df47c44eb1ba9f66f5380efc8b1f88b",
+      "bytes": 9276,
+      "textSha256": "aa8c064cde9cf63e48390975b13e3cd0a5703df5b520d8489b9229583ce2c840",
+      "endings": [
+        [
+          "CRLF",
+          77
+        ]
+      ]
+    },
+    {
+      "path": "docs/entrega-catalogo.md",
+      "sha256": "6605715fd222dc7ac1dc67ada37af7b3b3b12da3d4414c4dc333c23b06874702",
+      "bytes": 4001,
+      "textSha256": "2b41b0ec88918748282e20cc65da98adf758a832174b90e37f472c6f062b95e2",
+      "endings": [
+        [
+          "CRLF",
+          36
+        ]
+      ]
+    },
+    {
+      "path": "docs/entrega-compilacao-deterministica-human-l0.md",
+      "sha256": "7f9ce69819efa3e6eba2cc667f641d8a7ea68bddddca33e90fb34283d5875784",
+      "bytes": 4707,
+      "textSha256": "964ee364a446025794ca1b1bad4b75cec64ecc1b0b0e93a375d222e976ac8eb5",
+      "endings": [
+        [
+          "CRLF",
+          48
+        ]
+      ]
+    },
+    {
+      "path": "docs/entrega-compilacao-handlers-consumiveis-human-l0.md",
+      "sha256": "0a1c57b6f305e95800e8079e672128f1243c7e37eb50b600a6d1aab287f16b81",
+      "bytes": 8858,
+      "textSha256": "9b5ca6fd6ff13f49294b6f27e2b00643dcfb1665dd3b600eccfe2bbfe2b013e0",
+      "endings": [
+        [
+          "CRLF",
+          67
+        ]
+      ]
+    },
+    {
+      "path": "docs/entrega-complemento-criacao-core.md",
+      "sha256": "a183068a7eeb0bf6ce9c2166ab16af2397a686f6e6e4b3c33b426a87aafddb98",
+      "bytes": 4649,
+      "textSha256": "a47cdc7ef9166459c2870b509ca830ec472b05e650a377f1ef0659ce8950587c",
+      "endings": [
+        [
+          "CRLF",
+          40
+        ]
+      ]
+    },
+    {
+      "path": "docs/entrega-complemento-interesting-things-core.md",
+      "sha256": "41e934792c252d741e08c04d46e39494cfc122f6ef8c289a65751926f8756737",
+      "bytes": 4203,
+      "textSha256": "4801330f1a665156d26703857506e00934b97fa636593867ba1554fb1a294ee9",
+      "endings": [
+        [
+          "CRLF",
+          40
+        ]
+      ]
+    },
+    {
+      "path": "docs/entrega-complemento-profissoes-core.md",
+      "sha256": "ceaf9c973a0bae72e7a240504605d3f38fbdf3d00db297b6ae8d5f0799019f0a",
+      "bytes": 5220,
+      "textSha256": "f6e9d9789fe7e736685134e4ef72a580fb9348f8d9f1be70d5753c72a3a34368",
+      "endings": [
+        [
+          "CRLF",
+          46
+        ]
+      ]
+    },
+    {
+      "path": "docs/entrega-core-real-issue34-atividade3.md",
+      "sha256": "08059e93c1dcf1c332fcd88972b9326a56efd1c7fd5d3c019560af5c574760ce",
+      "bytes": 8813,
+      "textSha256": "8da473cde2066f2d34b8b961fbd177597da7c928182fca662072fce0df7733f9",
+      "endings": [
+        [
+          "CRLF",
+          72
+        ]
+      ]
+    },
+    {
+      "path": "docs/entrega-equipamento-demo.md",
+      "sha256": "4e0fe7f18a6b67d889cbab93b42cb09b8ca5c5b50aa45f2345deacf2a779f0e9",
+      "bytes": 5633,
+      "textSha256": "62688267d347497f947b4a83e2ad37a385715b9eaa8baf6faac115c9994b60ed",
+      "endings": [
+        [
+          "CRLF",
+          51
+        ]
+      ]
+    },
+    {
+      "path": "docs/entrega-equipamento-issue52.md",
+      "sha256": "cce91dd264306a68854fc8ee9a8662f013bec86e38c6c130a4cd6fe3a06309c5",
+      "bytes": 6253,
+      "textSha256": "889ce9ec681c5c1767ea0e48dc68de7513f127c157f3daa56de158729491cfd5",
+      "endings": [
+        [
+          "CRLF",
+          59
+        ]
+      ]
+    },
+    {
+      "path": "docs/entrega-exportacao-issue56.md",
+      "sha256": "862b7b97c6a50d5203e9844c03fa8d0f22efbcb8cf0859b8c8bb266c89af8266",
+      "bytes": 4932,
+      "textSha256": "862b7b97c6a50d5203e9844c03fa8d0f22efbcb8cf0859b8c8bb266c89af8266",
+      "endings": [
+        [
+          "LF",
+          35
+        ]
+      ]
+    },
+    {
+      "path": "docs/entrega-fechamento-tabelas-piloto.md",
+      "sha256": "e0a28e0e49293f3dcec5b058d7ebaf3e59e7c465c0061d88b133368657114355",
+      "bytes": 10211,
+      "textSha256": "d01f6bc3f9b4ad8317641b301e512d301779ab6325cf9ce0fc0ffca5f16bb3fe",
+      "endings": [
+        [
+          "CRLF",
+          99
+        ]
+      ]
+    },
+    {
+      "path": "docs/entrega-finalizacao-issue54.md",
+      "sha256": "cd97f5927772db0dad77548bd2a461a6d5292e357e15196f0098038d5972ca92",
+      "bytes": 5298,
+      "textSha256": "3f0885aca2d897faac9dda2b53a0393ef6e3fe970b8961dca64f704774fd9a13",
+      "endings": [
+        [
+          "CRLF",
+          43
+        ]
+      ]
+    },
+    {
+      "path": "docs/entrega-higiene-pii-s0.md",
+      "sha256": "45f82322d40617d6ac3b1ef00887c4e671671f84da62e08dbce5894c34ca0053",
+      "bytes": 4866,
+      "textSha256": "ace4be832eeae427f7f5956fcfb2eedbe009a57436e127f97f390314b704e3fb",
+      "endings": [
+        [
+          "CRLF",
+          38
+        ]
+      ]
+    },
+    {
+      "path": "docs/entrega-html-autonomo.md",
+      "sha256": "079be55d25d89bcc67641da7aaaf0d4a2ca5b51662cc4d93c6ea3f48ee3cde87",
+      "bytes": 6771,
+      "textSha256": "17e30c776a461cd7c7246fa9fa6d4ef2a1b29b45c24367b64b363e8e171f74be",
+      "endings": [
+        [
+          "CRLF",
+          61
+        ]
+      ]
+    },
+    {
+      "path": "docs/entrega-human-ancestry.md",
+      "sha256": "d909b74abe00f3b2308841b4b043ad5810f73529f1517079fedc1bc12c6fa1f4",
+      "bytes": 10515,
+      "textSha256": "d18248ef913358f0f54990db51ea9ac737584027a10426a60d9144c41559d64c",
+      "endings": [
+        [
+          "CRLF",
+          102
+        ]
+      ]
+    },
+    {
+      "path": "docs/entrega-impressao-a4.md",
+      "sha256": "b88ffb162c2f06905004a7b72a2cab7c4bc3ff209560d17745142298df051160",
+      "bytes": 4361,
+      "textSha256": "7f91d05ef47dfaaa9be8ac4ce1efb3f7b528304ee675e99eb3db9283a5961fc9",
+      "endings": [
+        [
+          "CRLF",
+          44
+        ]
+      ]
+    },
+    {
+      "path": "docs/entrega-indices-human-l0.md",
+      "sha256": "9b97d38982f1a0cca636753e95ffc6765c086040703073aae455662c86fa492b",
+      "bytes": 4340,
+      "textSha256": "b9f4b2e6235fe12a74d66222bb01103a64c1fd4ae3f4304e65d5ac4705ffc49d",
+      "endings": [
+        [
+          "CRLF",
+          50
+        ]
+      ]
+    },
+    {
+      "path": "docs/entrega-interesting-things-issue51.md",
+      "sha256": "f245dd7166dbedccc544034a3d8b12df174f58943d6af08924393870987bfc6b",
+      "bytes": 5592,
+      "textSha256": "e859f861482bf5987f6d37f4f4eb8267901a6b1026a1aee37fa91184b97aecd9",
+      "endings": [
+        [
+          "CRLF",
+          53
+        ]
+      ]
+    },
+    {
+      "path": "docs/entrega-interesting-things.md",
+      "sha256": "06347d10b50b01a02e3804c21afe7ce3459dc8986c020c523726730d99296ac3",
+      "bytes": 10171,
+      "textSha256": "2ab85a65a1df0ad5ac315da3f19ecffe6ab179e7e3a997056b328182dc13db62",
+      "endings": [
+        [
+          "CRLF",
+          93
+        ]
+      ]
+    },
+    {
+      "path": "docs/entrega-inventario-tabelas-criacao.md",
+      "sha256": "a0308a744bb50be5f7deb3bcc2eacce755237238b652c14e1bd4c4fc307806da",
+      "bytes": 20192,
+      "textSha256": "30b75cf4049112df5cf1473e737ff36ea5da4668a83233a9a7a41a2abaa709f1",
+      "endings": [
+        [
+          "CRLF",
+          143
+        ]
+      ]
+    },
+    {
+      "path": "docs/entrega-lote-core-issue34-atividade3.md",
+      "sha256": "aa7fbbf2b39bb4d36df91aa9288a9a541f3b96636692bf9167a1c9284bf7d09d",
+      "bytes": 5161,
+      "textSha256": "bafea1d31d8c6686ea8d5e03c60393c50318551dbd76e36072613ad9bc2c2981",
+      "endings": [
+        [
+          "CRLF",
+          47
+        ]
+      ]
+    },
+    {
+      "path": "docs/entrega-magias-demo.md",
+      "sha256": "968b86511fea67202bff629f5ffb70db6980de9f0a587141b76370d9e99a90dc",
+      "bytes": 4726,
+      "textSha256": "9eb9fa90a6cbb7b971c3e12309e790e972f2630fd90619bed0ef778a7f4bb36a",
+      "endings": [
+        [
+          "CRLF",
+          42
+        ]
+      ]
+    },
+    {
+      "path": "docs/entrega-mecanicas-staging.md",
+      "sha256": "ed3659943f0e031b25fc2ac31fcb6c381fe9f1dd386820d4989416bb2903b83a",
+      "bytes": 11245,
+      "textSha256": "83e69888c903efe9691ce09f06c24a4f2391d62118dde3545b0498526e94bb60",
+      "endings": [
+        [
+          "CRLF",
+          75
+        ]
+      ]
+    },
+    {
+      "path": "docs/entrega-motor-human-l0.md",
+      "sha256": "917e348f218720b0526ffe763025f811e8d20a8c62f14a4e70ee83115f937f99",
+      "bytes": 7023,
+      "textSha256": "abdd80afdc863129df2b3c59347d5abba257cea9e751b95f7c6e1d0a057cd296",
+      "endings": [
+        [
+          "CRLF",
+          70
+        ]
+      ]
+    },
+    {
+      "path": "docs/entrega-nivel-um.md",
+      "sha256": "d0b49f3310e16bdec1df23c770661aca3941ab531d40a9b74b514e1b628aeb3c",
+      "bytes": 4203,
+      "textSha256": "639b4f1c66416a98a7b25ac8559551aa77747db2544b4302cb4593b36aa444d7",
+      "endings": [
+        [
+          "CRLF",
+          39
+        ]
+      ]
+    },
+    {
+      "path": "docs/entrega-nivel-zero.md",
+      "sha256": "694881a35fa4c50791869f76f6d18c13c9c0d1f59b93390086d9a944e9d86df1",
+      "bytes": 5891,
+      "textSha256": "20892d9ec5a646ede7943dceb4aaa1720f811daafb89283b348445bb619e74f2",
+      "endings": [
+        [
+          "CRLF",
+          46
+        ]
+      ]
+    },
+    {
+      "path": "docs/entrega-normalizacao-editorial.md",
+      "sha256": "ef1d40b4b43fc04edb2617951571c94fcd31c5ab700fd7308422d07bc5547f6d",
+      "bytes": 7753,
+      "textSha256": "e1b4080a6a7b4a3b68ab8e7ca3277cdd9c7c28545ce6bc5efd40f0bd516adf9f",
+      "endings": [
+        [
+          "CRLF",
+          78
+        ]
+      ]
+    },
+    {
+      "path": "docs/entrega-paths-staging.md",
+      "sha256": "efb48160e37ebccdbdf7307a0f55355943bd1fd01331204f72c186f916b1436f",
+      "bytes": 8660,
+      "textSha256": "c17ba92694fd30504a28719815260c2b159a5f86d5973bcedb3160e95e7b6f99",
+      "endings": [
+        [
+          "CRLF",
+          64
+        ]
+      ]
+    },
+    {
+      "path": "docs/entrega-piloto-core-nivel-zero.md",
+      "sha256": "28deff3e228f3746d6fa7d51f02797af45fb7fdef254d9c5a90708971a6ab4e7",
+      "bytes": 32198,
+      "textSha256": "cdc36b3e7c7fd193c1a6dd6bce54ce63191fa9b71a57cb8194468a1b874cf1d2",
+      "endings": [
+        [
+          "CRLF",
+          149
+        ]
+      ]
+    },
+    {
+      "path": "docs/entrega-procedimentos-issue53.md",
+      "sha256": "e89f425bff3de921225f10d2758f7cbe82e90ac26590ca77fc90b425598097bf",
+      "bytes": 4993,
+      "textSha256": "e48613b1bb83aa52ad758619a86d020a1efc30d5a22efba395a87e45ffd3c282",
+      "endings": [
+        [
+          "CRLF",
+          35
+        ]
+      ]
+    },
+    {
+      "path": "docs/entrega-profissoes-idiomas.md",
+      "sha256": "2fc51519784f644b752ba10e701c9a34cdb1c7e67af396fccfb20379ef6f0f0d",
+      "bytes": 10930,
+      "textSha256": "a5e0b3d2385069c41365beb68f53bf8b12dc76cf4f8b0ba4862812d3a9dbf45d",
+      "endings": [
+        [
+          "CRLF",
+          101
+        ]
+      ]
+    },
+    {
+      "path": "docs/entrega-projecao-mecanica-human-l0.md",
+      "sha256": "af086bc581d7badf5c9bcd9f55b408b13bf7d937700072b8f7eb12c3ea2850b3",
+      "bytes": 6497,
+      "textSha256": "7d934d7aae2cc611cb444f9303021d80dfe054c2bae9c6d1e903270726304660",
+      "endings": [
+        [
+          "CRLF",
+          63
+        ]
+      ]
+    },
+    {
+      "path": "docs/entrega-reconciliacao-corpus.md",
+      "sha256": "e9badc5be84c5e068f0da55e1a7fb21743035caa0c9daa19ef4f91e83b0625c5",
+      "bytes": 13047,
+      "textSha256": "e30fc4e9e0fb47dfd3a4b729ac8b94bb63f491a201d79e318553c1dbcf424b11",
+      "endings": [
+        [
+          "CRLF",
+          108
+        ]
+      ]
+    },
+    {
+      "path": "docs/entrega-relatorio-compilacao-human-l0.md",
+      "sha256": "e505d62cb163ce74ad47dde09bec454bbc182eec8afa17820c0910aefa64e40e",
+      "bytes": 5704,
+      "textSha256": "770a3e8fc143320884a7a913f6e06fd4160d1bd7c2083bc165c1de1fae97351a",
+      "endings": [
+        [
+          "CRLF",
+          62
+        ]
+      ]
+    },
+    {
+      "path": "docs/entrega-revisao-freeze-issue55.md",
+      "sha256": "477eda57a5929358ccea24d01ea0d8ad36329dabc7e41f134a9fbe57688e9c98",
+      "bytes": 6237,
+      "textSha256": "10a27b6a1c204d16aab61466b1a16030fdade2ade636871b143b312d43e26752",
+      "endings": [
+        [
+          "CRLF",
+          53
+        ]
+      ]
+    },
+    {
+      "path": "docs/entrega-riqueza-equipamento.md",
+      "sha256": "d4a4d1c91f3fb56e753b930dacf2583c33cd5d8e821e91f2380724b141afacbc",
+      "bytes": 6216,
+      "textSha256": "9e897ad042aab53dd240ae6904b14b378c266b29d307af1cdcf4c908a6635fa2",
+      "endings": [
+        [
+          "CRLF",
+          62
+        ]
+      ]
+    },
+    {
+      "path": "docs/entrega-sessao-demo.md",
+      "sha256": "295e537cf2932fbfea98e204421aae5f0b86eba40408ca021c1e7397faa88f12",
+      "bytes": 5829,
+      "textSha256": "250a100b11a3eb4338ad9cb533d6e73a94845c057b4b0aac2ba0780f9d21024f",
+      "endings": [
+        [
+          "CRLF",
+          53
+        ]
+      ]
+    },
+    {
+      "path": "docs/entrega-spells-staging.md",
+      "sha256": "ced33c90c77b4748fde9102c45d136911dd89e5b15f4c94ee625f20cbc725026",
+      "bytes": 9586,
+      "textSha256": "2380ea37000d7d5b9bcbd2be36a453c9431923f0ca1a15867d1b52d5e3c1deaa",
+      "endings": [
+        [
+          "CRLF",
+          65
+        ]
+      ]
+    },
+    {
+      "path": "docs/escopo-fechamento-human-l0.md",
+      "sha256": "e5a210c55ba19e420517787893372996f8c31795a9b8342bc598aa3732e4bd7f",
+      "bytes": 12621,
+      "textSha256": "e5a210c55ba19e420517787893372996f8c31795a9b8342bc598aa3732e4bd7f",
+      "endings": [
+        [
+          "LF",
+          101
+        ]
+      ]
+    },
+    {
+      "path": "docs/estado-issues.md",
+      "sha256": "235e1a64babcdd2e2743908c0ff4d76c68e92d6217f2a6760c21282467f33f4a",
+      "bytes": 12586,
+      "textSha256": "95350c478bf639a0eff35b14b9e20d991791d243178090c7d16ca4799c753137",
+      "endings": [
+        [
+          "CRLF",
+          66
+        ]
+      ]
+    },
+    {
+      "path": "docs/execucao-lacunas-human-l0.md",
+      "sha256": "2439c87dfd10d76eae1be9b29cacd374bbba5a81be9c7eb522d4dcec60559ea7",
+      "bytes": 10676,
+      "textSha256": "2439c87dfd10d76eae1be9b29cacd374bbba5a81be9c7eb522d4dcec60559ea7",
+      "endings": [
+        [
+          "LF",
+          76
+        ]
+      ]
+    },
+    {
+      "path": "docs/fechamento-issue34-atividade1.md",
+      "sha256": "aeb892babd4b8148903a01b66fc387f0fc7c3f2014db7633749b55df9c1117f9",
+      "bytes": 5722,
+      "textSha256": "3965170b836a072183dc536af85aa2e915a35574cdc8758d5047bd2d45da2056",
+      "endings": [
+        [
+          "CRLF",
+          61
+        ]
+      ]
+    },
+    {
+      "path": "docs/fechamento-tecnico-human-l0.md",
+      "sha256": "8f49b20bcb9936da7a35c3c34e05fd8d848bde2f6a4e1200ff152e4bb968db3c",
+      "bytes": 13981,
+      "textSha256": "8f49b20bcb9936da7a35c3c34e05fd8d848bde2f6a4e1200ff152e4bb968db3c",
+      "endings": [
+        [
+          "LF",
+          89
+        ]
+      ]
+    },
+    {
+      "path": "docs/fluxo-aleatoriedade.md",
+      "sha256": "b4ae840ed10c195fe7c55b019d4588c0c81b09c6f95b06c4bf8a888ea63e7745",
+      "bytes": 6916,
+      "textSha256": "3f6efdb79513f1ed1b546533f6bc4a6ac8ea47765be3d6a3ca15f91a22904c6f",
+      "endings": [
+        [
+          "CRLF",
+          74
+        ]
+      ]
+    },
+    {
+      "path": "docs/freeze-consolidado-human-l0.md",
+      "sha256": "a8d309871b0464d74b303110ae1880b376113302572955ea88a4b31c7d99ccb4",
+      "bytes": 9096,
+      "textSha256": "a8d309871b0464d74b303110ae1880b376113302572955ea88a4b31c7d99ccb4",
+      "endings": [
+        [
+          "LF",
+          77
+        ]
+      ]
+    },
+    {
+      "path": "docs/guia-primeira-fatia.md",
+      "sha256": "353216b1b12788d964a0104c0969faf52a77b6a460a4077c80e09307818d5d52",
+      "bytes": 1394,
+      "textSha256": "17fa9d5a516cfbfe567e85c86f8b7c8107882bd91062010b2da25660ac521845",
+      "endings": [
+        [
+          "CRLF",
+          16
+        ]
+      ]
+    },
+    {
+      "path": "docs/higiene-historico-git.md",
+      "sha256": "9d73330239c8960b5ce47942fe7c9bb49887291713fe8dcdd24b517390ab32a6",
+      "bytes": 3360,
+      "textSha256": "5410306aca37987eade4612efa0820db6da8f8c43f8f4a16786daad640be663b",
+      "endings": [
+        [
+          "CRLF",
+          29
+        ]
+      ]
+    },
+    {
+      "path": "docs/higiene-pii-inventario-s0.md",
+      "sha256": "15a449a61bbd6ed059072fc627b2894d0cc715544fe8d47db949d5572cb5c7af",
+      "bytes": 8609,
+      "textSha256": "ae9c555a8fcf6cd961a80e78830c9d7005d50e0741ab172ed2ecbe56adb373f1",
+      "endings": [
+        [
+          "CRLF",
+          96
+        ]
+      ]
+    },
+    {
+      "path": "docs/lote-kits-itens-human-l0.md",
+      "sha256": "6b519e8f1a9a6f69ec9f07026e96989bb2eeadc620878cf6cdf2c81be1780e7a",
+      "bytes": 4713,
+      "textSha256": "d17ecf1f5245b93d768145134b49f59cb376c0b8e38da11d80248b84a3158655",
+      "endings": [
+        [
+          "CRLF",
+          45
+        ]
+      ]
+    },
+    {
+      "path": "docs/matriz-aceite-fechamento-human-l0.md",
+      "sha256": "c31f9e277d6fd61a82e8f304d511001f2797cf4dda07004cff611e47dadaa4de",
+      "bytes": 37110,
+      "textSha256": "c31f9e277d6fd61a82e8f304d511001f2797cf4dda07004cff611e47dadaa4de",
+      "endings": [
+        [
+          "LF",
+          246
+        ]
+      ]
+    },
+    {
+      "path": "docs/matriz-final-human-l0.md",
+      "sha256": "c6c7f28ac3750b51c29ea983e1ef0bc32d80e658913e1ac7430a970b6a2f42bf",
+      "bytes": 13979,
+      "textSha256": "c6c7f28ac3750b51c29ea983e1ef0bc32d80e658913e1ac7430a970b6a2f42bf",
+      "endings": [
+        [
+          "LF",
+          64
+        ]
+      ]
+    },
+    {
+      "path": "docs/matriz-finalizacao-issue54.md",
+      "sha256": "919db103966add611b5390f57a86b0778b90ebb25eea2fc0c3156d93e0873696",
+      "bytes": 2349,
+      "textSha256": "453f9ab348298b7779710313e7bc02507fec0f616885a4367eae570b4c2d09e8",
+      "endings": [
+        [
+          "CRLF",
+          23
+        ]
+      ]
+    },
+    {
+      "path": "docs/matriz-lacunas-issue34-atividade1.json",
+      "sha256": "8743e75be4472fe25e90ec5f64f9b5c4af56a253cc85ec2b15f794904e1f9625",
+      "bytes": 1546704,
+      "textSha256": "fa7546059f061f8d4ae92a7705f190b63f27de5d8d1fecbc20bb3ac8ec1ec3a1",
+      "endings": [
+        [
+          "CRLF",
+          47671
+        ]
+      ]
+    },
+    {
+      "path": "docs/matriz-lacunas-issue34-atividade1.md",
+      "sha256": "597b0b4c8add6147bad2b16833dc3f0464cab39b786ddfe7abf9595bd3320094",
+      "bytes": 31208,
+      "textSha256": "16470afe4b03cade2ff7c2b203590a6f7ee41abba344065e58b3e651e7cf3999",
+      "endings": [
+        [
+          "CRLF",
+          237
+        ]
+      ]
+    },
+    {
+      "path": "docs/matriz-procedimentos-issue53.md",
+      "sha256": "916bd9d983f05fb429f81cbe8dcf67163a2f6f877e95ff5b97a8bb07873d3f54",
+      "bytes": 4112,
+      "textSha256": "8b3db7716f8b80d4e22421e64ecd62eeda4e80c51120a82c1a77741beb98773d",
+      "endings": [
+        [
+          "CRLF",
+          30
+        ]
+      ]
+    },
+    {
+      "path": "docs/matriz-revisao-freeze-issue55.md",
+      "sha256": "e3aa14ff487e922db2feb3b42ca0c947aa94bf05a584d6886a8dc7e365a33221",
+      "bytes": 3442,
+      "textSha256": "227293b4d61e034b7279ab01c097d5827c936631b126e46f5097f17a48c25822",
+      "endings": [
+        [
+          "CRLF",
+          27
+        ]
+      ]
+    },
+    {
+      "path": "docs/modelo-de-dados.md",
+      "sha256": "aa5703361c9ffbcdba43bd5043762547f1f86657de5de47fb970a4905b14f974",
+      "bytes": 4765,
+      "textSha256": "309b9768776f2a3f5c37bf89c5d292f2226c30f08dde1cef88e59eb144b6e2a5",
+      "endings": [
+        [
+          "CRLF",
+          59
+        ]
+      ]
+    },
+    {
+      "path": "docs/permissoes-habilitacao-human-l0.md",
+      "sha256": "df2927e345b966d46753b5b764ad2cc8bcc6700e07f6d57d57cefdf770a9f93e",
+      "bytes": 12379,
+      "textSha256": "df2927e345b966d46753b5b764ad2cc8bcc6700e07f6d57d57cefdf770a9f93e",
+      "endings": [
+        [
+          "LF",
+          92
+        ]
+      ]
+    },
+    {
+      "path": "docs/plano-background-issue50.md",
+      "sha256": "569a65f5a33e517ec8d7d14c93280c6d357eea74a6bcf3e0453a32fb225d5e4a",
+      "bytes": 1225,
+      "textSha256": "e90cf6931b0ab87d4ef2d18865ed7b33bd4acc6450679787f0517b36c2662b13",
+      "endings": [
+        [
+          "CRLF",
+          16
+        ]
+      ]
+    },
+    {
+      "path": "docs/plano-catalogo-itens-piloto.md",
+      "sha256": "55b4307ba24ce5849910c43f0af167a6175d308285075950b752dd9a81d1176a",
+      "bytes": 1407,
+      "textSha256": "e05d2ba8eb192ec5f30349d76e44674f80ac0dc6affdf6c4e8a0b72bd5bb6f98",
+      "endings": [
+        [
+          "CRLF",
+          9
+        ]
+      ]
+    },
+    {
+      "path": "docs/plano-equipamento-demo.md",
+      "sha256": "7e19c8295de4d4fb5928139cde3884395967a5ac9b7110d3832ca5c8d8ba97ef",
+      "bytes": 1801,
+      "textSha256": "5f3a506dcdbcd60ed57e2b893deca92ec5e10dfeaf1401da3ae752037682b1bb",
+      "endings": [
+        [
+          "CRLF",
+          12
+        ]
+      ]
+    },
+    {
+      "path": "docs/plano-equipamento-issue52.md",
+      "sha256": "5f465a709a27f1737329b9ff788f22625b64a4f396e6b0e7fa263a969fc91ddd",
+      "bytes": 1584,
+      "textSha256": "8c3098e1be11ab5cf158cac475f7ce5bf98f86c146777e5f567d3bc2623f8dc2",
+      "endings": [
+        [
+          "CRLF",
+          16
+        ]
+      ]
+    },
+    {
+      "path": "docs/plano-exportacao-issue56.md",
+      "sha256": "fc2a6672a8cf873f38d5a4aed53a1bdead98f2b74da2ed60213eb166ee393bef",
+      "bytes": 2181,
+      "textSha256": "fc2a6672a8cf873f38d5a4aed53a1bdead98f2b74da2ed60213eb166ee393bef",
+      "endings": [
+        [
+          "LF",
+          20
+        ]
+      ]
+    },
+    {
+      "path": "docs/plano-extracao-ancestries.md",
+      "sha256": "4907102930d837960b2bf0e5d34fcc4abf5ca5cfe827ef8b7a79d50f260a0c3a",
+      "bytes": 1921,
+      "textSha256": "506d7067f8fd68a112dd0d7fdea0cf8b5d997e85c26eba8852a3c0ce481a40b4",
+      "endings": [
+        [
+          "CRLF",
+          11
+        ]
+      ]
+    },
+    {
+      "path": "docs/plano-extracao-paths.md",
+      "sha256": "4c8c0502569557858f65d5e590153514b1152fe1c50fa9b0be12a064d68ab2b3",
+      "bytes": 1730,
+      "textSha256": "1463fe114db7f4fca9fdfd53446756fc464e413fe391246ed593c3f4e91662f0",
+      "endings": [
+        [
+          "CRLF",
+          9
+        ]
+      ]
+    },
+    {
+      "path": "docs/plano-extracao-spells.md",
+      "sha256": "6af22ede1bf5edff93bd2aa6709f6a95fef884bde2dd6191331f94e7540daf56",
+      "bytes": 2056,
+      "textSha256": "fecc9d713f00ea695a5929afada08623a0f57ed118cceaa41487128be0d57759",
+      "endings": [
+        [
+          "CRLF",
+          11
+        ]
+      ]
+    },
+    {
+      "path": "docs/plano-fechamento-human-l0.md",
+      "sha256": "793267172bc7a00cc1cd02632914cf030307038fe91671fbaac1301ecabb3b2c",
+      "bytes": 10802,
+      "textSha256": "793267172bc7a00cc1cd02632914cf030307038fe91671fbaac1301ecabb3b2c",
+      "endings": [
+        [
+          "LF",
+          100
+        ]
+      ]
+    },
+    {
+      "path": "docs/plano-fechamento-tabelas-piloto.md",
+      "sha256": "72858e82079fadefb73c12dcb50b4e76c437e6ca18fa738e0e52ee2c13b9e51c",
+      "bytes": 1292,
+      "textSha256": "d2d32b5f65539b33a1ae01b34a56186c7f507ed265772ccae56415146a819417",
+      "endings": [
+        [
+          "CRLF",
+          9
+        ]
+      ]
+    },
+    {
+      "path": "docs/plano-finalizacao-issue54.md",
+      "sha256": "d6439ccb0cc28353c705458c63a60575335f52015143b56c20a905ede591a810",
+      "bytes": 2296,
+      "textSha256": "f44ab3acfc6622b0cb6ae67f214919690255b6d60198a144a854fc249ff0038c",
+      "endings": [
+        [
+          "CRLF",
+          21
+        ]
+      ]
+    },
+    {
+      "path": "docs/plano-html-autonomo.md",
+      "sha256": "98e8f1b812a2959a1e4560a53202e64caebc56bc1bd673ac8fd946a11cca4ded",
+      "bytes": 1849,
+      "textSha256": "dd0110808150f7529d11ec051b4a52b71d5b4b8ea0a6b1133cc6822b902e0760",
+      "endings": [
+        [
+          "CRLF",
+          13
+        ]
+      ]
+    },
+    {
+      "path": "docs/plano-human-ancestry.md",
+      "sha256": "5f58ebd311727ed5fd5c108873dc80b4fc3a2026e6dcf654049ff33d62a1a5a6",
+      "bytes": 2530,
+      "textSha256": "6b132f8b2836d881a198938234013bf1d597ae08f1ad8f3c1293416242db747f",
+      "endings": [
+        [
+          "CRLF",
+          24
+        ]
+      ]
+    },
+    {
+      "path": "docs/plano-impressao-a4.md",
+      "sha256": "956baeafd392c70b6a45d7936ee80c173125cf3c60caa50d3d9c14b6fb9d589d",
+      "bytes": 1531,
+      "textSha256": "53f69cb468a9d07d03d8cd7e62d80eb83f509cb31833cfe8603073b20cc49aac",
+      "endings": [
+        [
+          "CRLF",
+          10
+        ]
+      ]
+    },
+    {
+      "path": "docs/plano-interesting-things-issue51.md",
+      "sha256": "4252148cd9001803ae5184d76c094b28e0203a1527670ed4538452fd212aa4db",
+      "bytes": 1721,
+      "textSha256": "a9cf420a5c10e467debb65685edf400de75b32735245cfbbd902c112dde554f1",
+      "endings": [
+        [
+          "CRLF",
+          18
+        ]
+      ]
+    },
+    {
+      "path": "docs/plano-interesting-things.md",
+      "sha256": "6c27620ebd611f5c56654abfb2aaea8e91b0f951a51e4e2ec72ab32ab4694b92",
+      "bytes": 1314,
+      "textSha256": "f5dc32eaa8f6678db31cd73eb1e354e9415db53d527cddd36c9b281a4c9fb2b9",
+      "endings": [
+        [
+          "CRLF",
+          9
+        ]
+      ]
+    },
+    {
+      "path": "docs/plano-inventario-tabelas-criacao.md",
+      "sha256": "c205a5373dd22458ecf315e491053343ed1dfbea246f847a4297cf3983067e0e",
+      "bytes": 2056,
+      "textSha256": "f2680861cb7d6b55ca8f80b94b7e9b83e35d476f7a58abb859a74a6d890b9bb0",
+      "endings": [
+        [
+          "CRLF",
+          19
+        ]
+      ]
+    },
+    {
+      "path": "docs/plano-magias-demo.md",
+      "sha256": "8e75fbefa1c06de76d47800de8306a2922266f97288ee042926ef743c2784c8d",
+      "bytes": 1632,
+      "textSha256": "afd2e2e36b9eb3330c4eac7016f48ebfa5a4a8dffcf272684b99bc095e37ef7d",
+      "endings": [
+        [
+          "CRLF",
+          12
+        ]
+      ]
+    },
+    {
+      "path": "docs/plano-nivel-um.md",
+      "sha256": "48a083d52dab54ff245cad7009d06c4b7e59877b83af6095988e0af21b025376",
+      "bytes": 1584,
+      "textSha256": "609f98cd2ac07d08f4bda1b07275515e6c264f1ce2542a8ca13299daf1cde967",
+      "endings": [
+        [
+          "CRLF",
+          11
+        ]
+      ]
+    },
+    {
+      "path": "docs/plano-nivel-zero.md",
+      "sha256": "27f1ec0c8175c361b6b08e527506d8a8bf06a98ee3003b5130871ca346bb8cc5",
+      "bytes": 2638,
+      "textSha256": "dfb5d5c4cd6e15babae81b89e88847a9d95863df1bdae35a90f1de7d51d0a96d",
+      "endings": [
+        [
+          "CRLF",
+          23
+        ]
+      ]
+    },
+    {
+      "path": "docs/plano-normalizacao-editorial.md",
+      "sha256": "4d8dd40161a6be0eecb0e023459af782dd612f8bc8f39b5d8efd2c49948d2032",
+      "bytes": 2129,
+      "textSha256": "32d46d22a660378fd4560b24c548763b6425270865d7fbf295ed0c3e2ef44427",
+      "endings": [
+        [
+          "CRLF",
+          11
+        ]
+      ]
+    },
+    {
+      "path": "docs/plano-piloto-core-nivel-zero.md",
+      "sha256": "dc701e54ac7b5592833a235a968bd76308abde03ac761646d742c6dfaccf01ea",
+      "bytes": 2969,
+      "textSha256": "f96078c0cf3f467c0067cd5a26753a967cc3e324889ddcd34f4442d38ecbbb67",
+      "endings": [
+        [
+          "CRLF",
+          28
+        ]
+      ]
+    },
+    {
+      "path": "docs/plano-procedimentos-issue53.md",
+      "sha256": "0e180c183db0e890f18fccf8c7a4f308d7c47dfd735e7d8ba9581abbfb180913",
+      "bytes": 1864,
+      "textSha256": "6f4397add4f68f234e3af7b2cc52f2824fddeef890cadf3dc997932bbe9af43d",
+      "endings": [
+        [
+          "CRLF",
+          22
+        ]
+      ]
+    },
+    {
+      "path": "docs/plano-profissoes-idiomas.md",
+      "sha256": "67d29ad91d2ab0bd7e9c1e352becae84e0a2a6f67a0dea3c698b546946564931",
+      "bytes": 1780,
+      "textSha256": "a96bb601a0d430fdcb23a91a22f125782702d27ab96fcadc94d5393ef2fda7fd",
+      "endings": [
+        [
+          "CRLF",
+          11
+        ]
+      ]
+    },
+    {
+      "path": "docs/plano-reconciliacao-corpus.md",
+      "sha256": "8f5a2a09f365cafabb5ece3595648abb6a3c635b7f7af7ad1bc13d0bef00c330",
+      "bytes": 1865,
+      "textSha256": "710e46d3cc1c429360fbd9a09ee06e585604e47d65dbad0d98d94e88f8a3f8f0",
+      "endings": [
+        [
+          "CRLF",
+          11
+        ]
+      ]
+    },
+    {
+      "path": "docs/plano-revisao-freeze-issue55.md",
+      "sha256": "9e9773dc2c3cd4517237c122f177a1baa799a061ee93a6d8b25ae3cbec7cdddb",
+      "bytes": 3289,
+      "textSha256": "74168b760dc0bacbd84c43bd0361ca3d5ed50a3809773a2e8d27b4ab897bb8af",
+      "endings": [
+        [
+          "CRLF",
+          24
+        ]
+      ]
+    },
+    {
+      "path": "docs/plano-riqueza-equipamento.md",
+      "sha256": "cc5cca5807aabf5c846fd0cb45713710c194703fae31b6c859f312f248caca77",
+      "bytes": 1610,
+      "textSha256": "a48b22e9c66a2821c4bb426a1f6a138f09ccda34d2677e61ca1494f4a550cb42",
+      "endings": [
+        [
+          "CRLF",
+          11
+        ]
+      ]
+    },
+    {
+      "path": "docs/plano-segmentacao-mecanicas.md",
+      "sha256": "bc8106f1b727e763ed1f05c26e626ea2bf1902f28db1aefbf77670b0361a740f",
+      "bytes": 2156,
+      "textSha256": "4f6ed122d2f022ea8792e754b783b379eefac91a3366e1cceed0820c685b7732",
+      "endings": [
+        [
+          "CRLF",
+          11
+        ]
+      ]
+    },
+    {
+      "path": "docs/plano-sessao-demo.md",
+      "sha256": "dd9d02282de1bf558c449bd692d37fb863376f9e87ccd1029895eba3247305f5",
+      "bytes": 2039,
+      "textSha256": "760f148b980cf75620912ee50b30faf330c02c03dc73539b105cec36b527d648",
+      "endings": [
+        [
+          "CRLF",
+          14
+        ]
+      ]
+    },
+    {
+      "path": "docs/politica-distribuicao-conteudo.md",
+      "sha256": "737057cef6779a44c26c29200a37f654a498aee8d2657bd31bb3775612b754c0",
+      "bytes": 7357,
+      "textSha256": "ab47ee7d326e72ab34dfe3a3eb20ee43b5712a78d72c8b48d0ac54c9fe0fc5c9",
+      "endings": [
+        [
+          "CRLF",
+          59
+        ]
+      ]
+    },
+    {
+      "path": "docs/politica-expansoes-ancestries.md",
+      "sha256": "38b19d99ca31ffc48adff60e0a051bfbf679c2a695154f0a7e5bd156bfc27a47",
+      "bytes": 5682,
+      "textSha256": "cdf18ad1a85c7682bc1e224df890cb4fb1357a779daf55ca60c30e6794e45efe",
+      "endings": [
+        [
+          "CRLF",
+          43
+        ]
+      ]
+    },
+    {
+      "path": "docs/prompt-wireframe-claude-design.md",
+      "sha256": "5c7a22fe260fd60db81ef033dc6fb31df09c45c1646855c3fed59dfec53a500d",
+      "bytes": 9421,
+      "textSha256": "b5358a336c84612542d7c6eba0a7ac4243bb14fbb1a191ec13d55ab2152936a6",
+      "endings": [
+        [
+          "CRLF",
+          99
+        ]
+      ]
+    },
+    {
+      "path": "docs/publicacao-historico-git.md",
+      "sha256": "5c8bdb865d3498cddfadc61cb5abb13b21e65f83584028cbb501502a1c553ee0",
+      "bytes": 4290,
+      "textSha256": "31ad780fb4aff87c9a8f0d71b8b66c6138bbcedfaa5afa5f4538af423fb53aac",
+      "endings": [
+        [
+          "CRLF",
+          28
+        ]
+      ]
+    },
+    {
+      "path": "docs/qualidade-e-testes.md",
+      "sha256": "100b6511a3cd5151c5d22a24488adbb70da3151e17aa63e9cc92a135fd93368b",
+      "bytes": 4660,
+      "textSha256": "7c191ae99843bd144151b18d3ab6559b4ee0e9e81282b209c7e6d2d3618b2780",
+      "endings": [
+        [
+          "CRLF",
+          45
+        ]
+      ]
+    },
+    {
+      "path": "docs/revisao-conteudo-human-l0.md",
+      "sha256": "44d494a7ea407cc4e5bcf9e5af8d97c92ba3b7b840e697f16267e22072cedf64",
+      "bytes": 10127,
+      "textSha256": "b58475df7ab0f8840615aad73f250d9e3a6644d8131bf75e5cd412305eadae0b",
+      "endings": [
+        [
+          "CRLF",
+          77
+        ]
+      ]
+    },
+    {
+      "path": "docs/revisao-pr14-pr15.md",
+      "sha256": "3de7790a24699e40f2b5deb5cc12bc1c064876d7ffd16d893649a77e059b386f",
+      "bytes": 6445,
+      "textSha256": "141e8bf5eca4fc1abe840620a6dbb791c14d7f90ec0bff09f40b5ebfddc63527",
+      "endings": [
+        [
+          "CRLF",
+          58
+        ]
+      ]
+    },
+    {
+      "path": "docs/revisao-pr44-pr47-pr46.md",
+      "sha256": "407aa1a7f0e9d17715f14cd03b2cccb9a9941c2fb1a7c288a5f4c48b21d161fc",
+      "bytes": 16613,
+      "textSha256": "600a9b41839283704e216debee627e4f242ea2cc161e22ed923b8539a7f0166a",
+      "endings": [
+        [
+          "CRLF",
+          113
+        ]
+      ]
+    },
+    {
+      "path": "docs/revisao-pr57.md",
+      "sha256": "8b9810b38af1d400c89105dad81afcb3e1c4da1798fb9aa5272309a352fe1900",
+      "bytes": 1552,
+      "textSha256": "275c76479540e92a7644e44a6c31e024ccb1876811b1cd4f60a6e569ca55f6e7",
+      "endings": [
+        [
+          "CRLF",
+          18
+        ]
+      ]
+    },
+    {
+      "path": "docs/revisao-pr58.md",
+      "sha256": "99dcd63a3faf6f01ca8b57ba0a89db88c80fde96143e476611a4aba941e5a472",
+      "bytes": 1472,
+      "textSha256": "4fe15e8cb07bf2a9ee4b91f16554286c3276bd7593b7b29c050c34ffb040d48e",
+      "endings": [
+        [
+          "CRLF",
+          14
+        ]
+      ]
+    },
+    {
+      "path": "docs/revisao-pr59.md",
+      "sha256": "737e9aa1d73e29d3bb82adcb695b36a55e5da8ce861f314f0d8942989c1480ab",
+      "bytes": 1469,
+      "textSha256": "46a2219ceffc42ac5b7e2f50fb62df4e386ce9b0dd43986e6b1b3a067c0747cb",
+      "endings": [
+        [
+          "CRLF",
+          15
+        ]
+      ]
+    },
+    {
+      "path": "docs/revisao-pr60.md",
+      "sha256": "16df2907ccf2a9b2a1446c9f072454448746dea44e4aaa0a09ee6807ebf3994c",
+      "bytes": 2357,
+      "textSha256": "c8e82cac18879d5f38168cec0b7c05fc3bf91e079d236e4e5f7aa24e867bd0ac",
+      "endings": [
+        [
+          "CRLF",
+          21
+        ]
+      ]
+    },
+    {
+      "path": "docs/revisao-semantica-issue55.md",
+      "sha256": "1815981e7b5318e43cd3f29cbafb7a2938ba54836d8a55b0b6064df27d81b5f1",
+      "bytes": 7682,
+      "textSha256": "19895a3db731ce69dba88bd698ade7c7a902070cbc00486071373ec6d62b6657",
+      "endings": [
+        [
+          "CRLF",
+          49
+        ]
+      ]
+    },
+    {
+      "path": "docs/roadmap-issue34.md",
+      "sha256": "35a8f864722ad8f1622a4cf561bb1d9d610bd139afbffa156ef6f4bba894761d",
+      "bytes": 22552,
+      "textSha256": "87f0ec86b78c5da798a1cdd86c5a43c1ba2646074869bbbbcac1d65ea6143bbc",
+      "endings": [
+        [
+          "CRLF",
+          168
+        ]
+      ]
+    },
+    {
+      "path": "docs/tabelas-aleatorias-e-curadoria.md",
+      "sha256": "60e8557940f45a687b60b98b3ea5aba8c87552d2ee1eababf2fe0f2f75486c50",
+      "bytes": 5827,
+      "textSha256": "6a3682f19cdae0f3758bb0e5da270769dd28ac5d58387706033122bc4309dbf6",
+      "endings": [
+        [
+          "CRLF",
+          41
+        ]
+      ]
+    },
+    {
+      "path": "docs/tarefas-curadoria-compendios.md",
+      "sha256": "cdfd46417f86ed7ca98db172270f97ac61e67330b19b737d5312e28105340079",
+      "bytes": 43616,
+      "textSha256": "c63ada1070ba932edf944fd0a0e3601e6094f4756acd40c2d8490d6d77702a5a",
+      "endings": [
+        [
+          "CRLF",
+          166
+        ]
+      ]
+    },
+    {
+      "path": "docs/transferencia-escopo-issue7.md",
+      "sha256": "1f583c3e8c4169b8157c3383c8c32f1095b9129eb2086f0fb6cc20ef3fa25ddc",
+      "bytes": 4340,
+      "textSha256": "08725dcf5bbf248719611b928272fca0d91db3ad7ec558b903d1f75967ea4acb",
+      "endings": [
+        [
+          "CRLF",
+          37
+        ]
+      ]
+    },
+    {
+      "path": "docs/uso-human-l0.md",
+      "sha256": "92ef7826d22c32531cb145bbda190d47608212cef4e0e1c1a48e1f43ab0f3f45",
+      "bytes": 5804,
+      "textSha256": "92ef7826d22c32531cb145bbda190d47608212cef4e0e1c1a48e1f43ab0f3f45",
+      "endings": [
+        [
+          "LF",
+          50
+        ]
+      ]
+    },
+    {
+      "path": "docs/visao-produto.md",
+      "sha256": "9bdff8a1a31af7a33dfa77c7854115100781bc44852dd6d4268639341e7eeca3",
+      "bytes": 6692,
+      "textSha256": "fa0b1d34538140aa4a073c5aa53e88bba89811dd9c58ff52f230a5ac7dfb01c8",
+      "endings": [
+        [
+          "CRLF",
+          73
+        ]
+      ]
+    },
+    {
+      "path": "examples/demo-generation-request.json",
+      "sha256": "427cb966c572b793f03adbfa030b3a770b007ce915a0019ae4bf16fc415f3a5f",
+      "bytes": 977,
+      "textSha256": "07690f45de73cca291790740bcc40adbe2d2f36baf71e6c0f79c6481e1aeee33",
+      "endings": [
+        [
+          "CRLF",
+          39
+        ]
+      ]
+    },
+    {
+      "path": "examples/demo-level-one.json",
+      "sha256": "4679b93ee27add19697fca6f7323575577852ae3546e29daeb4f78f9e27585a7",
+      "bytes": 2267,
+      "textSha256": "7319ecaf1c96c3279e8d754f86c6c1e6b80ce2f90cae29180dbe68bf1811f3b6",
+      "endings": [
+        [
+          "CRLF",
+          13
+        ]
+      ]
+    },
+    {
+      "path": "examples/demo-level-zero.json",
+      "sha256": "c474c16393690fbe8012c220d19d142473d097829089fe121636dc74fad35859",
+      "bytes": 2176,
+      "textSha256": "23e05b6659500c0d3d533220d8ccd3f2303875e2af07d49c6bfc3ca14ca79a77",
+      "endings": [
+        [
+          "CRLF",
+          19
+        ]
+      ]
+    },
+    {
+      "path": "examples/demo-magic.json",
+      "sha256": "ac05c0f1f4aea9aff7de89ab14e9f122e9081461e89c3940fd08244079cd4bf7",
+      "bytes": 2666,
+      "textSha256": "39a9edae9722d971e5f1a040e177be0485bbaca5ec2f3dbe8c2812275edc7543",
+      "endings": [
+        [
+          "CRLF",
+          13
+        ]
+      ]
+    },
+    {
+      "path": "examples/demo-pack.json",
+      "sha256": "4e59a9acb1c1cb9dec235242638775dd26ec140051deac64402c5fe823720f3f",
+      "bytes": 1344,
+      "textSha256": "9256dcfbfa301ef206d9114f51d77070c639c893e2770fa8862bd818a48fc13a",
+      "endings": [
+        [
+          "CRLF",
+          54
+        ]
+      ]
+    },
+    {
+      "path": "examples/demo-random-tables.json",
+      "sha256": "1b3abe35397b13d5c56f20f00a828d271cfe76c89c8e8c8ce4c3bc12af1ef411",
+      "bytes": 4457,
+      "textSha256": "11bdeb4677610bbfddc7dc7b4d709cc647c69f7d4c05cdc54717662e06386729",
+      "endings": [
+        [
+          "CRLF",
+          186
+        ]
+      ]
+    },
+    {
+      "path": "examples/demo-spell-session.json",
+      "sha256": "1b425260ad2ba03473b622165a871d6875f535ad573042559f8c6a0b38fa7708",
+      "bytes": 1887,
+      "textSha256": "de1cd000290c6b7079da945214f8d52b4a0d48ea484db401d825f80b1797d109",
+      "endings": [
+        [
+          "CRLF",
+          11
+        ]
+      ]
+    },
+    {
+      "path": "index.html",
+      "sha256": "771bcf59170e712aa03621240b70954f72471798f9dd021e11d2bf846f7dc861",
+      "bytes": 293,
+      "textSha256": "870c306056fd9a617b24874024af270b02bef40d6fa05528a980a0dc34b1f9e2",
+      "endings": [
+        [
+          "CRLF",
+          2
+        ]
+      ]
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "6a08cb5bf9d73dad79f397800283851306b77c67ac2748529bc6773fe196c37a",
+      "bytes": 83446,
+      "textSha256": "5c88012fe665b607ed63e0df5d9b008269a169c21f16485ada6cd62f0fbaaf78",
+      "endings": [
+        [
+          "CRLF",
+          2412
+        ]
+      ]
+    },
+    {
+      "path": "package.json",
+      "sha256": "fe21f987bd8500bec39acd3dab9a69467213cf62e91d5d1d04c37383a086e9a6",
+      "bytes": 4596,
+      "textSha256": "ac5b0cb0be74d8026b59d2a807bf5783667fb6bece3fed8ad29d39c353834345",
+      "endings": [
+        [
+          "CRLF",
+          67
+        ]
+      ]
+    },
+    {
+      "path": "packages/catalog/index.ts",
+      "sha256": "fe64a8dc7dbbdae9ca726bfa685877085c6133e995f45a213472a00f94626c6c",
+      "bytes": 10541,
+      "textSha256": "fe64a8dc7dbbdae9ca726bfa685877085c6133e995f45a213472a00f94626c6c",
+      "endings": [
+        [
+          "LF",
+          180
+        ]
+      ]
+    },
+    {
+      "path": "packages/catalog/storage.ts",
+      "sha256": "b10e4dc9ba417404b5bc5e23aa2a7809d96427cd341f54ff5832c60d2369c6aa",
+      "bytes": 1596,
+      "textSha256": "37494ea27fd18294a5d02cd830965b27161a5c88d754971772ac0b43403fd2f8",
+      "endings": [
+        [
+          "CRLF",
+          37
+        ]
+      ]
+    },
+    {
+      "path": "packages/character-generator/character-export.ts",
+      "sha256": "004cefcd37297e5b00143e348d5953c46c67cdfbd9c71c88ad2bab8fad41994f",
+      "bytes": 8206,
+      "textSha256": "004cefcd37297e5b00143e348d5953c46c67cdfbd9c71c88ad2bab8fad41994f",
+      "endings": [
+        [
+          "LF",
+          90
+        ]
+      ]
+    },
+    {
+      "path": "packages/character-generator/character-finalization.ts",
+      "sha256": "b8e9a0a6534f7d4f27acb511a90c53f26cb5f82175e041062f270c82e1c4d6b4",
+      "bytes": 4114,
+      "textSha256": "80fcadc45e6bb52319e6b71f10c58e401b7cd1775922900e363500b566cfec3b",
+      "endings": [
+        [
+          "CRLF",
+          38
+        ]
+      ]
+    },
+    {
+      "path": "packages/character-generator/character-library.ts",
+      "sha256": "6e43d5ac2d9aad500b1eda91246cb5e8403033b7cb58cf13999f150174e9f1bf",
+      "bytes": 2673,
+      "textSha256": "6e43d5ac2d9aad500b1eda91246cb5e8403033b7cb58cf13999f150174e9f1bf",
+      "endings": [
+        [
+          "LF",
+          29
+        ]
+      ]
+    },
+    {
+      "path": "packages/character-generator/core-background.ts",
+      "sha256": "647dce1d2cf6cd34a5d833d0af7a174323a87cd623420b1f9f6566d45cdebea8",
+      "bytes": 1914,
+      "textSha256": "49540cc5355dbb60fc8af3c774524c48563bdc880e513fbe2b3a7ad792b3eb03",
+      "endings": [
+        [
+          "CRLF",
+          25
+        ]
+      ]
+    },
+    {
+      "path": "packages/character-generator/core-equipment.ts",
+      "sha256": "beb0d50440e5c26587e0736707b7a7dfca2dc9b1a7fec1be96422ed9b444c5a6",
+      "bytes": 11078,
+      "textSha256": "dbd73708f42c9810d873cd774039ad9478887f18f75201b5c058e8f62b22c024",
+      "endings": [
+        [
+          "CRLF",
+          99
+        ]
+      ]
+    },
+    {
+      "path": "packages/character-generator/core-interesting-things.ts",
+      "sha256": "d4e4e6446a5b1acedf8ed0a9706b685ba12dc3d11509a325b9334d4e732c8baa",
+      "bytes": 7035,
+      "textSha256": "9ca4fbaa0cab9c18e1a3d12c6ef4c79337fb16d7d4e2f7b3ebe6d9c6f18ec226",
+      "endings": [
+        [
+          "CRLF",
+          68
+        ]
+      ]
+    },
+    {
+      "path": "packages/character-generator/export-content-policy.ts",
+      "sha256": "2d5ec54e603cd627b288939c2bfda6153dc6e59dd449395e661bfd2e6cf444c0",
+      "bytes": 1409,
+      "textSha256": "2d5ec54e603cd627b288939c2bfda6153dc6e59dd449395e661bfd2e6cf444c0",
+      "endings": [
+        [
+          "LF",
+          17
+        ]
+      ]
+    },
+    {
+      "path": "packages/character-generator/human-l0-consumables.ts",
+      "sha256": "04df04510cb6ed9afba5434470f0628a59579831a8acdc3b43fb62dfb4100dfd",
+      "bytes": 12337,
+      "textSha256": "9fe5622a59aeb131296606d1edb2e5923c49102e9673e3e0726e3002a2251152",
+      "endings": [
+        [
+          "CRLF",
+          166
+        ]
+      ]
+    },
+    {
+      "path": "packages/character-generator/human-l0-storage.ts",
+      "sha256": "d5138ed6dd8adb8e2fc979675cf74c70691885121dd48cc47063acbe006669db",
+      "bytes": 2682,
+      "textSha256": "00ede9e383e19de6a3e86b75befc8615d13e6da208a43bdee73d1eecac581726",
+      "endings": [
+        [
+          "CRLF",
+          56
+        ]
+      ]
+    },
+    {
+      "path": "packages/character-generator/human-l0.ts",
+      "sha256": "b65188a1699b295dfc2a5045eb10ed6434a18b2aa25172e6c54b67dae4ae17fe",
+      "bytes": 17362,
+      "textSha256": "3f310d5af1067e434d13a21a19e3ef979c3a7099b2c1139ac37d1a088de056ec",
+      "endings": [
+        [
+          "CRLF",
+          225
+        ]
+      ]
+    },
+    {
+      "path": "packages/character-generator/index.ts",
+      "sha256": "8189229bbe6760de78db9e095f03fecbf21a50f18533c5db1fe4b8074826da3c",
+      "bytes": 30347,
+      "textSha256": "2482f07261e226be7bb6e3db31af036a5717ba55d4d210c3f16fa777759aaf1c",
+      "endings": [
+        [
+          "CRLF",
+          345
+        ]
+      ]
+    },
+    {
+      "path": "packages/character-generator/level.ts",
+      "sha256": "d12a10e705c4491ed1285859100bc82144f3a8b9f5bee8d8dffa6d8b80f936e9",
+      "bytes": 178,
+      "textSha256": "02fd053f0719897566f4c3f93a3dfa47d2b18b760da939edd693afce2a4ce791",
+      "endings": [
+        [
+          "CRLF",
+          4
+        ]
+      ]
+    },
+    {
+      "path": "packages/character-generator/official-core.ts",
+      "sha256": "6b8b6aab530c6d2f98ebe60e5f15bdbfd5cf48308298b69e2da94a45698a1d3d",
+      "bytes": 36549,
+      "textSha256": "2dca177ddf97801befc6953fa54593f039edd123cd28535db8127c5321f91272",
+      "endings": [
+        [
+          "CRLF",
+          356
+        ]
+      ]
+    },
+    {
+      "path": "packages/character-generator/procedure-graph.ts",
+      "sha256": "141b9d14b59d845fb53ef8e192947c37f29604a47483c37cb755d854630b2187",
+      "bytes": 49101,
+      "textSha256": "3240de8491d7df614fcb729ae8b2e6a5132140dbfc7318c4e48b22e95f49960b",
+      "endings": [
+        [
+          "CRLF",
+          441
+        ]
+      ]
+    },
+    {
+      "path": "packages/character-generator/procedure-model.ts",
+      "sha256": "1209700ff4218a5751dff819f4b30c99281d207c3ef070461708909fec77ce1b",
+      "bytes": 12172,
+      "textSha256": "0122dea810b81d5888752a3e2667f30c479a7f0e8dd476146ab8832f97ca7603",
+      "endings": [
+        [
+          "CRLF",
+          103
+        ]
+      ]
+    },
+    {
+      "path": "packages/character-generator/procedure-runtime.ts",
+      "sha256": "92ec7bba9e2c0caff77c1eb48fe772f7a569ca1b2ec8988b335f32318f5444d8",
+      "bytes": 15489,
+      "textSha256": "352e2b8cf03b117ba2250ae2930e23fb043a5286d34cd39a44e440b032d28938",
+      "endings": [
+        [
+          "CRLF",
+          170
+        ]
+      ]
+    },
+    {
+      "path": "packages/character-generator/runtime.ts",
+      "sha256": "36041d9b132dd3220fc9a755e05727e64a6f64d8714451df3441683ca66cff90",
+      "bytes": 1935,
+      "textSha256": "495ba635045c8afbfbf4f134e1ae2575790aeb5dde056303563aeb8bc1318d2c",
+      "endings": [
+        [
+          "CRLF",
+          29
+        ]
+      ]
+    },
+    {
+      "path": "packages/character-generator/storage.ts",
+      "sha256": "70a6e686b72844ba570cee9eb401047225ebb2bfd1948edeee10b2c6a20bb1b2",
+      "bytes": 2714,
+      "textSha256": "1759370de15013f7ac57b3271c594e92caa1958fdec98441d6f757b69c089c0f",
+      "endings": [
+        [
+          "CRLF",
+          55
+        ]
+      ]
+    },
+    {
+      "path": "packages/curation/ancestry-base-model.ts",
+      "sha256": "375f38c359ff0d8b9d85f2307452e9c427b31875b9a42634cca48473e4bd5837",
+      "bytes": 7398,
+      "textSha256": "54aec5dabdcbd0eba4e5baf61015e98fd2cf0764adec4ec98f79888f2f1ca636",
+      "endings": [
+        [
+          "CRLF",
+          92
+        ]
+      ]
+    },
+    {
+      "path": "packages/curation/contracts.ts",
+      "sha256": "369c738c559bcf823e3135acdf6f7a4f2cf1ab870f0db1f954e981658b5fa6df",
+      "bytes": 6780,
+      "textSha256": "369c738c559bcf823e3135acdf6f7a4f2cf1ab870f0db1f954e981658b5fa6df",
+      "endings": [
+        [
+          "LF",
+          108
+        ]
+      ]
+    },
+    {
+      "path": "packages/curation/evidence.ts",
+      "sha256": "4793e8b6447ca5618d9a2b59014e3308570282f8ae0464d8ce1e710e6d005e77",
+      "bytes": 3433,
+      "textSha256": "4793e8b6447ca5618d9a2b59014e3308570282f8ae0464d8ce1e710e6d005e77",
+      "endings": [
+        [
+          "LF",
+          55
+        ]
+      ]
+    },
+    {
+      "path": "packages/curation/human-l0-activity4-lot.ts",
+      "sha256": "cbbaa7c360d75afce656e7560f4288125ee449d572ddce21cbe0ff11a6a36b10",
+      "bytes": 22006,
+      "textSha256": "7f31ae234d973b367d81c0bd54328a894c61a34f7563035e5040888e7b0bd190",
+      "endings": [
+        [
+          "CRLF",
+          306
+        ]
+      ]
+    },
+    {
+      "path": "packages/curation/human-l0-consumable-bundle.ts",
+      "sha256": "5ee7774a05a0b4ba5f504a7a5119ba78537669e0f623caccebb8435c325c705c",
+      "bytes": 3338,
+      "textSha256": "1fcb8485cb3dfd2dfc98067d9f85de1fe7ea70a1fa41b936aca28426f97d645d",
+      "endings": [
+        [
+          "CRLF",
+          46
+        ]
+      ]
+    },
+    {
+      "path": "packages/curation/human-l0-consumable.ts",
+      "sha256": "0cf6456ea33879b090d57452353f41edad17d54fc7aed3831f224f0fe453e2ed",
+      "bytes": 64095,
+      "textSha256": "2a68612f58e302be9bb83fa6f5dd04b77c269eadd4a073f4d62875921fbe4a0b",
+      "endings": [
+        [
+          "CRLF",
+          898
+        ]
+      ]
+    },
+    {
+      "path": "packages/curation/human-l0-core-local.ts",
+      "sha256": "491b82d22b71cb0d0decda27e22c3e1a6ab545aaac31dad40c706edd091fce02",
+      "bytes": 8178,
+      "textSha256": "7e914e6989d0def07e7ef350c5f4c6ad1fca2b2f977fd23352790d6219bc59c3",
+      "endings": [
+        [
+          "CRLF",
+          99
+        ]
+      ]
+    },
+    {
+      "path": "packages/curation/human-l0-core-lot.ts",
+      "sha256": "4f29790f7cd9a118920629258e9d6be1f8193833aa4a4177ef5cd22c02898b52",
+      "bytes": 46275,
+      "textSha256": "3f69cdbbbde3c7fa0582fe22c4f9d66d8f2f9616c746fd3ae0f2f355ccf77254",
+      "endings": [
+        [
+          "CRLF",
+          772
+        ]
+      ]
+    },
+    {
+      "path": "packages/curation/human-l0-kits-lot.ts",
+      "sha256": "71595aabaa68c8491985dc8cb1cdef01970582fca789edf6ac6655a94642d128",
+      "bytes": 20210,
+      "textSha256": "de98fcfeb0e21f0710fd4f6138bec2f5ea2afecb5bddc2283e7e2b2c6d68af35",
+      "endings": [
+        [
+          "CRLF",
+          350
+        ]
+      ]
+    },
+    {
+      "path": "packages/curation/human-l0-mechanics.ts",
+      "sha256": "dd3b5ee4328984214226f753fd9fe818cea47f4e3ecbe44f13057f5712b62408",
+      "bytes": 17700,
+      "textSha256": "7888e21cae89765be5750eee9b839d1d505c0696119adb2a0cf1fed9dfc3b683",
+      "endings": [
+        [
+          "CRLF",
+          222
+        ]
+      ]
+    },
+    {
+      "path": "packages/curation/identity.ts",
+      "sha256": "6a2e46ee73c2efcbc63e6f017f38903127ae1399e550fd0d8de838db8a19ed1f",
+      "bytes": 1097,
+      "textSha256": "6a2e46ee73c2efcbc63e6f017f38903127ae1399e550fd0d8de838db8a19ed1f",
+      "endings": [
+        [
+          "LF",
+          25
+        ]
+      ]
+    },
+    {
+      "path": "packages/curation/interesting-things-model.ts",
+      "sha256": "ce608f751e761d725646a6882dd9c8d164afa23e9627e499d15828102da79820",
+      "bytes": 9440,
+      "textSha256": "eae6dde147450230cfcdd954d868708ba8105547535e15868fff6f779269bcb2",
+      "endings": [
+        [
+          "CRLF",
+          110
+        ]
+      ]
+    },
+    {
+      "path": "packages/curation/pilot-item-model.ts",
+      "sha256": "a5ef0d508706266217df2e4e25afe0c7943f59bdc5217968444dc44220210906",
+      "bytes": 6399,
+      "textSha256": "e892cd65a8f382e57edac5f1d81d8b43275e23674d0172f131c63437c905b5f0",
+      "endings": [
+        [
+          "CRLF",
+          65
+        ]
+      ]
+    },
+    {
+      "path": "packages/curation/pilot-table-model.ts",
+      "sha256": "dd0a84eeb210d087779139bcfd448038e5029d2ae026f6da0a22aca0257ab489",
+      "bytes": 8316,
+      "textSha256": "df731b704eb1646105d3c3242da282d9d5b82adcc353a72feeaafe1757dc62b5",
+      "endings": [
+        [
+          "CRLF",
+          93
+        ]
+      ]
+    },
+    {
+      "path": "packages/curation/profession-language-model.ts",
+      "sha256": "67528258f02c7a2f6caf34c4be01dae093c4ee54c613b1ebd7363c72e368fac1",
+      "bytes": 7301,
+      "textSha256": "e91d5168faa24c830d8a5d7d8d90b486a2cd7e69019607680bdca34a422f30f9",
+      "endings": [
+        [
+          "CRLF",
+          86
+        ]
+      ]
+    },
+    {
+      "path": "packages/curation/registries.ts",
+      "sha256": "bff9f45665113dbae0a7f5e4f3eda81bd7678e253774188a5ea02f0eb662e298",
+      "bytes": 4352,
+      "textSha256": "bff9f45665113dbae0a7f5e4f3eda81bd7678e253774188a5ea02f0eb662e298",
+      "endings": [
+        [
+          "LF",
+          59
+        ]
+      ]
+    },
+    {
+      "path": "packages/curation/source-policy.ts",
+      "sha256": "6724ccee854df638a5af24cc17986ca8aae02dcfd20cc019901e80f27fed94e6",
+      "bytes": 2256,
+      "textSha256": "6724ccee854df638a5af24cc17986ca8aae02dcfd20cc019901e80f27fed94e6",
+      "endings": [
+        [
+          "LF",
+          40
+        ]
+      ]
+    },
+    {
+      "path": "packages/curation/starting-equipment-model.ts",
+      "sha256": "df669928e7344d10e4224c39bbca88e9c646660e43b76da0f0044b5661625f11",
+      "bytes": 8103,
+      "textSha256": "5fc051cb7d927f51674371507cc9b8640f53108a4cd9bde66332e0f6712dd119",
+      "endings": [
+        [
+          "CRLF",
+          88
+        ]
+      ]
+    },
+    {
+      "path": "packages/equipment/index.ts",
+      "sha256": "b9cda519985cf2646fcad9c80754732f0445b4880c85ca3e3980438e4235a656",
+      "bytes": 2493,
+      "textSha256": "27bb6016b6f262f7d1b5aa2fabfa7abd8451a50b3212ceee7bcb07c0b6856be4",
+      "endings": [
+        [
+          "CRLF",
+          35
+        ]
+      ]
+    },
+    {
+      "path": "packages/random-tables/index.ts",
+      "sha256": "cd3134c478a222c9cc690a1a6b873a40a05873e53a8aa519044c4c61ca53a434",
+      "bytes": 11127,
+      "textSha256": "cd3134c478a222c9cc690a1a6b873a40a05873e53a8aa519044c4c61ca53a434",
+      "endings": [
+        [
+          "LF",
+          170
+        ]
+      ]
+    },
+    {
+      "path": "packages/session/index.ts",
+      "sha256": "b10c0fcd6d9befa7d4804fb762b33d54911d789ca5852b5d8ee80a100ff51fd6",
+      "bytes": 5887,
+      "textSha256": "e6bbb4d1877f47a064d59c6378eb5d3cc3cb883d011e87db7c462e9164947011",
+      "endings": [
+        [
+          "CRLF",
+          76
+        ]
+      ]
+    },
+    {
+      "path": "packages/session/model.ts",
+      "sha256": "75e7e564db86787b7415bc49c9a67f82cb9291d58837434fb647e94b0547021e",
+      "bytes": 3771,
+      "textSha256": "763c8ff7a13d4d8c5abb51fba8c69da64de96768c6c0d648f82fa62b583bbf51",
+      "endings": [
+        [
+          "CRLF",
+          52
+        ]
+      ]
+    },
+    {
+      "path": "packages/standalone/index.ts",
+      "sha256": "b9d552d6532f47efd332a6057ec8d004b24a9f406923447d6add9799309df5cd",
+      "bytes": 4846,
+      "textSha256": "b3b0e590bb6ebfd15f0e303b841ec931f13ad2e1d43a6c148246a83691744b1c",
+      "endings": [
+        [
+          "CRLF",
+          54
+        ]
+      ]
+    },
+    {
+      "path": "playwright.config.ts",
+      "sha256": "c181d674b1edf4ed0806b9c3626e01dd6646c60494759091593bc705a23f1f53",
+      "bytes": 547,
+      "textSha256": "baa2c92ad8f83a1ef5d9bc200909c3cc7c4b660a1f8e196b00b46d5e0cff827e",
+      "endings": [
+        [
+          "CRLF",
+          7
+        ]
+      ]
+    },
+    {
+      "path": "specs/001-catalogo-e-proveniencia/implementation.md",
+      "sha256": "d2ac711a663900d21ac3ba7b77c20f26a8bc72824691ff1a6d6e55b0a4da83f2",
+      "bytes": 3065,
+      "textSha256": "996a3c3508c9e83b796c61957fed3caef83c1ed2ccc86868261b2a502af8ba9f",
+      "endings": [
+        [
+          "CRLF",
+          27
+        ]
+      ]
+    },
+    {
+      "path": "specs/001-catalogo-e-proveniencia/plan.md",
+      "sha256": "11f07bccdb42b58ee2cfeaf3613ec4f21c18cca3ed5a2485549dc3c5f866cbe6",
+      "bytes": 827,
+      "textSha256": "e7df20a26308b06669bbbd17c2939750dd38267a5582b939471d5b524a1aa8df",
+      "endings": [
+        [
+          "CRLF",
+          7
+        ]
+      ]
+    },
+    {
+      "path": "specs/001-catalogo-e-proveniencia/spec.md",
+      "sha256": "e47e9ae4155890148a5a7cad3b09f4160a0b0f75512e18c5d713a538d289323d",
+      "bytes": 2046,
+      "textSha256": "5c47b9330f7267f9e124e5fecfd23b055bf9b227fdc73f6671d33c3981fdb6c6",
+      "endings": [
+        [
+          "CRLF",
+          28
+        ]
+      ]
+    },
+    {
+      "path": "specs/001-catalogo-e-proveniencia/tasks.md",
+      "sha256": "fc972f67ae964494ca6fed0764c670c2f6ce3b5e8445711ce8da32d0a203b329",
+      "bytes": 1137,
+      "textSha256": "e6ca3f4dd9018159b29da2ad9f38835c38dca01f558fa1016d0953d88611ead5",
+      "endings": [
+        [
+          "CRLF",
+          13
+        ]
+      ]
+    },
+    {
+      "path": "specs/002-criacao-e-progressao/plan.md",
+      "sha256": "60722ce9e684289b1ef5f2b67ab3c8d5b4c505412cee556ad7849b402b9f2a99",
+      "bytes": 688,
+      "textSha256": "bb3617c88220bb60ea835f29e5f435e1cb352f9e55a4e77b1862d305ca45f98e",
+      "endings": [
+        [
+          "CRLF",
+          5
+        ]
+      ]
+    },
+    {
+      "path": "specs/002-criacao-e-progressao/spec.md",
+      "sha256": "d48984ba968e9368497131929c4405c2090f93e763de9258e75b5593bb52c8bf",
+      "bytes": 1928,
+      "textSha256": "99870b66ecc054548ec33b722d902d7f9c38fc0f587d7f6ed8350de4281a2135",
+      "endings": [
+        [
+          "CRLF",
+          22
+        ]
+      ]
+    },
+    {
+      "path": "specs/002-criacao-e-progressao/tasks.md",
+      "sha256": "4e3bdf6e7d866dbbf5ba2fdadc9228dbaa371dc197a2068dccef6b7cc5934208",
+      "bytes": 1510,
+      "textSha256": "2f8b573ae89ead1a8fbb80a1a0197adc5d348812d1ce77456f11932b53e2b3e3",
+      "endings": [
+        [
+          "CRLF",
+          20
+        ]
+      ]
+    },
+    {
+      "path": "specs/003-motor-de-regras/plan.md",
+      "sha256": "1f4b398d6367e77a44c13547f56b7423682cb4604b16a89ef9ece797b8672ac9",
+      "bytes": 733,
+      "textSha256": "a15037f4d13761b59b2a06ce4525de614663d10f6aee18285ae25f52c9388717",
+      "endings": [
+        [
+          "CRLF",
+          5
+        ]
+      ]
+    },
+    {
+      "path": "specs/003-motor-de-regras/spec.md",
+      "sha256": "0c1c9e5991c6b65adf92f362b020b91e38324e79111e39cba3f6f9486b077eb5",
+      "bytes": 1869,
+      "textSha256": "b8af309f0a904413920c18870d8d9afa63ee28f02e2206cb2455bbf89b0037e0",
+      "endings": [
+        [
+          "CRLF",
+          23
+        ]
+      ]
+    },
+    {
+      "path": "specs/003-motor-de-regras/tasks.md",
+      "sha256": "e452728eb8ea7175ca931e06daf8371c331292f7a00c9df4ce5ca0d661fa8b34",
+      "bytes": 1878,
+      "textSha256": "3e366aa68e3c0e3dcc3b83e891532ce16cf08192bef9e80483256f44a5ed365b",
+      "endings": [
+        [
+          "CRLF",
+          24
+        ]
+      ]
+    },
+    {
+      "path": "specs/004-magias-e-escolhas/plan.md",
+      "sha256": "4b24c0eceac1ad7f10c75cb0e74c155b3754d93e71a69f6c0febd1e0dec46bee",
+      "bytes": 644,
+      "textSha256": "f3331622dced7e0d17dbb00b93418e3022bdb5af14efe9944e213c2fb45b64ae",
+      "endings": [
+        [
+          "CRLF",
+          5
+        ]
+      ]
+    },
+    {
+      "path": "specs/004-magias-e-escolhas/spec.md",
+      "sha256": "7de8b42e9da894265182e56d34ca1bf9751049831adbc66cc735db5aa575157c",
+      "bytes": 1688,
+      "textSha256": "9dc504bcaea268848d33140701db6f32985f9ac1b1d9a34b6b6d8556ec52a7b4",
+      "endings": [
+        [
+          "CRLF",
+          19
+        ]
+      ]
+    },
+    {
+      "path": "specs/004-magias-e-escolhas/tasks.md",
+      "sha256": "730e62eb1e9e8f6cb7100e2a4f29d03b43476886b815637816a0302a53e8a041",
+      "bytes": 1723,
+      "textSha256": "64b139f303dd0a87f8962a5bf26f5c4d209e2b612ae06da30bcd79b333ed6e43",
+      "endings": [
+        [
+          "CRLF",
+          19
+        ]
+      ]
+    },
+    {
+      "path": "specs/005-ficha-e-efeitos/plan.md",
+      "sha256": "636dae85bfad2c9520c8ca2a32f68b0b777ebf7de34322642a9a4a1593426872",
+      "bytes": 633,
+      "textSha256": "07494dfd8e06be1681de82135750c2e0bc98b253227afaa18ab5253447e4f336",
+      "endings": [
+        [
+          "CRLF",
+          5
+        ]
+      ]
+    },
+    {
+      "path": "specs/005-ficha-e-efeitos/spec.md",
+      "sha256": "ba543a9e7054bd265c9b538134a7d25b15bff9f0ac04050931627065325ea0d4",
+      "bytes": 1860,
+      "textSha256": "103fcd0c459588d2ab31acc19e95aebc1dadb1c48ca335f3eaa12fad8a3f6a2b",
+      "endings": [
+        [
+          "CRLF",
+          20
+        ]
+      ]
+    },
+    {
+      "path": "specs/005-ficha-e-efeitos/tasks.md",
+      "sha256": "4fe9f1282c408f659e85e52b18076855f6bbc7f901c498183d7c0d25ae3ce728",
+      "bytes": 2080,
+      "textSha256": "ccd82e83b15d434bfafb8ce4544d3c1b46dae48ada7f6b39e5cee7dc9d02b4a2",
+      "endings": [
+        [
+          "CRLF",
+          30
+        ]
+      ]
+    },
+    {
+      "path": "specs/006-persistencia-e-exportacao/plan.md",
+      "sha256": "2c85e4b4dc8595e9aaf83014fb7b0436bd044e273c141000fdfa7fc74dce8b14",
+      "bytes": 587,
+      "textSha256": "178a9d53db48d879c61ee22858244e2e36f57eb979ee703c63ff31722cb8ca74",
+      "endings": [
+        [
+          "CRLF",
+          5
+        ]
+      ]
+    },
+    {
+      "path": "specs/006-persistencia-e-exportacao/spec.md",
+      "sha256": "46fe9f2c62a7a9f68811e11cd302af27d1a653ad85db42f50b59681133c606e6",
+      "bytes": 1511,
+      "textSha256": "131629fb558565b43f830805f338f1186aa788ec01f666a58054c1f2079f0110",
+      "endings": [
+        [
+          "CRLF",
+          19
+        ]
+      ]
+    },
+    {
+      "path": "specs/006-persistencia-e-exportacao/tasks.md",
+      "sha256": "a393eb4c3c80a4f6e72aeb57b98f7fdb3fdb39634ed1ff7586c9112380ad2d86",
+      "bytes": 1538,
+      "textSha256": "d9f6d14208535612749127813789dd3b1b9f8500ae8eb28d85141cfcc571aff1",
+      "endings": [
+        [
+          "CRLF",
+          22
+        ]
+      ]
+    },
+    {
+      "path": "specs/007-html-editavel-autonomo/plan.md",
+      "sha256": "6ea1e42df3a2e8093ca1ac19fd77b01628009aab68e6d53632c6b02c56d12b9b",
+      "bytes": 734,
+      "textSha256": "a2f4702077bacea1f52b7cdf9673cddee04a281562deab3f0246ac9f067bdbea",
+      "endings": [
+        [
+          "CRLF",
+          7
+        ]
+      ]
+    },
+    {
+      "path": "specs/007-html-editavel-autonomo/spec.md",
+      "sha256": "eaab8ae9bfd373ea5afb47ea5bfff519919c4dd06c77aa0ff4225e0d0224ac77",
+      "bytes": 2140,
+      "textSha256": "703ef92e3aebaae5f3ad0fa8995a5d96dc583d0ee3ab6ea8f998cad8a3b02f78",
+      "endings": [
+        [
+          "CRLF",
+          23
+        ]
+      ]
+    },
+    {
+      "path": "specs/007-html-editavel-autonomo/tasks.md",
+      "sha256": "7195d149ffa8e7e7d193915bff9f98d95fb81f76926a8423253468a373dc7a27",
+      "bytes": 1061,
+      "textSha256": "16ffe38d3f47e2e5fbdb85734725754d22dd63b26210b76365b9712699656898",
+      "endings": [
+        [
+          "CRLF",
+          11
+        ]
+      ]
+    },
+    {
+      "path": "specs/008-tabelas-aleatorias/plan.md",
+      "sha256": "8efe8f738555e88b20183986c4e55c640e8c168234f1a428e8755b9a6c6ca04f",
+      "bytes": 2049,
+      "textSha256": "0e3f8618fcad89648229167da6c4b3093ee20234d84fb91b0a2e7259cbb58273",
+      "endings": [
+        [
+          "CRLF",
+          28
+        ]
+      ]
+    },
+    {
+      "path": "specs/008-tabelas-aleatorias/spec.md",
+      "sha256": "511a66c0f867190e3310c92a649d9957a0e59d37ecc21a02094d077d2a0ccf40",
+      "bytes": 5079,
+      "textSha256": "26338ffb83d09c651dcc8e9ba3c0887e766f3b4a66df16d78c4524b9975ba1e2",
+      "endings": [
+        [
+          "CRLF",
+          41
+        ]
+      ]
+    },
+    {
+      "path": "specs/008-tabelas-aleatorias/tasks.md",
+      "sha256": "2baedcc86c6dd043d41a0668b8d73b4192c2a1eec2cce6dc49e14a0796b5617c",
+      "bytes": 1415,
+      "textSha256": "6a2e137704e957f6132050a46f83d3462ab8e294bd616ce6a32467464bfef709",
+      "endings": [
+        [
+          "CRLF",
+          13
+        ]
+      ]
+    },
+    {
+      "path": "specs/009-geracao-aleatoria/plan.md",
+      "sha256": "15aa46341cdb0510d40567cf99598a312dcc1770b39795b834a3a94e54b166ba",
+      "bytes": 2567,
+      "textSha256": "231b6083b1a29c6191ea529717bc60ef46fe567503bb28343ebbec5fc593beef",
+      "endings": [
+        [
+          "CRLF",
+          34
+        ]
+      ]
+    },
+    {
+      "path": "specs/009-geracao-aleatoria/spec.md",
+      "sha256": "4bbf33295c8dc0dbcb63b124def5b48bbb1099871b5fab6f41b4559571ab9f7e",
+      "bytes": 5769,
+      "textSha256": "cb846dccb7888b0bea1219198820cb8445f91ba51bb853182dc98ccad1a54fad",
+      "endings": [
+        [
+          "CRLF",
+          45
+        ]
+      ]
+    },
+    {
+      "path": "specs/009-geracao-aleatoria/tasks.md",
+      "sha256": "5e3ddf628c70462976b64bdf857c713c6edbc18fe23db1d7d29416d3e666338c",
+      "bytes": 1858,
+      "textSha256": "c20f8c23a76e922db7230c7bd05371efd02b71ad2163d90921f8e832b9c13728",
+      "endings": [
+        [
+          "CRLF",
+          15
+        ]
+      ]
+    },
+    {
+      "path": "tests/activity1-provenance.test.ts",
+      "sha256": "12567131ae43e795cff32232e2ca6ccb24cbe1a4d4b125fb5f95b3ef2c0ca563",
+      "bytes": 7717,
+      "textSha256": "6664cd1e9be624ff90538be4253bb9d580fc8338ac13231c0c8e7bbc3cfaa95c",
+      "endings": [
+        [
+          "CRLF",
+          95
+        ]
+      ]
+    },
+    {
+      "path": "tests/catalog.test.ts",
+      "sha256": "03195baf359bcbd9192769d7f9dabc86c2ce53af60b7e3b90bf8cf19c667460f",
+      "bytes": 7308,
+      "textSha256": "637929c2b6e52705406baab375d42997dc4f23950efe79666378b1e9056c448b",
+      "endings": [
+        [
+          "CRLF",
+          116
+        ]
+      ]
+    },
+    {
+      "path": "tests/character-export-source.test.ts",
+      "sha256": "2d84db88fb4cdf4e61331d30fdd5bf0dedf2499816b4f02a79d36a054e08e7ab",
+      "bytes": 5273,
+      "textSha256": "2d84db88fb4cdf4e61331d30fdd5bf0dedf2499816b4f02a79d36a054e08e7ab",
+      "endings": [
+        [
+          "LF",
+          60
+        ]
+      ]
+    },
+    {
+      "path": "tests/character-export.test.ts",
+      "sha256": "623a914d4e95dd7538326fb3dff2091e2ba7f490b0a1e79ab601b0c90a020369",
+      "bytes": 4822,
+      "textSha256": "623a914d4e95dd7538326fb3dff2091e2ba7f490b0a1e79ab601b0c90a020369",
+      "endings": [
+        [
+          "LF",
+          46
+        ]
+      ]
+    },
+    {
+      "path": "tests/character-finalization.test.ts",
+      "sha256": "4e2032cd84817fed1e91a2ea56ebc9ae3d6242845c7de307ac900153496aa4b4",
+      "bytes": 3566,
+      "textSha256": "6973a3708933beb7a2a2af180788afd5638fd442640566b06b466128546a3ff8",
+      "endings": [
+        [
+          "CRLF",
+          41
+        ]
+      ]
+    },
+    {
+      "path": "tests/character-library.test.ts",
+      "sha256": "51f363e76da5558410c8fec076241d8ecc9ef8c7c61024493380883ed2a5c9ee",
+      "bytes": 2419,
+      "textSha256": "51f363e76da5558410c8fec076241d8ecc9ef8c7c61024493380883ed2a5c9ee",
+      "endings": [
+        [
+          "LF",
+          28
+        ]
+      ]
+    },
+    {
+      "path": "tests/choice-slot-contract.test.ts",
+      "sha256": "ed0a6029f76940d198924e4a3d6daffd32d415d70edc7f9073487635845859a6",
+      "bytes": 4136,
+      "textSha256": "bc0ec482a1e5b21b55163469bebe16eb8a3d580679b6b7a463680b3247f7b03c",
+      "endings": [
+        [
+          "CRLF",
+          60
+        ]
+      ]
+    },
+    {
+      "path": "tests/choice-slot.test.tsx",
+      "sha256": "5ce778824f1d6b481bfb915671ee4cd2941afacc6fd2e368aba72d7d17568f26",
+      "bytes": 9017,
+      "textSha256": "42e39ec642e9c4fbe0c926ab09ab48d27bc4dc3f6f148e3caf23c38862a1d740",
+      "endings": [
+        [
+          "CRLF",
+          181
+        ]
+      ]
+    },
+    {
+      "path": "tests/closure-coverage-source.test.ts",
+      "sha256": "86258ffe10021a6e7ea855868c4832b3f73eb5698d6f6d52990ba396f41185b4",
+      "bytes": 4282,
+      "textSha256": "86258ffe10021a6e7ea855868c4832b3f73eb5698d6f6d52990ba396f41185b4",
+      "endings": [
+        [
+          "LF",
+          50
+        ]
+      ]
+    },
+    {
+      "path": "tests/consolidated-freeze.test.ts",
+      "sha256": "f9ab0dcfd2d5bdfbcda29921f503cf0c1375d8fabb92ad615ed1ed8ca8d1fc47",
+      "bytes": 3690,
+      "textSha256": "f9ab0dcfd2d5bdfbcda29921f503cf0c1375d8fabb92ad615ed1ed8ca8d1fc47",
+      "endings": [
+        [
+          "LF",
+          61
+        ]
+      ]
+    },
+    {
+      "path": "tests/core-background.test.ts",
+      "sha256": "49ebe6b9aa186b1955bed84ac5e497558118f5342f619faf7a6705acaf9fad72",
+      "bytes": 1740,
+      "textSha256": "9e09c2021eb03d8868dd4d4f7a9d2bb184a09cea84f3163efd47abea65781b3f",
+      "endings": [
+        [
+          "CRLF",
+          22
+        ]
+      ]
+    },
+    {
+      "path": "tests/core-equipment.test.ts",
+      "sha256": "39a7bae8884da46a8b1129e0cb37a6b54d182327ac00b2bcb77ac138db999d52",
+      "bytes": 8621,
+      "textSha256": "c8c3b62b162dae180176e74df906ef8036e13e42bee08a5eb07636504f9857b3",
+      "endings": [
+        [
+          "CRLF",
+          86
+        ]
+      ]
+    },
+    {
+      "path": "tests/core-interesting-things.test.ts",
+      "sha256": "af5cb8a4a43f9cde3c0da615c0428a7c547b8587e84a2477b6156397358139ce",
+      "bytes": 4998,
+      "textSha256": "d266a087e41269113d7b420e1dace28557c480d8849b4d9afe241b7ffd99fb1e",
+      "endings": [
+        [
+          "CRLF",
+          48
+        ]
+      ]
+    },
+    {
+      "path": "tests/creation-procedures-ui.test.tsx",
+      "sha256": "eb21fbb69dd5caf7fb08093e66e675e34448f47add72235b2b5054b32a5555e2",
+      "bytes": 6283,
+      "textSha256": "0bb7eb2bbc61c85a6a7ea0d98a2b1895c8d6e419b3861ffe903fe1f03db0e79d",
+      "endings": [
+        [
+          "CRLF",
+          79
+        ]
+      ]
+    },
+    {
+      "path": "tests/curation-ancestries.test.ts",
+      "sha256": "e62056dcae28c5a27838bd83138a7dcc5eac4138785c44774443b69e0a649796",
+      "bytes": 9898,
+      "textSha256": "25bd68db0f99ce2cdd4af2097abda1d3c91a98537448ac2f043967bb8c121674",
+      "endings": [
+        [
+          "CRLF",
+          130
+        ]
+      ]
+    },
+    {
+      "path": "tests/curation-compilation-report.test.ts",
+      "sha256": "2e0a5f3e17758777b7ee330a528f2a8440b2cb175a4d6ba6e42e4e41ac9600a0",
+      "bytes": 8210,
+      "textSha256": "74d4f604026dbd72aaab81daaf54e0764ccab6b83b07efce9a18af15c8276e73",
+      "endings": [
+        [
+          "CRLF",
+          122
+        ]
+      ]
+    },
+    {
+      "path": "tests/curation-contracts.test.ts",
+      "sha256": "66483917c532bce9868eb0112cc4a12d940d68562f689aa56f871d8ce2112ddc",
+      "bytes": 4822,
+      "textSha256": "ae8abd111c0591533d8c4280fce0f9b13227070329ffa5e3f9034726abe43426",
+      "endings": [
+        [
+          "CRLF",
+          64
+        ]
+      ]
+    },
+    {
+      "path": "tests/curation-core-local-source.test.ts",
+      "sha256": "fae1078e6b3d352dffe8ab93054bdc4ba4c0c340eb4c72d4122e0d12b63fb7b8",
+      "bytes": 4169,
+      "textSha256": "91323263504c1ebe4f7ccff91ec4ff197653acd8df031b9bedda1d8f499b9462",
+      "endings": [
+        [
+          "CRLF",
+          44
+        ]
+      ]
+    },
+    {
+      "path": "tests/curation-core-local.test.ts",
+      "sha256": "7c48e707d1871501d60f1b5b832f6912fb2b8293cb8e81ac74ec99e46a6ce96c",
+      "bytes": 4357,
+      "textSha256": "d29df244db147a58f15d1da0f35468e4b871c85c02e5a682c010056bb9c7a290",
+      "endings": [
+        [
+          "CRLF",
+          41
+        ]
+      ]
+    },
+    {
+      "path": "tests/curation-core-pilot.test.ts",
+      "sha256": "f1a8ab66cf8f12091183abc2c02f38056d0d23afc4f5679b6bfd07e54fd17e85",
+      "bytes": 17914,
+      "textSha256": "01ae792d7c659b5401cf24109ea6a983b2a80decef71657a16da7ee0895de3f2",
+      "endings": [
+        [
+          "CRLF",
+          212
+        ]
+      ]
+    },
+    {
+      "path": "tests/curation-creation-tables.test.ts",
+      "sha256": "810eff22a0079b01869d02a9fb170f14d83fde257b6f1fe2341034432bfc1d84",
+      "bytes": 8093,
+      "textSha256": "8d94c4270847db19ac81b7ca3ec241740e74ef7eb8a4b5fe538695c120236b14",
+      "endings": [
+        [
+          "CRLF",
+          95
+        ]
+      ]
+    },
+    {
+      "path": "tests/curation-evidence.test.ts",
+      "sha256": "d4edc3483861420ca3685951fdbf52be10ab1c47f8cf20945447efbbd2c9eaea",
+      "bytes": 2443,
+      "textSha256": "645f7bb3f46aa8991a8d30a7d98cfdd7f8b91f74009febcb92613e1994f5db83",
+      "endings": [
+        [
+          "CRLF",
+          35
+        ]
+      ]
+    },
+    {
+      "path": "tests/curation-human-ancestry.test.ts",
+      "sha256": "05aa543e8f6638835b2a7fd92c1a420e988a4904595b942b968edd9cd3677bf1",
+      "bytes": 9492,
+      "textSha256": "1c611934eab156d555718e2aef07cb9488dbecf74593064c682e22201e1b32a9",
+      "endings": [
+        [
+          "CRLF",
+          121
+        ]
+      ]
+    },
+    {
+      "path": "tests/curation-human-l0-consumable-activity4.test.ts",
+      "sha256": "fea32582397e89cf04d6d0e6b6edc526ad20b8556c9f098200b8f55cd9be6e50",
+      "bytes": 17501,
+      "textSha256": "8c3a634a0657f2805980aa3a72a15ca4cda81c2a19fe64b9d92662fc2f631f8e",
+      "endings": [
+        [
+          "CRLF",
+          248
+        ]
+      ]
+    },
+    {
+      "path": "tests/curation-human-l0-consumable-compiler.test.ts",
+      "sha256": "d3879400cda48dcfa474f83f71ab733af89fd76883719c04d171426f2d6621d4",
+      "bytes": 5162,
+      "textSha256": "7616ed3788594270624f4140e3babf3640860cb2db26552879329b066002e6b9",
+      "endings": [
+        [
+          "CRLF",
+          61
+        ]
+      ]
+    },
+    {
+      "path": "tests/curation-human-l0-consumable.test.ts",
+      "sha256": "e97184df5c8125dfc428696e92d24ae7d040cc715deed55ba181c810db98c7e6",
+      "bytes": 11670,
+      "textSha256": "876279893d7fad1a37458be44e75419a9a49d829e8183e7b7cd954600e8ce738",
+      "endings": [
+        [
+          "CRLF",
+          167
+        ]
+      ]
+    },
+    {
+      "path": "tests/curation-human-l0-core-lot.test.ts",
+      "sha256": "704ebcb043a865f821652450cebe92d04b625073ad0a7b936d3a2221faf2f58d",
+      "bytes": 15896,
+      "textSha256": "2d89fa1b5f97bc5d0680e8ac4d6bc3da3d2fcde4f6f26c8eb799a0d2e31ed76b",
+      "endings": [
+        [
+          "CRLF",
+          240
+        ]
+      ]
+    },
+    {
+      "path": "tests/curation-human-l0-kits-lot.test.ts",
+      "sha256": "354f81280774161acb75dd323b114c1b9f249d40aae3c72c043ca657555ff805",
+      "bytes": 19890,
+      "textSha256": "ce3ddc2c679c377fbecd292b1bcf8c308371da6bd0efcc4cdd894c6c2c437f38",
+      "endings": [
+        [
+          "CRLF",
+          272
+        ]
+      ]
+    },
+    {
+      "path": "tests/curation-human-l0-mechanical-compiler.test.ts",
+      "sha256": "68ba3e1c2db1c9ea426277bd114725b89166a01a1d5d46c7e4d420d44d6922f0",
+      "bytes": 11638,
+      "textSha256": "103ae1ddffced4b960ae1d42a5ded1c8182e324669d7b139e1ea2c096b698364",
+      "endings": [
+        [
+          "CRLF",
+          144
+        ]
+      ]
+    },
+    {
+      "path": "tests/curation-human-l0-mechanics.test.ts",
+      "sha256": "7f07b2426a63b533557abf868a414c1b141ef0c80989942422a8b310583974cc",
+      "bytes": 12871,
+      "textSha256": "df593c095cc5d19072eef856e7729ee5b7199e377889137fda76b9dcbaa2adb1",
+      "endings": [
+        [
+          "CRLF",
+          192
+        ]
+      ]
+    },
+    {
+      "path": "tests/curation-human-l0-pack-stubs.test.ts",
+      "sha256": "0d5aeb7e3426ab93b2a27bf265308e6af0bdf26a76e9b531b6097ea8d30cd154",
+      "bytes": 1789,
+      "textSha256": "a45cd1fbdf92f9d46808c37e7b6a6d677c192fdd32c9ef37b63093d2de6ea60a",
+      "endings": [
+        [
+          "CRLF",
+          31
+        ]
+      ]
+    },
+    {
+      "path": "tests/curation-human-l0-validation.test.ts",
+      "sha256": "3a544b4909281b89616dbe33db42be323148851013dbc5ded87731a68e5666f0",
+      "bytes": 14493,
+      "textSha256": "4af1bdcc5f6852d195d94e8a498b82fbff855c95b193bf652693989133dc57d2",
+      "endings": [
+        [
+          "CRLF",
+          211
+        ]
+      ]
+    },
+    {
+      "path": "tests/curation-identity.test.ts",
+      "sha256": "a9a9748f8333451a580900d8d7067e5aef97e4fb85f9fe39c102dff3b6574d15",
+      "bytes": 1240,
+      "textSha256": "5bbceacfcec52f3795573a0be06d92790d1248140215c99c2a8cb4080128af1c",
+      "endings": [
+        [
+          "CRLF",
+          17
+        ]
+      ]
+    },
+    {
+      "path": "tests/curation-inputs.test.ts",
+      "sha256": "f16e9675a7fa5679abd4c90ec3ee9e73ffaff27dd250885bb0c88aaf49f80dcc",
+      "bytes": 2476,
+      "textSha256": "d0b6a6bc84143b96e9c49d3f8bbc71f51ae9e29ee7cacb1f7f41c9f25d3059ef",
+      "endings": [
+        [
+          "CRLF",
+          36
+        ]
+      ]
+    },
+    {
+      "path": "tests/curation-interesting-things.test.ts",
+      "sha256": "6071697ce58727cd71554aedb458ed21ad427f8fdb8ed01ff8b194ebb1274d3a",
+      "bytes": 14412,
+      "textSha256": "05995b23480e5f649588efdc31758c4b4916d1b5283ad414c5c2414fa0591931",
+      "endings": [
+        [
+          "CRLF",
+          162
+        ]
+      ]
+    },
+    {
+      "path": "tests/curation-mechanics.test.ts",
+      "sha256": "2661dc6e0fe0bdbfb2bce4604a11c97dac6330d4b8e4e581e7853682d4f3ebc7",
+      "bytes": 18660,
+      "textSha256": "681a1eb1dddda17792c47dcf171d1b147c3f26df2a85ce176fa8e634b99be817",
+      "endings": [
+        [
+          "CRLF",
+          213
+        ]
+      ]
+    },
+    {
+      "path": "tests/curation-normalization.test.ts",
+      "sha256": "e6f5c3b5555b448bd9c90dd18500e424dc8b6e9e3f182000740047a0dba4f42e",
+      "bytes": 11578,
+      "textSha256": "c2035fa70258bcd25332624d374be6b51bf48b89da9aa527a97a31a19b1845ef",
+      "endings": [
+        [
+          "CRLF",
+          133
+        ]
+      ]
+    },
+    {
+      "path": "tests/curation-pack-compiler.test.ts",
+      "sha256": "d915345d199c8c4685365ac747f67306eecf0940fcc26afd20e5ad4616358759",
+      "bytes": 13902,
+      "textSha256": "28ed96c57a3c24823306d372b5fe64ca60e42c416a92c5b0a848f37259a9cfe7",
+      "endings": [
+        [
+          "CRLF",
+          226
+        ]
+      ]
+    },
+    {
+      "path": "tests/curation-paths.test.ts",
+      "sha256": "e9b5410e3cd953d684d26bb61e6ffe81c1e4fe2a92c31432874a44e722eb63ac",
+      "bytes": 14015,
+      "textSha256": "5273a207acaa78abb53cc53bdf45cc4c112d368f98c683984bbf22862aebc158",
+      "endings": [
+        [
+          "CRLF",
+          165
+        ]
+      ]
+    },
+    {
+      "path": "tests/curation-pilot-items.test.ts",
+      "sha256": "de5151ea3a806390375b07bba839cafb92937513f0ce9076017539365c662e20",
+      "bytes": 10914,
+      "textSha256": "7537b2742fe8a93627c12939b91b6f9d7c3246a2a4fb2dc7e9a85e0764cebdbf",
+      "endings": [
+        [
+          "CRLF",
+          118
+        ]
+      ]
+    },
+    {
+      "path": "tests/curation-pilot-tables.test.ts",
+      "sha256": "d8159411bb65f8e433624dc5b590ddf01ed9a85fa5c9419e5ccae674edeb9209",
+      "bytes": 12294,
+      "textSha256": "b3a932743673a59c75e8885ec841152e6d2d2b03b4e9dcc60c68abf922b57e96",
+      "endings": [
+        [
+          "CRLF",
+          125
+        ]
+      ]
+    },
+    {
+      "path": "tests/curation-privacy.test.ts",
+      "sha256": "9c1d29e9697876d2bcdb04188466b1cbb9c3adf3a16c3e7ce9e2e512b7e61817",
+      "bytes": 3664,
+      "textSha256": "797f9e95beae6e8affafa946b18c703c4ac2d06c83fecd3ad536f85b3197cc89",
+      "endings": [
+        [
+          "CRLF",
+          50
+        ]
+      ]
+    },
+    {
+      "path": "tests/curation-professions-languages.test.ts",
+      "sha256": "1891d0b67a077f813a543d1f5ec28fb41929e273888e89e4b9879f2a7b734063",
+      "bytes": 11557,
+      "textSha256": "d9d4d99b42b84f8a4ebcf7177039f83017f5e63e9be9a35d535dcf13413d7526",
+      "endings": [
+        [
+          "CRLF",
+          121
+        ]
+      ]
+    },
+    {
+      "path": "tests/curation-reconciliation.test.ts",
+      "sha256": "104b166c075b4c4bd0e16a90833cc8b451aa198036157e3401b2a9e25dc16e4d",
+      "bytes": 10810,
+      "textSha256": "b150f3c1d59c6afa9be3e21a1c3e29618b832a83ef8dd504fc155accd84e4e9f",
+      "endings": [
+        [
+          "CRLF",
+          131
+        ]
+      ]
+    },
+    {
+      "path": "tests/curation-source-policy.test.ts",
+      "sha256": "933395c0cb2b37e8bfb3e13d1f430901ec55fa52d3660d6e7c3b11bb99014251",
+      "bytes": 1598,
+      "textSha256": "e88719147e3f1d4f1a4e6c95949c8307bf4421d4e87afc95f778861e37945265",
+      "endings": [
+        [
+          "CRLF",
+          27
+        ]
+      ]
+    },
+    {
+      "path": "tests/curation-sources.test.ts",
+      "sha256": "1a38a4ebee4bb0db799e378303924c835adc72ed9265127ebbf77d9b19e125ee",
+      "bytes": 3017,
+      "textSha256": "8b75adfd3d5dbd00dc86816c8c4334834e6572da2d7441d81dc3e4f3bfd5ae01",
+      "endings": [
+        [
+          "CRLF",
+          40
+        ]
+      ]
+    },
+    {
+      "path": "tests/curation-spells.test.ts",
+      "sha256": "2b13a9d2e27c06d448aa68c667935eb26e0986ef2e7ac7be5f83c51e4f7c7847",
+      "bytes": 15342,
+      "textSha256": "c6c8b1f225286ee09673a524c0b91a569475b38b169113149639d33eff358f38",
+      "endings": [
+        [
+          "CRLF",
+          174
+        ]
+      ]
+    },
+    {
+      "path": "tests/curation-thematic-indexes.test.ts",
+      "sha256": "18fea8a6fc44ef214709b6d137be13b5f371cf2bbb842fa47761fc0a7b7b5de8",
+      "bytes": 4728,
+      "textSha256": "191d6f60e2a9f7b66461add502991ebbdeaed14f864b34e590fa77f2532a22f7",
+      "endings": [
+        [
+          "CRLF",
+          75
+        ]
+      ]
+    },
+    {
+      "path": "tests/curation-wealth-equipment.test.ts",
+      "sha256": "1ce897049ad8af087433b74924a50416f641e37d9647658740b7151d8fca97f5",
+      "bytes": 9151,
+      "textSha256": "c5bab29d887af8f9e00c3f2893c4329b413678a4b17107f4ff1e70cd717a7ae9",
+      "endings": [
+        [
+          "CRLF",
+          110
+        ]
+      ]
+    },
+    {
+      "path": "tests/e2e/catalog.spec.ts",
+      "sha256": "51745b57284a29f6c28d7bd9b4259fb3c543b148611f0281630b5737c5db848b",
+      "bytes": 3267,
+      "textSha256": "d87b74e47b3dbfe0198afa316766a0c59921647de037744b26efd0622ccb7b5a",
+      "endings": [
+        [
+          "CRLF",
+          42
+        ]
+      ]
+    },
+    {
+      "path": "tests/e2e/character-export.spec.ts",
+      "sha256": "9de3fb7383a2cd6c6411c7baf3b16443368b93426c093537f123d0669003e63a",
+      "bytes": 8118,
+      "textSha256": "9de3fb7383a2cd6c6411c7baf3b16443368b93426c093537f123d0669003e63a",
+      "endings": [
+        [
+          "LF",
+          85
+        ]
+      ]
+    },
+    {
+      "path": "tests/e2e/character-finalization.spec.ts",
+      "sha256": "ea8e67ae78d75c050dac43148fa55494a41489118fb9f57d977d74c4aac86cef",
+      "bytes": 5042,
+      "textSha256": "9a3bff43e2cff1950f1daea0d5e75a1a1bf55a13c24d5fdd4a835c14ae2113e3",
+      "endings": [
+        [
+          "CRLF",
+          61
+        ]
+      ]
+    },
+    {
+      "path": "tests/e2e/character-workspace.spec.ts",
+      "sha256": "ab638d598c09e06402f3e2f37c23a6ea9bc5ab05390efc25b9008596c7ece987",
+      "bytes": 5694,
+      "textSha256": "ab638d598c09e06402f3e2f37c23a6ea9bc5ab05390efc25b9008596c7ece987",
+      "endings": [
+        [
+          "LF",
+          63
+        ]
+      ]
+    },
+    {
+      "path": "tests/e2e/equipment.spec.ts",
+      "sha256": "f74aa5aad6c5f121d1d9e5f71a1a7b54c4e605320132c0bc3fd5d057eae0124a",
+      "bytes": 5422,
+      "textSha256": "016b561aafe344eda8f11139a96f21cda6c5cf0329e1e8b1980d93ba03715443",
+      "endings": [
+        [
+          "CRLF",
+          62
+        ]
+      ]
+    },
+    {
+      "path": "tests/e2e/generation.spec.ts",
+      "sha256": "1fa03befa29052961556bb75d4ab407399ed78133dc7229a7b3caff9dbf30b00",
+      "bytes": 7842,
+      "textSha256": "18e8de46e9e2e1eecdc00f04a5e22c0ea1cd534f0c0db0303ee285afd7524a23",
+      "endings": [
+        [
+          "CRLF",
+          109
+        ]
+      ]
+    },
+    {
+      "path": "tests/e2e/human-l0-runtime.spec.ts",
+      "sha256": "c82e7c8d57fda620626d2e7cce82d7cbd565f1f9fa6b4274ea1f72931b35ea63",
+      "bytes": 1876,
+      "textSha256": "9e937ebd8075320580e98f85b9728a22b63baa202c389b7396bbc422a9374330",
+      "endings": [
+        [
+          "CRLF",
+          26
+        ]
+      ]
+    },
+    {
+      "path": "tests/e2e/magic.spec.ts",
+      "sha256": "f6fd43a5c0f89166eb9a2dcdfb9e34e05e6c6e04246172aebaf6517ebf4b6ba9",
+      "bytes": 6246,
+      "textSha256": "42b0e70aaa0b951e58132d38a7b8c2d946c67b1f3f4367f54f961d76410a1789",
+      "endings": [
+        [
+          "CRLF",
+          91
+        ]
+      ]
+    },
+    {
+      "path": "tests/e2e/official-core.spec.ts",
+      "sha256": "0ffbd91f03ca6b8f9bf63c81ba54d5a541190c1e07dbefc79bf6c3506349090f",
+      "bytes": 8526,
+      "textSha256": "7bb38acfbad4687a0216820b38217bbd54c0abf0217ef862f535c5560009a6f4",
+      "endings": [
+        [
+          "CRLF",
+          103
+        ]
+      ]
+    },
+    {
+      "path": "tests/e2e/official-procedures.spec.ts",
+      "sha256": "5e101b7a93a0a5b48ee1a2f5ed164e49f99591ea810b49d3cd237a948dcd252d",
+      "bytes": 2516,
+      "textSha256": "a718a03a0a8dd36a1bd4c95f40c881de91f097a79fd5c796d2200f1cf2a2e76a",
+      "endings": [
+        [
+          "CRLF",
+          27
+        ]
+      ]
+    },
+    {
+      "path": "tests/e2e/print.spec.ts",
+      "sha256": "f82dfa315e5f9c5df3b27e73a6b26cc6c43b88e2eeea80744a95f3038281da44",
+      "bytes": 8339,
+      "textSha256": "8af2ce0b6532ee0e89a52edc565754f74502bc1ae217ff04d4ab2467cd67a86b",
+      "endings": [
+        [
+          "CRLF",
+          103
+        ]
+      ]
+    },
+    {
+      "path": "tests/e2e/progression.spec.ts",
+      "sha256": "84a95f107cbd0282eb8d05af8645b5ab669036d243d61478f36ec43f9a94c110",
+      "bytes": 6937,
+      "textSha256": "4d02835a3740751e4d075dbc1de16648689f50c2ca45ca852a576aea641badd9",
+      "endings": [
+        [
+          "CRLF",
+          97
+        ]
+      ]
+    },
+    {
+      "path": "tests/e2e/session.spec.ts",
+      "sha256": "591a6cc0b2df3049f90094c324cabeb870031e8b90edda587eca582fbcd82c4b",
+      "bytes": 6226,
+      "textSha256": "f28877a81588a99125aae749784bf127e67e92d2ae9338b22643b0140d34c408",
+      "endings": [
+        [
+          "CRLF",
+          87
+        ]
+      ]
+    },
+    {
+      "path": "tests/e2e/standalone.spec.ts",
+      "sha256": "d4f6153d7c233949eb84ee315654f4c005829971f25602cf881e77f957d5a285",
+      "bytes": 11561,
+      "textSha256": "d2447311478997256526f9edf2ba166f5aebe5b62d3577094a4bdff59d8d8da1",
+      "endings": [
+        [
+          "CRLF",
+          142
+        ]
+      ]
+    },
+    {
+      "path": "tests/e2e/wizard-l0.spec.ts",
+      "sha256": "20d74fe74bb251add91b307ab765d5f90360aac6252bc64e361845d5cb337744",
+      "bytes": 8896,
+      "textSha256": "c7d6b7074060ebec88c899d7635cb56955111e5bd9914b36f030b395af259156",
+      "endings": [
+        [
+          "CRLF",
+          139
+        ]
+      ]
+    },
+    {
+      "path": "tests/equipment.test.ts",
+      "sha256": "13c4a30a92dee9543f7eadd25d2273ea0990ccb9434c5307835fa580e745dca4",
+      "bytes": 9168,
+      "textSha256": "92ec91303062040bf7ff304e6b163e021168ba0ed4bbb759e3fab50005f36f6b",
+      "endings": [
+        [
+          "CRLF",
+          124
+        ]
+      ]
+    },
+    {
+      "path": "tests/finalization-source.test.ts",
+      "sha256": "dfdeaa54b2452a3022f010083c5e620b828c30e24f7ffee5555789f2a000a6e7",
+      "bytes": 6634,
+      "textSha256": "f9e22fe79f0218d40033db811c06b1dc27aad29c92763b71b6a768c8df2c91e3",
+      "endings": [
+        [
+          "CRLF",
+          74
+        ]
+      ]
+    },
+    {
+      "path": "tests/generation.test.ts",
+      "sha256": "7d19460ec765ea22193693aea25503a888f9ad201304d217bafd81a436f4fdd0",
+      "bytes": 13430,
+      "textSha256": "8723ce97c1c1dde8b2cdbc27a1b3f6ad0587ac4d184cc500377af3dd6db60493",
+      "endings": [
+        [
+          "CRLF",
+          197
+        ]
+      ]
+    },
+    {
+      "path": "tests/helpers/finalization-paths.ts",
+      "sha256": "e6b07098876da2f271da6bb2eeba61b9567e13b5432eba3f067f1ff0d619e8c5",
+      "bytes": 3801,
+      "textSha256": "805b6a2eef6ff5db20ef5cbccf8a315e9159cdbaf1d695efbafd6e757eb7f8a6",
+      "endings": [
+        [
+          "CRLF",
+          41
+        ]
+      ]
+    },
+    {
+      "path": "tests/helpers/library-browser.ts",
+      "sha256": "fe7ddf69d6dc4d978b303713df5abd1adceb9961d540db09a6783961337425dd",
+      "bytes": 1010,
+      "textSha256": "fe7ddf69d6dc4d978b303713df5abd1adceb9961d540db09a6783961337425dd",
+      "endings": [
+        [
+          "LF",
+          12
+        ]
+      ]
+    },
+    {
+      "path": "tests/helpers/procedure-context.ts",
+      "sha256": "6975a5fe73960f6d14ce46c47bc6ec7391ed17b3f637d21051e8a61a7ba234f2",
+      "bytes": 2000,
+      "textSha256": "68267cce51020b7bf58afed370353198556bcd708f7c21cb8410d2821245c947",
+      "endings": [
+        [
+          "CRLF",
+          10
+        ]
+      ]
+    },
+    {
+      "path": "tests/human-l0-consumables.test.ts",
+      "sha256": "4cc703361a62d6caedea41038af0e453b33820b6e9fb450ca90a4b23cdd4f855",
+      "bytes": 11232,
+      "textSha256": "8f040998e4e0980a4aed1f512daea045804f1ba3febe6fd58f5caea6df4c0265",
+      "endings": [
+        [
+          "CRLF",
+          114
+        ]
+      ]
+    },
+    {
+      "path": "tests/human-l0-preview-ui.test.tsx",
+      "sha256": "9acb0932a47a7faadc8ef0b724c3137d5a0d5002e34b715fdca423931b04dc48",
+      "bytes": 9784,
+      "textSha256": "154efcb9e784b23bc7f4ab1c9c053605659d8a4763791dd74e7b0c7f636d8cdb",
+      "endings": [
+        [
+          "CRLF",
+          166
+        ]
+      ]
+    },
+    {
+      "path": "tests/human-l0-preview.test.ts",
+      "sha256": "5e13ed73af99750b7acee20d90f6528d9db4d72ff40292a061b14905f43fa795",
+      "bytes": 17317,
+      "textSha256": "51711a72aa478a7a7f3f05c86a6b3695644a88a614020625fc74e72994713294",
+      "endings": [
+        [
+          "CRLF",
+          291
+        ]
+      ]
+    },
+    {
+      "path": "tests/human-l0-runtime.test.ts",
+      "sha256": "d418fffd195080520b471cd9612784c28a6c84155e7f72bc5889ab38b49ff64f",
+      "bytes": 15033,
+      "textSha256": "00b94111d2642ce763bd54619d31113da311df053b428f1b27d2d630e52c3476",
+      "endings": [
+        [
+          "CRLF",
+          179
+        ]
+      ]
+    },
+    {
+      "path": "tests/issue34-activity1-matrix.test.ts",
+      "sha256": "aad948da3c1264a475203c8fc0708de935d34f68ad6d513afc6af16021104745",
+      "bytes": 5334,
+      "textSha256": "d645fa84630fe18a8247cda4a069f1e4ce1dfa367f752ba14fa7c41f213cc98e",
+      "endings": [
+        [
+          "CRLF",
+          85
+        ]
+      ]
+    },
+    {
+      "path": "tests/l0-demo.test.ts",
+      "sha256": "8a4841d2715f651530ca3afafc11b3525dd5d5ae547307460e38b19fa3b6fedb",
+      "bytes": 12555,
+      "textSha256": "21086f035e306ad9b7f8c62f9bfc1ace9d5c00d4d13a1d0b954376c430fd2f69",
+      "endings": [
+        [
+          "CRLF",
+          204
+        ]
+      ]
+    },
+    {
+      "path": "tests/magic.test.ts",
+      "sha256": "3de508eac69918118fb5e1ba0b9f37e111d849415191d3a4e825f0b906ab74b7",
+      "bytes": 10096,
+      "textSha256": "2c10c5b7d3d199190d9cc414efd1418e071dda3290415d8f8a46db7886f214d7",
+      "endings": [
+        [
+          "CRLF",
+          149
+        ]
+      ]
+    },
+    {
+      "path": "tests/official-core-source.test.ts",
+      "sha256": "2451d0bf793a5b8f3f1ca066259bca0b74a7aa5e2a1a65b2ee9ca875cccd9435",
+      "bytes": 11475,
+      "textSha256": "cc78a359edda6ebc373e7417956b7d93db62630b0cf04fd2600ea78c22c0f637",
+      "endings": [
+        [
+          "CRLF",
+          122
+        ]
+      ]
+    },
+    {
+      "path": "tests/official-core.test.ts",
+      "sha256": "521c9928a005441669e88159cf21af28f7f8d01841c58462cb16bbacc90bee92",
+      "bytes": 1815,
+      "textSha256": "a55218a305b963d4fc1d91d895a4abb5265a498a3af42b1b1338f96703f3683c",
+      "endings": [
+        [
+          "CRLF",
+          22
+        ]
+      ]
+    },
+    {
+      "path": "tests/official-equipment-source.test.ts",
+      "sha256": "3da8d437d70116c5cb38a5799b134632cf76827091aa1ad491c4a4e15e3da014",
+      "bytes": 11499,
+      "textSha256": "c89463732f46162cd6dedefe8ef06f596353a9566b46f9e290ad60ac625c7d12",
+      "endings": [
+        [
+          "CRLF",
+          121
+        ]
+      ]
+    },
+    {
+      "path": "tests/official-interesting-things-source.test.ts",
+      "sha256": "efc1a1013647242802099293146fb93b57ccff543e24fa55fcb374be970a6fc8",
+      "bytes": 9726,
+      "textSha256": "aa2bf2ced3d551add9d3ec850939748c928a6052249ac7a888a234e0fb8a96a6",
+      "endings": [
+        [
+          "CRLF",
+          111
+        ]
+      ]
+    },
+    {
+      "path": "tests/procedure-runtime.test.ts",
+      "sha256": "4c34acab46e5e0a0a6499d40c74f6580b782284b2aa8174d15a8e6bb0a0fd18e",
+      "bytes": 4898,
+      "textSha256": "65b538976aef99f9b5ee3140963d9c8ecdce34584819577edf0ab6d39db8d4fa",
+      "endings": [
+        [
+          "CRLF",
+          61
+        ]
+      ]
+    },
+    {
+      "path": "tests/procedure-source.test.ts",
+      "sha256": "c465aa1e3d0b1e0cf9beb231f607fc36e5ec15de7d45c37b20a952416ee71b8d",
+      "bytes": 11413,
+      "textSha256": "3349ee85ca4633cdf63f994a93b04e87f7b81a5df0f94b8adcdf6baf2c31d7ca",
+      "endings": [
+        [
+          "CRLF",
+          120
+        ]
+      ]
+    },
+    {
+      "path": "tests/progression.test.ts",
+      "sha256": "5679c6f6e0eaf8fbd0630651e1b09f8a149ed6b8c0401ca6bc33bbf70d8c2f53",
+      "bytes": 9957,
+      "textSha256": "1fb904044bf16604aa29126db96af5e991694be022b69f4050d765dc896d5a2b",
+      "endings": [
+        [
+          "CRLF",
+          141
+        ]
+      ]
+    },
+    {
+      "path": "tests/review-freeze-source.test.ts",
+      "sha256": "fe5d2935dc17086caf074941f1ec1df7eecfe68e02978fa93565cd588ed91578",
+      "bytes": 1966,
+      "textSha256": "0901390d900550b96af8e2e3e782c840db061c312478ea385c9be8688c1689f9",
+      "endings": [
+        [
+          "CRLF",
+          33
+        ]
+      ]
+    },
+    {
+      "path": "tests/review-freeze.test.ts",
+      "sha256": "76f98224af7264b29c2dd5e10bbf6114959fc8e353bc40f43e43bfea639f9214",
+      "bytes": 2590,
+      "textSha256": "92db0e414a55b9ab537721e23a24014ee10496dfd61b2f79e7f22d4b3ef9f772",
+      "endings": [
+        [
+          "CRLF",
+          27
+        ]
+      ]
+    },
+    {
+      "path": "tests/rules-corpus.test.ts",
+      "sha256": "f604b94b0837453f4aad53dee9b5fb02db1964afc6616c9b57650561a147b44b",
+      "bytes": 748,
+      "textSha256": "b655f11941ef74305addadedeeaa93514ec20469a0e9bff268eb3e879107f03a",
+      "endings": [
+        [
+          "CRLF",
+          16
+        ]
+      ]
+    },
+    {
+      "path": "tests/runtime-artifacts-source.test.ts",
+      "sha256": "84ef49555fb0e33f2397482050ac224f9fe2469eaa3dab661e1cf66cfc09e35a",
+      "bytes": 4230,
+      "textSha256": "84ef49555fb0e33f2397482050ac224f9fe2469eaa3dab661e1cf66cfc09e35a",
+      "endings": [
+        [
+          "LF",
+          45
+        ]
+      ]
+    },
+    {
+      "path": "tests/session.test.ts",
+      "sha256": "0be51e70d46d545a6c05d0363085a48d0efe568e106262540c37ef71f6f236cd",
+      "bytes": 11164,
+      "textSha256": "42ff2d93c40bf2015093f13839652cb5baea50e40de453b0b2e99e1504f191f5",
+      "endings": [
+        [
+          "CRLF",
+          167
+        ]
+      ]
+    },
+    {
+      "path": "tests/standalone.test.ts",
+      "sha256": "6ec3e27bdcb8946700621efd6f5e6353bda3dcce11b19282eab4cf4593704f95",
+      "bytes": 3983,
+      "textSha256": "5d5a899d0d18fbd801b82683bc0f9b77268eb74dbe35ce0bba71501c267e97fc",
+      "endings": [
+        [
+          "CRLF",
+          55
+        ]
+      ]
+    },
+    {
+      "path": "tests/ui-shell.test.tsx",
+      "sha256": "bccadb3d0f7d3902f2843483bc7dfefd47f96221eaedd08831e659370bc8974b",
+      "bytes": 7275,
+      "textSha256": "11e9905ecb9851f83b1ee62fc13e1971346fb52368a486ebaecbcb1a72f94208",
+      "endings": [
+        [
+          "CRLF",
+          149
+        ]
+      ]
+    },
+    {
+      "path": "tests/wizard-l0.test.tsx",
+      "sha256": "6d037b222fc72283ab6dbd8727be8826b2a73408c93a5cde8e10d5c73635fd3d",
+      "bytes": 10377,
+      "textSha256": "26983821bed15dbc47d4abae2bce48c9c7b2444aad416767ccc02084be52f622",
+      "endings": [
+        [
+          "CRLF",
+          184
+        ]
+      ]
+    },
+    {
+      "path": "tools/audit-demo-random.mjs",
+      "sha256": "22156f06eb624e26f9820705289544b76d9261e0ee99eace4c0135f081672558",
+      "bytes": 2644,
+      "textSha256": "aac53bf9605ae155abb35530bf7bbf15b6169d95720870f3b47e9872ec03cc7f",
+      "endings": [
+        [
+          "CRLF",
+          57
+        ]
+      ]
+    },
+    {
+      "path": "tools/audit-official-entry.mjs",
+      "sha256": "c08beb7a6cbdca96354949b4f0f2f12f8a034494a51d8593f58b78378c1e1b5c",
+      "bytes": 1348,
+      "textSha256": "ec64b63bf2d8240e2ef74d1155871ee83e269970b48631137983f6831ac6cc5e",
+      "endings": [
+        [
+          "CRLF",
+          17
+        ]
+      ]
+    },
+    {
+      "path": "tools/build-standalone.mjs",
+      "sha256": "5a6b380dfe16483a3f0ead2c830d1aa966e3a0a60e9354d6ecec915ee098ad66",
+      "bytes": 914,
+      "textSha256": "11d6172c98f4a9e8b0017af665b7ea5be51c5b206b4c20f6cd47f35a305605cf",
+      "endings": [
+        [
+          "CRLF",
+          14
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/accept-human-l0-runtime.mjs",
+      "sha256": "e31920d6b4c0663ef073197a18f5d11e960d86f9aa52a86d66b0122e0d0cdb19",
+      "bytes": 918,
+      "textSha256": "740831325670e7ce85f02277decaad583b014beed47099dacf4ca0d972343845",
+      "endings": [
+        [
+          "CRLF",
+          15
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/accept-human-l0-runtime.ts",
+      "sha256": "f0df181325a221000bb62c4f7a7ac4fc7a50272ba675cfb2c6d4e297c6d94f37",
+      "bytes": 3754,
+      "textSha256": "9d7c5accf51980aebbc0d63ea7411678514008d82521649397fe9af2f0b25fbd",
+      "endings": [
+        [
+          "CRLF",
+          41
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/ancestries.mjs",
+      "sha256": "0830665850b33eb1795110d29d073c8356d838fe12d796ad7dd971689e635cd3",
+      "bytes": 737,
+      "textSha256": "d430a8da91bb86ad323097896af59a6b976bc7b6dac03ec96bb089d1f54b4f72",
+      "endings": [
+        [
+          "CRLF",
+          13
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/ancestry-extractor.ts",
+      "sha256": "67e8fda86a236c9dfe2773a953a092194713a6ffd19cde78215179d99a597352",
+      "bytes": 17591,
+      "textSha256": "3a42aa8cc828c5f3e9ba461ed088088ddd23b50390329695325bbe703e41d378",
+      "endings": [
+        [
+          "CRLF",
+          230
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/canonical-json.ts",
+      "sha256": "de89d851902548798f98e735a364ec9e40f6860f2a01f621f52499f34864eafb",
+      "bytes": 632,
+      "textSha256": "536b0d3f1eed1f430549e2a996c42a3aeddf4f60726d409ef0a83de00bd463a6",
+      "endings": [
+        [
+          "CRLF",
+          13
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/compilation-report.ts",
+      "sha256": "34aa2fb83911724956dab4bbbe260cad40732fa8cb4e06e78af5065ca2079134",
+      "bytes": 8009,
+      "textSha256": "2500339239886428fcbe6597fa1930fcaf4aaa9b47ad727f3ca78d503910d46b",
+      "endings": [
+        [
+          "CRLF",
+          103
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/compile-packs.mjs",
+      "sha256": "df6c84fd42330590eac061eae817539cab2e69a15125f6859b44739bcfee8e1b",
+      "bytes": 1155,
+      "textSha256": "1a769cacd8dedea703b9861691a1d1d535e20abdfe25f42d0ac14e40fd77b109",
+      "endings": [
+        [
+          "CRLF",
+          21
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/consolidated-freeze-lib.d.mts",
+      "sha256": "4cceaa90ab351fc3b52cbd281f757bfea41cdbbda03192f6ceb44714987b4c34",
+      "bytes": 696,
+      "textSha256": "4cceaa90ab351fc3b52cbd281f757bfea41cdbbda03192f6ceb44714987b4c34",
+      "endings": [
+        [
+          "LF",
+          9
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/consolidated-freeze-lib.mjs",
+      "sha256": "8e3366ad052ee85dd5ac85083d1313ae7dad603841762aef242a26d05adb3729",
+      "bytes": 3756,
+      "textSha256": "8e3366ad052ee85dd5ac85083d1313ae7dad603841762aef242a26d05adb3729",
+      "endings": [
+        [
+          "LF",
+          72
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/consolidated-freeze.mjs",
+      "sha256": "3f6b503b8344af330aeaec84edc38d12e23ce5d9006fa07f9ac9192a9ab14470",
+      "bytes": 11115,
+      "textSha256": "3f6b503b8344af330aeaec84edc38d12e23ce5d9006fa07f9ac9192a9ab14470",
+      "endings": [
+        [
+          "LF",
+          139
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/consolidated-runtime.ts",
+      "sha256": "b4013b5f14e4a43b1962a613332a6fa61779526bf164fcd1b6c9e84815388ea6",
+      "bytes": 736,
+      "textSha256": "b4013b5f14e4a43b1962a613332a6fa61779526bf164fcd1b6c9e84815388ea6",
+      "endings": [
+        [
+          "LF",
+          10
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/core-background-projector.ts",
+      "sha256": "dbb6699f71a9c23301ec95d028f19677f0c375b88909480f2acd68498a58b542",
+      "bytes": 2562,
+      "textSha256": "e41b0f29a1f35a431c55c6b41bd6da3579a2be2b6581baa990a100579b50f33e",
+      "endings": [
+        [
+          "CRLF",
+          29
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/core-equipment-projector.ts",
+      "sha256": "f147063d86a7c251384d82dcd858c0a3ce3e34193517c9872c3d7a3f87881d95",
+      "bytes": 3172,
+      "textSha256": "02d93336f79941fc1fa55d0fffbf4046ffe44ac7944ad58d3411f73cb57c0a31",
+      "endings": [
+        [
+          "CRLF",
+          32
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/core-interesting-things-projector.ts",
+      "sha256": "6a6b680f24125784c11189b7fbec74ae0efb30907f7a2ac3133f12c87190bd7a",
+      "bytes": 6384,
+      "textSha256": "a0e1382b11eb466ec0a2f8933173b7e35aa0d680d2562f3c613c40b8e062ab5c",
+      "endings": [
+        [
+          "CRLF",
+          64
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/core-local-projector.ts",
+      "sha256": "f291dbcd0a8791ff0c734d6be75c58313a115dc7a573a72bffa867f643641525",
+      "bytes": 16242,
+      "textSha256": "d5c3499fff152222dd98a377aaa52dec5dde10ddead59e0d8e807b31b4bf8f6e",
+      "endings": [
+        [
+          "CRLF",
+          161
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/core-local.mjs",
+      "sha256": "ab187f6be1c88f1fd23e7b077590c5ba205e2556666b00af41756563d5ad43d0",
+      "bytes": 863,
+      "textSha256": "9ad1a4136e1aeb8df3df52a2f9e03c190bb87aefe3d08f90b14a542af83b941f",
+      "endings": [
+        [
+          "CRLF",
+          11
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/core-pilot-matrix.ts",
+      "sha256": "1ba6a3e2119a36aa2a4c1b8c999c986c27989801b79a4cb85bd968c85a9287e1",
+      "bytes": 44082,
+      "textSha256": "c5a1b367bce862a8b13caf4e662a5ec1292580db032cb0c65deba522d6d8cda3",
+      "endings": [
+        [
+          "CRLF",
+          316
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/core-pilot.mjs",
+      "sha256": "a7a7f33633558904a77b4f91074e04c9772f22232374aac72847802cf31ac2e7",
+      "bytes": 652,
+      "textSha256": "b3368e7a2c577c63d400b83209a3743892c7e82999bac0ad2e7f741ca40302d5",
+      "endings": [
+        [
+          "CRLF",
+          9
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/creation-table-inventory.ts",
+      "sha256": "4d94d5e64f337fe76361306eb94eab848a9a882886b2edd543a368c66b8e130d",
+      "bytes": 27619,
+      "textSha256": "ee73321cf450e0f7c0c4bfb233b961aff01d07572dbc07b2f6847e0483537910",
+      "endings": [
+        [
+          "CRLF",
+          212
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/creation-tables.mjs",
+      "sha256": "85d4790c9fd32809e9ee07bc300349ced7885a50b5ae9320061ef79c5306091e",
+      "bytes": 662,
+      "textSha256": "4e6df8549b949f6b5c2e1dacae352f5859943d5b8e857099f8c9120fcadf72a4",
+      "endings": [
+        [
+          "CRLF",
+          8
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/editorial-normalizer.ts",
+      "sha256": "63b8cbc8b8cdf3f4a3cfc255df49e87a156bb23c5d339613c3c77594235cb6dd",
+      "bytes": 20608,
+      "textSha256": "e4948cf261d2057f86730f0f44d39050865a311bc177af84997fd03f6af9882d",
+      "endings": [
+        [
+          "CRLF",
+          217
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/examples.mjs",
+      "sha256": "c77561d91a0ba9f3610ee205bb4cb9521ea121a736f618dfa51abff2adeaa0a7",
+      "bytes": 3501,
+      "textSha256": "c77561d91a0ba9f3610ee205bb4cb9521ea121a736f618dfa51abff2adeaa0a7",
+      "endings": [
+        [
+          "LF",
+          35
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/freeze.mjs",
+      "sha256": "7f2084c6515b9ab3a5c41bce41ec3ccb24cbd1310e0141ee61a6337f7c767f1f",
+      "bytes": 1790,
+      "textSha256": "7f2084c6515b9ab3a5c41bce41ec3ccb24cbd1310e0141ee61a6337f7c767f1f",
+      "endings": [
+        [
+          "LF",
+          26
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/history-audit.py",
+      "sha256": "bf6185ad27e7cb3e380601876fc74429d155522674f1bedd8b53415fdd6342f2",
+      "bytes": 4500,
+      "textSha256": "b02db1d345a8ebe772d65d04af8be18657c0b88325f1b6826cec209c464f8f46",
+      "endings": [
+        [
+          "CRLF",
+          92
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/human-ancestry-formalizer.ts",
+      "sha256": "41d6e44dccedc70a5770234081fd2de7662772ce30604457f545cbc98392a24d",
+      "bytes": 10676,
+      "textSha256": "3917b771c8f58883467902afade45bd308a207a18f1c16f0cf984abb581cffb8",
+      "endings": [
+        [
+          "CRLF",
+          93
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/human-ancestry.mjs",
+      "sha256": "244141c9ecc8c86dea6d0a7a724171bf5a4833d869bbf9f53dd7e24c7178d4cb",
+      "bytes": 664,
+      "textSha256": "150afc6be224387413f5d9b082c384f99e99bf92cd4b8917b4ca6fe1fd1ac848",
+      "endings": [
+        [
+          "CRLF",
+          9
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/human-l0-consumable-compiler.ts",
+      "sha256": "d7ddcbc6c980a333d86c9dd8152a445e122ed77f75ad2b55e3cff0f980f07aee",
+      "bytes": 6391,
+      "textSha256": "b1550b84c2228437bf71f788bf625c7f15c27bd0a64dd72029567497b0868ab4",
+      "endings": [
+        [
+          "CRLF",
+          86
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/human-l0-mechanical-compiler.ts",
+      "sha256": "ad6aa2f199dd367cb029f710d6d1af0edad4eb94aebd7a378066d9a1012cbb0c",
+      "bytes": 19969,
+      "textSha256": "bab4dd3fffc53ee722134755de242d67f3a15ab09c361615227c14c06c897635",
+      "endings": [
+        [
+          "CRLF",
+          229
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/human-l0-recipe.ts",
+      "sha256": "7a8412a1060500cd67564ce90d904d53ace09f4afb548e0e11b5e43361f17911",
+      "bytes": 1675,
+      "textSha256": "2e3b04839e70f993a9317a7164ec4053fe2d08436840166afecc586ac0a63a2f",
+      "endings": [
+        [
+          "CRLF",
+          29
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/human-l0-validation.ts",
+      "sha256": "8cd9b6c1b1f47c565aff5d8d418f51c340783be5c5d119aa7404a455bf396304",
+      "bytes": 9196,
+      "textSha256": "aba0be6b4882f5a4530f74bffe82685c05b32dca110bf78030a32b544ffe745f",
+      "endings": [
+        [
+          "CRLF",
+          122
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/inputs.mjs",
+      "sha256": "eb45d83d0bd73afa082947a0a4d5dbbb26a1d915c290f055b03ff7e1ffb4b906",
+      "bytes": 4030,
+      "textSha256": "eb45d83d0bd73afa082947a0a4d5dbbb26a1d915c290f055b03ff7e1ffb4b906",
+      "endings": [
+        [
+          "LF",
+          62
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/interesting-things-details.ts",
+      "sha256": "0f99fd6702343df081852b5d4a513235708bc2cd3093df7201bceb8344df27db",
+      "bytes": 10760,
+      "textSha256": "0a9d81d9343609470f173c4278caff2c2abbab6597bfd903c75527e248e610bc",
+      "endings": [
+        [
+          "CRLF",
+          122
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/interesting-things-formalizer.ts",
+      "sha256": "d5b3a4fc8e8f04f08b2bf0a2b1dc3f290a6c5ac70959d356a5afffdbe2d10aa8",
+      "bytes": 15931,
+      "textSha256": "36cd29fa36176a7b3bbf4956e951eec97a7bdfa24f471cac5d0271530c072be6",
+      "endings": [
+        [
+          "CRLF",
+          166
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/interesting-things-map.ts",
+      "sha256": "186129f2b5b610fb4b92d287e09d6fba590063c8656be6d660305f3f613c9aab",
+      "bytes": 5805,
+      "textSha256": "9dcec875138c3e58b7b153e948670cb5646948a79d666a0000517132feefa237",
+      "endings": [
+        [
+          "CRLF",
+          66
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/interesting-things.mjs",
+      "sha256": "5065b296db57fce6a18e9a7a9420f87e4c453333c63197d69476c1fb1fba9ef4",
+      "bytes": 628,
+      "textSha256": "9a323dc85279738039df5bce835ff953e91c84b1d155aed8c0237059c6c908d2",
+      "endings": [
+        [
+          "CRLF",
+          8
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/issue34-activity1-matrix.ts",
+      "sha256": "434684eaf1ba0bb0698d99a988c3b3a8f3a9e29aa8029ca4d70fc3d14d293d70",
+      "bytes": 72098,
+      "textSha256": "511ed3fda5e8c18334c6ea8ddffe7a4f229e75c345f3222af50b1903be7e1e8b",
+      "endings": [
+        [
+          "CRLF",
+          939
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/mechanics-extractor.ts",
+      "sha256": "34770c9b80be13dda02c29da6792f64f813d2ff3bb9882deb28343edab1c675c",
+      "bytes": 34470,
+      "textSha256": "08288c9e5e94d0dc16a7d259304cd2ef7726c8326956186cee6677dcaa0755c0",
+      "endings": [
+        [
+          "CRLF",
+          344
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/mechanics.mjs",
+      "sha256": "558525ae9b3d8bed3c13fa4653903323270a0c859fca752347d0408b74118c9c",
+      "bytes": 732,
+      "textSha256": "cde59843781588c1f1912c87b2d31c177ac02bbd933ffe3ec9ffaa1590a7d140",
+      "endings": [
+        [
+          "CRLF",
+          11
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/normalize.mjs",
+      "sha256": "dded4fba98419be5b9dc9724e351b36259089f109e9132f25e57da9b1f4fb415",
+      "bytes": 744,
+      "textSha256": "36368108c3e1e63393d13d039fa22bd340866376b8d787e859abd775b4c7b264",
+      "endings": [
+        [
+          "CRLF",
+          11
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/official-local-context.ts",
+      "sha256": "97c1c174c95043b2e1220c66c87c1e9a7a6395191d451e992ddfd35d58bde9cd",
+      "bytes": 4301,
+      "textSha256": "8f53be6cf481da53ea0f3796e1f01889c096f31c8b7e8de0416690898f4f260b",
+      "endings": [
+        [
+          "CRLF",
+          35
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/pack-compiler.ts",
+      "sha256": "3b46f82f1a6f0ff78dcb799dad51ef697de38bd5d843e5a906229228dab26ff1",
+      "bytes": 10141,
+      "textSha256": "6bcea916d23dbccc1f6bc585bf3b8d055969f4d1e761bac1b87ad0bdb1fb5c3e",
+      "endings": [
+        [
+          "CRLF",
+          169
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/path-extractor.ts",
+      "sha256": "708e72a2864e42283ecf8e6cf7aea0d5cde665df4dc5f18fbf54878d4a9b1241",
+      "bytes": 22995,
+      "textSha256": "15a6cb0b2097241ecb12d508458ad1c6a6a222f3951a2bc7bc61fa19903c894e",
+      "endings": [
+        [
+          "CRLF",
+          273
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/paths.mjs",
+      "sha256": "98f6bd191e18398a5244da611b18da18a7fbeef24a2faa8301f59a6a4b03cd11",
+      "bytes": 721,
+      "textSha256": "1dbda007c030e63583c229a682a35cfd3a0b2cd54530c86abca95be5c3b764b7",
+      "endings": [
+        [
+          "CRLF",
+          13
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/pilot-item-definitions.ts",
+      "sha256": "997570928919ad76f153036117ea08c200edda0d833fbe59b72627bbe113f9b7",
+      "bytes": 7132,
+      "textSha256": "e7fd660b99170455e337a33c176fd6cd44fa04630896b5ee2a76b77aa4b01aef",
+      "endings": [
+        [
+          "CRLF",
+          76
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/pilot-items-formalizer.ts",
+      "sha256": "22740792568a732e504f2d60b9b711e7e22bee200875c92499cf48c23e60c09b",
+      "bytes": 16838,
+      "textSha256": "e85f918da4c6b35fcc1f6000102d499f23c65a9c37c33f682835a537a00105b5",
+      "endings": [
+        [
+          "CRLF",
+          155
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/pilot-items.mjs",
+      "sha256": "73ab3c2b99fd9aea5e2a700812bd86b42cfe503dbedcec8c6dceecacf3bba9f8",
+      "bytes": 614,
+      "textSha256": "293ac573ac622fb33108b8cbf45423397a68286caa665065cc50151123f160cb",
+      "endings": [
+        [
+          "CRLF",
+          8
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/pilot-table-closure.ts",
+      "sha256": "e28e34f73de1e2c09102dc39b8aa68105efa8b69a644b6a95afc7c59c534d9cd",
+      "bytes": 20038,
+      "textSha256": "30d7af52c5a71d17baf8f386e058d193a98c0a7469a9ec1e805cd2cdb7efdf27",
+      "endings": [
+        [
+          "CRLF",
+          154
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/pilot-table-ranges.ts",
+      "sha256": "0e17dcffc75b230b566df9d2e2b1ad1cf2a2e2be927981cb4fc03dfe00ed4288",
+      "bytes": 3280,
+      "textSha256": "c24d078dcbfa9868ce7659b5f6e03f0bc9b8eec69eb96dda67d307e2ad0560dc",
+      "endings": [
+        [
+          "CRLF",
+          27
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/pilot-tables.mjs",
+      "sha256": "821d716ccce0cc6a2d70f6d43e90093a9b69fc216d8980ecc2afeeba6f89ea0c",
+      "bytes": 612,
+      "textSha256": "1dd3013247f2c54df1f10767f46bb1d0f97614f678f34c32e3e8f7f2b5026658",
+      "endings": [
+        [
+          "CRLF",
+          8
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/policy-evidence.mjs",
+      "sha256": "aea516280f6c1be82ae89c7124bdbdbb4fc2fcbc5679bbf6383a57b497d06953",
+      "bytes": 2535,
+      "textSha256": "aea516280f6c1be82ae89c7124bdbdbb4fc2fcbc5679bbf6383a57b497d06953",
+      "endings": [
+        [
+          "LF",
+          27
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/privacy-check.d.mts",
+      "sha256": "0aff0897f88edca6f61b8ae579c051626c46f52a3d90ec849ec5a454f00c11e3",
+      "bytes": 182,
+      "textSha256": "1fb3f788c044ad8b1fb9e19f457e85773b6544e38a43eff8da6d206f462a14ce",
+      "endings": [
+        [
+          "CRLF",
+          2
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/privacy-check.mjs",
+      "sha256": "7127919c4cd8f63609c9f0ed4575623b60a25e23191f542d39edd34011f813bd",
+      "bytes": 1803,
+      "textSha256": "2968b2c4e3c1684f761797f8db9d3f8bbba47d5edf1792ab357cd3a9c52ad1c3",
+      "endings": [
+        [
+          "CRLF",
+          39
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/privacy-clean-local.mjs",
+      "sha256": "56b1e2b350b89f53fb76732ec19bbd59281dbb939eb254fee2fb6938e228a142",
+      "bytes": 1714,
+      "textSha256": "46de30c337181e9b79f33be37aa35f132ac88e2808f11877b1f5148df7920eef",
+      "endings": [
+        [
+          "CRLF",
+          28
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/privacy.d.mts",
+      "sha256": "6810977d2dabca36be3b1e66852ff8f250f6c088b07a602caa29a5d4011e143e",
+      "bytes": 339,
+      "textSha256": "bd7f81a6cdac9c87ce224dfe7ee0a68bac1ebea807979328a8a6f426f040e400",
+      "endings": [
+        [
+          "CRLF",
+          6
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/privacy.mjs",
+      "sha256": "cc6f5cd3adeb76abce334a908279db9d1948092c7aaf9928c34fa57f83fdb426",
+      "bytes": 1982,
+      "textSha256": "d437deb3c1b50d2f09fa65865e604e7a7b611784b9fe397c858eb81b53fb8a87",
+      "endings": [
+        [
+          "CRLF",
+          33
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/procedure-local-context.ts",
+      "sha256": "5776f67706fc73a27228a561528f41b3464f95d8f92344277a80555a91d1c9d2",
+      "bytes": 6951,
+      "textSha256": "39b53160d1c8e56f1b7b5201783a09efc8fb87369d080f560b225130b27fb5e4",
+      "endings": [
+        [
+          "CRLF",
+          53
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/professions-languages-formalizer.ts",
+      "sha256": "5986d1c793fa625aba6151e6469716fb9a98bd09f8c710796352c93e7f057f6a",
+      "bytes": 15577,
+      "textSha256": "f65d5378f9d0996a4be8d8c3fa275e0ff0e892e1fc2c42aadb920aee1dffd07d",
+      "endings": [
+        [
+          "CRLF",
+          127
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/professions-languages.mjs",
+      "sha256": "0dda509a718b37752ec3d8e831f900699e0d8ce4f48a779c9d7e913016d11205",
+      "bytes": 635,
+      "textSha256": "4c22564c301b8cd1519bb1b8d4a51452bac97ee8e20121db1da6fe201b8c9e9b",
+      "endings": [
+        [
+          "CRLF",
+          8
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/provenance-reconciliation.ts",
+      "sha256": "edd75ad410b9e56cc39f6236cdfabc200bc6516e1e024f665d81595f49841aed",
+      "bytes": 2988,
+      "textSha256": "82bdbe7ec0f0aaafffc3b415fff230b9fbd8906c905540bc6d8506fe54f3d22e",
+      "endings": [
+        [
+          "CRLF",
+          39
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/publish-history.py",
+      "sha256": "35ec78537920a8418244c8e480b9fe942e9730fe1b9d7b3cc521feb1658f4c9a",
+      "bytes": 5901,
+      "textSha256": "9c3699ab9ed9484b718341dafc992d93cd692f4fb740181ef905fd70eba6b6b0",
+      "endings": [
+        [
+          "CRLF",
+          106
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/reconcile.mjs",
+      "sha256": "a5cbf04ab851fcfd04e90027859ee776af2f65ec651db53ab9a6340c86afbabb",
+      "bytes": 649,
+      "textSha256": "a3c2134dcfec6b6b2ec2c673de096614e5c4d78b59c05d6eea482331da898563",
+      "endings": [
+        [
+          "CRLF",
+          9
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/reconciler.ts",
+      "sha256": "b13b2394285eaf79f829d09aea18b931ee1fc2add989d4906fe1005a07c2050f",
+      "bytes": 39775,
+      "textSha256": "3af223ca76e54887bd7f0855de36405ec0483fd2834e10fd506763279fa4f491",
+      "endings": [
+        [
+          "CRLF",
+          385
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/review-freeze.ts",
+      "sha256": "3c6641f49ea9e95183da93afe6ea363b402c6937627bb908348afe4f45faa683",
+      "bytes": 2937,
+      "textSha256": "1a5c91c2948f17791270e62bb383590440fbe5857a340784bc277c1680f189c7",
+      "endings": [
+        [
+          "CRLF",
+          46
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/review-human-l0.mjs",
+      "sha256": "7bc93342c8d9876880ec25cff281e9378dcaa16bc8c0fe02dff75b7a57e7e0de",
+      "bytes": 986,
+      "textSha256": "b9bb49210e14a8b9e0226f6cf41da04ff42f684b192f5ca3d0d2a098dd381849",
+      "endings": [
+        [
+          "CRLF",
+          14
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/review-human-l0.ts",
+      "sha256": "97d9d9a2a292edac352d0074a60332d8d4bf4103257668dada77e5609b82b500",
+      "bytes": 9999,
+      "textSha256": "a69c3f5391487e3fe7a333b9f0d95dff518303f83699f9ef9d0ab2bcb7fb6a99",
+      "endings": [
+        [
+          "CRLF",
+          126
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/review-pdf.py",
+      "sha256": "e4331b277fc56626ac35fe61f0e3f7223a03896d0fe0e0b825a1de3bb6a6a1fa",
+      "bytes": 5276,
+      "textSha256": "da3a2217efeeb864bd7875224df98f44baa817240c955c556c8793581c563628",
+      "endings": [
+        [
+          "CRLF",
+          98
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/runtime-artifact-compiler.ts",
+      "sha256": "ba05c258005c90dd18908a39cd903fa71ebe93889852c150bae5a5b8f9c4d3d0",
+      "bytes": 6636,
+      "textSha256": "ba05c258005c90dd18908a39cd903fa71ebe93889852c150bae5a5b8f9c4d3d0",
+      "endings": [
+        [
+          "LF",
+          65
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/runtime-artifacts.mjs",
+      "sha256": "bfac02c70a85786d79372779ca17abfbd64f3f3482e89dcc3e1b925a9f90adae",
+      "bytes": 853,
+      "textSha256": "bfac02c70a85786d79372779ca17abfbd64f3f3482e89dcc3e1b925a9f90adae",
+      "endings": [
+        [
+          "LF",
+          10
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/sources.mjs",
+      "sha256": "1ce5328bd38383643ed7b798e7b264ca24ee18ccca7f94e6f890eaefddf778a0",
+      "bytes": 6455,
+      "textSha256": "1ce5328bd38383643ed7b798e7b264ca24ee18ccca7f94e6f890eaefddf778a0",
+      "endings": [
+        [
+          "LF",
+          93
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/spell-extractor.ts",
+      "sha256": "94a79e84942b2fe94ffb3b569b4dbd20efa72c5dc14e6662f88652f7e2f6bd0d",
+      "bytes": 25769,
+      "textSha256": "a42a7cd9504dbea9c98dc2bd088def21ea2f29bd262aeeda56db78c6f94edecd",
+      "endings": [
+        [
+          "CRLF",
+          270
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/spells.mjs",
+      "sha256": "85218a8c72c7f981145c62dd9946eefa684dba0d99b9d0ac4df74ec2472438cd",
+      "bytes": 719,
+      "textSha256": "3e3fe56335aa0da0351940fda8400b5cb4c5a7bd32e4fb4d57533a0bb218f019",
+      "endings": [
+        [
+          "CRLF",
+          13
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/test_history_audit.py",
+      "sha256": "d7ec04359640b6ff1b8f3dfe2ddf14ac56835eb1b527075d2226b4e4368103f1",
+      "bytes": 2960,
+      "textSha256": "a5a57758b881fa9d878ea019663794802766aba7aa9b25569d149c3a6efa9e9e",
+      "endings": [
+        [
+          "CRLF",
+          69
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/thematic-indexes.ts",
+      "sha256": "2d2a46e6fcaf575f8d3c0a9e9033b074b66eb67ef3a82cfa4e6938661728607d",
+      "bytes": 3056,
+      "textSha256": "b0a3e9dee94aaa04985b7f6a4a1f1c6b13729517de78f2ee7aa63a7321613a43",
+      "endings": [
+        [
+          "CRLF",
+          58
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/verify-activity1-provenance.ts",
+      "sha256": "827e88a02fe0a436b1e0aeb0ee41e9bef52abdbb99a924347ce0fb706a919ce1",
+      "bytes": 8324,
+      "textSha256": "a901a41fb2dc726dd7293859ee503d4b836306b5920c42086159015575a688b6",
+      "endings": [
+        [
+          "CRLF",
+          98
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/verify-activity1.mjs",
+      "sha256": "7ad37412808b6d4381184e7d1ddb55b19fcf4056a7d14c7893130f5c0324dab4",
+      "bytes": 905,
+      "textSha256": "7b8e0626f1fea09e121988f78e8393a57e8578023255ee165b721d2c8135b36b",
+      "endings": [
+        [
+          "CRLF",
+          11
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/wealth-equipment-formalizer.ts",
+      "sha256": "e614fd1ba73259ba62588b76cc3e89e9fd7c580d73bb33983f025ed6b34799c2",
+      "bytes": 20471,
+      "textSha256": "67b9cf84d1ed2250bff99d5b8e556af6f1b47a1c92d8372129113e84d05e9c0b",
+      "endings": [
+        [
+          "CRLF",
+          156
+        ]
+      ]
+    },
+    {
+      "path": "tools/curation/wealth-equipment.mjs",
+      "sha256": "2bc6c6a0ec30d5ec9fa0a59e9985405b4ea263dd8d7fc26c4f448a64520ad57e",
+      "bytes": 624,
+      "textSha256": "5594223e6ad48378454123a77befff2b4daabe07fdb89549edd51b52027e937a",
+      "endings": [
+        [
+          "CRLF",
+          8
+        ]
+      ]
+    },
+    {
+      "path": "tools/official-local-plugin.ts",
+      "sha256": "2adf852256810e1e007dcb7e731d9ebbb192b4b72e2e29517bb54aca04263b0b",
+      "bytes": 3390,
+      "textSha256": "446b82c7e19019fc3f3f37d32b7937766d92b61d3cdcf97f2dbf6ff0cc714f9e",
+      "endings": [
+        [
+          "CRLF",
+          42
+        ]
+      ]
+    },
+    {
+      "path": "tools/verify-print-pdf.py",
+      "sha256": "620a34c964ef666c28caf636281453d35c614fbeaee58cc2824954e29d428771",
+      "bytes": 1861,
+      "textSha256": "ea85d8aac92fb271ad410b3c60a2439e6d7b4408abc71cbc4fc7e5104cfac20d",
+      "endings": [
+        [
+          "CRLF",
+          40
+        ]
+      ]
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "21e39c40c130a2cf895bac6c9a4818da3df011871807921ad39b7ce673e18f5f",
+      "bytes": 380,
+      "textSha256": "a3852b718c8362e082fb684a596345166fec568d71f570af08811d6f230124bf",
+      "endings": [
+        [
+          "CRLF",
+          9
+        ]
+      ]
+    },
+    {
+      "path": "vite.config.ts",
+      "sha256": "2f13c0eac5242bcf9f05e5d53bf8ef2898140533d7709bf79c790e86690718cd",
+      "bytes": 2008,
+      "textSha256": "34182e6e289033b63d284ea88b0b3f84bb61e9eb32873a7bb4ad3627d682fe4b",
+      "endings": [
+        [
+          "CRLF",
+          44
+        ]
+      ]
+    },
+    {
+      "path": "wireframe/Forja Wireframes.dc.html",
+      "sha256": "f84e2b0729fa1aab8daef611500e47f55e8ae87260cfab2da15d19a75ac7d37c",
+      "bytes": 112567,
+      "textSha256": "f0254f930f2c0280e2d60c777cb83c60b0d638efb6b5c1c9d9ea08519fb8bf13",
+      "endings": [
+        [
+          "CRLF",
+          709
+        ]
+      ]
+    }
+  ],
+  "privateInputs": [
+    {
+      "scope": "pdf",
+      "path": "tmp/private/pdfs/core.pdf",
+      "sha256": "5e2c35730ef91f757b9919f37fb7cf81d85afcd2149aa500109213f8aea01455"
+    },
+    {
+      "scope": "pdf",
+      "path": "tmp/private/pdfs/human.pdf",
+      "sha256": "f7723c5a145138b38d243021086cb83471c2d1d351a54c5f4e651b398c33a16f"
+    },
+    {
+      "scope": "pdf",
+      "path": "tmp/private/pdfs/oddities.pdf",
+      "sha256": "13834c13fc13e72a0b06da71efbdb556d8dc0b3cd3f8450261e3dab9828c6ad0"
+    },
+    {
+      "scope": "source",
+      "path": "curation/input-manifest.json",
+      "sha256": "e0fa4d9dae830c0cfc000955855da800a1d75f0af06f7cbfaf3d56631463679e"
+    },
+    {
+      "scope": "source",
+      "path": "curation/pilot/core-level-zero.json",
+      "sha256": "e65855746b30c4219449be21de93bf10e5db9e8b5d21cc95b87eec22e0cee263"
+    },
+    {
+      "scope": "source",
+      "path": "curation/pilot/human-ancestry.json",
+      "sha256": "24fec52b8c05c0cfc349d10ef369d9d93457b3177b2a237e9187320c50489437"
+    },
+    {
+      "scope": "source",
+      "path": "curation/pilot/interesting-things.json",
+      "sha256": "dd77d600e96108fafa500a45cdff164a9138fe7ca3471cf2409f671b95fc0055"
+    },
+    {
+      "scope": "source",
+      "path": "curation/pilot/items.json",
+      "sha256": "d39fdf70c5494781196cc4a0985654c9bd6373b71f412cda24f70b82a06267a2"
+    },
+    {
+      "scope": "source",
+      "path": "curation/pilot/professions-languages.json",
+      "sha256": "87883469050c5663a1f114b69d922c417e8e78682a06109c283b75c789639c64"
+    },
+    {
+      "scope": "source",
+      "path": "curation/pilot/table-closure.json",
+      "sha256": "1bbcd46e9251b8a855adcbea3aa674035f9d3adf71baebb5234c0430d069a13e"
+    },
+    {
+      "scope": "source",
+      "path": "curation/pilot/wealth-equipment.json",
+      "sha256": "50d9df43117f2f78fbbc25b851020b5a218c10cb1779511e251f12a31672b275"
+    },
+    {
+      "scope": "source",
+      "path": "curation/sources.json",
+      "sha256": "c66b832ebf34cc047fdf7c18f97bc9965b4cf3e632f7fa29876972f372e15608"
+    },
+    {
+      "scope": "source",
+      "path": "docs/matriz-lacunas-issue34-atividade1.json",
+      "sha256": "fa7546059f061f8d4ae92a7705f190b63f27de5d8d1fecbc20bb3ac8ec1ec3a1"
+    },
+    {
+      "scope": "source",
+      "path": "packages/curation/human-l0-core-local.ts",
+      "sha256": "7e914e6989d0def07e7ef350c5f4c6ad1fca2b2f977fd23352790d6219bc59c3"
+    },
+    {
+      "scope": "source",
+      "path": "tools/curation/core-local-projector.ts",
+      "sha256": "d5c3499fff152222dd98a377aaa52dec5dde10ddead59e0d8e807b31b4bf8f6e"
+    },
+    {
+      "scope": "source",
+      "path": "tools/curation/core-local.mjs",
+      "sha256": "9ad1a4136e1aeb8df3df52a2f9e03c190bb87aefe3d08f90b14a542af83b941f"
+    },
+    {
+      "scope": "source",
+      "path": "tools/curation/human-l0-consumable-compiler.ts",
+      "sha256": "d7ddcbc6c980a333d86c9dd8152a445e122ed77f75ad2b55e3cff0f980f07aee"
+    },
+    {
+      "scope": "review",
+      "path": "tmp/private/human-l0-review.json",
+      "sha256": "ca1e9d778e37433314ace26b51b17a4ebc970e1dfad398eb59d9efd3ec6d35e8"
+    },
+    {
+      "scope": "review",
+      "path": "tmp/private/pdf-concordance.json",
+      "sha256": "0d6f7f7feba846b2613acbd5fadfc79fb8b6387e472e77d6efa486a9557b96b5"
+    }
+  ],
+  "runtime": {
+    "contexts": {
+      "core": "924ea29ca7176e4c8315e315c44e19527dce845621ea5678ac9ca8206f108784",
+      "procedures": "6bebc0a70ad9df00a331a306712e268343248bea683c7e6c7ff678908ca550ca"
+    },
+    "bundleSha256": "84594b88405d5b45e821de58722428b81f494a51465ea49ae5a5e1a787731fef",
+    "indexSha256": "cfbe0619f052cd2aefd578b7be155aa792a6545339b077db87e2e84b6367c4f2",
+    "coverage": {
+      "coreTables": 22,
+      "procedureTables": 74,
+      "thingPlans": 360,
+      "itemDefinitions": 410,
+      "indexedEntries": 2552
+    }
+  },
+  "evidence": [
+    {
+      "originalPath": "tmp/acceptance-vitest.json",
+      "path": "tmp/private/consolidated-freeze/1.0.1/evidence-0.json",
+      "sha256": "a3ea2f6100877b9bec0c0785ea732ac84346c00cc9335d0c3fdeac582e9957d0"
+    },
+    {
+      "originalPath": "tmp/acceptance-negative-final.json",
+      "path": "tmp/private/consolidated-freeze/1.0.1/evidence-1.json",
+      "sha256": "0507c632cd3f28e7abfed6f966ee84d8f19ddeb9b998fb9be4495c762ca6ffbe"
+    },
+    {
+      "originalPath": "tmp/acceptance-playwright.json",
+      "path": "tmp/private/consolidated-freeze/1.0.1/evidence-2.json",
+      "sha256": "7b3212b0e58f494005708d846021a6e8139adf819b8cede85eac4efa44e99a7b"
+    },
+    {
+      "originalPath": "tmp/acceptance-export-final.json",
+      "path": "tmp/private/consolidated-freeze/1.0.1/evidence-3.json",
+      "sha256": "c2720d5e8d9012c4645b60c07eb49ec90e84763936385aa6234a3f08d62be26c"
+    },
+    {
+      "originalPath": "tmp/acceptance-pdf.json",
+      "path": "tmp/private/consolidated-freeze/1.0.1/evidence-4.json",
+      "sha256": "f41c6686c2bc4cb84fd5f477cf2daab4703125edf3062910409cd447c6111e14"
+    },
+    {
+      "originalPath": "tmp/permissions-vitest.json",
+      "path": "tmp/private/consolidated-freeze/1.0.1/evidence-5.json",
+      "sha256": "4fa9e392cff62ad19e01a3e5541071a754e7b337acb564d3a91eb6033fa7415f"
+    },
+    {
+      "originalPath": "tmp/permissions-playwright-final.json",
+      "path": "tmp/private/consolidated-freeze/1.0.1/evidence-6.json",
+      "sha256": "5b3a205a31354273b8b2cea8f33276d4af9ae06468a976368ddcc6c770c6a9b9"
+    },
+    {
+      "originalPath": "tmp/closure7-public-vitest.json",
+      "path": "tmp/private/consolidated-freeze/1.0.1/evidence-7.json",
+      "sha256": "c078ccad199e11ad69b67dc59e29abb4d4bdebafa3fad6e90513d1431d0d7fe1"
+    },
+    {
+      "originalPath": "tmp/closure7-private-vitest.json",
+      "path": "tmp/private/consolidated-freeze/1.0.1/evidence-8.json",
+      "sha256": "17e4dcd2e1cfba3fa2f751a61417dbc73304542b178a3aa4a2905c4e6110f9fe"
+    },
+    {
+      "originalPath": "tmp/closure7-playwright.json",
+      "path": "tmp/private/consolidated-freeze/1.0.1/evidence-9.json",
+      "sha256": "6ceaf6c8e2d426a07c802a8834ed999f3602b23b7801e519c1ee44299bf187c4"
+    },
+    {
+      "originalPath": "tmp/freeze-public-vitest.json",
+      "path": "tmp/private/consolidated-freeze/1.0.1/evidence-10.json",
+      "sha256": "2d2ad62a6ef972525627281203b3e8490fa3a08d6715ad6a1b5155deb704f86a"
+    },
+    {
+      "originalPath": "tmp/freeze-private-vitest.json",
+      "path": "tmp/private/consolidated-freeze/1.0.1/evidence-11.json",
+      "sha256": "638ff13ec0e9b9af7d79fe2a04ea02fd63a2f0b3ab2c9f7f2d76145a146ae2d2"
+    }
+  ],
+  "toolchain": {
+    "node": "22.15.0",
+    "platform": "win32",
+    "lockfile": "package-lock.json",
+    "install": "npm ci"
+  },
+  "limits": [
+    "Public check does not validate licensed corpus or runtime contexts",
+    "Manifest is a local trust baseline, not a signature; preserve its external SHA256 receipt",
+    "Historic PDF review remains recorded in activity4; mutable QA PDF binaries are not substituted or certified by this freeze",
+    "Runtime rebuild is byte deterministic; tests and browser/PDF reports include variable times and are archived by hash",
+    "Later delivery changes require a new freeze version; no publication or issue closure"
+  ]
+}

@@ -1,0 +1,1125 @@
+{
+  "schemaVersion": 1,
+  "assessmentId": "human-l0-closure-activity7@1.0.0",
+  "date": "2026-11-06",
+  "author": "Codex",
+  "baseCommit": "2c5ef8924e643622132d1c2f6d07ce92009f2dff",
+  "branch": "codex/issue56-exports",
+  "scope": "local-human-l0-accepted-scenarios",
+  "delivery": "local-unpublished",
+  "priorAssessment": {
+    "path": "curation/reviews/human-l0-closure-activity2-2026-11-06.json",
+    "sha256": "e831389be32fea15f3d20db45f5df232c1393b96c23a517a24efacd17e662e42"
+  },
+  "originalIssueSources": [
+    {
+      "number": 34,
+      "url": "https://github.com/AntonioVCruz/sotdl-character-forge/issues/34",
+      "title": "[Human L0] Projetar tabelas, kits e equipamentos com efeitos validados",
+      "state": "open",
+      "updatedAt": "2026-11-03T03:18:29Z"
+    },
+    {
+      "number": 35,
+      "url": "https://github.com/AntonioVCruz/sotdl-character-forge/issues/35",
+      "title": "[Human L0] Implementar procedimentos completos Core e Human Development",
+      "state": "open",
+      "updatedAt": "2026-11-02T23:16:58Z"
+    },
+    {
+      "number": 36,
+      "url": "https://github.com/AntonioVCruz/sotdl-character-forge/issues/36",
+      "title": "[Human L0] Integrar interface real, ficha, persistência e exports",
+      "state": "open",
+      "updatedAt": "2026-11-04T12:00:16Z"
+    },
+    {
+      "number": 37,
+      "url": "https://github.com/AntonioVCruz/sotdl-character-forge/issues/37",
+      "title": "[Human L0] Concluir revisão, freeze e aceite para habilitação explícita",
+      "state": "open",
+      "updatedAt": "2026-11-02T23:16:21Z"
+    },
+    {
+      "number": 56,
+      "url": "https://github.com/AntonioVCruz/sotdl-character-forge/issues/56",
+      "title": "[Human L0] Implementar gates finais e exportação da ficha real",
+      "state": "open",
+      "updatedAt": "2026-11-03T16:42:27Z"
+    }
+  ],
+  "remoteStateNotRefetched": true,
+  "remoteIssuesModified": false,
+  "newRequirementDeferrals": [],
+  "counts": {
+    "originalCriteria": 39,
+    "roadmapActivities": 6,
+    "acceptedWithinScope": 45
+  },
+  "evidenceGroups": {
+    "C3": {
+      "path": "docs/execucao-lacunas-human-l0.md",
+      "record": "curation/reviews/human-l0-closure-activity3-2026-11-06.json",
+      "scope": "correções, equivalência do runtime, dimensões, prévia e IndexedDB"
+    },
+    "C4": {
+      "path": "docs/aceite-vertical-consolidado-human-l0.md",
+      "record": "curation/reviews/human-l0-vertical-acceptance-2026-11-06.json",
+      "scope": "36 cruzamentos de motor/persistência; navegador; revisão histórica de nove páginas PDF"
+    },
+    "C5": {
+      "path": "docs/permissoes-habilitacao-human-l0.md",
+      "record": "curation/reviews/human-l0-enablement-decision-2026-11-06.json",
+      "scope": "decisões do usuário, campos emitidos, gates e capacidades"
+    },
+    "C6": {
+      "path": "docs/freeze-consolidado-human-l0.md",
+      "record": "curation/freezes/human-l0/1.0.0.json",
+      "scope": "freeze6 preservado; checks público/completo e restauração de bytes"
+    },
+    "C7": {
+      "path": "docs/fechamento-tecnico-human-l0.md",
+      "scope": "revisão final técnica/UX, resumos de encerramento e acompanhamentos"
+    },
+    "U7": {
+      "path": "docs/uso-human-l0.md",
+      "scope": "guia atual; requisitos públicos e licenciados"
+    }
+  },
+  "entries": [
+    {
+      "id": "I34-AC01",
+      "issue": 34,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 1,
+      "originalCriterion": "Inventário da fatia: incluídos/adiados por fonte e resultado, com motivo e evidência; sem alegar revisão de todo o corpus.",
+      "priorStatus": "comprovado",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E01",
+        "E07"
+      ],
+      "evidence": [
+        "C4",
+        "C5",
+        "C7"
+      ],
+      "assessment": "Matriz #55 liga 2.932 registros por lote a fontes, evidências, handlers e exclusões; atividade 1 fixa o recorte. Atendimento mantido após correções, regressão e revisão final; limites originais preservados.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I34-AC02",
+      "issue": 34,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 2,
+      "originalCriterion": "Schemas e handlers tipados para cada consequência consumida; referência exata a pack/versão/entidade/resultado, sem código executável ou regra inferida por nome.",
+      "priorStatus": "comprovado",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E03",
+        "E04",
+        "E05"
+      ],
+      "evidence": [
+        "C4",
+        "C5",
+        "C7"
+      ],
+      "assessment": "Contratos tipados e origens explícitas nos handlers consumidos; casos sem implementação conservam pendências. Atendimento mantido após correções, regressão e revisão final; limites originais preservados.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I34-AC03",
+      "issue": 34,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 3,
+      "originalCriterion": "Domínios, pesos publicados, intervalos, lacunas, subtabelas e side rolls conferidos; sem sorteio uniforme de linhas no lugar da distribuição publicada.",
+      "priorStatus": "comprovado",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E05",
+        "E07"
+      ],
+      "evidence": [
+        "C4",
+        "C5",
+        "C7"
+      ],
+      "assessment": "Revisão de 70 streams, quatro seletores e enumeração independente; faces e fontes distintas preservadas. Atendimento mantido após correções, regressão e revisão final; limites originais preservados.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I34-AC04",
+      "issue": 34,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 4,
+      "originalCriterion": "Ganhos de estados, atributos, idiomas/alfabetização, profissões, moedas e inventário preservados uma vez por origem; recálculo não sorteia nem duplica ganhos.",
+      "priorStatus": "comprovado",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E03",
+        "E05",
+        "E06"
+      ],
+      "evidence": [
+        "C4",
+        "C5",
+        "C7"
+      ],
+      "assessment": "Replay, origem única, dinheiro exato, profissões e habilidades distintas possuem regressões fictícias e reais. Atendimento mantido após correções, regressão e revisão final; limites originais preservados.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I34-AC05",
+      "issue": 34,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 5,
+      "originalCriterion": "Equipar/guardar e substituições de Defense respeitam escopo e camadas, com conflitos e efeitos sem suporte diagnosticados.",
+      "priorStatus": "comprovado",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E04"
+      ],
+      "evidence": [
+        "C4",
+        "C5",
+        "C7"
+      ],
+      "assessment": "Posse/uso separados; camadas e conflitos de armadura/mãos, requisitos e política de escudos exercitados. Atendimento mantido após correções, regressão e revisão final; limites originais preservados.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I34-AC06",
+      "issue": 34,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 6,
+      "originalCriterion": "Compilação determinística, nova versão quando o conteúdo mudar, índices exatos, relatório e validação cruzada com testes de rejeição/adulteração.",
+      "priorStatus": "parcial",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E01",
+        "E02",
+        "E07"
+      ],
+      "evidence": [
+        "C3",
+        "C4",
+        "C6"
+      ],
+      "assessment": "F05 resolvida: compilação real 1.0.1 dos contextos efetivos, três artefatos imutáveis e 2.552 identidades; reconstrução e rejeição de divergências.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I34-AC07",
+      "issue": 34,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 7,
+      "originalCriterion": "Fixtures públicas fictícias e aceite local dos dados reais com autoria identificada; conteúdo licenciado e derivados reais mantidos nos destinos permitidos pela política.",
+      "priorStatus": "comprovado",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E03",
+        "E07",
+        "E08"
+      ],
+      "evidence": [
+        "C4",
+        "C5",
+        "C7"
+      ],
+      "assessment": "Fixtures fictícias e revisões reais com autoria separadas; insumos/evidências extensas ficam locais. Atendimento mantido após correções, regressão e revisão final; limites originais preservados.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I34-AC08",
+      "issue": 34,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 8,
+      "originalCriterion": "Não promover registros blocked/reference-only, estados de revisão ou fictionalData por conveniência.",
+      "priorStatus": "comprovado",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E07",
+        "E08"
+      ],
+      "evidence": [
+        "C4",
+        "C5",
+        "C7"
+      ],
+      "assessment": "Fontes needs-review e fictionalData real preservados; ativação local e export mínimo não promovem registros. Atendimento mantido após correções, regressão e revisão final; limites originais preservados.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I35-AC01",
+      "issue": 35,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 1,
+      "originalCriterion": "Matriz de passos/cardinalidades/condições por procedimento e origem, com incluídos e adiados explícitos.",
+      "priorStatus": "comprovado",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E01",
+        "E05"
+      ],
+      "evidence": [
+        "C4",
+        "C5",
+        "C7"
+      ],
+      "assessment": "Matriz #53 explicita etapas, condições, cardinalidades e limites; atividade 1 distingue suporte e aceite. Atendimento mantido após correções, regressão e revisão final; limites originais preservados.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I35-AC02",
+      "issue": 35,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 2,
+      "originalCriterion": "Procedimentos Core e Human Development percorrem todos os passos necessários ao recorte, sem impor tabelas facultativas nem inventar alternativas publicadas.",
+      "priorStatus": "parcial",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E05",
+        "E06"
+      ],
+      "evidence": [
+        "C3",
+        "C4"
+      ],
+      "assessment": "F04 resolvida: seis bases incluem M2/M3/M4 nos 36 cruzamentos dirigidos; passos facultativos e registro de dimensões preservados. Não certifica todos os resultados.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I35-AC03",
+      "issue": 35,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 3,
+      "originalCriterion": "Manual/híbrido/aleatório, locks e rerolls respeitam dados e permissões; sorteio uniforme não oficial só aparece como tal e com autorização registrada.",
+      "priorStatus": "parcial",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E05",
+        "E08"
+      ],
+      "evidence": [
+        "C3",
+        "C4"
+      ],
+      "assessment": "F04 resolvida: modos manual/híbrido/aleatório nos 36 cruzamentos, além das regressões de locks/rerolls/consentimento; percurso HD infantil delimitado explicitado.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I35-AC04",
+      "issue": 35,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 4,
+      "originalCriterion": "Cada evento conserva seed, PRNG, faces, fonte/versão, vínculos e consequências. Importação, impressão e recálculo não sorteiam; replay não duplica ganhos.",
+      "priorStatus": "comprovado",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E03",
+        "E05",
+        "E06",
+        "E10"
+      ],
+      "evidence": [
+        "C4",
+        "C5",
+        "C7"
+      ],
+      "assessment": "Sessão conserva seed/PRNG/faces e liga eventos ao contexto exato; fonte é rastreada pelo grafo/contexto, não duplicada em cada evento. Replay e exportação não chamam RNG nos percursos testados. Atendimento mantido após correções, regressão e revisão final; limites originais preservados.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I35-AC05",
+      "issue": 35,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 5,
+      "originalCriterion": "Mudanças de variante/procedimento/escolhas invalidam ou suspendem dependentes com motivo, preservando histórico e última escolha válida; comandos são validados novamente na confirmação.",
+      "priorStatus": "comprovado",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E05",
+        "E06"
+      ],
+      "evidence": [
+        "C4",
+        "C5",
+        "C7"
+      ],
+      "assessment": "Invalidação de dependentes inclusive travados, decisões anteriores e revalidação de comandos possuem regressões. Atendimento mantido após correções, regressão e revisão final; limites originais preservados.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I35-AC06",
+      "issue": 35,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 6,
+      "originalCriterion": "Estados iniciais não são restaurados após consequências; benefícios substituídos não acumulam, e profissão/alfabetização não são inferidas de rótulos.",
+      "priorStatus": "comprovado",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E03",
+        "E05"
+      ],
+      "evidence": [
+        "C4",
+        "C5",
+        "C7"
+      ],
+      "assessment": "Herança profissional concreta, distinção fala/leitura/escrita, estados e não acumulação dos blocos são exercitados. Atendimento mantido após correções, regressão e revisão final; limites originais preservados.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I35-AC07",
+      "issue": 35,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 7,
+      "originalCriterion": "JSON/IndexedDB reabrem personagem e suas pendências, com proteção contra concorrência e migração explícita; saves demo continuam válidos.",
+      "priorStatus": "parcial",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E05",
+        "E09",
+        "E10",
+        "E11"
+      ],
+      "evidence": [
+        "C3",
+        "C4",
+        "C7"
+      ],
+      "assessment": "F02 resolvida: múltiplos personagens IndexedDB, CAS entre abas, migração idempotente, raw legado preservado e regressões demo.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I35-AC08",
+      "issue": 35,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 8,
+      "originalCriterion": "Cenários completos com fixtures fictícias e aceite local dos insumos reais conferidos, incluindo revisão de resultados e probabilidades.",
+      "priorStatus": "parcial",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E05",
+        "E06",
+        "E07",
+        "E10"
+      ],
+      "evidence": [
+        "C3",
+        "C4",
+        "C7"
+      ],
+      "assessment": "F04 resolvida: contratos fictícios e cenários reais distinguidos; 36 percursos de motor/persistência e navegador consolidado, com limites de fonte/resultado.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I35-AC09",
+      "issue": 35,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 9,
+      "originalCriterion": "Completude do procedimento é distinta de autorização/distribuição e de habilitação oficial; não basta remover os flags falsos atuais.",
+      "priorStatus": "comprovado",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E06",
+        "E08",
+        "E10"
+      ],
+      "evidence": [
+        "C4",
+        "C5",
+        "C7"
+      ],
+      "assessment": "Finalização exige recibo e obrigações recalculadas; direitos/gates de emissão são independentes. Atendimento mantido após correções, regressão e revisão final; limites originais preservados.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I36-AC01",
+      "issue": 36,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 1,
+      "originalCriterion": "Fluxo real consome comandos/resultados do motor, incluindo pendências estruturadas; não usa mocks/demoStats para preencher lacunas reais.",
+      "priorStatus": "comprovado",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E03",
+        "E05",
+        "E08",
+        "E09"
+      ],
+      "evidence": [
+        "C4",
+        "C5",
+        "C7"
+      ],
+      "assessment": "Entrada de produto usa contextos reais, comandos e pendências do motor; build é auditado contra demo/fixtures. Atendimento mantido após correções, regressão e revisão final; limites originais preservados.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I36-AC02",
+      "issue": 36,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 2,
+      "originalCriterion": "Prévia só altera a ficha ao confirmar, com nova validação de fonte, dependências, cardinalidade e elegibilidade.",
+      "priorStatus": "pendente",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E09"
+      ],
+      "evidence": [
+        "C3",
+        "C4",
+        "C7"
+      ],
+      "assessment": "F01 resolvida: prévia do conjunto sem gravação, confirmar com nova fonte/contexto, descarte e save intacto na confirmação inválida.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I36-AC03",
+      "issue": 36,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 3,
+      "originalCriterion": "Fonte ausente, versão alterada, handler sem suporte e escolhas pendentes aparecem com motivo; dados e histórico são preservados.",
+      "priorStatus": "comprovado",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E05",
+        "E06",
+        "E08",
+        "E09",
+        "E10"
+      ],
+      "evidence": [
+        "C4",
+        "C5",
+        "C7"
+      ],
+      "assessment": "Fonte ausente/alterada, save suspenso e equipamento inválido geram avisos sem apagar dados; há testes de UI/navegador. Atendimento mantido após correções, regressão e revisão final; limites originais preservados.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I36-AC04",
+      "issue": 36,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 4,
+      "originalCriterion": "Modos, locks/rerolls e passos facultativos/obrigatórios seguem o procedimento; não há decisão obrigatória escondida ou consequência silenciosamente descartada.",
+      "priorStatus": "parcial",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E05",
+        "E09"
+      ],
+      "evidence": [
+        "C3",
+        "C4",
+        "C7"
+      ],
+      "assessment": "F08 e F04 resolvidas: opcionais permanecem explícitos, Core registra medidas validadas; procedimento mantém modos/locks e obrigações sem descarte.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I36-AC05",
+      "issue": 36,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 5,
+      "originalCriterion": "Ficha e inventário exibem características, modificadores, estados, idiomas/alfabetização, direitos/resultados e equipamento coerentes com o motor.",
+      "priorStatus": "parcial",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E03",
+        "E04",
+        "E09",
+        "E10"
+      ],
+      "evidence": [
+        "C3",
+        "C4",
+        "C7"
+      ],
+      "assessment": "F03 resolvida: procedimentos mostram demais características/modificadores e Damage; paridade numérica e fontes/estados conferidos.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I36-AC06",
+      "issue": 36,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 6,
+      "originalCriterion": "Salvar, recarregar a página, importar e exportar conservam eventos/valores/pendências, sem RNG implícito e sem sobrescrever outro personagem ou a ficha demo.",
+      "priorStatus": "parcial",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E06",
+        "E09",
+        "E10",
+        "E11"
+      ],
+      "evidence": [
+        "C3",
+        "C4",
+        "C7"
+      ],
+      "assessment": "F02/F04 resolvidas: biblioteca por modo e personagem, persistência/reabertura e fonte incompatível preservam saves, revisões e migração.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I36-AC07",
+      "issue": 36,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 7,
+      "originalCriterion": "Impressão/PDF/HTML têm paridade e limites de conteúdo documentados/testados; formato não suportado permanece explicitamente indisponível.",
+      "priorStatus": "comprovado",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E08",
+        "E10"
+      ],
+      "evidence": [
+        "C4",
+        "C5",
+        "C7"
+      ],
+      "assessment": "JSON, HTML de leitura e impressão A4/PDF usam projeção mínima, com testes de paridade, offline, conteúdo e bloqueios. Atendimento mantido após correções, regressão e revisão final; limites originais preservados.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I36-AC08",
+      "issue": 36,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 8,
+      "originalCriterion": "E2E cobrem criação, troca de fonte/procedimento, confirmação inválida, reabertura, equipamento, erro/recuperação e teclado/foco; demo e aceite S1 continuam válidos.",
+      "priorStatus": "parcial",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E09",
+        "E10",
+        "E11"
+      ],
+      "evidence": [
+        "C3",
+        "C4",
+        "C7"
+      ],
+      "assessment": "F01/F04/F07 resolvidas: cenários de criação/alteração, confirmação inválida, equipamento, recarga, foco/retorno e duas abas; revisão UX Codex, sem alegar auditoria WCAG completa.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I36-AC09",
+      "issue": 36,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 9,
+      "originalCriterion": "A interface mantém distinção entre teste com fixture, prévia local e fatia oficialmente habilitada. Habilitação exige a issue específica de gates/aceite.",
+      "priorStatus": "comprovado",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E06",
+        "E08",
+        "E09",
+        "E10"
+      ],
+      "evidence": [
+        "C4",
+        "C5",
+        "C7"
+      ],
+      "assessment": "Produto não usa fallback fictício e distingue rascunho/finalização/local autorizado; permissões da ficha mínima permanecem separadas. Atendimento mantido após correções, regressão e revisão final; limites originais preservados.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I37-AC01",
+      "issue": 37,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 1,
+      "originalCriterion": "Cobertura necessária das #34/#35/#36 entregue e verificada; pendências restantes delimitadas por registro e impacto, sem passos obrigatórios ocultos.",
+      "priorStatus": "parcial",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E01",
+        "E05",
+        "E09",
+        "E10"
+      ],
+      "evidence": [
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7"
+      ],
+      "assessment": "F01–F08 reconciliadas nas atividades3–7; nenhuma consequência obrigatória foi removida para produzir aceite e nenhum novo adiamento foi acordado.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I37-AC02",
+      "issue": 37,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 2,
+      "originalCriterion": "Estados de revisão sustentados por evidência/autoria, com edição, proveniência e paginação conhecidas ou limitações explicitadas; não promover blocked/reference-only para curated por conveniência.",
+      "priorStatus": "comprovado",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E07"
+      ],
+      "evidence": [
+        "C4",
+        "C5",
+        "C7"
+      ],
+      "assessment": "Revisão #55 identifica cópias, autoria, páginas conferidas e limites, sem promoção geral nem impressão editorial inventada. Atendimento mantido após correções, regressão e revisão final; limites originais preservados.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I37-AC03",
+      "issue": 37,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 3,
+      "originalCriterion": "Decisão documentada de destino/permissão por conteúdo e export, conforme a política vigente; nenhuma declaração de direitos inferida de teste, merge ou remoção de watermark.",
+      "priorStatus": "comprovado",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E07",
+        "E08",
+        "E10"
+      ],
+      "evidence": [
+        "C4",
+        "C5",
+        "C7"
+      ],
+      "assessment": "Destinos #55 e contrato mínimo #56 separam uso local, Git e formatos; não concedem direitos sobre livros. Atendimento mantido após correções, regressão e revisão final; limites originais preservados.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I37-AC04",
+      "issue": 37,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 4,
+      "originalCriterion": "Manifesto de freeze, versões/hashes, dependências exatas, índices e relatório reproduzíveis; base congelada anterior preservada ou evoluída por versão/migração explícita.",
+      "priorStatus": "parcial",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E02",
+        "E07",
+        "E10"
+      ],
+      "evidence": [
+        "C6",
+        "C7"
+      ],
+      "assessment": "F06 resolvida: snapshot6 1.0.0 preservado e sucessor7 1.0.1 inclui preparação final, com hashes, contratos e reconstrução determinística. Verificação final da versão declarada é condição do recibo local.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I37-AC05",
+      "issue": 37,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 5,
+      "originalCriterion": "Aceite vertical e probabilidades/camadas/ganhos críticos conferidos contra as fontes da fatia, com testes públicos fictícios e reprodução local dos insumos autorizados.",
+      "priorStatus": "parcial",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E04",
+        "E05",
+        "E06",
+        "E07",
+        "E10"
+      ],
+      "evidence": [
+        "C3",
+        "C4",
+        "C7"
+      ],
+      "assessment": "F04 resolvida: aceite vertical registra 36 cenários, camadas/ganhos, probabilidades da revisão55 e tipos de teste separados; cobertura limitada e autoria explícita.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I37-AC06",
+      "issue": 37,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 6,
+      "originalCriterion": "Habilitação é ação explícita e restrita às capacidades suportadas; fontes indisponíveis, incompletas ou alteradas geram diagnóstico, sem fallback silencioso ou bônus fictício.",
+      "priorStatus": "comprovado",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E06",
+        "E08",
+        "E10"
+      ],
+      "evidence": [
+        "C4",
+        "C5",
+        "C7"
+      ],
+      "assessment": "Políticas explícitas habilitam só o recorte local; faltas de fonte/capacidade bloqueiam, sem fallback ou bônus fictício. Atendimento mantido após correções, regressão e revisão final; limites originais preservados.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I37-AC07",
+      "issue": 37,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 7,
+      "originalCriterion": "Geração completa só é declarada para cenários efetivamente aceitos; habilitação de um recorte não certifica todos os livros/variantes.",
+      "priorStatus": "comprovado",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E01",
+        "E06",
+        "E07"
+      ],
+      "evidence": [
+        "C4",
+        "C5",
+        "C7"
+      ],
+      "assessment": "Escopo da atividade 1 e revisão #55 distinguem percursos aceitos de todas as combinações; pendências não viram sucesso. Atendimento mantido após correções, regressão e revisão final; limites originais preservados.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I37-AC08",
+      "issue": 37,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 8,
+      "originalCriterion": "Saves antigos e demo preservados; política de exports respeitada; colaborador sem livros consegue executar a suíte pública e entende os requisitos de uso local.",
+      "priorStatus": "parcial",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E06",
+        "E08",
+        "E10",
+        "E11"
+      ],
+      "evidence": [
+        "C3",
+        "C5",
+        "C6",
+        "C7",
+        "U7"
+      ],
+      "assessment": "F02 e documentação resolvidas: legado/demo preservados, política de destinos consolidada, suíte pública sem corpus e guia atual verificável.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I56-AC01",
+      "issue": 56,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 1,
+      "originalCriterion": "Definir conteúdo e condições permitidos por formato, em conjunto com a revisão da #37.",
+      "priorStatus": "comprovado",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E07",
+        "E08",
+        "E10"
+      ],
+      "evidence": [
+        "C4",
+        "C5",
+        "C7"
+      ],
+      "assessment": "Política por formato definida a partir da revisão #55: projeção mínima e consentimento para dados pessoais; catálogos/textos licenciados excluídos. Atendimento mantido após correções, regressão e revisão final; limites originais preservados.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I56-AC02",
+      "issue": 56,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 2,
+      "originalCriterion": "Implementar gates de contexto, capacidade e completude; impedir que rascunho seja exportado como ficha completa.",
+      "priorStatus": "comprovado",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E06",
+        "E08",
+        "E10"
+      ],
+      "evidence": [
+        "C4",
+        "C5",
+        "C7"
+      ],
+      "assessment": "Emissão busca novamente fontes locais, recalcula completude/capacidade e exige finalização válida; rascunhos não oferecem emissão completa. Atendimento mantido após correções, regressão e revisão final; limites originais preservados.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I56-AC03",
+      "issue": 56,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 3,
+      "originalCriterion": "Implementar formatos autorizados com paridade de valores, fontes e pendências, sem incorporar livros, evidências extensas ou catálogo indevidamente.",
+      "priorStatus": "comprovado",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E10"
+      ],
+      "evidence": [
+        "C4",
+        "C5",
+        "C7"
+      ],
+      "assessment": "Resumo comum alimenta JSON, HTML e A4/PDF; IDs/fontes/pins/pendências sem catálogo. PDFs Core/procedimentos foram renderizados e conferidos. Atendimento mantido após correções, regressão e revisão final; limites originais preservados.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I56-AC04",
+      "issue": 56,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 4,
+      "originalCriterion": "Garantir importação/reabertura do JSON suportado sem RNG implícito, com versões e dependências exatas.",
+      "priorStatus": "comprovado",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E06",
+        "E10"
+      ],
+      "evidence": [
+        "C4",
+        "C5",
+        "C7"
+      ],
+      "assessment": "Replay tipado é recalculado e comparado ao envelope; pins/dependências exatos, recusa de adulteração e spy de RNG nos percursos testados. Atendimento mantido após correções, regressão e revisão final; limites originais preservados.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I56-AC05",
+      "issue": 56,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 5,
+      "originalCriterion": "Testar bloqueios e exportações permitidas; manter formatos não aceitos indisponíveis.",
+      "priorStatus": "comprovado",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E08",
+        "E10"
+      ],
+      "evidence": [
+        "C4",
+        "C5",
+        "C7"
+      ],
+      "assessment": "Testes fictícios/reais/navegador cobrem consentimento, tamanho, estrutura, fontes/versões divergentes, rascunho, XSS escapado e save preservado; formatos amplos continuam ausentes. Atendimento mantido após correções, regressão e revisão final; limites originais preservados.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I34-A3",
+      "issue": 34,
+      "sourceSection": "Roadmap de execução — PR #39",
+      "ordinal": 3,
+      "originalCriterion": "**3. Projetar o lote de tabelas Core.** Dados, resultados/concessões e probabilidades conferidos, com vínculos e pendências explícitos.",
+      "priorStatus": "comprovado",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E01",
+        "E03",
+        "E07"
+      ],
+      "evidence": [
+        "C4",
+        "C5",
+        "C7"
+      ],
+      "assessment": "Lote Core e consequências selecionadas formalizados; revisão #55 e regressões específicas integram as entregas #50/#51. Atendimento mantido após correções, regressão e revisão final; limites originais preservados.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I34-A4",
+      "issue": 34,
+      "sourceSection": "Roadmap de execução — PR #39",
+      "ordinal": 4,
+      "originalCriterion": "**4. Projetar Only Human e Oddities.** Fluxos/consultas/encadeamentos/contextos, sujeitos, modificadores, ciclos e escolha de Interesting Things preservados.",
+      "priorStatus": "comprovado",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E05",
+        "E07"
+      ],
+      "evidence": [
+        "C4",
+        "C5",
+        "C7"
+      ],
+      "assessment": "Only Human/Oddities projetados com fluxos, sujeitos, seletores e limites explícitos; não há alegação de 240 execuções completas. Atendimento mantido após correções, regressão e revisão final; limites originais preservados.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I34-A5",
+      "issue": 34,
+      "sourceSection": "Roadmap de execução — PR #39",
+      "ordinal": 5,
+      "originalCriterion": "**5. Projetar kits, itens e equipamentos.** Ganhos/quantidades/unidades, vínculos ou restrições, perfis publicados e efeitos/requisitos, sem inferências por nome.",
+      "priorStatus": "comprovado",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E04",
+        "E07"
+      ],
+      "evidence": [
+        "C4",
+        "C5",
+        "C7"
+      ],
+      "assessment": "Kits, quantidades e perfis selecionados conferidos; ambiguidades e definições sem suporte preservadas. Atendimento mantido após correções, regressão e revisão final; limites originais preservados.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I34-A6",
+      "issue": 34,
+      "sourceSection": "Roadmap de execução — PR #39",
+      "ordinal": 6,
+      "originalCriterion": "**6. Estender compilador e validação.** Projeção local por lote, versões/índices/relatórios, determinismo, proveniência, integridade e rejeição de adulteração.",
+      "priorStatus": "parcial",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E01",
+        "E02",
+        "E07"
+      ],
+      "evidence": [
+        "C3",
+        "C4",
+        "C6"
+      ],
+      "assessment": "F05 resolvida: rota real versionada reconcilia lotes/contextos com o requisito de compilação, índices, relatório, referências e rejeição.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I34-A7",
+      "issue": 34,
+      "sourceSection": "Roadmap de execução — PR #39",
+      "ordinal": 7,
+      "originalCriterion": "**7. Integrar resolvedores e handlers.** Resolução contextual e aplicação única de consequências; equipamento em camadas, estados/saves preservados e RNG apenas explícito.",
+      "priorStatus": "parcial",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E03",
+        "E04",
+        "E05",
+        "E06"
+      ],
+      "evidence": [
+        "C3",
+        "C4"
+      ],
+      "assessment": "F05/F04 resolvidas: handlers por consequência e origem, equipamento/camadas e replay aceitos nos cenários declarados; capacidades sem suporte conservam diagnóstico.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    },
+    {
+      "id": "I34-A8",
+      "issue": 34,
+      "sourceSection": "Roadmap de execução — PR #39",
+      "ordinal": 8,
+      "originalCriterion": "**8. Auditar o conjunto e entregar aos consumidores.** Reconciliar cobertura e critérios, conferir catálogo/handlers e registrar aceite técnico/limites para #35/#36/#37.",
+      "priorStatus": "parcial",
+      "status": "comprovado-no-recorte-local",
+      "priorEvidence": [
+        "E01",
+        "E07"
+      ],
+      "evidence": [
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7"
+      ],
+      "assessment": "Handoff concluído no recorte: critérios reconciliados, cobertura, permissões, freeze, revisão final e consumidores35/36/37 identificados. Publicação/encerramento seguem separados.",
+      "publicationCondition": "Not remotely closed; requires authorized publication, exact-commit CI and integrated snapshot validation"
+    }
+  ],
+  "validation": {
+    "public": {
+      "passed": 449,
+      "skipped": 81,
+      "failed": 0
+    },
+    "private": {
+      "passed": 646,
+      "skipped": 4,
+      "failed": 0
+    },
+    "browser": {
+      "startTime": "2026-11-06T23:43:52.483Z",
+      "duration": 180855.1,
+      "expected": 11,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "build": "passed; includes TypeScript and official-entry audit",
+    "reports": [
+      {
+        "path": "tmp/closure7-public-vitest.json",
+        "sha256": "c078ccad199e11ad69b67dc59e29abb4d4bdebafa3fad6e90513d1431d0d7fe1"
+      },
+      {
+        "path": "tmp/closure7-private-vitest.json",
+        "sha256": "17e4dcd2e1cfba3fa2f751a61417dbc73304542b178a3aa4a2905c4e6110f9fe"
+      },
+      {
+        "path": "tmp/closure7-playwright.json",
+        "sha256": "6ceaf6c8e2d426a07c802a8834ed999f3602b23b7801e519c1ee44299bf187c4"
+      }
+    ]
+  },
+  "reviews": {
+    "technical": {
+      "author": "Codex",
+      "decision": "accepted within declared local scope",
+      "independent": false
+    },
+    "ux": {
+      "author": "Codex",
+      "decision": "accepted exercised flows; not comprehensive accessibility certification",
+      "independent": false
+    }
+  },
+  "freeze": {
+    "version": "1.0.1",
+    "path": "curation/freezes/human-l0/1.0.1.json",
+    "predecessor": {
+      "path": "curation/freezes/human-l0/1.0.0.json",
+      "sha256": "f14e90f5b87055fe717ba7a9c84607f208c32667f81ed179ff6e23f3c6b2f836"
+    },
+    "runtimeVersion": "1.0.1",
+    "unchangedContextPins": {
+      "core": "924ea29ca7176e4c8315e315c44e19527dce845621ea5678ac9ca8206f108784",
+      "procedures": "6bebc0a70ad9df00a331a306712e268343248bea683c7e6c7ff678908ca550ca"
+    }
+  },
+  "closureDrafts": {
+    "path": "docs/fechamento-tecnico-human-l0.md",
+    "issues": [
+      34,
+      35,
+      36,
+      37,
+      56
+    ],
+    "published": false,
+    "requires": "Read current remote issue bodies; fill actual integrated commit/PR/CI after authorization"
+  },
+  "followups": [
+    {
+      "issue": 21,
+      "scope": "L0 to L1 progression"
+    },
+    {
+      "issue": 16,
+      "scope": "GitHub refs and private backups"
+    },
+    {
+      "scope": "Deferred-use/combat/unsupported contexts",
+      "destination": "preserved runtime blockers and source-bound records; future requirements before enabling"
+    },
+    {
+      "scope": "Editable offline HTML and broader ancestries/magic",
+      "destination": "outside current contract; new product scope required"
+    }
+  ],
+  "limits": [
+    "45 scoped obligations do not prove every published result/combination",
+    "Sources remain needs-review; no license or content distribution inferred",
+    "No commit, PR, CI of unpublished delta, merge, deploy or remote closure performed",
+    "Historical reports and review records retain original dates/counts; final evidence complements them"
+  ]
+}

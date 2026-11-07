@@ -1,5 +1,7 @@
 # Geração oficial local — Humano Core nível 0
 
+Atualização consolidada em 2026-11-06: [guia de uso atual](uso-human-l0.md), [aceite técnico](fechamento-tecnico-human-l0.md) e [freeze](freeze-consolidado-human-l0.md). Core simples e procedimentos Core / Only Human usam prévia/confirmação, biblioteca IndexedDB e finalização revalidada. A #56 local permite JSON como backup privado e HTML/PDF mínimos após revisão de nome/identificadores. No Core simples, a opção narrativa inclui registro validado de medidas, sem inferir Size. Os gates globais dos packs permanecem falsos e as fontes `needs-review`. Commits/publicação continuam adiados. O texto abaixo preserva a decisão inicial de ativação de 2026-11-03; suas menções a dimensões pendentes, Only Human não habilitado e exportação ausente são históricas.
+
 Ativada por solicitação explícita do usuário em 2026-11-03. A entrada principal passa a usar **somente dados reais verificados**. O catálogo/demo e a prévia com fixture saem das rotas de produto, inclusive nos hashes antigos. Dados e componentes fictícios continuam somente em testes de regressão e registros históricos, sem fallback na aplicação.
 
 ## Abrir

@@ -1,0 +1,931 @@
+{
+  "schemaVersion": 1,
+  "assessmentId": "human-l0-closure-activity2@1.0.0",
+  "date": "2026-11-06",
+  "author": "Codex",
+  "baseCommit": "2c5ef8924e643622132d1c2f6d07ce92009f2dff",
+  "branch": "codex/issue56-exports",
+  "scope": "local-human-level-zero-with-uncommitted-issue56",
+  "method": "Read-only issue retrieval, source/test/document inspection and previously recorded execution evidence; no tests rerun, no implementation changes, no issue state changes.",
+  "issueSources": [
+    {
+      "number": 34,
+      "url": "https://github.com/AntonioVCruz/sotdl-character-forge/issues/34",
+      "title": "[Human L0] Projetar tabelas, kits e equipamentos com efeitos validados",
+      "state": "open",
+      "updatedAt": "2026-11-03T03:18:29Z"
+    },
+    {
+      "number": 35,
+      "url": "https://github.com/AntonioVCruz/sotdl-character-forge/issues/35",
+      "title": "[Human L0] Implementar procedimentos completos Core e Human Development",
+      "state": "open",
+      "updatedAt": "2026-11-02T23:16:58Z"
+    },
+    {
+      "number": 36,
+      "url": "https://github.com/AntonioVCruz/sotdl-character-forge/issues/36",
+      "title": "[Human L0] Integrar interface real, ficha, persistência e exports",
+      "state": "open",
+      "updatedAt": "2026-11-04T12:00:16Z"
+    },
+    {
+      "number": 37,
+      "url": "https://github.com/AntonioVCruz/sotdl-character-forge/issues/37",
+      "title": "[Human L0] Concluir revisão, freeze e aceite para habilitação explícita",
+      "state": "open",
+      "updatedAt": "2026-11-02T23:16:21Z"
+    },
+    {
+      "number": 56,
+      "url": "https://github.com/AntonioVCruz/sotdl-character-forge/issues/56",
+      "title": "[Human L0] Implementar gates finais e exportação da ficha real",
+      "state": "open",
+      "updatedAt": "2026-11-03T16:42:27Z"
+    }
+  ],
+  "counts": {
+    "comprovado": 28,
+    "parcial": 16,
+    "pendente": 1,
+    "fora-do-recorte": 0
+  },
+  "evidenceGroups": {
+    "E01": {
+      "title": "Escopo e origem",
+      "code": [
+        "tools/curation/core-local-projector.ts",
+        "tools/curation/core-local.mjs",
+        "packages/curation/human-l0-core-local.ts"
+      ],
+      "tests": [
+        "tests/curation-core-local.test.ts",
+        "tests/curation-core-local-source.test.ts"
+      ],
+      "records": [
+        "docs/escopo-fechamento-human-l0.md",
+        "docs/entrega-core-real-issue34-atividade3.md",
+        "docs/fechamento-issue34-atividade1.md"
+      ],
+      "kind": "público fictício + real local + documental"
+    },
+    "E02": {
+      "title": "Compilação consumível e ponte de lotes",
+      "code": [
+        "tools/curation/human-l0-consumable-compiler.ts",
+        "packages/curation/human-l0-consumable-bundle.ts",
+        "tools/curation/pack-compiler.ts"
+      ],
+      "tests": [
+        "tests/curation-human-l0-consumable-compiler.test.ts",
+        "tests/curation-human-l0-consumable-activity4.test.ts",
+        "tests/curation-human-l0-mechanical-compiler.test.ts"
+      ],
+      "records": [
+        "docs/entrega-compilacao-handlers-consumiveis-human-l0.md",
+        "curation/human-l0-consumable-compilation.json"
+      ],
+      "kind": "público fictício; não comprova compilação genérica dos três lotes reais"
+    },
+    "E03": {
+      "title": "Schemas, handlers e replay",
+      "code": [
+        "packages/character-generator/human-l0.ts",
+        "packages/character-generator/human-l0-consumables.ts",
+        "packages/character-generator/official-core.ts",
+        "packages/character-generator/core-background.ts",
+        "packages/character-generator/core-interesting-things.ts"
+      ],
+      "tests": [
+        "tests/human-l0-consumables.test.ts",
+        "tests/official-core-source.test.ts",
+        "tests/official-interesting-things-source.test.ts"
+      ],
+      "records": [
+        "docs/entrega-background-issue50.md",
+        "docs/entrega-interesting-things-issue51.md"
+      ],
+      "kind": "público fictício + real local"
+    },
+    "E04": {
+      "title": "Equipamento e camadas",
+      "code": [
+        "packages/character-generator/core-equipment.ts",
+        "tools/curation/core-equipment-projector.ts",
+        "apps/web/OfficialEquipmentPanel.tsx"
+      ],
+      "tests": [
+        "tests/core-equipment.test.ts",
+        "tests/official-equipment-source.test.ts"
+      ],
+      "records": [
+        "docs/entrega-equipamento-issue52.md",
+        "curation/reviews/issue52-equipment-2026-11-03.json"
+      ],
+      "kind": "público fictício + real local"
+    },
+    "E05": {
+      "title": "Procedimentos e dependências",
+      "code": [
+        "packages/character-generator/procedure-model.ts",
+        "packages/character-generator/procedure-graph.ts",
+        "packages/character-generator/procedure-runtime.ts",
+        "tools/curation/procedure-local-context.ts"
+      ],
+      "tests": [
+        "tests/procedure-runtime.test.ts",
+        "tests/procedure-source.test.ts"
+      ],
+      "records": [
+        "docs/matriz-procedimentos-issue53.md",
+        "docs/entrega-procedimentos-issue53.md",
+        "curation/reviews/issue53-procedures-2026-11-03.json"
+      ],
+      "kind": "público fictício + real local"
+    },
+    "E06": {
+      "title": "Finalização",
+      "code": [
+        "packages/character-generator/character-finalization.ts",
+        "apps/web/CharacterCompletionPanel.tsx"
+      ],
+      "tests": [
+        "tests/character-finalization.test.ts",
+        "tests/finalization-source.test.ts",
+        "tests/helpers/finalization-paths.ts",
+        "tests/e2e/character-finalization.spec.ts"
+      ],
+      "records": [
+        "docs/entrega-finalizacao-issue54.md",
+        "docs/matriz-finalizacao-issue54.md"
+      ],
+      "kind": "público fictício + real local + navegador local"
+    },
+    "E07": {
+      "title": "Revisão, probabilidades, páginas e freeze",
+      "code": [
+        "tools/curation/review-human-l0.ts",
+        "tools/curation/review-freeze.ts",
+        "tools/curation/review-pdf.py",
+        "tools/curation/freeze.mjs"
+      ],
+      "tests": [
+        "tests/review-freeze.test.ts",
+        "tests/review-freeze-source.test.ts"
+      ],
+      "records": [
+        "docs/entrega-revisao-freeze-issue55.md",
+        "docs/matriz-revisao-freeze-issue55.md",
+        "docs/revisao-semantica-issue55.md",
+        "curation/human-l0-review-freeze.json"
+      ],
+      "kind": "público fictício + revisão real local; snapshot histórico #55"
+    },
+    "E08": {
+      "title": "Política e gates locais",
+      "code": [
+        "tools/official-local-plugin.ts",
+        "tools/curation/official-local-context.ts",
+        "curation/official-local-policy.json",
+        "curation/procedure-local-policy.json",
+        "tools/curation/privacy-check.mjs"
+      ],
+      "tests": [
+        "tests/official-core.test.ts",
+        "tests/curation-privacy.test.ts"
+      ],
+      "records": [
+        "docs/politica-distribuicao-conteudo.md",
+        "docs/destinos-permissoes-issue55.md",
+        "docs/ativacao-oficial-local-core.md"
+      ],
+      "kind": "público fictício + inspeção de políticas e código"
+    },
+    "E09": {
+      "title": "Interface e persistência atuais",
+      "code": [
+        "apps/web/OfficialCoreGenerator.tsx",
+        "apps/web/CreationProcedures.tsx",
+        "apps/web/InterestingThingPanel.tsx",
+        "apps/web/main.tsx"
+      ],
+      "tests": [
+        "tests/creation-procedures-ui.test.tsx",
+        "tests/e2e/official-core.spec.ts",
+        "tests/e2e/official-procedures.spec.ts",
+        "tests/e2e/character-finalization.spec.ts"
+      ],
+      "records": [
+        "docs/entrega-procedimentos-issue53.md",
+        "docs/entrega-finalizacao-issue54.md"
+      ],
+      "kind": "público fictício + navegador com fontes reais; sem aceite global de UX"
+    },
+    "E10": {
+      "title": "Arquivos mínimos da ficha (#56 local)",
+      "code": [
+        "packages/character-generator/character-export.ts",
+        "apps/web/CharacterExportPanel.tsx",
+        "apps/web/character-export-html.ts"
+      ],
+      "tests": [
+        "tests/character-export.test.ts",
+        "tests/character-export-source.test.ts",
+        "tests/e2e/character-export.spec.ts"
+      ],
+      "records": [
+        "docs/plano-exportacao-issue56.md",
+        "docs/entrega-exportacao-issue56.md"
+      ],
+      "kind": "público fictício + real local + navegador/PDF local; sem CI ou commit da #56"
+    },
+    "E11": {
+      "title": "Compatibilidade e CI pública",
+      "code": [
+        "packages/character-generator/runtime.ts",
+        ".github/workflows/ci.yml",
+        "vite.config.ts",
+        "playwright.config.ts"
+      ],
+      "tests": [
+        "tests/catalog.test.ts",
+        "tests/standalone.test.ts",
+        "tests/human-l0-preview-ui.test.tsx"
+      ],
+      "records": [
+        "docs/aceite-integrado-human-l0.md",
+        "docs/aceite-s1-issues9-10.md",
+        "docs/entrega-revisao-freeze-issue55.md"
+      ],
+      "kind": "público fictício + registros históricos de integração; CI não executa E2E privado"
+    }
+  },
+  "entries": [
+    {
+      "id": "I34-AC01",
+      "issue": 34,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 1,
+      "originalCriterion": "Inventário da fatia: incluídos/adiados por fonte e resultado, com motivo e evidência; sem alegar revisão de todo o corpus.",
+      "status": "comprovado",
+      "evidence": [
+        "E01",
+        "E07"
+      ],
+      "assessment": "Matriz #55 liga 2.932 registros por lote a fontes, evidências, handlers e exclusões; atividade 1 fixa o recorte.",
+      "remaining": "Manter os limites por registro; não extrapolar para o corpus inteiro."
+    },
+    {
+      "id": "I34-AC02",
+      "issue": 34,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 2,
+      "originalCriterion": "Schemas e handlers tipados para cada consequência consumida; referência exata a pack/versão/entidade/resultado, sem código executável ou regra inferida por nome.",
+      "status": "comprovado",
+      "evidence": [
+        "E03",
+        "E04",
+        "E05"
+      ],
+      "assessment": "Contratos tipados e origens explícitas nos handlers consumidos; casos sem implementação conservam pendências.",
+      "remaining": "Conferir alterações futuras sem inventar perfis por rótulo."
+    },
+    {
+      "id": "I34-AC03",
+      "issue": 34,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 3,
+      "originalCriterion": "Domínios, pesos publicados, intervalos, lacunas, subtabelas e side rolls conferidos; sem sorteio uniforme de linhas no lugar da distribuição publicada.",
+      "status": "comprovado",
+      "evidence": [
+        "E05",
+        "E07"
+      ],
+      "assessment": "Revisão de 70 streams, quatro seletores e enumeração independente; faces e fontes distintas preservadas.",
+      "remaining": "Não confundir distribuições marginais verificadas com todos os percursos completos."
+    },
+    {
+      "id": "I34-AC04",
+      "issue": 34,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 4,
+      "originalCriterion": "Ganhos de estados, atributos, idiomas/alfabetização, profissões, moedas e inventário preservados uma vez por origem; recálculo não sorteia nem duplica ganhos.",
+      "status": "comprovado",
+      "evidence": [
+        "E03",
+        "E05",
+        "E06"
+      ],
+      "assessment": "Replay, origem única, dinheiro exato, profissões e habilidades distintas possuem regressões fictícias e reais.",
+      "remaining": "Manter invariantes no aceite vertical ampliado da atividade 4."
+    },
+    {
+      "id": "I34-AC05",
+      "issue": 34,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 5,
+      "originalCriterion": "Equipar/guardar e substituições de Defense respeitam escopo e camadas, com conflitos e efeitos sem suporte diagnosticados.",
+      "status": "comprovado",
+      "evidence": [
+        "E04"
+      ],
+      "assessment": "Posse/uso separados; camadas e conflitos de armadura/mãos, requisitos e política de escudos exercitados.",
+      "remaining": "Manter contextos não suportados explícitos."
+    },
+    {
+      "id": "I34-AC06",
+      "issue": 34,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 6,
+      "originalCriterion": "Compilação determinística, nova versão quando o conteúdo mudar, índices exatos, relatório e validação cruzada com testes de rejeição/adulteração.",
+      "status": "parcial",
+      "evidence": [
+        "E01",
+        "E02",
+        "E07"
+      ],
+      "assessment": "Compilação/índices imutáveis estão provados na receita sintética; há projeção real separada, mas não uma equivalência consolidada dos três lotes com o requisito original.",
+      "remaining": "F05: demonstrar equivalência da rota real com os requisitos de compilação/índices/versionamento ou concluir a ponte faltante."
+    },
+    {
+      "id": "I34-AC07",
+      "issue": 34,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 7,
+      "originalCriterion": "Fixtures públicas fictícias e aceite local dos dados reais com autoria identificada; conteúdo licenciado e derivados reais mantidos nos destinos permitidos pela política.",
+      "status": "comprovado",
+      "evidence": [
+        "E03",
+        "E07",
+        "E08"
+      ],
+      "assessment": "Fixtures fictícias e revisões reais com autoria separadas; insumos/evidências extensas ficam locais.",
+      "remaining": "Repetir privacidade sobre a versão final, incluindo novos arquivos."
+    },
+    {
+      "id": "I34-AC08",
+      "issue": 34,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 8,
+      "originalCriterion": "Não promover registros blocked/reference-only, estados de revisão ou fictionalData por conveniência.",
+      "status": "comprovado",
+      "evidence": [
+        "E07",
+        "E08"
+      ],
+      "assessment": "Fontes needs-review e fictionalData real preservados; ativação local e export mínimo não promovem registros.",
+      "remaining": "Manter decisões de distribuição e promoção separadas."
+    },
+    {
+      "id": "I35-AC01",
+      "issue": 35,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 1,
+      "originalCriterion": "Matriz de passos/cardinalidades/condições por procedimento e origem, com incluídos e adiados explícitos.",
+      "status": "comprovado",
+      "evidence": [
+        "E01",
+        "E05"
+      ],
+      "assessment": "Matriz #53 explicita etapas, condições, cardinalidades e limites; atividade 1 distingue suporte e aceite.",
+      "remaining": "Usar a matriz como referência da atividade 4."
+    },
+    {
+      "id": "I35-AC02",
+      "issue": 35,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 2,
+      "originalCriterion": "Procedimentos Core e Human Development percorrem todos os passos necessários ao recorte, sem impor tabelas facultativas nem inventar alternativas publicadas.",
+      "status": "parcial",
+      "evidence": [
+        "E05",
+        "E06"
+      ],
+      "assessment": "Seis bases mecânicas verificadas; percursos completos identificados para M1/M5/M6, não para M2/M3/M4.",
+      "remaining": "F04: percorrer M2/M3/M4 e registrar etapas obrigatórias/opcionais antes do fechamento amplo."
+    },
+    {
+      "id": "I35-AC03",
+      "issue": 35,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 3,
+      "originalCriterion": "Manual/híbrido/aleatório, locks e rerolls respeitam dados e permissões; sorteio uniforme não oficial só aparece como tal e com autorização registrada.",
+      "status": "parcial",
+      "evidence": [
+        "E05",
+        "E08"
+      ],
+      "assessment": "Comandos validam modos, faces e locks; híbrido possui teste dirigido; consentimento uniforme está no contrato.",
+      "remaining": "F04: comprovar ponta a ponta os modos declarados e cruzamentos necessários, sem alegar cobertura dos 36."
+    },
+    {
+      "id": "I35-AC04",
+      "issue": 35,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 4,
+      "originalCriterion": "Cada evento conserva seed, PRNG, faces, fonte/versão, vínculos e consequências. Importação, impressão e recálculo não sorteiam; replay não duplica ganhos.",
+      "status": "comprovado",
+      "evidence": [
+        "E03",
+        "E05",
+        "E06",
+        "E10"
+      ],
+      "assessment": "Sessão conserva seed/PRNG/faces e liga eventos ao contexto exato; fonte é rastreada pelo grafo/contexto, não duplicada em cada evento. Replay e exportação não chamam RNG nos percursos testados.",
+      "remaining": "Preservar essa rastreabilidade transitiva na expansão de cobertura."
+    },
+    {
+      "id": "I35-AC05",
+      "issue": 35,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 5,
+      "originalCriterion": "Mudanças de variante/procedimento/escolhas invalidam ou suspendem dependentes com motivo, preservando histórico e última escolha válida; comandos são validados novamente na confirmação.",
+      "status": "comprovado",
+      "evidence": [
+        "E05",
+        "E06"
+      ],
+      "assessment": "Invalidação de dependentes inclusive travados, decisões anteriores e revalidação de comandos possuem regressões.",
+      "remaining": "Manter histórico e testar novos tipos de comando."
+    },
+    {
+      "id": "I35-AC06",
+      "issue": 35,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 6,
+      "originalCriterion": "Estados iniciais não são restaurados após consequências; benefícios substituídos não acumulam, e profissão/alfabetização não são inferidas de rótulos.",
+      "status": "comprovado",
+      "evidence": [
+        "E03",
+        "E05"
+      ],
+      "assessment": "Herança profissional concreta, distinção fala/leitura/escrita, estados e não acumulação dos blocos são exercitados.",
+      "remaining": "Manter os invariantes em novos resultados."
+    },
+    {
+      "id": "I35-AC07",
+      "issue": 35,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 7,
+      "originalCriterion": "JSON/IndexedDB reabrem personagem e suas pendências, com proteção contra concorrência e migração explícita; saves demo continuam válidos.",
+      "status": "parcial",
+      "evidence": [
+        "E05",
+        "E09",
+        "E10",
+        "E11"
+      ],
+      "assessment": "JSON/reabertura e suspensão funcionam; UI nova persiste em localStorage. Locks em memória não demonstram concorrência entre abas nem migração/IndexedDB do fluxo novo.",
+      "remaining": "F02: atender ou acordar explicitamente o requisito de IndexedDB, migração e concorrência; preservar demo."
+    },
+    {
+      "id": "I35-AC08",
+      "issue": 35,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 8,
+      "originalCriterion": "Cenários completos com fixtures fictícias e aceite local dos insumos reais conferidos, incluindo revisão de resultados e probabilidades.",
+      "status": "parcial",
+      "evidence": [
+        "E05",
+        "E06",
+        "E07",
+        "E10"
+      ],
+      "assessment": "Há testes fictícios de contratos e casos reais completos; isso não constitui matriz completa de cenários fictícios/reais por combinação e modo.",
+      "remaining": "F04: consolidar cobertura necessária e o aceite vertical, com tipos de evidência separados."
+    },
+    {
+      "id": "I35-AC09",
+      "issue": 35,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 9,
+      "originalCriterion": "Completude do procedimento é distinta de autorização/distribuição e de habilitação oficial; não basta remover os flags falsos atuais.",
+      "status": "comprovado",
+      "evidence": [
+        "E06",
+        "E08",
+        "E10"
+      ],
+      "assessment": "Finalização exige recibo e obrigações recalculadas; direitos/gates de emissão são independentes.",
+      "remaining": "Manter a distinção; não remover flags para fabricar aceite."
+    },
+    {
+      "id": "I36-AC01",
+      "issue": 36,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 1,
+      "originalCriterion": "Fluxo real consome comandos/resultados do motor, incluindo pendências estruturadas; não usa mocks/demoStats para preencher lacunas reais.",
+      "status": "comprovado",
+      "evidence": [
+        "E03",
+        "E05",
+        "E08",
+        "E09"
+      ],
+      "assessment": "Entrada de produto usa contextos reais, comandos e pendências do motor; build é auditado contra demo/fixtures.",
+      "remaining": "Manter a auditoria na versão final."
+    },
+    {
+      "id": "I36-AC02",
+      "issue": 36,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 2,
+      "originalCriterion": "Prévia só altera a ficha ao confirmar, com nova validação de fonte, dependências, cardinalidade e elegibilidade.",
+      "status": "pendente",
+      "evidence": [
+        "E09"
+      ],
+      "assessment": "As funções change() calculam e salvam imediatamente após ações. O botão Confirmar escolha confirma um comando, mas não oferece prévia transacional com descarte do estado proposto.",
+      "remaining": "F01: implementar prévia/confirmação/descarte e definir revalidação de fonte corrente na confirmação; nenhuma exceção de escopo foi aprovada."
+    },
+    {
+      "id": "I36-AC03",
+      "issue": 36,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 3,
+      "originalCriterion": "Fonte ausente, versão alterada, handler sem suporte e escolhas pendentes aparecem com motivo; dados e histórico são preservados.",
+      "status": "comprovado",
+      "evidence": [
+        "E05",
+        "E06",
+        "E08",
+        "E09",
+        "E10"
+      ],
+      "assessment": "Fonte ausente/alterada, save suspenso e equipamento inválido geram avisos sem apagar dados; há testes de UI/navegador.",
+      "remaining": "Preservar os diagnósticos no fluxo de prévia futuro."
+    },
+    {
+      "id": "I36-AC04",
+      "issue": 36,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 4,
+      "originalCriterion": "Modos, locks/rerolls e passos facultativos/obrigatórios seguem o procedimento; não há decisão obrigatória escondida ou consequência silenciosamente descartada.",
+      "status": "parcial",
+      "evidence": [
+        "E05",
+        "E09"
+      ],
+      "assessment": "Procedimentos exibem etapas e pendências; no gerador simples optionalTables adiciona optional/build, sem percurso de resolução completo exposto.",
+      "remaining": "F08: resolver ou tratar explicitamente essa opção; F04: conferir modos e passos obrigatórios."
+    },
+    {
+      "id": "I36-AC05",
+      "issue": 36,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 5,
+      "originalCriterion": "Ficha e inventário exibem características, modificadores, estados, idiomas/alfabetização, direitos/resultados e equipamento coerentes com o motor.",
+      "status": "parcial",
+      "evidence": [
+        "E03",
+        "E04",
+        "E09",
+        "E10"
+      ],
+      "assessment": "Motor e exportação têm todos os números; a mini-ficha de procedimentos mostra quatro atributos e Defense, mas omite várias características, modificadores e Damage.",
+      "remaining": "F03: alinhar ficha visível e direitos/resultados ao contrato do motor, preservando os limites dos textos exportáveis."
+    },
+    {
+      "id": "I36-AC06",
+      "issue": 36,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 6,
+      "originalCriterion": "Salvar, recarregar a página, importar e exportar conservam eventos/valores/pendências, sem RNG implícito e sem sobrescrever outro personagem ou a ficha demo.",
+      "status": "parcial",
+      "evidence": [
+        "E06",
+        "E09",
+        "E10",
+        "E11"
+      ],
+      "assessment": "Reabertura/importação/exportação preservam valores e saves inválidos nos cenários aceitos; os fluxos têm chaves distintas. Não há prova de isolamento de múltiplos personagens/abas nem cobertura das migrações exigidas.",
+      "remaining": "F02: definir e verificar isolamento/concorrência/migração; F04: ampliar cenários."
+    },
+    {
+      "id": "I36-AC07",
+      "issue": 36,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 7,
+      "originalCriterion": "Impressão/PDF/HTML têm paridade e limites de conteúdo documentados/testados; formato não suportado permanece explicitamente indisponível.",
+      "status": "comprovado",
+      "evidence": [
+        "E08",
+        "E10"
+      ],
+      "assessment": "JSON, HTML de leitura e impressão A4/PDF usam projeção mínima, com testes de paridade, offline, conteúdo e bloqueios.",
+      "remaining": "Aceite técnico local da #56; publicação e CI dessa alteração estão adiadas."
+    },
+    {
+      "id": "I36-AC08",
+      "issue": 36,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 8,
+      "originalCriterion": "E2E cobrem criação, troca de fonte/procedimento, confirmação inválida, reabertura, equipamento, erro/recuperação e teclado/foco; demo e aceite S1 continuam válidos.",
+      "status": "parcial",
+      "evidence": [
+        "E09",
+        "E10",
+        "E11"
+      ],
+      "assessment": "E2Es existentes cobrem criação, equipamento, reabertura, finalização e arquivos em percursos selecionados; não comprovam teclado/foco e prévia inválida do fluxo novo.",
+      "remaining": "F07: testar acessibilidade/recuperação; F01: prévia; F04: troca de procedimento/fonte e cobertura."
+    },
+    {
+      "id": "I36-AC09",
+      "issue": 36,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 9,
+      "originalCriterion": "A interface mantém distinção entre teste com fixture, prévia local e fatia oficialmente habilitada. Habilitação exige a issue específica de gates/aceite.",
+      "status": "comprovado",
+      "evidence": [
+        "E06",
+        "E08",
+        "E09",
+        "E10"
+      ],
+      "assessment": "Produto não usa fallback fictício e distingue rascunho/finalização/local autorizado; permissões da ficha mínima permanecem separadas.",
+      "remaining": "Não atribuir habilitação de todos os livros à ativação do recorte."
+    },
+    {
+      "id": "I37-AC01",
+      "issue": 37,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 1,
+      "originalCriterion": "Cobertura necessária das #34/#35/#36 entregue e verificada; pendências restantes delimitadas por registro e impacto, sem passos obrigatórios ocultos.",
+      "status": "parcial",
+      "evidence": [
+        "E01",
+        "E05",
+        "E09",
+        "E10"
+      ],
+      "assessment": "As entregas cobrem grande parte do recorte, mas a matriz atual identifica lacunas concretas nas #34–#36.",
+      "remaining": "Resolver F01–F05/F07/F08 e registrar impactos antes de declarar fechamento global."
+    },
+    {
+      "id": "I37-AC02",
+      "issue": 37,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 2,
+      "originalCriterion": "Estados de revisão sustentados por evidência/autoria, com edição, proveniência e paginação conhecidas ou limitações explicitadas; não promover blocked/reference-only para curated por conveniência.",
+      "status": "comprovado",
+      "evidence": [
+        "E07"
+      ],
+      "assessment": "Revisão #55 identifica cópias, autoria, páginas conferidas e limites, sem promoção geral nem impressão editorial inventada.",
+      "remaining": "Preservar os limites e os registros privados."
+    },
+    {
+      "id": "I37-AC03",
+      "issue": 37,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 3,
+      "originalCriterion": "Decisão documentada de destino/permissão por conteúdo e export, conforme a política vigente; nenhuma declaração de direitos inferida de teste, merge ou remoção de watermark.",
+      "status": "comprovado",
+      "evidence": [
+        "E07",
+        "E08",
+        "E10"
+      ],
+      "assessment": "Destinos #55 e contrato mínimo #56 separam uso local, Git e formatos; não concedem direitos sobre livros.",
+      "remaining": "Revisar qualquer novo campo/novo formato na atividade 5."
+    },
+    {
+      "id": "I37-AC04",
+      "issue": 37,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 4,
+      "originalCriterion": "Manifesto de freeze, versões/hashes, dependências exatas, índices e relatório reproduzíveis; base congelada anterior preservada ou evoluída por versão/migração explícita.",
+      "status": "parcial",
+      "evidence": [
+        "E02",
+        "E07",
+        "E10"
+      ],
+      "assessment": "Freeze #55 e 16 contratos estão registrados; snapshot #55 antecede a #56 e as correções de consolidação.",
+      "remaining": "F06: produzir snapshot sucessor e conferir versões, índices, dependências e bytes sem substituir o histórico."
+    },
+    {
+      "id": "I37-AC05",
+      "issue": 37,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 5,
+      "originalCriterion": "Aceite vertical e probabilidades/camadas/ganhos críticos conferidos contra as fontes da fatia, com testes públicos fictícios e reprodução local dos insumos autorizados.",
+      "status": "parcial",
+      "evidence": [
+        "E04",
+        "E05",
+        "E06",
+        "E07",
+        "E10"
+      ],
+      "assessment": "Probabilidades e ganhos críticos têm revisão/regressões; aceite vertical completo do recorte consolidado ainda não está demonstrado.",
+      "remaining": "F04: executar matriz de percursos da atividade 4 e associar ao snapshot sucessor."
+    },
+    {
+      "id": "I37-AC06",
+      "issue": 37,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 6,
+      "originalCriterion": "Habilitação é ação explícita e restrita às capacidades suportadas; fontes indisponíveis, incompletas ou alteradas geram diagnóstico, sem fallback silencioso ou bônus fictício.",
+      "status": "comprovado",
+      "evidence": [
+        "E06",
+        "E08",
+        "E10"
+      ],
+      "assessment": "Políticas explícitas habilitam só o recorte local; faltas de fonte/capacidade bloqueiam, sem fallback ou bônus fictício.",
+      "remaining": "Manter a habilitação restrita após correções."
+    },
+    {
+      "id": "I37-AC07",
+      "issue": 37,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 7,
+      "originalCriterion": "Geração completa só é declarada para cenários efetivamente aceitos; habilitação de um recorte não certifica todos os livros/variantes.",
+      "status": "comprovado",
+      "evidence": [
+        "E01",
+        "E06",
+        "E07"
+      ],
+      "assessment": "Escopo da atividade 1 e revisão #55 distinguem percursos aceitos de todas as combinações; pendências não viram sucesso.",
+      "remaining": "Não extrapolar resultados de M1/M5/M6 para M2/M3/M4."
+    },
+    {
+      "id": "I37-AC08",
+      "issue": 37,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 8,
+      "originalCriterion": "Saves antigos e demo preservados; política de exports respeitada; colaborador sem livros consegue executar a suíte pública e entende os requisitos de uso local.",
+      "status": "parcial",
+      "evidence": [
+        "E06",
+        "E08",
+        "E10",
+        "E11"
+      ],
+      "assessment": "Há preservação de saves, regressões demo e suíte pública sem livros; a compatibilidade/migração dos fluxos novos e a documentação final ainda exigem consolidação.",
+      "remaining": "F02: compatibilidade; atividade 7: documentação final e execução pública da versão consolidada."
+    },
+    {
+      "id": "I56-AC01",
+      "issue": 56,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 1,
+      "originalCriterion": "Definir conteúdo e condições permitidos por formato, em conjunto com a revisão da #37.",
+      "status": "comprovado",
+      "evidence": [
+        "E07",
+        "E08",
+        "E10"
+      ],
+      "assessment": "Política por formato definida a partir da revisão #55: projeção mínima e consentimento para dados pessoais; catálogos/textos licenciados excluídos.",
+      "remaining": "Nenhuma correção identificada para este critério no recorte; reconferir campos após mudanças."
+    },
+    {
+      "id": "I56-AC02",
+      "issue": 56,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 2,
+      "originalCriterion": "Implementar gates de contexto, capacidade e completude; impedir que rascunho seja exportado como ficha completa.",
+      "status": "comprovado",
+      "evidence": [
+        "E06",
+        "E08",
+        "E10"
+      ],
+      "assessment": "Emissão busca novamente fontes locais, recalcula completude/capacidade e exige finalização válida; rascunhos não oferecem emissão completa.",
+      "remaining": "Manter os testes de bloqueio ao integrar prévia/persistência."
+    },
+    {
+      "id": "I56-AC03",
+      "issue": 56,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 3,
+      "originalCriterion": "Implementar formatos autorizados com paridade de valores, fontes e pendências, sem incorporar livros, evidências extensas ou catálogo indevidamente.",
+      "status": "comprovado",
+      "evidence": [
+        "E10"
+      ],
+      "assessment": "Resumo comum alimenta JSON, HTML e A4/PDF; IDs/fontes/pins/pendências sem catálogo. PDFs Core/procedimentos foram renderizados e conferidos.",
+      "remaining": "Acrescentar casos pertinentes de conteúdo longo no aceite consolidado; não prometer edição HTML offline."
+    },
+    {
+      "id": "I56-AC04",
+      "issue": 56,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 4,
+      "originalCriterion": "Garantir importação/reabertura do JSON suportado sem RNG implícito, com versões e dependências exatas.",
+      "status": "comprovado",
+      "evidence": [
+        "E06",
+        "E10"
+      ],
+      "assessment": "Replay tipado é recalculado e comparado ao envelope; pins/dependências exatos, recusa de adulteração e spy de RNG nos percursos testados.",
+      "remaining": "Ampliar apenas a cobertura dos novos percursos de F04; contrato da #56 permanece local."
+    },
+    {
+      "id": "I56-AC05",
+      "issue": 56,
+      "sourceSection": "Critérios de aceite",
+      "ordinal": 5,
+      "originalCriterion": "Testar bloqueios e exportações permitidas; manter formatos não aceitos indisponíveis.",
+      "status": "comprovado",
+      "evidence": [
+        "E08",
+        "E10"
+      ],
+      "assessment": "Testes fictícios/reais/navegador cobrem consentimento, tamanho, estrutura, fontes/versões divergentes, rascunho, XSS escapado e save preservado; formatos amplos continuam ausentes.",
+      "remaining": "Commit/publicação/CI/merge seguem adiados; não são evidência já obtida da #56."
+    },
+    {
+      "id": "I34-A3",
+      "issue": 34,
+      "sourceSection": "Roadmap de execução — PR #39",
+      "ordinal": 3,
+      "originalCriterion": "**3. Projetar o lote de tabelas Core.** Dados, resultados/concessões e probabilidades conferidos, com vínculos e pendências explícitos.",
+      "status": "comprovado",
+      "evidence": [
+        "E01",
+        "E03",
+        "E07"
+      ],
+      "assessment": "Lote Core e consequências selecionadas formalizados; revisão #55 e regressões específicas integram as entregas #50/#51.",
+      "remaining": "Reconciliar o checklist remoto posteriormente, sem ampliar o recorte."
+    },
+    {
+      "id": "I34-A4",
+      "issue": 34,
+      "sourceSection": "Roadmap de execução — PR #39",
+      "ordinal": 4,
+      "originalCriterion": "**4. Projetar Only Human e Oddities.** Fluxos/consultas/encadeamentos/contextos, sujeitos, modificadores, ciclos e escolha de Interesting Things preservados.",
+      "status": "comprovado",
+      "evidence": [
+        "E05",
+        "E07"
+      ],
+      "assessment": "Only Human/Oddities projetados com fluxos, sujeitos, seletores e limites explícitos; não há alegação de 240 execuções completas.",
+      "remaining": "Cobertura de percursos adicionais pertence a F04; preservar bloqueios por handler."
+    },
+    {
+      "id": "I34-A5",
+      "issue": 34,
+      "sourceSection": "Roadmap de execução — PR #39",
+      "ordinal": 5,
+      "originalCriterion": "**5. Projetar kits, itens e equipamentos.** Ganhos/quantidades/unidades, vínculos ou restrições, perfis publicados e efeitos/requisitos, sem inferências por nome.",
+      "status": "comprovado",
+      "evidence": [
+        "E04",
+        "E07"
+      ],
+      "assessment": "Kits, quantidades e perfis selecionados conferidos; ambiguidades e definições sem suporte preservadas.",
+      "remaining": "Não confundir catálogo inventariado com todos os perfis implementados."
+    },
+    {
+      "id": "I34-A6",
+      "issue": 34,
+      "sourceSection": "Roadmap de execução — PR #39",
+      "ordinal": 6,
+      "originalCriterion": "**6. Estender compilador e validação.** Projeção local por lote, versões/índices/relatórios, determinismo, proveniência, integridade e rejeição de adulteração.",
+      "status": "parcial",
+      "evidence": [
+        "E01",
+        "E02",
+        "E07"
+      ],
+      "assessment": "Infraestrutura de compilação/índices comprovada na fixture e projeções reais disponíveis por rota própria.",
+      "remaining": "F05: demonstrar atendimento do requisito para todos os lotes selecionados."
+    },
+    {
+      "id": "I34-A7",
+      "issue": 34,
+      "sourceSection": "Roadmap de execução — PR #39",
+      "ordinal": 7,
+      "originalCriterion": "**7. Integrar resolvedores e handlers.** Resolução contextual e aplicação única de consequências; equipamento em camadas, estados/saves preservados e RNG apenas explícito.",
+      "status": "parcial",
+      "evidence": [
+        "E03",
+        "E04",
+        "E05",
+        "E06"
+      ],
+      "assessment": "Handlers reais e integrações existem; faltam reconciliação por consequência dos três lotes/rota consumível e aceite amplo dos percursos.",
+      "remaining": "F05: cobertura por consequência; F04: percursos. Não reimplementar o runtime antes de auditar a equivalência."
+    },
+    {
+      "id": "I34-A8",
+      "issue": 34,
+      "sourceSection": "Roadmap de execução — PR #39",
+      "ordinal": 8,
+      "originalCriterion": "**8. Auditar o conjunto e entregar aos consumidores.** Reconciliar cobertura e critérios, conferir catálogo/handlers e registrar aceite técnico/limites para #35/#36/#37.",
+      "status": "parcial",
+      "evidence": [
+        "E01",
+        "E07"
+      ],
+      "assessment": "Matriz #55 e escopo já fornecem insumos; este cruzamento revela obrigações ainda abertas.",
+      "remaining": "Atividades 3–7 devem consolidar aceite, interfaces consumidoras e limitações, antes de fechar a atividade 8 da #34."
+    }
+  ]
+}

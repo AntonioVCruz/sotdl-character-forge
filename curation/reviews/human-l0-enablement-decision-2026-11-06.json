@@ -1,0 +1,220 @@
+{
+  "schemaVersion": 1,
+  "decisionId": "human-l0-local-enablement@1.0.0",
+  "date": "2026-11-06",
+  "reviewAuthor": "Codex",
+  "authority": "explicit-user-decisions-in-thread",
+  "scope": "accepted-local-human-l0-subset",
+  "delivery": "local-unpublished",
+  "priorAcceptance": {
+    "path": "curation/reviews/human-l0-vertical-acceptance-2026-11-06.json",
+    "sha256": "5a05813c03130549ec72ee5e36f2c99cceb76fbd89c1b14a1485c13c0be53b67",
+    "preserved": true
+  },
+  "userDecisions": [
+    {
+      "id": "file-destinations",
+      "choice": "JSON as private reimportable backup; HTML/PDF as minimal sharing sheets after review"
+    },
+    {
+      "id": "custom-identifiers",
+      "choice": "Preserve custom identifiers and explicitly require reviewing their user-written text before sharing"
+    }
+  ],
+  "capabilities": {
+    "localGeneration": "retain-previously-authorized-scope",
+    "batchPreviewAndIndexedDB": "retain",
+    "json": "private-backup",
+    "html": "minimal-sharing-sheet-readonly",
+    "pdf": "minimal-sharing-sheet-A4-browser-print",
+    "offlineEngineEditing": false,
+    "publicCatalogOrContextExport": false,
+    "sourcePromotion": false,
+    "publication": false,
+    "deploy": false
+  },
+  "sourceState": {
+    "reviewStatus": "needs-review",
+    "globalPackAndContextExportEnabled": false,
+    "distributionApproved": false
+  },
+  "gates": [
+    "verified local source context",
+    "exact versions and dependencies",
+    "supported mechanics and complete material obligations",
+    "revalidated finalization receipt",
+    "saved state without open preview in UI",
+    "no known cross-tab conflict in UI",
+    "renewed consent for personal data and custom identifiers",
+    "format-specific emitted-field content checks"
+  ],
+  "fields": {
+    "jsonReplay": "seed, history, configuration, recorded dice, free decisions, adjudication author/reason and exact references",
+    "sharedSheet": "numbers, own name, minimum source/choice/item references, languages and custom identifiers, use-pending codes, optional omission keys",
+    "excluded": "source books, transcripts, licensed descriptions, full catalogs/contexts, extensive evidence, buyer data, private credentials and authenticated links"
+  },
+  "contentControls": {
+    "scope": "only actual emitted data for each format",
+    "knownPurchasePattern": "same recognized marker as repository privacy scanner",
+    "privateLinks": "URL credentials and recognized authentication/signature parameters",
+    "stringsAndKeysInspected": true,
+    "rejectWithoutRedacting": true,
+    "savePreserved": true,
+    "errorDoesNotEchoMatchedValue": true,
+    "universalSensitiveDataOrLicenseClassifier": false,
+    "manualReviewRequired": true,
+    "jsonEncrypted": false,
+    "automaticallyUploaded": false
+  },
+  "snapshotDelta": {
+    "reason": "post-activity4 output-content guard, destination wording, personal-data consent and known-conflict output gate; unchanged mechanics and JSON wire schema",
+    "files": [
+      {
+        "path": "packages/character-generator/export-content-policy.ts",
+        "sha256": "2d5ec54e603cd627b288939c2bfda6153dc6e59dd449395e661bfd2e6cf444c0"
+      },
+      {
+        "path": "packages/character-generator/character-export.ts",
+        "sha256": "004cefcd37297e5b00143e348d5953c46c67cdfbd9c71c88ad2bab8fad41994f"
+      },
+      {
+        "path": "apps/web/character-export-html.ts",
+        "sha256": "c3b241c4b0241b8f7a06221f25c3acbcd1b839773f1ad31fdf17efb4281a86d1"
+      },
+      {
+        "path": "apps/web/CharacterExportPanel.tsx",
+        "sha256": "7a79e8ccd211e4b9790754ca5c5127853259645d27cdbbf75e10c0a05d05b303"
+      },
+      {
+        "path": "apps/web/OfficialCoreGenerator.tsx",
+        "sha256": "37395458ec014fbca9353be2ee77d8b3778b5b702ada5a400017337c5ec5c5b2"
+      },
+      {
+        "path": "apps/web/CreationProcedures.tsx",
+        "sha256": "d7210d019e8ebc0193c88650dcddf86fbb9c7af55f654e6714183c182a71da0b"
+      },
+      {
+        "path": "apps/web/useCharacterWorkspace.ts",
+        "sha256": "95b60900e4fe2527aef93198157449ffb09ebfe3c78831aa29596ad3c6b7aaa3"
+      },
+      {
+        "path": "tests/character-export.test.ts",
+        "sha256": "623a914d4e95dd7538326fb3dff2091e2ba7f490b0a1e79ab601b0c90a020369"
+      },
+      {
+        "path": "tests/character-export-source.test.ts",
+        "sha256": "2d84db88fb4cdf4e61331d30fdd5bf0dedf2499816b4f02a79d36a054e08e7ab"
+      },
+      {
+        "path": "tests/e2e/character-export.spec.ts",
+        "sha256": "9de3fb7383a2cd6c6411c7baf3b16443368b93426c093537f123d0669003e63a"
+      },
+      {
+        "path": "tests/e2e/character-workspace.spec.ts",
+        "sha256": "0f8822c034e748a712ce531f25bf4463d6f078e558f984aac239e6276af85223"
+      }
+    ]
+  },
+  "validation": {
+    "unit": {
+      "passed": 639,
+      "skipped": 4,
+      "failed": 0
+    },
+    "finalTargetedPublicTests": 10,
+    "browser": {
+      "startTime": "2026-11-06T23:06:13.729Z",
+      "duration": 44952.644,
+      "expected": 5,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "build": "passed",
+    "officialEntryAudit": "passed",
+    "sampleAudit": [
+      {
+        "kind": "core",
+        "path": "output/html/issue56/core.json",
+        "sha256": "0bda02c01e30bd24b1e48c9374dce4fcef8e446e4db268259bf4bfc1c167d074",
+        "topLevelFields": [
+          "contextSha256",
+          "contract",
+          "contractVersion",
+          "policy",
+          "replay",
+          "sheet",
+          "sourceIds",
+          "sources"
+        ],
+        "sheetFields": [
+          "deferredUse",
+          "dimensions",
+          "inventory",
+          "languages",
+          "level",
+          "loadout",
+          "moneyBits",
+          "name",
+          "optionalOmissions",
+          "professions",
+          "states",
+          "stats"
+        ],
+        "structuralSourceFieldCheck": "passed"
+      },
+      {
+        "kind": "procedures",
+        "path": "output/html/issue56/procedures.json",
+        "sha256": "b20219ec0fd33ec1fcd98bc083e242d28bc4f8f560735dd0bfc0fb0044cd0eb1",
+        "topLevelFields": [
+          "contextSha256",
+          "contract",
+          "contractVersion",
+          "policy",
+          "replay",
+          "sheet",
+          "sourceIds",
+          "sources"
+        ],
+        "sheetFields": [
+          "deferredUse",
+          "dimensions",
+          "inventory",
+          "languages",
+          "level",
+          "loadout",
+          "moneyBits",
+          "name",
+          "optionalOmissions",
+          "professions",
+          "states",
+          "stats"
+        ],
+        "structuralSourceFieldCheck": "passed"
+      }
+    ],
+    "reports": [
+      {
+        "path": "tmp/permissions-vitest.json",
+        "sha256": "4fa9e392cff62ad19e01a3e5541071a754e7b337acb564d3a91eb6033fa7415f"
+      },
+      {
+        "path": "tmp/permissions-playwright-final.json",
+        "sha256": "5b3a205a31354273b8b2cea8f33276d4af9ae06468a976368ddcc6c770c6a9b9"
+      }
+    ]
+  },
+  "limits": [
+    "Destination classification is not encryption, DRM or a copyright license",
+    "Custom identifiers may include user text and require manual review",
+    "Known-pattern guards do not prove absence of every secret, purchase identifier or copied passage",
+    "Pure format renderers do not independently recertify source eligibility; application emission uses the source/finalization gates",
+    "Only app-generated minimal sheets are classified for sharing, not arbitrary prints/captures of the source-bearing editor",
+    "Successor freeze and closure review remain activities6/7; no publication or issue changes"
+  ],
+  "document": {
+    "path": "docs/permissoes-habilitacao-human-l0.md",
+    "sha256": "df2927e345b966d46753b5b764ad2cc8bcc6700e07f6d57d57cefdf770a9f93e"
+  }
+}

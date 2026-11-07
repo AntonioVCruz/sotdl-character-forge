@@ -1,13 +1,23 @@
 # SotDL Character Forge — geração oficial local
 
-**Estado atual:** entrada principal somente com dados reais verificados, no recorte **Humano Core, nível 0**, e fluxo separado de procedimentos Core / Only Human. Geração oficial local ativada por solicitação explícita do usuário. Escolhas e consequências obrigatórias não resolvidas mantêm a ficha em rascunho. A [entrega local da #54](docs/entrega-finalizacao-issue54.md) permite finalizar após revalidação, conservando efeitos de uso explícitos e exportação desabilitada. [Escopo e limites](docs/ativacao-oficial-local-core.md).
+**Estado atual — 2026-11-06:** Human L0 consolidado e aceito tecnicamente no recorte local: Core simples e procedimentos Core / Only Human, fontes de Interesting Things Core/Oddities, prévia com confirmação, biblioteca IndexedDB, finalização e arquivos mínimos. A #56 e a consolidação continuam sem commit/publicação sobre a base `2c5ef89`. [Escopo](docs/escopo-fechamento-human-l0.md), [aceite e resumos de encerramento](docs/fechamento-tecnico-human-l0.md) e [estado das issues](docs/estado-issues.md).
+**Uso e reprodução:** [guia do usuário](docs/uso-human-l0.md) e [freeze consolidado](docs/freeze-consolidado-human-l0.md). `npm run curation:freeze:human:public` verifica a entrega pública `1.0.1`; a conferência completa exige corpus/revisão privados. A próxima ação preparada é publicar e concluir administrativamente, quando solicitado.
+
 **Idioma das especificações:** português. **Identificadores mecânicos oficiais:** inglês.
 
-**Estado operacional em 2026-10-30:** [política consolidada](docs/politica-distribuicao-conteudo.md) e [issues conferidas](docs/estado-issues.md). Higiene da ponta e política entregues; stubs Human e wizard L0 demonstrativo integrados. Compilador/índices, consumo oficial e aceite final de UX continuam pendentes; histórico antigo na #16. As seções de entregas abaixo conservam suas datas.
+**Histórico em 2026-10-30:** política, higiene da ponta, stubs Human e wizard demonstrativo já estavam integrados; naquela data compilador, consumo oficial e aceite final ainda estavam pendentes. As seções históricas abaixo conservam suas datas e limites. O histórico residual da #16 continua separado. Fontes permanecem `needs-review`; o aceite local não autoriza distribuir livros/packs.
 
-Os quatro compêndios MD de regras estão em `rules/`. A lista de tarefas para analisá-los, gerar packs JSON por publicação e integrar regras reais ao criador está em [tarefas-curadoria-compendios.md](docs/tarefas-curadoria-compendios.md).
+Os compêndios licenciados em `rules/` e pilotos privados não acompanham clones públicos. O uso real exige cópias autorizadas verificadas; sem elas a geração fica bloqueada e a suíte pública continua executável. O histórico de curadoria está em [tarefas-curadoria-compendios.md](docs/tarefas-curadoria-compendios.md).
 
 ## Executar a geração oficial local
+
+Alterações de criação aparecem como um conjunto em prévia. Use **Confirmar e salvar alterações** para revalidar as fontes e gravar, ou **Descartar alterações** para restaurar a versão anterior. A biblioteca guarda vários personagens em IndexedDB, com revisão por personagem e aviso de conflito entre abas. Os saves antigos em localStorage são copiados uma vez, sem apagar os originais; contexto incompatível permanece suspenso. O personagem selecionado é lembrado por aba. A emissão da ficha requer uma versão finalizada e salva.
+
+Após finalizar e salvar o personagem, use **Arquivos da ficha**. **Baixar backup JSON privado** conserva o replay, seed, histórico, especializações e campos livres de decisões, inclusive responsável e motivo; guarde-o como backup pessoal. HTML de leitura e impressão/PDF A4 são fichas mínimas para compartilhar após conferir o nome e os identificadores personalizados. Um idioma personalizado pode incorporar texto digitado por você. Nomes e textos dos catálogos não são incorporados; referências permanecem por ID. [Permissões e habilitação consolidadas](docs/permissoes-habilitacao-human-l0.md).
+
+O HTML abre offline; o JSON reabre no fluxo correspondente com as mesmas fontes, versões e contexto, sem novos sorteios. Importações incompatíveis preservam o personagem salvo. A emissão recusa padrões conhecidos de dados de compra e links autenticados, sem apagar o save; a conferência manual continua necessária para outros dados pessoais, segredos e trechos copiados. Impressão direta da página do criador não substitui o controle de emissão da ficha.
+
+Em checkout isolado sem os insumos privados, configure `SOTDL_LOCAL_SOURCE_ROOT` para o workspace licenciado antes de iniciar o servidor. As fontes são verificadas nesse diretório e a implementação no checkout atual; corpus divergente bloqueia o fluxo. Não copie os livros para arquivos públicos.
 
 Requer Node.js 22.15+ (ou versão compatível com as dependências) e npm.
 
@@ -16,7 +26,7 @@ npm ci
 npm run dev
 ```
 
-Abra a URL local indicada pelo Vite. Aguarde a conferência das fontes reais, informe nome/seed e escolha o benefício de humano. Selecione explicitamente a alternativa Core de Interesting Things e clique em **Gerar com regras reais**. Complete as escolhas de profissão/idioma/kit apresentadas. A ficha é salva e reaberta sem novos sorteios.
+Abra a URL local indicada pelo Vite. Aguarde a conferência das fontes reais, informe nome/seed e escolha o benefício de humano. Selecione explicitamente a alternativa Core de Interesting Things e clique em **Gerar com regras reais**. Complete as escolhas de profissão/idioma/kit apresentadas, revise e confirme a gravação. A ficha salva reabre sem novos sorteios. Quando escolher as tabelas narrativas do Core simples, registre também as medidas concretas conferidas com os resultados; esse registro não usa fórmulas de Human Development nem muda Size automaticamente.
 
 O ambiente precisa dos pilotos e fontes licenciadas ignorados. Se faltarem ou divergirem dos hashes revisados, o gerador fica bloqueado; não carrega demonstração. O endpoint funciona somente em loopback, sem incorporar os livros ao build estático. Fixture e demo ficaram restritos aos testes legados.
 
@@ -149,7 +159,7 @@ Use **fatias verticais**: um personagem criado do zero deve atravessar interface
 
 - O que pode entrar no git, nos packs e nos exports (JSON/HTML/PDF): [política de distribuição de conteúdo](docs/politica-distribuicao-conteudo.md) (S0, [#2](https://github.com/AntonioVCruz/sotdl-character-forge/issues/2)).
 
-A **Etapa A da curadoria (CUR-001 a CUR-007)** está concluída: [tarefas e estados](docs/tarefas-curadoria-compendios.md), [relatório dos gates](curation/reports/stage-a.md) e [contratos 1.0.0](docs/contratos-curadoria.md). `npm run curation:check` verifica hashes, registro das 95 fontes e exemplos de formato. Todas as 2.397 referências de fonte estão resolvidas após confirmação dos aliases pelo usuário; não há conteúdo mecânico real certificado nesta etapa. As três últimas decisões estão em `curation/reports/remaining-source-aliases.json`.
+A **Etapa A da curadoria (CUR-001 a CUR-007)** está concluída: [tarefas e estados](docs/tarefas-curadoria-compendios.md), relatório privado dos gates em `curation/reports/stage-a.md` (não acompanha clones) e [contratos 1.0.0](docs/contratos-curadoria.md). `npm run curation:check` verifica hashes, registro das 95 fontes e exemplos de formato. Todas as 2.397 referências de fonte estão resolvidas após confirmação dos aliases pelo usuário; não há conteúdo mecânico real certificado nesta etapa. As três últimas decisões estão em `curation/reports/remaining-source-aliases.json`.
 
 **CUR-008 concluída:** [59 ocorrências de ancestries extraídas para staging](docs/entrega-ancestries-staging.md), todas capturadas com fonte resolvida e texto/evidências preservados. Bugbear, Fomor, Incarnation e Warg foram vinculadas a The Hunger in the Void por confirmação explícita do usuário. `npm run curation:ancestries` reproduz os derivados.
 
@@ -213,7 +223,7 @@ Atualização posterior: **CUR-018 concluída** como [formalização de riqueza 
 
 Lote real Core, somente local: `npm run curation:core:local` projeta os pilotos verificados em `tmp/curation/core-real/1.1.0/`; `npm run curation:core:local:check` recompõe e confere a saída. Exige os insumos licenciados locais. [Cobertura, evidência e pendências](docs/entrega-core-real-issue34-atividade3.md). Não habilita geração oficial ou exportação.
 
-Compilação consumível e handlers Human L0 (avanço incremental da #34): `npm run curation:compile:consumable` gera a fixture aceita em `tmp/curation/compiled-consumables/`; `npm run curation:validate:consumable` confere os artefatos contra a entrada fixada. [Entrega, APIs e limites](docs/entrega-compilacao-handlers-consumiveis-human-l0.md). Lotes reais e procedimento completo continuam pendentes. A ampliação do offline vem após integrar o fluxo real e verificar os gates de exportação.
+A receita sintética histórica continua disponível em `curation:compile:consumable` / `curation:validate:consumable`. A rota real consolidada usa `npm run curation:compile:runtime` e `npm run curation:validate:runtime`: três artefatos imutáveis locais `1.0.1`, 2.552 identidades, sem distribuição dos dados licenciados. [Equivalência, cobertura e limites](docs/execucao-lacunas-human-l0.md). O HTML exportado é de leitura offline; editar/reabrir o personagem exige o servidor e o contexto local verificado.
 
 A correção S0 da issue #1 está em [entrega-higiene-pii-s0.md](docs/entrega-higiene-pii-s0.md). Os diretórios de evidências, transcrições, snapshots e formalizações com excertos são locais e ignorados; continuam disponíveis neste ambiente, mas não acompanham novos clones. `rules/` e complementos de curadoria devem ser obtidos sob licença própria. Os comandos de curadoria sobre livros exigem esse ambiente completo; a suíte pública usa contratos e fixtures redistribuíveis.
 
